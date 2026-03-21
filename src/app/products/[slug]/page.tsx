@@ -1,88 +1,108 @@
-"use client";
-
-import { use } from "react";
+import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, Clock, CheckCircle2, Star } from "lucide-react";
+import { CheckCircle2, Ruler, Phone, ArrowLeft } from "lucide-react";
 
-export default function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params);
-  
-  // Format slug for display (e.g., 'wall-panels' -> 'Wall Panels')
-  const title = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+// 1. Import our master database
+import productsData from "@/data/products.json";
 
+// 2. Setup the Next.js Page Component
+export default async function ProductDetail({ params }: { params: Promise<{ slug: string }> }) {
+  // 3. Await the params before using them (Required in Next.js 15+)
+  const { slug } = await params;
+
+  // 4. Find the product that matches the URL slug
+  const product = productsData.find((p) => p.slug === slug);
+
+  // 4. If someone types a wrong URL, show Next.js 404 page automatically
+  if (!product) {
+    notFound();
+  }
+
+  // 5. If product is found, render the Premium UI
   return (
-    <main className="min-h-screen pt-24 bg-white">
+    <div className="bg-white min-h-screen pt-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
-        {/* Breadcrumbs */}
-        <nav className="flex text-sm text-gray-500 mb-8 uppercase tracking-widest font-medium">
-          <Link href="/" className="hover:text-amber-600 transition-colors">Home</Link>
-          <span className="mx-2">/</span>
-          <span className="text-gray-900">{title}</span>
-        </nav>
+        {/* Breadcrumb Navigation */}
+        <Link href="/#categories" className="inline-flex items-center text-sm text-gray-500 hover:text-amber-600 mb-8 transition-colors">
+          <ArrowLeft className="w-4 h-4 mr-2" /> Back to Collections
+        </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           
-          {/* Product Image */}
-          <div className="relative h-[400px] md:h-[600px] bg-gray-100 rounded-sm overflow-hidden shadow-2xl">
-             <Image 
-              src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1000" 
-              alt={title} fill className="object-cover" 
-              sizes="(max-width: 1024px) 100vw, 50vw"
+          {/* Left Side: Product Image Gallery */}
+          <div className="relative h-[400px] md:h-[600px] rounded-sm overflow-hidden bg-gray-100 border border-gray-200">
+            {/* Note: In production, map through product.images array for a slider */}
+            <Image 
+              src={product.images[0]} 
+              alt={product.title} 
+              fill 
+              className="object-cover"
+              priority
             />
           </div>
 
-          {/* Product Details */}
-          <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-100 text-amber-700 text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
-              <Star className="w-3 h-3 fill-current" /> Premium Collection
+          {/* Right Side: Product Data & Sales Funnel */}
+          <div className="flex flex-col justify-center">
+            <div className="mb-2">
+              <span className="text-xs font-bold tracking-widest text-amber-600 uppercase">
+                {product.category}
+              </span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">{title}</h1>
+            <h1 className="text-3xl md:text-5xl font-black text-gray-900 tracking-tight mb-6">
+              {product.title}
+            </h1>
             
-            <div className="flex items-center gap-4 mb-8">
-              <div className="text-2xl font-bold text-amber-600">Premium Quality</div>
-              <div className="w-px h-6 bg-gray-200"></div>
-              <div className="text-sm text-gray-500 font-medium italic">Available for Immediate Delivery</div>
-            </div>
-
-            <p className="text-gray-600 text-lg leading-relaxed mb-10">
-              Our {title} are designed for those who seek perfection. Crafted using state-of-the-art technology, they offer unparalleled durability and aesthetic appeal for modern interiors.
+            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              {product.description}
             </p>
 
-            {/* Feature List */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-              <div className="flex items-center gap-3">
-                <ShieldCheck className="w-5 h-5 text-amber-500" />
-                <span className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Termite Proof</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Clock className="w-5 h-5 text-amber-500" />
-                <span className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Water Resistant</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-5 h-5 text-amber-500" />
-                <span className="text-sm font-semibold text-gray-700 uppercase tracking-wide">10 Year Warranty</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <ArrowRight className="w-5 h-5 text-amber-500" />
-                <span className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Fire Retardant</span>
+            {/* Quick Features */}
+            <div className="grid grid-cols-2 gap-4 mb-10 border-y border-gray-100 py-8">
+              {product.features.map((feature, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-amber-500 flex-shrink-0" />
+                  <span className="text-sm font-medium text-gray-700">{feature}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Technical Specifications */}
+            <div className="mb-10">
+              <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                <Ruler className="w-5 h-5 text-gray-400" /> Technical Specs
+              </h3>
+              <div className="bg-gray-50 p-6 border border-gray-100 rounded-sm space-y-3">
+                {Object.entries(product.specifications).map(([key, value], i) => (
+                  <div key={i} className="flex justify-between text-sm">
+                    <span className="text-gray-500 font-medium">{key}</span>
+                    <span className="text-gray-900 font-semibold text-right">{value}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
             {/* CTA */}
-            <Link 
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-gray-950 text-white px-10 py-5 text-sm font-bold uppercase tracking-widest hover:bg-amber-700 transition-all shadow-xl hover:shadow-amber-600/30 w-full sm:w-auto"
-            >
-              Get Free Consultation
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link 
+                href={`/contact?product=${product.slug}`} 
+                className="flex items-center justify-center gap-2 bg-gray-900 hover:bg-amber-600 text-white px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all shadow-lg w-full"
+              >
+                Request Free Quote
+              </Link>
+              <a 
+                href="tel:+917217644573" 
+                className="flex items-center justify-center gap-2 bg-white border-2 border-gray-900 hover:bg-gray-50 text-gray-900 px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all w-full sm:w-auto"
+              >
+                <Phone className="w-4 h-4" /> Call Now
+              </a>
+            </div>
+
           </div>
         </div>
-
       </div>
-    </main>
+    </div>
   );
 }

@@ -1,0 +1,33 @@
+﻿
+> goalsfloors-v2@0.1.0 lint
+> eslint
+
+
+C:\Users\MD NEYAZ\Videos\My Sites\goalsfloors-v2\goalsfloors-v2\src\app\about\page.tsx
+  4:38  warning  'Clock' is defined but never used       @typescript-eslint/no-unused-vars
+  4:45  warning  'Award' is defined but never used       @typescript-eslint/no-unused-vars
+  4:52  warning  'Headphones' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\MD NEYAZ\Videos\My Sites\goalsfloors-v2\goalsfloors-v2\src\app\contact\page.tsx
+  3:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\MD NEYAZ\Videos\My Sites\goalsfloors-v2\goalsfloors-v2\src\app\page.tsx
+    3:10  warning  'useEffect' is defined but never used                            @typescript-eslint/no-unused-vars
+    3:31  warning  'useRef' is defined but never used                               @typescript-eslint/no-unused-vars
+   94:18  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  194:71  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  289:19  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  289:41  error    `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`  react/no-unescaped-entities
+  317:95  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\MD NEYAZ\Videos\My Sites\goalsfloors-v2\goalsfloors-v2\src\app\projects\page.tsx
+   4:22   warning  'Trophy' is defined but never used                               @typescript-eslint/no-unused-vars
+   4:30   warning  'ShieldCheck' is defined but never used                          @typescript-eslint/no-unused-vars
+   4:43   warning  'MapPin' is defined but never used                               @typescript-eslint/no-unused-vars
+  58:152  error    `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\MD NEYAZ\Videos\My Sites\goalsfloors-v2\goalsfloors-v2\src\components\Footer.tsx
+  4:8  warning  'Image' is defined but never used  @typescript-eslint/no-unused-vars
+
+Γ£û 16 problems (6 errors, 10 warnings)
+

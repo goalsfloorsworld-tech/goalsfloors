@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight, Trophy, ShieldCheck, MapPin } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function ProjectsPage() {
   return (
@@ -55,7 +55,7 @@ export default function ProjectsPage() {
         <div className="mt-24 p-12 bg-gray-950 text-center rounded-sm relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2"></div>
           <h2 className="text-3xl font-bold text-white mb-6 relative z-10">Architect or Interior Designer?</h2>
-          <p className="text-gray-400 mb-10 max-w-2xl mx-auto relative z-10">We offer specialized support and exclusive catalogs for professionals. Let's create something extraordinary together.</p>
+          <p className="text-gray-400 mb-10 max-w-2xl mx-auto relative z-10">We offer specialized support and exclusive catalogs for professionals. Let&apos;s create something extraordinary together.</p>
           <div className="relative z-10 flex flex-col md:flex-row gap-4 justify-center">
             <button className="bg-amber-600 hover:bg-amber-700 text-white px-10 py-4 uppercase tracking-widest text-sm font-bold shadow-lg transition-all">Download Catalog</button>
             <button className="border border-white/20 hover:bg-white/10 text-white px-10 py-4 uppercase tracking-widest text-sm font-bold transition-all">Partner With Us</button>

@@ -1,0 +1,66 @@
+[
+  {
+    "slug": "tokyo-charcoal-moulding",
+    "title": "Tokyo Charcoal Moulding",
+    "category": "Wall Panels",
+    "description": "Premium waterproof charcoal moulding for interior wall cladding and TV unit highlights.",
+    "price": "Request Quote",
+    "images": [
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1000"
+    ],
+    "features": ["100% Waterproof", "Termite Proof", "Fire Retardant", "Eco-Friendly"],
+    "specifications": {
+      "Length": "2440mm (8 ft)",
+      "Width": "150mm",
+      "Thickness": "14mm",
+      "Material": "Charcoal & Virgin Polymers"
+    }
+  },
+  {
+    "slug": "premium-oak-laminate",
+    "title": "Premium Oak Laminate Flooring",
+    "category": "Flooring",
+    "description": "High-durability AC4 grade wooden laminate flooring for residential and commercial spaces.",
+    "price": "Request Quote",
+    "images": [
+      "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?q=80&w=1000"
+    ],
+    "features": ["Scratch Resistant", "AC4 Grade", "Click-Lock Installation", "Fade Resistant"],
+    "specifications": {
+      "Dimension": "1215 x 195 mm",
+      "Thickness": "8mm",
+      "Box Content": "2.37 Sq. Meter",
+      "Warranty": "10 Years"
+    }
+  },
+  {
+    "slug": "baffle-ceilings",
+    "title": "Baffle Ceilings",
+    "category": "Ceilings",
+    "description": "Premium acoustic baffle ceilings for modern corporate and commercial interiors.",
+    "price": "Request Quote",
+    "images": ["https://images.unsplash.com/photo-1600607687959-ce8a6c25118c?q=80&w=1000"],
+    "features": ["Acoustic Performance", "Modern Aesthetic", "Easy Installation", "Durable"],
+    "specifications": { "Material": "Aluminum/Steel", "Finish": "Wood Grain/Powder Coated" }
+  },
+  {
+    "slug": "luxury-flooring",
+    "title": "Luxury Flooring",
+    "category": "Flooring",
+    "description": "Premium SPC and laminate flooring solutions for high-traffic environments.",
+    "price": "Request Quote",
+    "images": ["https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?q=80&w=1000"],
+    "features": ["Waterproof", "Scratch Resistant", "Click-Lock", "10 Year Warranty"],
+    "specifications": { "Type": "SPC/Laminate", "Thickness": "5mm-12mm" }
+  },
+  {
+    "slug": "wall-panels",
+    "title": "Premium Wall Panels",
+    "category": "Wall Panels",
+    "description": "Decorative WPC and Charcoal wall panels for interior and exterior transformation.",
+    "price": "Request Quote",
+    "images": ["https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1000"],
+    "features": ["Weather Resistant", "Termite Proof", "Low Maintenance", "Elegant Finish"],
+    "specifications": { "Material": "WPC/Charcoal", "Usage": "Interior/Exterior" }
+  }
+]

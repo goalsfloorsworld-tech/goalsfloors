@@ -1,32 +1,13 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Clock, ShieldCheck, Star, Trophy, Truck, Users, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Clock, ShieldCheck, Trophy, Truck, Users, CheckCircle2 } from "lucide-react";
 import Counter from "@/components/Counter";
+import Testimonials from "@/components/Testimonials";
+
 
 export default function Home() {
-  const [isReviewsVisible, setIsReviewsVisible] = useState(false);
-  const reviewsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsReviewsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (reviewsRef.current) {
-      observer.observe(reviewsRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -63,7 +44,7 @@ export default function Home() {
           </h1>
 
           <p className="mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto font-light leading-relaxed mb-10">
-            India's most trusted brand for Premium Laminate, WPC Louvers, and Baffle Ceilings. Crafting architectural excellence for over 19 years.
+            India&apos;s most trusted brand for Premium Laminate, WPC Louvers, and Baffle Ceilings. Crafting architectural excellence for over 19 years.
           </p>
 
           {/* CTAs */}
@@ -158,12 +139,12 @@ export default function Home() {
       </section>
 
       {/* ================= WHY CHOOSE US ================= */}
-      <section className="py-24 bg-white">
+      <section className="py-15 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">Why Architects & Designers Choose Us</h2>
-              <p className="text-gray-600 mb-8 leading-relaxed">We don't just sell products; we deliver peace of mind. With our robust supply chain and commitment to quality, your projects are completed on time, every time.</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">Why Architects &amp; Designers Choose Us</h2>
+              <p className="text-gray-600 mb-8 leading-relaxed">We don&apos;t just sell products; we deliver peace of mind. With our robust supply chain and commitment to quality, your projects are completed on time, every time.</p>
               
               {/* Mobile Image - Shown only on small screens */}
               <div className="relative h-64 w-full mb-8 lg:hidden rounded-sm overflow-hidden shadow-xl">
@@ -205,8 +186,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= B2B TRUST SIGNALS (Marquee & Testimonials) ================= */}
-      <section className="py-24 bg-gray-50 border-t border-gray-200 overflow-hidden">
+      {/* ================= B2B TRUST SIGNALS (Marquee) ================= */}
+      <section className="py-10 bg-gray-50 border-t border-gray-100 overflow-hidden">
         
         {/* Inline CSS for Marquee Animation */}
         <style dangerouslySetInnerHTML={{__html: `
@@ -221,7 +202,7 @@ export default function Home() {
           }
           @media (max-width: 768px) {
             .animate-marquee {
-              animation-duration: 8s;
+              animation-duration: 15s;
             }
           }
           .animate-marquee:hover {
@@ -229,23 +210,19 @@ export default function Home() {
           }
         `}} />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center mb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+          <div className="text-center">
             <h2 className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight uppercase">Trusted By Leading Architects & Developers</h2>
             <div className="w-16 h-1 bg-amber-500 mx-auto mt-4"></div>
           </div>
         </div>
 
-        {/* Infinite Scrolling Logos (Right to Left) */}
-        <div className="relative w-full overflow-hidden mb-24 bg-white py-6 border-y border-gray-100">
-          
-          {/* Foggy Overlays for Seamless Dissolve */}
+        {/* Infinite Scrolling Logos */}
+        <div className="relative w-full overflow-hidden bg-white py-8 border-y border-gray-100">
           <div className="absolute inset-y-0 left-0 w-24 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
           <div className="absolute inset-y-0 right-0 w-24 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
           <div className="animate-marquee flex items-center">
-            {/* Array doubled to create a seamless infinite loop */}
             {["Apex Builders", "Studio9 Interiors", "Lumina Real Estate", "Vertex Corporate", "Zenith Architects", "Nova Designs", "Aura Spaces", "Prime Developers", "Apex Builders", "Studio9 Interiors", "Lumina Real Estate", "Vertex Corporate", "Zenith Architects", "Nova Designs", "Aura Spaces", "Prime Developers"].map((brand, i) => (
               <div key={i} className="flex-1 min-w-[300px] text-center text-lg md:text-xl font-medium text-gray-400 uppercase tracking-widest hover:text-amber-600 transition-colors cursor-pointer select-none">
                 {brand}
@@ -253,85 +230,9 @@ export default function Home() {
             ))}
           </div>
         </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 tracking-tight">What Our Customers Say</h2>
-          </div>
-
-          {/* 6 B2B Testimonials Grid */}
-          <div ref={reviewsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            
-            {[
-              {
-                quote: "We had a tight deadline for a 50,000 sq ft office. Goals Floors not only delivered the WPC louvers within 2 hours but the quality was flawless.",
-                name: "Rahul Sharma",
-                role: "Lead Architect, Studio9"
-              },
-              {
-                quote: "Finding genuine termite-proof wooden flooring with official warranties is tough. Goals Floors provided transparent pricing and amazing installation.",
-                name: "Priya Desai",
-                role: "Interior Designer"
-              },
-              {
-                quote: "Sourced 2000 sq ft of premium laminate for a luxury villa project. The texture and finish look exactly like real hardwood. Highly impressed.",
-                name: "Amit Verma",
-                role: "Builder & Developer"
-              },
-              {
-                quote: "Their Baffle Ceilings completely transformed our corporate lobby. The acoustic properties are great and the delivery was on the exact committed date.",
-                name: "Sneha Kapoor",
-                role: "Commercial Architect"
-              },
-              {
-                quote: "I regularly use their charcoal louvers for my clients' TV units and bed backdrops. The finishing is ultra-premium and easy to install.",
-                name: "Neha Singh",
-                role: "Freelance Designer"
-              },
-              {
-                quote: "As a contractor, I appreciate their fast supply chain in NCR. Never had a project delayed because of material shortage from Goals Floors.",
-                name: "Vikram Rathi",
-                role: "Project Contractor"
-              }
-            ].map((review, index) => (
-              <div 
-                key={index} 
-                className={`transition-all duration-1000 ease-out h-full ${
-                  isReviewsVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-12 scale-95'
-                }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
-              >
-                <div className="group bg-white p-8 rounded-none border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-amber-500/10 hover:border-amber-200/50 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between relative h-full cursor-default">
-                  <div>
-                    {/* Star Rating */}
-                    <div className="flex gap-1 mb-6 text-amber-500">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-current" />
-                      ))}
-                    </div>
-                    
-                    <p className="text-gray-700 leading-relaxed italic text-sm mb-8 relative z-10 transition-colors group-hover:text-gray-900">
-                      "{review.quote}"
-                    </p>
-                  </div>
-                  
-                  <div className="flex items-center gap-4 pt-6 border-t border-gray-50">
-                    {/* Initials Avatar */}
-                    <div className="w-12 h-12 rounded-full bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-sm border border-amber-100/50 group-hover:bg-amber-600 group-hover:text-white transition-colors duration-300">
-                      {review.name.split(' ').map(n => n[0]).join('')}
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-900 text-sm">{review.name}</h4>
-                      <p className="text-[10px] text-gray-500 uppercase tracking-widest mt-0.5 font-medium">{review.role}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-
-          </div>
-        </div>
       </section>
+
+      <Testimonials />
 
       {/* ================= THE ULTIMATE LEAD MAGNET (Light/Bright Theme) ================= */}
       <section className="relative py-24 bg-amber-50 overflow-hidden border-t-4 border-amber-500">
