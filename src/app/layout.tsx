@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer"
 
-// Premium font for clean look
-const inter = Inter({ subsets: ["latin"] });
+// Clean, professional font as requested
+const openSans = Open_Sans({ 
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"]
+});
 
 export const metadata: Metadata = {
   title: "Goals Floors | Premium Flooring & Wall Panels",
@@ -19,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased bg-gray-50 pt-20`}>
+      <body className={`${openSans.className} antialiased bg-white pt-14`}>
         <Navbar />
         <main className="min-h-screen">
           {children}

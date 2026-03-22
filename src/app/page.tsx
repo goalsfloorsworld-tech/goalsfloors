@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Clock, ShieldCheck, Trophy, Truck, Users, CheckCircle2 } from "lucide-react";
 import Counter from "@/components/Counter";
 import Testimonials from "@/components/Testimonials";
+import BrandMarquee from "@/components/BrandMarquee";
 
 
 export default function Home() {
@@ -186,51 +187,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= B2B TRUST SIGNALS (Marquee) ================= */}
-      <section className="py-10 bg-gray-50 border-t border-gray-100 overflow-hidden">
-        
-        {/* Inline CSS for Marquee Animation */}
-        <style dangerouslySetInnerHTML={{__html: `
-          @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .animate-marquee {
-            display: flex;
-            width: 200%;
-            animation: scroll 40s linear infinite;
-          }
-          @media (max-width: 768px) {
-            .animate-marquee {
-              animation-duration: 15s;
-            }
-          }
-          .animate-marquee:hover {
-            animation-play-state: paused;
-          }
-        `}} />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-          <div className="text-center">
-            <h2 className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight uppercase">Trusted By Leading Architects & Developers</h2>
-            <div className="w-16 h-1 bg-amber-500 mx-auto mt-4"></div>
-          </div>
-        </div>
-
-        {/* Infinite Scrolling Logos */}
-        <div className="relative w-full overflow-hidden bg-white py-8 border-y border-gray-100">
-          <div className="absolute inset-y-0 left-0 w-24 md:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute inset-y-0 right-0 w-24 md:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
-
-          <div className="animate-marquee flex items-center">
-            {["Apex Builders", "Studio9 Interiors", "Lumina Real Estate", "Vertex Corporate", "Zenith Architects", "Nova Designs", "Aura Spaces", "Prime Developers", "Apex Builders", "Studio9 Interiors", "Lumina Real Estate", "Vertex Corporate", "Zenith Architects", "Nova Designs", "Aura Spaces", "Prime Developers"].map((brand, i) => (
-              <div key={i} className="flex-1 min-w-[300px] text-center text-lg md:text-xl font-medium text-gray-400 uppercase tracking-widest hover:text-amber-600 transition-colors cursor-pointer select-none">
-                {brand}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <BrandMarquee />
 
       <Testimonials />
 

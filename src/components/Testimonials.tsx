@@ -119,14 +119,14 @@ export default function Testimonials() {
   const currentReview = testimonials[currentReviewIndex];
 
   return (
-    <section className="py-15 bg-white relative overflow-hidden">
+    <section className="py-5 bg-white relative overflow-hidden">
       {/* Subtle background gradients for premium feel */}
       <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-amber-50 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-amber-50 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <h2 className="text-sm font-bold tracking-[0.2em] text-amber-500 uppercase mb-3">Client Stories</h2>
           <h3 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight">Trust in <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">Quality</span></h3>
         </div>
@@ -167,7 +167,7 @@ export default function Testimonials() {
               {/* Text Content - Scrollable area */}
               <div key={currentReviewIndex} className="transition-all duration-500 flex flex-col flex-grow" style={{ animation: 'fadeIn 0.5s ease-out' }}>
                 <div className="max-h-[220px] overflow-y-auto pr-2 mb-8 custom-scrollbar">
-                  <p className="text-lg md:text-2xl text-gray-700 leading-relaxed italic font-light touch-auto">
+                  <p className="text-base md:text-2xl text-gray-700 leading-relaxed italic font-light touch-auto">
                     &quot;{currentReview.quote}&quot;
                   </p>
                 </div>
@@ -251,7 +251,7 @@ export default function Testimonials() {
         </div>
 
         {/* CTA Below Card (Refined Blue Button) */}
-        <div className="mt-16 text-center flex flex-col items-center justify-center gap-8 bg-gray-50/50 p-10 rounded-[2rem] border border-gray-100 shadow-inner">
+        <div className="mt-5 text-center flex flex-col items-center justify-center gap-8 bg-gray-50/50 p-10 rounded-[2rem] border border-gray-100 shadow-inner">
            <div className="flex flex-col items-center">
               <div className="flex -space-x-3 mb-4">
                  {testimonials.slice(0, 5).map((review) => (
