@@ -167,7 +167,7 @@ export default function Testimonials() {
               {/* Text Content - Scrollable area */}
               <div key={currentReviewIndex} className="transition-all duration-500 flex flex-col flex-grow" style={{ animation: 'fadeIn 0.5s ease-out' }}>
                 <div className="max-h-[220px] overflow-y-auto pr-2 mb-8 custom-scrollbar">
-                  <p className="text-xl md:text-2xl text-gray-700 leading-relaxed italic font-light touch-auto">
+                  <p className="text-lg md:text-2xl text-gray-700 leading-relaxed italic font-light touch-auto">
                     &quot;{currentReview.quote}&quot;
                   </p>
                 </div>
