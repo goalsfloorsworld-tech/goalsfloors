@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Star, ArrowUpRight } from "lucide-react";
@@ -32,47 +32,55 @@ export default function Testimonials() {
       id: 1,
       name: "Manoj Kori",
       role: "Verified Buyer, Gurgaon",
-      quote: "I bought flooring, wall panels and charcoal moulding from Goals Floors, Gurgaon, and honestly my experience was really good. The material quality is solid and premium, exactly what I was looking for. The team there was very helpful and guided me with the right choices. Delivery and fitting were also done on time.",
-      image: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774079586/manoj_kori.png"
+      quote: "I bought flooring, wall panels and charcoal moulding from Goals Floors, Gurgaon, and honestly my experience was really good. The material quality is solid and premium, exactly what I was looking for. The team there was very helpful and guided me with the right choices. Delivery and fitting were also done on time. Overall, I’m very satisfied with the purchase and would definitely recommend Goals Floors to anyone looking for flooring or wall panels in Gurgaon.",
+      image: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774079586/manoj_kori.png",
+      link: "https://share.google/rEFGhtceshAtHqasl"
     },
     {
       id: 2,
       name: "Guddu Salmani",
       role: "Home Renovation Client",
-      quote: "I recently purchased laminate flooring and charcoal moulding from Goals Floors, and I must say I'm extremely satisfied. They offered me the best rates compared to others in the market, and the delivery was super fast. The quality of the products is excellent, and the service was smooth and professional.",
-      image: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774079586/Guddu_Salmani.png"
+      quote: "I recently purchased laminate flooring and charcoal moulding from Goals Floors, and I must say I'm extremely satisfied. They offered me the best rates compared to others in the market, and the delivery was super fast. The quality of the products is excellent, and the service was smooth and professional. Highly recommended for anyone looking for great flooring solutions at affordable prices!",
+      image: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774079586/Guddu_Salmani.png",
+      link: "https://share.google/x8nqtiZnvg8Xtpz5c"
     },
     {
       id: 3,
       name: "Kishan Pandit",
       role: "Verified Customer",
-      quote: "Goals Floors is my go-to brand for flooring and paneling solutions. Their products strike the right balance between affordability and premium quality. I am particularly impressed with the wooden flooring collection - stylish, durable, and very easy to maintain. Excellent service and highly trustworthy.",
-      image: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774079586/Kishan_Pandit.png"
+      quote: "Goals Floors is my go-to brand for flooring and paneling solutions. Their products strike the right balance between affordability and premium quality. I am particularly impressed with the wooden flooring collection - stylish, durable, and very easy to maintain. Excellent service and highly trustworthy. stylish, durable, and very easy to maintain. Excellent service and highly trustworthy.",
+      image: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774079586/Kishan_Pandit.png",
+      link: "https://share.google/1AE88ppkWA2hhj1LY"
     },
     {
       id: 4,
       name: "Shiv Kumar",
       role: "Homeowner, Delhi NCR",
-      quote: "I recently got wooden flooring and charcoal moulding done from Goals Floors for my home. The final result looks amazing. The wooden flooring gives a very premium feel and the charcoal moulding adds a modern contrast that completely changes the vibe of the space. The installation team was on time and did a neat job.",
-      image: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774079586/Shiv_Kumar.png"
+      quote: "I recently got wooden flooring and charcoal moulding done from Goals Floors for my home. The final result looks amazing. The wooden flooring gives a very premium feel and the charcoal moulding adds a modern contrast that completely changes the vibe of the space. The installation team was on time and did a neat job. Definitely recommend if you want to give your home a classy and long-lasting look.",
+      image: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774079586/Shiv_Kumar.png",
+      link: "https://share.google/9aJkSHfiBpt4wPT4o"
     },
     {
       id: 5,
       name: "Rohit singh",
       role: "Flooring Specialist",
       quote: "Maine yeha ss wooden flooring aur charcoal moulding kharida tha muje best price mila aur quality bhi bahut premium tha. Product range is vast and the team's knowledge is very helpful in choosing the right material.",
-      image: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774079587/Rohit_Singh.png"
+      image: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774079587/Rohit_Singh.png",
+      link: "https://share.google/pivzuW0EkvhXRDB0b"
     },
     {
       id: 6,
       name: "satnam sahu",
       role: "Interior Professional",
       quote: "Maine goals floors se Wooden Flooring aur Vinyl Flooring kharida hai Muje best price mila. I am happy with the service and product quality. Definitely the best place for flooring solutions in Gurgaon.",
-      image: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774079587/satnam_sahu.png"
+      image: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774079587/satnam_sahu.png",
+      link: "https://share.google/36lF4zs2hBxvPwsIn"
     }
   ];
 
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
 
   const nextReview = () => {
     setCurrentReviewIndex((prev) => (prev + 1) % testimonials.length);
@@ -80,6 +88,32 @@ export default function Testimonials() {
 
   const prevReview = () => {
     setCurrentReviewIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  };
+
+  // Swiping Logic
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    
+    // Minimum horizontal distance for a swipe
+    if (Math.abs(distance) > 50) {
+      if (distance > 0) {
+        nextReview();
+      } else {
+        prevReview();
+      }
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
   };
 
   const currentReview = testimonials[currentReviewIndex];
@@ -98,8 +132,13 @@ export default function Testimonials() {
         </div>
 
         <div className="relative">
-          {/* Premium Card */}
-          <div className="relative bg-white rounded-3xl p-5 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 group transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+          {/* Premium Card with Fixed Height and Swipe Listeners */}
+          <div 
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            className="relative bg-white rounded-3xl p-6 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 group transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] min-h-[500px] md:min-h-[420px] flex flex-col cursor-grab active:cursor-grabbing"
+          >
             
             {/* Large Decorative Quote Icon */}
             <div className="absolute top-8 right-8 md:top-12 md:right-12 text-amber-500/10 group-hover:text-amber-500/20 transition-colors duration-500 transform group-hover:scale-110">
@@ -108,8 +147,8 @@ export default function Testimonials() {
               </svg>
             </div>
 
-            <div className="relative z-10">
-              {/* Star Rating & Badge (Re-arranged: Badge to Top Left, Stars to Top Right) */}
+            <div className="relative z-10 flex flex-col flex-grow">
+              {/* Star Rating & Badge */}
               <div className="flex flex-row items-center justify-between mb-8 w-full gap-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-wider shadow-sm">
                   <div className="relative w-3.5 h-3.5 bg-white rounded-full p-0.5 shadow-sm">
@@ -125,14 +164,16 @@ export default function Testimonials() {
                 <StarRating />
               </div>
 
-              {/* Text Content */}
-              <div key={currentReviewIndex} className="transition-all duration-500" style={{ animation: 'fadeIn 0.5s ease-out' }}>
-                <p className="text-xl md:text-2xl text-gray-700 leading-relaxed italic mb-10 max-w-3xl font-light">
-                  &quot;{currentReview.quote}&quot;
-                </p>
+              {/* Text Content - Scrollable area */}
+              <div key={currentReviewIndex} className="transition-all duration-500 flex flex-col flex-grow" style={{ animation: 'fadeIn 0.5s ease-out' }}>
+                <div className="max-h-[220px] overflow-y-auto pr-2 mb-8 custom-scrollbar">
+                  <p className="text-xl md:text-2xl text-gray-700 leading-relaxed italic font-light touch-auto">
+                    &quot;{currentReview.quote}&quot;
+                  </p>
+                </div>
 
-                {/* Responsive Author & Nav (Mobile Centered) */}
-                <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-8 sm:gap-6">
+                {/* Author & Nav (Inside the card, bottom-aligned) */}
+                <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-8 sm:gap-6 border-t border-gray-50 pt-6 mt-auto">
                   {/* Author Info */}
                   <div className="flex items-center gap-4 text-center sm:text-left">
                     {currentReview.image ? (
@@ -143,12 +184,20 @@ export default function Testimonials() {
                       <InitialsAvatar name={currentReview.name} />
                     )}
                     <div>
-                      <h4 className="text-base font-bold text-gray-900">{currentReview.name}</h4>
+                      <Link 
+                        href={currentReview.link || "#"} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-base font-bold text-gray-900 hover:text-[#4285F4] hover:underline transition-all decoration-blue-500/30 flex items-center gap-1 group/name"
+                      >
+                        {currentReview.name}
+                        <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/name:opacity-100 transition-opacity" />
+                      </Link>
                       <p className="text-xs text-amber-600 font-semibold tracking-wide uppercase">{currentReview.role}</p>
                     </div>
                   </div>
 
-                  {/* Navigation Arrows (Centered on mobile) */}
+                  {/* Navigation Arrows */}
                   <div className="flex items-center gap-4">
                     <button 
                       onClick={prevReview}
@@ -178,11 +227,25 @@ export default function Testimonials() {
             </div>
           </div>
 
-          {/* Custom Animation Style */}
+          {/* Custom Animation & Scrollbar Styles */}
           <style jsx>{`
             @keyframes fadeIn {
               from { opacity: 0; transform: translateY(10px); }
               to { opacity: 1; transform: translateY(0); }
+            }
+            .custom-scrollbar::-webkit-scrollbar {
+              width: 4px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-track {
+              background: #f1f1f1;
+              border-radius: 10px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-thumb {
+              background: #fbbf24;
+              border-radius: 10px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+              background: #d97706;
             }
           `}</style>
         </div>
@@ -191,21 +254,21 @@ export default function Testimonials() {
         <div className="mt-16 text-center flex flex-col items-center justify-center gap-8 bg-gray-50/50 p-10 rounded-[2rem] border border-gray-100 shadow-inner">
            <div className="flex flex-col items-center">
               <div className="flex -space-x-3 mb-4">
-                 {[...Array(4)].map((_, i) => (
-                   <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gray-100 overflow-hidden relative shadow-sm">
-                     <Image src={`https://i.pravatar.cc/100?img=${i+10}`} alt="Customer" fill className="object-cover" />
+                 {testimonials.slice(0, 5).map((review) => (
+                   <div key={review.id} className="w-10 h-10 rounded-full border-2 border-white bg-gray-100 overflow-hidden relative shadow-sm">
+                     <Image src={review.image} alt="Customer" fill className="object-cover" />
                    </div>
                  ))}
                  <div className="w-10 h-10 rounded-full border-2 border-white bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold z-10 shadow-sm">
                    99+
                  </div>
               </div>
-              <p className="text-sm text-gray-500 font-medium italic">Join 500+ professionals who trust Goals Floors</p>
+              <p className="text-sm text-gray-500 font-medium italic">Real experiences from Delhi NCR&apos;s most premium homes and offices</p>
            </div>
 
            <div className="w-full sm:w-auto">
              <Link 
-                href="https://g.page/r/CYSAtoMtUCKLEBE/review" // Replace with actual maps link
+                href="https://g.page/r/CYSAtoMtUCKLEBE/review" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative inline-flex items-center justify-center gap-3 bg-[#4285F4] hover:bg-[#357ae8] text-white px-10 py-5 rounded-full text-sm font-bold uppercase tracking-widest transition-all shadow-xl hover:shadow-blue-500/30 overflow-hidden active:scale-95"
