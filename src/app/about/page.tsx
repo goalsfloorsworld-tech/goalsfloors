@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ShieldCheck, Trophy, Users, Clock, Award, Headphones } from "lucide-react";
+import { ShieldCheck, Trophy, Users } from "lucide-react";
 
 export default function AboutPage() {
   return (

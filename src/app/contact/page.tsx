@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { 
   MapPin, Phone, Mail, Clock, ArrowRight, User, 
-  Building2, MessageSquare, ShieldCheck, Star, ArrowLeft, CheckCircle2,
+  Building2, MessageSquare, ShieldCheck, CheckCircle2,
   ChevronDown, Plus, Minus, Instagram, MessageCircle
 } from "lucide-react";
 
@@ -17,9 +17,11 @@ const ConfettiBurst = () => {
       left: Math.random() * 100,
       delay: Math.random() * 5, // More variance for better flow
       size: Math.random() * 8 + 4,
-      color: ['#f59e0b', '#fbbf24', '#d97706', '#fef3c7'][Math.floor(Math.random() * 50)],
-      duration: Math.random() * 3 + 4 // Slower for premium feel
+      color: ['#f59e0b', '#fbbf24', '#d97706', '#fef3c7'][Math.floor(Math.random() * 40)],
+      duration: Math.random() * 3 + 4, // Slower for premium feel
+      borderRadius: Math.random() > 0.5 ? '50%' : '2px'
     }));
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setParticles(pieces);
   }, []);
 
@@ -49,7 +51,7 @@ const ConfettiBurst = () => {
             backgroundColor: p.color,
             animationDelay: `${p.delay}s`,
             animationDuration: `${p.duration}s`,
-            borderRadius: Math.random() > 0.5 ? '50%' : '2px'
+            borderRadius: p.borderRadius
           }}
         />
       ))}
@@ -160,7 +162,7 @@ export default function ContactPage() {
             Consultation & Support
           </h1>
           <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight max-w-2xl mx-auto">
-            Let's Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500">Extraordinary.</span>
+            Let&apos;s Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500">Extraordinary.</span>
           </h2>
           <p className="mt-6 text-gray-500 text-lg max-w-xl mx-auto leading-relaxed font-normal">
             From premium WPC louvers to luxury laminate flooring, our architectural experts are ready to elevate your next project.

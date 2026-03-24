@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { MapPin, Phone, Mail, Instagram, ArrowUp, ArrowRight } from "lucide-react";
 
 export default function Footer() {

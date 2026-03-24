@@ -1,66 +1,162 @@
 [
   {
-    "slug": "tokyo-charcoal-moulding",
+    "id": "charcoal-moulding",
     "title": "Tokyo Charcoal Moulding",
-    "category": "Wall Panels",
-    "description": "Premium waterproof charcoal moulding for interior wall cladding and TV unit highlights.",
-    "price": "Request Quote",
-    "images": [
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1000"
+    "slug": "tokyo-charcoal-moulding",
+    "category": "wall-panels",
+    "priceRange": "Premium",
+    "shortDescription": "High-density charcoal louvers designed for striking interior accent walls.",
+    "longDescription": "The Tokyo Charcoal Moulding series redefines interior spaces with its deep, rich textures. Engineered with high-density WPC, it offers the perfect blend of aesthetic elegance and structural durability, making it the top choice for modern architects.",
+    "features": [
+      "100% Termite & Borer Proof",
+      "Zero Maintenance Required",
+      "Water & Moisture Resistant",
+      "Seamless Interlocking System"
     ],
-    "features": ["100% Waterproof", "Termite Proof", "Fire Retardant", "Eco-Friendly"],
     "specifications": {
-      "Length": "2440mm (8 ft)",
-      "Width": "150mm",
-      "Thickness": "14mm",
-      "Material": "Charcoal & Virgin Polymers"
-    }
+      "Material": "Wood Plastic Composite (WPC)",
+      "Dimensions": "2900mm (L) x 120mm (W) x 12mm (T)",
+      "Finish": "Matte Charcoal Textured",
+      "Application": "Interior Walls & Ceilings",
+      "Warranty": "Lifetime Indoor Warranty"
+    },
+    "applications": [
+      "Corporate Boardrooms",
+      "Luxury TV Unit Backdrops",
+      "Hotel Receptions & Lobbies",
+      "Premium Bedroom Accents"
+    ],
+    "finishes": [
+      "Midnight Charcoal",
+      "Ash Grey Matte",
+      "Smoked Walnut"
+    ],
+    "installation": "Features a seamless interlocking mechanism. Installed rapidly using standard structural PU adhesives and concealed brad nails directly onto levelled surfaces or framing.",
+    "maintenance": "100% washable surface. Simply wipe with a damp microfiber cloth. Do not use acid-based cleaners or abrasive scrubbers.",
+    "faqs": [
+      {
+        "question": "Can this be installed on damp walls?",
+        "answer": "Yes, WPC is 100% waterproof, making it highly resistant to moisture. However, we recommend treating severe dampness or fungus before installation for maximum structural longevity."
+      },
+      {
+        "question": "Do these louvers require painting or polishing?",
+        "answer": "No, our Tokyo series comes pre-finished with a premium foil layer and texture. It requires zero painting or polishing, saving you time and labor costs."
+      },
+      {
+        "question": "Is it suitable for exterior facades?",
+        "answer": "The Tokyo series is designed specifically for interior use. For exteriors, please check our 'Exterior Louvers' category which comes with special UV-resistant coatings."
+      }
+    ],
+    "images": [
+      "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476858/charcoal_moulding_Manufacturer_In_India.jpg",
+      "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476676/Charcoal_Moulding_Design_For_Walls.jpg",
+      "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476521/charcoal_moulding_wholesaler.jpg"
+    ]
   },
   {
+    "id": "premium-oak-laminate",
+    "title": "European Oak Laminate",
     "slug": "premium-oak-laminate",
-    "title": "Premium Oak Laminate Flooring",
-    "category": "Flooring",
-    "description": "High-durability AC4 grade wooden laminate flooring for residential and commercial spaces.",
-    "price": "Request Quote",
-    "images": [
-      "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?q=80&w=1000"
+    "category": "flooring",
+    "priceRange": "Luxury",
+    "shortDescription": "AC4 grade commercial laminate flooring with authentic wood grain texture.",
+    "longDescription": "Experience the warmth of real wood without the upkeep. Our European Oak Laminate is rated AC4, making it robust enough for heavy commercial foot traffic while maintaining a luxurious finish for residential spaces.",
+    "features": [
+      "AC4 Commercial Wear Grade",
+      "Anti-Scratch & Anti-Stain Surface",
+      "Click-Lock Easy Installation",
+      "Fade Resistant UV Coating"
     ],
-    "features": ["Scratch Resistant", "AC4 Grade", "Click-Lock Installation", "Fade Resistant"],
     "specifications": {
-      "Dimension": "1215 x 195 mm",
-      "Thickness": "8mm",
-      "Box Content": "2.37 Sq. Meter",
-      "Warranty": "10 Years"
-    }
+      "Material": "High-Density Fiberboard (HDF)",
+      "Thickness": "8mm or 12mm options",
+      "Wear Class": "AC4 / Class 32",
+      "Application": "Residential & Commercial Flooring",
+      "Warranty": "15-Year Residential Warranty"
+    },
+    "applications": [
+      "High-Traffic Commercial Spaces",
+      "Modern Residential Living Rooms",
+      "Retail Showrooms",
+      "Boutique Hospitality Projects"
+    ],
+    "finishes": [
+      "Natural European Oak",
+      "Bleached Scandinavian Oak",
+      "Dark Espresso Wood"
+    ],
+    "installation": "Utilizes a glueless click-lock system for floating floor installation. Must be installed over a proper moisture barrier and acoustic underlayment on a flat subfloor.",
+    "maintenance": "Sweep or vacuum regularly. For deeper cleaning, use a well-wrung damp mop with a laminate-approved cleaner. Avoid standing water or steam mops.",
+    "faqs": [
+      {
+        "question": "What does AC4 rating mean?",
+        "answer": "AC4 is a commercial durability rating. It means the flooring has passed rigorous tests for abrasion, impact, and stain resistance, making it suitable for moderate commercial traffic and heavy residential use."
+      },
+      {
+        "question": "Can this be installed over existing tiles?",
+        "answer": "Yes, as long as the existing tiles are firmly attached, level, and clean. You will need to use an appropriate foam underlayment to smooth out minor imperfections like grout lines."
+      },
+      {
+        "question": "Is laminate flooring pet-friendly?",
+        "answer": "Absolutely. The high-density aluminum oxide wear layer is highly scratch-resistant, making it perfect for homes with dogs and cats. Just ensure any spills are wiped up promptly."
+      }
+    ],
+    "images": [
+      "https://res.cloudinary.com/demo/image/upload/v1/goalsfloors/laminate-1.jpg",
+      "https://res.cloudinary.com/demo/image/upload/v1/goalsfloors/laminate-2.jpg",
+      "https://res.cloudinary.com/demo/image/upload/v1/goalsfloors/laminate-3.jpg"
+    ]
   },
   {
-    "slug": "baffle-ceilings",
-    "title": "Baffle Ceilings",
-    "category": "Ceilings",
-    "description": "Premium acoustic baffle ceilings for modern corporate and commercial interiors.",
-    "price": "Request Quote",
-    "images": ["https://images.unsplash.com/photo-1600607687959-ce8a6c25118c?q=80&w=1000"],
-    "features": ["Acoustic Performance", "Modern Aesthetic", "Easy Installation", "Durable"],
-    "specifications": { "Material": "Aluminum/Steel", "Finish": "Wood Grain/Powder Coated" }
-  },
-  {
-    "slug": "luxury-flooring",
-    "title": "Luxury Flooring",
-    "category": "Flooring",
-    "description": "Premium SPC and laminate flooring solutions for high-traffic environments.",
-    "price": "Request Quote",
-    "images": ["https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?q=80&w=1000"],
-    "features": ["Waterproof", "Scratch Resistant", "Click-Lock", "10 Year Warranty"],
-    "specifications": { "Type": "SPC/Laminate", "Thickness": "5mm-12mm" }
-  },
-  {
-    "slug": "wall-panels",
-    "title": "Premium Wall Panels",
-    "category": "Wall Panels",
-    "description": "Decorative WPC and Charcoal wall panels for interior and exterior transformation.",
-    "price": "Request Quote",
-    "images": ["https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1000"],
-    "features": ["Weather Resistant", "Termite Proof", "Low Maintenance", "Elegant Finish"],
-    "specifications": { "Material": "WPC/Charcoal", "Usage": "Interior/Exterior" }
+    "id": "artificial-grass",
+    "title": "Lush Green Artificial Grass",
+    "slug": "artificial-grass",
+    "category": "outdoors",
+    "priceRange": "Standard",
+    "shortDescription": "High-density UV-treated synthetic turf for balconies and landscaping.",
+    "longDescription": "Create an evergreen oasis with our premium artificial grass. Designed with 4-tone yarn for a natural look, it features excellent drainage and UV resistance, ensuring it stays vibrant all year round without water or mowing.",
+    "features": [
+      "Natural 4-Tone Appearance",
+      "High-Flow Drainage Backing",
+      "UV Treated for Color Fastness",
+      "Pet & Child Safe Material"
+    ],
+    "specifications": {
+      "Material": "Polyethylene (PE) + Polypropylene (PP)",
+      "Pile Height": "35mm / 45mm",
+      "Density": "16,800 stitches/sqm",
+      "Application": "Outdoors, Balconies, Landscaping",
+      "Warranty": "5-Year UV Warranty"
+    },
+    "applications": [
+      "Residential Balconies & Terraces",
+      "Commercial Landscaping",
+      "Children's Play Areas",
+      "Rooftop Cafes & Restaurants"
+    ],
+    "finishes": [
+      "35mm Spring Green",
+      "45mm Dense Autumn Green"
+    ],
+    "installation": "Can be rolled out and secured with adhesive tape on hard surfaces (balconies) or installed with U-pins over a compacted, leveled crushed-stone base for landscaping.",
+    "maintenance": "Rinse occasionally with water to remove dust. Remove debris with a leaf blower or stiff-bristled broom to keep the yarn standing upright.",
+    "faqs": [
+      {
+        "question": "Will rainwater pool on the grass?",
+        "answer": "No, our premium grass features a perforated polyurethane backing designed for high water drainage, ensuring the surface dries quickly after rain."
+      },
+      {
+        "question": "Will the color fade in the harsh Indian summer?",
+        "answer": "Our yarn is heavily UV-stabilized during the manufacturing process, preventing color fading and degradation even under direct, harsh sunlight."
+      },
+      {
+        "question": "Is it safe for pets?",
+        "answer": "Yes, it is 100% non-toxic and pet-friendly. Solid waste can be easily picked up, and liquid waste washes away easily with a quick hose down."
+      }
+    ],
+    "images": [
+      "https://res.cloudinary.com/demo/image/upload/v1/goalsfloors/grass-1.jpg",
+      "https://res.cloudinary.com/demo/image/upload/v1/goalsfloors/grass-2.jpg"
+    ]
   }
 ]

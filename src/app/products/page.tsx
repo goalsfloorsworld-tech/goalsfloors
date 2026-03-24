@@ -88,7 +88,7 @@ export default function AllProductsPage() {
                   {product.title}
                 </h3>
                 <p className="text-gray-500 text-sm line-clamp-2 mb-6 flex-grow">
-                  {product.description}
+                  {product.shortDescription}
                 </p>
                 
                 {/* View Details Button */}
