@@ -12,13 +12,13 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      
+
       {/* ================= HERO SECTION ================= */}
       <section className="relative min-h-[90vh] flex items-start md:items-center justify-center overflow-hidden">
         {/* Background - Replace src with your Cloudinary URL */}
         <div className="absolute inset-0 z-0 bg-gray-900">
           <Image
-            src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2070" 
+            src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2070"
             alt="Luxury Interior by Goals Floors"
             fill
             sizes="100vw"
@@ -29,7 +29,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-32 md:pt-0 md:mt-20">
-          
+
           {/* USP Badge */}
           <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-8 shadow-xl">
             <Clock className="w-4 h-4 text-amber-500" />
@@ -50,16 +50,16 @@ export default function Home() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="group flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-all duration-300 w-full sm:w-auto justify-center shadow-lg hover:shadow-amber-600/30"
             >
               Get a Free Quote
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
-            
-            <Link 
-              href="#categories" 
+
+            <Link
+              href="#categories"
               className="flex items-center gap-2 bg-transparent hover:bg-white/10 border border-white/50 text-white px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-all duration-300 w-full sm:w-auto justify-center"
             >
               Explore Collection
@@ -69,7 +69,7 @@ export default function Home() {
       </section>
 
       {/* ================= STATS BAR ================= */}
-      <div className="bg-white py-8 border-b border-gray-100 relative z-20 -mt-10 mx-4 sm:mx-8 lg:mx-auto max-w-6xl shadow-2xl">
+      <div className="bg-white dark:bg-slate-900 py-8 border-b border-gray-100 dark:border-gray-800 relative z-20 -mt-10 mx-4 sm:mx-8 lg:mx-auto max-w-6xl shadow-2xl dark:shadow-none transition-colors duration-300">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-6">
           {[
             { label: "Premium Products", value: "2500+" },
@@ -78,30 +78,30 @@ export default function Home() {
             { label: "Warranty Assured", value: "10 Yrs" },
           ].map((stat, i) => (
             <div key={i} className="text-center">
-              <Counter 
-                value={stat.value} 
-                className="text-3xl font-bold text-gray-900" 
+              <Counter
+                value={stat.value}
+                className="text-3xl font-bold text-gray-900 dark:text-white"
               />
-              <div className="text-xs text-gray-500 uppercase tracking-widest mt-2">{stat.label}</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest mt-2">{stat.label}</div>
             </div>
           ))}
         </div>
       </div>
 
       {/* ================= CATEGORIES SECTION ================= */}
-      <section id="categories" className="py-24 bg-gray-50">
+      <section id="categories" className="py-24 bg-gray-50 dark:bg-slate-950 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Our Signature Collections</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">Discover our range of world-class interior and exterior architectural solutions.</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">Our Signature Collections</h2>
+            <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Discover our range of world-class interior and exterior architectural solutions.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Category Card 1 */}
             <Link href="/wall-panels" className="group block relative h-96 overflow-hidden bg-gray-900">
-              <Image 
-                src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1000" 
-                alt="WPC Wall Panels" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover opacity-70 group-hover:scale-105 group-hover:opacity-50 transition-all duration-700" 
+              <Image
+                src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1000"
+                alt="WPC Wall Panels" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover opacity-70 group-hover:scale-105 group-hover:opacity-50 transition-all duration-700"
               />
               <div className="absolute inset-0 flex flex-col justify-end p-8">
                 <h3 className="text-2xl font-semibold text-white mb-2">Wall Panels & Louvers</h3>
@@ -112,9 +112,9 @@ export default function Home() {
 
             {/* Category Card 2 */}
             <Link href="/flooring" className="group block relative h-96 overflow-hidden bg-gray-900">
-              <Image 
-                src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?q=80&w=1000" 
-                alt="Wooden Flooring" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover opacity-70 group-hover:scale-105 group-hover:opacity-50 transition-all duration-700" 
+              <Image
+                src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?q=80&w=1000"
+                alt="Wooden Flooring" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover opacity-70 group-hover:scale-105 group-hover:opacity-50 transition-all duration-700"
               />
               <div className="absolute inset-0 flex flex-col justify-end p-8">
                 <h3 className="text-2xl font-semibold text-white mb-2">Luxury Flooring</h3>
@@ -125,9 +125,9 @@ export default function Home() {
 
             {/* Category Card 3 */}
             <Link href="/ceilings" className="group block relative h-96 overflow-hidden bg-gray-900">
-              <Image 
-                src="https://images.unsplash.com/photo-1600607687959-ce8a6c25118c?q=80&w=1000" 
-                alt="Baffle Ceilings" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover opacity-70 group-hover:scale-105 group-hover:opacity-50 transition-all duration-700" 
+              <Image
+                src="https://images.unsplash.com/photo-1600607687959-ce8a6c25118c?q=80&w=1000"
+                alt="Baffle Ceilings" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover opacity-70 group-hover:scale-105 group-hover:opacity-50 transition-all duration-700"
               />
               <div className="absolute inset-0 flex flex-col justify-end p-8">
                 <h3 className="text-2xl font-semibold text-white mb-2">Ceilings & Facades</h3>
@@ -140,18 +140,18 @@ export default function Home() {
       </section>
 
       {/* ================= WHY CHOOSE US ================= */}
-      <section className="py-15 bg-white">
+      <section className="py-15 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight">Why Architects &amp; Designers Choose Us</h2>
-              <p className="text-gray-600 mb-8 leading-relaxed">We don&apos;t just sell products; we deliver peace of mind. With our robust supply chain and commitment to quality, your projects are completed on time, every time.</p>
-              
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">Why Architects &amp; Designers Choose Us</h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">We don&apos;t just sell products; we deliver peace of mind. With our robust supply chain and commitment to quality, your projects are completed on time, every time.</p>
+
               {/* Mobile Image - Shown only on small screens */}
               <div className="relative h-64 w-full mb-8 lg:hidden rounded-sm overflow-hidden shadow-xl">
-                 <Image 
-                  src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000" 
-                  alt="Installation process" fill sizes="100vw" className="object-cover" 
+                <Image
+                  src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000"
+                  alt="Installation process" fill sizes="100vw" className="object-cover"
                 />
               </div>
 
@@ -164,23 +164,23 @@ export default function Home() {
                   { icon: Users, title: "Trusted Brand", desc: "Preferred choice of leading builders, contractors, designers, and thousands of happy homeowners." }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-700">
+                    <div className="flex-shrink-0 w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center text-amber-700 dark:text-amber-500">
                       <item.icon className="w-6 h-6" />
                     </div>
                     <div>
-                      <h4 className="text-lg font-semibold text-gray-900">{item.title}</h4>
-                      <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">{item.title}</h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{item.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-            
+
             {/* Right side large image - Hidden on mobile, shown on desktop */}
             <div className="relative h-[600px] rounded-sm overflow-hidden shadow-2xl hidden lg:block">
-               <Image 
-                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000" 
-                alt="Installation process" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" 
+              <Image
+                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1000"
+                alt="Installation process" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover"
               />
             </div>
           </div>
@@ -192,48 +192,48 @@ export default function Home() {
       <Testimonials />
 
       {/* ================= THE ULTIMATE LEAD MAGNET (Light/Bright Theme) ================= */}
-      <section className="relative py-24 bg-amber-50 overflow-hidden border-t-4 border-amber-500">
+      <section className="relative py-24 bg-amber-50 dark:bg-slate-950 overflow-hidden border-t-4 border-amber-500 transition-colors duration-300">
         {/* Subtle Decorative Background Element */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-50 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-amber-200/40 via-transparent to-transparent pointer-events-none"></div>
+        <div className="absolute top-0 left-0 w-full h-full opacity-50 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-amber-200/40 dark:from-amber-900/20 via-transparent to-transparent pointer-events-none"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">Ready to Transform Your Space?</h2>
-          <p className="text-gray-600 text-lg mb-10 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">Ready to Transform Your Space?</h2>
+          <p className="text-gray-600 dark:text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
             Get a free consultation, precise measurements, and a customized quote for your project. Our experts are ready to help.
           </p>
 
           {/* Bright Lead Form */}
-          <form className="bg-white p-6 md:p-10 rounded-sm border border-gray-200 shadow-2xl max-w-3xl mx-auto relative">
+          <form className="bg-white dark:bg-slate-900 p-6 md:p-10 rounded-sm border border-gray-200 dark:border-gray-800 shadow-2xl dark:shadow-none max-w-3xl mx-auto relative transition-colors duration-300">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-              <input 
-                type="text" 
-                placeholder="Your Name" 
-                className="w-full bg-gray-50 border border-gray-200 text-gray-900 px-4 py-3 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all placeholder-gray-400"
+              <input
+                type="text"
+                placeholder="Your Name"
+                className="w-full bg-gray-50 dark:bg-slate-950 border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white px-4 py-3 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all placeholder-gray-400 dark:placeholder-gray-600"
                 required
               />
-              <input 
-                type="tel" 
-                placeholder="Phone Number" 
-                className="w-full bg-gray-50 border border-gray-200 text-gray-900 px-4 py-3 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all placeholder-gray-400"
+              <input
+                type="tel"
+                placeholder="Phone Number"
+                className="w-full bg-gray-50 dark:bg-slate-950 border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white px-4 py-3 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all placeholder-gray-400 dark:placeholder-gray-600"
                 required
               />
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
-              <select className="w-full bg-gray-50 border border-gray-200 text-gray-600 px-4 py-3 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all">
+              <select className="w-full bg-gray-50 dark:bg-slate-950 border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 px-4 py-3 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all">
                 <option value="">Interested In...</option>
                 <option value="louvers">WPC Louvers & Panels</option>
                 <option value="flooring">Wooden/Laminate Flooring</option>
                 <option value="ceilings">Baffle Ceilings</option>
                 <option value="other">Other</option>
               </select>
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold uppercase tracking-widest px-4 py-3 transition-colors shadow-lg shadow-amber-600/30"
               >
                 Request Free Quote
               </button>
             </div>
-            <p className="text-xs text-gray-500 uppercase tracking-widest flex items-center justify-center gap-2 mt-4">
+            <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest flex items-center justify-center gap-2 mt-4">
               <ShieldCheck className="w-4 h-4 text-amber-500" /> No spam. 100% Privacy Guaranteed.
             </p>
           </form>

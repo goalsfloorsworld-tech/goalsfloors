@@ -5,46 +5,67 @@
     "slug": "tokyo-charcoal-moulding",
     "category": "wall-panels",
     "priceRange": "Premium",
-    "shortDescription": "High-density charcoal louvers designed for striking interior accent walls.",
-    "longDescription": "The Tokyo Charcoal Moulding series redefines interior spaces with its deep, rich textures. Engineered with high-density WPC, it offers the perfect blend of aesthetic elegance and structural durability, making it the top choice for modern architects.",
+    "shortDescription": "High-density charcoal louvers designed for striking interior accent walls and acoustic enhancement.",
+    "longDescription": "The Tokyo Charcoal Moulding series redefines interior commercial and residential spaces with its deep, rich textures. Engineered with high-density Wood Plastic Composite (WPC), it offers the perfect blend of aesthetic elegance, acoustic dampening, and structural durability, making it the top specification choice for modern architects across NCR.",
     "features": [
       "100% Termite & Borer Proof",
       "Zero Maintenance Required",
       "Water & Moisture Resistant",
-      "Seamless Interlocking System"
+      "Seamless Interlocking System",
+      "Class B1 Fire Retardant",
+      "Acoustic Sound Dampening"
     ],
     "specifications": {
-      "Material": "Wood Plastic Composite (WPC)",
+      "Material": "High-Density WPC (Wood Plastic Composite)",
       "Dimensions": "2900mm (L) x 120mm (W) x 12mm (T)",
-      "Finish": "Matte Charcoal Textured",
-      "Application": "Interior Walls & Ceilings",
-      "Warranty": "Lifetime Indoor Warranty"
+      "Weight per Panel": "Approx. 1.8 kg",
+      "Finish": "Matte Charcoal 3D Texture",
+      "Fire Rating": "Class B1 (Flame Retardant)",
+      "Warranty": "15-Year Indoor Structural Warranty"
     },
     "applications": [
-      "Corporate Boardrooms",
-      "Luxury TV Unit Backdrops",
-      "Hotel Receptions & Lobbies",
-      "Premium Bedroom Accents"
+      "Corporate Boardrooms & Executive Cabins",
+      "Luxury TV Unit & Bedroom Backdrops",
+      "Hotel Receptions & Elevator Lobbies",
+      "Auditoriums & Home Theaters",
+      "Premium Retail Store Facades"
     ],
     "finishes": [
-      "Midnight Charcoal",
-      "Ash Grey Matte",
-      "Smoked Walnut"
+      "Midnight Charcoal (Matte)",
+      "Smoked Ash Grey",
+      "Deep Walnut Texture"
     ],
-    "installation": "Features a seamless interlocking mechanism. Installed rapidly using standard structural PU adhesives and concealed brad nails directly onto levelled surfaces or framing.",
-    "maintenance": "100% washable surface. Simply wipe with a damp microfiber cloth. Do not use acid-based cleaners or abrasive scrubbers.",
+    "logistics": {
+      "Packaging": "10 Panels per Corrugated Box",
+      "Box Coverage": "Approx. 38 Sq. Ft. per Box",
+      "Availability": "Ready Stock in Gurugram Warehouse"
+    },
+    "installation": "Features a proprietary seamless interlocking mechanism. Installed rapidly using standard structural PU adhesives and concealed brad nails directly onto levelled walls or aluminum framing. No heavy machinery required.",
+    "maintenance": "100% washable surface. Simply wipe with a damp microfiber cloth. Highly resistant to stains; do not use acid-based cleaners or abrasive scrubbers.",
     "faqs": [
       {
-        "question": "Can this be installed on damp walls?",
-        "answer": "Yes, WPC is 100% waterproof, making it highly resistant to moisture. However, we recommend treating severe dampness or fungus before installation for maximum structural longevity."
+        "question": "Can this be installed on damp walls or basement areas?",
+        "answer": "Yes, WPC is 100% waterproof and moisture-resistant, making it ideal for basements. However, we recommend treating severe dampness or active fungus before installation to ensure the adhesive bonds perfectly."
       },
       {
-        "question": "Do these louvers require painting or polishing?",
-        "answer": "No, our Tokyo series comes pre-finished with a premium foil layer and texture. It requires zero painting or polishing, saving you time and labor costs."
+        "question": "Do these louvers require painting, polishing, or sealing?",
+        "answer": "Not at all. Our Tokyo series comes pre-finished with a premium hot-stamped foil layer and texture. It requires zero painting or polishing, saving you massive time and labor costs on site."
       },
       {
-        "question": "Is it suitable for exterior facades?",
-        "answer": "The Tokyo series is designed specifically for interior use. For exteriors, please check our 'Exterior Louvers' category which comes with special UV-resistant coatings."
+        "question": "Are these louvers fire safe for commercial buildings like hotels?",
+        "answer": "Yes, they are manufactured with Class B1 fire-retardant properties. They will not easily catch fire and do not actively support combustion, making them safe for commercial interior applications."
+      },
+      {
+        "question": "Do they offer any soundproofing or acoustic benefits?",
+        "answer": "While not a complete soundproofing material, the fluted/louvered 3D design effectively breaks sound waves, significantly reducing echo and reverberation in large rooms like home theaters and boardrooms."
+      },
+      {
+        "question": "How do you calculate the exact requirement for my wall?",
+        "answer": "Simply measure the width and height of your wall in inches. One panel covers roughly 4.7 inches of width. Our sales team can provide an exact box calculation and wastage estimate during your consultation."
+      },
+      {
+        "question": "Is it suitable for exterior facades in direct sunlight?",
+        "answer": "The Tokyo Charcoal series is formulated specifically for interior use to maintain its deep color. For exteriors exposed to direct UV rays, please explore our specialized 'Exterior Cladding' range."
       }
     ],
     "images": [

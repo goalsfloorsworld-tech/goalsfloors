@@ -6,13 +6,13 @@ import { MapPin, Phone, Mail, Instagram, ArrowUp, ArrowRight } from "lucide-reac
 export default function Footer() {
     const scrollToTop = (e?: React.MouseEvent | React.TouchEvent) => {
         if (e) {
-          e.preventDefault();
-          e.stopPropagation();
+            e.preventDefault();
+            e.stopPropagation();
         }
-        
+
         // Method 1: Modern Smooth Scroll
         window.scrollTo({ top: 0, behavior: "smooth" });
-        
+
         // Method 2: Immediate Fallback scroll to top
         setTimeout(() => {
             window.scrollTo(0, 0);
@@ -22,7 +22,7 @@ export default function Footer() {
     };
 
     return (
-        <footer className="bg-gray-950 pt-20 pb-10 border-t border-gray-900">
+        <footer className="bg-gray-950 dark:bg-black pt-20 pb-10 border-t border-gray-900 dark:border-gray-950">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Main Footer Content */}
@@ -128,13 +128,13 @@ export default function Footer() {
                     <button
                         onClick={scrollToTop}
                         onTouchEnd={(e) => {
-                          e.preventDefault();
-                          scrollToTop();
+                            e.preventDefault();
+                            scrollToTop();
                         }}
                         className="flex items-center gap-2 text-sm text-gray-400 hover:text-amber-500 active:text-amber-500 transition-colors group cursor-pointer"
                     >
                         <span className="uppercase tracking-widest font-semibold pointer-events-none">Back to Top</span>
-                        <div className="w-8 h-8 rounded-sm bg-gray-900 border border-gray-800 flex items-center justify-center group-hover:bg-amber-500 group-hover:border-amber-500 group-hover:text-white transition-all pointer-events-none">
+                        <div className="w-8 h-8 rounded-sm bg-gray-900 dark:bg-gray-950 border border-gray-800 dark:border-gray-900 flex items-center justify-center group-hover:bg-amber-500 group-hover:border-amber-500 group-hover:text-white transition-all pointer-events-none">
                             <ArrowUp className="w-4 h-4 pointer-events-none" />
                         </div>
                     </button>

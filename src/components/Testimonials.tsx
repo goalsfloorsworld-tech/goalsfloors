@@ -119,16 +119,16 @@ export default function Testimonials() {
   const currentReview = testimonials[currentReviewIndex];
 
   return (
-    <section className="py-5 bg-white relative overflow-hidden">
+    <section className="py-5 bg-white dark:bg-slate-900 relative overflow-hidden transition-colors duration-300">
       {/* Subtle background gradients for premium feel */}
-      <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-amber-50 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-amber-50 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+      <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-amber-50 dark:bg-amber-900/10 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-amber-50 dark:bg-amber-900/10 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         
         <div className="text-center mb-8">
           <h2 className="text-sm font-bold tracking-[0.2em] text-amber-500 uppercase mb-3">Client Stories</h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-gray-900 tracking-tight">Trust in <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">Quality</span></h3>
+          <h3 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white tracking-tight">Trust in <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">Quality</span></h3>
         </div>
 
         <div className="relative">
@@ -137,7 +137,7 @@ export default function Testimonials() {
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
-            className="relative bg-white rounded-3xl p-6 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 group transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] min-h-[500px] md:min-h-[420px] flex flex-col cursor-grab active:cursor-grabbing"
+            className="relative bg-white dark:bg-slate-950 rounded-3xl p-6 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 dark:border-gray-800 group transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] min-h-[500px] md:min-h-[420px] flex flex-col cursor-grab active:cursor-grabbing"
           >
             
             {/* Large Decorative Quote Icon */}
@@ -167,13 +167,13 @@ export default function Testimonials() {
               {/* Text Content - Scrollable area */}
               <div key={currentReviewIndex} className="transition-all duration-500 flex flex-col flex-grow" style={{ animation: 'fadeIn 0.5s ease-out' }}>
                 <div className="max-h-[220px] overflow-y-auto pr-2 mb-8 custom-scrollbar">
-                  <p className="text-base md:text-2xl text-gray-700 leading-relaxed italic font-light touch-auto">
+                  <p className="text-base md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed italic font-light touch-auto">
                     &quot;{currentReview.quote}&quot;
                   </p>
                 </div>
 
                 {/* Author & Nav (Inside the card, bottom-aligned) */}
-                <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-8 sm:gap-6 border-t border-gray-50 pt-6 mt-auto">
+                <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-8 sm:gap-6 border-t border-gray-50 dark:border-gray-800 pt-6 mt-auto">
                   {/* Author Info */}
                   <div className="flex items-center gap-4 text-center sm:text-left">
                     {currentReview.image ? (
@@ -188,7 +188,7 @@ export default function Testimonials() {
                         href={currentReview.link || "#"} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="text-base font-bold text-gray-900 hover:text-[#4285F4] hover:underline transition-all decoration-blue-500/30 flex items-center gap-1 group/name"
+                        className="text-base font-bold text-gray-900 dark:text-white hover:text-[#4285F4] hover:underline transition-all decoration-blue-500/30 flex items-center gap-1 group/name"
                       >
                         {currentReview.name}
                         <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/name:opacity-100 transition-opacity" />
@@ -202,14 +202,14 @@ export default function Testimonials() {
                     <button 
                       onClick={prevReview}
                       aria-label="Previous Review"
-                      className="w-12 h-12 rounded-full bg-white border border-gray-100 flex items-center justify-center hover:bg-[#4285F4] hover:text-white hover:border-[#4285F4] transition-all duration-300 shadow-md text-gray-600 group/btn"
+                      className="w-12 h-12 rounded-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 flex items-center justify-center hover:bg-[#4285F4] hover:text-white hover:border-[#4285F4] transition-all duration-300 shadow-md text-gray-600 dark:text-gray-400 group/btn"
                     >
                       <ArrowLeft className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
                     </button>
                     <button 
                       onClick={nextReview}
                       aria-label="Next Review"
-                      className="w-12 h-12 rounded-full bg-white border border-gray-100 flex items-center justify-center hover:bg-[#4285F4] hover:text-white hover:border-[#4285F4] transition-all duration-300 shadow-md text-gray-600 group/btn"
+                      className="w-12 h-12 rounded-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 flex items-center justify-center hover:bg-[#4285F4] hover:text-white hover:border-[#4285F4] transition-all duration-300 shadow-md text-gray-600 dark:text-gray-400 group/btn"
                     >
                       <ArrowRight className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
                     </button>
@@ -219,7 +219,7 @@ export default function Testimonials() {
             </div>
 
             {/* Premium Animated Progress Bar */}
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-50 overflow-hidden rounded-b-3xl">
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-50 dark:bg-gray-800 overflow-hidden rounded-b-3xl">
               <div 
                 className="h-full bg-gradient-to-r from-[#4285F4] to-blue-600 transition-all duration-700 ease-out" 
                 style={{ width: `${((currentReviewIndex + 1) / testimonials.length) * 100}%` }}
@@ -251,19 +251,19 @@ export default function Testimonials() {
         </div>
 
         {/* CTA Below Card (Refined Blue Button) */}
-        <div className="mt-5 text-center flex flex-col items-center justify-center gap-8 bg-gray-50/50 p-10 rounded-[2rem] border border-gray-100 shadow-inner">
+        <div className="mt-5 text-center flex flex-col items-center justify-center gap-8 bg-gray-50/50 dark:bg-slate-900/50 p-10 rounded-[2rem] border border-gray-100 dark:border-gray-800 shadow-inner">
            <div className="flex flex-col items-center">
               <div className="flex -space-x-3 mb-4">
                  {testimonials.slice(0, 5).map((review) => (
-                   <div key={review.id} className="w-10 h-10 rounded-full border-2 border-white bg-gray-100 overflow-hidden relative shadow-sm">
+                   <div key={review.id} className="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 bg-gray-100 dark:bg-gray-800 overflow-hidden relative shadow-sm">
                      <Image src={review.image} alt="Customer" fill className="object-cover" />
                    </div>
                  ))}
-                 <div className="w-10 h-10 rounded-full border-2 border-white bg-amber-100 text-amber-700 flex items-center justify-center text-xs font-bold z-10 shadow-sm">
+                 <div className="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-500 flex items-center justify-center text-xs font-bold z-10 shadow-sm">
                    99+
                  </div>
               </div>
-              <p className="text-sm text-gray-500 font-medium italic">Real experiences from Delhi NCR&apos;s most premium homes and offices</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 font-medium italic">Real experiences from Delhi NCR&apos;s most premium homes and offices</p>
            </div>
 
            <div className="w-full sm:w-auto">

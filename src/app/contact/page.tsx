@@ -63,23 +63,23 @@ const ConfettiBurst = () => {
 const FAQItem = ({ question, answer }: { question: string, answer: string }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="border border-gray-200 rounded-sm bg-gray-50 overflow-hidden transition-all duration-300">
+    <div className="border border-gray-200 dark:border-gray-800 rounded-sm bg-gray-50 dark:bg-slate-900 overflow-hidden transition-all duration-300">
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex cursor-pointer items-center justify-between gap-4 p-6 text-gray-900 font-bold hover:bg-amber-50 transition-colors text-left outline-none"
+        className="w-full flex cursor-pointer items-center justify-between gap-4 p-6 text-gray-900 dark:text-white font-bold hover:bg-amber-50 dark:hover:bg-amber-900/10 transition-colors text-left outline-none"
       >
         <span className="text-base md:text-lg">{question}</span>
         <div className="relative w-5 h-5 flex-shrink-0">
           <Plus className={`absolute inset-0 w-5 h-5 transition-all duration-300 ${isOpen ? 'rotate-90 opacity-0' : 'rotate-0 opacity-100'}`} />
-          <Minus className={`absolute inset-0 w-5 h-5 transition-all duration-300 text-amber-600 ${isOpen ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'}`} />
+          <Minus className={`absolute inset-0 w-5 h-5 transition-all duration-300 text-amber-600 dark:text-amber-500 ${isOpen ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'}`} />
         </div>
       </button>
       <div 
         className={`grid transition-all duration-500 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
       >
         <div className="overflow-hidden">
-          <div className="bg-white px-6 pb-6 pt-2 border-t border-gray-100">
-            <p className="text-gray-500 leading-relaxed text-sm md:text-base">{answer}</p>
+          <div className="bg-white dark:bg-slate-950 px-6 pb-6 pt-2 border-t border-gray-100 dark:border-gray-800 transition-colors duration-300">
+            <p className="text-gray-500 dark:text-gray-400 leading-relaxed text-sm md:text-base">{answer}</p>
           </div>
         </div>
       </div>
@@ -143,28 +143,28 @@ export default function ContactPage() {
   };
 
   const getInputClass = (value: string) => {
-    const baseClass = "w-full pl-11 pr-4 py-3 border text-sm transition-all rounded-sm outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500";
+    const baseClass = "w-full pl-11 pr-4 py-3 border text-sm transition-all rounded-sm outline-none focus:ring-1 focus:ring-amber-500 dark:text-white";
     if (value && value.trim() !== "") {
-      return `${baseClass} bg-amber-50/70 border-amber-200`;
+      return `${baseClass} bg-amber-50/70 dark:bg-amber-900/20 border-amber-200 dark:border-amber-700 focus:border-amber-500`;
     }
-    return `${baseClass} bg-gray-50 border-gray-200`;
+    return `${baseClass} bg-gray-50 dark:bg-slate-950 border-gray-200 dark:border-gray-800 focus:border-amber-500`;
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-14">
+    <div className="min-h-screen bg-gray-50 dark:bg-slate-950 pt-14 transition-colors duration-300">
       
       {/* Premium Minimal Header */}
-      <div className="bg-white border-b border-gray-100 py-8 md:py-12 text-center relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-50 blur-[100px] rounded-full pointer-events-none"></div>
+      <div className="bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-gray-800 py-8 md:py-12 text-center relative overflow-hidden transition-colors duration-300">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-50 dark:bg-amber-900/10 blur-[100px] rounded-full pointer-events-none"></div>
         
         <div className="relative z-10 px-4">
           <h1 className="text-sm font-black text-amber-600 uppercase tracking-[0.3em] mb-4">
             Consultation & Support
           </h1>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight max-w-2xl mx-auto">
-            Let&apos;s Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-500">Extraordinary.</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white tracking-tight max-w-2xl mx-auto">
+            Let&apos;s Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 dark:from-white to-gray-500">Extraordinary.</span>
           </h2>
-          <p className="mt-6 text-gray-500 text-lg max-w-xl mx-auto leading-relaxed font-normal">
+          <p className="mt-6 text-gray-500 dark:text-gray-400 text-lg max-w-xl mx-auto leading-relaxed font-normal">
             From premium WPC louvers to luxury laminate flooring, our architectural experts are ready to elevate your next project.
           </p>
         </div>
@@ -172,7 +172,7 @@ export default function ContactPage() {
 
       {/* The Split Screen Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-        <div className="flex flex-col lg:flex-row shadow-2xl rounded-sm overflow-hidden border border-gray-100 bg-white relative">
+        <div className="flex flex-col lg:flex-row shadow-2xl dark:shadow-none rounded-sm overflow-hidden border border-gray-100 dark:border-gray-800 bg-white dark:bg-slate-900 relative transition-colors duration-300">
           
           {isSubmitted && <ConfettiBurst />}
 
@@ -283,30 +283,30 @@ export default function ContactPage() {
           </div>
 
           {/* ================= RIGHT COLUMN: FORM / SUCCESS STATE ================= */}
-          <div className="w-full lg:w-[55%] bg-white p-6 md:p-10 flex flex-col justify-center min-h-[650px] relative z-10">
+          <div className="w-full lg:w-[55%] bg-white dark:bg-slate-900 p-6 md:p-10 flex flex-col justify-center min-h-[650px] relative z-10 transition-colors duration-300">
             {!isSubmitted ? (
               <div className="animate-in fade-in slide-in-from-right-4 duration-500">
                 <div className="mb-10">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Request a Quote</h3>
-                  <p className="text-gray-500 text-sm font-normal">Fill out the details below and our project manager will contact you within 2 business hours.</p>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Request a Quote</h3>
+                  <p className="text-gray-500 dark:text-gray-400 text-sm font-normal">Fill out the details below and our project manager will contact you within 2 business hours.</p>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="text-xs font-bold text-gray-900 uppercase tracking-widest">Full Name <span className="text-red-500">*</span></label>
+                      <label className="text-xs font-bold text-gray-900 dark:text-gray-300 uppercase tracking-widest">Full Name <span className="text-red-500">*</span></label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                          <User className="h-4 w-4 text-gray-400" />
+                          <User className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                         </div>
                         <input name="name" value={formData.name} onChange={handleInputChange} type="text" required className={getInputClass(formData.name)} placeholder="John Doe" />
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <label className="text-xs font-bold text-gray-900 uppercase tracking-widest">Phone Number <span className="text-red-500">*</span></label>
+                      <label className="text-xs font-bold text-gray-900 dark:text-gray-300 uppercase tracking-widest">Phone Number <span className="text-red-500">*</span></label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                          <Phone className="h-4 w-4 text-gray-400" />
+                          <Phone className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                         </div>
                         <input name="phone" value={formData.phone} onChange={handleInputChange} type="tel" required className={getInputClass(formData.phone)} placeholder="+91 XXXXX XXXXX" />
                       </div>
@@ -315,19 +315,19 @@ export default function ContactPage() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="text-xs font-bold text-gray-900 uppercase tracking-widest">Email Address</label>
+                      <label className="text-xs font-bold text-gray-900 dark:text-gray-300 uppercase tracking-widest">Email Address</label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                          <Mail className="h-4 w-4 text-gray-400" />
+                          <Mail className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                         </div>
                         <input name="email" value={formData.email} onChange={handleInputChange} type="email" className={getInputClass(formData.email)} placeholder="john@example.com" />
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <label className="text-xs font-bold text-gray-900 uppercase tracking-widest">Company / Firm</label>
+                      <label className="text-xs font-bold text-gray-900 dark:text-gray-300 uppercase tracking-widest">Company / Firm</label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                          <Building2 className="h-4 w-4 text-gray-400" />
+                          <Building2 className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                         </div>
                         <input name="company" value={formData.company} onChange={handleInputChange} type="text" className={getInputClass(formData.company)} placeholder="Architecture Studio" />
                       </div>
@@ -335,9 +335,9 @@ export default function ContactPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-gray-900 uppercase tracking-widest">Primary Interest <span className="text-red-500">*</span></label>
+                    <label className="text-xs font-bold text-gray-900 dark:text-gray-300 uppercase tracking-widest">Primary Interest <span className="text-red-500">*</span></label>
                     <div className="relative">
-                      <select name="interest" value={formData.interest} onChange={handleInputChange} required className="w-full px-4 py-3 bg-gray-50 border border-gray-200 text-sm text-gray-700 focus:bg-white focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all rounded-sm appearance-none outline-none">
+                      <select name="interest" value={formData.interest} onChange={handleInputChange} required className="w-full px-4 py-3 bg-gray-50 dark:bg-slate-950 border border-gray-200 dark:border-gray-800 text-sm text-gray-700 dark:text-gray-300 focus:bg-white dark:focus:bg-slate-900 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all rounded-sm appearance-none outline-none">
                         <option value="" disabled>Select Product Category</option>
                         <option value="wall_panels">Wall Panels & Louvers</option>
                         <option value="flooring">Premium Flooring</option>
@@ -349,10 +349,10 @@ export default function ContactPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-gray-900 uppercase tracking-widest">Project Details</label>
+                    <label className="text-xs font-bold text-gray-900 dark:text-gray-300 uppercase tracking-widest">Project Details</label>
                     <div className="relative">
                       <div className="absolute top-3 left-0 pl-4 flex items-start pointer-events-none">
-                        <MessageSquare className="h-4 w-4 text-gray-400" />
+                        <MessageSquare className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                       </div>
                       <textarea name="message" value={formData.message} onChange={handleInputChange} rows={4} className={getInputClass(formData.message)} placeholder="Tell us about your project requirements..."></textarea>
                     </div>
@@ -370,42 +370,42 @@ export default function ContactPage() {
               </div>
             ) : (
               <div className="h-full flex flex-col justify-center items-center animate-in fade-in zoom-in duration-700">
-                {/* Premium Light Mode VIP Card */}
-                <div className="relative w-full max-w-md bg-white rounded-sm p-1 shadow-2xl overflow-hidden border border-gray-100">
+                {/* Premium Dark/Light Mode VIP Card */}
+                <div className="relative w-full max-w-md bg-white dark:bg-slate-900 rounded-sm p-1 shadow-2xl overflow-hidden border border-gray-100 dark:border-gray-800 transition-colors duration-300">
                   {/* Glowing Top Border */}
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-amber-200 via-amber-500 to-amber-200"></div>
 
-                  <div className="p-8 md:p-12 text-center relative z-10 bg-white">
+                  <div className="p-8 md:p-12 text-center relative z-10 bg-white dark:bg-slate-900 transition-colors duration-300">
                     {/* Animated Pulsing Icon */}
                     <div className="mx-auto w-24 h-24 mb-8 relative">
-                      <div className="absolute inset-0 bg-amber-100 rounded-full animate-ping"></div>
-                      <div className="relative z-10 w-full h-full bg-white border border-amber-200 rounded-full flex items-center justify-center shadow-xl">
+                      <div className="absolute inset-0 bg-amber-100 dark:bg-amber-900/40 rounded-full animate-ping"></div>
+                      <div className="relative z-10 w-full h-full bg-white dark:bg-slate-950 border border-amber-200 dark:border-amber-700 rounded-full flex items-center justify-center shadow-xl">
                         <CheckCircle2 className="w-12 h-12 text-amber-500" />
                       </div>
                     </div>
 
-                    <h3 className="text-2xl font-black text-gray-900 mb-3 tracking-tight">
-                      Request Secured, <span className="text-amber-600">{formData.name}</span>.
+                    <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-3 tracking-tight">
+                      Request Secured, <span className="text-amber-600 dark:text-amber-500">{formData.name}</span>.
                     </h3>
                     
-                    <div className="w-16 h-[2px] bg-gray-100 mx-auto my-6"></div>
+                    <div className="w-16 h-[2px] bg-gray-100 dark:bg-gray-800 mx-auto my-6"></div>
 
-                    <p className="text-gray-500 text-sm mb-8 leading-relaxed font-normal">
+                    <p className="text-gray-500 dark:text-gray-400 text-sm mb-8 leading-relaxed font-normal">
                       You are in our priority queue. Our project manager will review your requirements and contact you shortly.
                     </p>
 
                     {/* ETA Box */}
-                    <div className="bg-gray-50 border border-gray-100 p-5 rounded-sm text-left mb-8 flex items-center justify-between">
+                    <div className="bg-gray-50 dark:bg-slate-950 border border-gray-100 dark:border-gray-800 p-5 rounded-sm text-left mb-8 flex items-center justify-between transition-colors duration-300">
                       <div>
-                        <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-1 font-bold">Estimated Contact Time</p>
-                        <p className="text-gray-900 font-bold text-sm">Within 2 Business Hours</p>
+                        <p className="text-[10px] text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-1 font-bold">Estimated Contact Time</p>
+                        <p className="text-gray-900 dark:text-white font-bold text-sm">Within 2 Business Hours</p>
                       </div>
                       <Clock className="w-6 h-6 text-amber-500 opacity-50" />
                     </div>
 
                     <button 
                       onClick={() => { setIsSubmitted(false); setFormData({ name: "", phone: "", email: "", company: "", interest: "", message: "" }); }}
-                      className="w-full border border-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-300 font-bold text-[10px] uppercase tracking-[0.2em] py-4 transition-all"
+                      className="w-full border border-gray-200 dark:border-gray-700 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-gray-500 font-bold text-[10px] uppercase tracking-[0.2em] py-4 transition-all"
                     >
                       ← Return to Form
                     </button>
@@ -418,18 +418,18 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* ================= EXTENSION 1: THE CONSULTATION PROCESS (Light Theme) ================= */}
-      <div className="bg-gray-50 pt-16 pb-8 border-t border-gray-200 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-amber-100/50 blur-[120px] rounded-full pointer-events-none"></div>
+      {/* ================= EXTENSION 1: THE CONSULTATION PROCESS (Dark/Light Theme) ================= */}
+      <div className="bg-gray-50 dark:bg-slate-950 pt-16 pb-8 border-t border-gray-200 dark:border-gray-800 relative overflow-hidden transition-colors duration-300">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-amber-100/50 dark:bg-amber-900/10 blur-[120px] rounded-full pointer-events-none"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-4">Our Signature Approach</h2>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white tracking-tight mb-4">Our Signature Approach</h2>
             <div className="w-16 h-1 bg-amber-500 mx-auto"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-            <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-gray-200 via-amber-300 to-gray-200"></div>
+            <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-[1px] bg-gradient-to-r from-gray-200 dark:from-gray-800 via-amber-300 dark:via-amber-700 to-gray-200 dark:to-gray-800"></div>
 
             {[
               { step: "01", title: "Discovery Call", desc: "Our specialists understand your project scope and architectural vision." },
@@ -438,11 +438,11 @@ export default function ContactPage() {
               { step: "04", title: "Flawless Execution", desc: "Express delivery and professional installation with quality checks." }
             ].map((item, i) => (
               <div key={i} className="relative flex flex-col items-center text-center group">
-                <div className="w-24 h-24 bg-white rounded-full border-2 border-gray-200 flex items-center justify-center mb-6 group-hover:border-amber-500 transition-all duration-500 shadow-sm relative z-10">
+                <div className="w-24 h-24 bg-white dark:bg-slate-900 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center mb-6 group-hover:border-amber-500 transition-all duration-500 shadow-sm relative z-10">
                   <span className="text-2xl font-black text-amber-500">{item.step}</span>
                 </div>
-                <h4 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h4>
-                <p className="text-sm text-gray-600 leading-relaxed px-4">{item.desc}</p>
+                <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{item.title}</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed px-4">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -450,11 +450,11 @@ export default function ContactPage() {
       </div>
 
       {/* ================= EXTENSION 2: INTERACTIVE FAQs ================= */}
-      <div className="bg-white pt-8 pb-20">
+      <div className="bg-white dark:bg-slate-900 pt-8 pb-20 transition-colors duration-300">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-4">Frequently Asked Questions</h2>
-            <p className="text-gray-500">Everything you need to know about partnering with Goals Floors.</p>
+            <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white tracking-tight mb-4">Frequently Asked Questions</h2>
+            <p className="text-gray-500 dark:text-gray-400">Everything you need to know about partnering with Goals Floors.</p>
           </div>
 
           <div className="space-y-4">
