@@ -10,8 +10,8 @@ export default function BrandMarquee() {
     { name: "Palette Designs", src: "/brand logo/palette-designs-removebg-preview.png" },
     { name: "Realme", src: "/brand logo/realmi.svg" },
     { name: "Taj Palace", src: "/brand logo/taj-palace-hotel-removebg-preview.png" },
-    { name: "Urban Homes", src: "/brand logo/urban-homes-removebg-preview.png", scale: 1.5 },
-    { name: "Vikash Builders", src: "/brand logo/vikash-builders-removebg-preview.png", scale: 1.4, invertInDark: true },
+    { name: "Urban Homes", src: "/brand logo/urban-homes-removebg-preview.png", scale: 3 },
+    { name: "Vikash Builders", src: "/brand logo/vikash-builders-removebg-preview.png", scale: 1.6, invertInDark: true },
     { name: "Vivo", src: "/brand logo/vivo-removebg-preview.png", scale: 1.3 },
   ];
 
@@ -19,7 +19,7 @@ export default function BrandMarquee() {
   const scrollingBrands = [...brands, ...brands];
 
   return (
-    <section className="py-10 bg-gray-50 dark:bg-slate-950 border-t border-gray-100 dark:border-gray-800 overflow-hidden transition-colors duration-300">
+    <section className="py-5 bg-gray-50 dark:bg-slate-950 border-t border-gray-100 dark:border-gray-800 overflow-hidden transition-colors duration-300">
       {/* Inline CSS for Marquee Animation */}
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes scroll {
@@ -41,7 +41,7 @@ export default function BrandMarquee() {
         }
       `}} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-1">
         <div className="text-center">
           <h2 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white tracking-tight uppercase transition-colors duration-300">
             Trusted By Leading Corporate & Govt Sector

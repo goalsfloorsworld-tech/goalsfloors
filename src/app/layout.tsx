@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer"
+import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
 
-// Clean, professional font as requested
-const openSans = Open_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"]
-});
+// Using a premium system font stack to avoid build-time fetch issues
+const fontStack = "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif";
 
 export const metadata: Metadata = {
   title: "Goals Floors | Premium Flooring & Wall Panels",
@@ -23,8 +19,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning> 
-      {/* suppressHydrationWarning Next.js aur Dark mode ke liye zaroori hai */}
-      <body className={`${openSans.className} antialiased bg-white dark:bg-slate-950 pt-14 transition-colors duration-300`}>
+      {/* suppressHydrationWarning is essential for dark mode hydration */}
+      <body style={{ fontFamily: fontStack }} className={`antialiased bg-white dark:bg-slate-950 pt-14 transition-colors duration-300`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light" 

@@ -7,22 +7,30 @@ import {
   ChevronDown, Plus, Minus, Instagram, MessageCircle
 } from "lucide-react";
 
+interface Particle {
+  id: number;
+  left: number;
+  delay: number;
+  size: number;
+  color: string;
+  duration: number;
+  borderRadius: string;
+}
+
 // Infinite Confetti Component
 const ConfettiBurst = () => {
-  const [particles, setParticles] = useState<any[]>([]);
+  const [particles, setParticles] = useState<Particle[]>([]);
 
   useEffect(() => {
-    const pieces = Array.from({ length: 80 }).map((_, i) => ({
+    setParticles(Array.from({ length: 80 }).map((_, i) => ({
       id: i,
       left: Math.random() * 100,
-      delay: Math.random() * 5, // More variance for better flow
+      delay: Math.random() * 5,
       size: Math.random() * 8 + 4,
-      color: ['#f59e0b', '#fbbf24', '#d97706', '#fef3c7'][Math.floor(Math.random() * 40)],
-      duration: Math.random() * 3 + 4, // Slower for premium feel
+      color: ['#f59e0b', '#fbbf24', '#d97706', '#fef3c7'][Math.floor(Math.random() * 4)],
+      duration: Math.random() * 3 + 4,
       borderRadius: Math.random() > 0.5 ? '50%' : '2px'
-    }));
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setParticles(pieces);
+    })));
   }, []);
 
   return (
