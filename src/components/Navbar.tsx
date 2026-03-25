@@ -176,9 +176,9 @@ export default function Navbar() {
                 <div className="space-y-3">
                   <h4 className="text-[10px] font-normal text-amber-600 uppercase tracking-widest">Wall Panels</h4>
                   <div className="flex flex-col gap-2">
-                    <Link href="/products/tokyo-charcoal-moulding" onClick={toggleMenu} className="text-base font-bold text-txt-main hover:text-amber-600 transition-colors">Charcoal Moulding</Link>
-                    <Link href="/products/exterior-louvers" onClick={toggleMenu} className="text-base font-bold text-txt-main hover:text-amber-600 transition-colors">Exterior Louvers</Link>
-                    <Link href="/products/fluted-panels" onClick={toggleMenu} className="text-base font-bold text-txt-main hover:text-amber-600 transition-colors">Fluted Panels</Link>
+                    <Link href="/products/tokyo-charcoal-moulding" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Charcoal Moulding</Link>
+                    <Link href="/products/exterior-louvers" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Exterior Louvers</Link>
+                    <Link href="/products/fluted-panels" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Fluted Panels</Link>
                   </div>
                 </div>
                 <div className="space-y-3">
@@ -196,8 +196,8 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Link href="/projects" onClick={toggleMenu} className="text-lg font-bold text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">Projects</Link>
-          <Link href="/about" onClick={toggleMenu} className="text-lg font-bold text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">About Us</Link>
+          <Link href="/projects" onClick={toggleMenu} className="text-lg font-medium text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">Projects</Link>
+          <Link href="/about" onClick={toggleMenu} className="text-lg font-medium text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">About Us</Link>
           <Link href="/contact" onClick={toggleMenu} className="text-lg font-normal text-amber-600 border-b border-gray-100 dark:border-gray-800 pb-3">Contact Us</Link>
         </nav>
       </div>
