@@ -18,13 +18,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning> 
+    <html lang="en" suppressHydrationWarning>
       {/* suppressHydrationWarning is essential for dark mode hydration */}
       <body style={{ fontFamily: fontStack }} className={`antialiased bg-white dark:bg-slate-950 pt-14`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light" 
-          enableSystem={false} 
+          defaultTheme="light"
+          enableSystem={false}
         >
           <Navbar />
           <main className="min-h-screen">

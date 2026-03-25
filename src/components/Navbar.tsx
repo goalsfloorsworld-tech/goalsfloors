@@ -37,7 +37,7 @@ export default function Navbar() {
           ],
         },
         {
-          duration: 800,
+          duration: 1000,
           easing: 'ease-in-out',
           pseudoElement: '::view-transition-new(root)',
         }

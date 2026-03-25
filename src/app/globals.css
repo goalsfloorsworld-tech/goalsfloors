@@ -19,7 +19,7 @@ html {
     --foreground: #171717;
   }
   .dark {
-    --txt-main: #f9fafb; /* Near white */
+    --txt-main: #dfe2e5d9; /* Near white */
     --txt-muted: #9ca3af; /* Gray-400 */
   }
 }
