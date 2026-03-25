@@ -16,16 +16,16 @@ export default function Home() {
       {/* ================= HERO SECTION ================= */}
       <section className="relative min-h-[90vh] flex items-start md:items-center justify-center overflow-hidden">
         {/* Background - Replace src with your Cloudinary URL */}
-        <div className="absolute inset-0 z-0 bg-gray-900">
+        <div className="absolute inset-0 z-0 bg-black transition-colors duration-300">
           <Image
             src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2070"
             alt="Luxury Interior by Goals Floors"
             fill
             sizes="100vw"
-            className="object-cover opacity-50"
-            priority
+            className="object-cover opacity-70"
+            /* Clear top, only bottom transition fog as requested */
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-white" />
+          <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-white/70 to-transparent z-10 dark:from-slate-950/70 transition-colors duration-700" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-32 md:pt-0 md:mt-20">
@@ -98,12 +98,15 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Category Card 1 */}
-            <Link href="/wall-panels" className="group block relative h-96 overflow-hidden bg-gray-900">
+            <Link href="/wall-panels" className="group block relative h-96 overflow-hidden bg-black transition-colors duration-300">
               <Image
                 src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1000"
-                alt="WPC Wall Panels" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover opacity-70 group-hover:scale-105 group-hover:opacity-50 transition-all duration-700"
+                alt="WPC Wall Panels" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover opacity-90 group-hover:scale-105 group-hover:opacity-70 transition-all duration-700"
               />
-              <div className="absolute inset-0 flex flex-col justify-end p-8">
+              {/* Overlay for better text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100 z-10" />
+              
+              <div className="absolute inset-0 flex flex-col justify-end p-8 relative z-20">
                 <h3 className="text-2xl font-semibold text-white mb-2">Wall Panels & Louvers</h3>
                 <p className="text-gray-300 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">Charcoal, WPC & Fluted Panels</p>
                 <div className="text-amber-400 text-sm font-semibold tracking-widest uppercase flex items-center gap-2">View Range <ArrowRight className="w-4 h-4" /></div>
@@ -111,12 +114,15 @@ export default function Home() {
             </Link>
 
             {/* Category Card 2 */}
-            <Link href="/flooring" className="group block relative h-96 overflow-hidden bg-gray-900">
+            <Link href="/flooring" className="group block relative h-96 overflow-hidden bg-black transition-colors duration-300">
               <Image
                 src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?q=80&w=1000"
-                alt="Wooden Flooring" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover opacity-70 group-hover:scale-105 group-hover:opacity-50 transition-all duration-700"
+                alt="Wooden Flooring" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover opacity-90 group-hover:scale-105 group-hover:opacity-70 transition-all duration-700"
               />
-              <div className="absolute inset-0 flex flex-col justify-end p-8">
+              {/* Overlay for better text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100 z-10" />
+
+              <div className="absolute inset-0 flex flex-col justify-end p-8 relative z-20">
                 <h3 className="text-2xl font-semibold text-white mb-2">Luxury Flooring</h3>
                 <p className="text-gray-300 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">Laminate, SPC & Artificial Grass</p>
                 <div className="text-amber-400 text-sm font-semibold tracking-widest uppercase flex items-center gap-2">View Range <ArrowRight className="w-4 h-4" /></div>
@@ -124,12 +130,15 @@ export default function Home() {
             </Link>
 
             {/* Category Card 3 */}
-            <Link href="/ceilings" className="group block relative h-96 overflow-hidden bg-gray-900">
+            <Link href="/ceilings" className="group block relative h-96 overflow-hidden bg-black transition-colors duration-300">
               <Image
                 src="https://images.unsplash.com/photo-1600607687959-ce8a6c25118c?q=80&w=1000"
-                alt="Baffle Ceilings" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover opacity-70 group-hover:scale-105 group-hover:opacity-50 transition-all duration-700"
+                alt="Baffle Ceilings" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover opacity-90 group-hover:scale-105 group-hover:opacity-70 transition-all duration-700"
               />
-              <div className="absolute inset-0 flex flex-col justify-end p-8">
+              {/* Overlay for better text readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-100 z-10" />
+
+              <div className="absolute inset-0 flex flex-col justify-end p-8 relative z-20">
                 <h3 className="text-2xl font-semibold text-white mb-2">Ceilings & Facades</h3>
                 <p className="text-gray-300 text-sm mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">Premium Baffle Ceilings</p>
                 <div className="text-amber-400 text-sm font-semibold tracking-widest uppercase flex items-center gap-2">View Range <ArrowRight className="w-4 h-4" /></div>

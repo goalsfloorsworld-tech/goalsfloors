@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning> 
       {/* suppressHydrationWarning is essential for dark mode hydration */}
-      <body style={{ fontFamily: fontStack }} className={`antialiased bg-white dark:bg-slate-950 pt-14 transition-colors duration-300`}>
+      <body style={{ fontFamily: fontStack }} className={`antialiased bg-white dark:bg-slate-950 pt-14`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light" 

@@ -9,6 +9,42 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  
+  const toggleTheme = (e: React.MouseEvent) => {
+    // Fallback for browsers that don't support View Transition API
+    if (!document.startViewTransition) {
+      setTheme(theme === 'dark' ? 'light' : 'dark');
+      return;
+    }
+
+    const x = e.clientX;
+    const y = e.clientY;
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y)
+    );
+
+    const transition = document.startViewTransition(() => {
+      setTheme(theme === 'dark' ? 'light' : 'dark');
+    });
+
+    transition.ready.then(() => {
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${endRadius}px at ${x}px ${y}px)`,
+          ],
+        },
+        {
+          duration: 800,
+          easing: 'ease-in-out',
+          pseudoElement: '::view-transition-new(root)',
+        }
+      );
+    });
+  };
+
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -52,9 +88,9 @@ export default function Navbar() {
 
             {/* 2. Desktop Menu */}
             <nav className="hidden md:flex space-x-6 items-center h-full">
-              <Link href="/" className="text-gray-600 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-500 font-normal text-sm transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">Home</Link>
+              <Link href="/" className="text-txt-main hover:text-amber-600 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">Home</Link>
               <div className="group relative h-full flex items-center">
-                <Link href="/products" className="flex items-center gap-1 text-gray-600 dark:text-gray-300 group-hover:text-amber-600 dark:group-hover:text-amber-500 font-normal text-sm transition-colors h-full px-1 border-b-2 border-transparent group-hover:border-amber-600">
+                <Link href="/products" className="flex items-center gap-1 text-txt-main hover:text-amber-600 dark:hover:text-amber-500 font-medium text-base transition-colors h-full px-1 border-b-2 border-transparent group-hover:border-amber-600">
                   Products <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                 </Link>
                 <div className="absolute top-full left-1/2 -translate-x-1/2 w-[600px] bg-white dark:bg-slate-900 shadow-2xl border-t border-amber-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 z-50 rounded-b-sm">
@@ -63,17 +99,17 @@ export default function Navbar() {
                     <div>
                       <h3 className="text-xs font-normal text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Wall Panels</h3>
                       <ul className="space-y-3">
-                        <li><Link href="/products/tokyo-charcoal-moulding" className="group/item text-gray-600 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Charcoal Moulding</Link></li>
-                        <li><Link href="/products/exterior-louvers" className="group/item text-gray-600 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Exterior Louvers</Link></li>
-                        <li><Link href="/products/fluted-panels" className="group/item text-gray-600 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Fluted Panels</Link></li>
+                        <li><Link href="/products/tokyo-charcoal-moulding" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-md transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Charcoal Moulding</Link></li>
+                        <li><Link href="/products/exterior-louvers" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-md transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Exterior Louvers</Link></li>
+                        <li><Link href="/products/fluted-panels" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-md transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Fluted Panels</Link></li>
                       </ul>
                     </div>
                     <div>
                       <h3 className="text-xs font-normal text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Flooring & Ceilings</h3>
                       <ul className="space-y-3">
-                        <li><Link href="/products/premium-oak-laminate" className="group/item text-gray-600 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Premium Laminate</Link></li>
-                        <li><Link href="/products/artificial-grass" className="group/item text-gray-500 dark:text-gray-400 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Artificial Grass</Link></li>
-                        <li><Link href="/products/baffle-ceilings" className="group/item text-gray-500 dark:text-gray-400 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Baffle Ceilings</Link></li>
+                        <li><Link href="/products/premium-oak-laminate" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-md transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Premium Laminate</Link></li>
+                        <li><Link href="/products/artificial-grass" className="group/item text-gray-900 dark:text-gray-400 hover:text-amber-700 dark:hover:text-amber-500 text-md transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Artificial Grass</Link></li>
+                        <li><Link href="/products/baffle-ceilings" className="group/item text-gray-900 dark:text-gray-400 hover:text-amber-700 dark:hover:text-amber-500 text-md transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Baffle Ceilings</Link></li>
                       </ul>
                     </div>
                   </div>
@@ -84,15 +120,15 @@ export default function Navbar() {
                   </div>
                 </div>
               </div>
-              <Link href="/projects" className="text-gray-700 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 font-normal text-sm transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">Projects</Link>
-              <Link href="/about" className="text-gray-700 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 font-normal text-sm transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">About</Link>
+              <Link href="/projects" className="text-txt-main hover:text-amber-700 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">Projects</Link>
+              <Link href="/about" className="text-txt-main hover:text-amber-700 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">About</Link>
             </nav>
 
             {/* 3. Right Section */}
             <div className="flex items-center gap-4">
               {mounted ? (
                 <button
-                  onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                  onClick={toggleTheme}
                   className="p-2 rounded-full bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors"
                   aria-label="Toggle Dark Mode"
                 >
@@ -140,17 +176,17 @@ export default function Navbar() {
                 <div className="space-y-3">
                   <h4 className="text-[10px] font-normal text-amber-600 uppercase tracking-widest">Wall Panels</h4>
                   <div className="flex flex-col gap-2">
-                    <Link href="/products/tokyo-charcoal-moulding" onClick={toggleMenu} className="text-sm font-normal text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">Charcoal Moulding</Link>
-                    <Link href="/products/exterior-louvers" onClick={toggleMenu} className="text-sm font-normal text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">Exterior Louvers</Link>
-                    <Link href="/products/fluted-panels" onClick={toggleMenu} className="text-sm font-normal text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">Fluted Panels</Link>
+                    <Link href="/products/tokyo-charcoal-moulding" onClick={toggleMenu} className="text-base font-bold text-txt-main hover:text-amber-600 transition-colors">Charcoal Moulding</Link>
+                    <Link href="/products/exterior-louvers" onClick={toggleMenu} className="text-base font-bold text-txt-main hover:text-amber-600 transition-colors">Exterior Louvers</Link>
+                    <Link href="/products/fluted-panels" onClick={toggleMenu} className="text-base font-bold text-txt-main hover:text-amber-600 transition-colors">Fluted Panels</Link>
                   </div>
                 </div>
                 <div className="space-y-3">
                   <h4 className="text-[10px] font-normal text-amber-600 uppercase tracking-widest">Flooring & Ceilings</h4>
                   <div className="flex flex-col gap-2">
-                    <Link href="/products/premium-oak-laminate" onClick={toggleMenu} className="text-sm font-normal text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">Premium Laminate</Link>
-                    <Link href="/products/artificial-grass" onClick={toggleMenu} className="text-sm font-normal text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">Artificial Grass</Link>
-                    <Link href="/products/baffle-ceilings" onClick={toggleMenu} className="text-sm font-normal text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">Baffle Ceilings</Link>
+                    <Link href="/products/premium-oak-laminate" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Premium Laminate</Link>
+                    <Link href="/products/artificial-grass" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Artificial Grass</Link>
+                    <Link href="/products/baffle-ceilings" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Baffle Ceilings</Link>
                   </div>
                 </div>
                 <Link href="/products" onClick={toggleMenu} className="text-sm font-normal text-amber-600 flex items-center gap-2 py-2">
@@ -160,8 +196,8 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Link href="/projects" onClick={toggleMenu} className="text-lg font-normal text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-3">Projects</Link>
-          <Link href="/about" onClick={toggleMenu} className="text-lg font-normal text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-3">About Us</Link>
+          <Link href="/projects" onClick={toggleMenu} className="text-lg font-bold text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">Projects</Link>
+          <Link href="/about" onClick={toggleMenu} className="text-lg font-bold text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">About Us</Link>
           <Link href="/contact" onClick={toggleMenu} className="text-lg font-normal text-amber-600 border-b border-gray-100 dark:border-gray-800 pb-3">Contact Us</Link>
         </nav>
       </div>

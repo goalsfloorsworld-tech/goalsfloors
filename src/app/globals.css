@@ -1,6 +1,40 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@variant dark (&:where(.dark, .dark *));
+
+html {
+  view-transition-name: root;
+}
+
+@theme {
+  --color-txt-main: var(--txt-main);
+  --color-txt-muted: var(--txt-muted);
+}
+
+@layer base {
+  :root {
+    --txt-main: #2d3037; /* Near black */
+    --txt-muted: #4b5563; /* Gray-600 */
+    --background: #ffffff;
+    --foreground: #171717;
+  }
+  .dark {
+    --txt-main: #f9fafb; /* Near white */
+    --txt-muted: #9ca3af; /* Gray-400 */
+  }
+}
+
+/* Theme Toggle Ripple Animation */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: -1;
+}
+
+::view-transition-new(root) {
+  z-index: 99999;
 }
