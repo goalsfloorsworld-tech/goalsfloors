@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 const fontStack = "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://goalsfloors.com"),
   title: "Goals Floors | Premium Flooring & Wall Panels",
   description: "Luxury interior solutions delivered in 2 hours across Delhi NCR.",
 };

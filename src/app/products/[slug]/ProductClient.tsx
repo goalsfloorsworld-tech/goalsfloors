@@ -18,7 +18,11 @@ export interface FAQ {
 export interface Variant {
   name: string;
   price: string;
+  mrp?: string;
+  discount?: string;
+  unit?: string;
   imageUrl?: string;
+  imageAlt?: string;
   details: Record<string, string>;
 }
 
@@ -47,7 +51,7 @@ export interface Product {
     Availability: string;
   };
   faqs: FAQ[];
-  images: string[];
+  images: { url: string; alt: string }[];
   variants?: Variant[];
 }
 
@@ -84,7 +88,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
     "@context": "https://schema.org",
     "@type": "Product",
     "name": product.title,
-    "image": product.images[0],
+    "image": product.images[0]?.url,
     "description": product.shortDescription,
     "offers": {
       "@type": "AggregateOffer",
@@ -101,7 +105,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
       />
       
       {/* ================= 1. CLEAN HERO OVERVIEW ================= */}
-      <div className="border-b border-gray-100 dark:border-gray-800 pt-10 pb-8 lg:pt-12 lg:pb-10 text-left">
+      <div className="border-b border-gray-100 dark:border-gray-800 pt-10 pb-8 lg:pt-1 lg:pb-5 text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center">
             
@@ -135,7 +139,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
             
             <div className="w-full lg:w-1/2">
               <div className="relative aspect-square w-full max-w-[500px] mx-auto bg-gray-50 dark:bg-slate-900 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm transition-transform duration-700 hover:scale-[1.01]">
-                <Image src={product.images[0]} alt={product.title} fill className="object-cover" priority />
+                <Image src={product.images[0].url} alt={product.images[0].alt} fill className="object-cover" priority />
               </div>
             </div>
           </div>
@@ -165,7 +169,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
       </div>
 
       {/* ================= 3. LAYERED MAGAZINE STYLE PRODUCT STORY ================= */}
-      <div className="bg-white dark:bg-slate-950 py-16 lg:py-24 transition-colors duration-300 overflow-hidden relative">
+      <div className="bg-white dark:bg-slate-950 py-16 lg:py-15 transition-colors duration-300 overflow-hidden relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
             
@@ -186,8 +190,8 @@ export default function ProductClient({ product, slug }: { product: Product; slu
               {/* Feature Images Integrated Below Story */}
               <div className="mt-12 grid grid-cols-2 gap-4">
                 {product.images.slice(1,3).map((img, i) => (
-                  <div key={i} className="relative aspect-square rounded-sm overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 shadow-lg">
-                    <Image src={img} alt="Detail view" fill className="object-cover" />
+                  <div key={i} className="relative aspect-square rounded-sm overflow-hidden transition-all duration-700 shadow-lg">
+                    <Image src={img.url} alt={img.alt} fill className="object-cover" />
                   </div>
                 ))}
               </div>
@@ -273,7 +277,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                 Available Selection
               </h2>
               <h3 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white">
-                Available Variations & Retail Pricing
+                Available Specifications & Wholesale Pricing
               </h3>
             </div>
             
@@ -283,12 +287,12 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                   
                   {/* Drawing Header */}
                   {variant.imageUrl && (
-                    <div className="aspect-[3/2] relative bg-gray-50 dark:bg-slate-900 p-4 border-b border-gray-100 dark:border-gray-800">
+                    <div className="aspect-[3/2] relative bg-gray-50 dark:bg-slate-900 border-b border-gray-100 dark:border-gray-800">
                       <Image 
                         src={variant.imageUrl} 
-                        alt={`${variant.name} technical drawing`}
+                        alt={variant.imageAlt || `${variant.name} technical specification`}
                         fill
-                        className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                         priority={idx < 3}
                       />
                       <div className="absolute inset-0 bg-white/5 dark:bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -311,15 +315,31 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                     </div>
                     
                     <div className="mt-auto pt-4 border-t border-gray-50 dark:border-gray-900">
-                      <div className="inline-block bg-amber-50 dark:bg-amber-900/10 px-4 py-2 rounded-sm border border-amber-100/50 dark:border-amber-900/30">
-                        <p className="text-amber-600 dark:text-amber-500 font-black text-2xl tracking-tight">
+                      <div className="flex items-baseline gap-1">
+                        <span className="text-2xl font-black text-gray-900 dark:text-white truncate">
                           {variant.price}
-                        </p>
+                        </span>
+                        {variant.unit && (
+                          <span className="text-sm font-medium text-gray-500 dark:text-gray-400 lowercase truncate">
+                            {variant.unit}
+                          </span>
+                        )}
                       </div>
-                      <p className="text-[10px] text-gray-400 dark:text-gray-500 uppercase font-bold tracking-widest mt-2 flex items-center gap-2">
-                         <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-                         Retail Unit Price
-                      </p>
+
+                      {(variant.mrp || variant.discount) && (
+                        <div className="flex items-center mt-1">
+                          {variant.mrp && (
+                            <span className="text-sm text-gray-400 dark:text-gray-500 line-through font-medium truncate">
+                              {variant.mrp}
+                            </span>
+                          )}
+                          {variant.discount && (
+                            <span className="text-sm text-green-600 dark:text-green-500 font-bold ml-2 truncate">
+                              {variant.discount}
+                            </span>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

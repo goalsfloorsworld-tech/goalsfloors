@@ -93,23 +93,48 @@ export default function Navbar() {
                 <Link href="/products" className="flex items-center gap-1 text-txt-main hover:text-amber-600 dark:hover:text-amber-500 font-medium text-base transition-colors h-full px-1 border-b-2 border-transparent group-hover:border-amber-600">
                   Products <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                 </Link>
-                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[600px] bg-white dark:bg-slate-900 shadow-2xl border-t border-amber-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 z-50 rounded-b-sm">
-                  <div className="p-8 grid grid-cols-2 gap-8 relative overflow-hidden">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[1100px] bg-white dark:bg-slate-900 shadow-2xl border-t border-amber-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 z-50 rounded-b-sm">
+                  <div className="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative overflow-hidden">
                     <div className="absolute -bottom-10 -right-10 text-9xl font-normal text-gray-100/50 dark:text-gray-800/20 select-none pointer-events-none">G</div>
+                    
+                    {/* Column 1: WALL PANELS (Indoor) */}
                     <div>
-                      <h3 className="text-xs font-normal text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Wall Panels</h3>
+                      <h3 className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Wall Panels (Indoor)</h3>
                       <ul className="space-y-3">
-                        <li><Link href="/products/tokyo-charcoal-moulding" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-md transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Charcoal Moulding</Link></li>
-                        <li><Link href="/products/exterior-louvers" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-md transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Exterior Louvers</Link></li>
-                        <li><Link href="/products/fluted-panels" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-md transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Fluted Panels</Link></li>
+                        <li><Link href="/products/tokyo-charcoal-moulding" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Charcoal Moulding</Link></li>
+                        <li><Link href="/products/cobra-pu-stone" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Cobra PU Stone</Link></li>
+                        <li><Link href="/products/cobra-wpc-fluted-panel" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Fluted Panels (WPC)</Link></li>
+                        <li><Link href="/products/upfit-panels" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Upfit Panels</Link></li>
                       </ul>
                     </div>
+
+                    {/* Column 2: EXTERIOR & OUTDOOR */}
                     <div>
-                      <h3 className="text-xs font-normal text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Flooring & Ceilings</h3>
+                      <h3 className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Exterior & Outdoor</h3>
                       <ul className="space-y-3">
-                        <li><Link href="/products/premium-oak-laminate" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-md transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Premium Laminate</Link></li>
-                        <li><Link href="/products/artificial-grass" className="group/item text-gray-900 dark:text-gray-400 hover:text-amber-700 dark:hover:text-amber-500 text-md transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Artificial Grass</Link></li>
-                        <li><Link href="/products/baffle-ceilings" className="group/item text-gray-900 dark:text-gray-400 hover:text-amber-700 dark:hover:text-amber-500 text-md transition-colors flex items-center gap-2 font-normal"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Baffle Ceilings</Link></li>
+                        <li><Link href="/products/wpc-exterior-louvers" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Exterior Louvers</Link></li>
+                        <li><Link href="/products/artificial-grass" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Artificial Grass</Link></li>
+                        <li><Link href="/products/wpc-decking" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>WPC Decking</Link></li>
+                      </ul>
+                    </div>
+
+                    {/* Column 3: PREMIUM FLOORING */}
+                    <div>
+                      <h3 className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Premium Flooring</h3>
+                      <ul className="space-y-3">
+                        <li><Link href="/products/spc-flooring" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>SPC Flooring</Link></li>
+                        <li><Link href="/products/laminate-flooring" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Laminate Flooring</Link></li>
+                        <li><Link href="/products/herringbone-flooring" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Herringbone Flooring</Link></li>
+                        <li><Link href="/products/hybrid-flooring" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Hybrid Flooring</Link></li>
+                      </ul>
+                    </div>
+
+                    {/* Column 4: ARCHITECTURAL CEILINGS */}
+                    <div>
+                      <h3 className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Architectural Ceilings</h3>
+                      <ul className="space-y-3">
+                        <li><Link href="/products/baffle-ceiling" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Baffle Ceiling</Link></li>
+                        <li><Link href="/products/wpc-timber-tubes" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>WPC Timber Tubes</Link></li>
                       </ul>
                     </div>
                   </div>
@@ -173,20 +198,39 @@ export default function Navbar() {
 
             <div className={`overflow-hidden transition-all duration-300 ${isProductsOpen ? 'max-h-[500px] mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
               <div className="flex flex-col gap-6 pl-4 border-l border-amber-100 dark:border-gray-800">
-                <div className="space-y-3">
-                  <h4 className="text-[10px] font-normal text-amber-600 uppercase tracking-widest">Wall Panels</h4>
-                  <div className="flex flex-col gap-2">
-                    <Link href="/products/tokyo-charcoal-moulding" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Charcoal Moulding</Link>
-                    <Link href="/products/exterior-louvers" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Exterior Louvers</Link>
-                    <Link href="/products/fluted-panels" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Fluted Panels</Link>
+                <div className="space-y-4">
+                  <div className="space-y-3">
+                    <h4 className="text-[10px] font-bold text-amber-600 uppercase tracking-widest">Wall Panels (Indoor)</h4>
+                    <div className="flex flex-col gap-2">
+                      <Link href="/products/tokyo-charcoal-moulding" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Charcoal Moulding</Link>
+                      <Link href="/products/cobra-pu-stone" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Cobra PU Stone</Link>
+                      <Link href="/products/cobra-wpc-fluted-panel" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Fluted Panels (WPC)</Link>
+                      <Link href="/products/upfit-panels" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Upfit Panels</Link>
+                    </div>
                   </div>
-                </div>
-                <div className="space-y-3">
-                  <h4 className="text-[10px] font-normal text-amber-600 uppercase tracking-widest">Flooring & Ceilings</h4>
-                  <div className="flex flex-col gap-2">
-                    <Link href="/products/premium-oak-laminate" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Premium Laminate</Link>
-                    <Link href="/products/artificial-grass" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Artificial Grass</Link>
-                    <Link href="/products/baffle-ceilings" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Baffle Ceilings</Link>
+                  <div className="space-y-3">
+                    <h4 className="text-[10px] font-bold text-amber-600 uppercase tracking-widest">Exterior & Outdoor</h4>
+                    <div className="flex flex-col gap-2">
+                      <Link href="/products/wpc-exterior-louvers" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Exterior Louvers</Link>
+                      <Link href="/products/artificial-grass" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Artificial Grass</Link>
+                      <Link href="/products/wpc-decking" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">WPC Decking</Link>
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <h4 className="text-[10px] font-bold text-amber-600 uppercase tracking-widest">Premium Flooring</h4>
+                    <div className="flex flex-col gap-2">
+                      <Link href="/products/spc-flooring" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">SPC Flooring</Link>
+                      <Link href="/products/laminate-flooring" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Laminate Flooring</Link>
+                      <Link href="/products/herringbone-flooring" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Herringbone Flooring</Link>
+                      <Link href="/products/hybrid-flooring" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Hybrid Flooring</Link>
+                    </div>
+                  </div>
+                  <div className="space-y-3">
+                    <h4 className="text-[10px] font-bold text-amber-600 uppercase tracking-widest">Architectural Ceilings</h4>
+                    <div className="flex flex-col gap-2">
+                      <Link href="/products/baffle-ceiling" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Baffle Ceiling</Link>
+                      <Link href="/products/wpc-timber-tubes" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">WPC Timber Tubes</Link>
+                    </div>
                   </div>
                 </div>
                 <Link href="/products" onClick={toggleMenu} className="text-sm font-normal text-amber-600 flex items-center gap-2 py-2">

@@ -5,7 +5,7 @@ import ProductClient, { Product } from "./ProductClient";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const product = productsData.find((p) => p.slug === slug);
+  const product = productsData.find((p) => p.slug === slug) as Product | undefined;
 
   if (!product) {
     return {
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title,
       description,
-      images: [product.images[0]],
+      images: [product.images[0]?.url],
     },
   };
 }

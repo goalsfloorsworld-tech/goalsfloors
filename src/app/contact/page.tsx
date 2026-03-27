@@ -103,6 +103,7 @@ export default function ContactPage() {
     phone: "",
     email: "",
     company: "",
+    address: "",
     interest: "",
     message: ""
   });
@@ -343,6 +344,16 @@ export default function ContactPage() {
                   </div>
 
                   <div className="space-y-2">
+                    <label className="text-xs font-bold text-gray-900 dark:text-gray-300 uppercase tracking-widest">Project / Site Address</label>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <MapPin className="h-4 w-4 text-gray-400 dark:text-gray-500" />
+                      </div>
+                      <input name="address" value={formData.address} onChange={handleInputChange} type="text" className={getInputClass(formData.address)} placeholder="Complete Site Address or City" />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
                     <label className="text-xs font-bold text-gray-900 dark:text-gray-300 uppercase tracking-widest">Primary Interest <span className="text-red-500">*</span></label>
                     <div className="relative">
                       <select name="interest" value={formData.interest} onChange={handleInputChange} required className="w-full px-4 py-3 bg-gray-50 dark:bg-slate-950 border border-gray-200 dark:border-gray-800 text-sm text-gray-700 dark:text-gray-300 focus:bg-white dark:focus:bg-slate-900 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all rounded-sm appearance-none outline-none">
@@ -412,7 +423,7 @@ export default function ContactPage() {
                     </div>
 
                     <button 
-                      onClick={() => { setIsSubmitted(false); setFormData({ name: "", phone: "", email: "", company: "", interest: "", message: "" }); }}
+                      onClick={() => { setIsSubmitted(false); setFormData({ name: "", phone: "", email: "", company: "", address: "", interest: "", message: "" }); }}
                       className="w-full border border-gray-200 dark:border-gray-700 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-gray-500 font-bold text-[10px] uppercase tracking-[0.2em] py-4 transition-all"
                     >
                       ← Return to Form
