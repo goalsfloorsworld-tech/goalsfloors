@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { 
   MapPin, Phone, Mail, Clock, ArrowRight, User, 
   Building2, MessageSquare, ShieldCheck, CheckCircle2,
@@ -19,10 +19,8 @@ interface Particle {
 
 // Infinite Confetti Component
 const ConfettiBurst = () => {
-  const [particles, setParticles] = useState<Particle[]>([]);
-
-  useEffect(() => {
-    setParticles(Array.from({ length: 80 }).map((_, i) => ({
+  const [particles] = useState<Particle[]>(() => 
+    Array.from({ length: 80 }).map((_, i) => ({
       id: i,
       left: Math.random() * 100,
       delay: Math.random() * 5,
@@ -30,8 +28,8 @@ const ConfettiBurst = () => {
       color: ['#f59e0b', '#fbbf24', '#d97706', '#fef3c7'][Math.floor(Math.random() * 4)],
       duration: Math.random() * 3 + 4,
       borderRadius: Math.random() > 0.5 ? '50%' : '2px'
-    })));
-  }, []);
+    }))
+  );
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">

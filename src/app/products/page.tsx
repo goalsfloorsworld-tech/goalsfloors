@@ -71,7 +71,7 @@ export default function AllProductsPage() {
               {/* Product Image */}
               <div className="relative h-64 w-full overflow-hidden bg-gray-100 dark:bg-slate-800">
                 <Image
-                  src={product.images[0]}
+                  src={product.images[0].url}
                   alt={product.title}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-700"

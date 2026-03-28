@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, ChevronDown, Menu, X, ArrowRight, Sun, Moon } from 'lucide-react';
@@ -8,7 +9,15 @@ import { useTheme } from 'next-themes';
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [isDesktopProductsOpen, setIsDesktopProductsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+    setIsProductsOpen(false);
+    setIsDesktopProductsOpen(false);
+  }, [pathname]);
   
   const toggleTheme = (e: React.MouseEvent) => {
     // Fallback for browsers that don't support View Transition API
@@ -89,11 +98,22 @@ export default function Navbar() {
             {/* 2. Desktop Menu */}
             <nav className="hidden md:flex space-x-6 items-center h-full">
               <Link href="/" className="text-txt-main hover:text-amber-600 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">Home</Link>
-              <div className="group relative h-full flex items-center">
-                <Link href="/products" className="flex items-center gap-1 text-txt-main hover:text-amber-600 dark:hover:text-amber-500 font-medium text-base transition-colors h-full px-1 border-b-2 border-transparent group-hover:border-amber-600">
-                  Products <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+              <div 
+                className="relative h-full flex items-center"
+                onMouseEnter={() => setIsDesktopProductsOpen(true)}
+                onMouseLeave={() => setIsDesktopProductsOpen(false)}
+              >
+                <Link 
+                  href="/products" 
+                  className={`flex items-center gap-1 text-txt-main hover:text-amber-600 dark:hover:text-amber-500 font-medium text-base transition-colors h-full px-1 border-b-2 ${isDesktopProductsOpen ? 'border-amber-600 text-amber-600' : 'border-transparent'}`}
+                >
+                  Products <ChevronDown className={`w-4 h-4 transition-transform ${isDesktopProductsOpen ? 'rotate-180' : ''}`} />
                 </Link>
-                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[1100px] bg-white dark:bg-slate-900 shadow-2xl border-t border-amber-600 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-4 group-hover:translate-y-0 z-50 rounded-b-sm">
+                <div 
+                  className={`absolute top-full left-1/2 -translate-x-1/2 w-[1100px] bg-white dark:bg-slate-900 shadow-2xl border-t border-amber-600 transition-all duration-300 transform z-50 rounded-b-sm ${
+                    isDesktopProductsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-4'
+                  }`}
+                >
                   <div className="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative overflow-hidden">
                     <div className="absolute -bottom-10 -right-10 text-9xl font-normal text-gray-100/50 dark:text-gray-800/20 select-none pointer-events-none">G</div>
                     
@@ -101,10 +121,10 @@ export default function Navbar() {
                     <div>
                       <h3 className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Wall Panels (Indoor)</h3>
                       <ul className="space-y-3">
-                        <li><Link href="/products/tokyo-charcoal-moulding" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Charcoal Moulding</Link></li>
-                        <li><Link href="/products/cobra-pu-stone" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Cobra PU Stone</Link></li>
-                        <li><Link href="/products/cobra-wpc-fluted-panel" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Fluted Panels (WPC)</Link></li>
-                        <li><Link href="/products/upfit-panels" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Upfit Panels</Link></li>
+                        <li><Link href="/products/tokyo-charcoal-moulding" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Charcoal Moulding</Link></li>
+                        <li><Link href="/products/cobra-pu-stone" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Cobra PU Stone</Link></li>
+                        <li><Link href="/products/cobra-wpc-fluted-panel" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Fluted Panels (WPC)</Link></li>
+                        <li><Link href="/products/upfit-panels" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Upfit Panels</Link></li>
                       </ul>
                     </div>
 
@@ -112,9 +132,9 @@ export default function Navbar() {
                     <div>
                       <h3 className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Exterior & Outdoor</h3>
                       <ul className="space-y-3">
-                        <li><Link href="/products/wpc-exterior-louvers" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Exterior Louvers</Link></li>
-                        <li><Link href="/products/artificial-grass" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Artificial Grass</Link></li>
-                        <li><Link href="/products/wpc-decking" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>WPC Decking</Link></li>
+                        <li><Link href="/products/wpc-exterior-louvers" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Exterior Louvers</Link></li>
+                        <li><Link href="/products/artificial-grass" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Artificial Grass</Link></li>
+                        <li><Link href="/products/wpc-decking" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>WPC Decking</Link></li>
                       </ul>
                     </div>
 
@@ -122,10 +142,10 @@ export default function Navbar() {
                     <div>
                       <h3 className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Premium Flooring</h3>
                       <ul className="space-y-3">
-                        <li><Link href="/products/spc-flooring" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>SPC Flooring</Link></li>
-                        <li><Link href="/products/laminate-flooring" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Laminate Flooring</Link></li>
-                        <li><Link href="/products/herringbone-flooring" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Herringbone Flooring</Link></li>
-                        <li><Link href="/products/hybrid-flooring" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Hybrid Flooring</Link></li>
+                        <li><Link href="/products/cobra-spc-flooring" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>SPC Flooring</Link></li>
+                        <li><Link href="/products/laminate-flooring" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Laminate Flooring</Link></li>
+                        <li><Link href="/products/herringbone-flooring" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Herringbone Flooring</Link></li>
+                        <li><Link href="/products/hybrid-flooring" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Hybrid Flooring</Link></li>
                       </ul>
                     </div>
 
@@ -133,13 +153,13 @@ export default function Navbar() {
                     <div>
                       <h3 className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Architectural Ceilings</h3>
                       <ul className="space-y-3">
-                        <li><Link href="/products/baffle-ceiling" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Baffle Ceiling</Link></li>
-                        <li><Link href="/products/wpc-timber-tubes" className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>WPC Timber Tubes</Link></li>
+                        <li><Link href="/products/baffle-ceiling" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Baffle Ceiling</Link></li>
+                        <li><Link href="/products/wpc-timber-tubes" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>WPC Timber Tubes</Link></li>
                       </ul>
                     </div>
                   </div>
                   <div className="bg-gray-50 dark:bg-slate-950 p-4 border-t border-gray-100 dark:border-gray-800 text-center">
-                    <Link href="/products" className="text-sm font-normal text-amber-600 hover:text-amber-700 uppercase tracking-widest inline-flex items-center gap-2 group/btn">
+                    <Link href="/products" onClick={() => setIsDesktopProductsOpen(false)} className="text-sm font-normal text-amber-600 hover:text-amber-700 uppercase tracking-widest inline-flex items-center gap-2 group/btn">
                       Explore Full Catalog <ArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform" />
                     </Link>
                   </div>
@@ -219,7 +239,7 @@ export default function Navbar() {
                   <div className="space-y-3">
                     <h4 className="text-[10px] font-bold text-amber-600 uppercase tracking-widest">Premium Flooring</h4>
                     <div className="flex flex-col gap-2">
-                      <Link href="/products/spc-flooring" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">SPC Flooring</Link>
+                      <Link href="/products/cobra-spc-flooring" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">SPC Flooring</Link>
                       <Link href="/products/laminate-flooring" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Laminate Flooring</Link>
                       <Link href="/products/herringbone-flooring" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Herringbone Flooring</Link>
                       <Link href="/products/hybrid-flooring" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Hybrid Flooring</Link>
