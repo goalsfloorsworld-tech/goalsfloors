@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 };
 
 import { VoxelRouterBridge } from "./VoxelRouterBridge";
+import SmoothScrolling from "@/components/SmoothScrolling";
 
 export default function RootLayout({
   children,
@@ -31,14 +32,16 @@ export default function RootLayout({
           defaultTheme="light"
           enableSystem={false}
         >
-          <Navbar />
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <Footer />
+          <SmoothScrolling>
+            <Navbar />
+            <main className="min-h-screen">
+              {children}
+            </main>
+            <Footer />
+          </SmoothScrolling>
         </ThemeProvider>
-        {/* Voxel Shatter Transition - Loaded as standard script for priority */}
-        <script src="/voxelDropEngine.js" defer></script>
+        {/* Voxel Shatter Transition - Using Next.js Script for proper client-side loading */}
+        <Script src="/voxelDropEngine.js" strategy="afterInteractive" />
       </body>
     </html>
   );

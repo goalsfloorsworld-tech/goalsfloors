@@ -1,0 +1,86 @@
+[
+  {
+    "id": "villa-dlf-phase-5",
+    "title": "Luxury Villa, DLF Phase 5",
+    "category": "Residential",
+    "location": "Gurugram, Haryana",
+    "productsUsed": ["Luxury Laminate Flooring", "Tokyo Charcoal Moulding"],
+    "description": "A high-end residential renovation focusing on warmth and modern textures. We installed premium moisture-resistant laminate flooring across 4,500 sq. ft. and created a 20ft accent wall using our Tokyo Charcoal series.",
+    "stats": {
+      "Area": "4,500 Sq. Ft.",
+      "Timeline": "12 Days",
+      "Style": "Modern Contemporary"
+    },
+    "image": "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1200"
+  },
+  {
+    "id": "corporate-hq-cyber-city",
+    "title": "Corporate HQ, Cyber City",
+    "category": "Commercial",
+    "location": "Gurugram, Haryana",
+    "productsUsed": ["WPC Exterior Louvers", "Baffle Ceiling"],
+    "description": "Full facade cladding for a prominent tech headquarters. Used our exterior grade WPC louvers for the entry portal and acoustic baffle ceilings for the lobby to reduce echo and enhance the B2B aesthetic.",
+    "stats": {
+      "Area": "12,000 Sq. Ft.",
+      "Timeline": "24 Days",
+      "Style": "Industrial Professional"
+    },
+    "image": "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1200"
+  },
+  {
+    "id": "luxury-penthouse-noida",
+    "title": "The Grand Penthouse, Noida",
+    "category": "Residential",
+    "location": "Sector 150, Noida",
+    "productsUsed": ["Cobra Gold SPC Flooring", "Cobra PU Stone"],
+    "description": "A luxury penthouse interior featuring waterproof SPC flooring in all living areas and PU Stone panels for the home private theater, providing both insulation and a premium rock-face texture.",
+    "stats": {
+      "Area": "3,200 Sq. Ft.",
+      "Timeline": "8 Days",
+      "Style": "Minimalist Luxury"
+    },
+    "image": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200"
+  },
+  {
+    "id": "premium-retail-aerocity",
+    "title": "High-Street Retail, Aerocity",
+    "category": "Commercial",
+    "location": "Aerocity, New Delhi",
+    "productsUsed": ["Upfit Panels", "Fluted Panels (WPC)"],
+    "description": "Facade and interior facelift for a premium international retail outlet. The design utilized our Upfit soffit panels for the exterior overhang and WPC fluted panels for the main display walls.",
+    "stats": {
+      "Area": "1,800 Sq. Ft.",
+      "Timeline": "5 Days",
+      "Style": "Global Retail"
+    },
+    "image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200"
+  },
+  {
+    "id": "private-beach-house-outdoor",
+    "title": "Riverside Farmhouse, Delhi",
+    "category": "Outdoor",
+    "location": "Chhatarpur, New Delhi",
+    "productsUsed": ["WPC Decking", "Artificial Grass"],
+    "description": "A weekend farmhouse project where we created an 800 sq. ft. premium deck area using our weather-resistant WPC decking and integrated synthetic turf for a lush, low-maintenance poolside experience.",
+    "stats": {
+      "Area": "2,400 Sq. Ft.",
+      "Timeline": "10 Days",
+      "Style": "Outdoor Resort"
+    },
+    "image": "https://images.unsplash.com/photo-1506664453913-f326aa81f1fe?q=80&w=1200"
+  },
+  {
+    "id": "auditorium-institutional",
+    "title": "Educational Campus Auditorium",
+    "category": "Institutional",
+    "location": "Greater Noida, UP",
+    "productsUsed": ["Acoustic Wall Panels", "Baffle Ceiling"],
+    "description": "Large-scale institutional project requiring high durability and acoustic control. We implemented a hybrid louver and baffle system to ensure high-quality sound distribution across the 500-seat hall.",
+    "stats": {
+      "Area": "8,000 Sq. Ft.",
+      "Timeline": "30 Days",
+      "Style": "Academic Modern"
+    },
+    "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200"
+  }
+]

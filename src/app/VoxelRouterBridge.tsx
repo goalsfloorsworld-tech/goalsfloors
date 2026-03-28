@@ -1,27 +1,40 @@
 'use client';
-import { useRouter, usePathname } from 'next/navigation';
-import { useEffect } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { useEffect, Suspense } from 'react';
 
 /**
  * EXPOSES NEXT.JS ROUTER AND SYNC EVENTS TO WINDOW
- * Enhanced V31: Now signals 'routeReady' when the path actually changes.
+ * Enhanced V32: Signals 'routeReady' for both pathname and query changes.
  */
-export function VoxelRouterBridge() {
+function VoxelRouterContent() {
     const router = useRouter();
     const pathname = usePathname();
+    const searchParams = useSearchParams();
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
             // @ts-ignore
             window.nextRouter = router;
             
-            // Signal the engine that the NEW page is now rendered
+            // Signal the engine that the NEW page (or new filter state) is now rendered
             // Using a small delay to ensure React has finished painting
             setTimeout(() => {
-                window.dispatchEvent(new CustomEvent('voxel-route-ready', { detail: { pathname } }));
+                const searchString = searchParams.toString();
+                const fullUrl = pathname + (searchString ? '?' + searchString : '');
+                window.dispatchEvent(new CustomEvent('voxel-route-ready', { 
+                    detail: { pathname, fullUrl } 
+                }));
             }, 100);
         }
-    }, [router, pathname]);
+    }, [router, pathname, searchParams]);
 
     return null;
+}
+
+export function VoxelRouterBridge() {
+  return (
+    <Suspense fallback={null}>
+      <VoxelRouterContent />
+    </Suspense>
+  );
 }

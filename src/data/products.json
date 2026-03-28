@@ -9,39 +9,30 @@
     "longDescription": "The Tokyo Charcoal Moulding series redefines premium interior spaces across Gurugram, Delhi, and Noida. Engineered with ultra-high-density Wood Plastic Composite (WPC), these louvers offer the perfect blend of aesthetic elegance, acoustic dampening, and structural durability. Unlike traditional wood, our charcoal panels are designed to withstand extreme North Indian weather conditions without warping or fading.\n\nWhether you are designing a high-profile corporate boardroom in Cyber City, a luxury hotel reception in Aerocity, or a premium residential accent wall, the Tokyo series provides a flawless, seamless finish. The deep, rich 3D textures mimic high-end architectural wood while offering the zero-maintenance benefits of advanced polymers.\n\nAs a leading supplier in Haryana and NCR, Goals Floors ensures that every panel meets strict B2B commercial standards, including Class B1 fire retardancy and 100% termite resistance, making it the top specification choice for leading interior designers and modern architects.",
     "features": [
       {
-        "title": "100% Termite & Borer Proof",
-        "description": "Manufactured with an advanced polymer composite core that is completely impervious to pests. Enjoy peace of mind with a lifetime guarantee against structural damage from termites."
+        "title": "Waterproof Mouldings",
+        "description": "Made from premium virgin polymers. Totally waterproof, mold-resistant, and damp-proof—perfect for any moisture-prone indoor wall."
       },
       {
-        "title": "Water & Moisture Resistant",
-        "description": "Unlike natural wood, these panels have zero water absorption. Perfectly suited for basements, damp walls, and humid NCR climates without the risk of swelling or fungal growth."
+        "title": "Cut-to-Fit Design",
+        "description": "Easily trim the mouldings to your desired size on-site. Precision-engineered for a perfect fit in any corner or specialized layout."
       },
       {
-        "title": "Seamless Interlocking Installation",
-        "description": "Designed with a precision-engineered click-lock edge. This allows for rapid, seamless wall coverage where joints are invisible, significantly reducing labor time and site dust."
+        "title": "Seamless Installation",
+        "description": "Achieve a smooth, nail-free finish. These mouldings bond securely using simple adhesive, leaving no visible joints or marks."
       },
       {
-        "title": "Class B1 Fire Retardant",
-        "description": "Meets strict commercial safety standards. The material is self-extinguishing and does not actively support combustion, making it safe for hotels, offices, and high-rise apartments."
+        "title": "Ready to Paint",
+        "description": "All panels come pre-primed. Just apply a final coat of your favorite paint to perfectly match your room's color scheme."
       },
       {
-        "title": "Acoustic Sound Dampening",
-        "description": "The 3D fluted geometry actively breaks and scatters sound waves. It significantly reduces room echo and reverberation, making it ideal for home theaters and corporate boardrooms."
+        "title": "Quick & Simple",
+        "description": "No heavy tools or professional help needed. Simply apply strong adhesive and press into place for instant architectural results."
       },
       {
-        "title": "Zero Maintenance & Washable",
-        "description": "No periodic polishing, varnishing, or painting required. The high-quality hot-stamped surface resists stains and can be easily cleaned with just a damp microfiber cloth."
+        "title": "Endless Design Freedom",
+        "description": "Mix and match different profiles to create any pattern—from modern minimalism to classic French-style wall paneling."
       }
     ],
-    "specifications": {
-      "Material": "High-Density WPC (Wood Plastic Composite) + Foiled Texture",
-      "Dimensions": "2900mm (L) x 120mm (W) x 12mm (T)",
-      "Weight per Panel": "Approx. 1.8 kg (Heavy-duty core)",
-      "Finish": "Matte Charcoal 3D Embossed Texture",
-      "Fire Rating": "Class B1 (Flame Retardant / Self-Extinguishing)",
-      "Toxicity": "Formaldehyde-free / Zero VOC",
-      "Warranty": "15-Year Indoor Structural Warranty"
-    },
     "applications": [
       "Corporate Boardrooms & Executive Cabins",
       "Luxury TV Unit & Bedroom Backdrops",
@@ -49,12 +40,6 @@
       "Auditoriums, Studios & Home Theaters",
       "Premium Retail Store Facades & Display Walls",
       "High-end Restaurant & Cafe Interiors"
-    ],
-    "finishes": [
-      "Midnight Charcoal (Deep Matte)",
-      "Smoked Ash Grey",
-      "Deep Walnut Texture",
-      "Onyx Black Profile"
     ],
     "logistics": {
       "Packaging": "10 Panels per Heavy-Duty Corrugated Box",
@@ -120,14 +105,19 @@
         "mrp": "₹140",
         "discount": "35% off",
         "unit": "per pc",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477041/premium_quality_charcoal_moulding.jpg", 
-        "imageAlt": "Tokyo T-M 22mm Charcoal Moulding Wholesale Supplier Gurugram NCR",
         "details": {
           "Length": "2440mm (8feet)",
           "Width": "22mm",
           "Thickness": "12mm",
           "Weight": "0.175 Kg per Pc"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477041/premium_quality_charcoal_moulding.jpg",
+            "alt": "Tokyo T-M 22mm Charcoal Moulding Wholesale Supplier Gurugram NCR",
+            "name": "T-M 22mm"
+          }
+        ]
       },
       {
         "name": "T-M 30mm",
@@ -135,14 +125,19 @@
         "mrp": "₹245",
         "discount": "34% off",
         "unit": "per pc",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476998/paintable_moulding.jpg",
-        "imageAlt": "T-M 30mm Paintable Charcoal Moulding Wholesale Delhi NCR",
         "details": {
           "Length": "2440mm (8feet)",
           "Width": "30mm",
           "Thickness": "16mm",
           "Weight": "0.22 Kg Per Pc"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476998/paintable_moulding.jpg",
+            "alt": "T-M 30mm Paintable Charcoal Moulding Wholesale Delhi NCR",
+            "name": "T-M 30mm"
+          }
+        ]
       },
       {
         "name": "T-M 38mm",
@@ -150,14 +145,19 @@
         "mrp": "₹399",
         "discount": "34% off",
         "unit": "per pc",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476998/tapper_charcoal_moulding.jpg",
-        "imageAlt": "T-M 38mm Tapper Charcoal Moulding Wholesale Supplier NCR",
         "details": {
           "Length": "2440mm (8feet)",
           "Width": "38mm",
           "Thickness": "20mm",
           "Weight": "0.5 Kg Per Pc"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476998/tapper_charcoal_moulding.jpg",
+            "alt": "T-M 38mm Tapper Charcoal Moulding Wholesale Supplier NCR",
+            "name": "T-M 38mm"
+          }
+        ]
       },
       {
         "name": "T-M 45mm",
@@ -165,14 +165,19 @@
         "mrp": "₹550",
         "discount": "34% off",
         "unit": "per pc",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476998/Charcoal_Moulding_In_Gurgaon.jpg",
-        "imageAlt": "T-M 45mm Charcoal Moulding Wholesale Price Gurugram",
         "details": {
           "Length": "2440mm (8feet)",
           "Width": "45mm",
           "Thickness": "23mm",
           "Weight": "0.8 Kg Per Pc"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476998/Charcoal_Moulding_In_Gurgaon.jpg",
+            "alt": "T-M 45mm Charcoal Moulding Wholesale Price Gurugram",
+            "name": "T-M 45mm"
+          }
+        ]
       },
       {
         "name": "Taj 22mm",
@@ -180,14 +185,19 @@
         "mrp": "₹140",
         "discount": "35% off",
         "unit": "per pc",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476998/22mm_Charcoal_Moulding.jpg",
-        "imageAlt": "Taj 22mm Charcoal Moulding Wholesale Supplier Delhi NCR",
         "details": {
           "Length": "2440mm (8feet)",
           "Width": "22mm",
           "Thickness": "12mm",
           "Weight": "0.25 Kg per Pc"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476998/22mm_Charcoal_Moulding.jpg",
+            "alt": "Taj 22mm Charcoal Moulding Wholesale Supplier Delhi NCR",
+            "name": "Taj 22mm"
+          }
+        ]
       },
       {
         "name": "Taj 30mm",
@@ -195,14 +205,19 @@
         "mrp": "₹245",
         "discount": "34% off",
         "unit": "per pc",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476997/paintable_charcoal_moulding.jpg",
-        "imageAlt": "Taj 30mm Paintable Charcoal Moulding Wholesale Gurugram",
         "details": {
           "Length": "2440mm (8feet)",
           "Width": "30mm",
           "Thickness": "20mm",
           "Weight": "0.5 Kg per Pc"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476997/paintable_charcoal_moulding.jpg",
+            "alt": "Taj 30mm Paintable Charcoal Moulding Wholesale Gurugram",
+            "name": "Taj 30mm"
+          }
+        ]
       },
       {
         "name": "T-M 65mm",
@@ -210,14 +225,19 @@
         "mrp": "₹725",
         "discount": "34% off",
         "unit": "per pc",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476998/Charcoal_Moulding_In_Gurgaon.jpg",
-        "imageAlt": "T-M 65mm Charcoal Moulding Wholesale Supplier NCR",
         "details": {
           "Length": "2440mm (8feet)",
           "Width": "65mm",
           "Thickness": "23mm",
           "Weight": "1 Kg Per Pc"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476998/Charcoal_Moulding_In_Gurgaon.jpg",
+            "alt": "T-M 65mm Charcoal Moulding Wholesale Supplier NCR",
+            "name": "T-M 65mm"
+          }
+        ]
       },
       {
         "name": "Skirting 150mm",
@@ -225,22 +245,73 @@
         "mrp": "₹1515",
         "discount": "34% off",
         "unit": "per pc",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476984/Paintable_Skirting_For_Floors.jpg",
-        "imageAlt": "150mm Paintable Skirting for Floors Wholesale NCR",
         "details": {
           "Length": "2440mm (8feet)",
           "Width": "150mm",
           "Thickness": "14mm",
           "Weight": "1.7 Kg Per Pc"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476984/Paintable_Skirting_For_Floors.jpg",
+            "alt": "150mm Paintable Skirting for Floors Wholesale NCR",
+            "name": "Skirting 150mm"
+          }
+        ]
       }
-    ]   
+    ],
+    "installationSteps": [
+      {
+        "title": "Prepare the Surface",
+        "description": "Make sure the wall is:",
+        "points": [
+          "Clean (no dust or oil)",
+          "Dry (no moisture)",
+          "Smooth (no uneven surface)"
+        ],
+        "tip": "A smooth wall gives strong grip and a premium finish."
+      },
+      {
+        "title": "Measure & Cut",
+        "points": [
+          "Measure the area carefully",
+          "Cut panels straight at 90° angle",
+          "Ensure edges are clean and accurate"
+        ]
+      },
+      {
+        "title": "Apply Nail-Free Glue",
+        "description": "Use high-quality construction glue:",
+        "points": [
+          "Apply in zig-zag or dot patterns on back",
+          "Maintain 2-inch distance from edges"
+        ],
+        "tip": "Do not apply too much glue, it may come out from the sides."
+      },
+      {
+        "title": "Fix & Finish",
+        "points": [
+          "Press firmly against the wall",
+          "Hold for 10-20 seconds",
+          "Check alignment (keep it straight)",
+          "Clean extra glue immediately"
+        ]
+      }
+    ],
+    "afterInstallation": {
+      "title": "After Installation",
+      "points": [
+        "You can apply primer on the panels",
+        "Then paint it in the same color as your wall"
+      ],
+      "tip": "This gives a seamless and premium look to your space."
+    }
   },
   {
     "id": "wpc-exterior-louvers",
     "title": "Premium WPC Exterior Louvers",
     "slug": "wpc-exterior-louvers",
-    "category": "wall-panels",
+    "category": "outdoors",
     "priceRange": "Exterior Grade",
     "shortDescription": "100% weatherproof WPC exterior louvers designed for striking building facades, balconies, and outdoor wall cladding in Delhi NCR.",
     "longDescription": "Elevate your building's front elevation with our ultra-durable WPC Exterior Louvers. Specifically engineered to withstand the extreme summer heat and heavy monsoons of the North Indian climate, these exterior cladding panels offer a premium wooden finish without the high maintenance of natural wood.\n\nWhether you are an architect designing a modern facade in Gurgaon, or a builder executing a luxury villa project in South Delhi, our WPC louvers provide unparalleled UV resistance and structural integrity. They will not warp, fade, rot, or attract termites, ensuring your exterior designs remain pristine for decades.\n\nAs the leading outdoor WPC louver supplier in India, Goals Floors offers a genuine 5-year replacement warranty and a 20-year lifetime assurance. From commercial buildings to residential privacy screens, our exterior range is the ultimate choice for weather-resistant architectural beauty.",
@@ -270,26 +341,12 @@
         "description": "Impact-resistant and highly rigid, designed to withstand heavy wind loads on high-rise building facades."
       }
     ],
-    "specifications": {
-      "Material": "Co-Extruded WPC (Wood Plastic Composite)",
-      "Standard Length": "2900mm (Approx. 9.5 Feet)",
-      "Thickness": "25mm / 26mm options",
-      "UV Resistance": "High-Grade Anti-Fade Shield",
-      "Application": "Exterior Facades & Outdoor Walls",
-      "Warranty": "5-Year Genuine Replacement Warranty"
-    },
     "applications": [
       "Commercial Building Front Elevations",
       "Luxury Villa Facade Cladding",
       "Balcony Privacy Screens & Ceilings",
       "Outdoor Boundary Walls & Gates",
       "Rooftop Cafe & Restaurant Exteriors"
-    ],
-    "finishes": [
-      "Natural Teakwood",
-      "Rich Chocolate",
-      "Smoked Grey",
-      "Deep Walnut"
     ],
     "logistics": {
       "Packaging": "4 to 5 Pcs per Protective Carton",
@@ -355,111 +412,189 @@
       }
     ],
     "variants": [
-  {
-    "name": "Exterior WPC Louvers Coffee",
-    "price": "₹349",
-    "mrp": "₹550",
-    "discount": "36% off",
-    "unit": "Sqft",
-    "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478676/Wpc_Exterior_Louvers_Supplier_In_India.png",
-    "imageAlt": "Coffee Color WPC Exterior Louvers Wholesale Gurugram",
-    "details": {
-      "Color": "Coffee",
-      "Material": "Exterior Grade WPC"
+      {
+        "name": "Exterior WPC Louvers Coffee",
+        "price": "₹349",
+        "mrp": "₹550",
+        "discount": "36% off",
+        "unit": "Sqft",
+        "details": {
+          "Color": "Coffee",
+          "Material": "Exterior Grade WPC"
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478676/Wpc_Exterior_Louvers_Supplier_In_India.png",
+            "alt": "Coffee Color WPC Exterior Louvers Wholesale Gurugram",
+            "name": "Exterior WPC Louvers Coffee"
+          }
+        ]
+      },
+      {
+        "name": "Exterior WPC Louvers Teak",
+        "price": "₹349",
+        "mrp": "₹550",
+        "discount": "36% off",
+        "unit": "Sqft",
+        "details": {
+          "Color": "Teak",
+          "Material": "Exterior Grade WPC"
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774520391/wpc-exterior-louver-supplier-in-india-mePJ9v4l6XCGyZQw.png",
+            "alt": "Teak Color WPC Exterior Louvers Wholesale Delhi NCR",
+            "name": "Exterior WPC Louvers Teak"
+          }
+        ]
+      },
+      {
+        "name": "Exterior WPC Louvers Grey",
+        "price": "₹349",
+        "mrp": "₹550",
+        "discount": "36% off",
+        "unit": "Sqft",
+        "details": {
+          "Color": "Grey",
+          "Material": "Exterior Grade WPC"
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774520250/exterior-louver-for-front-elevation.webp",
+            "alt": "Grey Color WPC Exterior Louvers Wholesale NCR",
+            "name": "Exterior WPC Louvers Grey"
+          }
+        ]
+      },
+      {
+        "name": "Exterior WPC Louvers Ipe",
+        "price": "₹349",
+        "mrp": "₹550",
+        "discount": "36% off",
+        "unit": "Sqft",
+        "details": {
+          "Color": "Ipe",
+          "Material": "Exterior Grade WPC"
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478683/Exterior_Louver_Supplier_In_delhi_ncr.png",
+            "alt": "Ipe Color WPC Exterior Louvers Wholesale Delhi",
+            "name": "Exterior WPC Louvers Ipe"
+          }
+        ]
+      },
+      {
+        "name": "Corner L-profile Coffee",
+        "price": "₹1349",
+        "mrp": "₹1999",
+        "discount": "32% off",
+        "unit": "Per Pcs",
+        "details": {
+          "Color": "Coffee",
+          "Application": "Edge Finishing"
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478681/Exterior_Louver_Corner_Profile_wholesaler.png",
+            "alt": "Coffee Corner L-profile for Exterior Louvers Wholesale",
+            "name": "Corner L-profile Coffee"
+          }
+        ]
+      },
+      {
+        "name": "Corner L-profile Teak",
+        "price": "₹1349",
+        "mrp": "₹1999",
+        "discount": "32% off",
+        "unit": "Per Pcs",
+        "details": {
+          "Color": "Teak",
+          "Application": "Edge Finishing"
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478679/Wpc_Exterior_Louver_Corner_Profile.png",
+            "alt": "Teak Corner L-profile for Exterior Louvers Wholesale",
+            "name": "Corner L-profile Teak"
+          }
+        ]
+      },
+      {
+        "name": "Corner L-profile Grey",
+        "price": "₹1349",
+        "mrp": "₹1999",
+        "discount": "32% off",
+        "unit": "Per Pcs",
+        "details": {
+          "Color": "Grey",
+          "Application": "Edge Finishing"
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478685/Exterior_louver_L-profile.png",
+            "alt": "Grey Corner L-profile for WPC Louvers Wholesale",
+            "name": "Corner L-profile Grey"
+          }
+        ]
+      },
+      {
+        "name": "Corner L-profile Ipe",
+        "price": "₹1349",
+        "mrp": "₹1999",
+        "discount": "32% off",
+        "unit": "Per Pcs",
+        "details": {
+          "Color": "Ipe",
+          "Application": "Edge Finishing"
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478680/wpc_exterior_louver_L-_Profile.png",
+            "alt": "Ipe Corner L-profile for Exterior Louvers Wholesale",
+            "name": "Corner L-profile Ipe"
+          }
+        ]
+      }
+    ],
+    "installationSteps": [
+      {
+        "title": "Sub-frame Setup",
+        "points": [
+          "Install Aluminium/MS joists with 35cm gap",
+          "Ensure 2% slope for water drainage"
+        ]
+      },
+      {
+        "title": "First Board Fix",
+        "points": [
+          "Use starter clips for the first board",
+          "Ensure perfect parallel alignment to wall"
+        ]
+      },
+      {
+        "title": "Hidden Clips",
+        "points": [
+          "Slide clips into board side grooves",
+          "Screw each clip firmly into the joist"
+        ]
+      },
+      {
+        "title": "Expansion Gap",
+        "points": [
+          "Leave 5mm gaps between board ends",
+          "Allows for expansion in NCR summer heat"
+        ],
+        "tip": "Proper gaps prevent warping and ensure long deck life."
+      }
+    ],
+    "afterInstallation": {
+      "title": "Maintenance",
+      "points": [
+        "Wash with mild soap and water only",
+        "Check clips annually for tightness"
+      ]
     }
-  },
-  {
-    "name": "Exterior WPC Louvers Teak",
-    "price": "₹349",
-    "mrp": "₹550",
-    "discount": "36% off",
-    "unit": "Sqft",
-    "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774520391/wpc-exterior-louver-supplier-in-india-mePJ9v4l6XCGyZQw.png",
-    "imageAlt": "Teak Color WPC Exterior Louvers Wholesale Delhi NCR",
-    "details": {
-      "Color": "Teak",
-      "Material": "Exterior Grade WPC"
-    }
-  },
-  {
-    "name": "Exterior WPC Louvers Grey",
-    "price": "₹349",
-    "mrp": "₹550",
-    "discount": "36% off",
-    "unit": "Sqft",
-    "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774520250/exterior-louver-for-front-elevation.webp",
-    "imageAlt": "Grey Color WPC Exterior Louvers Wholesale NCR",
-    "details": {
-      "Color": "Grey",
-      "Material": "Exterior Grade WPC"
-    }
-  },
-  {
-    "name": "Exterior WPC Louvers Ipe",
-    "price": "₹349",
-    "mrp": "₹550",
-    "discount": "36% off",
-    "unit": "Sqft",
-    "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478683/Exterior_Louver_Supplier_In_delhi_ncr.png",
-    "imageAlt": "Ipe Color WPC Exterior Louvers Wholesale Delhi",
-    "details": {
-      "Color": "Ipe",
-      "Material": "Exterior Grade WPC"
-    }
-  },
-  {
-    "name": "Corner L-profile Coffee",
-    "price": "₹1349",
-    "mrp": "₹1999",
-    "discount": "32% off",
-    "unit": "Per Pcs",
-    "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478681/Exterior_Louver_Corner_Profile_wholesaler.png",
-    "imageAlt": "Coffee Corner L-profile for Exterior Louvers Wholesale",
-    "details": {
-      "Color": "Coffee",
-      "Application": "Edge Finishing"
-    }
-  },
-  {
-    "name": "Corner L-profile Teak",
-    "price": "₹1349",
-    "mrp": "₹1999",
-    "discount": "32% off",
-    "unit": "Per Pcs",
-    "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478679/Wpc_Exterior_Louver_Corner_Profile.png",
-    "imageAlt": "Teak Corner L-profile for Exterior Louvers Wholesale",
-    "details": {
-      "Color": "Teak",
-      "Application": "Edge Finishing"
-    }
-  },
-  {
-    "name": "Corner L-profile Grey",
-    "price": "₹1349",
-    "mrp": "₹1999",
-    "discount": "32% off",
-    "unit": "Per Pcs",
-    "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478685/Exterior_louver_L-profile.png",
-    "imageAlt": "Grey Corner L-profile for WPC Louvers Wholesale",
-    "details": {
-      "Color": "Grey",
-      "Application": "Edge Finishing"
-    }
-  },
-  {
-    "name": "Corner L-profile Ipe",
-    "price": "₹1349",
-    "mrp": "₹1999",
-    "discount": "32% off",
-    "unit": "Per Pcs",
-    "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478680/wpc_exterior_louver_L-_Profile.png",
-    "imageAlt": "Ipe Corner L-profile for Exterior Louvers Wholesale",
-    "details": {
-      "Color": "Ipe",
-      "Application": "Edge Finishing"
-    }
-  }
-]
   },
   {
     "id": "cobra-wpc-fluted-panel",
@@ -495,26 +630,12 @@
         "description": "The ribbed/fluted profile of the Cobra series helps diffuse sound waves, subtly improving the acoustic comfort of the room."
       }
     ],
-    "specifications": {
-      "Material": "WPC (Wood Polymer Composite)",
-      "Standard Length": "3000mm (Approx. 10 Feet)",
-      "Profile Options": "Curve, Wave, Flat",
-      "Thickness Range": "12mm to 28mm",
-      "Application": "Interior Walls & Ceilings Only",
-      "Installation": "Adhesive & Brad Nails"
-    },
     "applications": [
       "Luxury TV Background Walls",
       "Master Bedroom Headboard Accents",
       "Corporate Office Lobbies & Receptions",
       "Retail Showroom Feature Walls",
       "Dining Area & Corridor Paneling"
-    ],
-    "finishes": [
-      "Cobra-780 (Natural Oak)",
-      "Cobra-779 (Dark Walnut)",
-      "Cobra-781 (Ash Wood)",
-      "Cobra 786 (Matte Charcoal)"
     ],
     "logistics": {
       "Packaging": "Standard Export Quality Corrugated Boxes",
@@ -586,13 +707,18 @@
         "mrp": "₹990",
         "discount": "30% off",
         "unit": "per panel",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774523176/24mm-louver-mnlvMJ0oQztG9JX6.png",
-        "imageAlt": "GF 244 24mm WPC Fluted Panel Wholesale Gurugram",
         "details": {
           "Profile": "24mm Fluted Panel",
           "Color Code": "GF 244",
           "Thickness": "24mm"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774523176/24mm-louver-mnlvMJ0oQztG9JX6.png",
+            "alt": "GF 244 24mm WPC Fluted Panel Wholesale Gurugram",
+            "name": "24mm Fluted - GF 244"
+          }
+        ]
       },
       {
         "name": "24mm Fluted - GF 243",
@@ -600,13 +726,18 @@
         "mrp": "₹990",
         "discount": "30% off",
         "unit": "per panel",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774523544/best-louver-in-sikanderpur-gurgaon-mk3zkJX1JXFDqJgM.png",
-        "imageAlt": "GF 243 24mm WPC Fluted Panel Wholesale Delhi NCR",
         "details": {
           "Profile": "24mm Fluted Panel",
           "Color Code": "GF 243",
           "Thickness": "24mm"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774523544/best-louver-in-sikanderpur-gurgaon-mk3zkJX1JXFDqJgM.png",
+            "alt": "GF 243 24mm WPC Fluted Panel Wholesale Delhi NCR",
+            "name": "24mm Fluted - GF 243"
+          }
+        ]
       },
       {
         "name": "17mm Fluted - Cobra 1704",
@@ -614,13 +745,18 @@
         "mrp": "₹1190",
         "discount": "42% off",
         "unit": "per panel",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774523625/goslo-782-dOqyeOQwP6snO6x1.png",
-        "imageAlt": "Cobra 1704 17mm Fluted Panel Wholesale NCR",
         "details": {
           "Profile": "17mm Fluted Panel",
           "Color Code": "Cobra 1704",
           "Thickness": "17mm"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774523625/goslo-782-dOqyeOQwP6snO6x1.png",
+            "alt": "Cobra 1704 17mm Fluted Panel Wholesale NCR",
+            "name": "17mm Fluted - Cobra 1704"
+          }
+        ]
       },
       {
         "name": "17mm Fluted - Cobra 1703",
@@ -628,13 +764,18 @@
         "mrp": "₹1190",
         "discount": "42% off",
         "unit": "per panel",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774523705/goslo-781-YNqy3awzgEsLw4G6.png",
-        "imageAlt": "Cobra 1703 17mm Fluted Panel Wholesale Delhi",
         "details": {
           "Profile": "17mm Fluted Panel",
           "Color Code": "Cobra 1703",
           "Thickness": "17mm"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774523705/goslo-781-YNqy3awzgEsLw4G6.png",
+            "alt": "Cobra 1703 17mm Fluted Panel Wholesale Delhi",
+            "name": "17mm Fluted - Cobra 1703"
+          }
+        ]
       },
       {
         "name": "12mm Curve - Cobra 780",
@@ -642,13 +783,18 @@
         "mrp": "₹1490",
         "discount": "33% off",
         "unit": "per panel",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774523761/cobra-curve-fluted-panel-2-mP4nyGz5GjiRJZyG.png",
-        "imageAlt": "Cobra 780 12mm Curve Fluted Panel Wholesale Gurugram",
         "details": {
           "Profile": "12mm Curve",
           "Color Code": "Cobra 780",
           "Thickness": "12mm"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774523761/cobra-curve-fluted-panel-2-mP4nyGz5GjiRJZyG.png",
+            "alt": "Cobra 780 12mm Curve Fluted Panel Wholesale Gurugram",
+            "name": "12mm Curve - Cobra 780"
+          }
+        ]
       },
       {
         "name": "12mm Wave - Cobra 779",
@@ -656,13 +802,18 @@
         "mrp": "₹1490",
         "discount": "33% off",
         "unit": "per panel",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774523811/gf-cobra-curve-Y4LV7b5o82COOG2J.png",
-        "imageAlt": "Cobra 779 12mm Wave Fluted Panel Wholesale NCR",
         "details": {
           "Profile": "12mm Wave",
           "Color Code": "Cobra 779",
           "Thickness": "12mm"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774523811/gf-cobra-curve-Y4LV7b5o82COOG2J.png",
+            "alt": "Cobra 779 12mm Wave Fluted Panel Wholesale NCR",
+            "name": "12mm Wave - Cobra 779"
+          }
+        ]
       },
       {
         "name": "14mm WPC - Cobra 781",
@@ -670,13 +821,18 @@
         "mrp": "₹1790",
         "discount": "33% off",
         "unit": "per panel",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774523892/goals-floors-wave-panel-mk3zkzkyORHpB70z.png",
-        "imageAlt": "Cobra 781 14mm WPC Wave Panel Wholesale Delhi",
         "details": {
           "Profile": "14mm WPC Panel",
           "Color Code": "Cobra 797",
           "Thickness": "14mm"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774523892/goals-floors-wave-panel-mk3zkzkyORHpB70z.png",
+            "alt": "Cobra 781 14mm WPC Wave Panel Wholesale Delhi",
+            "name": "14mm WPC - Cobra 781"
+          }
+        ]
       },
       {
         "name": "28mm WPC - Cobra 794",
@@ -684,15 +840,66 @@
         "mrp": "₹1890",
         "discount": "31% off",
         "unit": "per panel",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774523952/14mm-fluted-panel-ALpn6eV7pQuy04PK.png",
-        "imageAlt": "Cobra 794 28mm WPC Fluted Panel Wholesale Gurugram",
         "details": {
           "Profile": "28mm WPC Panel",
           "Color Code": "Cobra 794",
           "Thickness": "28mm"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774523952/14mm-fluted-panel-ALpn6eV7pQuy04PK.png",
+            "alt": "Cobra 794 28mm WPC Fluted Panel Wholesale Gurugram",
+            "name": "28mm WPC - Cobra 794"
+          }
+        ]
       }
-    ]
+    ],
+    "installationSteps": [
+      {
+        "title": "Prepare the Surface",
+        "description": "Make sure the wall is:",
+        "points": [
+          "Clean (no dust or oil)",
+          "Dry (no moisture)",
+          "Smooth (no uneven surface)"
+        ],
+        "tip": "A smooth wall gives strong grip and a premium finish."
+      },
+      {
+        "title": "Measure & Cut",
+        "points": [
+          "Measure the area carefully",
+          "Cut panels straight at 90° angle",
+          "Ensure edges are clean and accurate"
+        ]
+      },
+      {
+        "title": "Apply Nail-Free Glue",
+        "description": "Use high-quality construction glue:",
+        "points": [
+          "Apply in zig-zag or dot patterns on back",
+          "Maintain 2-inch distance from edges"
+        ],
+        "tip": "Do not apply too much glue, it may come out from the sides."
+      },
+      {
+        "title": "Fix & Finish",
+        "points": [
+          "Press firmly against the wall",
+          "Hold for 10-20 seconds",
+          "Check alignment (keep it straight)",
+          "Clean extra glue immediately"
+        ]
+      }
+    ],
+    "afterInstallation": {
+      "title": "After Installation",
+      "points": [
+        "You can apply primer on the panels",
+        "Then paint it in the same color as your wall"
+      ],
+      "tip": "This gives a seamless and premium look to your space."
+    }
   },
   {
     "id": "upfit-panels",
@@ -728,27 +935,12 @@
         "description": "Made from sustainable, recyclable materials, offering premium architectural quality without harming the environment."
       }
     ],
-    "specifications": {
-      "Material": "High-Performance Polymer Composite",
-      "Application": "Exterior Soffits, Ceilings & Facades",
-      "Thickness": "1.2mm (Ultra-light profile)",
-      "Depth": "14mm",
-      "Features": "Waterproof, Fire-Resistant, Unbreakable",
-      "Installation": "Interlocking System with J/H/L Trims"
-    },
     "applications": [
       "Exterior Roof Soffits and Eaves",
       "Balcony and Porch Ceilings",
       "Modern Building Facades & Cladding",
       "Commercial Driveway Ceilings",
       "Decorative Architectural Accents"
-    ],
-    "finishes": [
-      "Walnut (Rich Wood)",
-      "Premium (Natural Teak Look)",
-      "Grey (Modern Concrete Vibe)",
-      "Ebony (Dark Bold)",
-      "White (Clean Minimalist)"
     ],
     "logistics": {
       "Packaging": "Standard Box Packaging with Edge Protection",
@@ -800,14 +992,19 @@
         "mrp": "₹1890",
         "discount": "31% off",
         "unit": "per panel",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774526297/goals-floors-upfit-panel-white-AE0o6ekkr0c6GWaO.png",
-        "imageAlt": "G-F UF White Upfit 230 Soffit Panel Wholesale NCR",
         "details": {
           "Size": "2950mm x 230mm (9.75ft x 0.75ft)",
           "Thickness": "1.2mm",
           "Coverage": "7.3 Sq.Ft",
           "Weight": "2.0 Kg"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774526297/goals-floors-upfit-panel-white-AE0o6ekkr0c6GWaO.png",
+            "alt": "G-F UF White Upfit 230 Soffit Panel Wholesale NCR",
+            "name": "Upfit 230 - G-F UF White"
+          }
+        ]
       },
       {
         "name": "Upfit 230 - G-F UF Walnut",
@@ -815,14 +1012,19 @@
         "mrp": "₹1890",
         "discount": "31% off",
         "unit": "per panel",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774526342/goals-floors-upfit-panel-walnut-AVLpr9kkJ0Ur9Xkp.png",
-        "imageAlt": "G-F UF Walnut Upfit 230 Exterior Panel Wholesale Gurugram",
         "details": {
           "Size": "2950mm x 230mm (9.75ft x 0.75ft)",
           "Thickness": "1.2mm",
           "Coverage": "7.3 Sq.Ft",
           "Weight": "2.0 Kg"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774526342/goals-floors-upfit-panel-walnut-AVLpr9kkJ0Ur9Xkp.png",
+            "alt": "G-F UF Walnut Upfit 230 Exterior Panel Wholesale Gurugram",
+            "name": "Upfit 230 - G-F UF Walnut"
+          }
+        ]
       },
       {
         "name": "Upfit 230 - G-F UF Tog",
@@ -830,14 +1032,19 @@
         "mrp": "₹1890",
         "discount": "31% off",
         "unit": "per panel",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774526382/goals-floors-upfit-panel-ozone-AwvM2ZW2KqfeKv9z.png",
-        "imageAlt": "G-F UF Ozone Upfit 230 Panel Wholesale Delhi NCR",
         "details": {
           "Size": "2950mm x 230mm (9.75ft x 0.75ft)",
           "Thickness": "1.2mm",
           "Coverage": "7.3 Sq.Ft",
           "Weight": "2.0 Kg"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774526382/goals-floors-upfit-panel-ozone-AwvM2ZW2KqfeKv9z.png",
+            "alt": "G-F UF Ozone Upfit 230 Panel Wholesale Delhi NCR",
+            "name": "Upfit 230 - G-F UF Tog"
+          }
+        ]
       },
       {
         "name": "Upfit 230 - G-F UF Grey",
@@ -845,14 +1052,19 @@
         "mrp": "₹1890",
         "discount": "31% off",
         "unit": "per panel",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774526418/goals-floors-upfit-panel-grey-mxBZDQnDo6sr2q3v.png",
-        "imageAlt": "G-F UF Grey Upfit 230 Panel Wholesale NCR",
         "details": {
           "Size": "2950mm x 230mm (9.75ft x 0.75ft)",
           "Thickness": "1.2mm",
           "Coverage": "7.3 Sq.Ft",
           "Weight": "2.0 Kg"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774526418/goals-floors-upfit-panel-grey-mxBZDQnDo6sr2q3v.png",
+            "alt": "G-F UF Grey Upfit 230 Panel Wholesale NCR",
+            "name": "Upfit 230 - G-F UF Grey"
+          }
+        ]
       },
       {
         "name": "Upfit 305 - UF White 30",
@@ -860,14 +1072,19 @@
         "mrp": "₹12290",
         "discount": "87% off",
         "unit": "per panel",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774526297/goals-floors-upfit-panel-white-AE0o6ekkr0c6GWaO.png",
-        "imageAlt": "UF White 305mm Upfit Ceiling Panel Wholesale Gurugram",
         "details": {
           "Size": "3660mm x 305mm (12ft x 1ft)",
           "Thickness": "1.2mm",
           "Coverage": "12 Sq.Ft",
           "Weight": "2.7 Kg"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774526297/goals-floors-upfit-panel-white-AE0o6ekkr0c6GWaO.png",
+            "alt": "UF White 305mm Upfit Ceiling Panel Wholesale Gurugram",
+            "name": "Upfit 305 - UF White 30"
+          }
+        ]
       },
       {
         "name": "Upfit 305 - UF Walnut 30",
@@ -875,14 +1092,19 @@
         "mrp": "₹12290",
         "discount": "87% off",
         "unit": "per panel",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774526342/goals-floors-upfit-panel-walnut-AVLpr9kkJ0Ur9Xkp.png",
-        "imageAlt": "UF Walnut 305mm Upfit Ceiling Panel Wholesale Delhi",
         "details": {
           "Size": "3660mm x 305mm (12ft x 1ft)",
           "Thickness": "1.2mm",
           "Coverage": "12 Sq.Ft",
           "Weight": "2.7 Kg"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774526342/goals-floors-upfit-panel-walnut-AVLpr9kkJ0Ur9Xkp.png",
+            "alt": "UF Walnut 305mm Upfit Ceiling Panel Wholesale Delhi",
+            "name": "Upfit 305 - UF Walnut 30"
+          }
+        ]
       },
       {
         "name": "Upfit 305 - UF Tog 30",
@@ -890,14 +1112,19 @@
         "mrp": "₹12290",
         "discount": "87% off",
         "unit": "per panel",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774526382/goals-floors-upfit-panel-ozone-AwvM2ZW2KqfeKv9z.png",
-        "imageAlt": "UF Ozone 305mm Upfit Ceiling Panel Wholesale NCR",
         "details": {
           "Size": "3660mm x 305mm (12ft x 1ft)",
           "Thickness": "1.2mm",
           "Coverage": "12 Sq.Ft",
           "Weight": "2.7 Kg"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774526382/goals-floors-upfit-panel-ozone-AwvM2ZW2KqfeKv9z.png",
+            "alt": "UF Ozone 305mm Upfit Ceiling Panel Wholesale NCR",
+            "name": "Upfit 305 - UF Tog 30"
+          }
+        ]
       },
       {
         "name": "Upfit 305 - UF Grey 30",
@@ -905,16 +1132,57 @@
         "mrp": "₹12290",
         "discount": "87% off",
         "unit": "per panel",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774526418/goals-floors-upfit-panel-grey-mxBZDQnDo6sr2q3v.png",
-        "imageAlt": "UF Grey 305mm Upfit Ceiling Panel Wholesale Gurugram",
         "details": {
           "Size": "3660mm x 305mm (12ft x 1ft)",
           "Thickness": "1.2mm",
           "Coverage": "12 Sq.Ft",
           "Weight": "2.7 Kg"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774526418/goals-floors-upfit-panel-grey-mxBZDQnDo6sr2q3v.png",
+            "alt": "UF Grey 305mm Upfit Ceiling Panel Wholesale Gurugram",
+            "name": "Upfit 305 - UF Grey 30"
+          }
+        ]
       }
-    ]
+    ],
+    "installationSteps": [
+      {
+        "title": "Support Framework",
+        "points": [
+          "Prepare Aluminium/MS sub-frame (45cm gap)",
+          "Check level of the entire grid"
+        ]
+      },
+      {
+        "title": "First Panel Alignment",
+        "points": [
+          "Align first panel using a laser level",
+          "Fix securely to the framework"
+        ]
+      },
+      {
+        "title": "Interlock & Secure",
+        "points": [
+          "Click subsequent panels into the edge",
+          "Use fasteners in the concealed lip"
+        ]
+      },
+      {
+        "title": "Edge Finishing",
+        "points": [
+          "Install J-Trims or L-Profiles at corners",
+          "Ensures a clean, professional border"
+        ]
+      }
+    ],
+    "afterInstallation": {
+      "title": "Clean Up",
+      "points": [
+        "Wipe panels with a clean microfiber cloth"
+      ]
+    }
   },
   {
     "id": "cobra-pu-stone",
@@ -950,14 +1218,6 @@
         "description": "The dense PU foam core naturally acts as an insulator, breaking sound waves to reduce echo while maintaining indoor temperatures."
       }
     ],
-    "specifications": {
-      "Material": "High-Density Polyurethane (PU) Foam",
-      "Average Dimensions": "1200mm (L) x 600mm (W)",
-      "Thickness Range": "20mm to 50mm (Varies by profile)",
-      "Weight": "Approx. 1.5 - 2.5 kg per panel",
-      "Fire Rating": "Class B1 (Flame Retardant)",
-      "Installation": "Structural PU Glue & Concealed Screws"
-    },
     "applications": [
       "Luxury Living Room Accent Walls",
       "Hotel Receptions & Entrance Lobbies",
@@ -965,12 +1225,6 @@
       "Premium Bathroom Dry-Area Walls",
       "High-end Retail Store Displays",
       "Exterior Facade Highlights (Covered)"
-    ],
-    "finishes": [
-      "Mushroom Stone (Rough Cleft)",
-      "Flowing Water Stone",
-      "Great Wall Stone (Linear Strip)",
-      "Flat Slate Rock"
     ],
     "logistics": {
       "Packaging": "Secure Corrugated Cartons (Varies by size)",
@@ -1042,14 +1296,19 @@
         "mrp": "₹2490",
         "discount": "40% off",
         "unit": "per sheet",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477290/Pu_Stone_30mm_White_Color.png",
-        "imageAlt": "White 30mm Cobra PU Stone Panel Wholesale Delhi NCR",
         "details": {
           "Panel Size": "1200mm x 600mm",
           "Thickness": "30mm",
           "Area per panel": "7.75 SQF",
           "Packing": "13 Pcs Per Box"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477290/Pu_Stone_30mm_White_Color.png",
+            "alt": "White 30mm Cobra PU Stone Panel Wholesale Delhi NCR",
+            "name": "Cobra PU Stone 099 (30mm)"
+          }
+        ]
       },
       {
         "name": "Cobra PU Stone 098 (30mm)",
@@ -1057,14 +1316,19 @@
         "mrp": "₹2490",
         "discount": "40% off",
         "unit": "per sheet",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477297/Pu_Stone_30mm_Black_Color.png",
-        "imageAlt": "Black 30mm Cobra PU Stone Panel Wholesale Gurugram",
         "details": {
           "Panel Size": "1200mm x 600mm",
           "Thickness": "30mm",
           "Area per panel": "7.75 SQF",
           "Packing": "13 Pcs Per Box"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477297/Pu_Stone_30mm_Black_Color.png",
+            "alt": "Black 30mm Cobra PU Stone Panel Wholesale Gurugram",
+            "name": "Cobra PU Stone 098 (30mm)"
+          }
+        ]
       },
       {
         "name": "Cobra PU Stone 097 (30mm)",
@@ -1072,14 +1336,19 @@
         "mrp": "₹2490",
         "discount": "40% off",
         "unit": "per sheet",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477288/Pu_Stone_Grey_Color.png",
-        "imageAlt": "Grey 30mm Cobra PU Stone Panel Wholesale NCR",
         "details": {
           "Panel Size": "1200mm x 600mm",
           "Thickness": "30mm",
           "Area per panel": "7.75 SQF",
           "Packing": "13 Pcs Per Box"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477288/Pu_Stone_Grey_Color.png",
+            "alt": "Grey 30mm Cobra PU Stone Panel Wholesale NCR",
+            "name": "Cobra PU Stone 097 (30mm)"
+          }
+        ]
       },
       {
         "name": "Cobra PU Stone 096 (30mm)",
@@ -1087,14 +1356,19 @@
         "mrp": "₹2490",
         "discount": "40% off",
         "unit": "per sheet",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477298/Pu_FauxStone_30mm.png",
-        "imageAlt": "30mm Cobra PU Faux Stone Panel Wholesale Delhi",
         "details": {
           "Panel Size": "1200mm x 600mm",
           "Thickness": "30mm",
           "Area per panel": "7.75 SQF",
           "Packing": "13 Pcs Per Box"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477298/Pu_FauxStone_30mm.png",
+            "alt": "30mm Cobra PU Faux Stone Panel Wholesale Delhi",
+            "name": "Cobra PU Stone 096 (30mm)"
+          }
+        ]
       },
       {
         "name": "Cobra PU Stone 095 (60mm)",
@@ -1102,14 +1376,19 @@
         "mrp": "₹2890",
         "discount": "38% off",
         "unit": "per sheet",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477265/Pu_Stone_Wholesaler_In_Gurgaon.png",
-        "imageAlt": "60mm Cobra PU Stone Wholesale Supplier Gurugram",
         "details": {
           "Panel Size": "1200mm x 600mm",
           "Thickness": "60mm",
           "Area per panel": "7.75 SQF",
           "Packing": "10 Pcs Per Box"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477265/Pu_Stone_Wholesaler_In_Gurgaon.png",
+            "alt": "60mm Cobra PU Stone Wholesale Supplier Gurugram",
+            "name": "Cobra PU Stone 095 (60mm)"
+          }
+        ]
       },
       {
         "name": "Cobra PU Stone 094 (60mm)",
@@ -1117,14 +1396,19 @@
         "mrp": "₹2890",
         "discount": "38% off",
         "unit": "per sheet",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477269/Grey_Color_Pu_FauxStone.png",
-        "imageAlt": "Grey 60mm Cobra PU Faux Stone Wholesale NCR",
         "details": {
           "Panel Size": "1200mm x 600mm",
           "Thickness": "60mm",
           "Area per panel": "7.75 SQF",
           "Packing": "10 Pcs Per Box"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477269/Grey_Color_Pu_FauxStone.png",
+            "alt": "Grey 60mm Cobra PU Faux Stone Wholesale NCR",
+            "name": "Cobra PU Stone 094 (60mm)"
+          }
+        ]
       },
       {
         "name": "Cobra PU Stone 093 (60mm)",
@@ -1132,14 +1416,19 @@
         "mrp": "₹2890",
         "discount": "38% off",
         "unit": "per sheet",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477270/Pu_Stone_60mm.png",
-        "imageAlt": "60mm Cobra PU Stone Panel Wholesale Delhi NCR",
         "details": {
           "Panel Size": "1200mm x 600mm",
           "Thickness": "60mm",
           "Area per panel": "7.75 SQF",
           "Packing": "10 Pcs Per Box"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477270/Pu_Stone_60mm.png",
+            "alt": "60mm Cobra PU Stone Panel Wholesale Delhi NCR",
+            "name": "Cobra PU Stone 093 (60mm)"
+          }
+        ]
       },
       {
         "name": "Cobra PU Stone 092 (60mm)",
@@ -1147,16 +1436,59 @@
         "mrp": "₹2890",
         "discount": "38% off",
         "unit": "per sheet",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477266/Lightweight_Stone_Panels_For_Interior_Use.png",
-        "imageAlt": "Lightweight 60mm PU Stone Panel Wholesale Gurugram",
         "details": {
           "Panel Size": "1200mm x 600mm",
           "Thickness": "60mm",
           "Area per panel": "7.75 SQF",
           "Packing": "10 Pcs Per Box"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477266/Lightweight_Stone_Panels_For_Interior_Use.png",
+            "alt": "Lightweight 60mm PU Stone Panel Wholesale Gurugram",
+            "name": "Cobra PU Stone 092 (60mm)"
+          }
+        ]
       }
-    ]
+    ],
+    "installationSteps": [
+      {
+        "title": "Layout Planning",
+        "points": [
+          "Dry-lay panels to check stone pattern",
+          "Plan cuts to minimize wastage"
+        ]
+      },
+      {
+        "title": "Cutting Stone",
+        "points": [
+          "Cut using a standard wood-cutting saw",
+          "Sand edges for a perfectly flat fit"
+        ]
+      },
+      {
+        "title": "Adhesion & Fixing",
+        "points": [
+          "Apply structural PU adhesive in blobs",
+          "Press firmly onto the wall surface",
+          "Use concealed screws in joints for high walls"
+        ]
+      },
+      {
+        "title": "Finishing Joints",
+        "points": [
+          "Use matching grout or sealant in crevices",
+          "Touch up any cut edges for realism"
+        ]
+      }
+    ],
+    "afterInstallation": {
+      "title": "Styling Tip",
+      "points": [
+        "Use accent lighting to highlight textures"
+      ],
+      "tip": "Side-lighting creates dramatic 3D shadows."
+    }
   },
   {
     "id": "artificial-grass",
@@ -1192,14 +1524,6 @@
         "description": "With stitch densities going up to 24,900/M2, our turf is built to withstand high foot traffic in cafes, schools, and public events."
       }
     ],
-    "specifications": {
-      "Material": "Polyethylene (PE) + Polypropylene (PP) Thatch",
-      "Pile Height Options": "25mm, 35mm, 40mm, 50mm",
-      "Backing": "Heavy-Duty Double Backing (SBR Latex)",
-      "Drainage Rate": "Excellent (Perforated bottom)",
-      "Toxicity": "Lead-Free / Non-Toxic",
-      "Warranty": "5-Year UV & Color Fastness Warranty"
-    },
     "applications": [
       "Apartment Balconies & Terraces",
       "Residential Villa Lawns & Gardens",
@@ -1207,10 +1531,6 @@
       "School Playgrounds & Sports Arenas",
       "Rooftop Cafes & Open-Air Restaurants",
       "Pet Play Areas & Kennels"
-    ],
-    "finishes": [
-      "Spring Green (Fresh & Bright)",
-      "Autumn Blend (Natural Olive Tone)"
     ],
     "logistics": {
       "Packaging": "Delivered in standard rolls (Wrapped securely)",
@@ -1282,8 +1602,6 @@
         "mrp": "₹90/sq.ft",
         "discount": "50% OFF",
         "unit": "retail price",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774598879/artificial-grass-20mm-YleqzvDVz3h0ko8W.avif",
-        "imageAlt": "25mm Premium Artificial Grass Wholesale Gurugram NCR",
         "details": {
           "Pile Height": "25mm",
           "Stitches": "14/10 Cm",
@@ -1291,7 +1609,14 @@
           "Dtex": "9000",
           "Backing": "Double Backing",
           "Area/Roll": "539 sq.ft"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774598879/artificial-grass-20mm-YleqzvDVz3h0ko8W.avif",
+            "alt": "25mm Premium Artificial Grass Wholesale Gurugram NCR",
+            "name": "Premium Grass 25mm"
+          }
+        ]
       },
       {
         "name": "Premium Grass 35mm",
@@ -1299,8 +1624,6 @@
         "mrp": "₹130/sq.ft",
         "discount": "50% OFF",
         "unit": "retail price",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774599014/artificial-grass-35mm-mjEq0v83xbsM83y0.avif",
-        "imageAlt": "35mm Premium Artificial Grass Wholesale Delhi NCR",
         "details": {
           "Pile Height": "35mm",
           "Stitches": "16/10 Cm",
@@ -1308,7 +1631,14 @@
           "Dtex": "10500",
           "Backing": "Double Backing",
           "Area/Roll": "539 sq.ft"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774599014/artificial-grass-35mm-mjEq0v83xbsM83y0.avif",
+            "alt": "35mm Premium Artificial Grass Wholesale Delhi NCR",
+            "name": "Premium Grass 35mm"
+          }
+        ]
       },
       {
         "name": "Premium Grass 40mm",
@@ -1316,8 +1646,6 @@
         "mrp": "₹150/sq.ft",
         "discount": "50% OFF",
         "unit": "retail price",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774599058/artificial-grass-40mm-Y4Lx3VoqgwFznpRp.avif",
-        "imageAlt": "40mm Premium Artificial Grass Wholesale NCR",
         "details": {
           "Pile Height": "40mm",
           "Stitches": "16/10 Cm",
@@ -1325,7 +1653,14 @@
           "Dtex": "10500",
           "Backing": "Double Backing",
           "Area/Roll": "539 sq.ft"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774599058/artificial-grass-40mm-Y4Lx3VoqgwFznpRp.avif",
+            "alt": "40mm Premium Artificial Grass Wholesale NCR",
+            "name": "Premium Grass 40mm"
+          }
+        ]
       },
       {
         "name": "Premium Grass 50mm",
@@ -1333,8 +1668,6 @@
         "mrp": "₹220/sq.ft",
         "discount": "50% OFF",
         "unit": "retail price",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774599198/artificial-grass-50mm-YNqPZy94g2CM46zK.avif",
-        "imageAlt": "50mm Premium Artificial Grass Wholesale Delhi",
         "details": {
           "Pile Height": "50mm",
           "Stitches": "24/10 Cm",
@@ -1342,9 +1675,61 @@
           "Dtex": "12000",
           "Backing": "Double Backing",
           "Area/Roll": "539 sq.ft"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774599198/artificial-grass-50mm-YNqPZy94g2CM46zK.avif",
+            "alt": "50mm Premium Artificial Grass Wholesale Delhi",
+            "name": "Premium Grass 50mm"
+          }
+        ]
       }
-    ]
+    ],
+    "installationSteps": [
+      {
+        "title": "Base Preparation",
+        "points": [
+          "Clear existing debris and weeds",
+          "Create a level base with crushed stone (soil)",
+          "Ensure 2% slope for drainage (concrete)"
+        ]
+      },
+      {
+        "title": "Weed Barrier & Foam",
+        "points": [
+          "Lay weed suppression fabric (soil)",
+          "Add comfort foam padding (balcony)"
+        ]
+      },
+      {
+        "title": "Layout & Trim",
+        "points": [
+          "Roll out grass in the direction of pile",
+          "Trim edges carefully with a utility knife"
+        ]
+      },
+      {
+        "title": "Seaming & Securing",
+        "points": [
+          "Join seams with adhesive tape",
+          "Secure edges with U-pins or perimeter glue"
+        ]
+      },
+      {
+        "title": "Infill & Brushing",
+        "points": [
+          "Spread silica sand evenly (optional)",
+          "Brush fibers with a stiff broom to stand them up"
+        ]
+      }
+    ],
+    "afterInstallation": {
+      "title": "Periodic Care",
+      "points": [
+        "Hose down with water for dust relief",
+        "Gently brush fibers monthly"
+      ]
+    }
   },
   {
     "id": "wpc-decking",
@@ -1380,25 +1765,11 @@
         "description": "Manufactured using 100% recyclable, Formaldehyde-free materials, offering a sustainable building solution for green architectural projects."
       }
     ],
-    "specifications": {
-      "Material": "Co-Extruded WPC (Wood Plastic Composite)",
-      "Core Type": "Solid Core Heavy-Duty (Not Hollow)",
-      "Standard Length": "2900mm (Approx. 9.5 Feet)",
-      "Thickness Options": "16mm / 21mm",
-      "Texture": "Wood Grain (Side 1) / Ridged (Side 2)",
-      "Warranty": "5-Year UV & Fade Warranty"
-    },
     "applications": [
       "Luxury Farmhouse Lawns & Decks",
       "Swimming Pool Surrounds",
       "High-Rise Apartment Balconies",
       "Rooftop Terrace Gardens & Cafes"
-    ],
-    "finishes": [
-      "Ipe Walnut",
-      "Natural Teakwood",
-      "Charcoal Ash Grey",
-      "Chocolate Brown"
     ],
     "logistics": {
       "Packaging": "Standard export-quality cartons",
@@ -1469,13 +1840,18 @@
         "mrp": "₹650",
         "discount": "41% off",
         "unit": "per sq.ft",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478670/WPC_Decking_Teak_Colour.png",
-        "imageAlt": "CEO Wine 22mm WPC Decking Wholesale Supplier in Gurugram NCR",
         "details": {
           "Board Size": "2900mm x 145mm x 22mm",
           "Material": "A+ WPC",
           "Coverage Per Board": "4.53 SQF"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478670/WPC_Decking_Teak_Colour.png",
+            "alt": "CEO Wine 22mm WPC Decking Wholesale Supplier in Gurugram NCR",
+            "name": "WPC Decking CEO Wine"
+          }
+        ]
       },
       {
         "name": "WPC Decking CEO Brown",
@@ -1483,13 +1859,18 @@
         "mrp": "₹650",
         "discount": "41% off",
         "unit": "per sq.ft",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478669/WPC_Decking_Brown_Colour.png",
-        "imageAlt": "CEO Brown 22mm Outdoor WPC Flooring in Delhi Noida",
         "details": {
           "Board Size": "2900mm x 145mm x 22mm",
           "Material": "A+ WPC",
           "Coverage Per Board": "4.53 SQF"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478669/WPC_Decking_Brown_Colour.png",
+            "alt": "CEO Brown 22mm Outdoor WPC Flooring in Delhi Noida",
+            "name": "WPC Decking CEO Brown"
+          }
+        ]
       },
       {
         "name": "WPC Decking CEO Ash",
@@ -1497,13 +1878,18 @@
         "mrp": "₹650",
         "discount": "41% off",
         "unit": "per sq.ft",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478668/WPC_Decking_Grey_Colour.png",
-        "imageAlt": "CEO Ash Grey 22mm WPC Decking Balcony Planks Gurugram",
         "details": {
           "Board Size": "2900mm x 145mm x 22mm",
           "Material": "A+ WPC",
           "Coverage Per Board": "4.53 SQF"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478668/WPC_Decking_Grey_Colour.png",
+            "alt": "CEO Ash Grey 22mm WPC Decking Balcony Planks Gurugram",
+            "name": "WPC Decking CEO Ash"
+          }
+        ]
       },
       {
         "name": "WPC Decking CEO Coffee",
@@ -1511,13 +1897,18 @@
         "mrp": "₹650",
         "discount": "41% off",
         "unit": "per sq.ft",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478666/WPC_DECKING_Coffee_Colour.png",
-        "imageAlt": "CEO Coffee 22mm WPC Pool Decking Supplier in NCR",
         "details": {
           "Board Size": "2900mm x 145mm x 22mm",
           "Material": "A+ WPC",
           "Coverage Per Board": "4.53 SQF"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478666/WPC_DECKING_Coffee_Colour.png",
+            "alt": "CEO Coffee 22mm WPC Pool Decking Supplier in NCR",
+            "name": "WPC Decking CEO Coffee"
+          }
+        ]
       },
       {
         "name": "WPC Decking G-F Ipe",
@@ -1525,13 +1916,18 @@
         "mrp": "₹850",
         "discount": "42% off",
         "unit": "per sq.ft",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774601383/wpc-decking-3-mxBXj0yLx8T2Lb3v.avif",
-        "imageAlt": "God Father Series Ipe 21mm WPC Decking Wholesale Delhi",
         "details": {
           "Board Size": "2900mm x 145mm x 21mm",
           "Material": "A+ WPC",
           "Coverage Per Board": "4.53 SQF"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774601383/wpc-decking-3-mxBXj0yLx8T2Lb3v.avif",
+            "alt": "God Father Series Ipe 21mm WPC Decking Wholesale Delhi",
+            "name": "WPC Decking G-F Ipe"
+          }
+        ]
       },
       {
         "name": "WPC Decking G-F Teak",
@@ -1539,13 +1935,18 @@
         "mrp": "₹850",
         "discount": "42% off",
         "unit": "per sq.ft",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774601445/wpc-decking-2-YanJ63eXz5INWDlL.avif",
-        "imageAlt": "God Father Teak 21mm Outdoor WPC Decking Gurugram",
         "details": {
           "Board Size": "2900mm x 145mm x 21mm",
           "Material": "A+ WPC",
           "Coverage Per Board": "4.53 SQF"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774601445/wpc-decking-2-YanJ63eXz5INWDlL.avif",
+            "alt": "God Father Teak 21mm Outdoor WPC Decking Gurugram",
+            "name": "WPC Decking G-F Teak"
+          }
+        ]
       },
       {
         "name": "WPC Decking G-F Grey",
@@ -1553,13 +1954,18 @@
         "mrp": "₹850",
         "discount": "42% off",
         "unit": "per sq.ft",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774601477/wpc-decking-ALpPBDjRVEHG0z8D.avif",
-        "imageAlt": "God Father Grey 21mm Exterior WPC Flooring Noida",
         "details": {
           "Board Size": "2900mm x 145mm x 21mm",
           "Material": "A+ WPC",
           "Coverage Per Board": "4.53 SQF"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774601477/wpc-decking-ALpPBDjRVEHG0z8D.avif",
+            "alt": "God Father Grey 21mm Exterior WPC Flooring Noida",
+            "name": "WPC Decking G-F Grey"
+          }
+        ]
       },
       {
         "name": "WPC Decking G-F Redwood",
@@ -1567,15 +1973,58 @@
         "mrp": "₹850",
         "discount": "42% off",
         "unit": "per sq.ft",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774601521/goals-floors-wpc-decking-AE0r2O3l2LcE9qZp.avif",
-        "imageAlt": "God Father Redwood 21mm Premium WPC Decking NCR",
         "details": {
           "Board Size": "2900mm x 145mm x 21mm",
           "Material": "A+ WPC",
           "Coverage Per Board": "4.53 SQF"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774601521/goals-floors-wpc-decking-AE0r2O3l2LcE9qZp.avif",
+            "alt": "God Father Redwood 21mm Premium WPC Decking NCR",
+            "name": "WPC Decking G-F Redwood"
+          }
+        ]
       }
-    ]
+    ],
+    "installationSteps": [
+      {
+        "title": "Sub-frame Setup",
+        "points": [
+          "Install Aluminium/MS joists with 35cm gap",
+          "Ensure 2% slope for water drainage"
+        ]
+      },
+      {
+        "title": "First Board Fix",
+        "points": [
+          "Use starter clips for the first board",
+          "Ensure perfect parallel alignment to wall"
+        ]
+      },
+      {
+        "title": "Hidden Clips",
+        "points": [
+          "Slide clips into board side grooves",
+          "Screw each clip firmly into the joist"
+        ]
+      },
+      {
+        "title": "Expansion Gap",
+        "points": [
+          "Leave 5mm gaps between board ends",
+          "Allows for expansion in NCR summer heat"
+        ],
+        "tip": "Proper gaps prevent warping and ensure long deck life."
+      }
+    ],
+    "afterInstallation": {
+      "title": "Maintenance",
+      "points": [
+        "Wash with mild soap and water only",
+        "Check clips annually for tightness"
+      ]
+    }
   },
   {
     "id": "cobra-spc-flooring",
@@ -1611,27 +2060,12 @@
         "description": "Reduces hollow footfall sounds compared to standard tiles and is manufactured with strict Class B1 fire retardant properties."
       }
     ],
-    "specifications": {
-      "Material": "Stone Plastic Composite (SPC)",
-      "Plank Size (Standard)": "1220mm x 183mm",
-      "Total Thickness": "6mm",
-      "Wear Layer": "0.5mm (Heavy Duty)",
-      "Surface Texture": "EIR - Real Wood Grain",
-      "Edge Finish": "V Groove Painted",
-      "Installation System": "Uniclick"
-    },
     "applications": [
       "Luxury Living Rooms & Bedrooms",
       "Modern Kitchens & Dining Areas",
       "Corporate Offices & Boardrooms",
       "Retail Stores & Boutiques",
       "Hospitality Corridors & Hotel Rooms"
-    ],
-    "finishes": [
-      "Light Oak (G-F SPC 301)",
-      "Classic Teak (G-F SPC 302)",
-      "Smoked Ash (G-F SPC 303)",
-      "Washed Pine (G-F SPC 304)"
     ],
     "logistics": {
       "Packaging": "Heavy-Duty Corrugated Cartons",
@@ -1703,14 +2137,19 @@
         "mrp": "₹490",
         "discount": "60% OFF",
         "unit": "per sq.ft",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612619/waterproof-flooring-shades-dJo5zrRJNBSeMnlE.avif",
-        "imageAlt": "Light Oak G-F SPC 301 Waterproof Flooring Delhi NCR",
         "details": {
           "Plank Size": "1220mm x 183mm",
           "Thickness": "6mm",
           "Wear Layer": "0.5mm",
           "Surface": "EIR Real Wood Grain"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612619/waterproof-flooring-shades-dJo5zrRJNBSeMnlE.avif",
+            "alt": "Light Oak G-F SPC 301 Waterproof Flooring Delhi NCR",
+            "name": "G-F SPC 301 (Light Oak)"
+          }
+        ]
       },
       {
         "name": "G-F SPC 302 (Classic Teak)",
@@ -1718,14 +2157,19 @@
         "mrp": "₹490",
         "discount": "60% OFF",
         "unit": "per sq.ft",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612665/spc-flooring-leben-AVL1o0MNKzij57rM.avif",
-        "imageAlt": "Classic Teak G-F SPC 302 Premium Vinyl Flooring Gurugram",
         "details": {
           "Plank Size": "1220mm x 183mm",
           "Thickness": "6mm",
           "Wear Layer": "0.5mm",
           "Surface": "EIR Real Wood Grain"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612665/spc-flooring-leben-AVL1o0MNKzij57rM.avif",
+            "alt": "Classic Teak G-F SPC 302 Premium Vinyl Flooring Gurugram",
+            "name": "G-F SPC 302 (Classic Teak)"
+          }
+        ]
       },
       {
         "name": "G-F SPC 303 (Smoked Ash)",
@@ -1733,14 +2177,19 @@
         "mrp": "₹490",
         "discount": "60% OFF",
         "unit": "per sq.ft",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612713/leben-spc-flooring-ALp7Nw4xLoCZ4Xn5.avif",
-        "imageAlt": "Smoked Ash Grey G-F SPC 303 Office Flooring Noida",
         "details": {
           "Plank Size": "1220mm x 183mm",
           "Thickness": "6mm",
           "Wear Layer": "0.5mm",
           "Surface": "EIR Real Wood Grain"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612713/leben-spc-flooring-ALp7Nw4xLoCZ4Xn5.avif",
+            "alt": "Smoked Ash Grey G-F SPC 303 Office Flooring Noida",
+            "name": "G-F SPC 303 (Smoked Ash)"
+          }
+        ]
       },
       {
         "name": "G-F SPC 304 (Washed Pine)",
@@ -1748,14 +2197,19 @@
         "mrp": "₹490",
         "discount": "60% OFF",
         "unit": "per sq.ft",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612790/spc-flooring-mv02ZyRpLDfnwL9O.avif",
-        "imageAlt": "Washed Pine G-F SPC 304 Wooden Flooring Wholesale NCR",
         "details": {
           "Plank Size": "1220mm x 183mm",
           "Thickness": "6mm",
           "Wear Layer": "0.5mm",
           "Surface": "EIR Real Wood Grain"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612790/spc-flooring-mv02ZyRpLDfnwL9O.avif",
+            "alt": "Washed Pine G-F SPC 304 Wooden Flooring Wholesale NCR",
+            "name": "G-F SPC 304 (Washed Pine)"
+          }
+        ]
       },
       {
         "name": "Matching SPC Skirting",
@@ -1763,14 +2217,19 @@
         "mrp": "₹1200",
         "discount": "33% OFF",
         "unit": "per pc",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612847/spc-flooring-skirting-YleqokRVEgfBLbx5.avif",
-        "imageAlt": "SPC Flooring Matching Skirting Profile Supplier Gurugram",
         "details": {
           "Length": "2440mm",
           "Dimensions": "14mm x 14mm",
           "Material": "SPC",
           "Application": "Wall & Floor Blending"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612847/spc-flooring-skirting-YleqokRVEgfBLbx5.avif",
+            "alt": "SPC Flooring Matching Skirting Profile Supplier Gurugram",
+            "name": "Matching SPC Skirting"
+          }
+        ]
       },
       {
         "name": "Floor Transition Reducer",
@@ -1778,14 +2237,19 @@
         "mrp": "₹1100",
         "discount": "31% OFF",
         "unit": "per pc",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612906/spc-flooring-reducer-m5KLXx1JnWiyna78.avif",
-        "imageAlt": "SPC Flooring Transition Reducer Profile NCR",
         "details": {
           "Length": "2400mm",
           "Dimensions": "40mm x 10mm",
           "Material": "SPC",
           "Application": "Uneven Floor Connection"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612906/spc-flooring-reducer-m5KLXx1JnWiyna78.avif",
+            "alt": "SPC Flooring Transition Reducer Profile NCR",
+            "name": "Floor Transition Reducer"
+          }
+        ]
       },
       {
         "name": "SPC T-Profile",
@@ -1793,14 +2257,19 @@
         "mrp": "₹1100",
         "discount": "31% OFF",
         "unit": "per pc",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612971/spc-flooring-t-profile-AoPqoyR885IMDJez.avif",
-        "imageAlt": "SPC Flooring T-Profile Room Separator Delhi",
         "details": {
           "Length": "2400mm",
           "Dimensions": "40mm x 12mm",
           "Material": "SPC",
           "Application": "Same Level Floor Joint"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612971/spc-flooring-t-profile-AoPqoyR885IMDJez.avif",
+            "alt": "SPC Flooring T-Profile Room Separator Delhi",
+            "name": "SPC T-Profile"
+          }
+        ]
       },
       {
         "name": "Quarter Round Beeding",
@@ -1808,15 +2277,58 @@
         "mrp": "₹700",
         "discount": "35% OFF",
         "unit": "per pc",
-        "imageUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774613051/spc-flooring-beeding-mP42bvVlBRHBQpW2.avif",
-        "imageAlt": "SPC Flooring Quarter Round Beeding Finish Noida",
         "details": {
           "Length": "2440mm",
           "Dimensions": "15mm x 15mm",
           "Material": "SPC",
           "Application": "Cabinet & Glass Edge Finish"
-        }
+        },
+        "images": [
+          {
+            "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774613051/spc-flooring-beeding-mP42bvVlBRHBQpW2.avif",
+            "alt": "SPC Flooring Quarter Round Beeding Finish Noida",
+            "name": "Quarter Round Beeding"
+          }
+        ]
       }
-    ]
+    ],
+    "installationSteps": [
+      {
+        "title": "Subfloor Prep",
+        "points": [
+          "Floor must be level within 3/16 inch",
+          "Ensure subfloor is dry and dust-free"
+        ]
+      },
+      {
+        "title": "Underlayment",
+        "points": [
+          "Lay premium IXPE acoustic underlay",
+          "Seal seams with moisture-resistant tape"
+        ]
+      },
+      {
+        "title": "Spacing & Spacers",
+        "points": [
+          "Use 1/4\" spacers against all walls",
+          "Allows for natural expansion movement"
+        ]
+      },
+      {
+        "title": "Uniclick Installation",
+        "points": [
+          "Angle board at 30° into the joint",
+          "Click down firmly into place",
+          "Use tapping block for invisible joints"
+        ]
+      }
+    ],
+    "afterInstallation": {
+      "title": "Flooring Finish",
+      "points": [
+        "Remove spacers and install skirting",
+        "Install T-Profiles in doorways"
+      ]
+    }
   }
 ]

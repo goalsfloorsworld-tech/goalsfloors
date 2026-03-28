@@ -16,7 +16,7 @@ export default function AboutPage() {
           />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Our Legacy Since 2005</h1>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">India&apos;s Leading Wall Panel & Flooring Suppliers Since 2005</h1>
           <p className="text-gray-300 text-lg max-w-3xl mx-auto font-light">
             Goals Floors has been at the forefront of architectural innovation for over 19 years, delivering premium surfaces that redefine luxury and durability.
           </p>
@@ -64,7 +64,7 @@ export default function AboutPage() {
               />
             </div>
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8 tracking-tight">Redefining Architectural Surfaces</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8 tracking-tight">Our Mission: Premium Surfaces for Modern Interiors</h2>
               <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
                 Founded in 2005, Goals Floors started with a simple vision: to bring world-class surface solutions to the Indian market. Today, we are proud to be the leading distributors of premium WPC Louvers, Charcoal Panels, and Baffle Ceilings.
               </p>

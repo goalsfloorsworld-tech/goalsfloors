@@ -166,10 +166,10 @@ export default function ContactPage() {
         
         <div className="relative z-10 px-4">
           <h1 className="text-sm font-black text-amber-600 uppercase tracking-[0.3em] mb-4">
-            Consultation & Support
+            Expert Consultation & Project Support
           </h1>
           <h2 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white tracking-tight max-w-2xl mx-auto">
-            Let&apos;s Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 dark:from-white to-gray-500">Extraordinary.</span>
+            Let&apos;s Transform Your Vision Into <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 dark:from-white to-gray-500">Reality.</span>
           </h2>
           <p className="mt-6 text-gray-500 dark:text-gray-400 text-lg max-w-xl mx-auto leading-relaxed font-normal">
             From premium WPC louvers to luxury laminate flooring, our architectural experts are ready to elevate your next project.
@@ -187,7 +187,7 @@ export default function ContactPage() {
           <div className="w-full lg:w-[45%] bg-gray-950 text-white relative flex flex-col">
             
             <div className="p-10 md:p-8 relative z-10 flex-1">
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 tracking-tight">Experience Goals Floors</h3>
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 tracking-tight">Visit Our Corporate Studio in Gurugram</h3>
               
               <div className="space-y-8">
                 <div className="flex items-start gap-4 group">
@@ -342,12 +342,12 @@ export default function ContactPage() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-xs font-bold text-gray-900 dark:text-gray-300 uppercase tracking-widest">Project / Site Address</label>
+                    <label className="text-xs font-bold text-gray-900 dark:text-gray-300 uppercase tracking-widest">Project / Site Address <span className="text-red-500">*</span></label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                         <MapPin className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                       </div>
-                      <input name="address" value={formData.address} onChange={handleInputChange} type="text" className={getInputClass(formData.address)} placeholder="Complete Site Address or City" />
+                      <input name="address" value={formData.address} onChange={handleInputChange} type="text" required className={getInputClass(formData.address)} placeholder="Complete Site Address or City" />
                     </div>
                   </div>
 

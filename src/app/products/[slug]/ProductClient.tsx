@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { 
   ChevronRight, ShieldCheck, Droplets, Sun, 
   Wrench, ArrowRight, CheckCircle2, Lock, Ruler, BarChart3,
   Plus, Minus, Palette, Hammer, Sparkles, Check,
-  Layers, Weight, Flame, Box, Maximize, Zap, Package
+  Layers, Weight, Flame, Box, Maximize, Zap, Package, X
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 export interface FAQ {
   question: string;
@@ -21,14 +22,26 @@ export interface Variant {
   mrp?: string;
   discount?: string;
   unit?: string;
-  imageUrl?: string;
-  imageAlt?: string;
+  images?: { url: string; alt: string; name?: string }[];
   details: Record<string, string>;
 }
 
 export interface Feature {
   title: string;
   description: string;
+}
+
+export interface InstallationStep {
+  title: string;
+  description?: string;
+  points: string[];
+  tip?: string;
+}
+
+export interface AfterInstallation {
+  title: string;
+  points: string[];
+  tip?: string;
 }
 
 export interface Product {
@@ -40,9 +53,9 @@ export interface Product {
   shortDescription: string;
   longDescription: string;
   features: Feature[];
-  specifications: Record<string, string>;
   applications: string[];
-  finishes: string[];
+  installationSteps: InstallationStep[];
+  afterInstallation?: AfterInstallation;
   installation: string;
   maintenance: string;
   logistics?: {
@@ -66,19 +79,176 @@ const StarRating = () => (
   </div>
 );
 
-export default function ProductClient({ product, slug }: { product: Product; slug: string }) {
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+const AnimationStyles = () => (
+  <style dangerouslySetInnerHTML={{ __html: `
+    @keyframes ripple {
+      0% { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(2.5); opacity: 0; }
+    }
+    @keyframes bounce-pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .animate-ripple {
+      animation: ripple 1.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    .animate-bounce-pop {
+      animation: bounce-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+  ` }} />
+);
 
-  const getSpecIcon = (key: string) => {
-    const k = key.toLowerCase();
-    if (k.includes('material')) return Layers;
-    if (k.includes('dimension')) return Ruler;
-    if (k.includes('weight')) return Weight;
-    if (k.includes('finish')) return Palette;
-    if (k.includes('fire')) return Flame;
-    if (k.includes('warranty')) return ShieldCheck;
-    return Box;
+const VariantCard = ({ variant, onImageClick }: { variant: Variant, onImageClick: (url: string) => void }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const images = variant.images || [];
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const scrollLeft = e.currentTarget.scrollLeft;
+    const width = e.currentTarget.clientWidth;
+    const newIndex = Math.round(scrollLeft / width);
+    if (newIndex !== activeIndex) setActiveIndex(newIndex);
   };
+
+  return (
+    <div className="bg-white dark:bg-slate-950 shadow-xl rounded-sm border border-gray-200 dark:border-gray-800 flex flex-col h-full hover:border-amber-500/30 transition-all duration-300 group overflow-hidden">
+      {images.length > 0 && (
+        <div className="relative aspect-[3/2] bg-gray-50 dark:bg-slate-900 border-b border-gray-200 dark:border-gray-800 overflow-hidden">
+          <div 
+            ref={scrollRef}
+            onScroll={handleScroll}
+            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide h-full"
+          >
+            {images.map((img, i) => (
+              <div 
+                key={i} 
+                className="min-w-full h-full snap-center relative cursor-zoom-in"
+                onClick={() => onImageClick(img.url)}
+              >
+                <Image 
+                  src={img.url} 
+                  alt="" 
+                  fill 
+                  className="object-cover blur-2xl opacity-40 scale-110" 
+                />
+                <div className="absolute inset-0 bg-white/20 dark:bg-black/20 z-0" />
+                <Image 
+                  src={img.url} 
+                  alt={img.alt || `${variant.name} detail ${i + 1}`}
+                  fill
+                  className="object-contain relative z-10 group-hover:scale-110 transition-transform duration-500"
+                />
+
+                {/* Variation Name Badge */}
+                <div className="absolute top-2 left-2 z-20 px-2 py-0.5 bg-black/50 backdrop-blur-md rounded-full border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="text-[9px] font-bold text-white uppercase tracking-wider">
+                    {img.name}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Indicators */}
+          {images.length > 1 && (
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+              {images.map((_, i) => (
+                <div 
+                  key={i} 
+                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                    i === activeIndex ? "bg-amber-600 w-4" : "bg-white/50"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
+          
+          <div className="absolute inset-0 bg-white/5 dark:bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none" />
+        </div>
+      )}
+
+      <div className="p-4 flex flex-col flex-1">
+        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-900 pb-4 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">
+          {images[activeIndex]?.name || variant.name}
+        </h4>
+        
+        <div className="flex-1 space-y-2.5 mb-6">
+          {Object.entries(variant.details).map(([key, value]) => (
+            <div key={key} className="flex justify-between items-end gap-2 text-sm">
+              <span className="text-gray-400 dark:text-gray-500 font-medium shrink-0">{key}</span>
+              <div className="flex-1 border-b border-dotted border-gray-200 dark:border-gray-800 mb-1"></div>
+              <span className="text-gray-900 dark:text-gray-300 font-semibold text-right">{value}</span>
+            </div>
+          ))}
+        </div>
+        
+        <div className="mt-auto pt-4 border-t border-gray-200 dark:border-gray-900">
+          <div className="flex items-baseline gap-1">
+            <span className="text-2xl font-black text-gray-900 dark:text-white truncate">
+              {variant.price}
+            </span>
+            {variant.unit && (
+              <span className="text-sm font-medium text-gray-500 dark:text-gray-400 lowercase truncate">
+                {variant.unit}
+              </span>
+            )}
+          </div>
+
+          {(variant.mrp || variant.discount) && (
+            <div className="flex items-center mt-1">
+              {variant.mrp && (
+                <span className="text-sm text-gray-400 dark:text-gray-500 line-through font-medium truncate">
+                  {variant.mrp}
+                </span>
+              )}
+              {variant.discount && (
+                <span className="text-sm text-green-600 dark:text-green-500 font-bold ml-2 truncate">
+                  {variant.discount}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default function ProductClient({ product, slug }: { product: Product; slug: string }) {
+  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [glowProgress, setGlowProgress] = useState(0);
+  const circlesRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const first = circlesRef.current[0];
+      const last = circlesRef.current[product.installationSteps.length - 1];
+      if (!first || !last) return;
+
+      const firstRect = first.getBoundingClientRect();
+      const lastRect = last.getBoundingClientRect();
+      
+      // We trigger progress based on the screen center
+      const scrollThreshold = window.innerHeight * 0.55; 
+      
+      const totalDistance = lastRect.top - firstRect.top;
+      const currentDistance = scrollThreshold - firstRect.top;
+      
+      let progress = currentDistance / totalDistance;
+      progress = Math.max(0, Math.min(1, progress));
+      
+      setGlowProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [product.installationSteps.length]);
+
+
 
   const toggleFaq = (index: number) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
@@ -105,11 +275,22 @@ export default function ProductClient({ product, slug }: { product: Product; slu
       />
       
       {/* ================= 1. CLEAN HERO OVERVIEW ================= */}
-      <div className="border-b border-gray-100 dark:border-gray-800 pt-10 pb-8 lg:pt-1 lg:pb-5 text-left">
+      <div className="border-b border-gray-200 dark:border-gray-800 pt-10 pb-8 lg:pt-1 lg:pb-5 text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center">
             
-            <div className="w-full lg:w-1/2">
+            <motion.div 
+              className="w-full lg:w-1/2"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                type: 'spring', 
+                stiffness: 100, 
+                damping: 20, 
+                staggerChildren: 0.2,
+                delayChildren: 0.1
+              }}
+            >
               <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-4">
                 <Link href="/" className="hover:text-amber-600 transition-colors">Home</Link>
                 <ChevronRight className="w-3 h-3" />
@@ -120,246 +301,264 @@ export default function ProductClient({ product, slug }: { product: Product; slu
               
               <StarRating />
               
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-gray-900 dark:text-white leading-[1.1] mb-4">
+              <motion.h1 
+                className="text-3xl md:text-5xl lg:text-6xl font-semibold text-gray-900 dark:text-white leading-[1.1] mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
                 {product.title}
-              </h1>
-              <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
+              </motion.h1>
+
+              {/* Mobile Image: Shown only on mobile between heading and description */}
+              <div className="lg:hidden relative aspect-video w-full mb-6 rounded-sm overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm bg-gray-50 dark:bg-slate-900">
+                {/* Ambient Blur Background */}
+                <Image src={product.images[0].url} alt="" fill className="object-cover blur-2xl opacity-40 scale-110" />
+                <div className="absolute inset-0 bg-white/10 dark:bg-black/10" />
+                <Image src={product.images[0].url} alt={product.images[0].alt} fill className="object-contain relative z-10" priority />
+              </div>
+
+              <motion.p 
+                className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
                 {product.shortDescription}
-              </p>
+              </motion.p>
               
-              <div className="flex flex-col sm:flex-row items-center gap-3">
+              <motion.div 
+                className="flex flex-col sm:flex-row items-center gap-3"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
                  <Link href="/contact" className="inline-flex items-center justify-center w-full sm:w-auto bg-gray-900 dark:bg-amber-600 text-white px-8 py-3.5 text-xs font-semibold uppercase tracking-widest hover:bg-amber-600 dark:hover:bg-amber-500 transition-colors">
                   Request Quote
                  </Link>
-                 <a href="#technical-data" className="inline-flex items-center justify-center w-full sm:w-auto border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 px-8 py-3.5 text-xs font-semibold uppercase tracking-widest hover:bg-gray-50 dark:hover:bg-slate-900 transition-colors">
-                  Specifications
-                 </a>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
             
-            <div className="w-full lg:w-1/2">
-              <div className="relative aspect-square w-full max-w-[500px] mx-auto bg-gray-50 dark:bg-slate-900 rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm transition-transform duration-700 hover:scale-[1.01]">
-                <Image src={product.images[0].url} alt={product.images[0].alt} fill className="object-cover" priority />
+            <motion.div 
+              className="w-full lg:w-1/2 hidden lg:block"
+              initial={{ opacity: 0, x: 50, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.3, type: 'spring', stiffness: 50 }}
+            >
+              <div className="relative aspect-square w-full max-w-[500px] mx-auto bg-gray-50 dark:bg-slate-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm transition-transform duration-700 hover:scale-[1.01]">
+                {/* Ambient Blur Background */}
+                <Image src={product.images[0].url} alt="" fill className="object-cover blur-3xl opacity-50 scale-110" />
+                <div className="absolute inset-0 bg-white/10 dark:bg-black/20" />
+                <Image src={product.images[0].url} alt={product.images[0].alt} fill className="object-contain relative z-10 p-4" priority />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
 
       {/* ================= 2. QUICK FEATURES ================= */}
-      <div className="bg-gray-50 dark:bg-slate-900 py-8 lg:py-10 border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+      <div className="bg-gray-50 dark:bg-slate-900 py-8 lg:py-10 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 lg:gap-4">
             {[
-              { icon: ShieldCheck, title: "Commercial Grade", desc: product.features[0]?.title || "Built for heavy traffic" },
-              { icon: Droplets, title: "Water Resistant", desc: product.features[1]?.title || "Ideal for all conditions" },
-              { icon: Sun, title: "UV Protected", desc: product.features[2]?.title || "Fade-resistant finish" },
-              { icon: Wrench, title: "Quick Install", desc: product.features[3]?.title || "Modular deployment" }
+              { icon: ShieldCheck, title: "Commercial Grade", desc: "100% Termite & Borer Proof" },
+              { icon: Droplets, title: "100% WATERPROOF", desc: "No Swelling / Decay" },
+              { icon: Sun, title: "UV Protected", desc: "Fade Resistant Finish" },
+              { icon: Wrench, title: "Quick Install", desc: "Interlocking System" },
+              { icon: Palette, title: "PAINTABLE", desc: "Custom Color Ready" },
+              { icon: Hammer, title: "Unbreakable", desc: "High Impact Strength" },
+              { icon: Zap, title: "GLUE DOWN", desc: "Maximum Grip Bond" }
             ].map((item, i) => (
-              <div key={i} className="flex flex-col items-start hover:-translate-y-1 transition-transform cursor-default">
-                <div className="w-10 h-10 bg-white dark:bg-slate-950 rounded-lg flex items-center justify-center mb-4 shadow-sm border border-gray-100 dark:border-gray-800 text-amber-600 dark:text-amber-500 transition-colors duration-300">
+              <motion.div 
+                key={i} 
+                className="flex flex-col items-center lg:items-start text-center lg:text-left hover:-translate-y-1 transition-transform cursor-default"
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ 
+                  type: 'spring', 
+                  stiffness: 150, 
+                  damping: 15,
+                  delay: i * 0.05 
+                }}
+              >
+                <div className="w-10 h-10 bg-white dark:bg-slate-950 rounded-lg flex items-center justify-center mb-4 shadow-sm border border-gray-200 dark:border-gray-800 text-amber-600 dark:text-amber-500 transition-colors duration-300">
                   <item.icon className="w-5 h-5" />
                 </div>
-                <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-1 uppercase tracking-tight">{item.title}</h4>
-                <p className="text-[11px] text-gray-500 dark:text-gray-400 font-medium">{item.desc}</p>
-              </div>
+                <h4 className="text-[11px] lg:text-[12px] font-bold text-gray-900 dark:text-white mb-1 uppercase tracking-tight leading-tight">{item.title}</h4>
+                <p className="text-[10px] text-gray-500 dark:text-gray-400 font-medium">{item.desc}</p>
+              </motion.div>
             ))}
-          </div>
-        </div>
-      </div>
-
-      {/* ================= 3. LAYERED MAGAZINE STYLE PRODUCT STORY ================= */}
-      <div className="bg-white dark:bg-slate-950 py-16 lg:py-15 transition-colors duration-300 overflow-hidden relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-            
-            {/* Left Column: The Narrative */}
-            <div className="relative">
-              <span className="inline-block text-[10px] font-black uppercase tracking-[0.3em] text-amber-600 mb-6 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 rounded-sm">
-                Material Philosophy
-              </span>
-              <h3 className="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white mb-8 leading-tight">
-                Engineered for <span className="text-amber-600">exceptional</span> luxury interiors.
-              </h3>
-              <div className="prose prose-lg dark:prose-invert max-w-none">
-                <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-light italic border-l-4 border-amber-600 pl-6 py-2">
-                  {product.longDescription}
-                </p>
-              </div>
-              
-              {/* Feature Images Integrated Below Story */}
-              <div className="mt-12 grid grid-cols-2 gap-4">
-                {product.images.slice(1,3).map((img, i) => (
-                  <div key={i} className="relative aspect-square rounded-sm overflow-hidden transition-all duration-700 shadow-lg">
-                    <Image src={img.url} alt={img.alt} fill className="object-cover" />
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Right Column: Technical Features Grid */}
-            <div className="bg-gray-50/50 dark:bg-slate-900/50 p-8 md:p-12 rounded-sm border border-gray-100 dark:border-gray-800/50">
-              <div className="mb-10 pb-6 border-b border-gray-200 dark:border-gray-800">
-                <h4 className="text-sm font-black uppercase tracking-widest text-gray-900 dark:text-white">Core Specification Choice</h4>
-                <p className="text-xs text-gray-400 mt-2">Maximum performance for architectural standards</p>
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-10 gap-x-8">
-                {product.features.map((feature, idx) => (
-                  <div key={idx} className="group flex flex-col items-start focus-within:ring-2 focus-within:ring-amber-500 p-2 rounded-sm transition-all">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="text-amber-600 dark:text-amber-500 bg-amber-50 dark:bg-amber-900/10 p-2 rounded-sm group-hover:scale-110 transition-transform flex-shrink-0">
-                        <CheckCircle2 className="w-5 h-5 font-black" />
-                      </div>
-                      <h5 className="text-base font-black text-gray-900 dark:text-white uppercase tracking-tight">
-                        {feature.title}
-                      </h5>
-                    </div>
-                    <p className="text-[15px] text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
-                      {feature.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      {/* ================= 4. TECHNICAL SPECIFICATIONS ================= */}
-      <div id="technical-data" className="bg-gray-50 dark:bg-slate-900 py-10 lg:py-16 border-y border-gray-100 dark:border-gray-800 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
-            
-            <div className="w-full lg:w-1/3">
-              <div className="w-12 h-12 bg-gray-900 dark:bg-black rounded-lg flex items-center justify-center mb-6 text-white shadow-md">
-                 <Ruler className="w-6 h-6" />
-              </div>
-              <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-4">Technical Specifications</h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
-                Comprehensive data for architects, contractors, and tender documentation across NCR.
-              </p>
-               <Link href="/contact" className="text-amber-600 dark:text-amber-500 font-medium hover:text-gray-900 dark:hover:text-white transition-colors inline-flex items-center gap-2">
-                 Request detailed datasheet <ArrowRight className="w-4 h-4" />
-               </Link>
-            </div>
-            
-            <div className="w-full lg:w-2/3">
-              <div className="border border-gray-200 dark:border-gray-800 rounded-lg bg-white dark:bg-slate-950 overflow-hidden shadow-sm transition-colors duration-300">
-                {Object.entries(product.specifications).map(([key, value], i) => (
-                  <div key={key} className="flex flex-col sm:flex-row border-b border-gray-100 dark:border-gray-800 last:border-0 hover:bg-gray-50 dark:hover:bg-slate-900 transition-colors">
-                    <div className="sm:w-1/3 bg-gray-50/50 dark:bg-slate-900/50 p-4 sm:p-5 text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest flex items-center gap-3">
-                      {(() => {
-                        const Icon = getSpecIcon(key);
-                        return <Icon className="w-4 h-4 text-amber-600 dark:text-amber-500" />;
-                      })()}
-                      {key}
-                    </div>
-                    <div className="sm:w-2/3 p-5 sm:p-6 text-base font-medium text-gray-900 dark:text-gray-300">
-                      {value as React.ReactNode}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
 
       {/* ================= 4.5. PRODUCT VARIATIONS & PRICING ================= */}
       {product.variants && product.variants.length > 0 && (
-        <div className="bg-gray-50 dark:bg-slate-900 py-16 lg:py-24 border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+        <div className="bg-gray-50 dark:bg-slate-900 py-10 lg:py-24 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-600 mb-4 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 inline-block rounded-sm">
                 Available Selection
               </h2>
               <h3 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white">
-                Available Specifications & Wholesale Pricing
+                Choose Your Size & Get Wholesale Pricing
               </h3>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {product.variants.map((variant, idx) => (
-                <div key={idx} className="bg-white dark:bg-slate-950 shadow-xl rounded-sm border border-gray-100 dark:border-gray-800 flex flex-col h-full hover:border-amber-500/30 transition-all duration-300 group overflow-hidden">
-                  
-                  {/* Drawing Header */}
-                  {variant.imageUrl && (
-                    <div className="aspect-[3/2] relative bg-gray-50 dark:bg-slate-900 border-b border-gray-100 dark:border-gray-800">
-                      <Image 
-                        src={variant.imageUrl} 
-                        alt={variant.imageAlt || `${variant.name} technical specification`}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        priority={idx < 3}
-                      />
-                      <div className="absolute inset-0 bg-white/5 dark:bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                  )}
-
-                  <div className="p-4 flex flex-col flex-1">
-                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-4 border-b border-gray-50 dark:border-gray-900 pb-4 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">
-                      {variant.name}
-                    </h4>
-                    
-                    <div className="flex-1 space-y-2.5 mb-6">
-                      {Object.entries(variant.details).map(([key, value]) => (
-                        <div key={key} className="flex justify-between items-end gap-2 text-sm">
-                          <span className="text-gray-400 dark:text-gray-500 font-medium shrink-0">{key}</span>
-                          <div className="flex-1 border-b border-dotted border-gray-200 dark:border-gray-800 mb-1"></div>
-                          <span className="text-gray-900 dark:text-gray-300 font-semibold text-right">{value}</span>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <div className="mt-auto pt-4 border-t border-gray-50 dark:border-gray-900">
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-2xl font-black text-gray-900 dark:text-white truncate">
-                          {variant.price}
-                        </span>
-                        {variant.unit && (
-                          <span className="text-sm font-medium text-gray-500 dark:text-gray-400 lowercase truncate">
-                            {variant.unit}
-                          </span>
-                        )}
-                      </div>
-
-                      {(variant.mrp || variant.discount) && (
-                        <div className="flex items-center mt-1">
-                          {variant.mrp && (
-                            <span className="text-sm text-gray-400 dark:text-gray-500 line-through font-medium truncate">
-                              {variant.mrp}
-                            </span>
-                          )}
-                          {variant.discount && (
-                            <span className="text-sm text-green-600 dark:text-green-500 font-bold ml-2 truncate">
-                              {variant.discount}
-                            </span>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ 
+                    duration: 0.7, 
+                    delay: idx * 0.1,
+                    type: 'spring',
+                    stiffness: 80
+                  }}
+                >
+                  <VariantCard variant={variant} onImageClick={setFullscreenImage} />
+                </motion.div>
               ))}
             </div>
           </div>
         </div>
       )}
 
+
+      {/* ================= 3. CORE SPECIFICATIONS (FULL WIDTH) ================= */}
+      <div className="bg-gray-50/50 dark:bg-slate-900/50 py-16 border-b border-gray-200 dark:border-gray-800/50 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 pb-6 border-b border-gray-200 dark:border-gray-800">
+            <h4 className="text-3xl md:text-4xl font-bold uppercase tracking-tight text-gray-900 dark:text-white">Why Architects Choose Our Panels</h4>
+            <p className="text-base font-medium text-gray-500 dark:text-gray-400 mt-3">Maximum performance for architectural standards</p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-10">
+            {product.features.map((feature, idx) => {
+              const getFeatureIcon = (title: string) => {
+                const t = title.toUpperCase();
+                if (t.includes('WATERPROOF')) return Droplets;
+                if (t.includes('CUT') || t.includes('FIT')) return Ruler;
+                if (t.includes('SEAMLESS') || t.includes('INSTALL')) return Zap;
+                if (t.includes('PAINT')) return Palette;
+                if (t.includes('QUICK') || t.includes('SIMPLE')) return Wrench;
+                if (t.includes('FREEDOM') || t.includes('DESIGN')) return Sparkles;
+                if (t.includes('TERMITE')) return ShieldCheck;
+                if (t.includes('FIRE')) return Flame;
+                return CheckCircle2;
+              };
+              
+              const Icon = getFeatureIcon(feature.title);
+
+              return (
+                <motion.div 
+                  key={idx} 
+                  className="group flex flex-col items-start focus-within:ring-2 focus-within:ring-amber-500 p-2 rounded-sm transition-all"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="text-amber-600 dark:text-amber-500 bg-amber-50 dark:bg-amber-900/10 p-2 rounded-sm group-hover:scale-110 transition-transform flex-shrink-0">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <h5 className="text-base font-semibold text-gray-900 dark:text-white uppercase tracking-tight">
+                      {feature.title}
+                    </h5>
+                  </div>
+                  <p className="text-[15px] text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* ================= 4. MATERIAL PHILOSOPHY (STORY) ================= */}
+      <div className="bg-white dark:bg-slate-950 py-16 lg:py-24 transition-colors duration-300 overflow-hidden relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+            
+            {/* Left Column: The Narrative */}
+            <motion.div 
+              className="relative"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.3em] text-amber-600 mb-6 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 rounded-sm">
+                Material Philosophy
+              </span>
+              <h3 className="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white mb-8 leading-tight">
+                Premium materials for <span className="text-amber-600">luxury</span> interiors.
+              </h3>
+              <div className="prose prose-lg dark:prose-invert max-w-none">
+                <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-light italic border-l-4 border-amber-600 pl-6 py-2">
+                  {product.longDescription}
+                </p>
+              </div>
+            </motion.div>
+            
+            {/* Right Column: Premium Staggered Images - Refined Size & Overlap */}
+            <div className="relative h-[450px] md:h-[550px] w-full max-w-[500px] mx-auto lg:ml-auto translate-y-4">
+              {product.images.slice(1,3).map((img, i) => (
+                <motion.div 
+                  key={i} 
+                  className={`absolute rounded-xl overflow-hidden shadow-xl bg-gray-50 dark:bg-slate-900 border-2 border-white dark:border-slate-800 ${
+                    i === 0 
+                    ? 'top-0 left-0 w-[65%] aspect-[4/5] z-0 hover:z-20' 
+                    : 'bottom-0 right-0 w-[65%] aspect-[4/5] z-10 translate-x-2 translate-y-2 hover:scale-[1.02]'
+                  }`}
+                  initial={{ opacity: 0, x: 40, y: 20, rotate: i === 0 ? -5 : 5 }}
+                  whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    duration: 1, 
+                    delay: 0.2 + (i * 0.2),
+                    type: 'spring',
+                    stiffness: 40
+                  }}
+                >
+                  <Image src={img.url} alt={img.alt} fill className="object-cover transition-transform duration-700 hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
+                </motion.div>
+              ))}
+              
+              {/* Decorative Accent */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-amber-500/5 blur-3xl rounded-full -z-10" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
       {/* ================= 5. LOGISTICS & AVAILABILITY ================= */}
       {product.logistics && (
-        <div className="bg-white dark:bg-slate-950 py-10 lg:py-12 border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+        <motion.div 
+          className="bg-white dark:bg-slate-950 py-10 lg:py-12 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 bg-gray-50 dark:bg-slate-900 rounded-lg border border-gray-100 dark:border-gray-800 shadow-sm transition-all hover:border-gray-200 dark:hover:border-gray-700">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 bg-gray-50 dark:bg-slate-900 rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm transition-all hover:border-gray-200 dark:hover:border-gray-700">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-gray-900 dark:bg-black rounded-lg flex items-center justify-center text-white shadow-md shrink-0">
                   <BarChart3 className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-0.5 tracking-tight">Logistics & Availability</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-0.5 tracking-tight">Shipping & Stock Availability</h3>
                   <p className="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-semibold text-amber-600 dark:text-amber-500">B2B Supply Ready</p>
                 </div>
               </div>
@@ -392,48 +591,193 @@ export default function ProductClient({ product, slug }: { product: Product; slu
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
 
       {/* ================= 6. APPLICATIONS & FINISHES ================= */}
-      <div className="bg-white dark:bg-slate-950 py-8 lg:py-12 transition-colors duration-300">
+      <div className="bg-white dark:bg-slate-950 py-8 lg:py-12 transition-colors duration-300 overflow-x-hidden">
+        <AnimationStyles />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
             
-            {/* Applications */}
-            <div>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-10 h-10 rounded-full bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center text-amber-600 dark:text-amber-500">
-                  <BarChart3 className="w-5 h-5" />
+            {/* Left Column: Applications & Sticky B2B Card */}
+            <div className="lg:col-span-1 lg:sticky lg:top-28 h-fit">
+              <div className="mb-10">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-10 h-10 rounded-full bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center text-amber-600 dark:text-amber-500">
+                    <BarChart3 className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Where to Use These Panels</h3>
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Ideal Applications</h3>
+                <ul className="space-y-0 border border-gray-200 dark:border-gray-800 rounded-sm overflow-hidden shadow-sm transition-colors duration-300">
+                  {product.applications.map((app, i) => (
+                    <motion.li 
+                      key={i} 
+                      className="flex items-center gap-4 p-5 bg-white dark:bg-slate-950 border-b border-gray-200 dark:border-gray-800 last:border-0 hover:bg-gray-50 dark:hover:bg-slate-900 transition-colors"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                    >
+                       <Check className="w-5 h-5 text-amber-500 shrink-0" />
+                       <span className="text-base font-medium text-gray-800 dark:text-gray-300">{app}</span>
+                    </motion.li>
+                  ))}
+                </ul>
               </div>
-              <ul className="space-y-0 border border-gray-100 dark:border-gray-800 rounded-lg overflow-hidden shadow-sm transition-colors duration-300">
-                {product.applications.map((app, i) => (
-                  <li key={i} className="flex items-center gap-4 p-5 bg-white dark:bg-slate-950 border-b border-gray-100 dark:border-gray-800 last:border-0 hover:bg-gray-50 dark:hover:bg-slate-900 transition-colors">
-                     <Check className="w-5 h-5 text-amber-500 shrink-0" />
-                     <span className="text-base font-medium text-gray-800 dark:text-gray-300">{app}</span>
-                  </li>
-                ))}
-              </ul>
+
+              {/* High-Converting B2B Sticky Card */}
+              <motion.div 
+                className="bg-gradient-to-br from-gray-900 to-slate-900 dark:from-slate-900 dark:to-black rounded-lg p-8 shadow-xl border border-gray-800 relative overflow-hidden group"
+                initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                {/* Decorative Glow */}
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/20 blur-3xl rounded-full pointer-events-none group-hover:bg-amber-500/30 transition-colors duration-500" />
+                
+                <div className="relative z-10">
+                  <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-6 text-amber-500">
+                    <BarChart3 className="w-6 h-6" /> 
+                  </div>
+                  <h4 className="text-xl font-bold text-white mb-3">Get a Custom Project Quote</h4>
+                  <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                    Planning a large commercial or residential project in NCR? Get exact material estimation, wholesale pricing, and dedicated B2B support.
+                  </p>
+                  <Link href="/contact" className="inline-flex items-center justify-center w-full bg-amber-600 hover:bg-amber-500 text-white px-6 py-3.5 rounded-sm text-sm font-semibold transition-all duration-300 hover:shadow-[0_0_15px_rgba(217,119,6,0.5)]">
+                    Request Quote <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </div>
+              </motion.div>
             </div>
             
-            {/* Finishes */}
-            <div>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-10 h-10 rounded-full bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center text-amber-600 dark:text-amber-500">
-                  <Palette className="w-5 h-5" />
+            {/* Installation Steps */}
+            <div className="lg:col-span-1">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center text-amber-600 dark:text-amber-500 shadow-sm transition-transform hover:scale-110 duration-300">
+                  <Wrench className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Available Finishes</h3>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Easy Installation Guide</h3>
+                  <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mt-1">{product.title} (Professional Guide)</p>
+                </div>
               </div>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {product.finishes.map((finish, i) => (
-                  <li key={i} className="flex items-center gap-4 p-5 bg-gray-50 dark:bg-slate-900 border border-gray-100 dark:border-gray-800 rounded-lg hover:border-gray-300 dark:hover:border-gray-700 transition-colors">
-                     <div className="w-3 h-3 rounded-full bg-gray-900 dark:bg-gray-500 shrink-0 shadow-sm"></div>
-                     <span className="text-base font-medium text-gray-800 dark:text-gray-300">{finish}</span>
-                  </li>
-                ))}
-              </ul>
+
+              <div className="relative">
+                {/* Steps List */}
+                <div className="space-y-12">
+                  {product.installationSteps.map((step, i) => {
+                    const N = product.installationSteps.length;
+                    const stepTrigger = i / (N - 1);
+                    const isLast = i === N - 1;
+                    
+                    // The glowing line between current and next step centers
+                    const segmentProgress = !isLast 
+                      ? Math.max(0, Math.min(1, (glowProgress - stepTrigger) / (1 / (N - 1))))
+                      : 0;
+
+                    const isActive = glowProgress >= stepTrigger;
+
+                    return (
+                      <div key={i} className="relative pl-14 z-20">
+                        {/* Dynamic background line segment - grows exactly with the glow */}
+                        {!isLast && (
+                          <div 
+                            className="absolute left-[19px] top-10 bottom-[-48px] w-0.5 bg-gray-100 dark:bg-gray-800 z-0 transition-opacity duration-300 rounded-full"
+                            style={{ 
+                              clipPath: `inset(0 0 ${100 - (segmentProgress * 100)}% 0)`,
+                              opacity: segmentProgress > 0 ? 1 : 0
+                            }}
+                          />
+                        )}
+                        
+                        {/* Animated Glowing Line segment */}
+                        {!isLast && (
+                          <div 
+                            className="absolute left-[19px] top-10 bottom-[-48px] w-0.5 bg-gradient-to-b from-amber-400 via-orange-500 to-amber-600 z-10 shadow-[0_0_12px_rgba(245,158,11,0.6)] transition-opacity duration-300 rounded-full"
+                            style={{ 
+                              clipPath: `inset(0 0 ${100 - (segmentProgress * 100)}% 0)`,
+                              opacity: segmentProgress > 0 ? 1 : 0
+                            }}
+                          />
+                        )}
+
+                        {/* Step Number Circle with WAVE & BOUNCE */}
+                        <div 
+                          ref={(el) => { circlesRef.current[i] = el; }}
+                          className={`absolute left-0 top-0 w-10 h-10 rounded-full text-white text-sm font-semibold flex items-center justify-center shadow-lg z-30 transition-all duration-500 ${
+                            isActive 
+                            ? 'bg-amber-600 dark:bg-amber-500 animate-bounce-pop shadow-amber-500/50' 
+                            : 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 opacity-0 scale-50'
+                          }`}
+                        >
+                          {/* Pulsing Ripple Wave */}
+                          {isActive && (
+                            <span className="absolute inset-0 rounded-full bg-amber-600/40 animate-ripple -z-10" />
+                          )}
+                          {i + 1}
+                        </div>
+
+                        {/* Content REVEAL animation */}
+                        <div className={`space-y-4 transition-all duration-1000 delay-100 ${isActive ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 blur-sm'}`}>
+                          <h4 className={`text-lg font-bold uppercase tracking-tight transition-colors duration-500 ${isActive ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-gray-600'}`}>{step.title}</h4>
+                          
+                          {step.description && (
+                            <p className="text-sm font-semibold text-amber-600 dark:text-amber-500 italic font-medium">{step.description}</p>
+                          )}
+
+                          <ul className="space-y-4">
+                            {step.points.map((point, pi) => (
+                              <li key={pi} className="flex items-start gap-3 group/item">
+                                <div className={`w-1.5 h-1.5 rounded-full mt-2.5 shrink-0 transition-all duration-500 ${isActive ? 'bg-amber-500' : 'bg-gray-300 dark:bg-gray-700'}`} />
+                                <span className={`text-base font-medium leading-relaxed transition-colors duration-500 ${isActive ? 'text-gray-700 dark:text-gray-300' : 'text-gray-400 dark:text-gray-600'}`}>{point}</span>
+                              </li>
+                            ))}
+                          </ul>
+
+                          {step.tip && (
+                            <div className={`mt-5 p-5 bg-amber-50/40 dark:bg-amber-900/10 border-l-4 rounded-r-xl transition-all duration-1000 delay-300 ${isActive ? 'border-amber-500 translate-y-0 opacity-100' : 'border-gray-200 dark:border-gray-800 translate-y-4 opacity-0'}`}>
+                              <p className="text-sm text-gray-800 dark:text-gray-200 font-medium leading-relaxed">
+                                 <span className="mr-3 text-xl inline-block transition-transform duration-500 group-hover:scale-125">👉</span> {step.tip}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* After Installation - Separate Entrance */}
+                {product.afterInstallation && (
+                  <div className={`mt-16 pt-10 border-t border-gray-200 dark:border-gray-800 transition-all duration-1000 delay-500 ${glowProgress >= 0.95 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shadow-sm transition-transform hover:rotate-12">
+                        <Sparkles className="w-4 h-4" />
+                      </div>
+                      <h4 className="text-xl font-bold text-gray-900 dark:text-white uppercase tracking-wider">{product.afterInstallation.title}</h4>
+                    </div>
+
+                    <ul className="space-y-4 mb-6">
+                      {product.afterInstallation.points.map((point, pi) => (
+                        <li key={pi} className="flex items-start gap-3 bg-gray-50/50 dark:bg-slate-900/50 p-3 rounded-lg border border-transparent hover:border-indigo-500/10 transition-colors">
+                          <CheckCircle2 className="w-5 h-5 text-indigo-500 mt-0.5 shrink-0" />
+                          <span className="text-base text-gray-700 dark:text-gray-300 font-medium">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {product.afterInstallation.tip && (
+                      <div className="p-5 bg-indigo-50/30 dark:bg-indigo-900/10 border-l-4 border-indigo-500 rounded-r-md">
+                        <p className="text-sm text-gray-800 dark:text-gray-200 font-medium italic">
+                           <span className="mr-2 text-lg">👉</span> {product.afterInstallation.tip}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -444,25 +788,37 @@ export default function ProductClient({ product, slug }: { product: Product; slu
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
             
-            <div className="border-l-2 border-amber-600 pl-8">
+            <motion.div 
+              className="border-l-4 border-amber-600 pl-8"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
               <div className="flex items-center gap-4 mb-4 text-amber-500">
                 <Hammer className="w-6 h-6" />
-                <h3 className="text-2xl font-semibold text-white">Installation Guideline</h3>
+                <h3 className="text-2xl font-semibold text-white">Pro Installation Tips</h3>
               </div>
               <p className="text-gray-300 text-lg leading-relaxed font-light">
                 {product.installation}
               </p>
-            </div>
+            </motion.div>
             
-            <div className="border-l-2 border-amber-600 pl-8">
+            <motion.div 
+              className="border-l-4 border-amber-600 pl-8"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
               <div className="flex items-center gap-4 mb-4 text-amber-500">
                 <Sparkles className="w-6 h-6" />
-                <h3 className="text-2xl font-semibold text-white">Care & Maintenance</h3>
+                <h3 className="text-2xl font-semibold text-white">How to Clean & Maintain</h3>
               </div>
               <p className="text-gray-300 text-lg leading-relaxed font-light">
                 {product.maintenance}
               </p>
-            </div>
+            </motion.div>
 
           </div>
         </div>
@@ -472,15 +828,19 @@ export default function ProductClient({ product, slug }: { product: Product; slu
       <div className="bg-gray-50 dark:bg-slate-900 py-10 lg:py-16 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-2">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-2">Common Questions (FAQs)</h2>
             <p className="text-gray-600 dark:text-gray-400 text-lg">Detailed answers for project-level planning.</p>
           </div>
           
           <div className="space-y-4">
             {product.faqs.map((faq, i) => (
-              <div 
+              <motion.div 
                 key={i} 
                 className="border border-gray-200 dark:border-gray-800 bg-white dark:bg-slate-950 rounded-lg shadow-sm overflow-hidden transition-all duration-300 hover:border-gray-300 dark:hover:border-gray-700"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
               >
                 <button 
                   onClick={() => toggleFaq(i)}
@@ -500,20 +860,26 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                 <div 
                   className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${openFaqIndex === i ? 'max-h-96 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}
                 >
-                  <div className="border-t border-gray-100 dark:border-gray-800 pt-4 mt-2 transition-colors duration-300">
+                  <div className="border-t border-gray-200 dark:border-gray-800 pt-4 mt-2 transition-colors duration-300">
                     <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed">
                       {faq.answer}
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </div>
 
       {/* ================= 9. B2B CONVERSION BAR ================= */}
-      <div className="bg-white dark:bg-slate-950 py-4 shadow-md border-t border-gray-200 dark:border-gray-800 relative z-20 transition-colors duration-300">
+      <motion.div 
+        className="bg-white dark:bg-slate-950 py-4 shadow-md border-t border-gray-200 dark:border-gray-800 relative z-20 transition-colors duration-300"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="text-center sm:text-left">
             <h4 className="text-base font-semibold text-gray-900 dark:text-white">{product.title}</h4>
@@ -532,7 +898,35 @@ export default function ProductClient({ product, slug }: { product: Product; slu
             </Link>
           </div>
         </div>
-      </div>
+      </motion.div>
+
+      {/* ================= 10. FULLSCREEN LIGHTBOX ================= */}
+      {fullscreenImage && (
+        <div 
+          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-10 transition-all animate-in fade-in duration-300"
+          onClick={() => setFullscreenImage(null)}
+        >
+          <button 
+            className="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all z-[110]"
+            onClick={(e) => {
+              e.stopPropagation();
+              setFullscreenImage(null);
+            }}
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          <div className="relative w-full h-full flex items-center justify-center">
+            <Image 
+              src={fullscreenImage} 
+              alt="Fullscreen view" 
+              fill 
+              className="object-contain"
+              priority
+            />
+          </div>
+        </div>
+      )}
 
     </div>
   );

@@ -38,9 +38,9 @@ export default function Home() {
 
           {/* Headline - Thinner, more elegant font */}
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight leading-tight">
-            Elevate Your Space With <br className="hidden md:block" />
+            Premium Wall Panels & <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-600 italic font-light">
-              Luxury Surfaces
+              Luxury Flooring in Gurgaon
             </span>
           </h1>
 
@@ -92,7 +92,7 @@ export default function Home() {
       <section id="categories" className="py-24 bg-gray-50 dark:bg-slate-950 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">Our Signature Collections</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">Explore Our Premium Product Collections</h2>
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Discover our range of world-class interior and exterior architectural solutions.</p>
           </div>
 
@@ -153,7 +153,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">Why Architects &amp; Designers Choose Us</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">Why Top Architects & Designers Trust Goals Floors</h2>
               <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">We don&apos;t just sell products; we deliver peace of mind. With our robust supply chain and commitment to quality, your projects are completed on time, every time.</p>
 
               {/* Mobile Image - Shown only on small screens */}
@@ -206,7 +206,7 @@ export default function Home() {
         <div className="absolute top-0 left-0 w-full h-full opacity-50 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-amber-200/40 dark:from-amber-900/20 via-transparent to-transparent pointer-events-none"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">Ready to Transform Your Space?</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">Get a Free Expert Consultation Today</h2>
           <p className="text-gray-600 dark:text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
             Get a free consultation, precise measurements, and a customized quote for your project. Our experts are ready to help.
           </p>
