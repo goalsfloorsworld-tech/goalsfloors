@@ -1,7 +1,7 @@
 /**
- * VOXEL SHATTER ENGINE V32 (THE SMOOTH OPERATOR)
- * Logic: Balanced Resolution (400) + Faster Buffer Init.
- * Design: High-FPS Voxel Shuffle, Zero-Jank Initialization.
+ * VOXEL SHATTER ENGINE V33 (THE MOBILE REVEAL MASTER)
+ * Logic: Synchronized X-Ray Reveal (Waits for Router Event).
+ * Design: No Black Screens, No Jerks, Perfect Mobile Sync.
  */
 
 (function() {
@@ -24,7 +24,7 @@
     };
 
     const style = document.createElement('style');
-    style.id = 'v-v32-css';
+    style.id = 'v-v33-css';
     style.innerHTML = `
         #v-container { position: fixed; inset: 0; z-index: 2147483647; background: transparent; visibility: hidden; pointer-events: none; opacity: 1; transition: opacity 0.8s; }
         #v-container.v-active { visibility: visible; }
@@ -81,22 +81,21 @@
             const logoSrc = isDark ? CONFIG.logos.dark : CONFIG.logos.light;
             const cubeColor = isDark ? new THREE.Color(0x000000) : new THREE.Color(0xffffff);
 
-            // Trigger navigation trigger - but stay on top
-            if (window.nextRouter) window.nextRouter.push(target);
-
             const tex = await new Promise((res) => {
                 new THREE.TextureLoader().load(logoSrc, res);
             });
 
             container.classList.remove('v-fade-out');
             container.classList.add('v-active');
-            container.style.background = isDark ? '#000' : '#fff';
+            
+            // Temporary hide to prevent "old page" flicker
             document.body.classList.add('v-shut-now');
 
             if (!this.renderer) {
                 this.renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: false, alpha: true });
                 this.renderer.setSize(window.innerWidth, window.innerHeight);
                 this.scene = new THREE.Scene();
+                // NULL background to see the page behind
                 this.scene.background = null; 
                 const aspect = window.innerWidth / window.innerHeight;
                 const z = (window.innerHeight / 2) / Math.tan((45/2) * (Math.PI/180));
@@ -123,17 +122,14 @@
             const sX = -window.innerWidth / 2 + size / 2;
             const sY = window.innerHeight / 2 - size / 2;
 
-            // Hyper-optimized loop
             for (let i = 0; i < total; i++) {
                 const i3 = i * 3;
                 const row = Math.floor(i / nx);
                 startPos[i3] = sX + (i % nx) * size;
                 startPos[i3+1] = sY - row * size;
-                
                 velocity[i3] = (Math.random() - 0.5) * 35; 
                 velocity[i3+1] = CONFIG.shatterForce * (0.4 + Math.random() * 0.6);
                 velocity[i3+2] = Math.random() * 70;
-                
                 delay[i] = (row / ny) * 1.5 + Math.random() * 0.25; 
                 rando[i3] = Math.random(); rando[i3+1] = Math.random(); rando[i3+2] = Math.random();
             }
@@ -182,12 +178,21 @@
             this.startTime = performance.now();
             this.loop();
 
+            // SYNCED ROUTE READY HANDLER
             const onRouteReady = () => {
+                // Ensure the background is transparent NOW so Naya Page can show
                 container.style.background = 'transparent';
                 document.body.classList.remove('v-shut-now');
                 window.removeEventListener('voxel-route-ready', onRouteReady);
             };
             window.addEventListener('voxel-route-ready', onRouteReady);
+
+            // Trigger Navigation
+            if (window.nextRouter) {
+                window.nextRouter.push(target);
+            } else {
+                window.location.href = target;
+            }
 
             setTimeout(() => {
                 container.classList.add('v-fade-out');

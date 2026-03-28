@@ -1,40 +1,33 @@
 'use client';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import { useEffect, Suspense } from 'react';
+import { useRouter, usePathname } from 'next/navigation';
+import { useEffect, useRef } from 'react';
 
 /**
  * EXPOSES NEXT.JS ROUTER AND SYNC EVENTS TO WINDOW
- * Enhanced V32: Signals 'routeReady' for both pathname and query changes.
+ * Enhanced V33: Signals 'voxel-route-ready' when the pathname actually updates.
  */
-function VoxelRouterContent() {
+export function VoxelRouterBridge() {
     const router = useRouter();
     const pathname = usePathname();
-    const searchParams = useSearchParams();
+    const prevPathname = useRef(pathname);
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
             // @ts-ignore
             window.nextRouter = router;
             
-            // Signal the engine that the NEW page (or new filter state) is now rendered
-            // Using a small delay to ensure React has finished painting
-            setTimeout(() => {
-                const searchString = searchParams.toString();
-                const fullUrl = pathname + (searchString ? '?' + searchString : '');
-                window.dispatchEvent(new CustomEvent('voxel-route-ready', { 
-                    detail: { pathname, fullUrl } 
-                }));
-            }, 100);
+            // If the pathname has changed, signal the engine
+            if (prevPathname.current !== pathname) {
+                // Short delay to allow React to finish rendering the new page
+                setTimeout(() => {
+                    window.dispatchEvent(new CustomEvent('voxel-route-ready', { 
+                        detail: { pathname } 
+                    }));
+                }, 150);
+                prevPathname.current = pathname;
+            }
         }
-    }, [router, pathname, searchParams]);
+    }, [router, pathname]);
 
     return null;
-}
-
-export function VoxelRouterBridge() {
-  return (
-    <Suspense fallback={null}>
-      <VoxelRouterContent />
-    </Suspense>
-  );
 }
