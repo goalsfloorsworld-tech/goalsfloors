@@ -201,7 +201,7 @@ export default function Navbar() {
             : 'translate-x-full opacity-0 pointer-events-none hidden'
           }`}
       >
-        <nav className="flex flex-col p-6 pb-24 gap-4 min-h-screen overflow-y-auto bg-white dark:bg-slate-950 flex-1">
+        <nav className="flex flex-col p-6 pb-24 gap-4 h-full overflow-y-auto bg-white dark:bg-slate-950 flex-1">
           <Link href="/" onClick={toggleMenu} className="text-lg font-normal text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-3">
             Home
           </Link>
@@ -216,7 +216,7 @@ export default function Navbar() {
               <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${isProductsOpen ? 'rotate-180 text-amber-600' : ''}`} />
             </button>
 
-            <div className={`overflow-hidden transition-all duration-300 ${isProductsOpen ? 'max-h-[500px] mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
+            <div className={`overflow-hidden transition-all duration-300 ${isProductsOpen ? 'max-h-[2000px] mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
               <div className="flex flex-col gap-6 pl-4 border-l border-amber-100 dark:border-gray-800">
                 <div className="space-y-4">
                   <div className="space-y-3">

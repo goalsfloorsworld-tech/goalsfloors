@@ -14,7 +14,7 @@
         gravity: -380,      
         navDelay: 3500,    
         logos: {
-            light: '/images/goals floors logo.svg',
+            light: '/images/goals%20floors%20logo.svg',
             dark: '/images/goals-floors-logo-white.svg'
         },
         libs: {
@@ -30,7 +30,11 @@
         #v-container.v-active { visibility: visible; }
         #v-container.v-fade-out { opacity: 0; }
         #v-canvas { width: 100%; height: 100%; display: block; }
-        body.v-shut-now > *:not(#v-container):not(script) { visibility: hidden !important; }
+        /* PERFORMANCE BLUR (Lowered for "Bekar" phones) */
+        body.v-shut-now > *:not(#v-container):not(script) { 
+            filter: brightness(1); 
+            pointer-events: none;
+        }
     `;
     document.head.appendChild(style);
 
@@ -49,10 +53,11 @@
         const s = (src) => new Promise((res) => {
             const sc = document.createElement('script'); sc.src = src; 
             sc.async = true; sc.crossOrigin = "anonymous"; sc.onload = res;
+            sc.onerror = res; // Proceed anyway if a lib fails to load (fallback)
             document.head.appendChild(sc);
         });
         await Promise.all(Object.values(CONFIG.libs).map(s));
-        libsReady = true;
+        libsReady = typeof THREE !== 'undefined';
     }
 
     function isDarkMode() {
@@ -70,7 +75,7 @@
     class Engine {
         constructor() {
             this.scene = null; this.camera = null; this.renderer = null; 
-            this.mesh = null; this.startTime = 0;
+            this.mesh = null; this.startTime = 0; this.safetyTimeout = null;
         }
 
         async ignite(target) {
@@ -81,8 +86,15 @@
             const logoSrc = isDark ? CONFIG.logos.dark : CONFIG.logos.light;
             const cubeColor = isDark ? new THREE.Color(0x000000) : new THREE.Color(0xffffff);
 
+            // LOGO LOADING WITH TIMEOUT
             const tex = await new Promise((res) => {
-                new THREE.TextureLoader().load(logoSrc, res);
+                let resolved = false;
+                const timeout = setTimeout(() => { if(!resolved) { resolved = true; res(null); } }, 800);
+                new THREE.TextureLoader().load(logoSrc, 
+                    (t) => { resolved = true; clearTimeout(timeout); res(t); },
+                    null,
+                    () => { resolved = true; clearTimeout(timeout); res(null); }
+                );
             });
 
             container.classList.remove('v-fade-out');
@@ -92,10 +104,15 @@
             document.body.classList.add('v-shut-now');
 
             if (!this.renderer) {
-                this.renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: false, alpha: true });
+                this.renderer = new THREE.WebGLRenderer({ 
+                    canvas: canvas, 
+                    antialias: false, 
+                    alpha: true,
+                    powerPreference: 'high-performance'
+                });
                 this.renderer.setSize(window.innerWidth, window.innerHeight);
+                this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // Lowered for mobile
                 this.scene = new THREE.Scene();
-                // NULL background to see the page behind
                 this.scene.background = null; 
                 const aspect = window.innerWidth / window.innerHeight;
                 const z = (window.innerHeight / 2) / Math.tan((45/2) * (Math.PI/180));
@@ -104,8 +121,9 @@
                 this.scene.add(new THREE.AmbientLight(0xffffff, 2.0));
             }
 
-            // SMART DENSITY
-            let nx = Math.min(CONFIG.gridX, window.innerWidth < 768 ? 200 : 450);
+            // SMART DENSITY (Optimized for low-end mobile)
+            const isMobile = window.innerWidth < 768;
+            let nx = Math.min(CONFIG.gridX, isMobile ? 60 : 350); // Lowered nx for very weak phones
             const ny = Math.round(nx / (window.innerWidth / window.innerHeight));
             const size = window.innerWidth / nx;
             const total = nx * ny;
@@ -142,7 +160,7 @@
             const mat = new THREE.ShaderMaterial({
                 uniforms: {
                     uTime: { value: 0 }, uTex: { value: tex }, uGravity: { value: CONFIG.gravity },
-                    uCubeColor: { value: cubeColor }
+                    uCubeColor: { value: cubeColor }, uHasTex: { value: !!tex }
                 },
                 vertexShader: `
                     attribute vec3 aStartPos; attribute vec3 aVelocity; attribute float aDelay; attribute vec3 aRando;
@@ -162,17 +180,21 @@
                     }
                 `,
                 fragmentShader: `
-                    varying vec2 vU; uniform sampler2D uTex; uniform vec3 uCubeColor;
+                    varying vec2 vU; uniform sampler2D uTex; uniform vec3 uCubeColor; uniform bool uHasTex;
                     void main() {
                         vec4 tC = vec4(0.0);
-                        if (vU.x >= 0.0 && vU.x <= 1.0 && vU.y >= 0.0 && vU.y <= 1.0) tC = texture2D(uTex, vU);
+                        if (uHasTex && vU.x >= 0.0 && vU.x <= 1.0 && vU.y >= 0.0 && vU.y <= 1.0) tC = texture2D(uTex, vU);
                         gl_FragColor = vec4(mix(uCubeColor, tC.rgb, tC.a), 1.0);
                     }
                 `,
                 transparent: true
             });
 
-            if (this.mesh) this.scene.remove(this.mesh);
+            if (this.mesh) {
+                this.scene.remove(this.mesh);
+                this.mesh.geometry.dispose();
+                this.mesh.material.dispose();
+            }
             this.mesh = new THREE.Mesh(geo, mat);
             this.scene.add(this.mesh);
             this.startTime = performance.now();
@@ -180,12 +202,19 @@
 
             // SYNCED ROUTE READY HANDLER
             const onRouteReady = () => {
+                clearTimeout(this.safetyTimeout);
                 // Ensure the background is transparent NOW so Naya Page can show
                 container.style.background = 'transparent';
                 document.body.classList.remove('v-shut-now');
                 window.removeEventListener('voxel-route-ready', onRouteReady);
             };
             window.addEventListener('voxel-route-ready', onRouteReady);
+
+            // FAILSAFE: Force reveal after 4 seconds if everything lags
+            this.safetyTimeout = setTimeout(() => {
+                onRouteReady();
+                console.warn("Voxel Engine: Safety reveal triggered.");
+            }, 4000);
 
             // Trigger Navigation
             if (window.nextRouter) {
@@ -211,15 +240,19 @@
     async function bootstrap() {
         await loadLibs();
         const engine = new Engine();
-        document.addEventListener('click', (e) => {
+        const handler = (e) => {
             const a = e.target.closest('a');
-            if (!a || e.button !== 0) return;
+            if (!a || (e.type === 'click' && e.button !== 0)) return;
             const h = a.getAttribute('href');
             if (h && (h.startsWith('/') || h.startsWith(window.location.origin)) && !h.includes('#')) {
                 e.preventDefault(); e.stopImmediatePropagation();
                 engine.ignite(h);
             }
-        }, true);
+        };
+        document.addEventListener('click', handler, true);
+        document.addEventListener('touchstart', (e) => {
+            if (e.touches.length > 1) return; // Ignore multitouch
+        }, { passive: true });
     }
 
     if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', bootstrap); } else { bootstrap(); }

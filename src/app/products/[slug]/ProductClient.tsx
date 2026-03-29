@@ -4,12 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { 
+  motion, 
+  useScroll, 
+  useSpring, 
+  useTransform,
+  useMotionValueEvent
+} from "framer-motion";
+import { 
   ChevronRight, ShieldCheck, Droplets, Sun, 
   Wrench, ArrowRight, CheckCircle2, Lock, Ruler, BarChart3,
   Plus, Minus, Palette, Hammer, Sparkles, Check,
   Layers, Weight, Flame, Box, Maximize, Zap, Package, X
 } from "lucide-react";
-import { motion } from "framer-motion";
 
 export interface FAQ {
   question: string;
@@ -217,38 +223,93 @@ const VariantCard = ({ variant, onImageClick }: { variant: Variant, onImageClick
 };
 
 export default function ProductClient({ product, slug }: { product: Product; slug: string }) {
+  const getQuickFeatures = (p: Product) => {
+    const isOutdoor = p.category === "outdoors";
+    const isGrass = p.title.toLowerCase().includes("grass");
+    const isPUStone = p.title.toLowerCase().includes("pu stone");
+    const isSPC = p.category === "premium-flooring";
+
+    if (isGrass) {
+      return [
+        { icon: Sun, title: "UV Protected", desc: "Non-Fading Green Color" },
+        { icon: Droplets, title: "Drainage Holes", desc: "Quick Water Drainage" },
+        { icon: ShieldCheck, title: "Commercial Grade", desc: "High Dtex Yarns" },
+        { icon: Layers, title: "Lush Feel", desc: "Thick Pile Height" },
+        { icon: CheckCircle2, title: "Pet & Child Safe", desc: "Non-Toxic Materials" },
+        { icon: Zap, title: "Zero Maintenance", desc: "No Mowing or Watering" }
+      ];
+    }
+    
+    if (isOutdoor) {
+      return [
+        { icon: Sun, title: "UV Protected", desc: "Fade Resistant Finish" },
+        { icon: Droplets, title: "100% WATERPROOF", desc: "All-Weather Proof" },
+        { icon: ShieldCheck, title: "Commercial Grade", desc: "Heavy Foot Traffic Ready" },
+        { icon: Wrench, title: "Quick Install", desc: "Concealed Clip System" },
+        { icon: Flame, title: "Fire Retardant", desc: "Safe for Exteriors" },
+        { icon: Zap, title: "Low Maintenance", desc: "No Polishing Required" }
+      ];
+    }
+
+    if (isSPC) {
+      return [
+        { icon: ShieldCheck, title: "Commercial Grade", desc: "Heavy Duty Scratch Resistance" },
+        { icon: Droplets, title: "100% WATERPROOF", desc: "Perfect for Kitchens & Baths" },
+        { icon: Wrench, title: "Click-Lock System", desc: "Fast & Glue-less Install" },
+        { icon: Flame, title: "Fire Retardant", desc: "B1 Class Safety" },
+        { icon: CheckCircle2, title: "Acoustic Backing", desc: "Built-in Sound Reduction" },
+        { icon: Hammer, title: "Stone Polymer Core", desc: "Superior Stability" }
+      ];
+    }
+
+    if (isPUStone) {
+      return [
+        { icon: ShieldCheck, title: "Commercial Grade", desc: "Authentic Stone Texture" },
+        { icon: Droplets, title: "100% WATERPROOF", desc: "Mildew Resistant" },
+        { icon: Weight, title: "Lightweight", desc: "Easy to Handle & Mount" },
+        { icon: Wrench, title: "Quick Install", desc: "Direct to Wall Application" },
+        { icon: Flame, title: "Fire Retardant", desc: "B1 Class Safety" },
+        { icon: Hammer, title: "Durable Polyurethane", desc: "High Impact Strength" }
+      ];
+    }
+
+    // Default: Wall Panels (Charcoal Moulding, Fluted, etc.) - NO UV PROTECTED
+    return [
+      { icon: ShieldCheck, title: "Commercial Grade", desc: "100% Termite & Borer Proof" },
+      { icon: Droplets, title: "100% WATERPROOF", desc: "No Swelling / Decay" },
+      { icon: Wrench, title: "Quick Install", desc: "Interlocking System" },
+      { icon: Palette, title: "PAINTABLE", desc: "Custom Color Ready" },
+      { icon: Hammer, title: "Unbreakable", desc: "High Impact Strength" },
+      { icon: Zap, title: "GLUE DOWN", desc: "Maximum Grip Bond" }
+    ];
+  };
+
+  const quickFeatures = getQuickFeatures(product);
+
   const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
-  const [glowProgress, setGlowProgress] = useState(0);
-  const circlesRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeStep, setActiveStep] = useState(0);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const first = circlesRef.current[0];
-      const last = circlesRef.current[product.installationSteps.length - 1];
-      if (!first || !last) return;
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 80%", "end 75%"]
+  });
 
-      const firstRect = first.getBoundingClientRect();
-      const lastRect = last.getBoundingClientRect();
-      
-      // We trigger progress based on the screen center
-      const scrollThreshold = window.innerHeight * 0.55; 
-      
-      const totalDistance = lastRect.top - firstRect.top;
-      const currentDistance = scrollThreshold - firstRect.top;
-      
-      let progress = currentDistance / totalDistance;
-      progress = Math.max(0, Math.min(1, progress));
-      
-      setGlowProgress(progress);
-    };
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [product.installationSteps.length]);
-
-
+  // Track the progress to update the active step state less frequently
+  useMotionValueEvent(smoothProgress, "change", (latest) => {
+    const stepCount = product.installationSteps.length;
+    const currentStep = Math.floor(latest * stepCount);
+    if (currentStep !== activeStep) {
+      setActiveStep(currentStep);
+    }
+  });
 
   const toggleFaq = (index: number) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
@@ -311,11 +372,23 @@ export default function ProductClient({ product, slug }: { product: Product; slu
               </motion.h1>
 
               {/* Mobile Image: Shown only on mobile between heading and description */}
-              <div className="lg:hidden relative aspect-video w-full mb-6 rounded-sm overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm bg-gray-50 dark:bg-slate-900">
-                {/* Ambient Blur Background */}
-                <Image src={product.images[0].url} alt="" fill className="object-cover blur-2xl opacity-40 scale-110" />
-                <div className="absolute inset-0 bg-white/10 dark:bg-black/10" />
-                <Image src={product.images[0].url} alt={product.images[0].alt} fill className="object-contain relative z-10" priority />
+              <div className="lg:hidden relative aspect-video w-full mb-6 rounded-sm overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm bg-gray-50 dark:bg-slate-900 group/hero">
+                {/* 2-Layer Technique: Layer 1 (Blurred BG) */}
+                <Image 
+                  src={product.images[0].url} 
+                  alt="" 
+                  fill 
+                  className="object-cover blur-3xl opacity-50 scale-125 transition-transform duration-1000 group-hover/hero:scale-150" 
+                />
+                <div className="absolute inset-0 bg-white/20 dark:bg-black/30 backdrop-blur-[2px]" />
+                {/* 2-Layer Technique: Layer 2 (Main Image) */}
+                <Image 
+                  src={product.images[0].url} 
+                  alt={product.images[0].alt} 
+                  fill 
+                  className="object-contain relative z-10 transition-transform duration-700 hover:scale-110" 
+                  priority 
+                />
               </div>
 
               <motion.p 
@@ -345,11 +418,23 @@ export default function ProductClient({ product, slug }: { product: Product; slu
               animate={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3, type: 'spring', stiffness: 50 }}
             >
-              <div className="relative aspect-square w-full max-w-[500px] mx-auto bg-gray-50 dark:bg-slate-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm transition-transform duration-700 hover:scale-[1.01]">
-                {/* Ambient Blur Background */}
-                <Image src={product.images[0].url} alt="" fill className="object-cover blur-3xl opacity-50 scale-110" />
-                <div className="absolute inset-0 bg-white/10 dark:bg-black/20" />
-                <Image src={product.images[0].url} alt={product.images[0].alt} fill className="object-contain relative z-10 p-4" priority />
+              <div className="relative aspect-square w-full max-w-[500px] mx-auto bg-gray-50 dark:bg-slate-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm group/hero">
+                {/* 2-Layer Technique: Layer 1 (Blurred BG) */}
+                <Image 
+                  src={product.images[0].url} 
+                  alt="" 
+                  fill 
+                  className="object-cover blur-3xl opacity-60 scale-125 transition-transform duration-1000 group-hover/hero:scale-150" 
+                />
+                <div className="absolute inset-0 bg-white/20 dark:bg-black/40 backdrop-blur-[2px]" />
+                {/* 2-Layer Technique: Layer 2 (Main Image) */}
+                <Image 
+                  src={product.images[0].url} 
+                  alt={product.images[0].alt} 
+                  fill 
+                  className="object-contain relative z-10 p-6 transition-transform duration-700 hover:scale-110" 
+                  priority 
+                />
               </div>
             </motion.div>
           </div>
@@ -359,16 +444,8 @@ export default function ProductClient({ product, slug }: { product: Product; slu
       {/* ================= 2. QUICK FEATURES ================= */}
       <div className="bg-gray-50 dark:bg-slate-900 py-8 lg:py-10 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 lg:gap-4">
-            {[
-              { icon: ShieldCheck, title: "Commercial Grade", desc: "100% Termite & Borer Proof" },
-              { icon: Droplets, title: "100% WATERPROOF", desc: "No Swelling / Decay" },
-              { icon: Sun, title: "UV Protected", desc: "Fade Resistant Finish" },
-              { icon: Wrench, title: "Quick Install", desc: "Interlocking System" },
-              { icon: Palette, title: "PAINTABLE", desc: "Custom Color Ready" },
-              { icon: Hammer, title: "Unbreakable", desc: "High Impact Strength" },
-              { icon: Zap, title: "GLUE DOWN", desc: "Maximum Grip Bond" }
-            ].map((item, i) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-8">
+            {quickFeatures.map((item, i) => (
               <motion.div 
                 key={i} 
                 className="flex flex-col items-center lg:items-start text-center lg:text-left hover:-translate-y-1 transition-transform cursor-default"
@@ -512,7 +589,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
               {product.images.slice(1,3).map((img, i) => (
                 <motion.div 
                   key={i} 
-                  className={`absolute rounded-xl overflow-hidden shadow-xl bg-gray-50 dark:bg-slate-900 border-2 border-white dark:border-slate-800 ${
+                  className={`absolute rounded-xl overflow-hidden shadow-2xl bg-gray-50 dark:bg-slate-900 border-2 border-white dark:border-slate-800 group/story transform-gpu will-change-transform ${
                     i === 0 
                     ? 'top-0 left-0 w-[65%] aspect-[4/5] z-0 hover:z-20' 
                     : 'bottom-0 right-0 w-[65%] aspect-[4/5] z-10 translate-x-2 translate-y-2 hover:scale-[1.02]'
@@ -527,8 +604,22 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                     stiffness: 40
                   }}
                 >
-                  <Image src={img.url} alt={img.alt} fill className="object-cover transition-transform duration-700 hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
+                  {/* 2-Layer Technique: Layer 1 (Blurred BG) */}
+                  <Image 
+                    src={img.url} 
+                    alt="" 
+                    fill 
+                    className="object-cover blur-3xl opacity-50 scale-125 transition-transform duration-1000 group-hover/story:scale-150" 
+                  />
+                  <div className="absolute inset-0 bg-white/20 dark:bg-black/40 backdrop-blur-[2px]" />
+                  {/* 2-Layer Technique: Layer 2 (Main Image) */}
+                  <Image 
+                    src={img.url} 
+                    alt={img.alt} 
+                    fill 
+                    className="object-contain relative z-10 transition-transform duration-700 hover:scale-110" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
                 </motion.div>
               ))}
               
@@ -653,63 +744,43 @@ export default function ProductClient({ product, slug }: { product: Product; slu
             </div>
             
             {/* Installation Steps */}
-            <div className="lg:col-span-1">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center text-amber-600 dark:text-amber-500 shadow-sm transition-transform hover:scale-110 duration-300">
-                  <Wrench className="w-6 h-6" />
+              <div className="lg:col-span-1" ref={sectionRef}>
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center text-amber-600 dark:text-amber-500 shadow-sm transition-transform hover:scale-110 duration-300">
+                    <Wrench className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Easy Installation Guide</h3>
+                    <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mt-1">{product.title} (Professional Guide)</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Easy Installation Guide</h3>
-                  <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mt-1">{product.title} (Professional Guide)</p>
-                </div>
-              </div>
 
-              <div className="relative">
+              <div className="relative pb-0 mb-12">
+                {/* The Continuous Background Track */}
+                <div className="absolute left-[19px] top-5 bottom-8 w-0.5 bg-gray-100 dark:bg-gray-800 z-0" />
+                
+                {/* The Smooth Continuous Progress Line (GPU Accelerated) */}
+                <motion.div 
+                  className="absolute left-[19px] top-5 bottom-8 w-0.5 bg-gradient-to-b from-amber-400 via-orange-500 to-amber-600 z-10 shadow-[0_0_12px_rgba(245,158,11,0.6)] origin-top"
+                  style={{ scaleY: smoothProgress }}
+                />
+
                 {/* Steps List */}
-                <div className="space-y-12">
+                <div className="space-y-12 relative z-20 pb-4">
                   {product.installationSteps.map((step, i) => {
                     const N = product.installationSteps.length;
-                    const stepTrigger = i / (N - 1);
-                    const isLast = i === N - 1;
+                    const stepThreshold = i / (N - 1); 
+                    const isActive = i <= activeStep;
                     
-                    // The glowing line between current and next step centers
-                    const segmentProgress = !isLast 
-                      ? Math.max(0, Math.min(1, (glowProgress - stepTrigger) / (1 / (N - 1))))
-                      : 0;
-
-                    const isActive = glowProgress >= stepTrigger;
-
                     return (
                       <div key={i} className="relative pl-14 z-20">
-                        {/* Dynamic background line segment - grows exactly with the glow */}
-                        {!isLast && (
-                          <div 
-                            className="absolute left-[19px] top-10 bottom-[-48px] w-0.5 bg-gray-100 dark:bg-gray-800 z-0 transition-opacity duration-300 rounded-full"
-                            style={{ 
-                              clipPath: `inset(0 0 ${100 - (segmentProgress * 100)}% 0)`,
-                              opacity: segmentProgress > 0 ? 1 : 0
-                            }}
-                          />
-                        )}
-                        
-                        {/* Animated Glowing Line segment */}
-                        {!isLast && (
-                          <div 
-                            className="absolute left-[19px] top-10 bottom-[-48px] w-0.5 bg-gradient-to-b from-amber-400 via-orange-500 to-amber-600 z-10 shadow-[0_0_12px_rgba(245,158,11,0.6)] transition-opacity duration-300 rounded-full"
-                            style={{ 
-                              clipPath: `inset(0 0 ${100 - (segmentProgress * 100)}% 0)`,
-                              opacity: segmentProgress > 0 ? 1 : 0
-                            }}
-                          />
-                        )}
 
-                        {/* Step Number Circle with WAVE & BOUNCE */}
+                        {/* Step Number Circle */}
                         <div 
-                          ref={(el) => { circlesRef.current[i] = el; }}
-                          className={`absolute left-0 top-0 w-10 h-10 rounded-full text-white text-sm font-semibold flex items-center justify-center shadow-lg z-30 transition-all duration-500 ${
+                          className={`absolute left-0 top-0 w-10 h-10 rounded-full text-white text-sm font-semibold flex items-center justify-center shadow-lg z-30 transition-all duration-500 transform-gpu ${
                             isActive 
                             ? 'bg-amber-600 dark:bg-amber-500 animate-bounce-pop shadow-amber-500/50' 
-                            : 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 opacity-0 scale-50'
+                            : 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 scale-90'
                           }`}
                         >
                           {/* Pulsing Ripple Wave */}
@@ -719,17 +790,17 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                           {i + 1}
                         </div>
 
-                        {/* Content REVEAL animation */}
-                        <div className={`space-y-4 transition-all duration-1000 delay-100 ${isActive ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12 blur-sm'}`}>
+                        {/* Content REVEAL animation - REMOVED BLUR FOR LAG-FREE PERFORMANCE */}
+                        <div className={`space-y-4 transition-all duration-700 ease-out transform-gpu ${isActive ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
                           <h4 className={`text-lg font-bold uppercase tracking-tight transition-colors duration-500 ${isActive ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-gray-600'}`}>{step.title}</h4>
                           
                           {step.description && (
-                            <p className="text-sm font-semibold text-amber-600 dark:text-amber-500 italic font-medium">{step.description}</p>
+                            <p className="text-sm font-semibold text-amber-600 dark:text-amber-500 italic">{step.description}</p>
                           )}
 
                           <ul className="space-y-4">
                             {step.points.map((point, pi) => (
-                              <li key={pi} className="flex items-start gap-3 group/item">
+                              <li key={pi} className="flex items-start gap-3">
                                 <div className={`w-1.5 h-1.5 rounded-full mt-2.5 shrink-0 transition-all duration-500 ${isActive ? 'bg-amber-500' : 'bg-gray-300 dark:bg-gray-700'}`} />
                                 <span className={`text-base font-medium leading-relaxed transition-colors duration-500 ${isActive ? 'text-gray-700 dark:text-gray-300' : 'text-gray-400 dark:text-gray-600'}`}>{point}</span>
                               </li>
@@ -737,9 +808,9 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                           </ul>
 
                           {step.tip && (
-                            <div className={`mt-5 p-5 bg-amber-50/40 dark:bg-amber-900/10 border-l-4 rounded-r-xl transition-all duration-1000 delay-300 ${isActive ? 'border-amber-500 translate-y-0 opacity-100' : 'border-gray-200 dark:border-gray-800 translate-y-4 opacity-0'}`}>
+                            <div className={`mt-5 p-5 bg-amber-50/40 dark:bg-amber-900/10 border-l-4 rounded-r-xl transition-all duration-1000 ${isActive ? 'border-amber-500 translate-y-0 opacity-100' : 'border-gray-200 dark:border-gray-800 translate-y-4 opacity-0'}`}>
                               <p className="text-sm text-gray-800 dark:text-gray-200 font-medium leading-relaxed">
-                                 <span className="mr-3 text-xl inline-block transition-transform duration-500 group-hover:scale-125">👉</span> {step.tip}
+                                 <span className="mr-3 text-xl inline-block">👉</span> {step.tip}
                               </p>
                             </div>
                           )}
@@ -748,36 +819,42 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                     );
                   })}
                 </div>
+              </div>  {/* Explicitly close the track wrapper here to prevent the line from bleeding down */}
 
-                {/* After Installation - Separate Entrance */}
-                {product.afterInstallation && (
-                  <div className={`mt-16 pt-10 border-t border-gray-200 dark:border-gray-800 transition-all duration-1000 delay-500 ${glowProgress >= 0.95 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shadow-sm transition-transform hover:rotate-12">
-                        <Sparkles className="w-4 h-4" />
-                      </div>
-                      <h4 className="text-xl font-bold text-gray-900 dark:text-white uppercase tracking-wider">{product.afterInstallation.title}</h4>
+              {/* After Installation - Separate Entrance - NOW OUTSIDE RELATIVE WRAPPER */}
+              {product.afterInstallation && (
+                <motion.div 
+                  className="mt-32 pt-12 border-t border-gray-200 dark:border-gray-800"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40%" }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shadow-sm transition-transform hover:rotate-12">
+                      <Sparkles className="w-4 h-4" />
                     </div>
-
-                    <ul className="space-y-4 mb-6">
-                      {product.afterInstallation.points.map((point, pi) => (
-                        <li key={pi} className="flex items-start gap-3 bg-gray-50/50 dark:bg-slate-900/50 p-3 rounded-lg border border-transparent hover:border-indigo-500/10 transition-colors">
-                          <CheckCircle2 className="w-5 h-5 text-indigo-500 mt-0.5 shrink-0" />
-                          <span className="text-base text-gray-700 dark:text-gray-300 font-medium">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {product.afterInstallation.tip && (
-                      <div className="p-5 bg-indigo-50/30 dark:bg-indigo-900/10 border-l-4 border-indigo-500 rounded-r-md">
-                        <p className="text-sm text-gray-800 dark:text-gray-200 font-medium italic">
-                           <span className="mr-2 text-lg">👉</span> {product.afterInstallation.tip}
-                        </p>
-                      </div>
-                    )}
+                    <h4 className="text-xl font-bold text-gray-900 dark:text-white uppercase tracking-wider">{product.afterInstallation.title}</h4>
                   </div>
-                )}
-              </div>
+
+                  <ul className="space-y-4 mb-6">
+                    {product.afterInstallation.points.map((point, pi) => (
+                      <li key={pi} className="flex items-start gap-3 bg-gray-50/50 dark:bg-slate-900/50 p-3 rounded-lg border border-transparent hover:border-indigo-500/10 transition-colors">
+                        <CheckCircle2 className="w-5 h-5 text-indigo-500 mt-0.5 shrink-0" />
+                        <span className="text-base text-gray-700 dark:text-gray-300 font-medium">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {product.afterInstallation.tip && (
+                    <div className="p-5 bg-indigo-50/30 dark:bg-indigo-900/10 border-l-4 border-indigo-500 rounded-r-md">
+                      <p className="text-sm text-gray-800 dark:text-gray-200 font-medium italic">
+                         <span className="mr-2 text-lg">👉</span> {product.afterInstallation.tip}
+                      </p>
+                    </div>
+                  )}
+                </motion.div>
+              )}
             </div>
           </div>
         </div>

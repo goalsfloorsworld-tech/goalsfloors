@@ -25,6 +25,11 @@ export function VoxelRouterBridge() {
                     }));
                 }, 150);
                 prevPathname.current = pathname;
+            } else {
+                // Same-page navigation still needs to signal readiness if engine is waiting
+                window.dispatchEvent(new CustomEvent('voxel-route-ready', { 
+                    detail: { pathname, samePage: true } 
+                }));
             }
         }
     }, [router, pathname]);
