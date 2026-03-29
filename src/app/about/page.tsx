@@ -211,7 +211,7 @@ export default function AboutPage() {
         </div>
 
         {/* Monolith 01: MISSION (Base Layer) */}
-        <div className="sticky top-0 bg-amber-600 z-10 flex items-center justify-center overflow-hidden py-10 px-6 sm:px-10">
+        <div className="sticky top-0 bg-amber-600 z-10 flex items-center justify-center overflow-hidden py-20 md:py-10 px-6 sm:px-10 min-h-[80vh] md:min-h-0">
           {/* Relocated Corner Number */}
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
@@ -237,7 +237,7 @@ export default function AboutPage() {
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, amount: 0.5 }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 1 }}
             >
               <h3 className="text-5xl md:text-8xl font-medium text-white mb-8 md:mb-10 tracking-[0.05em] uppercase leading-tight italic">
@@ -251,7 +251,7 @@ export default function AboutPage() {
         </div>
 
         {/* Monolith 02: VISION (Slides Over Mission) */}
-        <div className="sticky top-0 bg-slate-950 z-20 flex items-center justify-center overflow-hidden border-t border-white/5 shadow-[0_-50px_100px_-20px_rgba(0,0,0,0.5)] py-10 px-6 sm:px-10">
+        <div className="sticky top-0 bg-slate-950 z-20 flex items-center justify-center overflow-hidden border-t border-white/5 shadow-[0_-50px_100px_-20px_rgba(0,0,0,0.5)] py-20 md:py-10 px-6 sm:px-10 min-h-[80vh] md:min-h-0">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -276,7 +276,7 @@ export default function AboutPage() {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: false, amount: 0.5 }}
+              viewport={{ once: false, amount: 0.2 }}
               transition={{ duration: 1.2 }}
             >
               <h3 className="text-5xl md:text-8xl font-medium text-white mb-8 md:mb-10 tracking-[0.05em] uppercase leading-tight italic">
@@ -290,7 +290,7 @@ export default function AboutPage() {
         </div>
 
         {/* Monolith 03: VALUES (Final Layer) */}
-        <div className="sticky top-0 bg-white dark:bg-slate-900 z-30 flex items-center justify-center overflow-hidden shadow-[0_-50px_100px_-20px_rgba(0,0,0,0.5)] pt-28 pb-10 md:py-10 px-6 sm:px-10">
+        <div className="sticky top-0 bg-white dark:bg-slate-900 z-30 flex items-center justify-center overflow-hidden shadow-[0_-50px_100px_-20px_rgba(0,0,0,0.5)] pt-32 pb-20 md:py-10 px-6 sm:px-10 min-h-[90vh] md:min-h-0">
           {/* Number 03 Darkened - Repositioned for Mobile */}
           <motion.div 
             initial="hidden"
