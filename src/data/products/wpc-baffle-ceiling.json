@@ -1,0 +1,211 @@
+{
+  "id": "wpc-baffle-ceiling",
+  "title": "WPC Baffle Ceiling",
+  "slug": "wpc-baffle-ceiling",
+  "category": "ceilings",
+  "priceRange": "Premium",
+  "shortDescription": "Modern linear baffle ceiling system made from A+ Grade WPC. 100% waterproof and termite-proof, perfect for high-end NCR offices and luxurious commercial lobbies.",
+  "longDescription": "The Cobra WPC Baffle Ceiling collection from Goals Floors represents the pinnacle of modern architectural overhead design. Engineered specifically for the upscale corporate and residential projects of Gurugram and Delhi NCR, these baffles provide a rhythmic linear aesthetic that enhances spatial depth while ensuring maximum durability. Unlike traditional gypsum or POP, our WPC baffles are immune to humidity, water seepage, and pests. Designed for precision installation with a concealed clip system, they are the preferred choice for iconic commercial spaces like DLF CyberCity and high-traffic public areas.",
+  "features": [
+    {
+      "title": "A+ Grade WPC Material",
+      "description": "High-density wood-polymer composite that offers the look of premium timber with the resilience of polymers."
+    },
+    {
+      "title": "100% Waterproof",
+      "description": "Zero swelling or decay, making it suitable for moisture-prone areas and semi-outdoor applications."
+    },
+    {
+      "title": "Termite & Borer Proof",
+      "description": "Technically treated to prevent infestation, a key requirement for large commercial infrastructures in NCR."
+    },
+    {
+      "title": "25 Years Warranty",
+      "description": "Backed by an industry-leading warranty on structural integrity and surface finish."
+    },
+    {
+      "title": "Concealed Installation",
+      "description": "Precision interlocking system that hides all screws and clips for a clean, professional architectural finish."
+    },
+    {
+      "title": "Acoustic Diffusion",
+      "description": "The baffle structure naturally diffuses sound waves, reducing echo in large lobbies and workstations."
+    }
+  ],
+  "applications": [
+    "Corporate Office Lobbies",
+    "High-End Retail Showrooms",
+    "Luxury Residential Living Areas",
+    "Modern Restaurant & Cafeteria Interiors",
+    "Public Transport & Metro Hubs"
+  ],
+  "installation": "Requires a galvanized steel (GI) main channel grid. Baffles are snapped into specialized carrier clips at custom intervals (usually 50mm-100mm spacing). Direct-to-concrete or suspended ceiling installations are both supported. Our Gurgaon technical team provides full layout support.",
+  "maintenance": "Virtually maintenance-free. Requires only light dusting or wiping with a damp cloth. The surface does not require painting or polishing throughout its lifespan.",
+  "faqs": [
+    {
+      "question": "Can I install WPC baffle ceilings in my office in CyberHub, Gurgaon?",
+      "answer": "Yes, WPC baffles are highly recommended for Gurgaon offices. They provide a sophisticated professional look and are much easier to maintain than traditional POP ceilings."
+    },
+    {
+      "question": "What is the standard price of WPC baffle per panel in NCR?",
+      "answer": "Our premium A+ grade panels are priced at ₹890/Panel (approx 2.95 meters long). We offer special volume discounts for interior designers and commercial contractors across Delhi NCR."
+    },
+    {
+      "question": "Are these ceiling baffles fire-resistant?",
+      "answer": "Our WPC material is Class B1 fire retardant, meaning it is self-extinguishing and meets most safety fire standards for commercial buildings in Delhi and Noida."
+    },
+    {
+      "question": "How do I clean the ceiling baffles in dusty Delhi weather?",
+      "answer": "The surface is non-porous. You can use a vacuum with a soft brush attachment or a long-handled dry mop. For stains, a damp cloth with mild soap is sufficient."
+    },
+    {
+      "question": "Can lights be integrated within the baffle ceiling?",
+      "answer": "Absolutely. Linear LED profiles or spot lights can easily be installed between the baffles or directly onto the main support channel for a seamless integrated look."
+    },
+    {
+      "question": "Is WPC better than aluminum baffles?",
+      "answer": "WPC provides a much warmer, realistic wood texture compared to aluminum. It's also more impact-resistant and doesn't produce 'hollow' sounds, making it superior for acoustic comfort."
+    },
+    {
+      "question": "What is the installation time for a 1000 sq.ft office space?",
+      "answer": "A standard office installation in NCR usually takes 3-5 days. Our specialized click-on system significantly speeds up the process compared to traditional wood carpentry."
+    },
+    {
+      "question": "Does it require a false ceiling grid?",
+      "answer": "Yes, it usually hangs from a GI frame or a special carrier system. This allows you to hide AC ducts, wiring, and pipes while maintaining easy access for maintenance."
+    },
+    {
+      "question": "Can I choose the spacing between the baffles?",
+      "answer": "Yes, the carrier system allows for flexible spacing. Narrower spacing gives more privacy (hiding the slab), while wider spacing provides a more open, airy feel."
+    },
+    {
+      "question": "Do you provide bulk delivery to constructions sites in Noida Extension?",
+      "answer": "Yes, we handle site delivery across Greater Noida, Noida Extension, and Yamuna Expressway through our centralized warehouse in Sikanderpur, Gurgaon."
+    }
+  ],
+  "images": [
+    {
+      "url": "/products/baffle-ceiling/hero.png",
+      "alt": "Modern WPC Baffle Ceiling Installation in Luxury Office"
+    }
+  ],
+  "installedImages": [
+    {
+      "url": "/products/baffle-ceiling/hero.png",
+      "alt": "Architectural Baffle Ceiling Detail",
+      "aspect": "wide"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Cobra Wenge",
+      "price": "₹890",
+      "mrp": "₹1790",
+      "discount": "50% off",
+      "unit": "per Panel",
+      "details": {
+        "Material": "A+ Grade WPC",
+        "Length": "2950 mm",
+        "Width": "50 mm",
+        "Height": "60 mm"
+      },
+      "images": [
+        {
+          "url": "/products/baffle-ceiling/cobra-wenge.png",
+          "alt": "Cobra Wenge Dark Wood Texture",
+          "name": "Cobra Wenge"
+        }
+      ]
+    },
+    {
+      "name": "Cobra Pure",
+      "price": "₹890",
+      "mrp": "₹1790",
+      "discount": "50% off",
+      "unit": "per Panel",
+      "details": {
+        "Material": "A+ Grade WPC",
+        "Length": "2950 mm",
+        "Width": "50 mm",
+        "Height": "60 mm"
+      },
+      "images": [
+        {
+          "url": "/products/baffle-ceiling/cobra-pure.png",
+          "alt": "Cobra Pure Light Oak Texture",
+          "name": "Cobra Pure"
+        }
+      ]
+    },
+    {
+      "name": "Cobra Nayur",
+      "price": "₹890",
+      "mrp": "₹1790",
+      "discount": "50% off",
+      "unit": "per Panel",
+      "details": {
+        "Material": "A+ Grade WPC",
+        "Length": "2950 mm",
+        "Width": "50 mm",
+        "Height": "60 mm"
+      },
+      "images": [
+        {
+          "url": "/products/baffle-ceiling/cobra-nayur.png",
+          "alt": "Cobra Nayur Warm Teak Texture",
+          "name": "Cobra Nayur"
+        }
+      ]
+    },
+    {
+      "name": "Cobra Cure",
+      "price": "₹890",
+      "mrp": "₹1790",
+      "discount": "50% off",
+      "unit": "per Panel",
+      "details": {
+        "Material": "A+ Grade WPC",
+        "Length": "2950 mm",
+        "Width": "50 mm",
+        "Height": "60 mm"
+      },
+      "images": [
+        {
+          "url": "/products/baffle-ceiling/cobra-cure.png",
+          "alt": "Cobra Cure Roasted Ash Texture",
+          "name": "Cobra Cure"
+        }
+      ]
+    }
+  ],
+  "installationSteps": [
+    {
+      "title": "Leveling & Layout",
+      "description": "Precision marking on the slab",
+      "points": [
+        "Mark the ceiling level with a laser tool.",
+        "Plan the orientation of the baffles.",
+        "Determine the spacing interval for the carriers."
+      ],
+      "tip": "Standard architectural spacing is 100mm center-to-center for a balanced look."
+    },
+    {
+      "title": "Carrier Grid Installation",
+      "description": "The backbone of the system",
+      "points": [
+        "Install the GI main channel and suspended rods.",
+        "Fix the specialized WPC baffle carrier clips.",
+        "Ensure the entire grid is perfectly level."
+      ],
+      "tip": "Use high-quality expansion bolts for maximum overhead safety."
+    },
+    {
+      "title": "Baffle Snapping",
+      "points": [
+        "Align the WPC baffle with the carrier teeth.",
+        "Push upwards until a secure 'lock' is achieved.",
+        "Trim edges using a fine-tooth wood saw."
+      ]
+    }
+  ]
+}

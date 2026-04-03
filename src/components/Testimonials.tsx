@@ -266,25 +266,24 @@ export default function Testimonials() {
               <p className="text-sm text-gray-500 dark:text-gray-400 font-medium italic">Real experiences from Delhi NCR&apos;s most premium homes and offices</p>
            </div>
 
-           <div className="w-full sm:w-auto">
-             <Link 
-                href="https://g.page/r/CYSAtoMtUCKLEBE/review" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative inline-flex items-center justify-center gap-3 bg-[#4285F4] hover:bg-[#357ae8] text-white px-10 py-5 rounded-full text-sm font-bold uppercase tracking-widest transition-all shadow-xl hover:shadow-blue-500/30 overflow-hidden active:scale-95"
-             >
-                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                <div className="relative w-6 h-6 bg-white rounded-full p-1 shadow-sm">
-                  <Image 
-                    src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" 
-                    alt="Google Logo" 
-                    fill 
-                    className="object-contain" 
-                  />
-                </div>
-                Rate Us on Google
-                <ArrowUpRight className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
-             </Link>
+            <div className="w-full sm:w-auto">
+              <Link 
+                 href="https://g.page/r/CYSAtoMtUCKLEBE/review" 
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="group shine-btn relative inline-flex items-center justify-center gap-3 bg-[#4285F4] hover:bg-[#357ae8] text-white px-10 py-5 rounded-full text-sm font-bold uppercase tracking-widest transition-all shadow-xl hover:shadow-blue-500/30 overflow-hidden active:scale-95"
+              >
+                 <div className="relative w-6 h-6 bg-white rounded-full p-1 shadow-sm">
+                   <Image 
+                     src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" 
+                     alt="Google Logo" 
+                     fill 
+                     className="object-contain" 
+                   />
+                 </div>
+                 Rate Us on Google
+                 <ArrowUpRight className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
            </div>
         </div>
 

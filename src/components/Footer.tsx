@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Phone, Mail, Instagram, ArrowUp, ExternalLink } from "lucide-react";
+import { MapPin, Phone, Mail, Instagram, ArrowUp } from "lucide-react";
 
 // Premium WhatsApp Branded SVG
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -21,9 +21,9 @@ const productCategories = [
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Products", href: "/products" },
-  { name: "Projects", href: "/projects" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
+  { name: "Dealer Partnership", href: "/dealer" },
 ];
 
 export default function Footer() {
@@ -167,7 +167,7 @@ export default function Footer() {
               </p>
               <Link
                 href="/contact"
-                className="inline-flex w-full lg:w-auto justify-center items-center gap-2 bg-amber-600 hover:bg-amber-500 text-black text-xs font-bold px-6 py-3.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-amber-600/20 active:scale-95 uppercase tracking-widest"
+                className="inline-flex w-full lg:w-auto shine-btn justify-center items-center gap-2 bg-amber-600 hover:bg-amber-500 text-black text-xs font-bold px-6 py-3.5 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-amber-600/20 active:scale-95 uppercase tracking-widest"
               >
                 Get a Quote
                 <ArrowUp className="w-3.5 h-3.5 rotate-45" />
@@ -187,7 +187,7 @@ export default function Footer() {
 
           <button
             onClick={scrollToTop}
-            className="group flex items-center gap-2 text-xs text-gray-600 hover:text-amber-400 transition-colors font-medium uppercase tracking-wider"
+            className="group shine-btn flex items-center gap-2 text-xs text-gray-600 hover:text-amber-400 transition-colors font-medium uppercase tracking-wider"
           >
             Back to Top
             <div className="w-7 h-7 rounded-full border border-white/10 flex items-center justify-center group-hover:border-amber-500/50 group-hover:bg-amber-500/10 transition-all">

@@ -96,6 +96,7 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -138,15 +139,33 @@ export default function ContactPage() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+      } else {
+        throw new Error(result.error || "Something went wrong. Please try again.");
+      }
+    } catch (err: any) {
+      console.error("Submission Error:", err);
+      setError(err.message || "Failed to send message. Please try again later.");
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1500);
+    }
   };
 
   const getInputClass = (value: string) => {
@@ -179,7 +198,7 @@ export default function ContactPage() {
 
       {/* The Split Screen Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-        <div className="flex flex-col lg:flex-row shadow-2xl dark:shadow-none rounded-sm overflow-hidden border border-gray-100 dark:border-gray-800 bg-white dark:bg-slate-900 relative transition-colors duration-300">
+        <div className="flex flex-col-reverse lg:flex-row shadow-2xl dark:shadow-none rounded-sm overflow-hidden border border-gray-100 dark:border-gray-800 bg-white dark:bg-slate-900 relative transition-colors duration-300">
           
           {isSubmitted && <ConfettiBurst />}
 
@@ -296,6 +315,12 @@ export default function ContactPage() {
                 <div className="mb-10">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Request a Quote</h3>
                   <p className="text-gray-500 dark:text-gray-400 text-sm font-normal">Fill out the details below and our project manager will contact you within 2 business hours.</p>
+                  
+                  {error && (
+                    <div className="mt-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 text-xs rounded-sm">
+                      {error}
+                    </div>
+                  )}
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">

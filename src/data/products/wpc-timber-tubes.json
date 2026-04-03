@@ -1,0 +1,211 @@
+{
+  "id": "wpc-timber-tubes",
+  "title": "WPC Timber Tubes",
+  "slug": "wpc-timber-tubes",
+  "category": "ceilings",
+  "priceRange": "Premium",
+  "shortDescription": "Designer vertical timber tubes for sophisticated room partitions and rhythmic ceiling designs. 100% termite proof and eco-friendly.",
+  "longDescription": "The Goals Floors WPC Timber Tube collection is the ultimate architectural tool for creating depth and linear rhythm in modern interiors. Specifically designed for the luxury residential and commercial landscapes of Delhi, Gurugram, and Noida, these 'timber tubes' provide the rich warmth of exotic wood with the unbeatable durability of A+ Grade WPC. Whether used as a vertical room divider in a corporate lobby or a cascading ceiling feature in a high-rise apartment, our timber tubes offer a clean, professional finish with zero maintenance requirements. Say goodbye to the warping, polishing, and pest issues associated with traditional wood joinery.",
+  "features": [
+    {
+      "title": "A+ Grade WPC",
+      "description": "High-density engineering that ensures total stability across the full 2.95m length."
+    },
+    {
+      "title": "Dual-Sided Finish",
+      "description": "Perfect for open partitions where both sides of the tube are visible."
+    },
+    {
+      "title": "Termite & Borer Proof",
+      "description": "Naturally resistant to pests, making it a lifelong investment for NCR properties."
+    },
+    {
+      "title": "Zero Maintenance",
+      "description": "No painting, no polishing, and no sanding required. Just a simple wipe-down is enough."
+    },
+    {
+      "title": "Precision Joinery",
+      "description": "Uniform dimensions (100mm x 50mm) allow for perfectly symmetrical architectural layouts."
+    },
+    {
+      "title": "Eco-Conscious Materials",
+      "description": "Made from recycled wood fiber and high-grade polymers, reducing deforestation."
+    }
+  ],
+  "applications": [
+    "Vertical Room Dividers",
+    "Feature Ceiling Louvers",
+    "Lobby Design Accents",
+    "Commercial Reception Backgrounds",
+    "Designer Handrails & Screenings"
+  ],
+  "installation": "Can be installed using an internal aluminum frame for structural partitions or direct-to-slab with architectural adhesives and L-brackets for decorative screens. Our Gurgaon team provides full installation kits for seamless on-site assembly.",
+  "maintenance": "Highly resistant to dust accumulation. Simply clean with a soft dry cloth or a slightly damp sponge. The surface coating is UV resistant and will not fade in sunlit interior areas.",
+  "faqs": [
+    {
+      "question": "What is the best spacing between WPC timber tubes for a room divider?",
+      "answer": "For a balanced look in Gurugram apartments, we usually recommend a gap of 50mm to 100mm between tubes. This provides a sense of privacy while maintaining an airy, open feel."
+    },
+    {
+      "question": "Are these timber tubes suitable for ceilings in Noida?",
+      "answer": "Yes, they are very popular for Noida corporate offices and luxury homes. They create a 'linear louver' effect that hides slabs and AC ducts while looking extremely premium."
+    },
+    {
+      "question": "How much does one WPC timber tube cost in Delhi NCR?",
+      "answer": "Our Premium Cobra Timber Tubes are currently priced at ₹1390/Panel (2950mm length). We offer wholesale rates for bulk orders on commercial projects."
+    },
+    {
+      "question": "Are they fire-resistant for commercial use?",
+      "answer": "Our tubes are made from Class B1 fire-retardant WPC, meaning they meet the safety standards required for most malls and office buildings in NCR."
+    },
+    {
+      "question": "Can I use these tubes as a balcony partition?",
+      "answer": "While they are 100% waterproof, we recommend them primarily for indoor or semi-covered areas (like balconies with a roof). Direct 24/7 exposure to harsh Delhi sun may affect the finish over many years."
+    },
+    {
+      "question": "How do you install them vertically without visible screws?",
+      "answer": "We use internal reinforcement bars or hidden L-brackets at the top and bottom. This ensures a clean, 'floating' look that architects love."
+    },
+    {
+      "question": "Do they look like real wood?",
+      "answer": "Yes, our 'Cobra' series features a deep wood-grain texture that is indistinguishable from natural polished timber once installed in a room."
+    },
+    {
+      "question": "What is the delivery time for a bulk order in Gurgaon?",
+      "answer": "Being based in Gurugram, we offer 2-hour express dispatch for ready stock. For large project volumes, we usually deliver within 24-48 hours across NCR."
+    },
+    {
+      "question": "Can I cut them to a specific height?",
+      "answer": "Yes, these can be easily cut using a standard wood-cutting miter saw on site to match your exact ceiling height."
+    },
+    {
+      "question": "Is WPC better than real wood for NCR climate?",
+      "answer": "Definitely. Real wood often warps or cracks during the extreme dry heat and monsoon humidity in Delhi. WPC stays perfectly straight and stable forever."
+    }
+  ],
+  "images": [
+    {
+      "url": "/products/timber-tubes/hero.png",
+      "alt": "Modern vertical WPC timber tube partition in Gurugram interior"
+    }
+  ],
+  "installedImages": [
+    {
+      "url": "/products/timber-tubes/hero.png",
+      "alt": "Architectural Timber Tube louver ceiling",
+      "aspect": "wide"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Cobra Walnut",
+      "price": "₹1390",
+      "mrp": "₹2190",
+      "discount": "37% off",
+      "unit": "per Panel",
+      "details": {
+        "Material": "A+ Grade WPC",
+        "Length": "2950 mm",
+        "Width": "100 mm",
+        "Height": "50 mm"
+      },
+      "images": [
+        {
+          "url": "/products/timber-tubes/cobra-walnut.jpg",
+          "alt": "Cobra Walnut - Dark Luxury Wood Texture",
+          "name": "Cobra Walnut"
+        }
+      ]
+    },
+    {
+      "name": "Cobra TOG",
+      "price": "₹1390",
+      "mrp": "₹2190",
+      "discount": "37% off",
+      "unit": "per Panel",
+      "details": {
+        "Material": "A+ Grade WPC",
+        "Length": "2950 mm",
+        "Width": "100 mm",
+        "Height": "50 mm"
+      },
+      "images": [
+        {
+          "url": "/products/timber-tubes/cobra-tog.jpg",
+          "alt": "Cobra TOG - Rich Teak Tones",
+          "name": "Cobra TOG"
+        }
+      ]
+    },
+    {
+      "name": "Cobra Natural",
+      "price": "₹1390",
+      "mrp": "₹2190",
+      "discount": "37% off",
+      "unit": "per Panel",
+      "details": {
+        "Material": "A+ Grade WPC",
+        "Length": "2950 mm",
+        "Width": "100 mm",
+        "Height": "50 mm"
+      },
+      "images": [
+        {
+          "url": "/products/timber-tubes/cobra-natural.jpg",
+          "alt": "Cobra Natural - Bright Modern Wood Texture",
+          "name": "Cobra Natural"
+        }
+      ]
+    },
+    {
+      "name": "Cobra Wenge",
+      "price": "₹1390",
+      "mrp": "₹2190",
+      "discount": "37% off",
+      "unit": "per Panel",
+      "details": {
+        "Material": "A+ Grade WPC",
+        "Length": "2950 mm",
+        "Width": "100 mm",
+        "Height": "50 mm"
+      },
+      "images": [
+        {
+          "url": "/products/timber-tubes/cobra-wenge.jpg",
+          "alt": "Cobra Wenge - Deep Charcoal Wood Tone",
+          "name": "Cobra Wenge"
+        }
+      ]
+    }
+  ],
+  "installationSteps": [
+    {
+      "title": "Layout Marking",
+      "description": "Align the floor and ceiling points",
+      "points": [
+        "Use a plumb line or laser level to mark exact vertical alignment.",
+        "Space the points centers according to your designer's drawing.",
+        "Mark the base and top attachment points for the L-clips."
+      ],
+      "tip": "Standard architectural spacing is 100mm gap for a balanced visual screen."
+    },
+    {
+      "title": "Mounting Clips",
+      "description": "Secure the structural points",
+      "points": [
+        "Screw the heavy-duty clips into the floor.",
+        "Repeat for the ceiling or overhead slab.",
+        "Ensure all clips are perfectly in line to avoid 'twisted' tubes."
+      ],
+      "tip": "If the ceiling is fragile, use a long running GI channel instead of individual clips."
+    },
+    {
+      "title": "Tube Snapping & Caps",
+      "points": [
+        "Slide the WPC timber tube onto the clips.",
+        "Push firmly until it locks with an audible snap.",
+        "Install the matching WPC end-caps for a finished, seamless look."
+      ]
+    }
+  ]
+}

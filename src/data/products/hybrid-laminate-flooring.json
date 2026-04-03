@@ -1,0 +1,291 @@
+{
+  "id": "hybrid-laminate-flooring",
+  "title": "Hybrid Laminate Flooring",
+  "slug": "hybrid-laminate-flooring",
+  "category": "premium-flooring",
+  "priceRange": "Premium",
+  "shortDescription": "100% waterproof hybrid laminate flooring with AC-5 commercial grade durability. Advanced water-resistant core, perfect for kitchens and bathrooms in Gurugram & NCR.",
+  "longDescription": "Experience the next evolution in flooring with Goals Floors' Cobra Hybrid Series. Combining the authentic warmth of natural oak with the revolutionary waterproof performance of SPC, our hybrid laminate is designed for the high-end residential and commercial landscape of Delhi NCR. Engineered with a proprietary high-density water-resistant core, these planks are immune to high humidity, spills, and moisture—making them the elite choice for modern kitchens, dining areas, and even moisture-prone ground floors in Gurgaon. With an AC-5 heavy-commercial wear rating, it's virtually scratch-proof and built to last for decades.",
+  "features": [
+    {
+      "title": "100% Waterproof Tech",
+      "description": "Advanced core technology that prevents swelling and warping, even with standing water for up to 72 hours."
+    },
+    {
+      "title": "AC-5 Commercial Grade",
+      "description": "The highest durability rating available, designed for heavy-traffic showrooms and active NCR households with pets."
+    },
+    {
+      "title": "HDF+ Hybrid Core",
+      "description": "High-Density Fiberboard treated with specialized resin for maximum moisture resistance and structural stability."
+    },
+    {
+      "title": "Scratch & Pet Friendly",
+      "description": "Ultra-tough surface layer that resists pet claws, heavy furniture, and high-heel traffic without scuffing."
+    },
+    {
+      "title": "AAR Click-Lock System",
+      "description": "Precision locking mechanism that creates a water-tight seal between planks, preventing seepage to the subfloor."
+    },
+    {
+      "title": "Low VOC & Safe",
+      "description": "Eco-friendly manufacturing ensuring zero toxic emissions for a healthy indoor environment in your NCR home."
+    }
+  ],
+  "applications": [
+    "Modern Kitchens & Dining Areas",
+    "Luxury Bathrooms & Powder Rooms",
+    "High-Traffic Commercial Showrooms",
+    "Premium Residential Living Spaces",
+    "Basement & Ground Floor Renovations"
+  ],
+  "installation": "Features the advanced AAR Click-lock floating system. No glue or nails required. Can be installed directly over existing level tiles or marble. Specialized waterproof underlayment is recommended for maximum performance in NCR climates.",
+  "maintenance": "Extremely easy to maintain. Unlike standard laminate, this hybrid version can be wet-mopped. Regular sweeping and occasional cleaning with pH-neutral solutions will keep the shine for years.",
+  "faqs": [
+    {
+      "question": "Is Cobra Hybrid flooring really 100% waterproof for kitchens in Gurgaon?",
+      "answer": "Yes, our Hybrid series is specifically engineered for high-moisture areas. While standard laminate can swell, the Cobra Hybrid core is 100% water-resistant, making it perfect for Gurgaon kitchens and moisture-prone areas."
+    },
+    {
+      "question": "How is Hybrid flooring different from regular laminate?",
+      "answer": "Hybrid flooring combines the best of both worlds: the authentic texture of laminate with the waterproof properties of SPC. It is thicker (12mm usually vs 8mm) and features a much more stable core resistant to humidity."
+    },
+    {
+      "question": "What is the price of hybrid laminate in Gurugram and Delhi NCR?",
+      "answer": "Our hybrid series starts at approx ₹279/sqft for the Smartline range and ₹329/sqft for the Premium Oak range. We offer wholesale B2B pricing for builders and interior designers across Delhi NCR."
+    },
+    {
+      "question": "Can I install hybrid flooring in my bathroom?",
+      "answer": "Absolutely. Thanks to its waterproof core and tight locking mechanism, it is suitable for bathrooms (excluding direct shower areas). It provides a warm wooden feel that tiles cannot match."
+    },
+    {
+      "question": "Does Goals Floors provide installation services in Noida and Faridabad?",
+      "answer": "Yes, we have expert technical teams providing precision installation services across Noida, Faridabad, Delhi, and Gurgaon. Hybrid flooring requires specific expansion gaps which our experts manage perfectly."
+    },
+    {
+      "question": "Is this flooring termite-proof for houses in NCR?",
+      "answer": "Yes, the high-density hybrid core is technically treated to be resistant to termites and borers, a common concern for ground-floor installations in the NCR region."
+    },
+    {
+      "question": "How do I maintain hybrid flooring during the dusty seasons in Delhi?",
+      "answer": "Simply use a vacuum for dust and a damp mop for cleaning. Because it's waterproof, you can use more water than standard laminate without any worry of damage."
+    },
+    {
+      "question": "What is the warranty on the Cobra Hybrid series?",
+      "answer": "We provide a comprehensive long-term warranty against surface wear and manufacturing defects. For detailed commercial vs residential terms, please check our official warranty certificate at our Gurgaon showroom."
+    },
+    {
+      "question": "Can hybrid flooring handle the extreme summer heat in Delhi?",
+      "answer": "Yes, our hybrid core is designed for maximum thermal stability. It does not expand or contract significantly like traditional wood, making it ideal for the extreme climate of North India."
+    },
+    {
+      "question": "Which is better for my home: SPC or Hybrid flooring?",
+      "answer": "Both are waterproof. SPC is thinner and very hard, while Hybrid is thicker (12mm) and provides a more comfortable 'walking feel' and better sound insulation. For luxury homes, Hybrid is usually preferred."
+    }
+  ],
+  "images": [
+    {
+      "url": "/products/hybrid/hero.png",
+      "alt": "Luxury Hybrid Waterproof Flooring in Gurgaon Kitchen"
+    }
+  ],
+  "installedImages": [
+    {
+      "url": "/products/hybrid/hero.png",
+      "alt": "Hybrid Floor Installation Detail",
+      "aspect": "wide"
+    }
+  ],
+  "variants": [
+    {
+      "name": "Smartline 101",
+      "price": "₹279",
+      "mrp": "₹449",
+      "discount": "38% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "12mm",
+        "Grade": "AC-4",
+        "Box Packing": "18.5 sq.ft.",
+        "Core": "Water-Resistant Hybrid"
+      },
+      "images": [
+        {
+          "url": "/products/hybrid/smartline-101.png",
+          "alt": "Smartline 101 Light Greyish Beige",
+          "name": "Smartline 101"
+        }
+      ]
+    },
+    {
+      "name": "Smartline 102",
+      "price": "₹279",
+      "mrp": "₹449",
+      "discount": "38% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "12mm",
+        "Grade": "AC-4",
+        "Box Packing": "18.5 sq.ft.",
+        "Core": "Water-Resistant Hybrid"
+      },
+      "images": [
+        {
+          "url": "/products/hybrid/smartline-102.png",
+          "alt": "Smartline 102 Warm Golden Sand",
+          "name": "Smartline 102"
+        }
+      ]
+    },
+    {
+      "name": "Smartline 103",
+      "price": "₹279",
+      "mrp": "₹449",
+      "discount": "38% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "12mm",
+        "Grade": "AC-4",
+        "Box Packing": "18.5 sq.ft.",
+        "Core": "Water-Resistant Hybrid"
+      },
+      "images": [
+        {
+          "url": "/products/hybrid/smartline-103.png",
+          "alt": "Smartline 103 Natural Honey Oak",
+          "name": "Smartline 103"
+        }
+      ]
+    },
+    {
+      "name": "Smartline 104",
+      "price": "₹279",
+      "mrp": "₹449",
+      "discount": "38% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "12mm",
+        "Grade": "AC-4",
+        "Box Packing": "18.5 sq.ft.",
+        "Core": "Water-Resistant Hybrid"
+      },
+      "images": [
+        {
+          "url": "/products/hybrid/smartline-104.png",
+          "alt": "Smartline 104 Muted Grey-Brown",
+          "name": "Smartline 104"
+        }
+      ]
+    },
+    {
+      "name": "Hybrid oak 101",
+      "price": "₹329",
+      "mrp": "₹549",
+      "discount": "40% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "12mm",
+        "Grade": "AC-5",
+        "Box Packing": "15.8 sq.ft.",
+        "Core": "Premium Hybrid Waterproof"
+      },
+      "images": [
+        {
+          "url": "/products/hybrid/hybrid-oak-101.png",
+          "alt": "Hybrid Oak 101 Medium Brown Natural",
+          "name": "Hybrid Oak 101"
+        }
+      ]
+    },
+    {
+      "name": "Hybrid oak 102",
+      "price": "₹329",
+      "mrp": "₹549",
+      "discount": "40% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "12mm",
+        "Grade": "AC-5",
+        "Box Packing": "15.8 sq.ft.",
+        "Core": "Premium Hybrid Waterproof"
+      },
+      "images": [
+        {
+          "url": "/products/hybrid/hybrid-oak-102.png",
+          "alt": "Hybrid Oak 102 Light Beige Sand",
+          "name": "Hybrid Oak 102"
+        }
+      ]
+    },
+    {
+      "name": "Hybrid oak 103",
+      "price": "₹329",
+      "mrp": "₹549",
+      "discount": "40% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "12mm",
+        "Grade": "AC-5",
+        "Box Packing": "15.8 sq.ft.",
+        "Core": "Premium Hybrid Waterproof"
+      },
+      "images": [
+        {
+          "url": "/products/hybrid/hybrid-oak-103.png",
+          "alt": "Hybrid Oak 103 Soft Natural Oak",
+          "name": "Hybrid Oak 103"
+        }
+      ]
+    },
+    {
+      "name": "Hybrid oak 104",
+      "price": "₹329",
+      "mrp": "₹549",
+      "discount": "40% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "12mm",
+        "Grade": "AC-5",
+        "Box Packing": "15.8 sq.ft.",
+        "Core": "Premium Hybrid Waterproof"
+      },
+      "images": [
+        {
+          "url": "/products/hybrid/hybrid-oak-104.png",
+          "alt": "Hybrid Oak 104 Deep Brown Walnut",
+          "name": "Hybrid Oak 104"
+        }
+      ]
+    }
+  ],
+  "installationSteps": [
+    {
+      "title": "Subfloor Check",
+      "description": "Essential for Hybrid performance",
+      "points": [
+        "Floor must be flat, dry and stable.",
+        "Hybrid flooring can bridge minor grout lines.",
+        "Thorough cleaning is required before starting."
+      ],
+      "tip": "Checking subfloor level correctly saves time during click-lock alignment."
+    },
+    {
+      "title": "Layout Precision",
+      "description": "Planning the orientation",
+      "points": [
+        "Plan for the longest wall as a starting point.",
+        "Calculate plank width for the final row.",
+        "Use spacers for consistent expansion gaps."
+      ],
+      "tip": "Always stagger joints by at least 12 inches for maximum stability."
+    },
+    {
+      "title": "Click-Lock Sequence",
+      "points": [
+        "Insert the tongue into the groove at a slight angle.",
+        "Press down firmly until a 'click' is felt.",
+        "Use a water-resistant sealant at the edges for extra safety."
+      ]
+    }
+  ]
+}

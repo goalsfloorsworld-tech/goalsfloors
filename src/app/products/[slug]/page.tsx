@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import productsData from "@/data/products.json";
+import { getProductBySlug } from "@/lib/data";
 import ProductClient, { Product } from "./ProductClient";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const product = productsData.find((p) => p.slug === slug) as Product | undefined;
+  const product = getProductBySlug(slug) as Product | null;
 
   if (!product) {
     return {
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const product = productsData.find((p) => p.slug === slug) as Product | undefined;
+  const product = getProductBySlug(slug) as Product | null;
 
   if (!product) {
     return (

@@ -1,0 +1,291 @@
+{
+  "id": "herringbone-laminate-flooring",
+  "title": "Herringbone Laminate Flooring",
+  "slug": "herringbone-laminate-flooring",
+  "category": "premium-flooring",
+  "priceRange": "Premium",
+  "shortDescription": "Sophisticated zigzag patterned herringbone laminate flooring. AC-4 commercial grade durability with authentic wood texture. Express delivery in Gurugram and Delhi NCR.",
+  "longDescription": "Elevate your interior design with Goals Floors' Cobra Herringbone Laminate Flooring. This classic zigzag pattern, traditionally reserved for high-end hardwood, is now available in a durable, high-performance laminate format. Engineered for the dynamic lifestyle of Delhi NCR, our herringbone series features a High-Density Fiber (HDF) core and an AC-4 heavy-commercial wear layer. Whether you are designing a chic living room in DLF Phase 5 or a modern office in Noida's Sector 62, this flooring provides the perfect balance of luxury aesthetics and rugged durability. It is scratch-resistant, easy to clean, and handles the region's temperature fluctuations with exceptional stability.",
+  "features": [
+    {
+      "title": "Elite Herringbone Pattern",
+      "description": "Timeless V-shaped zigzag layout that adds depth, movement, and a sense of luxury to any residential or commercial space."
+    },
+    {
+      "title": "AC-4 Commercial Grade",
+      "description": "Built to withstand heavy foot traffic, making it ideal for showrooms, corporate boardrooms, and busy NCR households."
+    },
+    {
+      "title": "HDF Core Stability",
+      "description": "Premium High-Density Fiberboard core treated for moisture resistance and maximum structural integrity."
+    },
+    {
+      "title": "Scratch & Stain Resistant",
+      "description": "Protected by a high-grade wear layer that resists domestic chemicals, pet claws, and furniture movement."
+    },
+    {
+      "title": "Express 2-Hour Dispatch",
+      "description": "Industry-leading delivery speed across Gurugram, Delhi, Noida, and the entire NCR region from our central warehouse."
+    },
+    {
+      "title": "Eco-Friendly & Safe",
+      "description": "Certified for indoor air quality, ensuring a safe environment for homes with children and pets."
+    }
+  ],
+  "applications": [
+    "Luxury Living Rooms & Dining Areas",
+    "Modern Office Cabins & Reception Areas",
+    "Boutiques & High-End Retail Stores",
+    "Studio Apartments & Master Bedrooms",
+    "Premium Cafes & Lounge Areas"
+  ],
+  "installation": "Precision AAR Click-lock system designed for a seamless, floating installation. Herringbone planks are installed in a specific A/B sequence to create the perfect V-pattern. Requires a flat subfloor and acoustic underlay. Professional installation suggested for best alignment.",
+  "maintenance": "Low-maintenance surface. Regular sweeping and occasional cleaning with a slightly damp microfiber mop are sufficient. Avoid abrasive scrubbers and excess water.",
+  "faqs": [
+    {
+      "question": "What is the price of Cobra Herringbone flooring in Gurugram?",
+      "answer": "Our premium Cobra Herringbone Laminate Flooring starts at competitive wholesale rates (approx ₹189/sqft). For bulk orders or project-specific quotes in Gurgaon, please contact our team directly for the best B2B pricing."
+    },
+    {
+      "question": "Is herringbone laminate flooring suitable for the hot Delhi NCR climate?",
+      "answer": "Yes. Our HDF core is specifically engineered for high stability. It handles the extreme humidity and temperature variations of the Delhi NCR region much better than traditional solid wood flooring."
+    },
+    {
+      "question": "How quickly can you deliver herringbone flooring to Noida or Faridabad?",
+      "answer": "We offer express dispatch across the NCR. For in-stock items, delivery to Noida, Faridabad, or Delhi typically happens within 2-4 hours from our Gurgaon-based central logistics hub."
+    },
+    {
+      "question": "Do you provide professional installation services in Cyber City and Golf Course Road?",
+      "answer": "Absolutely. We have a dedicated team of expert installers who specialize in complex herringbone patterns for residential and commercial projects across Cyber City, Golf Course Road, and DLF areas."
+    },
+    {
+      "question": "Is this flooring termite-resistant for ground-floor homes in Gurgaon?",
+      "answer": "Yes, our HDF core is technically treated during manufacturing to be highly resistant to termites and borers, providing peace of mind for independent houses and ground-floor apartments in NCR."
+    },
+    {
+      "question": "What is the difference between AC-3 and AC-4 grade flooring?",
+      "answer": "AC-4 is a higher durability rating than AC-3. While AC-3 is for standard home use, our AC-4 grade flooring is rated for commercial traffic, ensuring it lasts much longer even in busy homes."
+    },
+    {
+      "question": "How do I clean herringbone flooring in the dusty environment of NCR?",
+      "answer": "Maintenance is simple. Use a vacuum or soft broom for daily dust removal. For a deeper clean, use a well-wrung microfiber mop. Avoid using too much water as it's not needed for our textured surface."
+    },
+    {
+      "question": "What warranty do you provide on Cobra Herringbone flooring?",
+      "answer": "We provide a comprehensive warranty covering manufacturing defects and surface wear. For exact terms related to residential vs commercial installations, please refer to our warranty card provided at purchase."
+    },
+    {
+      "question": "Can I install this over my existing marble or tile floor?",
+      "answer": "Yes, herringbone laminate is perfect for renovations. It can be installed directly over existing marble or tiles as long as the surface is level and dry, saving you the cost and mess of demolition."
+    },
+    {
+      "question": "Are you a wholesale supplier for architects and builders in Delhi NCR?",
+      "answer": "Yes, Goals Floors is a direct importer and leading B2B supplier. we offer special wholesale pricing and architectural sampling for builders, interior designers, and contractors across the NCR region."
+    }
+  ],
+  "images": [
+    {
+      "url": "/products/herringbone/hero.png",
+      "alt": "Premium Herringbone Flooring in Gurgaon Apartment"
+    }
+  ],
+  "installedImages": [
+    {
+      "url": "/products/herringbone/hero.png",
+      "alt": "Herringbone Floor Installation Detail",
+      "aspect": "wide"
+    }
+  ],
+  "variants": [
+    {
+      "name": "G-F HB 5001",
+      "price": "₹189",
+      "mrp": "₹349",
+      "discount": "45% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "8mm",
+        "Grade": "AC-4",
+        "Box Packing": "20.41 sq.ft.",
+        "Material": "HDF"
+      },
+      "images": [
+        {
+          "url": "/products/herringbone/hb-5001.png",
+          "alt": "G-F HB 5001 Dark Reddish Brown",
+          "name": "HB 5001"
+        }
+      ]
+    },
+    {
+      "name": "G-F HB 5002",
+      "price": "₹189",
+      "mrp": "₹349",
+      "discount": "45% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "8mm",
+        "Grade": "AC-4",
+        "Box Packing": "20.41 sq.ft.",
+        "Material": "HDF"
+      },
+      "images": [
+        {
+          "url": "/products/herringbone/hb-5002.png",
+          "alt": "G-F HB 5002 Light Oak",
+          "name": "HB 5002"
+        }
+      ]
+    },
+    {
+      "name": "G-F HB 5003",
+      "price": "₹189",
+      "mrp": "₹349",
+      "discount": "45% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "8mm",
+        "Grade": "AC-4",
+        "Box Packing": "20.41 sq.ft.",
+        "Material": "HDF"
+      },
+      "images": [
+        {
+          "url": "/products/herringbone/hb-5003.png",
+          "alt": "G-F HB 5003 Medium Brown",
+          "name": "HB 5003"
+        }
+      ]
+    },
+    {
+      "name": "G-F HB 5004",
+      "price": "₹189",
+      "mrp": "₹349",
+      "discount": "45% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "8mm",
+        "Grade": "AC-4",
+        "Box Packing": "20.41 sq.ft.",
+        "Material": "HDF"
+      },
+      "images": [
+        {
+          "url": "/products/herringbone/hb-5004.png",
+          "alt": "G-F HB 5004 Greyish White",
+          "name": "HB 5004"
+        }
+      ]
+    },
+    {
+      "name": "G-F HB 5005",
+      "price": "₹189",
+      "mrp": "₹349",
+      "discount": "45% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "8mm",
+        "Grade": "AC-4",
+        "Box Packing": "20.41 sq.ft.",
+        "Material": "HDF"
+      },
+      "images": [
+        {
+          "url": "/products/herringbone/hb-5005.png",
+          "alt": "G-F HB 5005 Dark Espresso",
+          "name": "HB 5005"
+        }
+      ]
+    },
+    {
+      "name": "G-F HB 5006",
+      "price": "₹189",
+      "mrp": "₹349",
+      "discount": "45% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "8mm",
+        "Grade": "AC-4",
+        "Box Packing": "20.41 sq.ft.",
+        "Material": "HDF"
+      },
+      "images": [
+        {
+          "url": "/products/herringbone/hb-5006.png",
+          "alt": "G-F HB 5006 Natural Oak",
+          "name": "HB 5006"
+        }
+      ]
+    },
+    {
+      "name": "G-F HB 5010",
+      "price": "₹189",
+      "mrp": "₹349",
+      "discount": "45% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "8mm",
+        "Grade": "AC-4",
+        "Box Packing": "20.41 sq.ft.",
+        "Material": "HDF"
+      },
+      "images": [
+        {
+          "url": "/products/herringbone/hb-5010.png",
+          "alt": "G-F HB 5010 Warm Walnut",
+          "name": "HB 5010"
+        }
+      ]
+    },
+    {
+      "name": "G-F HB 5011",
+      "price": "₹189",
+      "mrp": "₹349",
+      "discount": "45% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "8mm",
+        "Grade": "AC-4",
+        "Box Packing": "20.41 sq.ft.",
+        "Material": "HDF"
+      },
+      "images": [
+        {
+          "url": "/products/herringbone/hb-5011.png",
+          "alt": "G-F HB 5011 Muted Light Brown",
+          "name": "HB 5011"
+        }
+      ]
+    }
+  ],
+  "installationSteps": [
+    {
+      "title": "Subfloor Assessment",
+      "description": "Critical for NCR homes",
+      "points": [
+        "Ensure the floor is 100% moisture-free.",
+        "Surface must be level within 3mm.",
+        "Clean all dust and construction debris."
+      ],
+      "tip": "Installing over a damp subfloor can cause planks to swell over time."
+    },
+    {
+      "title": "A/B Plank Orientation",
+      "description": "Creating the V-Pattern",
+      "points": [
+        "Planks are sorted into A and B types.",
+        "Connect A-plank to B-plank at 90 degrees.",
+        "Maintain a consistent central axis line."
+      ],
+      "tip": "Mark a center line on the floor to keep the pattern perfectly straight."
+    },
+    {
+      "title": "Click & Lock Execution",
+      "points": [
+        "Angle the plank and push firmly into the joint.",
+        "Use a specialized tapping block for tight fits.",
+        "Ensure no gaps are visible between patterns."
+      ]
+    }
+  ]
+}

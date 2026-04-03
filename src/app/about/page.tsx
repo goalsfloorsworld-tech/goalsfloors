@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
 import {
   motion,
   useMotionValue,
@@ -91,7 +90,7 @@ export default function AboutPage() {
                   transition={{ duration: 2, ease: "easeOut" }}
                   className="absolute top-0 right-0 w-[75%] h-[80%] rounded-sm overflow-hidden border-4 border-white dark:border-slate-950 shadow-2xl z-10"
                 >
-                  <Image src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop" alt="Facade" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                <Image src="https://res.cloudinary.com/dcezlxt8r/image/upload/v1775221626/Premium_exterior_WPC_cladding_on_a_modern_luxury_building_in_Gurugram_-_Goals_Floors_Architectural_Solutions.jpg" alt="Premium exterior WPC cladding on a modern luxury building in Gurugram - Goals Floors Architectural Solutions" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
                 </motion.div>
                 <motion.div
                   initial={{ scale: 1.1, x: -20 }}
@@ -99,7 +98,7 @@ export default function AboutPage() {
                   transition={{ duration: 2, ease: "easeOut", delay: 0.2 }}
                   className="absolute bottom-10 left-0 w-[60%] h-[50%] rounded-sm overflow-hidden border-4 border-white dark:border-slate-950 shadow-xl z-20"
                 >
-                  <Image src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000&auto=format&fit=crop" alt="Interior" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                  <Image src="https://res.cloudinary.com/dcezlxt8r/image/upload/v1775221634/Luxury_modern_interior_with_premium_wooden_flooring_and_charcoal_fluted_panels_in_Delhi_NCR_-_Goals_Floors_Home_Decor.jpg" alt="Luxury modern interior with premium wooden flooring and charcoal fluted panels in Delhi NCR - Goals Floors Home Decor" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
                 </motion.div>
               </motion.div>
 
@@ -120,7 +119,7 @@ export default function AboutPage() {
                 <div className="w-px h-10 bg-gray-200 dark:bg-gray-800"></div>
                 <div>
                   <h4 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white">25K+</h4>
-                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest font-semibold">Projects</p>
+                  <p className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest font-semibold">Solutions</p>
                 </div>
                 <div className="w-px h-10 bg-gray-200 dark:bg-gray-800"></div>
                 <div>
@@ -138,7 +137,7 @@ export default function AboutPage() {
                 transition={{ duration: 2, ease: "easeOut" }}
                 className="absolute top-0 right-0 w-[75%] h-[80%] rounded-sm overflow-hidden border-4 border-white dark:border-slate-950 shadow-2xl z-10"
               >
-                <Image src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop" alt="Facade" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                <Image src="https://res.cloudinary.com/dcezlxt8r/image/upload/v1775221626/Premium_exterior_WPC_cladding_on_a_modern_luxury_building_in_Gurugram_-_Goals_Floors_Architectural_Solutions.jpg" alt="Premium exterior WPC cladding on a modern luxury building in Gurugram - Goals Floors Architectural Solutions" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
               </motion.div>
               <motion.div
                 initial={{ scale: 1.1, x: -30 }}
@@ -146,7 +145,7 @@ export default function AboutPage() {
                 transition={{ duration: 2, ease: "easeOut", delay: 0.3 }}
                 className="absolute bottom-10 left-0 w-[60%] h-[50%] rounded-sm overflow-hidden border-4 border-white dark:border-slate-950 shadow-xl z-20"
               >
-                <Image src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1000&auto=format&fit=crop" alt="Interior" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                <Image src="https://res.cloudinary.com/dcezlxt8r/image/upload/v1775221634/Luxury_modern_interior_with_premium_wooden_flooring_and_charcoal_fluted_panels_in_Delhi_NCR_-_Goals_Floors_Home_Decor.jpg" alt="Luxury modern interior with premium wooden flooring and charcoal fluted panels in Delhi NCR - Goals Floors Home Decor" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
               </motion.div>
             </motion.div>
 
@@ -167,7 +166,7 @@ export default function AboutPage() {
               className="relative aspect-square w-full md:w-80 h-auto rounded-full overflow-hidden border-8 border-gray-100 dark:border-slate-800 shadow-2xl bg-gray-100 dark:bg-slate-900 mx-auto md:mx-0"
             >
               <Image
-                src="https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774799802/Md_Neyab.jpg"
+                src="https://res.cloudinary.com/dcezlxt8r/image/upload/v1774872457/Shakti_FTN.jpg"
                 alt="Shakti FTN, Founder of Goals Floors"
                 fill
                 className="object-cover object-top hover:scale-105 transition-transform duration-1000"

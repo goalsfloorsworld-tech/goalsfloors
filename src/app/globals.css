@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @variant dark (&:where(.dark, .dark *));
 
@@ -46,5 +47,35 @@ html {
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* Global 3-Second Shine Effect */
+  @keyframes shine-anim {
+    0% { transform: translateX(-150%); }
+    20% { transform: translateX(150%); }
+    100% { transform: translateX(150%); }
+  }
+
+  .shine-btn {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shine-btn::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent
+    );
+    animation: shine-anim 3s infinite ease-in-out;
+    pointer-events: none;
+    z-index: 5;
   }
 }

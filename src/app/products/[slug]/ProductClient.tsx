@@ -64,13 +64,9 @@ export interface Product {
   afterInstallation?: AfterInstallation;
   installation: string;
   maintenance: string;
-  logistics?: {
-    Packaging: string;
-    "Box Coverage": string;
-    Availability: string;
-  };
   faqs: FAQ[];
   images: { url: string; alt: string }[];
+  installedImages?: { url: string; alt: string; aspect?: string }[];
   variants?: Variant[];
 }
 
@@ -372,7 +368,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
               </motion.h1>
 
               {/* Mobile Image: Shown only on mobile between heading and description */}
-              <div className="lg:hidden relative aspect-video w-full mb-6 rounded-sm overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm bg-gray-50 dark:bg-slate-900 group/hero">
+              <div className="lg:hidden relative aspect-[4/3] w-full mb-6 rounded-sm overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm bg-gray-50 dark:bg-slate-900 group/hero">
                 {/* 2-Layer Technique: Layer 1 (Blurred BG) */}
                 <Image 
                   src={product.images[0].url} 
@@ -386,7 +382,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                   src={product.images[0].url} 
                   alt={product.images[0].alt} 
                   fill 
-                  className="object-contain relative z-10 transition-transform duration-700 hover:scale-110" 
+                  className="object-cover relative z-10 transition-transform duration-700 hover:scale-110" 
                   priority 
                 />
               </div>
@@ -418,7 +414,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
               animate={{ opacity: 1, x: 0, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3, type: 'spring', stiffness: 50 }}
             >
-              <div className="relative aspect-square w-full max-w-[500px] mx-auto bg-gray-50 dark:bg-slate-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm group/hero">
+              <div className="relative aspect-[4/3] w-full max-w-[600px] mx-auto bg-gray-50 dark:bg-slate-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm group/hero">
                 {/* 2-Layer Technique: Layer 1 (Blurred BG) */}
                 <Image 
                   src={product.images[0].url} 
@@ -432,7 +428,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                   src={product.images[0].url} 
                   alt={product.images[0].alt} 
                   fill 
-                  className="object-contain relative z-10 p-6 transition-transform duration-700 hover:scale-110" 
+                  className="object-cover relative z-10 transition-transform duration-700 hover:scale-110" 
                   priority 
                 />
               </div>
@@ -617,7 +613,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                     src={img.url} 
                     alt={img.alt} 
                     fill 
-                    className="object-contain relative z-10 transition-transform duration-700 hover:scale-110" 
+                    className="object-cover relative z-10 transition-transform duration-700 hover:scale-110" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
                 </motion.div>
@@ -633,57 +629,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
 
 
 
-      {/* ================= 5. LOGISTICS & AVAILABILITY ================= */}
-      {product.logistics && (
-        <motion.div 
-          className="bg-white dark:bg-slate-950 py-10 lg:py-12 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-6 bg-gray-50 dark:bg-slate-900 rounded-lg border border-gray-200 dark:border-gray-800 shadow-sm transition-all hover:border-gray-200 dark:hover:border-gray-700">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gray-900 dark:bg-black rounded-lg flex items-center justify-center text-white shadow-md shrink-0">
-                  <BarChart3 className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-0.5 tracking-tight">Shipping & Stock Availability</h3>
-                  <p className="text-[10px] text-gray-500 dark:text-gray-400 uppercase tracking-widest font-semibold text-amber-600 dark:text-amber-500">B2B Supply Ready</p>
-                </div>
-              </div>
 
-              <div className="flex flex-wrap md:flex-nowrap gap-6 md:gap-12 w-full md:w-auto">
-                <div className="flex-1 md:flex-none">
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 flex items-center gap-2">
-                    <Package className="w-3 h-3 text-amber-600 dark:text-amber-500" />
-                    Packaging
-                  </p>
-                  <p className="text-sm font-medium text-gray-900 dark:text-gray-300">{product.logistics.Packaging}</p>
-                </div>
-                <div className="flex-1 md:flex-none border-l border-gray-200 dark:border-gray-800 pl-6">
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 flex items-center gap-2">
-                    <Maximize className="w-3 h-3 text-amber-600 dark:text-amber-500" />
-                    Coverage
-                  </p>
-                  <p className="text-sm font-medium text-gray-900 dark:text-gray-300">{product.logistics["Box Coverage"]}</p>
-                </div>
-                <div className="flex-1 md:flex-none border-l border-gray-200 dark:border-gray-800 pl-6">
-                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 flex items-center gap-2">
-                    <Zap className="w-3 h-3 text-amber-600 dark:text-amber-500" />
-                    Status
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <p className="text-sm font-medium text-gray-900 dark:text-gray-300">{product.logistics.Availability}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      )}
 
       {/* ================= 6. APPLICATIONS & FINISHES ================= */}
       <div className="bg-white dark:bg-slate-950 py-8 lg:py-12 transition-colors duration-300 overflow-x-hidden">
@@ -948,6 +894,57 @@ export default function ProductClient({ product, slug }: { product: Product; slu
           </div>
         </div>
       </div>
+
+
+      {/* ================= 8.5. INSTALLED IMAGES (MASONRY) ================= */}
+      {product.installedImages && product.installedImages.length > 0 && (
+        <div className="bg-white dark:bg-slate-950 py-16 lg:py-24 transition-colors duration-300">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-600 mb-4 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 inline-block rounded-sm">
+                Project Gallery
+              </h2>
+              <h3 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6 uppercase tracking-tight">
+                Installed <span className="text-amber-600 italic">Visuals</span>
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg font-medium">
+                See how our premium {product.title} transforms real spaces across Delhi NCR. Clean, architectural, and built to last.
+              </p>
+            </div>
+
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+              {product.installedImages.map((img, i) => (
+                <motion.div
+                  key={i}
+                  className="break-inside-avoid relative group cursor-zoom-in rounded-xl overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-2xl transition-all duration-500"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  onClick={() => setFullscreenImage(img.url)}
+                >
+                  <div className="relative w-full">
+                    <img 
+                      src={img.url} 
+                      alt={img.alt}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    {/* Overlay on hover */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="p-4 text-center">
+                         <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white mb-3 mx-auto">
+                            <Plus className="w-6 h-6" />
+                         </div>
+                         <p className="text-xs font-bold text-white uppercase tracking-widest">{img.alt}</p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ================= 9. B2B CONVERSION BAR ================= */}
       <motion.div 
