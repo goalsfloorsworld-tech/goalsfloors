@@ -17,8 +17,8 @@ logger = logging.getLogger(__name__)
 HF_TOKEN = os.environ.get("HF_TOKEN", "").strip()
 MODEL_ID = "meta-llama/Meta-Llama-3-8B-Instruct"
 
-# !!! YAHAN APNA GOOGLE SCRIPT KA URL DAALO !!!
-WEBHOOK_URL = "YOUR_GOOGLE_SHEET_WEBAPP_URL_HERE"
+# Google Sheets Webhook (Should be set in Hugging Face Secrets)
+WEBHOOK_URL = os.environ.get("GOOGLE_SHEET_URL", "").strip()
 
 SYSTEM_PROMPT = """You are the Virtual Architectural Consultant for Goals Floors, a premium B2B luxury architectural materials brand.
 
@@ -92,18 +92,24 @@ class ChatRequest(BaseModel):
 
 async def send_to_google_sheets(user_message: str, ai_response: str):
     """Background task to send chat logs to Google Sheets webhook without slowing down the user."""
-    if not WEBHOOK_URL or WEBHOOK_URL == "https://script.google.com/macros/s/AKfycbzCzlNAVmh_NCTZtDkIAChA_ygVqEKm8VSc0NF8VcXGHYxNhZH6bxVxyBE8CE7uPaej/exec":
-        logger.warning("Webhook URL not set. Skipping sheet update.")
+    if not WEBHOOK_URL:
+        logger.info("GOOGLE_SHEET_URL not set in environment. Skipping sync.")
         return
+    
     try:
         async with httpx.AsyncClient() as http_client:
             payload = {
                 "userMessage": user_message,
                 "aiResponse": ai_response
             }
-            await http_client.post(WEBHOOK_URL, json=payload, timeout=5.0)
+            # Sending data to Google Apps Script
+            response = await http_client.post(WEBHOOK_URL, json=payload, timeout=5.0)
+            if response.status_code == 200:
+                logger.info("Successfully synced chat logs to Google Sheets.")
+            else:
+                logger.error(f"Google Sheet error: {response.status_code} - {response.text}")
     except Exception as e:
-        logger.error(f"Failed to send log to Google Sheets: {e}")
+        logger.error(f"Connection failure to Google Sheets: {e}")
 
 async def generate_stream(messages: List[dict]):
     try:

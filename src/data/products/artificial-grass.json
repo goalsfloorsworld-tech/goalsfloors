@@ -98,6 +98,48 @@
       "alt": "High-Density Artificial Grass for Commercial Landscaping in Delhi NCR"
     }
   ],
+  "installedImages": [
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775374908/Luxury_Apartment_Balcony_with_Artificial_Grass_in_Gurugram.jpg",
+      "alt": "Luxury Apartment Balcony with Artificial Grass in Gurugram",
+      "aspect": "portrait"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775374937/Modern_Rooftop_Garden_Turf_Installation_Noida.jpg",
+      "alt": "Modern Rooftop Garden Turf Installation Noida",
+      "aspect": "landscape"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775374941/Pet-Friendly_Synthetic_Grass_for_Cyber_City_Offices.jpg",
+      "alt": "Pet-Friendly Synthetic Grass for Cyber City Offices",
+      "aspect": "square"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775374937/High-Density_Artificial_Turf_for_Residential_Villa_Delhi_NCR.jpg",
+      "alt": "High-Density Artificial Turf for Residential Villa Delhi NCR",
+      "aspect": "tall"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775374933/Zero_Maintenance_Green_Balcony_Design_Aerocity.jpg",
+      "alt": "Zero Maintenance Green Balcony Design Aerocity",
+      "aspect": "wide"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775374928/Cozy_High-Rise_Balcony_with_Goals_Floors_Synthetic_Turf.jpg",
+      "alt": "Cozy High-Rise Balcony with Goals Floors Synthetic Turf",
+      "aspect": "portrait"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775374931/Commercial_Rooftop_Cafe_Landscape_Gurgaon.jpg",
+      "alt": "Commercial Rooftop Cafe Landscape Gurgaon",
+      "aspect": "landscape"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775374937/Safe_Children_Play_Area_with_Artificial_Grass_Installation.jpg",
+      "alt": "Safe Children Play Area with Artificial Grass Installation",
+      "aspect": "square"
+    }
+  ],
   "variants": [
     {
       "name": "Premium Grass 25mm",

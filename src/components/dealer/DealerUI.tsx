@@ -210,18 +210,18 @@ export function RadioCard({ icon: Icon, label, active, onClick }: any) {
       whileHover={{ y: -1 }}
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
-      className={`p-4 rounded-2xl border text-left transition-all duration-500 flex items-center gap-4 relative overflow-hidden group min-h-[72px] ${
+      className={`p-3 sm:p-4 rounded-xl sm:rounded-2xl border text-left transition-all duration-500 flex items-center gap-2 sm:gap-4 relative overflow-hidden group min-h-[64px] sm:min-h-[72px] ${
         active 
         ? 'bg-amber-600 border-amber-600 shadow-[0_10px_30px_rgba(217,119,6,0.1)] dark:shadow-[0_10px_30px_rgba(217,119,6,0.2)]' 
         : 'bg-white dark:bg-slate-800/30 border-slate-200 dark:border-slate-700 hover:border-amber-600/30 shadow-sm dark:shadow-none'
       }`}
     >
-      <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-500 shrink-0 ${
+      <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center transition-colors duration-500 shrink-0 ${
         active ? 'bg-white/20 text-white' : 'bg-slate-50 dark:bg-slate-900 text-slate-400 group-hover:text-amber-600'
       }`}>
-        <Icon className="w-5 h-5" />
+        <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
       </div>
-      <span className={`text-[10px] font-black uppercase tracking-[0.2em] leading-tight flex-1 ${active ? 'text-white' : 'text-slate-500 dark:text-slate-400'}`}>
+      <span className={`text-[8px] sm:text-[10px] font-black uppercase tracking-[0.1em] sm:tracking-[0.2em] leading-[1.3] flex-1 break-words ${active ? 'text-white' : 'text-slate-500 dark:text-slate-400'}`}>
         {label}
       </span>
       {active && (

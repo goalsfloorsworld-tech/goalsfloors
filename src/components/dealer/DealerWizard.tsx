@@ -121,7 +121,7 @@ export default function DealerWizard() {
 
       {/* --- FORM SECTION (LEFT SIDE) --- */}
       <div className={`w-full md:w-1/2 bg-white dark:bg-slate-900/40 backdrop-blur-3xl relative z-10 transition-all duration-500 overflow-y-auto ${isSubmitted ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
-        <div className="p-10 md:p-12 lg:p-20 flex flex-col justify-center min-h-screen">
+        <div className="p-10 md:p-12 lg:p-20 pb-32 md:pb-20 flex flex-col justify-center min-h-screen">
         
         {/* Mobile Header (Hidden on Laptop/Desktop) */}
         <div className="md:hidden mb-8">
