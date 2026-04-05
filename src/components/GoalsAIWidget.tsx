@@ -126,10 +126,21 @@ export default function GoalsAIWidget() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            layoutId="ai-widget"
-            transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-            className="absolute bottom-20 right-0 w-[calc(100vw-48px)] md:w-[480px] h-[780px] max-h-[85vh] grid grid-rows-[auto_1fr_auto] bg-slate-950/95 backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_30px_100px_rgba(0,0,0,0.7)] overflow-hidden"
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+            className="absolute bottom-12 md:bottom-24 right-0 w-[calc(100vw-48px)] md:w-[480px] h-[600px] md:h-[780px] max-h-[85vh] z-20 flex flex-col"
           >
+            {/* Morphing Background */}
+            <motion.div
+              layoutId="ai-widget"
+              className="absolute inset-0 bg-slate-950/95 backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_30px_100px_rgba(0,0,0,0.7)]"
+              transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+            />
+
+            {/* Content Container (Fixed Size/Coordinate System) */}
+            <div className="relative z-10 flex-1 flex flex-col overflow-hidden rounded-[2rem] h-full">
             {/* Header */}
             <div className="shrink-0 bg-gradient-to-r from-slate-900 to-slate-950 p-4 border-b border-white/10 flex items-center justify-between shadow-md relative overflow-hidden">
                {/* Premium Glow effect */}
@@ -223,24 +234,39 @@ export default function GoalsAIWidget() {
                 </button>
               </form>
             </div>
-          </motion.div>
-        )}
+          </div>
+        </motion.div>
+      )}
       </AnimatePresence>
 
       {/* Floating Action Button */}
       <AnimatePresence>
         {!isOpen && (
-          <div className="relative flex items-center justify-center">
+          <div className="relative flex items-center justify-center group">
             <motion.button
               key="fab"
-              layoutId="ai-widget"
               onClick={() => setIsOpen(true)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-14 h-14 bg-amber-600 text-white rounded-full shadow-[0_10px_30px_rgba(217,119,6,0.4)] flex items-center justify-center relative overflow-hidden group z-20"
+              className="w-14 h-14 text-white rounded-full flex items-center justify-center relative z-20"
             >
-              <div className="absolute inset-0 bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full" />
-              <MessageSquare className="w-6 h-6 relative z-10" />
+              {/* Morphing Background */}
+              <motion.div
+                layoutId="ai-widget"
+                className="absolute inset-0 bg-amber-600 rounded-full shadow-[0_10px_30px_rgba(217,119,6,0.4)]"
+                transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+              />
+              
+              <div className="absolute inset-0 bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full z-0" />
+              
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                className="relative z-10"
+              >
+                <MessageSquare className="w-6 h-6" />
+              </motion.div>
             </motion.button>
 
             {/* === FIXED PULSE: Outside button to avoid overflow:hidden clipping === */}
