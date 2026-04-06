@@ -99,24 +99,14 @@
   ],
   "installedImages": [
     {
-      "url": "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=800",
-      "alt": "Laminate Flooring in Modern Bedroom",
-      "aspect": "landscape"
-    },
-    {
-      "url": "https://images.unsplash.com/photo-1615529328331-f8917597711f?q=80&w=800",
-      "alt": "Open Plan Office with Laminate Floor",
-      "aspect": "wide"
-    },
-    {
-      "url": "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800",
-      "alt": "Living Room Seamless Floor Installation",
-      "aspect": "square"
-    },
-    {
-      "url": "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=800",
-      "alt": "Laminate Skirting Finish Detail",
+      "url": "/images/products/laminate-flooring/lam-1.png",
+      "alt": "Modern Delhi Apartment Living Room with Light Oak Laminate Flooring",
       "aspect": "portrait"
+    },
+    {
+      "url": "/images/products/laminate-flooring/lam-2.png",
+      "alt": "High-Traffic Corporate Reception in Gurgaon with Dark Walnut Laminate",
+      "aspect": "landscape"
     }
   ],
   "variants": [

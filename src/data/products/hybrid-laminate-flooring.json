@@ -91,9 +91,44 @@
   ],
   "installedImages": [
     {
-      "url": "/products/hybrid/hero.png",
-      "alt": "Hybrid Floor Installation Detail",
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Pet-Friendly_Hybrid_Flooring_in_Modern_Noida_Villa_Living_Room.png",
+      "alt": "Pet-Friendly Hybrid Flooring in Modern Noida Villa Living Room",
+      "aspect": "portrait"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Waterproof_Hybrid_Flooring_Installation_in_Gurgaon_Kitchen.png",
+      "alt": "Waterproof Hybrid Flooring Installation in Gurgaon Kitchen",
+      "aspect": "landscape"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Durable_Scratch-Resistant_Kids_Playroom_Flooring_Delhi.png",
+      "alt": "Durable Scratch-Resistant Kids Playroom Flooring Delhi",
+      "aspect": "square"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Minimalist_Home_Office_with_Premium_Hybrid_Wood_Finish.png",
+      "alt": "Minimalist Home Office with Premium Hybrid Wood Finish",
+      "aspect": "tall"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Luxury_Yoga_Studio_in_Cyber_City_with_High-Performance_Hybrid_Floors.png",
+      "alt": "Luxury Yoga Studio in Cyber City with High-Performance Hybrid Floors",
       "aspect": "wide"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Detailed_Shot_of_Hybrid_Plank_Installation_Mechanism.png",
+      "alt": "Detailed Shot of Hybrid Plank Installation Mechanism",
+      "aspect": "portrait"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Elegant_Boutique_Hotel_Room_with_Goals_Floors_Hybrid_Series.png",
+      "alt": "Elegant Boutique Hotel Room with Goals Floors Hybrid Series",
+      "aspect": "landscape"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Modern_Dining_Area_with_Natural_Finish_Hybrid_Planks.png",
+      "alt": "Modern Dining Area with Natural Finish Hybrid Planks",
+      "aspect": "square"
     }
   ],
   "variants": [

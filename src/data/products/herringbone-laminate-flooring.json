@@ -91,9 +91,44 @@
   ],
   "installedImages": [
     {
-      "url": "/products/herringbone/hero.png",
-      "alt": "Herringbone Floor Installation Detail",
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775411703/Luxury_Penthouse_Living_Room_with_Light_Oak_Herringbone_Flooring_Gurugram.jpg",
+      "alt": "Luxury Penthouse Living Room with Light Oak Herringbone Flooring Gurugram",
+      "aspect": "portrait"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Modern_Master_Bedroom_with_Dark_Walnut_Herringbone_Floor_Delhi_NCR.jpg",
+      "alt": "Modern Master Bedroom with Dark Walnut Herringbone Floor Delhi NCR",
+      "aspect": "landscape"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Premium_Retail_Boutique_with_Polished_Herringbone_Flooring_Aerocity.jpg",
+      "alt": "Premium Retail Boutique with Polished Herringbone Flooring Aerocity",
+      "aspect": "square"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Minimalist_Hallway_with_Grey_Herringbone_Laminate_Finish.jpg",
+      "alt": "Minimalist Hallway with Grey Herringbone Laminate Finish",
+      "aspect": "tall"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Corporate_Office_Boardroom_with_Warm_Herringbone_Texture.jpg",
+      "alt": "Corporate Office Boardroom with Warm Herringbone Texture",
       "aspect": "wide"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Close-up_Detail_of_Herringbone_V-Pattern_Wood_Grain.jpg",
+      "alt": "Close-up Detail of Herringbone V-Pattern Wood Grain",
+      "aspect": "portrait"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Rustic_Cafe_Interior_with_Herringbone_Patterned_Floors.jpg",
+      "alt": "Rustic Cafe Interior with Herringbone Patterned Floors",
+      "aspect": "landscape"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Modern_High-End_Kitchen_with_Grey_Herringbone_Flooring.jpg",
+      "alt": "Modern High-End Kitchen with Grey Herringbone Flooring",
+      "aspect": "square"
     }
   ],
   "variants": [

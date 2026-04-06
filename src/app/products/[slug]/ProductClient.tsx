@@ -121,7 +121,7 @@ const VariantCard = ({ variant, onImageClick }: { variant: Variant, onImageClick
           <div 
             ref={scrollRef}
             onScroll={handleScroll}
-            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide h-full"
+            className="flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide h-full touch-pan-x"
           >
             {images.map((img, i) => (
               <div 
@@ -131,16 +131,9 @@ const VariantCard = ({ variant, onImageClick }: { variant: Variant, onImageClick
               >
                 <Image 
                   src={img.url} 
-                  alt="" 
-                  fill 
-                  className="object-cover blur-2xl opacity-40 scale-110" 
-                />
-                <div className="absolute inset-0 bg-white/20 dark:bg-black/20 z-0" />
-                <Image 
-                  src={img.url} 
                   alt={img.alt || `${variant.name} detail ${i + 1}`}
                   fill
-                  className="object-contain relative z-10 group-hover:scale-110 transition-transform duration-500"
+                  className="object-cover relative z-10 transition-transform duration-500 sm:group-hover:scale-110"
                 />
 
                 {/* Variation Name Badge */}
