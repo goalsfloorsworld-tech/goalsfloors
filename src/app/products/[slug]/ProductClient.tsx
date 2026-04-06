@@ -121,7 +121,7 @@ const VariantCard = ({ variant, onImageClick }: { variant: Variant, onImageClick
           <div 
             ref={scrollRef}
             onScroll={handleScroll}
-            className="flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide h-full touch-pan-y"
+            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide h-full"
           >
             {images.map((img, i) => (
               <div 

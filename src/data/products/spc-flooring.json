@@ -126,42 +126,51 @@
   ],
   "variants": [
     {
-      "name": "G-F SPC 301 (Light Oak)",
-      "price": "₹195",
-      "mrp": "₹490",
-      "discount": "60% OFF",
+      "name": "G-F SPC 301 (Cobra Silver)",
+      "price": "₹180",
+      "mrp": "₹390",
+      "discount": "54% OFF",
       "unit": "per sq.ft",
       "details": {
-        "Plank Size": "1220mm x 183mm",
-        "Thickness": "6mm",
+        "Plank Size": "1220mm x 153mm",
+        "Thickness": "6mm with Cushion",
         "Wear Layer": "0.5mm",
-        "Surface": "EIR Real Wood Grain"
+        "Surface Texture": "Handscrapped",
+        "Edge Finish": "Bevel Edge",
+        "Installation": "Uniclick",
+        "Packing": "10 Planks - 20 SQF / Box",
+        "Warranty": "10Y Res / 5Y Comm"
       },
       "images": [
         {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612619/waterproof-flooring-shades-dJo5zrRJNBSeMnlE.avif",
-          "alt": "Light Oak G-F SPC 301 Waterproof Flooring Delhi NCR",
-          "name": "G-F SPC 301 (Light Oak)"
-        }
-      ]
-    },
-    {
-      "name": "G-F SPC 302 (Classic Teak)",
-      "price": "₹195",
-      "mrp": "₹490",
-      "discount": "60% OFF",
-      "unit": "per sq.ft",
-      "details": {
-        "Plank Size": "1220mm x 183mm",
-        "Thickness": "6mm",
-        "Wear Layer": "0.5mm",
-        "Surface": "EIR Real Wood Grain"
-      },
-      "images": [
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775452465/G-F_SPC_295.avif",
+          "alt": "G-F SPC 295",
+          "name": "G-F SPC 295"
+        },
         {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612665/spc-flooring-leben-AVL1o0MNKzij57rM.avif",
-          "alt": "Classic Teak G-F SPC 302 Premium Vinyl Flooring Gurugram",
-          "name": "G-F SPC 302 (Classic Teak)"
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775452464/G-F_SPC_296.avif",
+          "alt": "G-F SPC 296",
+          "name": "G-F SPC 296"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775452460/G-F_SPC_297.avif",
+          "alt": "G-F SPC 297",
+          "name": "G-F SPC 297"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775452460/G-F_SPC_298.avif",
+          "alt": "G-F SPC 298",
+          "name": "G-F SPC 298"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775452460/G-F_SPC_299.avif",
+          "alt": "G-F SPC 299",
+          "name": "G-F SPC 299"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775452460/G-F_SPC_300.avif",
+          "alt": "G-F SPC 300",
+          "name": "G-F SPC 300"
         }
       ]
     },
@@ -179,29 +188,68 @@
       },
       "images": [
         {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612713/leben-spc-flooring-ALp7Nw4xLoCZ4Xn5.avif",
-          "alt": "Smoked Ash Grey G-F SPC 303 Office Flooring Noida",
-          "name": "G-F SPC 303 (Smoked Ash)"
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775453026/G-F_SPC_301.avif",
+          "alt": "G-F SPC 301",
+          "name": "G-F SPC 301"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775453027/G-F_SPC_302.avif",
+          "alt": "G-F SPC 302",
+          "name": "G-F SPC 302"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775453027/G-F_SPC_303.avif",
+          "alt": "G-F SPC 303",
+          "name": "G-F SPC 303"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775453026/G-F_SPC_304.avif",
+          "alt": "G-F SPC 304",
+          "name": "G-F SPC 304"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775453031/G-F_SPC_305.avif",
+          "alt": "G-F SPC 305",
+          "name": "G-F SPC 305"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775453031/G-F_SPC_306.avif",
+          "alt": "G-F SPC 306",
+          "name": "G-F SPC 306"
         }
       ]
     },
     {
-      "name": "G-F SPC 304 (Washed Pine)",
-      "price": "₹195",
-      "mrp": "₹490",
-      "discount": "60% OFF",
+      "name": "G-F SPC 302 (Herringbone)",
+      "price": "₹215",
+      "mrp": "₹495",
+      "discount": "56% OFF",
       "unit": "per sq.ft",
       "details": {
-        "Plank Size": "1220mm x 183mm",
+        "Plank Size": "600mm x 125mm",
         "Thickness": "6mm",
         "Wear Layer": "0.5mm",
-        "Surface": "EIR Real Wood Grain"
+        "Surface Texture": "Handscrapped",
+        "Edge Finish": "Bevel Edge",
+        "Installation": "Uniclick",
+        "Packing": "20 Planks - 16.15 SQF / Box",
+        "Warranty": "10Y Res / 5Y Comm"
       },
       "images": [
         {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1774612790/spc-flooring-mv02ZyRpLDfnwL9O.avif",
-          "alt": "Washed Pine G-F SPC 304 Wooden Flooring Wholesale NCR",
-          "name": "G-F SPC 304 (Washed Pine)"
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775453460/H-GREY.avif",
+          "alt": "H-GREY",
+          "name": "H-GREY"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775453460/H-BROWN.avif",
+          "alt": "H-BROWN",
+          "name": "H-BROWN"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775453464/H-GAZLENUT.avif",
+          "alt": "H-GAZLENUT",
+          "name": "H-GAZLENUT"
         }
       ]
     },

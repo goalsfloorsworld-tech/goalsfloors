@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { 
   User, Mail, Phone, Building2, MapPin, Grid, 
   Target, Layers, ShieldCheck, ArrowRight, ArrowLeft, 
-  Upload, X, CheckCircle2, AlertCircle
+  Upload, X, CheckCircle2, AlertCircle,
+  Map, Navigation2, Store, Warehouse, HardHat, Palette, BarChart3, FileText
 } from "lucide-react";
 import { MotivationPanel, SuccessOverlay, FloatingInput, RadioCard } from "./DealerUI";
 
@@ -26,13 +27,14 @@ export default function DealerWizard() {
     zip: "",
     businessType: "",
     turnover: "",
+    gstNumber: "",
     message: "",
     businessCardBase64: ""
   });
 
   // --- Step Validation ---
   const isStep1Valid = formData.name && formData.email && formData.phone;
-  const isStep2Valid = formData.company && formData.address && formData.city && formData.state && formData.businessType && formData.turnover;
+  const isStep2Valid = formData.company && formData.address && formData.city && formData.state && formData.businessType && formData.turnover && formData.gstNumber;
   const isStep3Valid = !!formData.businessCardBase64;
 
   const nextStep = () => {
@@ -171,27 +173,29 @@ export default function DealerWizard() {
                       <FloatingInput icon={MapPin} label="Street Address" name="address" value={formData.address} onChange={handleInputChange} />
                   </div>
                   <div className="grid grid-cols-2 gap-6">
-                      <FloatingInput icon={Grid} label="City" name="city" value={formData.city} onChange={handleInputChange} />
-                      <FloatingInput icon={Grid} label="State" name="state" value={formData.state} onChange={handleInputChange} />
+                      <FloatingInput icon={Map} label="City" name="city" value={formData.city} onChange={handleInputChange} />
+                      <FloatingInput icon={Navigation2} label="State" name="state" value={formData.state} onChange={handleInputChange} />
                   </div>
+                  
+                  <FloatingInput icon={FileText} label="GST Number" name="gstNumber" value={formData.gstNumber} onChange={handleInputChange} />
                   
                   <div className="pt-4">
                       <label className="text-[10px] font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 uppercase mb-4 block ml-1">Type of Expertise</label>
                       <div className="grid grid-cols-2 gap-3">
-                          <RadioCard icon={Layers} label="Retailer" active={formData.businessType === "Retailer"} onClick={() => setFormData(p => ({ ...p, businessType: "Retailer" }))} />
-                          <RadioCard icon={Building2} label="Wholesaler" active={formData.businessType === "Wholesaler"} onClick={() => setFormData(p => ({ ...p, businessType: "Wholesaler" }))} />
-                          <RadioCard icon={User} label="Contractor" active={formData.businessType === "Contractor"} onClick={() => setFormData(p => ({ ...p, businessType: "Contractor" }))} />
-                          <RadioCard icon={Grid} label="Designer" active={formData.businessType === "Designer"} onClick={() => setFormData(p => ({ ...p, businessType: "Designer" }))} />
+                          <RadioCard icon={Store} label="Retailer" active={formData.businessType === "Retailer"} onClick={() => setFormData(p => ({ ...p, businessType: "Retailer" }))} />
+                          <RadioCard icon={Warehouse} label="Wholesaler" active={formData.businessType === "Wholesaler"} onClick={() => setFormData(p => ({ ...p, businessType: "Wholesaler" }))} />
+                          <RadioCard icon={HardHat} label="Contractor" active={formData.businessType === "Contractor"} onClick={() => setFormData(p => ({ ...p, businessType: "Contractor" }))} />
+                          <RadioCard icon={Palette} label="Designer" active={formData.businessType === "Designer"} onClick={() => setFormData(p => ({ ...p, businessType: "Designer" }))} />
                       </div>
                   </div>
 
                   <div>
                       <label className="text-[10px] font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 uppercase mb-4 block ml-1">Business Scale (Annual)</label>
                       <div className="grid grid-cols-2 gap-3">
-                          <RadioCard icon={Target} label="Upto ₹10L" active={formData.turnover === "10L"} onClick={() => setFormData(p => ({ ...p, turnover: "10L" }))} />
-                          <RadioCard icon={Target} label="Upto ₹50L" active={formData.turnover === "50L"} onClick={() => setFormData(p => ({ ...p, turnover: "50L" }))} />
-                          <RadioCard icon={Target} label="Upto ₹1Cr" active={formData.turnover === "1Cr"} onClick={() => setFormData(p => ({ ...p, turnover: "1Cr" }))} />
-                          <RadioCard icon={Target} label="Above ₹1Cr" active={formData.turnover === ">1Cr"} onClick={() => setFormData(p => ({ ...p, turnover: ">1Cr" }))} />
+                          <RadioCard icon={BarChart3} label="Upto ₹10L" active={formData.turnover === "10L"} onClick={() => setFormData(p => ({ ...p, turnover: "10L" }))} />
+                          <RadioCard icon={BarChart3} label="Upto ₹50L" active={formData.turnover === "50L"} onClick={() => setFormData(p => ({ ...p, turnover: "50L" }))} />
+                          <RadioCard icon={BarChart3} label="Upto ₹1Cr" active={formData.turnover === "1Cr"} onClick={() => setFormData(p => ({ ...p, turnover: "1Cr" }))} />
+                          <RadioCard icon={BarChart3} label="Above ₹1Cr" active={formData.turnover === ">1Cr"} onClick={() => setFormData(p => ({ ...p, turnover: ">1Cr" }))} />
                       </div>
                   </div>
                 </div>

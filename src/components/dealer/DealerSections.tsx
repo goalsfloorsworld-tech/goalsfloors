@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { 
   Users, MapPin, Truck, IndianRupee, 
   Handshake, Target, LayoutDashboard, 
-  HelpCircle, Plus, Minus, ChevronDown 
+  HelpCircle, Plus, Minus, ChevronDown,
+  TrendingUp, Megaphone, Zap, UserCheck
 } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
@@ -56,22 +57,22 @@ export function TrustBar() {
 
 const partnerBenefits = [
   { 
-    icon: Handshake, 
+    icon: TrendingUp, 
     title: "High Margins", 
     desc: "Unbeatable B2B pricing with clear volume-based slabs and performance rewards." 
   },
   { 
-    icon: LayoutDashboard, 
+    icon: Megaphone, 
     title: "Marketing Support", 
     desc: "Free sample boxes, premium catalogs, and high-res digital assets for your showroom and social media." 
   },
   { 
-    icon: Truck, 
+    icon: Zap, 
     title: "Priority Dispatch", 
     desc: "Exclusive access to our dedicated supply chain, ensuring your projects never face material delays." 
   },
   { 
-    icon: Target, 
+    icon: UserCheck, 
     title: "Dedicated Manager", 
     desc: "A single, direct point of contact for all your technical, logistics, and sales queries." 
   },
