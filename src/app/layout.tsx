@@ -32,7 +32,7 @@ export default function RootLayout({
           enableSystem={false}
         >
           <SmoothScrolling>
-            <div className="relative overflow-x-hidden">
+            <div className="relative overflow-clip">
               <Navbar />
               <main className="min-h-screen">
                 {children}

@@ -85,8 +85,16 @@
   ],
   "images": [
     {
-      "url": "/products/herringbone/hero.png",
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478769/grey_color_laminate_flooring.png",
       "alt": "Premium Herringbone Flooring in Gurgaon Apartment"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478803/light_walnut_laminate_flooring_installed_image.png",
+      "alt": "light walnut laminate flooring installed image"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478765/Majestic_laminate_flooring_installed_image.png",
+      "alt": "Majestic laminate flooring installed image"
     }
   ],
   "installedImages": [
@@ -146,7 +154,7 @@
       },
       "images": [
         {
-          "url": "/products/herringbone/hb-5001.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775464991/G-F_HB_5001.avif",
           "alt": "G-F HB 5001 Dark Reddish Brown",
           "name": "HB 5001"
         }
@@ -166,7 +174,7 @@
       },
       "images": [
         {
-          "url": "/products/herringbone/hb-5002.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775464991/G-F_HB_5002.avif",
           "alt": "G-F HB 5002 Light Oak",
           "name": "HB 5002"
         }
@@ -186,7 +194,7 @@
       },
       "images": [
         {
-          "url": "/products/herringbone/hb-5003.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775464991/G-F_HB_5003.avif",
           "alt": "G-F HB 5003 Medium Brown",
           "name": "HB 5003"
         }
@@ -206,7 +214,7 @@
       },
       "images": [
         {
-          "url": "/products/herringbone/hb-5004.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775464991/G-F_HB_5004.avif",
           "alt": "G-F HB 5004 Greyish White",
           "name": "HB 5004"
         }
@@ -226,7 +234,7 @@
       },
       "images": [
         {
-          "url": "/products/herringbone/hb-5005.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775464991/G-F_HB_5005.avif",
           "alt": "G-F HB 5005 Dark Espresso",
           "name": "HB 5005"
         }
@@ -246,7 +254,7 @@
       },
       "images": [
         {
-          "url": "/products/herringbone/hb-5006.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775464991/G-F_HB_5006.avif",
           "alt": "G-F HB 5006 Natural Oak",
           "name": "HB 5006"
         }
@@ -266,7 +274,7 @@
       },
       "images": [
         {
-          "url": "/products/herringbone/hb-5010.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775464997/G-F_HB_5007.avif",
           "alt": "G-F HB 5010 Warm Walnut",
           "name": "HB 5010"
         }
@@ -286,7 +294,7 @@
       },
       "images": [
         {
-          "url": "/products/herringbone/hb-5011.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775464997/G-F_HB_50011.avif",
           "alt": "G-F HB 5011 Muted Light Brown",
           "name": "HB 5011"
         }

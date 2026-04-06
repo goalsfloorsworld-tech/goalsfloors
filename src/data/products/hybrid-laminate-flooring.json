@@ -85,8 +85,16 @@
   ],
   "images": [
     {
-      "url": "/products/hybrid/hero.png",
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477090/Ocean_Waterproof_Laminate_FLooring.jpg",
       "alt": "Luxury Hybrid Waterproof Flooring in Gurgaon Kitchen"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477239/waterproof_wooden_flooring_supplier_in_gurgaon.jpg",
+      "alt": "Waterproof Wooden Flooring Supplier in Gurgaon"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477243/hybrid_waterproof_laminate_flooring.jpg",
+      "alt": "Hybrid Waterproof Laminate Flooring"
     }
   ],
   "installedImages": [
@@ -146,7 +154,7 @@
       },
       "images": [
         {
-          "url": "/products/hybrid/smartline-101.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775465683/Smartline_101.avif",
           "alt": "Smartline 101 Light Greyish Beige",
           "name": "Smartline 101"
         }
@@ -166,7 +174,7 @@
       },
       "images": [
         {
-          "url": "/products/hybrid/smartline-102.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775465678/Smartline_102.avif",
           "alt": "Smartline 102 Warm Golden Sand",
           "name": "Smartline 102"
         }
@@ -186,7 +194,7 @@
       },
       "images": [
         {
-          "url": "/products/hybrid/smartline-103.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775465679/Smartline_103.avif",
           "alt": "Smartline 103 Natural Honey Oak",
           "name": "Smartline 103"
         }
@@ -206,7 +214,7 @@
       },
       "images": [
         {
-          "url": "/products/hybrid/smartline-104.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775465680/Smartline_104.avif",
           "alt": "Smartline 104 Muted Grey-Brown",
           "name": "Smartline 104"
         }
@@ -226,7 +234,7 @@
       },
       "images": [
         {
-          "url": "/products/hybrid/hybrid-oak-101.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775465674/Hybrid_oak_101.avif",
           "alt": "Hybrid Oak 101 Medium Brown Natural",
           "name": "Hybrid Oak 101"
         }
@@ -246,7 +254,7 @@
       },
       "images": [
         {
-          "url": "/products/hybrid/hybrid-oak-102.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775465675/Hybrid_oak_102.avif",
           "alt": "Hybrid Oak 102 Light Beige Sand",
           "name": "Hybrid Oak 102"
         }
@@ -266,7 +274,7 @@
       },
       "images": [
         {
-          "url": "/products/hybrid/hybrid-oak-103.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775465675/Hybrid_oak_103.avif",
           "alt": "Hybrid Oak 103 Soft Natural Oak",
           "name": "Hybrid Oak 103"
         }
@@ -286,7 +294,7 @@
       },
       "images": [
         {
-          "url": "/products/hybrid/hybrid-oak-104.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775465674/Hybrid_oak_104.avif",
           "alt": "Hybrid Oak 104 Deep Brown Walnut",
           "name": "Hybrid Oak 104"
         }

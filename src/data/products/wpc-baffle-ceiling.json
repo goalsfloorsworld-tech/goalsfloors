@@ -85,15 +85,58 @@
   ],
   "images": [
     {
-      "url": "/products/baffle-ceiling/hero.png",
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp",
+      "alt": "Modern WPC Baffle Ceiling Installation in Luxury Office"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775466450/whatsapp-image-2024-10-29-at-8.30.37-am-1-1-ALpn7DNvJ5IVXjJb.webp",
+      "alt": "Modern WPC Baffle Ceiling Installation in Luxury Office"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775466652/243dc313-4408-4cdc-9716-5ed36f1c3190.png",
       "alt": "Modern WPC Baffle Ceiling Installation in Luxury Office"
     }
   ],
   "installedImages": [
     {
-      "url": "/products/baffle-ceiling/hero.png",
-      "alt": "Architectural Baffle Ceiling Detail",
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775467543/Modern_Corporate_Office_Reception_in_Cyber_City_with_Wenge_WPC_Baffle_Ceiling.jpg",
+      "alt": "Modern Corporate Office Reception in Cyber City with Wenge WPC Baffle Ceiling",
+      "aspect": "landscape"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775467552/Trendy_Cafe_Interior_in_Gurgaon_with_Warm_Teak_WPC_Baffle_Ceiling.jpg",
+      "alt": "Trendy Cafe Interior in Gurgaon with Warm Teak WPC Baffle Ceiling",
+      "aspect": "square"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775467562/Linear_Architectural_Corridor_in_Noida_featuring_Grey_Ash_Baffle_System.jpg",
+      "alt": "Linear Architectural Corridor in Noida featuring Grey Ash Baffle System",
+      "aspect": "tall"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775467554/Luxury_Airport_Lounge_with_Open_Airy_Light-Oak_WPC_Baffle_Ceiling.jpg",
+      "alt": "Luxury Airport Lounge with Open Airy Light-Oak WPC Baffle Ceiling",
       "aspect": "wide"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775467562/Technical_Detail_Concealed_Carrier_System_for_WPC_Baffle_Installation.jpg",
+      "alt": "Technical Detail: Concealed Carrier System for WPC Baffle Installation",
+      "aspect": "portrait"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775467546/High-End_Home_Theater_Ceiling_in_Delhi_with_Roasted_Ash_Baffles.jpg",
+      "alt": "High-End Home Theater Ceiling in Delhi with Roasted Ash Baffles",
+      "aspect": "landscape"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775467563/Creative_Co-working_Space_in_Gurgaon_with_Rhythmic_Maple_Baffle_Ceiling.jpg",
+      "alt": "Creative Co-working Space in Gurgaon with Rhythmic Maple Baffle Ceiling",
+      "aspect": "square"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775467540/Grand_Hotel_Lobby_in_Delhi_with_Sophisticated_Linear_Baffle_Design.jpg",
+      "alt": "Grand Hotel Lobby in Delhi with Sophisticated Linear Baffle Design",
+      "aspect": "landscape"
     }
   ],
   "variants": [
@@ -111,7 +154,7 @@
       },
       "images": [
         {
-          "url": "/products/baffle-ceiling/cobra-wenge.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478728/WPC_BAFFLE_CEILING.png",
           "alt": "Cobra Wenge Dark Wood Texture",
           "name": "Cobra Wenge"
         }
@@ -131,7 +174,7 @@
       },
       "images": [
         {
-          "url": "/products/baffle-ceiling/cobra-pure.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478721/WPC_BAFFLE_CEILING_goals_enterprises.png",
           "alt": "Cobra Pure Light Oak Texture",
           "name": "Cobra Pure"
         }
@@ -151,7 +194,7 @@
       },
       "images": [
         {
-          "url": "/products/baffle-ceiling/cobra-nayur.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478727/WPC_BAFFLE_CEILING_3.png",
           "alt": "Cobra Nayur Warm Teak Texture",
           "name": "Cobra Nayur"
         }
@@ -171,7 +214,7 @@
       },
       "images": [
         {
-          "url": "/products/baffle-ceiling/cobra-cure.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478722/WPC_BAFFLE_CEILING_2.png",
           "alt": "Cobra Cure Roasted Ash Texture",
           "name": "Cobra Cure"
         }

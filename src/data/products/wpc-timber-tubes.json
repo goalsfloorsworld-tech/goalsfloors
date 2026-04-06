@@ -85,7 +85,15 @@
   ],
   "images": [
     {
-      "url": "/products/timber-tubes/hero.png",
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478739/Timber_Tube.png",
+      "alt": "Modern vertical WPC timber tube partition in Gurugram interior"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775468038/wpc-timber-tube-5-YKblODzGRMHZbWMQ.avif",
+      "alt": "Modern vertical WPC timber tube partition in Gurugram interior"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775468034/goals-floors-timber-tube-A85VnGP9z5UpNLpq.avif",
       "alt": "Modern vertical WPC timber tube partition in Gurugram interior"
     }
   ],
