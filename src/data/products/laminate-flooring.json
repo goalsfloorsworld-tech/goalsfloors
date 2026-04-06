@@ -99,14 +99,44 @@
   ],
   "installedImages": [
     {
-      "url": "/images/products/laminate-flooring/lam-1.png",
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Modern_Delhi_Apartment_Living_Room_with_Light_Oak_Laminate_Flooring.jpg",
       "alt": "Modern Delhi Apartment Living Room with Light Oak Laminate Flooring",
       "aspect": "portrait"
     },
     {
-      "url": "/images/products/laminate-flooring/lam-2.png",
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/High_Traffic_Corporate_Reception_in_Gurgaon_with_Dark_Walnut_Laminate.jpg",
       "alt": "High-Traffic Corporate Reception in Gurgaon with Dark Walnut Laminate",
       "aspect": "landscape"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Cozy_Modern_Bedroom_in_Noida_with_Soft_Grey_Laminate_Floors.jpg",
+      "alt": "Cozy Modern Bedroom in Noida with Soft Grey Laminate Floors",
+      "aspect": "square"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Minimalist_Staircase_Landing_in_Gurgaon_Duplex_with_Oak_Laminate.jpg",
+      "alt": "Minimalist Staircase Landing in Gurgaon Duplex with Oak Laminate",
+      "aspect": "tall"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Luxury_Designer_Saree_Boutique_in_Delhi_Mall_with_Espresso_Laminate.jpg",
+      "alt": "Luxury Designer Saree Boutique in Delhi Mall with Espresso Laminate",
+      "aspect": "wide"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Ease_of_Maintenance_Microfiber_Mop_on_Textured_Laminate_Floor.jpg",
+      "alt": "Ease of Maintenance: Microfiber Mop on Textured Laminate Floor",
+      "aspect": "portrait"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Elegant_Open_Plan_Dining_Area_with_Warm_Brown_Laminate_Planks.jpg",
+      "alt": "Elegant Open-Plan Dining Area with Warm Brown Laminate Planks",
+      "aspect": "landscape"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Seamless_Interior_Flow_Hallway_with_Continuous_Laminate_Flooring.jpg",
+      "alt": "Seamless Interior Flow: Hallway with Continuous Laminate Flooring",
+      "aspect": "square"
     }
   ],
   "variants": [

@@ -121,7 +121,7 @@ const VariantCard = ({ variant, onImageClick }: { variant: Variant, onImageClick
           <div 
             ref={scrollRef}
             onScroll={handleScroll}
-            className="flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide h-full touch-pan-x"
+            className="flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide h-full touch-pan-y"
           >
             {images.map((img, i) => (
               <div 
@@ -325,7 +325,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
       />
       
       {/* ================= 1. CLEAN HERO OVERVIEW ================= */}
-      <div className="border-b border-gray-200 dark:border-gray-800 pt-10 pb-8 lg:pt-1 lg:pb-5 text-left">
+      <div className="border-b border-gray-200 dark:border-gray-800 pt-5 pb-8 lg:pt-1 lg:pb-5 text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center">
             

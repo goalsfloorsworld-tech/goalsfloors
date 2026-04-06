@@ -69,7 +69,7 @@ export default async function BlogsPage({
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white tracking-tight mb-6">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white tracking-tight mb-6">
             Architectural <span className="text-amber-600 italic">Journal</span>
           </h1>
           <p className="max-w-2xl mx-auto text-lg text-gray-600 dark:text-gray-400 mb-12 leading-relaxed">

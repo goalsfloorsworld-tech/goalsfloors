@@ -92,7 +92,7 @@ export default async function SingleBlogPage({
           </Link>
           
           <h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white tracking-tight leading-tight mb-8"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-black dark:text-white tracking-tight leading-tight mb-8"
             dangerouslySetInnerHTML={{ __html: post.title.rendered }}
           />
 
@@ -167,10 +167,11 @@ export default async function SingleBlogPage({
         <div 
           className="prose prose-lg md:prose-xl prose-stone dark:prose-invert max-w-none
                      prose-headings:font-bold prose-headings:tracking-tight prose-a:text-amber-600 hover:prose-a:text-amber-700
-                     prose-h2:text-gray-700 dark:prose-h2:text-gray-300 prose-h2:font-bold prose-h2:tracking-tight
+                     prose-h2:text-black dark:prose-h2:text-white prose-h2:text-xl md:prose-h2:text-2xl prose-h2:font-bold prose-h2:tracking-tight
+                     [&_h2_strong]:text-inherit
                      prose-img:rounded-3xl prose-img:shadow-xl prose-img:border prose-img:border-gray-100 dark:prose-img:border-gray-800
                      prose-blockquote:border-l-4 prose-blockquote:border-amber-500 prose-blockquote:bg-gray-50 dark:prose-blockquote:bg-slate-900 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-2xl prose-blockquote:font-medium prose-blockquote:italic
-                     prose-strong:text-amber-900 dark:prose-strong:text-amber-100"
+                     prose-strong:text-black dark:prose-strong:text-amber-100"
           dangerouslySetInnerHTML={{ __html: post.content.rendered }}
         />
         
