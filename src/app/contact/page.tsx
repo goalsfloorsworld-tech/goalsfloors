@@ -177,7 +177,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-slate-950 pt-14 transition-colors duration-300">
+    <div className="min-h-screen bg-gray-50 dark:bg-slate-950 pt-0 transition-colors duration-300">
       
       {/* Premium Minimal Header */}
       <div className="bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-gray-800 py-8 md:py-12 text-center relative overflow-hidden transition-colors duration-300">

@@ -8,7 +8,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import {
   ArrowRight, Search, Filter, X,
   Layers, CloudSun, Maximize, Layout, Grid,
-  Info, ChevronRight
+  Info, ChevronRight, Sparkles
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import CircularProductDisplay from "@/components/products/CircularProductDisplay";
@@ -233,7 +233,7 @@ export default function ProductsClient({ products }: { products: Product[] }) {
               animate={{ opacity: 1, scale: 1 }}
               className="w-12 h-12 bg-amber-600/10 border border-amber-600/20 rounded-full flex items-center justify-center backdrop-blur-md mb-2"
             >
-              <Grid className="w-5 h-5 text-amber-500" />
+              <Sparkles className="w-5 h-5 text-amber-500" />
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -338,8 +338,8 @@ export default function ProductsClient({ products }: { products: Product[] }) {
                     key={cat}
                     onClick={() => handleCategoryChange(cat)}
                     className={`flex items-center gap-2.5 px-5 py-3 rounded-full transition-all duration-500 shrink-0 relative group ${isActive
-                        ? "text-white"
-                        : "text-stone-500 dark:text-slate-400 hover:text-stone-900 dark:hover:text-white"
+                      ? "text-white"
+                      : "text-stone-500 dark:text-slate-400 hover:text-stone-900 dark:hover:text-white"
                       }`}
                   >
                     {isActive && (
@@ -430,8 +430,8 @@ export default function ProductsClient({ products }: { products: Product[] }) {
                         setIsFilterOpen(false);
                       }}
                       className={`w-full flex items-center justify-between p-5 rounded-3xl transition-all duration-300 group ${isActive
-                          ? "bg-amber-600 text-white shadow-lg shadow-amber-600/20"
-                          : "hover:bg-stone-50 dark:hover:bg-slate-800 text-stone-600 dark:text-slate-400"
+                        ? "bg-amber-600 text-white shadow-lg shadow-amber-600/20"
+                        : "hover:bg-stone-50 dark:hover:bg-slate-800 text-stone-600 dark:text-slate-400"
                         }`}
                     >
                       <div className="flex items-center gap-4">

@@ -32,13 +32,15 @@ export default function RootLayout({
           enableSystem={false}
         >
           <SmoothScrolling>
-            <Navbar />
-            <main className="min-h-screen">
-              {children}
-            </main>
-            <Footer />
-            <WhatsAppFloat />
-            <GoalsAIWidget />
+            <div className="relative overflow-x-hidden">
+              <Navbar />
+              <main className="min-h-screen">
+                {children}
+              </main>
+              <Footer />
+              <WhatsAppFloat />
+              <GoalsAIWidget />
+            </div>
           </SmoothScrolling>
         </ThemeProvider>
       </body>

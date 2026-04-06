@@ -91,8 +91,33 @@
   ],
   "installedImages": [
     {
-      "url": "/products/timber-tubes/hero.png",
-      "alt": "Architectural Timber Tube louver ceiling",
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478750/wpc_timber_tube_for_commercial_use.png",
+      "alt": "wpc timber tube for commercial use",
+      "aspect": "wide"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478748/wpc_timber_tube_Wholesaler_In_Delhi.png",
+      "alt": "wpc timber tube Wholesaler In Delhi",
+      "aspect": "square"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478729/wpc_timber_tube_Supplier_In_Gurgaon_2.png",
+      "alt": "wpc timber tube Supplier In Gurgaon",
+      "aspect": "wide"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478736/wpc_timber_tube_for_partition_Use.png",
+      "alt": "wpc timber tube for partition Use",
+      "aspect": "portrait"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478739/Timber_Tube.png",
+      "alt": "Timber Tube",
+      "aspect": "wide"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478740/Installed_Timber_tube.png",
+      "alt": "Installed Timber tube",
       "aspect": "wide"
     }
   ],
@@ -111,7 +136,7 @@
       },
       "images": [
         {
-          "url": "/products/timber-tubes/cobra-walnut.jpg",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478751/cobra_walnut_wpc_timber_tubes.png",
           "alt": "Cobra Walnut - Dark Luxury Wood Texture",
           "name": "Cobra Walnut"
         }
@@ -131,7 +156,7 @@
       },
       "images": [
         {
-          "url": "/products/timber-tubes/cobra-tog.jpg",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478754/cobra_tog_wpc_timber_tube.png",
           "alt": "Cobra TOG - Rich Teak Tones",
           "name": "Cobra TOG"
         }
@@ -151,7 +176,7 @@
       },
       "images": [
         {
-          "url": "/products/timber-tubes/cobra-natural.jpg",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478756/cobra_natural_wpc_timber_tube.png",
           "alt": "Cobra Natural - Bright Modern Wood Texture",
           "name": "Cobra Natural"
         }
@@ -171,7 +196,7 @@
       },
       "images": [
         {
-          "url": "/products/timber-tubes/cobra-wenge.jpg",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478756/cobra_wenge_wpc_timber_tube.png",
           "alt": "Cobra Wenge - Deep Charcoal Wood Tone",
           "name": "Cobra Wenge"
         }

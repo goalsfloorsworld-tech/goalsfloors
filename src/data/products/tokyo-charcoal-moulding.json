@@ -92,34 +92,39 @@
   ],
   "installedImages": [
     {
-      "url": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800",
-      "alt": "Tokyo Charcoal Moulding Luxury TV Unit Installation",
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476503/Premium_Moulding_IN_Gurgaon.jpg",
+      "alt": "Premium_Moulding_IN_Gurgaon",
       "aspect": "portrait"
     },
     {
-      "url": "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=800",
-      "alt": "Commercial Office Backdrop with Charcoal Panels",
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476499/premium_charcoal_mulding_In_Gurgaon.jpg",
+      "alt": "premium_charcoal_mulding_In_Gurgaon",
       "aspect": "landscape"
     },
     {
-      "url": "https://images.unsplash.com/photo-1616137422495-1e9a47e215b2?q=80&w=800",
-      "alt": "Hotel Reception Wall Cladding",
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476504/Premium_Charcoal_Moulding.jpg",
+      "alt": "Premium_Charcoal_Moulding",
       "aspect": "square"
     },
     {
-      "url": "https://images.unsplash.com/photo-1615873968403-89e068628265?q=80&w=800",
-      "alt": "Premium Residential Feature Wall",
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476505/pvc_charcoal_moulding_design.jpg",
+      "alt": "pvc_charcoal_moulding_design",
       "aspect": "tall"
     },
     {
-      "url": "https://images.unsplash.com/photo-1616046229478-9901c5536a45?q=80&w=800",
-      "alt": "Detailed Texture View After Installation",
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476523/Charcoal_Moulding_Wholesaler_In_Gurgaon.jpg",
+      "alt": "Charcoal_Moulding_Wholesaler_In_Gurgaon",
       "aspect": "portrait"
     },
     {
-      "url": "https://images.unsplash.com/photo-1615529328331-f8917597711f?q=80&w=1000",
-      "alt": "Wide Angle View of Charcoal Paneling",
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476669/charcoal_moulding_supplier_in_gurgaon.jpg",
+      "alt": "charcoal_moulding_supplier_in_gurgaon",
       "aspect": "wide"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772476665/best_charcoal_moulding_in_gurgaon.jpg",
+      "alt": "best_charcoal_moulding_in_gurgaon",
+      "aspect": "square"
     }
   ],
   "variants": [

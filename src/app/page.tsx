@@ -49,7 +49,7 @@ function GetAQuoteMonolith() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative py-24 px-4 overflow-hidden bg-gray-50 dark:bg-slate-950 transition-colors duration-500 flex items-center justify-center min-h-[800px]"
+      className="relative py-16 md:py-24 px-4 overflow-hidden bg-gray-50 dark:bg-slate-950 transition-colors duration-500 flex items-center justify-center min-h-[600px] md:min-h-[800px]"
     >
       {/* Background Decor Elements (Floating 3D-like shapes) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -100,12 +100,12 @@ function GetAQuoteMonolith() {
       >
         <div 
           style={{ transform: "translateZ(80px)" }}
-          className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-3xl border-2 border-gray-200/50 dark:border-slate-700/50 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.2),0_10px_30px_-10px_rgba(0,0,0,0.1)] dark:shadow-[0_0_50px_-12px_rgba(251,191,36,0.1)] p-8 md:p-16 rounded-sm relative overflow-hidden group"
+          className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-3xl border-2 border-gray-200/50 dark:border-slate-700/50 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.2),0_10px_30px_-10px_rgba(0,0,0,0.1)] dark:shadow-[0_0_50px_-12px_rgba(251,191,36,0.1)] px-6 py-10 md:p-16 rounded-sm relative overflow-hidden group"
         >
           {/* Subtle Inner Glow */}
           <div className="absolute -inset-px bg-gradient-to-br from-amber-500/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
             
             {/* Left Content */}
             <div style={{ transform: "translateZ(40px)" }}>
@@ -137,7 +137,7 @@ function GetAQuoteMonolith() {
             {/* Right: Premium Normal Button */}
             <div 
               style={{ transform: "translateZ(60px)" }}
-              className="relative flex flex-col items-center justify-center min-h-[400px] overflow-hidden"
+              className="relative flex flex-col items-center justify-center min-h-0 py-8 md:py-0 md:min-h-[400px] overflow-hidden"
             >
               {/* Technical Grid Background */}
               <div className="absolute inset-4 border border-amber-500/10 pointer-events-none opacity-40 dark:opacity-20" 

@@ -72,7 +72,7 @@ export default function CategoryFlipCards() {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4 max-w-7xl mx-auto">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-2 sm:px-4 max-w-7xl mx-auto">
       {categories.map((cat, i) => (
         <div 
           key={cat.slug}
@@ -102,7 +102,7 @@ export default function CategoryFlipCards() {
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
               
-              <div className="absolute inset-x-6 bottom-8">
+              <div className="absolute inset-x-4 sm:inset-x-6 bottom-8">
                 <h3 className="text-2xl font-black text-white italic tracking-tight leading-none uppercase">
                   {cat.title}
                 </h3>
@@ -137,7 +137,7 @@ export default function CategoryFlipCards() {
                   transformStyle: "preserve-3d",
                   transform: "translateZ(60px)"
                 }}
-                className="relative h-full flex flex-col justify-center p-8 text-left" // Switched to text-left for more architectural feel
+                className="relative h-full flex flex-col justify-center p-6 sm:p-8 text-left" // Switched to text-left for more architectural feel
               >
                 <motion.div variants={itemVariants} className="mb-8">
                   <cat.icon className="w-8 h-8 text-amber-500" />

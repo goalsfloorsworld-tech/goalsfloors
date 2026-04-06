@@ -102,7 +102,7 @@ export default function Navbar() {
             <nav className="hidden md:flex space-x-6 items-center h-full">
               <Link href="/" className="text-txt-main hover:text-amber-600 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">Home</Link>
               <div 
-                className="relative h-full flex items-center"
+                className="h-full flex items-center"
                 onMouseEnter={() => setIsDesktopProductsOpen(true)}
                 onMouseLeave={() => setIsDesktopProductsOpen(false)}
               >
