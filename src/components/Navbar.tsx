@@ -21,7 +21,7 @@ export default function Navbar() {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsDesktopProductsOpen(false);
   }, [pathname]);
-  
+
   const toggleTheme = (e: React.MouseEvent) => {
     // Fallback for browsers that don't support View Transition API
     if (!document.startViewTransition) {
@@ -74,8 +74,8 @@ export default function Navbar() {
     setIsProductsOpen(!isProductsOpen);
   };
 
-  const logoSrc = mounted && theme === 'dark' 
-    ? '/images/goals-floors-logo-white.svg' 
+  const logoSrc = mounted && theme === 'dark'
+    ? '/images/goals-floors-logo-white.svg'
     : '/images/goals floors logo.svg';
 
   return (
@@ -101,25 +101,24 @@ export default function Navbar() {
             {/* 2. Desktop Menu */}
             <nav className="hidden md:flex space-x-6 items-center h-full">
               <Link href="/" className="text-txt-main hover:text-amber-600 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">Home</Link>
-              <div 
+              <div
                 className="h-full flex items-center"
                 onMouseEnter={() => setIsDesktopProductsOpen(true)}
                 onMouseLeave={() => setIsDesktopProductsOpen(false)}
               >
-                <Link 
-                  href="/products" 
+                <Link
+                  href="/products"
                   className={`flex items-center gap-1 text-txt-main hover:text-amber-600 dark:hover:text-amber-500 font-medium text-base transition-colors h-full px-1 border-b-2 ${isDesktopProductsOpen ? 'border-amber-600 text-amber-600' : 'border-transparent'}`}
                 >
                   Products <ChevronDown className={`w-4 h-4 transition-transform ${isDesktopProductsOpen ? 'rotate-180' : ''}`} />
                 </Link>
-                <div 
-                  className={`absolute top-full left-1/2 -translate-x-1/2 w-[1100px] bg-white dark:bg-slate-900 shadow-2xl border-t border-amber-600 transition-all duration-300 transform z-50 rounded-b-sm ${
-                    isDesktopProductsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-4'
-                  }`}
+                <div
+                  className={`absolute top-full left-1/2 -translate-x-1/2 w-[1100px] bg-white dark:bg-slate-900 shadow-2xl border-t border-amber-600 transition-all duration-300 transform z-50 rounded-b-sm ${isDesktopProductsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-4'
+                    }`}
                 >
                   <div className="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative overflow-hidden">
                     <div className="absolute -bottom-10 -right-10 text-9xl font-normal text-gray-100/50 dark:text-gray-800/20 select-none pointer-events-none">G</div>
-                    
+
                     {/* Column 1: WALL PANELS (Indoor) */}
                     <div>
                       <h3 className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Wall Panels (Indoor)</h3>
@@ -202,8 +201,8 @@ export default function Navbar() {
       {/* ================= NORMAL MOBILE MENU PANEL ================= */}
       <div
         className={`md:hidden fixed inset-0 top-[56px] bg-white dark:bg-slate-950 z-[100] transition-all duration-300 transform ${isMenuOpen
-            ? 'translate-x-0 opacity-100 flex'
-            : 'translate-x-full opacity-0 pointer-events-none hidden'
+          ? 'translate-x-0 opacity-100 flex'
+          : 'translate-x-full opacity-0 pointer-events-none hidden'
           }`}
       >
         <nav className="flex flex-col p-6 pb-24 gap-4 h-full overflow-y-auto bg-white dark:bg-slate-950 flex-1">

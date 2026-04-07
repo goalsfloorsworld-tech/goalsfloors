@@ -309,14 +309,14 @@ export default function Home() {
 
           {/* Headline - Thinner, more elegant font */}
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight leading-tight">
-            Premium Wall Panels & <br className="hidden md:block" />
+            Goals Floors: India’s <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-600 italic font-light">
-              Luxury Flooring in Gurgaon
+              Fastest Growing Brand
             </span>
           </h1>
 
-          <p className="mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto font-light leading-relaxed mb-10">
-            India&apos;s most trusted brand for Premium Laminate, WPC Louvers, and Baffle Ceilings. Crafting architectural excellence for over 19 years.
+          <p className="mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-4xl mx-auto font-light leading-relaxed mb-10">
+            Unmatched Quality in Wall Panels & Flooring | 90% Warranty Backed | 400+ Partners | 2-Hour Express Material Supply in Gurgaon & NCR.
           </p>
 
           {/* CTAs */}
@@ -344,9 +344,9 @@ export default function Home() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-6">
           {[
             { label: "Premium Products", value: "2500+" },
-            { label: "Happy Clients", value: "10k+" },
-            { label: "Years of Legacy", value: "19+" },
-            { label: "Warranty Assured", value: "10 Yrs" },
+            { label: "Happy Clients", value: "20K+" },
+            { label: "Dealer Network", value: "400+" },
+            { label: "Products Warranty Backed", value: "90%" },
           ].map((stat, i) => (
             <div key={i} className="text-center">
               <Counter

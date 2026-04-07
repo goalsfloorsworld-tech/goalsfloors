@@ -10,8 +10,13 @@ const fontStack = "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://goalsfloors.com"),
-  title: "Goals Floors - Premium Wall Panels & Luxury Flooring in Gurugram",
-  description: "India's most trusted brand for Premium Laminate, WPC Louvers, and Baffle Ceilings. Luxury interior solutions delivered in 2 hours across Delhi NCR.",
+  title: "Goals Floors: India’s Fastest Growing Wall Panels & Flooring Brand",
+  description: "Unmatched Quality in Wall Panels & Flooring | 90% Warranty Backed | 400+ Partners | 2-Hour Express Material Supply in Gurgaon & NCR.",
+  icons: {
+    icon: '/icon.png',
+    shortcut: '/icon.png',
+    apple: '/icon.png',
+  },
 };
 
 import SmoothScrolling from "@/components/SmoothScrolling";

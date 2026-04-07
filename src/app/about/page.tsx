@@ -90,7 +90,7 @@ export default function AboutPage() {
                   transition={{ duration: 2, ease: "easeOut" }}
                   className="absolute top-0 right-0 w-[75%] h-[80%] rounded-sm overflow-hidden border-4 border-white dark:border-slate-950 shadow-2xl z-10"
                 >
-                <Image src="https://res.cloudinary.com/dcezlxt8r/image/upload/v1775221626/Premium_exterior_WPC_cladding_on_a_modern_luxury_building_in_Gurugram_-_Goals_Floors_Architectural_Solutions.jpg" alt="Premium exterior WPC cladding on a modern luxury building in Gurugram - Goals Floors Architectural Solutions" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
+                  <Image src="https://res.cloudinary.com/dcezlxt8r/image/upload/v1775221626/Premium_exterior_WPC_cladding_on_a_modern_luxury_building_in_Gurugram_-_Goals_Floors_Architectural_Solutions.jpg" alt="Premium exterior WPC cladding on a modern luxury building in Gurugram - Goals Floors Architectural Solutions" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" />
                 </motion.div>
                 <motion.div
                   initial={{ scale: 1.1, x: -20 }}
