@@ -171,6 +171,7 @@ export default function Navbar() {
               <Link href="/blogs" className="text-txt-main hover:text-amber-700 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">Blogs</Link>
               <Link href="/about" className="text-txt-main hover:text-amber-700 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">About</Link>
               <Link href="/dealer" className="text-txt-main hover:text-amber-700 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">Partner</Link>
+              <Link href="/ui-demo" className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent px-1">UI Demo</Link>
             </nav>
 
             {/* 3. Right Section */}
@@ -268,6 +269,7 @@ export default function Navbar() {
           <Link href="/blogs" onClick={toggleMenu} className="text-lg font-medium text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">Blogs</Link>
           <Link href="/about" onClick={toggleMenu} className="text-lg font-medium text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">About Us</Link>
           <Link href="/dealer" onClick={toggleMenu} className="text-lg font-normal text-amber-600 border-b border-gray-100 dark:border-gray-800 pb-3">Partner</Link>
+          <Link href="/ui-demo" onClick={toggleMenu} className="text-lg font-medium text-blue-500 dark:text-blue-400 border-b border-gray-100 dark:border-gray-800 pb-3">UI Demo</Link>
           <Link href="/contact" onClick={toggleMenu} className="text-lg font-normal text-amber-600 border-b border-gray-100 dark:border-gray-800 pb-3">Contact Us</Link>
         </nav>
       </div>

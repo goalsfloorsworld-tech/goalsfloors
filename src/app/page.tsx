@@ -233,24 +233,24 @@ function GetAQuoteMonolith() {
 
 const heroImages = [
   {
-    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775218961/Premium_Wooden_Flooring_in_Gurugram_-_Goals_Floors_Luxury_Interiors.jpg",
-    alt: "Premium Wooden Flooring in Gurugram - Goals Floors Luxury Interiors"
+    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_1920/v1775573402/Goals_Floors_Premium_Wall_Panel.png",
+    alt: "Premium Wall Panel by Goals Floors"
   },
   {
-    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775218961/Modern_Wall_Paneling_Designs_Delhi_NCR_-_Goals_Floors_Home_Decor.jpg",
-    alt: "Modern Wall Paneling Designs Delhi NCR - Goals Floors Home Decor"
+    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_1920/v1775573402/Wpc_Baffle_For_Ceiling.png",
+    alt: "WPC Baffle For Ceiling"
   },
   {
-    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775218964/Luxury_Interior_Flooring_Solutions_Gurgaon_-_Goals_Floors_Premium_Collection.jpg",
-    alt: "Luxury Interior Flooring Solutions Gurgaon - Goals Floors Premium Collection"
+    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_1920/v1775573399/Exterior_Louvers_For_Facade.png",
+    alt: "Exterior Louvers For Facade"
   },
   {
-    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775218953/Designer_Wall_Panels_for_Homes_in_Delhi_NCR_-_Goals_Floors_Interior.jpg",
-    alt: "Designer Wall Panels for Homes in Delhi NCR - Goals Floors Interior"
+    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_1920/v1775573400/Laminate_Flooring_Grey_Color.png",
+    alt: "Laminate Flooring Grey Color"
   },
   {
-    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775218959/High-End_Laminate_Flooring_Gurugram_-_Goals_Floors_Excellence.jpg",
-    alt: "High-End Laminate Flooring Gurugram - Goals Floors Excellence"
+    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_1920/v1775573398/Premium_Quality_Pu_Stones_For_Wall.png",
+    alt: "Premium Quality PU Stones For Wall"
   }
 ];
 
@@ -269,17 +269,20 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
 
       {/* ================= HERO SECTION ================= */}
-      <section className="relative min-h-[90vh] flex items-start md:items-center justify-center overflow-hidden">
+      <section className="relative min-h-[500px] sm:min-h-[600px] md:min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Carousel */}
         <div className="absolute inset-0 z-0 bg-black overflow-hidden">
           <AnimatePresence initial={false}>
             <motion.div
               key={heroIndex}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.7 }}
+              initial={{ opacity: 0, scale: 1 }}
+              animate={{ opacity: 0.7, scale: 1.25 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
-              className="absolute inset-0"
+              transition={{ 
+                opacity: { duration: 1.5, ease: "easeInOut" },
+                scale: { duration: 6, ease: "linear" }
+              }}
+              className="absolute inset-0 origin-center"
             >
               <Image
                 src={heroImages[heroIndex].src}
@@ -292,51 +295,106 @@ export default function Home() {
             </motion.div>
           </AnimatePresence>
           
-          {/* Transition Fog / Overlay */}
-          <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-white/70 to-transparent z-10 dark:from-slate-950/70 transition-colors duration-700" />
-          
-          {/* Subtle top vignette for better navbar visibility */}
-          <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/40 to-transparent z-0" />
-        </div>
-
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-32 md:pt-0 md:mt-20">
-
-          {/* USP Badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-8 shadow-xl">
-            <Clock className="w-4 h-4 text-amber-500" />
-            <span className="text-xs sm:text-sm font-medium tracking-widest uppercase">2-Hour Express Delivery in NCR</span>
+          {/* Floating Particles */}
+          <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+            {[...Array(20)].map((_, i) => (
+              <motion.div
+                key={`particle-${i}`}
+                className="absolute w-1 h-1 bg-amber-400 rounded-full"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  opacity: Math.random() * 0.5 + 0.2,
+                  scale: Math.random() * 1.5 + 0.5,
+                }}
+                animate={{
+                  y: [0, -100, -200],
+                  opacity: [0, 0.8, 0],
+                }}
+                transition={{
+                  duration: Math.random() * 10 + 10,
+                  repeat: Infinity,
+                  ease: "linear",
+                  delay: Math.random() * 5,
+                }}
+              />
+            ))}
           </div>
 
-          {/* Headline - Thinner, more elegant font */}
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-semibold text-white mb-6 tracking-tight leading-tight">
-            Goals Floors: India’s <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-600 italic font-light">
-              Fastest Growing Brand
-            </span>
-          </h1>
+          {/* Transition Fog / Overlay */}
+          <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-white/90 via-white/50 to-transparent z-10 dark:from-slate-950/90 dark:via-slate-950/50 transition-colors duration-700" />
+          
+          {/* Subtle top vignette for better navbar visibility */}
+          <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/60 to-transparent z-0" />
+          
+          {/* Luxury Radial Gradient Overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/20 to-black/70 z-0 pointer-events-none" />
+        </div>
 
-          <p className="mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-4xl mx-auto font-light leading-relaxed mb-10">
+        <motion.div 
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.2 }
+            }
+          }}
+          className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-10 pb-24 md:py-20"
+        >
+          {/* USP Badge */}
+          <motion.div 
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-8 shadow-xl"
+          >
+            <Clock className="w-4 h-4 text-amber-500" />
+            <span className="text-xs sm:text-sm font-medium tracking-widest uppercase shadow-sm">2-Hour Express Delivery in NCR</span>
+          </motion.div>
+
+          {/* Headline - Thinner, more elegant font */}
+          <motion.h1 
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
+            className="text-3xl sm:text-4xl md:text-6xl font-semibold text-white mb-6 tracking-tight leading-[1.1] drop-shadow-2xl px-2"
+          >
+            Goals Floors: India&apos;s <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-600 italic font-light pr-2 pb-1 md:whitespace-nowrap block sm:inline drop-shadow-[0_0_20px_rgba(0,0,0,0.5)] mt-2">
+              Fastest Growing Wall Panels & Flooring Brand
+            </span>
+          </motion.h1>
+
+          <motion.p 
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
+            className="mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-4xl mx-auto font-light leading-relaxed mb-10 text-shadow-md"
+          >
             Unmatched Quality in Wall Panels & Flooring | 90% Warranty Backed | 400+ Partners | 2-Hour Express Material Supply in Gurgaon & NCR.
-          </p>
+          </motion.p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <motion.div 
+            variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } } }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0"
+          >
             <Link
               href="/contact"
-              className="group shine-btn flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-all duration-300 w-full sm:w-auto justify-center shadow-lg hover:shadow-amber-600/30"
+              className="group relative overflow-hidden flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-700 hover:from-amber-600 hover:to-amber-800 text-white px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-all duration-500 w-full sm:w-auto justify-center shadow-[0_0_20px_rgba(217,119,6,0.5)] hover:shadow-[0_0_30px_rgba(217,119,6,0.8)] rounded-sm"
             >
-              Get a Free Quote
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              {/* Shimmer effect */}
+              <span className="absolute inset-0 bg-white/20 w-1/2 -skew-x-12 -translate-x-full group-hover:translate-x-[250%] transition-transform duration-1000 ease-in-out"></span>
+              <span className="relative flex items-center gap-2">
+                Get a Free Quote
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </span>
             </Link>
 
             <Link
               href="#categories"
-              className="flex shine-btn items-center gap-2 bg-transparent hover:bg-white/10 border border-white/50 text-white px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-all duration-300 w-full sm:w-auto justify-center"
+              className="flex items-center gap-2 bg-black/40 backdrop-blur-md hover:bg-white/10 border border-white/30 hover:border-amber-500/50 text-white px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-all duration-300 w-full sm:w-auto justify-center rounded-sm"
             >
               Explore Collection
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* ================= STATS BAR ================= */}
@@ -346,7 +404,7 @@ export default function Home() {
             { label: "Premium Products", value: "2500+" },
             { label: "Happy Clients", value: "20K+" },
             { label: "Dealer Network", value: "400+" },
-            { label: "Products Warranty Backed", value: "90%" },
+            { label: "Warranty Backed", value: "90%" },
           ].map((stat, i) => (
             <div key={i} className="text-center">
               <Counter
@@ -382,8 +440,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">Why Top Architects & Designers Trust Goals Floors</h2>
-              <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">We don&apos;t just sell products; we deliver peace of mind. With our robust supply chain and commitment to quality, your projects are completed on time, every time.</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">The Goals Floors Advantage</h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">We don&apos;t just supply surfaces; we deliver the speed, scale, and innovation that your luxury projects deserve.</p>
 
               {/* Mobile Image - Shown only on small screens */}
               <div className="relative h-64 w-full mb-8 lg:hidden rounded-sm overflow-hidden shadow-xl">
@@ -395,11 +453,11 @@ export default function Home() {
 
               <div className="space-y-6">
                 {[
-                  { icon: Truck, title: "Superfast Delivery", desc: "Our 2-Hour express delivery in Gurgaon and NCR ensures your project never stops." },
-                  { icon: ShieldCheck, title: "100% Genuine Materials", desc: "Termite-proof, water-resistant, and fire-retardant panels with official warranties." },
-                  { icon: Trophy, title: "Industry Leaders", desc: "19+ years of expertise. We understand panels and flooring better than anyone else." },
-                  { icon: CheckCircle2, title: "End-to-End Support", desc: "From expert consultation to precise measurements and professional installation, we handle it all." },
-                  { icon: Users, title: "Trusted Brand", desc: "Preferred choice of leading builders, contractors, designers, and thousands of happy homeowners." }
+                  { icon: Truck, title: "120-Minute Express Dispatch", desc: "NCR’s fastest logistics ensure your material reaches the site in Gurgaon & NCR within just 2 hours. We value your time so your project never hits a standstill." },
+                  { icon: Trophy, title: "2500+ Designs | 400+ Dealers", desc: "Explore India’s most expansive curated collection. Our massive distributor network ensures project pricing and immediate stock availability for any project size." },
+                  { icon: CheckCircle2, title: "Quarterly New Product Launches", desc: "Stay ahead of global trends. We refresh our catalog every 3-4 months, bringing the latest international textures in Wall Panels and Flooring to Gurgaon first." },
+                  { icon: ShieldCheck, title: "90% Our Products are Warranty Backed Quality", desc: "Transparency over tall claims. Over 90% of our product range comes with official manufacturer warranties, ensuring long-term performance and total peace of mind." },
+                  { icon: Users, title: "Professional Technical Guidance", desc: "Beyond supply, we are your technical partners. Our experts provide precise advice on material suitability, helping you choose the perfect finish for every space." }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4">
                     <div className="flex-shrink-0 w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center text-amber-700 dark:text-amber-500">

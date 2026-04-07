@@ -55,8 +55,8 @@
       "answer": "Standard laminate is water-resistant, not 100% waterproof. It can handle accidental spills if wiped up quickly, but it should not be installed in wet areas like bathrooms or open balconies."
     },
     {
-      "question": "Does Goals Floors offer wholesale pricing for builders in Delhi NCR?",
-      "answer": "Absolutely. As direct importers, we offer highly competitive B2B wholesale pricing and bulk project discounts for architects, interior designers, and contractors across Delhi NCR."
+      "question": "Does Goals Floors offer project pricing for builders in Delhi NCR?",
+      "answer": "Absolutely. As direct importers, we offer highly competitive B2B project pricing and bulk project discounts for architects, interior designers, and contractors across Delhi NCR."
     },
     {
       "question": "How do I calculate how many boxes I need?",
@@ -141,182 +141,68 @@
   ],
   "variants": [
     {
-      "name": "Event Flooring Series",
-      "price": "₹59",
-      "mrp": "₹79",
-      "discount": "25% off",
+      "name": "Classic Laminate Series",
+      "price": "₹90",
+      "mrp": "₹150",
+      "discount": "40% off",
       "unit": "per Sqft",
       "details": {
         "Thickness": "8mm",
         "Grade": "AC-4",
-        "Box Packing": "20.62 sq.ft.",
+        "Plank Size": "1218 x 198 x 8mm",
+        "Box Packing": "20.80 sq ft (8 Planks)",
         "Material": "HDF"
       },
       "images": [
         {
-          "url": "https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=768,h=591,fit=crop/A1awaq48Q7iLKnDJ/screenshot-2024-11-05-065914-Yyv3DjKnBZFyprW0.png",
-          "alt": "Event Flooring Laminate Shade",
-          "name": "Event Flooring"
-        }
-      ]
-    },
-    {
-      "name": "Goals Trend Series",
-      "price": "₹89",
-      "mrp": "₹139",
-      "discount": "35% off",
-      "unit": "per Sqft",
-      "details": {
-        "Thickness": "8mm",
-        "Grade": "AC-4",
-        "Box Packing": "20.62 sq.ft.",
-        "Material": "HDF"
-      },
-      "images": [
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775544840/walnut_color_laminate_flooring.png",
+          "alt": "Walnut Color Laminate Flooring",
+          "name": "Walnut Color"
+        },
         {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477089/Waterproof_Hybrid_Flooring.jpg",
-          "alt": "Goals Trend Laminate Shade",
-          "name": "Trend Series"
-        }
-      ]
-    },
-    {
-      "name": "Affordable Series",
-      "price": "₹99",
-      "mrp": "₹149",
-      "discount": "33% off",
-      "unit": "per Sqft",
-      "details": {
-        "Thickness": "8mm",
-        "Grade": "AC-4",
-        "Box Packing": "25.96 sq.ft.",
-        "Material": "HDF"
-      },
-      "images": [
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775544840/borneo_merbau_laminate_flooring.png",
+          "alt": "Borneo Merbau Laminate Flooring",
+          "name": "Borneo Merbau"
+        },
         {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477089/Waterproof_Hybrid_Flooring.jpg",
-          "alt": "Affordable Laminate Shade",
-          "name": "Affordable Series"
-        }
-      ]
-    },
-    {
-      "name": "Classic Series",
-      "price": "₹129",
-      "mrp": "₹189",
-      "discount": "31% off",
-      "unit": "per Sqft",
-      "details": {
-        "Thickness": "8mm",
-        "Grade": "AC-4",
-        "Box Packing": "20.4 Sq.ft.",
-        "Material": "HDF"
-      },
-      "images": [
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775544839/oak_wheat_laminate_flooring_8mm.png",
+          "alt": "Oak Wheat Laminate Flooring",
+          "name": "Oak Wheat"
+        },
         {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477089/Waterproof_Hybrid_Flooring.jpg",
-          "alt": "Classic Series Laminate Shade",
-          "name": "Classic Series"
-        }
-      ]
-    },
-    {
-      "name": "French Bleed Series",
-      "price": "₹159",
-      "mrp": "₹249",
-      "discount": "36% off",
-      "unit": "per Sqft",
-      "details": {
-        "Thickness": "8mm (V-Groov)",
-        "Grade": "AC-4",
-        "Box Packing": "18.96 sq.ft.",
-        "Material": "HDF"
-      },
-      "images": [
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775544839/Walnut_Montana_Limed_Laminate_flooring.png",
+          "alt": "Walnut Montana Limed Laminate Flooring",
+          "name": "Walnut Montana Limed"
+        },
         {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477089/Waterproof_Hybrid_Flooring.jpg",
-          "alt": "French Bleed Laminate Shade",
-          "name": "French Bleed"
-        }
-      ]
-    },
-    {
-      "name": "3 Strip Glossy Series",
-      "price": "₹169",
-      "mrp": "₹279",
-      "discount": "39% off",
-      "unit": "per Sqft",
-      "details": {
-        "Thickness": "8mm",
-        "Grade": "AC-4 (CLASS-32)",
-        "Box Packing": "21 Sqft",
-        "Material": "HDF"
-      },
-      "images": [
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775544838/oak_color_laminate_flooring.png",
+          "alt": "Oak Color Laminate Flooring",
+          "name": "Oak Color"
+        },
         {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477089/Waterproof_Hybrid_Flooring.jpg",
-          "alt": "3 Strip Glossy Laminate Shade",
-          "name": "3 Strip Glossy"
-        }
-      ]
-    },
-    {
-      "name": "Rustic Series",
-      "price": "₹179",
-      "mrp": "₹289",
-      "discount": "38% off",
-      "unit": "per Sqft",
-      "details": {
-        "Thickness": "8mm",
-        "Grade": "AC-4 (CLASS-32)",
-        "Box Packing": "17.10 Sqft",
-        "Material": "HDF"
-      },
-      "images": [
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775544838/Studioline_Walnut_Laminate_Flooring.png",
+          "alt": "Studioline Walnut Laminate Flooring",
+          "name": "Studioline Walnut"
+        },
         {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477089/Waterproof_Hybrid_Flooring.jpg",
-          "alt": "Rustic Series Laminate Shade",
-          "name": "Rustic Series"
-        }
-      ]
-    },
-    {
-      "name": "Narrow Wax Series",
-      "price": "₹189",
-      "mrp": "₹299",
-      "discount": "36% off",
-      "unit": "per Sqft",
-      "details": {
-        "Thickness": "8mm",
-        "Grade": "AC-4 (CLASS-32)",
-        "Box Packing": "17.10 Sqft",
-        "Material": "HDF"
-      },
-      "images": [
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775544838/8mm_laminate_flooring_in_gurgaon.png",
+          "alt": "8mm Laminate Flooring in Gurgaon",
+          "name": "Classic Oak"
+        },
         {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477089/Waterproof_Hybrid_Flooring.jpg",
-          "alt": "Narrow Wax Laminate Shade",
-          "name": "Narrow Wax"
-        }
-      ]
-    },
-    {
-      "name": "Piano High Gloss Series",
-      "price": "₹289",
-      "mrp": "₹459",
-      "discount": "37% off",
-      "unit": "per Sqft",
-      "details": {
-        "Thickness": "8mm",
-        "Grade": "AC-4",
-        "Box Packing": "34.60 Sqft",
-        "Material": "HDF"
-      },
-      "images": [
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775544838/Natural_Halifax_Oak_Laminate_flooring.png",
+          "alt": "Natural Halifax Oak Laminate Flooring",
+          "name": "Natural Halifax"
+        },
         {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772477089/Waterproof_Hybrid_Flooring.jpg",
-          "alt": "Piano High Gloss Laminate Shade",
-          "name": "Piano High Gloss"
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775544838/Grey_Bleached_Laminate_Flooring.png",
+          "alt": "Grey Bleached Laminate Flooring",
+          "name": "Grey Bleached"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775544837/Golden_Teak_Laminate_Flooring.png",
+          "alt": "Golden Teak Laminate Flooring",
+          "name": "Golden Teak"
         }
       ]
     }
@@ -358,14 +244,5 @@
       ],
       "tip": "Laminate expands slightly with weather; this gap prevents it from buckling."
     }
-  ],
-  "afterInstallation": {
-    "title": "Finishing Touches",
-    "points": [
-      "Remove all wall spacers",
-      "Install matching skirting boards to cover the expansion gaps",
-      "Install T-profiles at doorways or room transitions"
-    ],
-    "tip": "Wait 24 hours before moving very heavy furniture, and use felt pads under table and chair legs."
-  }
+  ]
 }

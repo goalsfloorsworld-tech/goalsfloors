@@ -11,7 +11,7 @@ const fontStack = "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
 export const metadata: Metadata = {
   metadataBase: new URL("https://goalsfloors.com"),
   title: "Goals Floors: India’s Fastest Growing Wall Panels & Flooring Brand",
-  description: "Unmatched Quality in Wall Panels & Flooring | 90% Warranty Backed | 400+ Partners | 2-Hour Express Material Supply in Gurgaon & NCR.",
+  description: "Goals Floors: India's Fastest Growing Wall Panels & Flooring Brand. Unmatched Quality in Wall Panels & Flooring | 90% Warranty Backed | 400+ Partners | 2-Hour Express Material Supply in Gurgaon & NCR.",
   icons: {
     icon: '/icon.png',
     shortcut: '/icon.png',

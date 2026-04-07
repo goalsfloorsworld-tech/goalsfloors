@@ -468,7 +468,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                 Available Selection
               </h2>
               <h3 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white">
-                Choose Your Size & Get Wholesale Pricing
+                Choose Your Size & Get Project Pricing
               </h3>
             </div>
             
@@ -673,7 +673,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                   </div>
                   <h4 className="text-xl font-bold text-white mb-3">Get a Custom Project Quote</h4>
                   <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-                    Planning a large commercial or residential project in NCR? Get exact material estimation, wholesale pricing, and dedicated B2B support.
+                    Planning a large commercial or residential project in NCR? Get exact material estimation, project pricing, and dedicated B2B support.
                   </p>
                   <Link href="/contact" className="inline-flex items-center justify-center w-full bg-amber-600 hover:bg-amber-500 text-white px-6 py-3.5 rounded-sm text-sm font-semibold transition-all duration-300 hover:shadow-[0_0_15px_rgba(217,119,6,0.5)]">
                     Request Quote <ArrowRight className="w-4 h-4 ml-2" />
