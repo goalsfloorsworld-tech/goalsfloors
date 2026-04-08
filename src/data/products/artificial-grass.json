@@ -267,12 +267,5 @@
         "Brush fibers with a stiff broom to stand them up"
       ]
     }
-  ],
-  "afterInstallation": {
-    "title": "Periodic Care",
-    "points": [
-      "Hose down with water for dust relief",
-      "Gently brush fibers monthly"
-    ]
-  }
+  ]
 }

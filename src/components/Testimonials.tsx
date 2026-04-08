@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Star, ArrowUpRight } from "lucide-react";
@@ -79,42 +79,64 @@ export default function Testimonials() {
   ];
 
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
+  const cardRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
 
-  const nextReview = () => {
+  const nextReview = useCallback(() => {
     setCurrentReviewIndex((prev) => (prev + 1) % testimonials.length);
-  };
+  }, [testimonials.length]);
 
-  const prevReview = () => {
+  const prevReview = useCallback(() => {
     setCurrentReviewIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  };
+  }, [testimonials.length]);
 
-  // Swiping Logic
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.targetTouches[0].clientX;
-  };
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.targetTouches[0].clientX;
-  };
+    const onTouchStart = (e: TouchEvent) => {
+      touchStartX.current = e.targetTouches[0].clientX;
+      touchStartY.current = e.targetTouches[0].clientY;
+      touchEndX.current = null;
+    };
 
-  const handleTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
-    const distance = touchStartX.current - touchEndX.current;
-    
-    // Minimum horizontal distance for a swipe
-    if (Math.abs(distance) > 50) {
-      if (distance > 0) {
-        nextReview();
-      } else {
-        prevReview();
+    const onTouchMove = (e: TouchEvent) => {
+      if (!touchStartX.current || !touchStartY.current) return;
+      const currentX = e.targetTouches[0].clientX;
+      const currentY = e.targetTouches[0].clientY;
+      const diffX = Math.abs(currentX - touchStartX.current);
+      const diffY = Math.abs(currentY - touchStartY.current);
+
+      if (diffX > diffY) {
+        touchEndX.current = currentX;
       }
-    }
+    };
 
-    touchStartX.current = null;
-    touchEndX.current = null;
-  };
+    const onTouchEnd = () => {
+      if (touchStartX.current !== null && touchEndX.current !== null) {
+        const distance = touchStartX.current - touchEndX.current;
+        if (Math.abs(distance) > 50) {
+          if (distance > 0) nextReview();
+          else prevReview();
+        }
+      }
+      touchStartX.current = null;
+      touchStartY.current = null;
+      touchEndX.current = null;
+    };
+
+    card.addEventListener('touchstart', onTouchStart, { passive: true });
+    card.addEventListener('touchmove', onTouchMove, { passive: true });
+    card.addEventListener('touchend', onTouchEnd, { passive: true });
+
+    return () => {
+      card.removeEventListener('touchstart', onTouchStart);
+      card.removeEventListener('touchmove', onTouchMove);
+      card.removeEventListener('touchend', onTouchEnd);
+    };
+  }, [nextReview, prevReview]);
 
   const currentReview = testimonials[currentReviewIndex];
 
@@ -134,10 +156,8 @@ export default function Testimonials() {
         <div className="relative">
           {/* Premium Card with Fixed Height and Swipe Listeners */}
           <div 
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-            className="relative bg-white dark:bg-slate-950 rounded-3xl p-6 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 dark:border-gray-800 group transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] min-h-[500px] md:min-h-[420px] flex flex-col cursor-grab active:cursor-grabbing"
+            ref={cardRef}
+            className="relative bg-white dark:bg-slate-950 rounded-3xl p-6 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 dark:border-gray-800 group transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex flex-col cursor-grab active:cursor-grabbing touch-pan-y h-[520px] md:h-[450px]"
           >
             
             {/* Large Decorative Quote Icon */}
@@ -147,9 +167,9 @@ export default function Testimonials() {
               </svg>
             </div>
 
-            <div className="relative z-10 flex flex-col flex-grow">
+            <div className="relative z-10 flex flex-col h-full">
               {/* Star Rating & Badge */}
-              <div className="flex flex-row items-center justify-between mb-8 w-full gap-4">
+              <div className="flex flex-row items-center justify-between mb-6 w-full gap-4 flex-shrink-0">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-wider shadow-sm">
                   <div className="relative w-3.5 h-3.5 bg-white rounded-full p-0.5 shadow-sm">
                     <Image 
@@ -164,52 +184,57 @@ export default function Testimonials() {
                 <StarRating />
               </div>
 
-              {/* Text Content - Scrollable area */}
-              <div key={currentReviewIndex} className="transition-all duration-500 flex flex-col flex-grow" style={{ animation: 'fadeIn 0.5s ease-out' }}>
-                <div className="max-h-[220px] overflow-y-auto pr-2 mb-8 custom-scrollbar">
-                  <p className="text-base md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed italic font-light touch-auto">
+              {/* Text Content - Fixed scrollable area */}
+              <div key={currentReviewIndex} className="transition-all duration-500 flex flex-col flex-grow min-h-0 overflow-hidden" style={{ animation: 'fadeIn 0.5s ease-out' }}>
+                <div 
+                  className="h-[300px] md:h-auto md:flex-grow overflow-y-auto pr-2 mb-6 custom-scrollbar touch-pan-y pointer-events-auto"
+                  onTouchStart={(e) => e.stopPropagation()}
+                  onTouchMove={(e) => e.stopPropagation()}
+                  onTouchEnd={(e) => e.stopPropagation()}
+                >
+                  <p className="text-base md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed italic font-light text-justify px-1">
                     &quot;{currentReview.quote}&quot;
                   </p>
                 </div>
 
                 {/* Author & Nav (Inside the card, bottom-aligned) */}
-                <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-8 sm:gap-6 border-t border-gray-50 dark:border-gray-800 pt-6 mt-auto">
+                <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-6 sm:gap-6 border-t border-gray-50 dark:border-gray-800 pt-6 mt-auto flex-shrink-0">
                   {/* Author Info */}
                   <div className="flex items-center gap-4 text-center sm:text-left">
                     {currentReview.image ? (
-                      <div className="relative w-12 h-12 rounded-full overflow-hidden border border-gray-100 shadow-sm">
+                      <div className="relative w-12 h-12 rounded-full overflow-hidden border border-gray-100 shadow-sm flex-shrink-0">
                         <Image src={currentReview.image} alt={currentReview.name} fill className="object-cover" />
                       </div>
                     ) : (
                       <InitialsAvatar name={currentReview.name} />
                     )}
-                    <div>
+                    <div className="overflow-hidden">
                       <Link 
                         href={currentReview.link || "#"} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="text-base font-bold text-gray-900 dark:text-white hover:text-[#4285F4] hover:underline transition-all decoration-blue-500/30 flex items-center gap-1 group/name"
+                        className="text-base font-bold text-gray-900 dark:text-white hover:text-[#4285F4] hover:underline transition-all decoration-blue-500/30 flex items-center gap-1 group/name truncate"
                       >
                         {currentReview.name}
                         <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/name:opacity-100 transition-opacity" />
                       </Link>
-                      <p className="text-xs text-amber-600 font-semibold tracking-wide uppercase">{currentReview.role}</p>
+                      <p className="text-[10px] text-amber-600 font-semibold tracking-wide uppercase truncate">{currentReview.role}</p>
                     </div>
                   </div>
 
                   {/* Navigation Arrows */}
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-4 flex-shrink-0">
                     <button 
                       onClick={prevReview}
                       aria-label="Previous Review"
-                      className="w-12 h-12 rounded-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 flex items-center justify-center hover:bg-[#4285F4] hover:text-white hover:border-[#4285F4] transition-all duration-300 shadow-md text-gray-600 dark:text-gray-400 group/btn"
+                      className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 flex items-center justify-center hover:bg-[#4285F4] hover:text-white hover:border-[#4285F4] transition-all duration-300 shadow-md text-gray-600 dark:text-gray-400 group/btn"
                     >
                       <ArrowLeft className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
                     </button>
                     <button 
                       onClick={nextReview}
                       aria-label="Next Review"
-                      className="w-12 h-12 rounded-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 flex items-center justify-center hover:bg-[#4285F4] hover:text-white hover:border-[#4285F4] transition-all duration-300 shadow-md text-gray-600 dark:text-gray-400 group/btn"
+                      className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 flex items-center justify-center hover:bg-[#4285F4] hover:text-white hover:border-[#4285F4] transition-all duration-300 shadow-md text-gray-600 dark:text-gray-400 group/btn"
                     >
                       <ArrowRight className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
                     </button>

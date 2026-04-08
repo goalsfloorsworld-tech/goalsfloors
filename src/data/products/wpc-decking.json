@@ -322,12 +322,5 @@
       ],
       "tip": "Proper gaps prevent warping and ensure long deck life."
     }
-  ],
-  "afterInstallation": {
-    "title": "Maintenance",
-    "points": [
-      "Wash with mild soap and water only",
-      "Check clips annually for tightness"
-    ]
-  }
+  ]
 }

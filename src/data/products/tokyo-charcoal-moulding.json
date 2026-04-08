@@ -326,13 +326,5 @@
         "Clean extra glue immediately"
       ]
     }
-  ],
-  "afterInstallation": {
-    "title": "After Installation",
-    "points": [
-      "You can apply primer on the panels",
-      "Then paint it in the same color as your wall"
-    ],
-    "tip": "This gives a seamless and premium look to your space."
-  }
+  ]
 }

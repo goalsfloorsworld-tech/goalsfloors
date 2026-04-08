@@ -332,12 +332,5 @@
         "Touch up any cut edges for realism"
       ]
     }
-  ],
-  "afterInstallation": {
-    "title": "Styling Tip",
-    "points": [
-      "Use accent lighting to highlight textures"
-    ],
-    "tip": "Side-lighting creates dramatic 3D shadows."
-  }
+  ]
 }

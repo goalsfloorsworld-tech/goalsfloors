@@ -364,12 +364,5 @@
         "Use tapping block for invisible joints"
       ]
     }
-  ],
-  "afterInstallation": {
-    "title": "Flooring Finish",
-    "points": [
-      "Remove spacers and install skirting",
-      "Install T-Profiles in doorways"
-    ]
-  }
+  ]
 }

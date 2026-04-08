@@ -412,12 +412,12 @@ export default function Home() {
 
 
       {/* ================= WHY CHOOSE US ================= */}
-      <section className="py-15 bg-white dark:bg-slate-900 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="pt-8 pb-24 bg-white dark:bg-slate-900 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tight">The Goals Floors Advantage</h2>
-              <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">We don&apos;t just supply surfaces; we deliver the speed, scale, and innovation that your luxury projects deserve.</p>
+              <h2 className="text-[28px] sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tighter whitespace-nowrap">The Goals Floors Advantage</h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed text-justify">We don&apos;t just supply surfaces; we deliver the speed, scale, and innovation that your luxury projects deserve.</p>
 
               {/* Mobile Image - Shown only on small screens */}
               <div className="relative h-64 w-full mb-8 lg:hidden rounded-sm overflow-hidden shadow-xl">
@@ -441,7 +441,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h4 className="text-lg font-semibold text-gray-900 dark:text-white">{item.title}</h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{item.desc}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 text-justify leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
                 ))}

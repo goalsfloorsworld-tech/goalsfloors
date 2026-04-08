@@ -350,11 +350,5 @@
         "Ensures a clean, professional border"
       ]
     }
-  ],
-  "afterInstallation": {
-    "title": "Clean Up",
-    "points": [
-      "Wipe panels with a clean microfiber cloth"
-    ]
-  }
+  ]
 }

@@ -153,19 +153,71 @@
         "Weight": "3.2 kg / PC"
       },
       "images": [
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_701.png", "alt": "Goals Floors FP-701 Classic Wood Fluted Panel", "name": "FP-701" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_702.png", "alt": "Goals Floors FP-702 Natural Timber Fluted Panel", "name": "FP-702" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_703.png", "alt": "Goals Floors FP-703 Premium Teak Fluted Panel", "name": "FP-703" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_704.png", "alt": "Goals Floors FP-704 Warm Oak Fluted Panel", "name": "FP-704" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_705.png", "alt": "Goals Floors FP-705 Rich Walnut Fluted Panel", "name": "FP-705" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_706.png", "alt": "Goals Floors FP-706 Designer Ash Fluted Panel", "name": "FP-706" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_707.png", "alt": "Goals Floors FP-707 Modern Pine Fluted Panel", "name": "FP-707" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_708.png", "alt": "Goals Floors FP-708 Elegant Cedar Fluted Panel", "name": "FP-708" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_709.png", "alt": "Goals Floors FP-709 Antique Wood Fluted Panel", "name": "FP-709" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_710.png", "alt": "Goals Floors FP-710 Contemporary Maple Fluted Panel", "name": "FP-710" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_711.png", "alt": "Goals Floors FP-711 Luxury Birch Fluted Panel", "name": "FP-711" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_712.png", "alt": "Goals Floors FP-712 Exotic Wood Fluted Panel", "name": "FP-712" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_713.png", "alt": "Goals Floors FP-713 Premium Finish Fluted Panel", "name": "FP-713" }
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_701.png",
+          "alt": "Goals Floors FP-701 Classic Wood Fluted Panel",
+          "name": "FP-701"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_702.png",
+          "alt": "Goals Floors FP-702 Natural Timber Fluted Panel",
+          "name": "FP-702"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_703.png",
+          "alt": "Goals Floors FP-703 Premium Teak Fluted Panel",
+          "name": "FP-703"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_704.png",
+          "alt": "Goals Floors FP-704 Warm Oak Fluted Panel",
+          "name": "FP-704"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_705.png",
+          "alt": "Goals Floors FP-705 Rich Walnut Fluted Panel",
+          "name": "FP-705"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_706.png",
+          "alt": "Goals Floors FP-706 Designer Ash Fluted Panel",
+          "name": "FP-706"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_707.png",
+          "alt": "Goals Floors FP-707 Modern Pine Fluted Panel",
+          "name": "FP-707"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_708.png",
+          "alt": "Goals Floors FP-708 Elegant Cedar Fluted Panel",
+          "name": "FP-708"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_709.png",
+          "alt": "Goals Floors FP-709 Antique Wood Fluted Panel",
+          "name": "FP-709"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_710.png",
+          "alt": "Goals Floors FP-710 Contemporary Maple Fluted Panel",
+          "name": "FP-710"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_711.png",
+          "alt": "Goals Floors FP-711 Luxury Birch Fluted Panel",
+          "name": "FP-711"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_712.png",
+          "alt": "Goals Floors FP-712 Exotic Wood Fluted Panel",
+          "name": "FP-712"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_713.png",
+          "alt": "Goals Floors FP-713 Premium Finish Fluted Panel",
+          "name": "FP-713"
+        }
       ]
     },
     {
@@ -181,9 +233,21 @@
         "Weight": "3.2 kg / PC"
       },
       "images": [
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_Silver_Metallic.png", "alt": "Goals Floors Premium Silver Metallic Fluted Panel", "name": "Silver Metallic" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_Gold_Mettalic.png", "alt": "Goals Floors Luxury Gold Metallic Fluted Panel", "name": "Gold Metallic" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_Copper_Mettalic.png", "alt": "Goals Floors Elegant Copper Metallic Fluted Panel", "name": "Copper Metallic" }
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_Silver_Metallic.png",
+          "alt": "Goals Floors Premium Silver Metallic Fluted Panel",
+          "name": "Silver Metallic"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_Gold_Mettalic.png",
+          "alt": "Goals Floors Luxury Gold Metallic Fluted Panel",
+          "name": "Gold Metallic"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_Copper_Mettalic.png",
+          "alt": "Goals Floors Elegant Copper Metallic Fluted Panel",
+          "name": "Copper Metallic"
+        }
       ]
     },
     {
@@ -199,15 +263,51 @@
         "Weight": "3.2 kg / PC"
       },
       "images": [
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_714.png", "alt": "Goals Floors FP-714 Diff Fluted Design Premium Panel", "name": "FP-714" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_715.png", "alt": "Goals Floors FP-715 Designer Diff Fluted Texture", "name": "FP-715" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_716.png", "alt": "Goals Floors FP-716 Modern Diff Fluted Design", "name": "FP-716" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_717.png", "alt": "Goals Floors FP-717 Architectural Diff Fluted Finish", "name": "FP-717" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_718.png", "alt": "Goals Floors FP-718 Premium Diff Fluted Wall Panel", "name": "FP-718" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_719.png", "alt": "Goals Floors FP-719 Elegant Diff Fluted Design", "name": "FP-719" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_720.png", "alt": "Goals Floors FP-720 Luxury Diff Fluted Texture", "name": "FP-720" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_721.png", "alt": "Goals Floors FP-721 Contemporary Diff Fluted Design", "name": "FP-721" },
-        { "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_722.png", "alt": "Goals Floors FP-722 Designer Series Diff Fluted Finish", "name": "FP-722" }
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_714.png",
+          "alt": "Goals Floors FP-714 Diff Fluted Design Premium Panel",
+          "name": "FP-714"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_715.png",
+          "alt": "Goals Floors FP-715 Designer Diff Fluted Texture",
+          "name": "FP-715"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_716.png",
+          "alt": "Goals Floors FP-716 Modern Diff Fluted Design",
+          "name": "FP-716"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_717.png",
+          "alt": "Goals Floors FP-717 Architectural Diff Fluted Finish",
+          "name": "FP-717"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_718.png",
+          "alt": "Goals Floors FP-718 Premium Diff Fluted Wall Panel",
+          "name": "FP-718"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_719.png",
+          "alt": "Goals Floors FP-719 Elegant Diff Fluted Design",
+          "name": "FP-719"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_720.png",
+          "alt": "Goals Floors FP-720 Luxury Diff Fluted Texture",
+          "name": "FP-720"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_721.png",
+          "alt": "Goals Floors FP-721 Contemporary Diff Fluted Design",
+          "name": "FP-721"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/Fluted_Panel_FP_-_722.png",
+          "alt": "Goals Floors FP-722 Designer Series Diff Fluted Finish",
+          "name": "FP-722"
+        }
       ]
     }
   ],
@@ -248,14 +348,5 @@
         "Clean any visible adhesive immediately"
       ]
     }
-  ],
-  "afterInstallation": {
-    "title": "Architectural Finishing",
-    "points": [
-      "Use matching Goals Floors L-trims for exposed corners",
-      "Ensure edge finishing with silicone-matched sealants if required"
-    ],
-    "tip": "The panels are pre-finished; avoid using harsh chemicals for cleaning."
-  }
+  ]
 }
-

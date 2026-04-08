@@ -224,7 +224,7 @@
       },
       "images": [
         {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478681/Exterior_Louver_Corner_Profile_projectr.png",
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478681/Exterior_Louver_Corner_Profile_wholesaler.png",
           "alt": "Coffee Corner L-profile for Exterior Louvers Project",
           "name": "Corner L-profile Coffee"
         }
@@ -315,12 +315,5 @@
       ],
       "tip": "Proper gaps prevent warping and ensure long deck life."
     }
-  ],
-  "afterInstallation": {
-    "title": "Maintenance",
-    "points": [
-      "Wash with mild soap and water only",
-      "Check clips annually for tightness"
-    ]
-  }
+  ]
 }

@@ -137,9 +137,9 @@ const VariantCard = ({ variant, onVariantClick }: { variant: Variant, onVariantC
                   className="object-cover transition-transform duration-500 sm:group-hover:scale-105"
                 />
                 {/* ID Badge logic: Try to extract an ID from variant.name, otherwise use the first word */}
-                <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-sm z-20">
-                   <span className="text-[10px] text-white font-semibold tracking-wider uppercase">
-                     {variant.name.split(' ')[0]}
+                <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-2 py-1 rounded-sm z-20 border border-white/10">
+                   <span className="text-[10px] text-white font-bold tracking-wider uppercase">
+                     {images[activeIndex]?.name || variant.name.split(' ')[0]}
                    </span>
                 </div>
               </div>
@@ -197,7 +197,16 @@ const VariantCard = ({ variant, onVariantClick }: { variant: Variant, onVariantC
       <div className="p-6 flex-1 flex flex-col">
         <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{variant.name}</h3>
         
-        <div className="space-y-3 mb-6 flex-1">
+        <div className="space-y-2 mb-6 flex-1">
+          {images[activeIndex]?.name && (
+            <div className="flex justify-between items-center text-sm border-b border-gray-100 dark:border-gray-800 pb-2 border-dotted group/spec">
+              <span className="text-gray-500 flex items-center gap-1.5">
+                <div className="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
+                Design Code
+              </span>
+              <span className="font-bold text-amber-600 dark:text-amber-500">{images[activeIndex].name}</span>
+            </div>
+          )}
           {Object.entries(variant.details).map(([key, value]) => (
              <div key={key} className="flex justify-between items-center text-sm border-b border-gray-100 dark:border-gray-800 pb-2 border-dotted">
                 <span className="text-gray-500">{key}</span>
@@ -562,7 +571,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                       {feature.title}
                     </h5>
                   </div>
-                  <p className="text-[15px] text-gray-500 dark:text-gray-400 leading-relaxed font-medium">
+                  <p className="text-[15px] text-gray-500 dark:text-gray-400 leading-relaxed font-medium text-justify">
                     {feature.description}
                   </p>
                 </motion.div>
@@ -592,7 +601,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                 Premium materials for <span className="text-amber-600">luxury</span> interiors.
               </h3>
               <div className="prose prose-lg dark:prose-invert max-w-none">
-                <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-light italic border-l-4 border-amber-600 pl-6 py-2">
+                <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-light italic border-l-4 border-amber-600 pl-6 py-2 text-justify">
                   {product.longDescription}
                 </p>
               </div>
@@ -840,7 +849,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                 <Hammer className="w-6 h-6" />
                 <h3 className="text-2xl font-semibold text-white">Pro Installation Tips</h3>
               </div>
-              <p className="text-gray-300 text-lg leading-relaxed font-light">
+              <p className="text-gray-300 text-lg leading-relaxed font-light text-justify">
                 {product.installation}
               </p>
             </motion.div>
@@ -856,7 +865,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                 <Sparkles className="w-6 h-6" />
                 <h3 className="text-2xl font-semibold text-white">How to Clean & Maintain</h3>
               </div>
-              <p className="text-gray-300 text-lg leading-relaxed font-light">
+              <p className="text-gray-300 text-lg leading-relaxed font-light text-justify">
                 {product.maintenance}
               </p>
             </motion.div>
@@ -1111,6 +1120,9 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                   </div>
 
                   <div className="grid grid-cols-[1fr_2fr] gap-y-5 mb-10">
+                    {selectedVariant.images?.[activeDrawerImageIndex]?.name && (
+                      <SpecRow label="Design Code" value={selectedVariant.images[activeDrawerImageIndex].name} />
+                    )}
                     {Object.entries(selectedVariant.details).map(([key, value]) => (
                       <SpecRow key={key} label={key} value={value} />
                     ))}
