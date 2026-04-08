@@ -373,19 +373,21 @@ export default function Home() {
 
       {/* ================= STATS BAR ================= */}
       <div className="bg-white dark:bg-slate-900 py-8 border-b border-gray-100 dark:border-gray-800 relative z-20 -mt-10 mx-4 sm:mx-8 lg:mx-auto max-w-6xl shadow-2xl dark:shadow-none transition-colors duration-300">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 px-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 px-4 md:px-6">
           {[
             { label: "Premium Products", value: "2500+" },
             { label: "Happy Clients", value: "20K+" },
             { label: "Dealer Network", value: "400+" },
             { label: "Warranty Backed", value: "90%" },
           ].map((stat, i) => (
-            <div key={i} className="text-center">
+            <div key={i} className="text-center overflow-hidden px-1">
               <Counter
                 value={stat.value}
-                className="text-3xl font-bold text-gray-900 dark:text-white"
+                className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white"
               />
-              <div className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-widest mt-2">{stat.label}</div>
+              <div className="text-[9px] sm:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider md:tracking-widest mt-2 whitespace-nowrap">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>
