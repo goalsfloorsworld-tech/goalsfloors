@@ -97,6 +97,7 @@ export default function Testimonials() {
     if (!card) return;
 
     const onTouchStart = (e: TouchEvent) => {
+      // Don't stop propagation, but record start
       touchStartX.current = e.targetTouches[0].clientX;
       touchStartY.current = e.targetTouches[0].clientY;
       touchEndX.current = null;
@@ -108,6 +109,17 @@ export default function Testimonials() {
       const currentY = e.targetTouches[0].clientY;
       const diffX = Math.abs(currentX - touchStartX.current);
       const diffY = Math.abs(currentY - touchStartY.current);
+
+      // Check if we are inside the scrollable text area
+      const isInsideScrollable = (e.target as HTMLElement).closest('.scrollable-review-text');
+
+      if (isInsideScrollable) {
+        // If it's more vertical than horizontal, don't treat it as a swipe at all
+        if (diffY > diffX) {
+          touchStartX.current = null; // Cancel swipe detection
+          return;
+        }
+      }
 
       if (diffX > diffY) {
         touchEndX.current = currentX;
@@ -187,10 +199,7 @@ export default function Testimonials() {
               {/* Text Content - Fixed scrollable area */}
               <div key={currentReviewIndex} className="transition-all duration-500 flex flex-col flex-grow min-h-0 overflow-hidden" style={{ animation: 'fadeIn 0.5s ease-out' }}>
                 <div 
-                  className="h-[300px] md:h-auto md:flex-grow overflow-y-auto pr-2 mb-6 custom-scrollbar touch-pan-y pointer-events-auto"
-                  onTouchStart={(e) => e.stopPropagation()}
-                  onTouchMove={(e) => e.stopPropagation()}
-                  onTouchEnd={(e) => e.stopPropagation()}
+                  className="h-[300px] md:h-auto md:flex-grow overflow-y-auto pr-2 mb-6 custom-scrollbar touch-pan-y pointer-events-auto scrollable-review-text"
                 >
                   <p className="text-base md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed italic font-light text-justify px-1">
                     &quot;{currentReview.quote}&quot;

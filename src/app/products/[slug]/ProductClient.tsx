@@ -104,6 +104,7 @@ const AnimationStyles = () => (
 
 const VariantCard = ({ variant, onVariantClick }: { variant: Variant, onVariantClick: (v: Variant) => void }) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const images = variant.images || [];
@@ -115,8 +116,30 @@ const VariantCard = ({ variant, onVariantClick }: { variant: Variant, onVariantC
     if (newIndex !== activeIndex) setActiveIndex(newIndex);
   };
 
+  // Auto-slide logic
+  useEffect(() => {
+    if (images.length <= 1 || isPaused) return;
+
+    const interval = setInterval(() => {
+      if (scrollRef.current) {
+        const nextIndex = (activeIndex + 1) % images.length;
+        const width = scrollRef.current.clientWidth;
+        scrollRef.current.scrollTo({
+          left: nextIndex * width,
+          behavior: 'smooth'
+        });
+      }
+    }, 4000); // Slide every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [activeIndex, images.length, isPaused]);
+
   return (
-    <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-800 rounded-sm shadow-sm hover:shadow-xl transition-all flex flex-col overflow-hidden group h-full">
+    <div 
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-800 rounded-sm shadow-sm hover:shadow-xl transition-all flex flex-col overflow-hidden group h-full"
+    >
       {/* Image Carousel Area */}
       <div className="relative aspect-square bg-gray-100 dark:bg-slate-800 overflow-hidden">
         {images.length > 0 ? (
