@@ -295,32 +295,6 @@ export default function Home() {
             </motion.div>
           </AnimatePresence>
           
-          {/* Floating Particles */}
-          <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
-            {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={`particle-${i}`}
-                className="absolute w-1 h-1 bg-amber-400 rounded-full"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  opacity: Math.random() * 0.5 + 0.2,
-                  scale: Math.random() * 1.5 + 0.5,
-                }}
-                animate={{
-                  y: [0, -100, -200],
-                  opacity: [0, 0.8, 0],
-                }}
-                transition={{
-                  duration: Math.random() * 10 + 10,
-                  repeat: Infinity,
-                  ease: "linear",
-                  delay: Math.random() * 5,
-                }}
-              />
-            ))}
-          </div>
-
           {/* Transition Fog / Overlay */}
           <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-white/90 via-white/50 to-transparent z-10 dark:from-slate-950/90 dark:via-slate-950/50 transition-colors duration-700" />
           

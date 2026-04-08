@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { 
   motion, 
+  AnimatePresence,
   useScroll, 
   useSpring, 
   useTransform,
@@ -14,7 +15,7 @@ import {
   ChevronRight, ShieldCheck, Droplets, Sun, 
   Wrench, ArrowRight, CheckCircle2, Lock, Ruler, BarChart3,
   Plus, Minus, Palette, Hammer, Sparkles, Check,
-  Layers, Weight, Flame, Box, Maximize, Zap, Package, X
+  Layers, Weight, Flame, Box, Maximize, Zap, Package, X, ChevronLeft
 } from "lucide-react";
 
 export interface FAQ {
@@ -101,7 +102,7 @@ const AnimationStyles = () => (
   ` }} />
 );
 
-const VariantCard = ({ variant, onImageClick }: { variant: Variant, onImageClick: (url: string) => void }) => {
+const VariantCard = ({ variant, onVariantClick }: { variant: Variant, onVariantClick: (v: Variant) => void }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -115,10 +116,11 @@ const VariantCard = ({ variant, onImageClick }: { variant: Variant, onImageClick
   };
 
   return (
-    <div className="bg-white dark:bg-slate-950 shadow-xl rounded-sm border border-gray-200 dark:border-gray-800 flex flex-col h-full hover:border-amber-500/30 transition-all duration-300 group overflow-hidden">
-      {images.length > 0 && (
-        <div className="relative aspect-[3/2] bg-gray-50 dark:bg-slate-900 border-b border-gray-200 dark:border-gray-800 overflow-hidden">
-          <div 
+    <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-800 rounded-sm shadow-sm hover:shadow-xl transition-all flex flex-col overflow-hidden group h-full">
+      {/* Image Carousel Area */}
+      <div className="relative aspect-square bg-gray-100 dark:bg-slate-800 overflow-hidden">
+        {images.length > 0 ? (
+           <div 
             ref={scrollRef}
             onScroll={handleScroll}
             className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide h-full"
@@ -126,92 +128,112 @@ const VariantCard = ({ variant, onImageClick }: { variant: Variant, onImageClick
             {images.map((img, i) => (
               <div 
                 key={i} 
-                className="min-w-full h-full snap-center relative cursor-zoom-in"
-                onClick={() => onImageClick(img.url)}
+                className="min-w-full h-full snap-center relative"
               >
                 <Image 
                   src={img.url} 
                   alt={img.alt || `${variant.name} detail ${i + 1}`}
                   fill
-                  className="object-cover relative z-10 transition-transform duration-500 sm:group-hover:scale-110"
+                  className="object-cover transition-transform duration-500 sm:group-hover:scale-105"
                 />
-
-                {/* Variation Name Badge */}
-                <div className="absolute top-2 left-2 z-20 px-2 py-0.5 bg-black/50 backdrop-blur-md rounded-full border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="text-[9px] font-bold text-white uppercase tracking-wider">
-                    {img.name}
-                  </span>
+                {/* ID Badge logic: Try to extract an ID from variant.name, otherwise use the first word */}
+                <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-sm z-20">
+                   <span className="text-[10px] text-white font-semibold tracking-wider uppercase">
+                     {variant.name.split(' ')[0]}
+                   </span>
                 </div>
               </div>
             ))}
           </div>
+        ) : (
+          <div className="flex items-center justify-center h-full text-gray-400">No Image</div>
+        )}
 
-          {/* Indicators */}
-          {images.length > 1 && (
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
-              {images.map((_, i) => (
-                <div 
-                  key={i} 
-                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
-                    i === activeIndex ? "bg-amber-600 w-4" : "bg-white/50"
-                  }`}
-                />
-              ))}
-            </div>
-          )}
-          
-          <div className="absolute inset-0 bg-white/5 dark:bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none" />
-        </div>
-      )}
+        {/* Left/Right Arrows */}
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                if (scrollRef.current) {
+                  const newIndex = activeIndex === 0 ? images.length - 1 : activeIndex - 1;
+                  scrollRef.current.scrollTo({ left: newIndex * scrollRef.current.clientWidth, behavior: 'smooth' });
+                }
+              }}
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-1.5 bg-black/30 hover:bg-black/60 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                if (scrollRef.current) {
+                  const newIndex = activeIndex === images.length - 1 ? 0 : activeIndex + 1;
+                  scrollRef.current.scrollTo({ left: newIndex * scrollRef.current.clientWidth, behavior: 'smooth' });
+                }
+              }}
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-1.5 bg-black/30 hover:bg-black/60 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </>
+        )}
 
-      <div className="p-4 flex flex-col flex-1">
-        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-4 border-b border-gray-200 dark:border-gray-900 pb-4 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors">
-          {images[activeIndex]?.name || variant.name}
-        </h4>
+        {/* Indicators */}
+        {images.length > 1 && (
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+            {images.map((_, i) => (
+              <div 
+                key={i} 
+                className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                  i === activeIndex ? "bg-amber-600 w-4" : "bg-white/50"
+                }`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+      
+      <div className="p-6 flex-1 flex flex-col">
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{variant.name}</h3>
         
-        <div className="flex-1 space-y-2.5 mb-6">
+        <div className="space-y-3 mb-6 flex-1">
           {Object.entries(variant.details).map(([key, value]) => (
-            <div key={key} className="flex justify-between items-end gap-2 text-sm">
-              <span className="text-gray-400 dark:text-gray-500 font-medium shrink-0">{key}</span>
-              <div className="flex-1 border-b border-dotted border-gray-200 dark:border-gray-800 mb-1"></div>
-              <span className="text-gray-900 dark:text-gray-300 font-semibold text-right">{value}</span>
-            </div>
+             <div key={key} className="flex justify-between items-center text-sm border-b border-gray-100 dark:border-gray-800 pb-2 border-dotted">
+                <span className="text-gray-500">{key}</span>
+                <span className="font-semibold text-gray-900 dark:text-gray-200 text-right">{value}</span>
+             </div>
           ))}
         </div>
-        
-        <div className="mt-auto pt-4 border-t border-gray-200 dark:border-gray-900">
-          <div className="flex items-baseline gap-1">
-            <span className="text-2xl font-black text-gray-900 dark:text-white truncate">
-              {variant.price}
-            </span>
-            {variant.unit && (
-              <span className="text-sm font-medium text-gray-500 dark:text-gray-400 lowercase truncate">
-                {variant.unit}
-              </span>
-            )}
-          </div>
 
+        <div className="mb-6 mt-auto">
+          <div className="text-2xl font-black text-gray-900 dark:text-white flex items-center gap-1">
+             {variant.price} 
+             {variant.unit && <span className="text-xs font-normal text-gray-500 lowercase">per {variant.unit}</span>}
+          </div>
           {(variant.mrp || variant.discount) && (
-            <div className="flex items-center mt-1">
-              {variant.mrp && (
-                <span className="text-sm text-gray-400 dark:text-gray-500 line-through font-medium truncate">
-                  {variant.mrp}
-                </span>
-              )}
-              {variant.discount && (
-                <span className="text-sm text-green-600 dark:text-green-500 font-bold ml-2 truncate">
-                  {variant.discount}
-                </span>
-              )}
+            <div className="text-xs text-gray-400 mt-1 flex items-center gap-2">
+              {variant.mrp && <span className="line-through">{variant.mrp}</span>}
+              {variant.discount && <span className="text-green-600 font-semibold">{variant.discount}</span>}
             </div>
           )}
         </div>
+
+        <button
+          onClick={() => onVariantClick(variant)}
+          className="w-full bg-gray-900 hover:bg-black dark:bg-amber-600 dark:hover:bg-amber-500 text-white font-semibold text-sm uppercase tracking-widest py-4 rounded-sm transition-colors mt-auto"
+        >
+          View Full Specs
+        </button>
       </div>
     </div>
   );
 };
 
 export default function ProductClient({ product, slug }: { product: Product; slug: string }) {
+  const [selectedVariant, setSelectedVariant] = useState<Variant | null>(null);
+  const [activeDrawerImageIndex, setActiveDrawerImageIndex] = useState(0);
+
   const getQuickFeatures = (p: Product) => {
     const isOutdoor = p.category === "outdoors";
     const isGrass = p.title.toLowerCase().includes("grass");
@@ -486,7 +508,10 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                     stiffness: 80
                   }}
                 >
-                  <VariantCard variant={variant} onImageClick={setFullscreenImage} />
+                  <VariantCard variant={variant} onVariantClick={(v) => {
+                    setSelectedVariant(v);
+                    setActiveDrawerImageIndex(0);
+                  }} />
                 </motion.div>
               ))}
             </div>
@@ -967,14 +992,184 @@ export default function ProductClient({ product, slug }: { product: Product; slu
         </div>
       </motion.div>
 
-      {/* ================= 10. FULLSCREEN LIGHTBOX ================= */}
+      {/* ================= 10. PREMIUM VARIANT DRAWER ================= */}
+      <AnimatePresence>
+        {selectedVariant && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedVariant(null)}
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[80]"
+            />
+
+            {/* Drawer */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 w-full md:w-[600px] h-[100dvh] bg-white dark:bg-slate-900 z-[90] shadow-2xl border-l border-gray-200 dark:border-gray-800 overflow-y-auto overscroll-contain scrollbar-hide"
+              data-lenis-prevent="true"
+              style={{ WebkitOverflowScrolling: 'touch' }}
+            >
+              {/* Close Button */}
+              <button 
+                onClick={() => setSelectedVariant(null)}
+                className="fixed top-4 right-4 z-[100] p-2 bg-black/40 hover:bg-black/60 backdrop-blur-md rounded-full text-white transition-colors"
+                aria-label="Close details"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Drawer Image Carousel */}
+              <div className="relative h-64 md:h-80 w-full bg-gray-100 dark:bg-slate-800 group flex-shrink-0">
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={activeDrawerImageIndex}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="absolute inset-0 cursor-zoom-in"
+                      onClick={() => {
+                        const images = selectedVariant.images || [];
+                        if (images.length > 0) setFullscreenImage(images[activeDrawerImageIndex].url);
+                      }}
+                    >
+                      {selectedVariant.images && selectedVariant.images.length > 0 ? (
+                        <Image
+                          src={selectedVariant.images[activeDrawerImageIndex].url}
+                          alt={selectedVariant.images[activeDrawerImageIndex].alt || selectedVariant.name}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <div className="flex items-center justify-center h-full text-gray-400">No Image Available</div>
+                      )}
+                    </motion.div>
+                  </AnimatePresence>
+
+                  {/* Left/Right Navigation Arrows */}
+                  {selectedVariant.images && selectedVariant.images.length > 1 && (
+                    <>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const len = selectedVariant.images?.length || 0;
+                          setActiveDrawerImageIndex((prev) => (prev === 0 ? len - 1 : prev - 1));
+                        }}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2.5 bg-black/30 hover:bg-black/60 backdrop-blur-md rounded-full text-white transition-all transform hover:scale-110 active:scale-95 md:opacity-0 md:group-hover:opacity-100"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                      </button>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const len = selectedVariant.images?.length || 0;
+                          setActiveDrawerImageIndex((prev) => (prev === len - 1 ? 0 : prev + 1));
+                        }}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2.5 bg-black/30 hover:bg-black/60 backdrop-blur-md rounded-full text-white transition-all transform hover:scale-110 active:scale-95 md:opacity-0 md:group-hover:opacity-100"
+                      >
+                        <ChevronRight className="w-5 h-5" />
+                      </button>
+                    </>
+                  )}
+
+                  {/* Indicators */}
+                  {selectedVariant.images && selectedVariant.images.length > 1 && (
+                    <div className="absolute bottom-4 inset-x-0 flex justify-center gap-2 z-10">
+                      {selectedVariant.images.map((_, i) => (
+                        <button
+                          key={i}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveDrawerImageIndex(i);
+                          }}
+                          className={`w-2 h-2 rounded-full transition-all ${
+                            i === activeDrawerImageIndex ? 'bg-white scale-125 w-4' : 'bg-white/50 hover:bg-white/80'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Specs Content */}
+                <div className="p-6 md:p-10">
+                  <div className="border-b border-gray-200 dark:border-gray-800 pb-6 mb-8 relative">
+                     <h1 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white uppercase tracking-tighter mb-2">
+                      {selectedVariant.name}
+                     </h1>
+                     <p className="text-sm font-medium text-amber-600 tracking-widest uppercase">Technical Specifications</p>
+                     
+                     <div className="absolute top-0 right-0 text-gray-100 dark:text-slate-800 font-black text-6xl -z-10 tracking-tighter opacity-50 select-none overflow-hidden">
+                       {product.category.split('-')[0].toUpperCase()}
+                     </div>
+                  </div>
+
+                  <div className="grid grid-cols-[1fr_2fr] gap-y-5 mb-10">
+                    {Object.entries(selectedVariant.details).map(([key, value]) => (
+                      <SpecRow key={key} label={key} value={value} />
+                    ))}
+                  </div>
+
+                  <div className="bg-gray-50 dark:bg-slate-800/50 p-6 rounded-sm border border-gray-100 dark:border-gray-800 mb-8">
+                    <h4 className="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-3">Project Pricing</h4>
+                    <div className="flex items-baseline gap-2">
+                       <span className="text-4xl font-black text-gray-900 dark:text-white">
+                         {selectedVariant.price}
+                       </span>
+                       {selectedVariant.unit && (
+                         <span className="text-sm font-semibold text-gray-500 lowercase">{selectedVariant.unit}</span>
+                       )}
+                    </div>
+                    {selectedVariant.mrp && (
+                      <div className="flex items-center gap-2 mt-2">
+                        <span className="text-sm text-gray-400 line-through font-medium">{selectedVariant.mrp}</span>
+                        {selectedVariant.discount && (
+                          <span className="text-sm text-green-600 font-bold">{selectedVariant.discount} OFF</span>
+                        )}
+                      </div>
+                    )}
+                    <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-4 leading-relaxed font-medium">
+                      *Taxes, Freight & Installation are calculated extra based on project location in Delhi NCR.
+                    </p>
+                  </div>
+
+                  <div className="flex flex-col gap-4">
+                     <Link 
+                       href="/contact" 
+                       className="w-full bg-gray-900 dark:bg-amber-600 hover:bg-black dark:hover:bg-amber-500 text-white font-bold text-center uppercase tracking-widest py-4 rounded-sm transition-all shadow-lg hover:shadow-amber-500/20"
+                       onClick={() => setSelectedVariant(null)}
+                     >
+                       Enquire for Project
+                     </Link>
+                     <a 
+                       href={`https://wa.me/917217644573?text=Hi, I am interested in ${product.title} - ${selectedVariant.name}`}
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       className="w-full bg-green-600 hover:bg-green-700 text-white font-bold text-center uppercase tracking-widest py-4 rounded-sm transition-all flex items-center justify-center gap-2 shadow-lg"
+                     >
+                       Contact on WhatsApp
+                     </a>
+                  </div>
+                </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* ================= 11. FULLSCREEN LIGHTBOX ================= */}
       {fullscreenImage && (
         <div 
-          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4 md:p-10 transition-all animate-in fade-in duration-300"
+          className="fixed inset-0 z-[120] bg-black/95 flex items-center justify-center p-4 md:p-10 transition-all animate-in fade-in duration-300"
           onClick={() => setFullscreenImage(null)}
         >
           <button 
-            className="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all z-[110]"
+            className="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all z-[130]"
             onClick={(e) => {
               e.stopPropagation();
               setFullscreenImage(null);
@@ -998,3 +1193,13 @@ export default function ProductClient({ product, slug }: { product: Product; slu
     </div>
   );
 }
+
+const SpecRow = ({ label, value }: { label: string; value: string }) => (
+  <>
+    <div className="text-xs font-bold text-gray-400 uppercase tracking-wider py-1">{label}</div>
+    <div className="text-sm font-semibold text-gray-900 dark:text-white py-1 flex items-start gap-3">
+       <span className="text-amber-500">:</span>
+       <span>{value}</span>
+    </div>
+  </>
+);
