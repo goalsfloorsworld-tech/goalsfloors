@@ -329,11 +329,17 @@ export default function Home() {
           {/* Headline - Thinner, more elegant font */}
           <motion.h1 
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
-            className="text-3xl sm:text-4xl md:text-6xl font-semibold text-white mb-6 tracking-tight leading-[1.1] drop-shadow-2xl px-2"
+            className="text-3xl sm:text-4xl md:text-6xl font-semibold text-white mb-6 tracking-tight leading-[1.1] drop-shadow-2xl px-2 relative"
           >
             Goals Floors: India&apos;s <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-600 italic font-light pr-2 pb-1 md:whitespace-nowrap block sm:inline drop-shadow-[0_0_20px_rgba(0,0,0,0.5)] mt-2">
-              Fastest Growing Wall Panels & Flooring Brand
+            <span className="relative inline-block mt-2">
+              {/* Intensified Multi-Layer Glow Effect */}
+              <span className="absolute -inset-x-20 inset-y-0 bg-amber-500/40 blur-[100px] rounded-full -z-10 animate-pulse"></span>
+              <span className="absolute -inset-x-10 inset-y-0 bg-yellow-400/20 blur-[40px] rounded-full -z-10 animate-pulse delay-700"></span>
+              
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-600 italic font-light pr-2 pb-1 md:whitespace-nowrap block sm:inline drop-shadow-[0_4px_40px_rgba(251,191,36,0.8)]">
+                Fastest Growing Wall Panels & Flooring Brand
+              </span>
             </span>
           </motion.h1>
 
@@ -394,7 +400,7 @@ export default function Home() {
       </div>
 
       {/* ================= CATEGORIES SECTION ================= */}
-      <section id="categories" className="py-24 bg-gray-50 dark:bg-slate-950 transition-colors duration-300">
+      <section id="categories" className="py-10 bg-gray-50 dark:bg-slate-950 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-black text-gray-900 dark:text-white mb-4 tracking-tighter uppercase leading-[0.9]">

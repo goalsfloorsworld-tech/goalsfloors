@@ -485,13 +485,13 @@ export default function ProductClient({ product, slug }: { product: Product; slu
       </div>
 
       {/* ================= 2. QUICK FEATURES ================= */}
-      <div className="bg-gray-50 dark:bg-slate-900 py-8 lg:py-10 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+      <div className="bg-gray-50 dark:bg-slate-900 items-center py-8 lg:py-10 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-8">
             {quickFeatures.map((item, i) => (
               <motion.div 
                 key={i} 
-                className="flex flex-col items-center lg:items-start text-center lg:text-left hover:-translate-y-1 transition-transform cursor-default"
+                className="flex flex-col items-center text-center hover:-translate-y-1 transition-transform cursor-default"
                 initial={{ opacity: 0, scale: 0.5 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
