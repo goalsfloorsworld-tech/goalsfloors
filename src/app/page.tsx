@@ -231,7 +231,7 @@ function GetAQuoteMonolith() {
 
 
 
-const heroImages = [
+const desktopHeroImages = [
   {
     src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_1920/v1775573402/Goals_Floors_Premium_Wall_Panel.png",
     alt: "Premium Wall Panel by Goals Floors"
@@ -254,15 +254,49 @@ const heroImages = [
   }
 ];
 
-export default function Home() {
-  const [heroIndex, setHeroIndex] = useState(0);
+const mobileHeroImages = [
+  {
+    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_800/v1775749408/Goals_Floors_Wall_Panels.png",
+    alt: "Premium Wall Panels"
+  },
+  {
+    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_800/v1775749408/Baffle_Ceiling.png",
+    alt: "Modern Baffle Ceiling"
+  },
+  {
+    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_800/v1775749408/Premium_Grey_Color_Flooring.png",
+    alt: "Premium Grey Flooring"
+  },
+  {
+    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_800/v1775749425/Goals_Floors_Wpc_Exterior_Louvers.png",
+    alt: "WPC Exterior Louvers"
+  },
+  {
+    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_800/v1775749463/Goals_Floors_Herringbone_Flooring.png",
+    alt: "Herringbone Flooring Design"
+  },
+  {
+    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_800/v1775749407/Latest_Herrignbone_Flooring_Design.png",
+    alt: "Latest Herringbone Patterns"
+  }
+];
 
-  // Auto-rotate hero images every 5 seconds
+export default function Home() {
+  const [desktopIndex, setDesktopIndex] = useState(0);
+  const [mobileIndex, setMobileIndex] = useState(0);
+
+  // Auto-rotate hero images
   useEffect(() => {
-    const timer = setInterval(() => {
-      setHeroIndex((prev) => (prev + 1) % heroImages.length);
+    const dTimer = setInterval(() => {
+      setDesktopIndex((prev) => (prev + 1) % desktopHeroImages.length);
     }, 5000);
-    return () => clearInterval(timer);
+    const mTimer = setInterval(() => {
+      setMobileIndex((prev) => (prev + 1) % mobileHeroImages.length);
+    }, 5000);
+    return () => {
+      clearInterval(dTimer);
+      clearInterval(mTimer);
+    };
   }, []);
 
   return (
@@ -340,28 +374,58 @@ export default function Home() {
       <section className="relative min-h-[500px] sm:min-h-[600px] md:min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Carousel */}
         <div className="absolute inset-0 z-0 bg-black overflow-hidden">
-          <AnimatePresence initial={false}>
-            <motion.div
-              key={heroIndex}
-              initial={{ opacity: 0, scale: 1 }}
-              animate={{ opacity: 0.7, scale: 1.25 }}
-              exit={{ opacity: 0 }}
-              transition={{ 
-                opacity: { duration: 1.5, ease: "easeInOut" },
-                scale: { duration: 6, ease: "linear" }
-              }}
-              className="absolute inset-0 origin-center"
-            >
-              <Image
-                src={heroImages[heroIndex].src}
-                alt={heroImages[heroIndex].alt}
-                fill
-                sizes="100vw"
-                priority
-                className="object-cover"
-              />
-            </motion.div>
-          </AnimatePresence>
+          
+          {/* Desktop Carousel (5 images) */}
+          <div className="hidden md:block absolute inset-0">
+            <AnimatePresence initial={false}>
+              <motion.div
+                key={desktopIndex}
+                initial={{ opacity: 0, scale: 1 }}
+                animate={{ opacity: 0.7, scale: 1.25 }}
+                exit={{ opacity: 0 }}
+                transition={{ 
+                  opacity: { duration: 1.5, ease: "easeInOut" },
+                  scale: { duration: 6, ease: "linear" }
+                }}
+                className="absolute inset-0 origin-center"
+              >
+                <Image
+                  src={desktopHeroImages[desktopIndex].src}
+                  alt={desktopHeroImages[desktopIndex].alt}
+                  fill
+                  sizes="100vw"
+                  priority
+                  className="object-cover"
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Mobile Carousel (7 images) */}
+          <div className="block md:hidden absolute inset-0">
+            <AnimatePresence initial={false}>
+              <motion.div
+                key={mobileIndex}
+                initial={{ opacity: 0, scale: 1 }}
+                animate={{ opacity: 0.7, scale: 1.25 }}
+                exit={{ opacity: 0 }}
+                transition={{ 
+                  opacity: { duration: 1.5, ease: "easeInOut" },
+                  scale: { duration: 6, ease: "linear" }
+                }}
+                className="absolute inset-0 origin-center"
+              >
+                <Image
+                  src={mobileHeroImages[mobileIndex].src}
+                  alt={mobileHeroImages[mobileIndex].alt}
+                  fill
+                  sizes="100vw"
+                  priority
+                  className="object-cover"
+                />
+              </motion.div>
+            </AnimatePresence>
+          </div>
           
           {/* Transition Fog / Overlay */}
           <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-white/90 via-white/50 to-transparent z-10 dark:from-slate-950/90 dark:via-slate-950/50 transition-colors duration-700" />
@@ -496,7 +560,7 @@ export default function Home() {
               {/* Mobile Image - Shown only on small screens */}
               <div className="relative h-64 w-full mb-8 lg:hidden rounded-sm overflow-hidden shadow-xl">
                 <Image
-                  src="https://res.cloudinary.com/dcezlxt8r/image/upload/v1775219957/Professional_interior_wood_flooring_and_wall_paneling_installation_in_Gurugram_and_Delhi_NCR_-_Goals_Floors_Architectural_Excellenc.jpg"
+                  src="https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749408/Goals_Floors_Fluted_Panel.jpg"
                   alt="Professional interior wood flooring and wall paneling installation in Gurugram and Delhi NCR - Goals Floors Architectural Excellence" fill sizes="100vw" className="object-cover"
                 />
               </div>
@@ -525,7 +589,7 @@ export default function Home() {
             {/* Right side large image - Hidden on mobile, shown on desktop */}
             <div className="relative h-[600px] rounded-sm overflow-hidden shadow-2xl hidden lg:block">
               <Image
-                src="https://res.cloudinary.com/dcezlxt8r/image/upload/v1775219957/Professional_interior_wood_flooring_and_wall_paneling_installation_in_Gurugram_and_Delhi_NCR_-_Goals_Floors_Architectural_Excellenc.jpg"
+                src="https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749408/Goals_Floors_Fluted_Panel.jpg"
                 alt="Professional interior wood flooring and wall paneling installation in Gurugram and Delhi NCR - Goals Floors Architectural Excellence" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover"
               />
             </div>

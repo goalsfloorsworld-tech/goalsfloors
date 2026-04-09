@@ -17,6 +17,8 @@ import {
   Plus, Minus, Palette, Hammer, Sparkles, Check,
   Layers, Weight, Flame, Box, Maximize, Zap, Package, X, ChevronLeft
 } from "lucide-react";
+import FeatureAccordion from "@/components/products/FeatureAccordion";
+import QuickFeaturesBar from "@/components/products/QuickFeaturesBar";
 
 export interface FAQ {
   question: string;
@@ -381,7 +383,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
       />
       
       {/* ================= 1. CLEAN HERO OVERVIEW ================= */}
-      <div className="border-b border-gray-200 dark:border-gray-800 pt-5 pb-8 lg:pt-1 lg:pb-5 text-left">
+      <div className="border-b border-gray-200 dark:border-gray-800 pt-5 pb-8 lg:pt-5 lg:pb-5 text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center">
             
@@ -486,34 +488,8 @@ export default function ProductClient({ product, slug }: { product: Product; slu
         </div>
       </div>
 
-      {/* ================= 2. QUICK FEATURES ================= */}
-      <div className="bg-gray-50 dark:bg-slate-900 items-center py-8 lg:py-10 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-8">
-            {quickFeatures.map((item, i) => (
-              <motion.div 
-                key={i} 
-                className="flex flex-col items-center text-center hover:-translate-y-1 transition-transform cursor-default"
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ 
-                  type: 'spring', 
-                  stiffness: 150, 
-                  damping: 15,
-                  delay: i * 0.05 
-                }}
-              >
-                <div className="w-10 h-10 bg-white dark:bg-slate-950 rounded-lg flex items-center justify-center mb-4 shadow-sm border border-gray-200 dark:border-gray-800 text-amber-600 dark:text-amber-500 transition-colors duration-300">
-                  <item.icon className="w-5 h-5" />
-                </div>
-                <h4 className="text-[11px] lg:text-[12px] font-bold text-gray-900 dark:text-white mb-1 uppercase tracking-tight leading-tight">{item.title}</h4>
-                <p className="text-[10px] text-gray-500 dark:text-gray-400 font-medium">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
+      {/* ================= 2. QUICK FEATURES (TRUST BAR) ================= */}
+      <QuickFeaturesBar features={quickFeatures} />
 
       {/* ================= 4.5. PRODUCT VARIATIONS & PRICING ================= */}
       {product.variants && product.variants.length > 0 && (
@@ -553,62 +529,13 @@ export default function ProductClient({ product, slug }: { product: Product; slu
         </div>
       )}
 
-
-      {/* ================= 3. CORE SPECIFICATIONS (FULL WIDTH) ================= */}
-      <div className="bg-gray-50/50 dark:bg-slate-900/50 py-16 border-b border-gray-200 dark:border-gray-800/50 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12 pb-6 border-b border-gray-200 dark:border-gray-800">
-            <h4 className="text-3xl md:text-4xl font-bold uppercase tracking-tight text-gray-900 dark:text-white">
-              {product.architectHeading || "Why Architects Choose Our Panels"}
-            </h4>
-            <p className="text-base font-medium text-gray-500 dark:text-gray-400 mt-3">
-              {product.architectSubheading || "Maximum performance for architectural standards"}
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-10">
-            {product.features.map((feature, idx) => {
-              const getFeatureIcon = (title: string) => {
-                const t = title.toUpperCase();
-                if (t.includes('WATERPROOF')) return Droplets;
-                if (t.includes('CUT') || t.includes('FIT')) return Ruler;
-                if (t.includes('SEAMLESS') || t.includes('INSTALL')) return Zap;
-                if (t.includes('PAINT')) return Palette;
-                if (t.includes('QUICK') || t.includes('SIMPLE')) return Wrench;
-                if (t.includes('FREEDOM') || t.includes('DESIGN')) return Sparkles;
-                if (t.includes('TERMITE')) return ShieldCheck;
-                if (t.includes('FIRE')) return Flame;
-                return CheckCircle2;
-              };
-              
-              const Icon = getFeatureIcon(feature.title);
-
-              return (
-                <motion.div 
-                  key={idx} 
-                  className="group flex flex-col items-start focus-within:ring-2 focus-within:ring-amber-500 p-2 rounded-sm transition-all"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="text-amber-600 dark:text-amber-500 bg-amber-50 dark:bg-amber-900/10 p-2 rounded-sm group-hover:scale-110 transition-transform flex-shrink-0">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <h5 className="text-base font-semibold text-gray-900 dark:text-white uppercase tracking-tight">
-                      {feature.title}
-                    </h5>
-                  </div>
-                  <p className="text-[15px] text-gray-500 dark:text-gray-400 leading-relaxed font-medium text-justify">
-                    {feature.description}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
+      {/* ================= 3. CORE SPECIFICATIONS / FEATURES ================= */}
+      <FeatureAccordion 
+        features={product.features} 
+        productTitle={product.title}
+        heading={product.architectHeading} 
+        subheading={product.architectSubheading} 
+      />
 
       {/* ================= 4. MATERIAL PHILOSOPHY (STORY) ================= */}
       <div className="bg-white dark:bg-slate-950 py-16 lg:py-24 transition-colors duration-300 overflow-hidden relative">
@@ -979,10 +906,12 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                   transition={{ duration: 0.6, delay: i * 0.1 }}
                   onClick={() => setFullscreenImage(img.url)}
                 >
-                  <div className="relative w-full">
-                    <img 
+                  <div className="relative w-full aspect-auto h-auto">
+                    <Image 
                       src={img.url} 
                       alt={img.alt}
+                      width={800}
+                      height={1200}
                       className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     {/* Overlay on hover */}

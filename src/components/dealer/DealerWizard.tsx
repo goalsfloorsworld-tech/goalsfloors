@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   User, Mail, Phone, Building2, MapPin, Grid, 
@@ -220,8 +221,14 @@ export default function DealerWizard() {
                               <span className="text-[10px] text-slate-400">JPG or PNG / Max 5MB</span>
                           </label>
                       ) : (
-                          <div className="relative rounded-2xl overflow-hidden border border-amber-600 ring-1 ring-amber-600/20 shadow-2xl">
-                              <img src={formData.businessCardBase64} alt="Preview" className="w-full h-64 object-cover" />
+                          <div className="relative rounded-2xl overflow-hidden border border-amber-600 ring-1 ring-amber-600/20 shadow-2xl h-64">
+                              <Image 
+                                src={formData.businessCardBase64} 
+                                alt="Preview" 
+                                fill 
+                                unoptimized
+                                className="object-cover" 
+                              />
                               <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
                                   <button 
                                       onClick={() => setFormData(p => ({ ...p, businessCardBase64: "" }))}
