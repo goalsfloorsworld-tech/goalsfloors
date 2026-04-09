@@ -268,6 +268,74 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
 
+      {/* ================= LOCAL BUSINESS JSON-LD (SEO) ================= */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "HomeAndConstructionBusiness",
+            "name": "Goals Floors",
+            "alternateName": "Goals Floors India",
+            "url": "https://goalsfloors.com",
+            "logo": "https://goalsfloors.com/icon.svg",
+            "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775573402/Goals_Floors_Premium_Wall_Panel.png",
+            "description": "Goals Floors is India's fastest growing premium brand for Wall Panels, WPC Louvers, Charcoal Moulding, SPC Flooring, and Architectural Finishes in Delhi NCR, Gurugram, Noida, and Faridabad.",
+            "telephone": "+91-7217644573",
+            "email": "goalsfloors@gmail.com",
+            "priceRange": "₹₹",
+            "currenciesAccepted": "INR",
+            "paymentAccepted": "Cash, Credit Card, UPI, Bank Transfer",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "H-36/27A, H-Block, Sikanderpur, DLF Phase-1",
+              "addressLocality": "Gurugram",
+              "addressRegion": "Haryana",
+              "postalCode": "122002",
+              "addressCountry": "IN"
+            },
+            "hasMap": "https://www.google.com/maps/dir//Goals+Floors,+H-36%2F27A,+H-Block,+Sikanderpur,+DLF+Phase-1,+Gurugram,+Haryana+122002",
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                "opens": "09:30",
+                "closes": "19:00"
+              }
+            ],
+            "areaServed": [
+              { "@type": "City", "name": "Gurugram" },
+              { "@type": "City", "name": "Delhi" },
+              { "@type": "City", "name": "Noida" },
+              { "@type": "City", "name": "Faridabad" },
+              { "@type": "City", "name": "Ghaziabad" }
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Wall Panels & Flooring Products",
+              "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Tokyo Charcoal Moulding" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "WPC Fluted Panels" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "SPC Flooring" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "WPC Exterior Louvers" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Cobra PU Stone Panels" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "WPC Baffle Ceiling" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Artificial Grass" } }
+              ]
+            },
+            "sameAs": [
+              "https://www.instagram.com/goalsfloors"
+            ],
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "reviewCount": "200",
+              "bestRating": "5"
+            }
+          })
+        }}
+      />
+
       {/* ================= HERO SECTION ================= */}
       <section className="relative min-h-[500px] sm:min-h-[600px] md:min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Carousel */}

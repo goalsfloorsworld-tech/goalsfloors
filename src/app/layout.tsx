@@ -5,13 +5,37 @@ import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
 import WhatsAppFloat from "@/components/whatsapp-float";
 
-// Using a premium system font stack to avoid build-time fetch issues
-const fontStack = "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://goalsfloors.com"),
   title: "Goals Floors: India’s Fastest Growing Wall Panels & Flooring Brand",
   description: "Goals Floors: India's Fastest Growing Wall Panels & Flooring Brand. Unmatched Quality in Wall Panels & Flooring | 90% Warranty Backed | 400+ Partners | 2-Hour Express Material Supply in Gurgaon & NCR.",
+  keywords: ["Wall Panels", "Flooring", "WPC Louvers", "SPC Flooring", "Charcoal Moulding", "Delhi NCR", "Gurugram", "PU Stone"],
+  openGraph: {
+    type: "website",
+    locale: "en_IN",
+    url: "https://goalsfloors.com",
+    title: "Goals Floors: Premium Wall Panels & Flooring in Delhi NCR",
+    description: "Unmatched Quality in Wall Panels & Flooring | 90% Warranty Backed | 400+ Partners | 2-Hour Express Material Supply in Gurgaon & NCR.",
+    siteName: "Goals Floors",
+    images: [
+      {
+        url: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775448942/goals-floors-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Goals Floors Premium Panels",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Goals Floors: Premium Architectural Products",
+    description: "India's fastest growing brand for Wall Panels, WPC, and Flooring in Delhi NCR.",
+    images: ["https://res.cloudinary.com/dcezlxt8r/image/upload/v1775573402/Goals_Floors_Premium_Wall_Panel.png"],
+  },
   icons: {
     icon: '/icon.svg',
     shortcut: '/icon.svg',
@@ -30,7 +54,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       {/* suppressHydrationWarning is essential for dark mode hydration */}
-      <body style={{ fontFamily: fontStack }} className={`antialiased bg-white dark:bg-slate-950 pt-14`}>
+      <body className={`${inter.className} antialiased bg-white dark:bg-slate-950 pt-14`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
