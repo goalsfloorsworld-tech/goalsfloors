@@ -106,7 +106,15 @@ const AnimationStyles = () => (
   ` }} />
 );
 
-const VariantCard = ({ variant, onVariantClick }: { variant: Variant, onVariantClick: (v: Variant) => void }) => {
+const VariantCard = ({ 
+  variant, 
+  onVariantClick,
+  onImageClick 
+}: { 
+  variant: Variant, 
+  onVariantClick: (v: Variant) => void,
+  onImageClick: (url: string) => void
+}) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -157,6 +165,10 @@ const VariantCard = ({ variant, onVariantClick }: { variant: Variant, onVariantC
                 key={i} 
                 className="min-w-full h-full snap-center relative"
               >
+                <div 
+                  className="absolute inset-0 cursor-zoom-in z-10"
+                  onClick={() => onImageClick(img.url)}
+                />
                 <Image 
                   src={img.url} 
                   alt={img.alt || `${variant.name} detail ${i + 1}`}
@@ -518,10 +530,14 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                     stiffness: 80
                   }}
                 >
-                  <VariantCard variant={variant} onVariantClick={(v) => {
-                    setSelectedVariant(v);
-                    setActiveDrawerImageIndex(0);
-                  }} />
+                  <VariantCard 
+                    variant={variant} 
+                    onVariantClick={(v) => {
+                      setSelectedVariant(v);
+                      setActiveDrawerImageIndex(0);
+                    }} 
+                    onImageClick={setFullscreenImage}
+                  />
                 </motion.div>
               ))}
             </div>
@@ -978,7 +994,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 w-full md:w-[600px] h-[100dvh] bg-white dark:bg-slate-900 z-[90] shadow-2xl border-l border-gray-200 dark:border-gray-800 overflow-y-auto overscroll-contain scrollbar-hide"
+              className="fixed top-0 right-0 w-full md:w-[480px] h-[100dvh] bg-white dark:bg-slate-900 z-[90] shadow-2xl border-l border-gray-200 dark:border-gray-800 overflow-y-auto overscroll-contain scrollbar-hide"
               data-lenis-prevent="true"
               style={{ WebkitOverflowScrolling: 'touch' }}
             >
