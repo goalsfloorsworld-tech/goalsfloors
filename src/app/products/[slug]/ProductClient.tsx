@@ -69,6 +69,8 @@ export interface Product {
   images: { url: string; alt: string }[];
   installedImages?: { url: string; alt: string; aspect?: string }[];
   variants?: Variant[];
+  architectHeading?: string;
+  architectSubheading?: string;
 }
 
 const StarRating = () => (
@@ -515,7 +517,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
 
       {/* ================= 4.5. PRODUCT VARIATIONS & PRICING ================= */}
       {product.variants && product.variants.length > 0 && (
-        <div className="bg-gray-50 dark:bg-slate-900 py-10 lg:py-24 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div className="bg-gray-50 dark:bg-slate-900 py-10 lg:py-10 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-600 mb-4 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 inline-block rounded-sm">
@@ -556,8 +558,12 @@ export default function ProductClient({ product, slug }: { product: Product; slu
       <div className="bg-gray-50/50 dark:bg-slate-900/50 py-16 border-b border-gray-200 dark:border-gray-800/50 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12 pb-6 border-b border-gray-200 dark:border-gray-800">
-            <h4 className="text-3xl md:text-4xl font-bold uppercase tracking-tight text-gray-900 dark:text-white">Why Architects Choose Our Panels</h4>
-            <p className="text-base font-medium text-gray-500 dark:text-gray-400 mt-3">Maximum performance for architectural standards</p>
+            <h4 className="text-3xl md:text-4xl font-bold uppercase tracking-tight text-gray-900 dark:text-white">
+              {product.architectHeading || "Why Architects Choose Our Panels"}
+            </h4>
+            <p className="text-base font-medium text-gray-500 dark:text-gray-400 mt-3">
+              {product.architectSubheading || "Maximum performance for architectural standards"}
+            </p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-10">
