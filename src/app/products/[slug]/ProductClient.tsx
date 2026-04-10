@@ -333,14 +333,21 @@ export default function ProductClient({ product, slug }: { product: Product; slu
     }
 
     // Default: Wall Panels (Charcoal Moulding, Fluted, etc.) - NO UV PROTECTED
-    return [
+    const features = [
       { icon: ShieldCheck, title: "Commercial Grade", desc: "100% Termite & Borer Proof" },
       { icon: Droplets, title: "100% WATERPROOF", desc: "No Swelling / Decay" },
       { icon: Wrench, title: "Quick Install", desc: "Interlocking System" },
-      { icon: Palette, title: "PAINTABLE", desc: "Custom Color Ready" },
-      { icon: Hammer, title: "Unbreakable", desc: "High Impact Strength" },
-      { icon: Zap, title: "GLUE DOWN", desc: "Maximum Grip Bond" }
     ];
+
+    // Only add Paintable and Unbreakable for Charcoal Moulding
+    if (product.title.toLowerCase().includes("moulding")) {
+      features.push({ icon: Palette, title: "PAINTABLE", desc: "Custom Color Ready" });
+      features.push({ icon: Hammer, title: "Unbreakable", desc: "High Impact Strength" });
+    }
+
+    features.push({ icon: Zap, title: "GLUE DOWN", desc: "Maximum Grip Bond" });
+
+    return features;
   };
 
   const quickFeatures = getQuickFeatures(product);

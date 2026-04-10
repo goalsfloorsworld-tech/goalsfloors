@@ -552,7 +552,7 @@ export default function Home() {
       {/* ================= WHY CHOOSE US ================= */}
       <section className="pt-8 pb-24 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch">
             <div>
               <h2 className="text-[28px] sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tighter whitespace-nowrap">The Goals Floors Advantage</h2>
               <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed text-justify">We don&apos;t just supply surfaces; we deliver the speed, scale, and innovation that your luxury projects deserve.</p>
@@ -587,7 +587,7 @@ export default function Home() {
             </div>
 
             {/* Right side large image - Hidden on mobile, shown on desktop */}
-            <div className="relative h-[600px] rounded-sm overflow-hidden shadow-2xl hidden lg:block">
+            <div className="relative h-full min-h-[600px] rounded-sm overflow-hidden shadow-2xl hidden lg:block">
               <Image
                 src="https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749408/Goals_Floors_Fluted_Panel.jpg"
                 alt="Professional interior wood flooring and wall paneling installation in Gurugram and Delhi NCR - Goals Floors Architectural Excellence" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover"

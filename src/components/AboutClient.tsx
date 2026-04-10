@@ -302,18 +302,19 @@ export default function AboutClient() {
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                className="text-4xl md:text-7xl font-medium text-gray-900 dark:text-white tracking-[0.1em] uppercase leading-none italic"
+                className="text-4xl md:text-7xl font-black text-slate-900 dark:text-white tracking-widest uppercase leading-none italic"
               >
                 Core Values
               </motion.h2>
+              <div className="h-1 w-24 bg-amber-600 mx-auto mt-6" />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
               {[
-                { icon: Target, title: "Budget-Friendly Luxury", desc: "Providing top-tier, international-grade surface materials at honest, competitive prices without ever compromising on aesthetics." },
-                { icon: Zap, title: "Extreme Speed", desc: "Respecting project deadlines above all else. Our dedicated logistics network ensures 2-hour express material dispatch across Delhi NCR." },
-                { icon: ShieldCheck, title: "Absolute Trust", desc: "We don't make empty promises. Every product we supply comes with a minimum 7-year official warranty for long-lasting peace of mind." },
-                { icon: CheckCircle2, title: "Flawless Execution", desc: "Going beyond just supply. We provide expert guidance and technical support to ensure perfect installation for every single project." }
+                { label: "Value", icon: Target, title: "Budget-Friendly Luxury", desc: "Providing top-tier, international-grade surface materials at honest, competitive prices without ever compromising on aesthetics." },
+                { label: "Efficiency", icon: Zap, title: "Extreme Speed", desc: "Respecting project deadlines above all else. Our dedicated logistics network ensures 2-hour express material dispatch across Delhi NCR." },
+                { label: "Integrity", icon: ShieldCheck, title: "Absolute Trust", desc: "We don't make empty promises. Every product we supply comes with a minimum 7-year official warranty for long-lasting peace of mind." },
+                { label: "Craft", icon: CheckCircle2, title: "Flawless Execution", desc: "Going beyond just supply. We provide expert guidance and technical support to ensure perfect installation for every single project." }
               ].map((item, i) => (
                 <motion.div
                   key={i}
@@ -322,18 +323,41 @@ export default function AboutClient() {
                   viewport={{ once: true, amount: 0.1 }}
                   variants={scaleIn}
                   transition={{ delay: i * 0.1 }}
-                  className="flex flex-col items-center text-center group"
+                  className="relative group h-full"
                 >
-                  <motion.div
-                    {...floatingIcon}
-                    transition={{ ...floatingIcon.animate.transition, delay: i * 0.2 }}
-                    className="w-20 h-20 rounded-full bg-white dark:bg-slate-800 flex items-center justify-center text-amber-600 mb-8 transform group-hover:scale-110 transition-transform duration-500 border border-gray-100 dark:border-gray-700 shadow-lg"
-                  >
-                    <item.icon className="w-10 h-10" />
-                  </motion.div>
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-[0.1em] leading-tight">{item.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 font-medium text-base md:text-lg leading-relaxed px-4 sm:px-0">{item.desc}</p>
-                  <div className="h-[2px] w-0 bg-amber-600 mt-8 group-hover:w-16 transition-all duration-700" />
+                  {/* Architectural Background Number */}
+                  <div className="absolute -top-6 -right-2 text-6xl font-black text-slate-100 dark:text-white/5 select-none transition-colors duration-500 group-hover:text-amber-500/10 z-0">
+                    0{i+1}
+                  </div>
+
+                  <div className="h-full bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-slate-200/50 dark:border-white/5 p-8 rounded-sm flex flex-col items-center text-center transition-all duration-500 group-hover:bg-white dark:group-hover:bg-slate-900 group-hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] group-hover:-translate-y-2 group-hover:border-amber-600/30 relative z-10">
+                    
+                    {/* Category Label */}
+                    <span className="text-[10px] font-black tracking-[0.4em] text-amber-600/60 mb-8 uppercase">
+                      {item.label}
+                    </span>
+
+                    {/* Icon with Layered Glow */}
+                    <div className="relative mb-10">
+                       <div className="absolute inset-0 bg-amber-600/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                       <div className="relative w-16 h-16 rounded-xl bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm flex items-center justify-center text-amber-600 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-xl group-hover:shadow-amber-600/20">
+                          <item.icon className="w-8 h-8" />
+                       </div>
+                    </div>
+
+                    <h3 className="text-xl font-black text-slate-900 dark:text-white mb-4 uppercase tracking-tight leading-tight">
+                      {item.title}
+                    </h3>
+                    
+                    <p className="text-slate-500 dark:text-slate-400 font-medium text-sm leading-relaxed px-2">
+                       {item.desc}
+                    </p>
+
+                    {/* Progress Indicator */}
+                    <div className="w-12 h-1 bg-slate-100 dark:bg-slate-800 mt-10 rounded-full overflow-hidden">
+                       <div className="w-0 h-full bg-amber-600 transition-all duration-700 group-hover:w-full" />
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
