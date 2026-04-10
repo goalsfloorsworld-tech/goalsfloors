@@ -14,10 +14,10 @@ import {
 /* -------------------------------------------------------------------------- */
 
 const trustStats = [
-  { icon: Users, label: "Authorized Dealers", value: "400+" },
-  { icon: Zap, label: "Express Dispatch", value: "2 Hour" },
-  { icon: Package, label: "Premium Products", value: "2500+" },
-  { icon: IndianRupee, label: "Value Delivered", value: "₹50Cr+" },
+  { icon: Users, label: "Dealers", value: "400+" },
+  { icon: Zap, label: "2 Hour Dispatch", value: "2 Hour" },
+  { icon: Package, label: "Products", value: "2500+" },
+  { icon: IndianRupee, label: "Value Delivered", value: "50CR+" },
 ];
 
 export function TrustBar() {

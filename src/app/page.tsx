@@ -479,7 +479,7 @@ export default function Home() {
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
             className="mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-4xl mx-auto font-light leading-relaxed mb-10 text-shadow-md"
           >
-            Unmatched Quality in Wall Panels & Flooring | 90% Warranty Backed | 400+ Partners | 2-Hour Express Material Supply in Gurgaon & NCR.
+            Unmatched Quality in Wall Panels & Flooring | 90% Warranty Backed | 400+ Dealers | 2-Hour Express Material Supply in Gurgaon & NCR.
           </motion.p>
 
           {/* CTAs */}
@@ -515,7 +515,7 @@ export default function Home() {
           {[
             { label: "Premium Products", value: "2500+" },
             { label: "Happy Clients", value: "20K+" },
-            { label: "Dealer Network", value: "400+" },
+            { label: "Dealers", value: "400+" },
             { label: "Warranty Backed", value: "90%" },
           ].map((stat, i) => (
             <div key={i} className="text-center overflow-hidden px-1">
@@ -567,7 +567,7 @@ export default function Home() {
 
               <div className="space-y-6">
                 {[
-                  { icon: Truck, title: "120-Minute Express Dispatch", desc: "NCR’s fastest logistics ensure your material reaches the site in Gurgaon & NCR within just 2 hours. We value your time so your project never hits a standstill." },
+                  { icon: Truck, title: "2-Hour Express Dispatch", desc: "NCR’s fastest logistics ensure your material reaches the site in Gurgaon & NCR within just 2 hours. We value your time so your project never hits a standstill." },
                   { icon: Trophy, title: "2500+ Designs | 400+ Dealers", desc: "Explore India’s most expansive curated collection. Our massive distributor network ensures project pricing and immediate stock availability for any project size." },
                   { icon: CheckCircle2, title: "Quarterly New Product Launches", desc: "Stay ahead of global trends. We refresh our catalog every 3-4 months, bringing the latest international textures in Wall Panels and Flooring to Gurgaon first." },
                   { icon: ShieldCheck, title: "90% Our Products are Warranty Backed Quality", desc: "Transparency over tall claims. Over 90% of our product range comes with official manufacturer warranties, ensuring long-term performance and total peace of mind." },

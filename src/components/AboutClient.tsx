@@ -134,12 +134,12 @@ export default function AboutClient() {
 
               <motion.div variants={fadeUp} className="mt-10 pt-8 border-t border-gray-200 dark:border-gray-800 flex items-center justify-center lg:justify-start gap-6 sm:gap-12 w-full lg:w-auto">
                 <div>
-                  <h4 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white">120-Min</h4>
+                  <h4 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white">2-Hour</h4>
                   <p className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest font-semibold">Express Dispatch</p>
                 </div>
                 <div className="w-px h-10 bg-gray-200 dark:bg-gray-800"></div>
                 <div>
-                  <h4 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white">1000+</h4>
+                  <h4 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white">2500+</h4>
                   <p className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest font-semibold">Unique Designs</p>
                 </div>
                 <div className="w-px h-10 bg-gray-200 dark:bg-gray-800"></div>
@@ -368,7 +368,7 @@ export default function AboutClient() {
                 <MapPin className="w-10 h-10 text-amber-500 md:mb-4 shrink-0" />
                 <div>
                   <h3 className="text-2xl md:text-3xl font-black text-white leading-tight mb-2">Sikanderpur Mega-Hub</h3>
-                  <p className="text-gray-300 font-medium max-w-md text-justify">Our massive headquarters and warehousing facility in Gurugram ensures we hold deep inventory levels for 1000+ exclusive designs, eliminating out-of-stock delays.</p>
+                  <p className="text-gray-300 font-medium max-w-md text-justify">Our massive headquarters and warehousing facility in Gurugram ensures we hold deep inventory levels for 2500+ exclusive designs, eliminating out-of-stock delays.</p>
                 </div>
               </div>
             </motion.div>
