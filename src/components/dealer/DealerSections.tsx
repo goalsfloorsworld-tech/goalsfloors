@@ -6,7 +6,7 @@ import {
   Users, MapPin, Truck, IndianRupee, 
   Handshake, Target, LayoutDashboard, 
   HelpCircle, Plus, Minus, ChevronDown,
-  TrendingUp, Megaphone, Zap, UserCheck
+  TrendingUp, Megaphone, Zap, UserCheck, Package
 } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
@@ -14,9 +14,9 @@ import {
 /* -------------------------------------------------------------------------- */
 
 const trustStats = [
-  { icon: Users, label: "Active Partners", value: "500+" },
-  { icon: MapPin, label: "States Covered", value: "12+" },
-  { icon: Truck, label: "Dispatch Time", value: "48 Hrs" },
+  { icon: Users, label: "Authorized Dealers", value: "400+" },
+  { icon: Zap, label: "Express Dispatch", value: "2 Hour" },
+  { icon: Package, label: "Premium Products", value: "2500+" },
   { icon: IndianRupee, label: "Value Delivered", value: "₹50Cr+" },
 ];
 
@@ -31,6 +31,7 @@ export function TrustBar() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -5 }}
               viewport={{ once: true }}
               className="flex flex-col items-center md:items-start text-center md:text-left gap-3 group"
             >
@@ -129,7 +130,7 @@ const faqItems = [
   },
   {
     question: "What is your standard dispatch time?",
-    answer: "For standard catalog items, we ensure dispatch within 48 business hours from our central warehouse."
+    answer: "For standard catalog items, we ensure dispatch within 2 business hours from our central warehouse."
   },
   {
     question: "How do you handle transit damages?",
