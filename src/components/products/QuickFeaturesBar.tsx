@@ -47,7 +47,7 @@ export default function QuickFeaturesBar({ features }: QuickFeaturesBarProps) {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-50px" }}
-          className="flex md:grid md:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-hide pb-4 md:pb-0"
+          className="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-6 lg:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory scrollbar-hide pb-4 md:pb-0"
         >
           {features.map((item, i) => (
             <motion.div

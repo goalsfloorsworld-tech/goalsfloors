@@ -3,11 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
-import { 
-  motion, 
+import {
+  motion,
   AnimatePresence,
-  useMotionValue, 
-  useSpring, 
+  useMotionValue,
+  useSpring,
   useTransform,
 } from "framer-motion";
 import { ArrowRight, Clock, ShieldCheck, Trophy, Truck, Users, CheckCircle2 } from "lucide-react";
@@ -21,7 +21,7 @@ import CategoryFlipCards from "@/components/home/CategoryFlipCards";
 // ================= INTERACTIVE 3D MONOLITH COMPONENT =================
 function GetAQuoteMonolith() {
   const containerRef = useRef<HTMLDivElement>(null);
-  
+
   // Mouse tracking motion values
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -29,7 +29,7 @@ function GetAQuoteMonolith() {
   // Smooth springs for the 3D effect
   const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [10, -10]), { damping: 20, stiffness: 150 });
   const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-10, 10]), { damping: 20, stiffness: 150 });
-  
+
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
@@ -45,33 +45,33 @@ function GetAQuoteMonolith() {
   };
 
   return (
-    <section 
+    <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative py-16 md:py-24 px-4 overflow-hidden bg-gray-50 dark:bg-slate-950 transition-colors duration-500 flex items-center justify-center min-h-[600px] md:min-h-[800px]"
+      className="relative py-8 md:py-12 px-4 overflow-hidden bg-gray-50 dark:bg-slate-950 transition-colors duration-500 flex items-center justify-center min-h-[400px] md:min-h-[600px]"
     >
       {/* Background Decor Elements (Floating 3D-like shapes) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div 
-          animate={{ 
-            y: [0, -20, 0], 
+        <motion.div
+          animate={{
+            y: [0, -20, 0],
             rotate: [0, 45, 0],
-            scale: [1, 1.1, 1] 
+            scale: [1, 1.1, 1]
           }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-[10%] left-[15%] w-32 h-32 bg-amber-500/10 dark:bg-amber-500/5 blur-3xl rounded-full"
         />
-        <motion.div 
-          animate={{ 
-            y: [0, 30, 0], 
+        <motion.div
+          animate={{
+            y: [0, 30, 0],
             rotate: [0, -30, 0],
-            scale: [1, 0.9, 1] 
+            scale: [1, 0.9, 1]
           }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="absolute bottom-[20%] right-[10%] w-64 h-64 bg-slate-200/50 dark:bg-slate-800/20 blur-3xl rounded-full"
         />
-        
+
         {/* Floating Architectural Lines */}
         {[...Array(5)].map((_, i) => (
           <motion.div
@@ -80,8 +80,8 @@ function GetAQuoteMonolith() {
             animate={{ opacity: 0.1, x: [0, 100, 0], y: [0, -50, 0] }}
             transition={{ duration: 15 + i * 2, repeat: Infinity, ease: "linear" }}
             className="absolute h-px bg-amber-600 w-96 origin-left"
-            style={{ 
-              top: `${20 + i * 15}%`, 
+            style={{
+              top: `${20 + i * 15}%`,
               left: `${-10 + i * 5}%`,
               transform: `rotate(${15 + i * 10}deg)`
             }}
@@ -98,15 +98,15 @@ function GetAQuoteMonolith() {
         }}
         className="relative w-full max-w-4xl z-10"
       >
-        <div 
+        <div
           style={{ transform: "translateZ(80px)" }}
-          className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-3xl border-2 border-gray-200/50 dark:border-slate-700/50 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.2),0_10px_30px_-10px_rgba(0,0,0,0.1)] dark:shadow-[0_0_50px_-12px_rgba(251,191,36,0.1)] px-6 py-10 md:p-16 rounded-sm relative overflow-hidden group"
+          className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-3xl border-2 border-gray-200/50 dark:border-slate-700/50 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.2),0_10px_30px_-10px_rgba(0,0,0,0.1)] dark:shadow-[0_0_50px_-12px_rgba(251,191,36,0.1)] px-6 py-4 md:px-16 md:py-6 rounded-sm relative overflow-hidden group"
         >
           {/* Subtle Inner Glow */}
           <div className="absolute -inset-px bg-gradient-to-br from-amber-500/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
-            
+
             {/* Left Content */}
             <div style={{ transform: "translateZ(40px)" }}>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-6 border border-amber-200 dark:border-amber-800/50">
@@ -135,14 +135,14 @@ function GetAQuoteMonolith() {
             </div>
 
             {/* Right: Premium Normal Button */}
-            <div 
+            <div
               style={{ transform: "translateZ(60px)" }}
               className="relative flex flex-col items-center justify-center min-h-0 py-8 md:py-0 md:min-h-[400px] overflow-hidden"
             >
               {/* Technical Grid Background */}
-              <div className="absolute inset-4 border border-amber-500/10 pointer-events-none opacity-40 dark:opacity-20" 
-                   style={{ background: "radial-gradient(circle at 10% 10%, rgba(251,191,36,0.1) 0%, transparent 1%), radial-gradient(circle at 90% 90%, rgba(251,191,36,0.1) 0%, transparent 1%)", backgroundSize: "20px 20px" }} />
-              
+              <div className="absolute inset-4 border border-amber-500/10 pointer-events-none opacity-40 dark:opacity-20"
+                style={{ background: "radial-gradient(circle at 10% 10%, rgba(251,191,36,0.1) 0%, transparent 1%), radial-gradient(circle at 90% 90%, rgba(251,191,36,0.1) 0%, transparent 1%)", backgroundSize: "20px 20px" }} />
+
               {/* Floating Material Swatches (Interacting with the 3D space) */}
               {[
                 { z: 100, x: -80, y: -60, label: "Oak Wood", color: "bg-amber-100/50 dark:bg-amber-900/30" },
@@ -151,12 +151,12 @@ function GetAQuoteMonolith() {
               ].map((swatch, i) => (
                 <motion.div
                   key={i}
-                  style={{ 
+                  style={{
                     transform: `translateZ(${swatch.z}px)`,
-                    left: `calc(50% + ${swatch.x}px)`, 
-                    top: `calc(50% + ${swatch.y}px)` 
+                    left: `calc(50% + ${swatch.x}px)`,
+                    top: `calc(50% + ${swatch.y}px)`
                   }}
-                  animate={{ 
+                  animate={{
                     y: [0, 10, 0],
                     rotate: [0, i % 2 === 0 ? 5 : -5, 0]
                   }}
@@ -171,9 +171,9 @@ function GetAQuoteMonolith() {
               ))}
 
               {/* Interactive Coordinate Tracker */}
-              <motion.div 
+              <motion.div
                 className="absolute pointer-events-none z-0 hidden lg:flex flex-col items-start gap-1"
-                style={{ 
+                style={{
                   left: useTransform(mouseX, [-0.5, 0.5], ["30%", "70%"]),
                   top: useTransform(mouseY, [-0.5, 0.5], ["30%", "70%"]),
                   transform: "translateZ(30px)"
@@ -193,13 +193,13 @@ function GetAQuoteMonolith() {
                 </div>
               </motion.div>
 
-              <Link 
-                href="/contact" 
+              <Link
+                href="/contact"
                 className="group shine-btn relative z-10 flex items-center gap-3 bg-amber-600 hover:bg-amber-700 text-white px-10 py-5 rounded-full text-xs font-black uppercase tracking-[0.3em] transition-all duration-300 shadow-2xl shadow-amber-600/20 active:scale-95 w-fit overflow-hidden"
               >
                 {/* Button Shine effect */}
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-                
+
                 <span className="relative z-10 flex items-center gap-3">
                   Consult with Experts
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -207,7 +207,7 @@ function GetAQuoteMonolith() {
               </Link>
 
               {/* Decorative accent for the 3D depth */}
-              <div 
+              <div
                 style={{ transform: "translateZ(-20px)" }}
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-amber-600/10 -z-10 rounded-full blur-[120px]"
               />
@@ -215,15 +215,17 @@ function GetAQuoteMonolith() {
           </div>
         </div>
 
-        {/* 3D floating "Samples" or "Chips" indicators (Visual Fluff) */}
-        <motion.div
-           style={{ transform: "translateZ(120px)" }}
-           className="absolute -top-12 -left-12 w-24 h-32 bg-amber-600 hidden xl:flex items-center justify-center shadow-2xl rounded-sm"
-           animate={{ y: [0, 10, 0] }}
-           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <div className="text-white font-black text-4xl leading-none px-4">GF</div>
-        </motion.div>
+      </motion.div>
+
+      <motion.div
+        style={{ transform: "translateZ(140px)" }}
+        className="absolute top-20 left-[18%] w-20 h-24 bg-amber-600 hidden xl:flex items-center justify-center shadow-2xl rounded-sm z-50 overflow-visible"
+        animate={{ y: [0, 15, 0], rotate: [0, 5, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <div className="text-white font-black text-3xl leading-none">GF</div>
+        {/* Decorative shadow layer */}
+        <div className="absolute inset-0 bg-black/20 translate-x-1 translate-y-1 -z-10 blur-sm" />
       </motion.div>
     </section>
   );
@@ -374,7 +376,7 @@ export default function Home() {
       <section className="relative min-h-[500px] sm:min-h-[600px] md:min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Carousel */}
         <div className="absolute inset-0 z-0 bg-black overflow-hidden">
-          
+
           {/* Desktop Carousel (5 images) */}
           <div className="hidden md:block absolute inset-0">
             <AnimatePresence initial={false}>
@@ -383,7 +385,7 @@ export default function Home() {
                 initial={{ opacity: 0, scale: 1 }}
                 animate={{ opacity: 0.7, scale: 1.25 }}
                 exit={{ opacity: 0 }}
-                transition={{ 
+                transition={{
                   opacity: { duration: 1.5, ease: "easeInOut" },
                   scale: { duration: 6, ease: "linear" }
                 }}
@@ -409,7 +411,7 @@ export default function Home() {
                 initial={{ opacity: 0, scale: 1 }}
                 animate={{ opacity: 0.7, scale: 1.25 }}
                 exit={{ opacity: 0 }}
-                transition={{ 
+                transition={{
                   opacity: { duration: 1.5, ease: "easeInOut" },
                   scale: { duration: 6, ease: "linear" }
                 }}
@@ -426,18 +428,18 @@ export default function Home() {
               </motion.div>
             </AnimatePresence>
           </div>
-          
+
           {/* Transition Fog / Overlay */}
           <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-white/90 via-white/50 to-transparent z-10 dark:from-slate-950/90 dark:via-slate-950/50 transition-colors duration-700" />
-          
+
           {/* Subtle top vignette for better navbar visibility */}
           <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/60 to-transparent z-0" />
-          
+
           {/* Luxury Radial Gradient Overlay */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/20 to-black/70 z-0 pointer-events-none" />
         </div>
 
-        <motion.div 
+        <motion.div
           initial="hidden"
           animate="visible"
           variants={{
@@ -450,7 +452,7 @@ export default function Home() {
           className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-10 pb-24 md:py-20"
         >
           {/* USP Badge */}
-          <motion.div 
+          <motion.div
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
             className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-8 shadow-xl"
           >
@@ -459,7 +461,7 @@ export default function Home() {
           </motion.div>
 
           {/* Headline - Thinner, more elegant font */}
-          <motion.h1 
+          <motion.h1
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
             className="text-3xl sm:text-4xl md:text-6xl font-semibold text-white mb-6 tracking-tight leading-[1.1] drop-shadow-2xl px-2 relative"
           >
@@ -468,14 +470,14 @@ export default function Home() {
               {/* Intensified Multi-Layer Glow Effect */}
               <span className="absolute -inset-x-20 inset-y-0 bg-amber-500/40 blur-[100px] rounded-full -z-10 animate-pulse"></span>
               <span className="absolute -inset-x-10 inset-y-0 bg-yellow-400/20 blur-[40px] rounded-full -z-10 animate-pulse delay-700"></span>
-              
+
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-600 italic font-light pr-2 pb-1 md:whitespace-nowrap block sm:inline drop-shadow-[0_4px_40px_rgba(251,191,36,0.8)]">
                 Fastest Growing Wall Panels & Flooring Brand
               </span>
             </span>
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
             className="mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-4xl mx-auto font-light leading-relaxed mb-10 text-shadow-md"
           >
@@ -483,7 +485,7 @@ export default function Home() {
           </motion.p>
 
           {/* CTAs */}
-          <motion.div 
+          <motion.div
             variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } } }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0"
           >
@@ -558,11 +560,19 @@ export default function Home() {
               <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed text-justify">We don&apos;t just supply surfaces; we deliver the speed, scale, and innovation that your luxury projects deserve.</p>
 
               {/* Mobile Image - Shown only on small screens */}
-              <div className="relative h-[400px] w-full mb-10 lg:hidden rounded-sm overflow-hidden shadow-xl">
-                <Image
-                  src="https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749408/Goals_Floors_Fluted_Panel.jpg"
-                  alt="Professional interior wood flooring and wall paneling installation in Gurugram and Delhi NCR - Goals Floors Architectural Excellence" fill sizes="100vw" className="object-cover"
-                />
+              <div className="relative h-[400px] w-full mb-10 lg:hidden group/img">
+                {/* Intensified Background Glow for Mobile */}
+                <div className="absolute -inset-6 bg-amber-500/30 blur-[60px] rounded-full opacity-60 animate-pulse" />
+                
+                <div className="relative h-full w-full rounded-sm overflow-hidden shadow-[0_0_50px_rgba(251,191,36,0.3)] z-10 transition-transform duration-500 group-hover/img:scale-[1.02]">
+                  <Image
+                    src="https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749408/Goals_Floors_Fluted_Panel.jpg"
+                    alt="Professional interior wood flooring and wall paneling installation in Gurugram and Delhi NCR - Goals Floors Architectural Excellence" 
+                    fill 
+                    sizes="100vw" 
+                    className="object-cover"
+                  />
+                </div>
               </div>
 
               <div className="space-y-6">
@@ -587,11 +597,26 @@ export default function Home() {
             </div>
 
             {/* Right side large image - Hidden on mobile, shown on desktop */}
-            <div className="relative h-full min-h-[600px] rounded-sm overflow-hidden shadow-2xl hidden lg:block">
-              <Image
-                src="https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749408/Goals_Floors_Fluted_Panel.jpg"
-                alt="Professional interior wood flooring and wall paneling installation in Gurugram and Delhi NCR - Goals Floors Architectural Excellence" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover"
+            <div className="relative h-full min-h-[600px] hidden lg:flex items-center justify-center">
+              {/* Ultra-Bold Background Glow Effect */}
+              <motion.div 
+                animate={{ 
+                  scale: [1, 1.25, 1],
+                  opacity: [0.4, 0.8, 0.4]
+                }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 bg-amber-500/35 blur-[130px] rounded-full z-0"
               />
+              
+              <div className="relative h-full w-full rounded-sm overflow-hidden shadow-[0_0_100px_rgba(251,191,36,0.3)] z-10 group/img-desktop overflow-hidden transition-all duration-700 hover:shadow-[0_0_120px_rgba(251,191,36,0.5)]">
+                <Image
+                  src="https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749408/Goals_Floors_Fluted_Panel.jpg"
+                  alt="Professional interior wood flooring and wall paneling installation in Gurugram and Delhi NCR - Goals Floors Architectural Excellence" 
+                  fill 
+                  sizes="(max-width: 1024px) 100vw, 50vw" 
+                  className="object-cover transition-transform duration-1000 group-hover/img-desktop:scale-110"
+                />
+              </div>
             </div>
           </div>
         </div>

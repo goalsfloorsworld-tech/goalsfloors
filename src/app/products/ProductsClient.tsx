@@ -11,7 +11,6 @@ import {
   Info, ChevronRight, Sparkles
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import CircularProductDisplay from "@/components/products/CircularProductDisplay";
 
 // Types
 export interface Product {
@@ -122,45 +121,12 @@ export default function ProductsClient({ products }: { products: Product[] }) {
   const categories = ["All", ...dataCategories];
 
 
-  const SCROLL_INTENSITY = 700;
-  const circularRef = useRef<HTMLDivElement>(null);
-
-  const scrollToCategory = (cat: string) => {
-    if (typeof window !== "undefined" && window.innerWidth >= 1024 && circularRef.current && sortedProducts.length > 0) {
-      const firstIndex = cat === "All" ? 0 : sortedProducts.findIndex((p: Product) => p.category === cat);
-
-      if (firstIndex !== -1) {
-        const rect = circularRef.current.getBoundingClientRect();
-        const containerTop = rect.top + window.scrollY;
-        const targetScroll = containerTop + (firstIndex * SCROLL_INTENSITY);
-
-        window.scrollTo({
-          top: targetScroll,
-          behavior: "smooth"
-        });
-      }
-    }
-  };
-
-  // Sync scroll on category change (initial load or navigation)
-  useEffect(() => {
-    if (categoryParam !== "All" && sortedProducts.length > 0) {
-      // Use a slightly longer timeout to ensure Framer Motion and layout have stabilized
-      const timer = setTimeout(() => scrollToCategory(categoryParam), 300);
-      return () => clearTimeout(timer);
-    }
-  }, [categoryParam, sortedProducts.length]); // Specifically watch the loading of products
-
   const handleCategoryChange = (cat: string) => {
-    // 1. Update URL/State (Normal behavior)
     if (cat === "All") {
       router.push("/products", { scroll: false });
     } else {
       router.push(`/products?category=${cat}`, { scroll: false });
     }
-
-    // 2. Desktop Specific: Scroll to the exactly correct index
-    scrollToCategory(cat);
   };
 
 
@@ -454,20 +420,11 @@ export default function ProductsClient({ products }: { products: Product[] }) {
         )}
       </AnimatePresence>
 
-      <div ref={circularRef} className="hidden lg:block">
-        <CircularProductDisplay
-          products={sortedProducts}
-          scrollIntensity={SCROLL_INTENSITY}
-          activeCategory={categoryParam}
-        />
-      </div>
-
-
-      {/* Products Display Grid - Mobile/Tablet Only */}
-      <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:hidden">
+      {/* Products Display Grid - Responsive for all screens */}
+      <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <motion.div
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-14"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-10"
         >
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((product: Product, i: number) => (
