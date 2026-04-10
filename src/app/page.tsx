@@ -558,7 +558,7 @@ export default function Home() {
               <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed text-justify">We don&apos;t just supply surfaces; we deliver the speed, scale, and innovation that your luxury projects deserve.</p>
 
               {/* Mobile Image - Shown only on small screens */}
-              <div className="relative h-64 w-full mb-8 lg:hidden rounded-sm overflow-hidden shadow-xl">
+              <div className="relative h-[400px] w-full mb-10 lg:hidden rounded-sm overflow-hidden shadow-xl">
                 <Image
                   src="https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749408/Goals_Floors_Fluted_Panel.jpg"
                   alt="Professional interior wood flooring and wall paneling installation in Gurugram and Delhi NCR - Goals Floors Architectural Excellence" fill sizes="100vw" className="object-cover"

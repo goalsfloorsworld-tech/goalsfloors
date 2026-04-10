@@ -77,7 +77,7 @@ export default function AboutPage() {
 
   return (
     <main className="min-h-screen bg-white dark:bg-slate-950 font-sans antialiased selection:bg-amber-500/30">
-      
+
       {/* Inject SEO Schema */}
       <script
         type="application/ld+json"
@@ -91,7 +91,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
 
-            <motion.div variants={staggerContainer} initial="hidden" animate="visible">
+            <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="flex flex-col items-center lg:items-start text-center lg:text-left">
               <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-500 text-[11px] font-bold uppercase tracking-widest mb-6 border border-amber-200 dark:border-amber-800/50 shadow-sm">
                 <MapPin className="w-3.5 h-3.5" />
                 HQ: Sikanderpur, Gurugram • Delhi NCR
@@ -102,7 +102,7 @@ export default function AboutPage() {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-400">Architectural Surfaces.</span>
               </motion.h1>
 
-              <motion.p variants={fadeUp} className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed font-medium mb-8 max-w-2xl">
+              <motion.p variants={fadeUp} className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed font-medium mb-8 max-w-2xl text-justify">
                 Goals Floors is NCR&apos;s fastest-growing luxury surface brand. We empower architects, interior designers, and builders with premium wall panels and flooring at budget-friendly rates. Operating from our headquarters in Sikanderpur, Gurugram, we disrupt the market with an industry-first 120-minute express dispatch and a strict minimum 7-year warranty.
               </motion.p>
 
@@ -114,7 +114,7 @@ export default function AboutPage() {
                   transition={{ duration: 2, ease: "easeOut" }}
                   className="absolute top-0 right-0 w-[75%] h-[80%] rounded-sm overflow-hidden border-4 border-white dark:border-slate-950 shadow-2xl z-10"
                 >
-                  <Image src="https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749425/Goals_Floors_Wpc_Exterior_Louvers.png" alt="Premium exterior WPC cladding panels by Goals Floors in Gurugram" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" priority />
+                  <Image src="https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749425/Goals_Floors_Wpc_Exterior_Louvers.png" alt="Premium exterior WPC cladding panels by Goals Floors in Gurugram" fill className="object-cover object-top group-hover:scale-110 transition-transform duration-1000" priority />
                 </motion.div>
                 <motion.div
                   initial={{ scale: 1.1, x: -20 }}
@@ -132,7 +132,7 @@ export default function AboutPage() {
                 </Link>
               </motion.div>
 
-              <motion.div variants={fadeUp} className="mt-10 pt-8 border-t border-gray-200 dark:border-gray-800 flex items-center justify-between sm:justify-start sm:gap-12">
+              <motion.div variants={fadeUp} className="mt-10 pt-8 border-t border-gray-200 dark:border-gray-800 flex items-center justify-center lg:justify-start gap-6 sm:gap-12 w-full lg:w-auto">
                 <div>
                   <h4 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white">120-Min</h4>
                   <p className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest font-semibold">Express Dispatch</p>
@@ -158,7 +158,7 @@ export default function AboutPage() {
                 transition={{ duration: 2, ease: "easeOut" }}
                 className="absolute top-0 right-0 w-[75%] h-[80%] rounded-sm overflow-hidden border-4 border-white dark:border-slate-950 shadow-2xl z-10"
               >
-                <Image src="https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749425/Goals_Floors_Wpc_Exterior_Louvers.png" alt="Premium exterior WPC cladding panels by Goals Floors in Gurugram" fill className="object-cover group-hover:scale-110 transition-transform duration-1000" priority />
+                <Image src="https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749425/Goals_Floors_Wpc_Exterior_Louvers.png" alt="Premium exterior WPC cladding panels by Goals Floors in Gurugram" fill className="object-cover object-top group-hover:scale-110 transition-transform duration-1000" priority />
               </motion.div>
               <motion.div
                 initial={{ scale: 1.1, x: -30 }}
@@ -198,15 +198,15 @@ export default function AboutPage() {
               <motion.h2 variants={fadeUp} className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
                 The Foundation of Trust & Speed
               </motion.h2>
-              <motion.div variants={fadeUp} className="prose prose-lg dark:prose-invert text-gray-600 dark:text-gray-400 leading-relaxed max-w-none">
+              <motion.div variants={fadeUp} className="prose prose-lg dark:prose-invert text-gray-600 dark:text-gray-400 leading-relaxed max-w-none text-justify">
                 <p>
                   Backed by the strong business legacy of <strong>Goals Enterprises</strong> (founded by Mr. Umesh Kumar), Goals Floors was launched by <strong className="text-gray-900 dark:text-white">Shakti FTN</strong> with a clear vision: to fix a broken industry. We saw the struggles professionals faced—overpriced materials, delayed deliveries, poor installation, and zero warranties.
                 </p>
                 <p>
                   We stepped in to change the game. Today, we provide international-grade wall panels and premium flooring at honest prices. By eliminating supply chain inefficiencies from our <strong>Sikanderpur, Gurugram headquarters</strong>, we ensure your material reaches any site in Gurgaon & Delhi NCR within 2 hours, backed by flawless installation support.
                 </p>
-                <div className="pl-6 border-l-4 border-amber-600 py-3 my-8 bg-amber-50/50 dark:bg-slate-900/50 p-6 rounded-r-md shadow-sm">
-                  <p className="text-gray-900 dark:text-white font-semibold text-xl italic m-0 leading-snug">
+                <div className="pl-6 border-l-4 border-amber-600 py-3 my-8 bg-amber-50/50 dark:bg-slate-900/50 p-4 md:p-6 rounded-r-md shadow-sm">
+                  <p className="text-gray-900 dark:text-white font-semibold text-lg md:text-xl italic m-0 leading-snug text-justify">
                     &quot;We aren&apos;t just selling materials; we are fixing the supply chain. Quality and speed shouldn&apos;t be a luxury; they should be the industry standard.&quot;
                   </p>
                   <p className="text-sm font-bold text-amber-600 uppercase tracking-widest mt-4 m-0">- Shakti FTN, Founder</p>
@@ -249,7 +249,7 @@ export default function AboutPage() {
               <h2 className="text-5xl md:text-8xl font-medium text-white mb-8 md:mb-10 tracking-[0.05em] uppercase leading-tight italic">
                 Our <br /> Mission
               </h2>
-              <p className="text-white/95 text-lg md:text-2xl font-normal leading-relaxed max-w-4xl mx-auto tracking-wide drop-shadow-sm">
+              <p className="text-white/95 text-lg md:text-2xl font-normal leading-relaxed max-w-4xl mx-auto tracking-wide drop-shadow-sm text-justify">
                 To revolutionize the Indian surface industry by making premium, high-quality wall panels and flooring accessible at budget-friendly prices. We strive to empower architects, designers, and builders by completely eliminating project delays through our 2-hour delivery model and providing total peace of mind with our strict 7-year warranty policy.
               </p>
             </motion.div>
@@ -278,7 +278,7 @@ export default function AboutPage() {
               <h2 className="text-5xl md:text-8xl font-medium text-white mb-8 md:mb-10 tracking-[0.05em] uppercase leading-tight italic">
                 The <br /> Vision
               </h2>
-              <p className="text-gray-300 text-lg md:text-2xl font-normal leading-relaxed max-w-4xl mx-auto tracking-wide">
+              <p className="text-gray-300 text-lg md:text-2xl font-normal leading-relaxed max-w-4xl mx-auto tracking-wide text-justify">
                 To become the undisputed backbone of India&apos;s interior and architectural ecosystem. While our 2-hour dispatch has revolutionized Gurugram and Delhi NCR, our goal for the next 3 years is to expand the &apos;Goals Floors Standard&apos; Pan-India. We envision a future where every builder and homeowner across the country gets the best rates, the fastest service, and the highest quality materials.
               </p>
             </motion.div>
@@ -352,7 +352,7 @@ export default function AboutPage() {
             className="mb-12"
           >
             <motion.h2 variants={fadeUp} className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Infrastructure & Capabilities</motion.h2>
-            <motion.p variants={fadeUp} className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl">Scale that supports the largest commercial developments in Delhi NCR, driven from our Sikanderpur HQ.</motion.p>
+            <motion.p variants={fadeUp} className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl text-justify">Scale that supports the largest commercial developments in Delhi NCR, driven from our Sikanderpur HQ.</motion.p>
           </motion.div>
 
           <motion.div
@@ -369,7 +369,7 @@ export default function AboutPage() {
                 <MapPin className="w-10 h-10 text-amber-500 md:mb-4 shrink-0" />
                 <div>
                   <h3 className="text-2xl md:text-3xl font-black text-white leading-tight mb-2">Sikanderpur Mega-Hub</h3>
-                  <p className="text-gray-300 font-medium max-w-md">Our massive headquarters and warehousing facility in Gurugram ensures we hold deep inventory levels for 1000+ exclusive designs, eliminating out-of-stock delays.</p>
+                  <p className="text-gray-300 font-medium max-w-md text-justify">Our massive headquarters and warehousing facility in Gurugram ensures we hold deep inventory levels for 1000+ exclusive designs, eliminating out-of-stock delays.</p>
                 </div>
               </div>
             </motion.div>
@@ -379,7 +379,7 @@ export default function AboutPage() {
               <Zap className="w-10 h-10 text-white/90 md:mb-4 shrink-0" />
               <div>
                 <h3 className="text-2xl font-black text-white leading-tight mb-2">2-Hour Dispatch</h3>
-                <p className="text-amber-50 font-medium text-sm">Dedicated logistics fleet covering Delhi, Gurugram, and Noida with unprecedented speed.</p>
+                <p className="text-amber-50 font-medium text-sm text-justify">Dedicated logistics fleet covering Delhi, Gurugram, and Noida with unprecedented speed.</p>
               </div>
             </motion.div>
 
@@ -388,7 +388,7 @@ export default function AboutPage() {
               <ShieldCheck className="w-10 h-10 text-amber-600 md:mb-4 shrink-0" />
               <div>
                 <h3 className="text-xl md:text-2xl font-black text-gray-900 dark:text-white leading-tight mb-2">Commercial Grade</h3>
-                <p className="text-gray-600 dark:text-gray-400 font-medium text-sm">Fire Retardant, UV Protected, and 100% Moisture-resistant materials certified for Indian conditions.</p>
+                <p className="text-gray-600 dark:text-gray-400 font-medium text-sm text-justify">Fire Retardant, UV Protected, and 100% Moisture-resistant materials certified for Indian conditions.</p>
               </div>
             </motion.div>
 
@@ -398,7 +398,7 @@ export default function AboutPage() {
                 <Package className="w-12 h-12 text-amber-600 shrink-0" />
                 <div>
                   <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-2">End-to-End Solutions</h3>
-                  <p className="text-gray-600 dark:text-gray-400 font-medium max-w-lg">We don&apos;t just supply base materials. From matching skirtings for flooring to structural concealed clips for wall panels—we provide the complete technical ecosystem.</p>
+                  <p className="text-gray-600 dark:text-gray-400 font-medium max-w-lg text-justify">We don&apos;t just supply base materials. From matching skirtings for flooring to structural concealed clips for wall panels—we provide the complete technical ecosystem.</p>
                 </div>
               </div>
             </motion.div>
@@ -417,7 +417,7 @@ export default function AboutPage() {
             className="text-center mb-16"
           >
             <motion.h2 variants={fadeUp} className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">How We Work With Professionals</motion.h2>
-            <motion.p variants={fadeUp} className="text-gray-600 dark:text-gray-400 text-lg">A streamlined process designed specifically for contractors, architects, and interior firms.</motion.p>
+            <motion.p variants={fadeUp} className="text-gray-600 dark:text-gray-400 text-lg text-justify">A streamlined process designed specifically for contractors, architects, and interior firms.</motion.p>
           </motion.div>
 
           <motion.div
@@ -449,7 +449,7 @@ export default function AboutPage() {
                   <step.icon className="w-8 h-8" />
                 </motion.div>
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">{step.title}</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 font-medium leading-relaxed px-2">{step.desc}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 font-medium leading-relaxed px-2 text-justify">{step.desc}</p>
               </motion.div>
             ))}
           </motion.div>
