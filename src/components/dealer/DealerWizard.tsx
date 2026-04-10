@@ -292,8 +292,8 @@ export default function DealerWizard() {
       </div>
 
       {/* --- MOTIVATION PANEL (RIGHT SIDE) --- */}
-      <div className={`hidden md:block w-1/2 relative bg-slate-50 dark:bg-slate-950 border-l border-slate-200 dark:border-white/5 shadow-2xl z-20 transition-all duration-500 ${isSubmitted ? 'opacity-0 scale-105' : 'opacity-100 scale-100'}`}>
-        <div className="sticky top-0 h-screen overflow-hidden">
+      <div className={`hidden md:flex w-1/2 relative bg-slate-50 dark:bg-slate-950 border-l border-slate-200 dark:border-white/5 shadow-2xl z-20 transition-all duration-500 ${isSubmitted ? 'opacity-0 scale-105' : 'opacity-100 scale-100'}`}>
+        <div className="w-full h-full flex items-center justify-center">
           <MotivationPanel currentStep={currentStep} />
         </div>
       </div>
