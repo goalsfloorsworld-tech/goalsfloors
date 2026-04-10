@@ -182,7 +182,7 @@ export function FloatingInput({ icon: Icon, label, ...props }: any) {
                 ? 'top-2 text-[8px] text-amber-600 opacity-100' 
                 : 'top-1/2 -translate-y-1/2 text-[10px] text-slate-400 dark:text-slate-500'
             }`}>
-                {label}
+                {label} <span className="text-red-500">*</span>
             </label>
             <input 
                 {...props}

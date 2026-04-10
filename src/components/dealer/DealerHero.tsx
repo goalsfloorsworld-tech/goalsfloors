@@ -5,7 +5,7 @@ import { ShieldCheck, ChevronDown } from "lucide-react";
 
 export default function DealerHero() {
   return (
-    <section className="relative h-[60vh] md:h-[80vh] flex flex-col items-center justify-center text-center px-4 overflow-hidden border-b border-slate-200 dark:border-white/5 py-10 md:py-20 bg-white dark:bg-slate-950 transition-colors duration-500">
+    <section className="relative h-auto md:h-[80vh] flex flex-col items-center justify-start md:justify-center text-center px-4 overflow-hidden border-b border-slate-200 dark:border-white/5 pt-5 pb-5 md:py-20 bg-white dark:bg-slate-950 transition-colors duration-500">
       
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-0">

@@ -34,13 +34,13 @@ export function TrustBar() {
               viewport={{ once: true }}
               className="flex flex-col items-center md:items-start text-center md:text-left gap-3 group"
             >
-              <div className="flex items-center gap-4">
-                <div className="w-10 h-10 rounded-xl bg-amber-600/10 flex items-center justify-center text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-all">
+              <div className="flex items-center gap-2 md:gap-4">
+                <div className="w-10 h-10 rounded-xl bg-amber-600/10 flex items-center justify-center text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-all shrink-0">
                   <stat.icon className="w-5 h-5" />
                 </div>
-                <div>
-                   <h3 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">{stat.value}</h3>
-                   <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">{stat.label}</p>
+                <div className="text-left">
+                   <h3 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white tracking-tight">{stat.value}</h3>
+                   <p className="text-[9px] md:text-[10px] font-black uppercase tracking-widest md:tracking-[0.2em] text-slate-400 dark:text-slate-500 whitespace-nowrap">{stat.label}</p>
                 </div>
               </div>
             </motion.div>

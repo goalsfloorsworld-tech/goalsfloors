@@ -23,7 +23,7 @@ const navLinks = [
   { name: "Products", href: "/products" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
-  { name: "Dealer Partnership", href: "/dealer" },
+  { name: "Become a Dealer", href: "/dealer" },
 ];
 
 export default function Footer() {

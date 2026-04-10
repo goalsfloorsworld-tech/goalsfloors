@@ -505,7 +505,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
 
       {/* ================= 4.5. PRODUCT VARIATIONS & PRICING ================= */}
       {product.variants && product.variants.length > 0 && (
-        <div className="bg-gray-50 dark:bg-slate-900 py-10 lg:py-10 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div className="bg-gray-50 dark:bg-slate-900 pt-4 pb-12 lg:pt-8 lg:pb-20 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-600 mb-4 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 inline-block rounded-sm">

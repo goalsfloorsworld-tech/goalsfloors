@@ -35,7 +35,7 @@ export default function DealerWizard() {
 
   // --- Step Validation ---
   const isStep1Valid = formData.name && formData.email && formData.phone;
-  const isStep2Valid = formData.company && formData.address && formData.city && formData.state && formData.businessType && formData.turnover && formData.gstNumber;
+  const isStep2Valid = formData.company && formData.city && formData.state && formData.businessType && formData.turnover && formData.gstNumber;
   const isStep3Valid = !!formData.businessCardBase64;
 
   const nextStep = () => {
@@ -115,7 +115,7 @@ export default function DealerWizard() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 flex flex-col md:flex-row transition-colors duration-500 overflow-hidden relative">
+    <div className="h-auto md:min-h-screen bg-white dark:bg-slate-950 flex flex-col md:flex-row transition-colors duration-500 overflow-hidden relative">
       
       {/* ─── PREMIUM SUCCESS OVERLAY ─── */}
       <AnimatePresence>
@@ -124,22 +124,22 @@ export default function DealerWizard() {
 
       {/* --- FORM SECTION (LEFT SIDE) --- */}
       <div className={`w-full md:w-1/2 bg-white dark:bg-slate-900/40 backdrop-blur-3xl relative z-10 transition-all duration-500 overflow-y-auto ${isSubmitted ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
-        <div className="p-10 md:p-12 lg:p-20 pb-32 md:pb-20 flex flex-col justify-center min-h-screen">
+        <div className="p-8 md:p-12 lg:p-20 flex flex-col justify-start md:justify-center h-auto md:min-h-screen pt-10 pb-10 md:pt-12 md:pb-20">
         
-        {/* Mobile Header (Hidden on Laptop/Desktop) */}
-        <div className="md:hidden mb-8">
+        {/* Header (Simplified for both mobile and desktop) */}
+        <div className="mb-10">
             <span className="text-[10px] font-black tracking-[0.4em] text-amber-600 uppercase">Step {currentStep} of 3</span>
-            <h1 className="text-2xl font-black text-slate-900 dark:text-white mt-2 uppercase tracking-tight">Dealer Partnership</h1>
+            <h1 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mt-2 uppercase tracking-tight">Dealer Partnership</h1>
+            
+            {/* Step Indicator (Line) - Visible on Phone and Laptop */}
+            <div className="flex gap-2 mt-6">
+              {[1, 2, 3].map(step => (
+                <div key={step} className={`h-1.5 rounded-full flex-1 transition-all duration-500 ${currentStep >= step ? 'bg-amber-600' : 'bg-slate-100 dark:bg-slate-800'}`} />
+              ))}
+            </div>
         </div>
 
         <div className="max-w-md w-full mx-auto">
-          
-          {/* Step Indicator (Desktop) */}
-          <div className="hidden md:flex gap-2 mb-12">
-            {[1, 2, 3].map(step => (
-              <div key={step} className={`h-1.5 rounded-full flex-1 transition-all duration-500 ${currentStep >= step ? 'bg-amber-600' : 'bg-slate-100 dark:bg-slate-800'}`} />
-            ))}
-          </div>
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -169,9 +169,8 @@ export default function DealerWizard() {
 
               {currentStep === 2 && (
                 <div className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-6">
                       <FloatingInput icon={Building2} label="Company Name" name="company" value={formData.company} onChange={handleInputChange} />
-                      <FloatingInput icon={MapPin} label="Street Address" name="address" value={formData.address} onChange={handleInputChange} />
                   </div>
                   <div className="grid grid-cols-2 gap-6">
                       <FloatingInput icon={Map} label="City" name="city" value={formData.city} onChange={handleInputChange} />
@@ -181,7 +180,7 @@ export default function DealerWizard() {
                   <FloatingInput icon={FileText} label="GST Number" name="gstNumber" value={formData.gstNumber} onChange={handleInputChange} />
                   
                   <div className="pt-4">
-                      <label className="text-[10px] font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 uppercase mb-4 block ml-1">Type of Expertise</label>
+                      <label className="text-[10px] font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 uppercase mb-4 block ml-1">Type of Expertise <span className="text-red-500">*</span></label>
                       <div className="grid grid-cols-2 gap-3">
                           <RadioCard icon={Store} label="Retailer" active={formData.businessType === "Retailer"} onClick={() => setFormData(p => ({ ...p, businessType: "Retailer" }))} />
                           <RadioCard icon={Warehouse} label="Wholesaler" active={formData.businessType === "Wholesaler"} onClick={() => setFormData(p => ({ ...p, businessType: "Wholesaler" }))} />
@@ -191,7 +190,7 @@ export default function DealerWizard() {
                   </div>
 
                   <div>
-                      <label className="text-[10px] font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 uppercase mb-4 block ml-1">Business Scale (Annual)</label>
+                      <label className="text-[10px] font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 uppercase mb-4 block ml-1">Business Scale (Annual) <span className="text-red-500">*</span></label>
                       <div className="grid grid-cols-2 gap-3">
                           <RadioCard icon={BarChart3} label="Upto ₹10L" active={formData.turnover === "10L"} onClick={() => setFormData(p => ({ ...p, turnover: "10L" }))} />
                           <RadioCard icon={BarChart3} label="Upto ₹50L" active={formData.turnover === "50L"} onClick={() => setFormData(p => ({ ...p, turnover: "50L" }))} />
@@ -205,7 +204,7 @@ export default function DealerWizard() {
               {currentStep === 3 && (
                 <div className="space-y-8">
                   <div className="relative group">
-                      <label className="text-[10px] font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 uppercase mb-4 block ml-1">Verify Professional Status</label>
+                      <label className="text-[10px] font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 uppercase mb-4 block ml-1">Verify Professional Status <span className="text-red-500">*</span></label>
                       
                       {!formData.businessCardBase64 ? (
                           <label className={`border-2 border-dashed rounded-2xl p-10 flex flex-col items-center gap-4 cursor-pointer transition-all bg-slate-50 dark:bg-slate-800/20 group text-center lg:text-left ${

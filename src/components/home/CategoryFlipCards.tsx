@@ -10,7 +10,7 @@ const categories = [
   {
     title: "Luxury Flooring",
     slug: "premium-flooring",
-    image: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775794972/Laminate_Flooring_Grey_Color.png",
+    image: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_800/v1775794972/Laminate_Flooring_Grey_Color.png",
     alt: "Premium luxury wooden flooring for homes in Gurugram - Goals Floors Interior Design",
     hook: "THE FOUNDATION OF ELEGANCE",
     description: "From waterproof hybrid laminate to authentic wood textures, discover flooring that defines your space's character.",
@@ -19,7 +19,7 @@ const categories = [
   {
     title: "Wall Panels & Louvers",
     slug: "wall-panels",
-    image: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775794972/Fluted_Panel_Goals_Floors.png",
+    image: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_800/v1775794972/Fluted_Panel_Goals_Floors.png",
     alt: "Modern charcoal gray wall fluted panels and louvers in Delhi NCR - Goals Floors Collection",
     hook: "ARCHITECTURAL TEXTURES",
     description: "Transform flat walls into artistic statements with our WPC fluted panels and luxury charcoal louvers.",
@@ -28,7 +28,7 @@ const categories = [
   {
     title: "Exterior Solutions",
     slug: "outdoors",
-    image: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775794971/Exterior_Louvers_Site_Completed_By_Goals_Floors.png",
+    image: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_800/v1775794971/Exterior_Louvers_Site_Completed_By_Goals_Floors.png",
     alt: "Luxury exterior louvers Gurugram - Goals Floors Outdoors",
     hook: "NATURE MEETS DURABILITY",
     description: "Premium WPC decking and exterior cladding designed to withstand the elements while maintaining a natural wood look.",
@@ -37,7 +37,7 @@ const categories = [
   {
     title: "Architectural Ceilings",
     slug: "ceilings",
-    image: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775749408/Baffle_Ceiling.png",
+    image: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_800/v1775749408/Baffle_Ceiling.png",
     alt: "Designer wooden baffle ceiling and linear lighting in Delhi NCR homes - Goals Floors Excellence",
     hook: "VISIONARY OVERHEAD",
     description: "Baffle ceilings and designer panels that enhance acoustics and aesthetics for a truly complete interior vision.",
