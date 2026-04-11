@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect   } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, Variants } from "framer-motion";
@@ -66,9 +66,30 @@ const itemVariants: Variants = {
 
 export default function CategoryFlipCards() {
   const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null);
+  const [isHoverEnabled, setIsHoverEnabled] = useState(false);
+
+  // Detect if device supports hover (desktop)
+  useEffect(() => {
+    setIsHoverEnabled(window.matchMedia("(hover: hover)").matches);
+  }, []);
 
   const handleToggle = (index: number) => {
-    setActiveCardIndex(prev => (prev === index ? null : index));
+    // On touch devices, we toggle. On desktop, hover handles it.
+    if (!isHoverEnabled) {
+      setActiveCardIndex(prev => (prev === index ? null : index));
+    }
+  };
+
+  const handleMouseEnter = (index: number) => {
+    if (isHoverEnabled) {
+      setActiveCardIndex(index);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (isHoverEnabled) {
+      setActiveCardIndex(null);
+    }
   };
 
   return (
@@ -79,6 +100,8 @@ export default function CategoryFlipCards() {
           className="group h-[500px] w-full"
           style={{ perspective: "1500px" }}
           onClick={() => handleToggle(i)}
+          onMouseEnter={() => handleMouseEnter(i)}
+          onMouseLeave={handleMouseLeave}
         >
           <motion.div
             animate={{ rotateY: activeCardIndex === i ? 180 : 0 }}
@@ -169,4 +192,5 @@ export default function CategoryFlipCards() {
     </div>
   );
 }
+
 
