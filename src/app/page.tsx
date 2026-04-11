@@ -122,7 +122,7 @@ function GetAQuoteMonolith() {
 
               <div className="space-y-4">
                 {[
-                  { icon: ShieldCheck, text: "Official 10-Year Warranty Coverage" },
+                  { icon: ShieldCheck, text: "Official 7-Year Warranty Coverage" },
                   { icon: Clock, text: "2-Hour Initial Expert Response" },
                   { icon: CheckCircle2, text: "Zero Cost Site Measurement" }
                 ].map((item, idx) => (
@@ -270,10 +270,6 @@ const mobileHeroImages = [
     alt: "Premium Grey Flooring"
   },
   {
-    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_800/v1775749425/Goals_Floors_Wpc_Exterior_Louvers.png",
-    alt: "WPC Exterior Louvers"
-  },
-  {
     src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_800/v1775749463/Goals_Floors_Herringbone_Flooring.png",
     alt: "Herringbone Flooring Design"
   },
@@ -373,7 +369,7 @@ export default function Home() {
       />
 
       {/* ================= HERO SECTION ================= */}
-      <section className="relative min-h-[500px] sm:min-h-[600px] md:min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[600px] sm:min-h-[800px] md:min-h-[110vh] flex items-center justify-center overflow-hidden">
         {/* Background Carousel */}
         <div className="absolute inset-0 z-0 bg-black overflow-hidden">
 
@@ -430,7 +426,7 @@ export default function Home() {
           </div>
 
           {/* Transition Fog / Overlay */}
-          <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-white/90 via-white/50 to-transparent z-10 dark:from-slate-950/90 dark:via-slate-950/50 transition-colors duration-700" />
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white/90 via-white/50 to-transparent z-10 dark:from-slate-950/90 dark:via-slate-950/50 transition-colors duration-700" />
 
           {/* Subtle top vignette for better navbar visibility */}
           <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/60 to-transparent z-0" />
@@ -449,12 +445,12 @@ export default function Home() {
               transition: { staggerChildren: 0.2 }
             }
           }}
-          className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-10 pb-24 md:py-20"
+          className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-16 pb-48 md:pt-32 md:pb-64"
         >
           {/* USP Badge */}
           <motion.div
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-8 shadow-xl"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-12 sm:mb-8 shadow-xl"
           >
             <Clock className="w-4 h-4 text-amber-500" />
             <span className="text-xs sm:text-sm font-medium tracking-widest uppercase shadow-sm">2-Hour Express Delivery in NCR</span>
@@ -479,7 +475,7 @@ export default function Home() {
 
           <motion.p
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
-            className="mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-4xl mx-auto font-light leading-relaxed mb-10 text-shadow-md"
+            className="mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-4xl mx-auto font-light leading-relaxed mb-16 sm:mb-10 text-shadow-md"
           >
             Unmatched Quality in Wall Panels & Flooring | 90% Warranty Backed | 400+ Dealers | 2-Hour Express Material Supply in Gurgaon & NCR.
           </motion.p>

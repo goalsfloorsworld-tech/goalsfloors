@@ -41,8 +41,35 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
         <div className="grid grid-cols-2 lg:grid-cols-12 gap-x-4 gap-y-12 lg:gap-8 items-start">
 
-          {/* ── Col 1 – Brand (Full width on mobile, 4/12 on desktop) ── */}
-          <div className="col-span-2 lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left gap-6 mb-4 lg:mb-0">
+          {/* ── Col 2 – Contact (swapped with Products + Links area) ── */}
+          <div className="col-span-2 lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-2">
+            <ul className="space-y-4 lg:space-y-4 text-[13px] w-full max-w-xs mx-auto lg:mx-0">
+              <li className="flex items-center justify-center lg:justify-start lg:items-start gap-4 text-gray-400 text-left">
+                <span className="leading-tight text-center lg:text-left">
+                  H-36/27A, H-Block, Sikanderpur, DLF Phase-1, Gurugram – 122002
+                </span>
+              </li>
+              <li className="flex items-center justify-center lg:justify-start gap-4 text-left">
+                <div className="bg-white/5 p-2 rounded-lg shrink-0">
+                  <Phone className="w-4 h-4 text-amber-500" />
+                </div>
+                <a href="tel:+917217644573" className="text-gray-300 hover:text-amber-400 transition-colors font-medium">
+                  +91 72176 44573
+                </a>
+              </li>
+              <li className="flex items-center justify-center lg:justify-start gap-4 text-left">
+                <div className="bg-white/5 p-2 rounded-lg shrink-0">
+                  <Mail className="w-4 h-4 text-amber-500 text-left" />
+                </div>
+                <a href="mailto:goalsfloors@gmail.com" className="text-gray-300 hover:text-amber-400 transition-colors font-medium">
+                  goalsfloors@gmail.com
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* ── Col 1 – Brand (order-1 on mobile = TOP, order-1 on desktop) ── */}
+          <div className="col-span-2 lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left gap-6 order-1 lg:order-1">
             {/* Logo – always white version on black bg */}
             <Link href="/" aria-label="Goals Floors Home">
               <Image
@@ -58,35 +85,48 @@ export default function Footer() {
               Elevating spaces with premium architectural surfaces — your trusted partner for luxury flooring &amp; panels in Delhi NCR.
             </p>
 
-            {/* Contact Block - Icons on side */}
-            <ul className="space-y-4 lg:space-y-4 text-[13px] w-full max-w-xs mx-auto lg:mx-0">
-              <li className="flex items-center lg:items-start gap-4 text-gray-400 text-left">
-                <div className="bg-white/5 p-2 rounded-lg shrink-0">
-                  <MapPin className="w-4 h-4 text-amber-500" />
-                </div>
-                <span className="leading-tight">
-                  H-36/27A, H-Block, Sikanderpur, DLF Phase-1, Gurugram – 122002
-                </span>
-              </li>
-              <li className="flex items-center gap-4 text-left">
-                <div className="bg-white/5 p-2 rounded-lg shrink-0">
-                  <Phone className="w-4 h-4 text-amber-500" />
-                </div>
-                <a href="tel:+917217644573" className="text-gray-300 hover:text-amber-400 transition-colors font-medium">
-                  +91 72176 44573
-                </a>
-              </li>
-              <li className="flex items-center gap-4 text-left">
-                <div className="bg-white/5 p-2 rounded-lg shrink-0">
-                  <Mail className="w-4 h-4 text-amber-500 text-left" />
-                </div>
-                <a href="mailto:goalsfloors@gmail.com" className="text-gray-300 hover:text-amber-400 transition-colors font-medium">
-                  goalsfloors@gmail.com
-                </a>
-              </li>
-            </ul>
+            {/* Products + Links Block */}
+            <div className="grid grid-cols-2 gap-x-6 gap-y-8 w-full max-w-xs mx-auto lg:mx-0 lg:max-w-sm">
+              <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+                <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-500 mb-6">
+                  Products
+                </h3>
+                <ul className="flex flex-col items-center lg:items-start gap-3">
+                  {productCategories.map((p) => (
+                    <li key={p.href}>
+                      <Link
+                        href={p.href}
+                        className="text-gray-400 hover:text-white text-[13px] transition-colors duration-200 group flex items-center gap-1.5"
+                      >
+                        <span className="w-1 h-1 rounded-full bg-amber-600 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                        {p.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            {/* Social & Contact Icons */}
+              <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+                <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-500 mb-6">
+                  Links
+                </h3>
+                <ul className="flex flex-col items-center lg:items-start gap-3">
+                  {navLinks.map((l) => (
+                    <li key={l.href}>
+                      <Link
+                        href={l.href}
+                        className="text-gray-400 hover:text-white text-[13px] transition-colors duration-200 group flex items-center gap-1.5"
+                      >
+                        <span className="w-1 h-1 rounded-full bg-amber-600 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
+                        {l.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Social Icons - Below contact info */}
             <div className="flex items-center justify-center lg:justify-start gap-3 pt-2">
               <a
                 href="https://www.instagram.com/goalsfloors"
@@ -117,48 +157,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* ── Col 2 – Products (Side by side & Centered on mobile) ── */}
-          <div className="col-span-1 lg:col-span-2 flex flex-col items-center lg:items-start text-center lg:text-left">
-            <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-500 mb-6">
-              Products
-            </h3>
-            <ul className="flex flex-col items-center lg:items-start gap-3">
-              {productCategories.map((p) => (
-                <li key={p.href}>
-                  <Link
-                    href={p.href}
-                    className="text-gray-400 hover:text-white text-[13px] transition-colors duration-200 group flex items-center gap-1.5"
-                  >
-                    <span className="w-1 h-1 rounded-full bg-amber-600 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
-                    {p.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* ── Col 3 – Quick Nav (Side by side & Centered on mobile) ── */}
-          <div className="col-span-1 lg:col-span-2 flex flex-col items-center lg:items-start text-center lg:text-left">
-            <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-500 mb-6">
-              Links
-            </h3>
-            <ul className="flex flex-col items-center lg:items-start gap-3">
-              {navLinks.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className="text-gray-400 hover:text-white text-[13px] transition-colors duration-200 group flex items-center gap-1.5"
-                  >
-                    <span className="w-1 h-1 rounded-full bg-amber-600 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
-                    {l.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* ── Col 4 – CTA Card (Full width on mobile) ── */}
-          <div className="col-span-2 lg:col-span-4 flex flex-col items-center lg:items-end mt-4 lg:mt-0">
+          <div className="col-span-2 lg:col-span-4 flex flex-col items-center lg:items-end mt-4 lg:mt-0 order-4">
             <div className="border border-white/10 rounded-2xl p-6 bg-white/[0.03] backdrop-blur-sm w-full lg:max-w-none text-center lg:text-left relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-24 h-24 bg-amber-600/5 blur-3xl rounded-full -mr-12 -mt-12 group-hover:bg-amber-600/10 transition-colors" />
               <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-2 font-bold">Free Estimate</p>

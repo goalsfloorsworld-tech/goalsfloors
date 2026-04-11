@@ -78,8 +78,6 @@ export default function CategoryFlipCards() {
           key={cat.slug}
           className="group h-[500px] w-full"
           style={{ perspective: "1500px" }}
-          onMouseEnter={() => setActiveCardIndex(i)}
-          onMouseLeave={() => setActiveCardIndex(null)}
           onClick={() => handleToggle(i)}
         >
           <motion.div

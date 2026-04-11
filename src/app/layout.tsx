@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import WhatsAppFloat from "@/components/whatsapp-float";
 
 import { Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -73,6 +74,7 @@ export default function RootLayout({
           </SmoothScrolling>
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-6Z28W9Y8PY" />
     </html>
   );
 }
