@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
-import WhatsAppFloat from "@/components/whatsapp-float";
+import FloatingWidgets from "@/components/FloatingWidgets";
+
+const Footer = dynamic(() => import("@/components/Footer"));
 
 import { Inter } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -45,7 +47,6 @@ export const metadata: Metadata = {
 };
 
 import SmoothScrolling from "@/components/SmoothScrolling";
-import GoalsAIWidget from "@/components/GoalsAIWidget";
 
 export default function RootLayout({
   children,
@@ -68,8 +69,7 @@ export default function RootLayout({
                 {children}
               </main>
               <Footer />
-              <WhatsAppFloat />
-              <GoalsAIWidget />
+              <FloatingWidgets />
             </div>
           </SmoothScrolling>
         </ThemeProvider>
