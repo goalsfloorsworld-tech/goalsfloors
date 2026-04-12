@@ -1,7 +1,5 @@
 import type { NextConfig } from "next";
 
-const htmlCacheControl = "public, max-age=0, must-revalidate";
-
 const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
@@ -35,26 +33,6 @@ const nextConfig: NextConfig = {
         hostname: 'assets.zyrosite.com',
       },
     ],
-  },
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'header',
-            key: 'accept',
-            value: '.*text/html.*',
-          },
-        ],
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: htmlCacheControl,
-          },
-        ],
-      },
-    ];
   },
 };
 
