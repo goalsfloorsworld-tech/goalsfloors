@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useRef, useMemo } from "react";
+import { useState, useRef, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useSpring, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, useMotionValueEvent, AnimatePresence, MotionValue } from "framer-motion";
 
 import { ArrowRight, Info } from "lucide-react";
 import { Product } from "@/app/products/ProductsClient";
@@ -29,6 +29,13 @@ export default function CircularProductDisplay({
     offset: ["start start", "end end"]
   });
 
+  const [activeIndex, setActiveIndex] = useState(0);
+  const productsRef = useRef(products);
+  
+  useEffect(() => {
+    productsRef.current = products;
+  }, [products]);
+
   // Track raw scroll for instant text updates, while wheel uses smoothProgress
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const totalItems = productsRef.current.length;
@@ -50,11 +57,6 @@ export default function CircularProductDisplay({
     damping: 20,
     restDelta: 0.001
   });
-
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const productsRef = useRef(products);
-  productsRef.current = products;
 
 
 
@@ -220,7 +222,7 @@ function ProductCard({
 }: {
   product: Product;
   index: number;
-  progress: any;
+  progress: MotionValue<number>;
   totalRotation: number;
   angleStep: number;
   radius: number;

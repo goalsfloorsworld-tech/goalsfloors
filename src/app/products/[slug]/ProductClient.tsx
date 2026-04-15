@@ -381,15 +381,31 @@ export default function ProductClient({ product, slug }: { product: Product; slu
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
+  // Parse numeric price from string (e.g., "₹180" -> 180)
+  const parsePrice = (priceStr: string): number => {
+    const numericValue = priceStr.replace(/[^0-9.]/g, "");
+    return parseFloat(numericValue) || 0;
+  };
+
+  const variantPrices = (product.variants || []).map(v => parsePrice(v.price)).filter(p => p > 0);
+  
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": product.title,
     "image": product.images[0]?.url,
     "description": product.shortDescription,
-    "offers": {
+    "offers": variantPrices.length > 1 ? {
       "@type": "AggregateOffer",
       "priceCurrency": "INR",
+      "lowPrice": Math.min(...variantPrices),
+      "highPrice": Math.max(...variantPrices),
+      "offerCount": variantPrices.length,
+      "availability": "https://schema.org/InStock"
+    } : {
+      "@type": "Offer",
+      "priceCurrency": "INR",
+      "price": variantPrices[0] || 0,
       "availability": "https://schema.org/InStock"
     }
   };

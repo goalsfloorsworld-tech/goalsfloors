@@ -17,13 +17,13 @@ interface DealerInquiryEmailProps {
   phone: string;
   interest: string;
   company: string;
-  address: string;
   city: string;
   state: string;
   zip: string;
   dob?: string;
   businessType: string; // From checkbox group
   turnover: string; // From checkbox group
+  gstNumber: string;
   message: string;
 }
 
@@ -31,15 +31,14 @@ export const DealerInquiryEmail = ({
   name,
   email,
   phone,
-  interest,
   company,
-  address,
   city,
   state,
   zip,
   dob,
   businessType,
   turnover,
+  gstNumber,
   message,
 }: DealerInquiryEmailProps) => {
   const previewText = `New Dealer Application: ${name} - ${company}`;
@@ -71,11 +70,9 @@ export const DealerInquiryEmail = ({
             </div>
           </Section>
 
-          {/* Registered Address Section */}
           <Section style={section}>
-             <Heading style={subHeading}>Registered Business Address</Heading>
+             <Heading style={subHeading}>Business Location</Heading>
              <div style={addressBox}>
-                <Text style={detailRow}>{address}</Text>
                 <Text style={detailRow}>{city}, {state} - {zip}</Text>
              </div>
           </Section>
@@ -85,6 +82,7 @@ export const DealerInquiryEmail = ({
             <Heading style={subHeading}>Business Profile</Heading>
             <div style={detailsBoxB2B}>
               <Text style={detailRow}><strong>Date of Birth:</strong> {dob || 'Not Provided'}</Text>
+              <Text style={detailRow}><strong>GST Number:</strong> {gstNumber}</Text>
               <Text style={detailRow}><strong>Type of Business:</strong> {businessType}</Text>
               <Text style={detailRow}><strong>Annual Turnover:</strong> {turnover}</Text>
             </div>

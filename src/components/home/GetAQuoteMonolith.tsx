@@ -210,7 +210,7 @@ export default function GetAQuoteMonolith() {
 
       <motion.div
         style={{ transform: "translateZ(140px)" }}
-        className="absolute top-20 left-[18%] w-20 h-24 bg-amber-600 hidden xl:flex items-center justify-center shadow-2xl rounded-sm z-50 overflow-visible"
+        className="absolute top-20 right-[18%] w-20 h-24 bg-amber-600 hidden xl:flex items-center justify-center shadow-2xl rounded-sm z-50 overflow-visible"
         animate={{ y: [0, 15, 0], rotate: [0, 5, 0] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
       >

@@ -8,12 +8,12 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     const { 
-        name, email, phone, company, address, city, state, zip,
-        dob, businessType, turnover, message, businessCardBase64
+        name, email, phone, company, city, state, zip,
+        dob, businessType, turnover, gstNumber, message, businessCardBase64
     } = body;
 
     // --- Validation (Crucial for multiple fields) ---
-    if (!name || !email || !company || !address || !city || !state || !businessType || !turnover || !businessCardBase64) {
+    if (!name || !email || !company || !city || !state || !businessType || !turnover || !businessCardBase64) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
     
@@ -37,27 +37,32 @@ export async function POST(req: Request) {
     // Use a clean filename or based on applicant name
     const filename = `business_card_${name.replace(/\s+/g, '_').toLowerCase()}.jpg`; 
 
+    // --- Process Email Template ---
+    // eslint-disable-next-line react-hooks/error-boundaries
+    const emailReact = (
+      <DealerInquiryEmail 
+        name={name} 
+        email={email} 
+        phone={phone} 
+        interest="Dealer Application" 
+        company={company} 
+        city={city} 
+        state={state} 
+        zip={finalZip} 
+        dob={finalDob} 
+        businessType={businessType} 
+        turnover={turnover} 
+        gstNumber={gstNumber || "N/A"}
+        message={finalMessage} 
+      />
+    );
+
     // --- Send Email ---
     const { data, error } = await resend.emails.send({
-      from: 'Goals Floors Dealers <onboarding@resend.dev>', // Update post-verification (e.g., hello@goalsfloors.com)
-      to: ['goalsfloors.world@gmail.com'], // ADMIN EMAIL: Verified in Resend dashboard
+      from: 'Goals Floors Dealers <onboarding@resend.dev>', 
+      to: ['goalsfloors.world@gmail.com'], 
       subject: `New Dealer Application: ${name} - ${company}`,
-      // Pass all form fields to the email template
-      react: <DealerInquiryEmail 
-                name={name} 
-                email={email} 
-                phone={phone} 
-                interest="Dealer Application" // Hardcoded identifier
-                company={company} 
-                address={address} 
-                city={city} 
-                state={state} 
-                zip={finalZip} 
-                dob={finalDob} 
-                businessType={businessType} 
-                turnover={turnover} 
-                message={finalMessage} 
-             />,
+      react: emailReact,
       attachments: [{
         content: base64Content, 
         filename: filename,

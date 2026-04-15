@@ -161,9 +161,10 @@ export default function ContactPage() {
       } else {
         throw new Error(result.error || "Something went wrong. Please try again.");
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error("Submission Error:", err);
-      setError(err.message || "Failed to send message. Please try again later.");
+      const errorMessage = err instanceof Error ? err.message : "Failed to send message. Please try again later.";
+      setError(errorMessage);
       setIsSubmitting(false);
     }
   };

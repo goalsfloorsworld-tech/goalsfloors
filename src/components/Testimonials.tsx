@@ -1,32 +1,22 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Star, ArrowUpRight } from "lucide-react";
 
 // --- Helper Components ---
-const StarRating = () => {
-  return (
-    <div className="flex items-center gap-1 mb-2">
-      {[...Array(5)].map((_, i) => (
-        <Star key={i} className="w-4 h-4 text-amber-500 fill-amber-500" />
-      ))}
-    </div>
-  );
-};
+const StarRating = () => (
+  <div className="flex items-center gap-1 mb-2">
+    {[...Array(5)].map((_, i) => (
+      <Star key={i} className="w-4 h-4 text-amber-500 fill-amber-500" />
+    ))}
+  </div>
+);
 
-const InitialsAvatar = ({ name }: { name: string }) => {
-  const initials = name.split(' ').map(n => n[0]).join('').toUpperCase();
-  return (
-    <div className="w-10 h-10 rounded-full bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-xs border border-amber-100">
-      {initials}
-    </div>
-  );
-};
 
 export default function Testimonials() {
-  // Realistic Real Customer Testimonials (NCR Based)
   const testimonials = [
     {
       id: 1,
@@ -78,250 +68,122 @@ export default function Testimonials() {
     }
   ];
 
-  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const touchStartX = useRef<number | null>(null);
-  const touchStartY = useRef<number | null>(null);
-  const touchEndX = useRef<number | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextReview = useCallback(() => {
-    setCurrentReviewIndex((prev) => (prev + 1) % testimonials.length);
-  }, [testimonials.length]);
+  const next = () => setCurrentIndex((p) => (p + 1) % testimonials.length);
+  const prev = () => setCurrentIndex((p) => (p === 0 ? testimonials.length - 1 : p - 1));
 
-  const prevReview = useCallback(() => {
-    setCurrentReviewIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  }, [testimonials.length]);
-
-  useEffect(() => {
-    const card = cardRef.current;
-    if (!card) return;
-
-    const onTouchStart = (e: TouchEvent) => {
-      // Don't stop propagation, but record start
-      touchStartX.current = e.targetTouches[0].clientX;
-      touchStartY.current = e.targetTouches[0].clientY;
-      touchEndX.current = null;
-    };
-
-    const onTouchMove = (e: TouchEvent) => {
-      if (!touchStartX.current || !touchStartY.current) return;
-      const currentX = e.targetTouches[0].clientX;
-      const currentY = e.targetTouches[0].clientY;
-      const diffX = Math.abs(currentX - touchStartX.current);
-      const diffY = Math.abs(currentY - touchStartY.current);
-
-      // Check if we are inside the scrollable text area
-      const isInsideScrollable = (e.target as HTMLElement).closest('.scrollable-review-text');
-
-      if (isInsideScrollable) {
-        // If it's more vertical than horizontal, don't treat it as a swipe at all
-        if (diffY > diffX) {
-          touchStartX.current = null; // Cancel swipe detection
-          return;
-        }
-      }
-
-      if (diffX > diffY) {
-        touchEndX.current = currentX;
-      }
-    };
-
-    const onTouchEnd = () => {
-      if (touchStartX.current !== null && touchEndX.current !== null) {
-        const distance = touchStartX.current - touchEndX.current;
-        if (Math.abs(distance) > 50) {
-          if (distance > 0) nextReview();
-          else prevReview();
-        }
-      }
-      touchStartX.current = null;
-      touchStartY.current = null;
-      touchEndX.current = null;
-    };
-
-    card.addEventListener('touchstart', onTouchStart, { passive: true });
-    card.addEventListener('touchmove', onTouchMove, { passive: true });
-    card.addEventListener('touchend', onTouchEnd, { passive: true });
-
-    return () => {
-      card.removeEventListener('touchstart', onTouchStart);
-      card.removeEventListener('touchmove', onTouchMove);
-      card.removeEventListener('touchend', onTouchEnd);
-    };
-  }, [nextReview, prevReview]);
-
-  const currentReview = testimonials[currentReviewIndex];
+  const current = testimonials[currentIndex];
 
   return (
-    <section className="py-5 bg-white dark:bg-slate-900 relative overflow-hidden transition-colors duration-300">
-      {/* Subtle background gradients for premium feel */}
-      <div className="absolute top-0 right-0 -mt-20 -mr-20 w-96 h-96 bg-amber-50 dark:bg-amber-900/10 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 -mb-20 -ml-20 w-96 h-96 bg-amber-50 dark:bg-amber-900/10 rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+    <section className="py-16 bg-white dark:bg-slate-900 relative overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-amber-100/30 dark:bg-amber-900/10 blur-3xl opacity-50 rounded-full" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-100/30 dark:bg-amber-900/10 blur-3xl opacity-50 rounded-full" />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
-        
-        <div className="text-center mb-8">
-          <h2 className="text-sm font-bold tracking-[0.2em] text-amber-500 uppercase mb-3">Client Stories</h2>
-          <h3 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white tracking-tight">Trust in <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">Quality</span></h3>
+      <div className="max-w-5xl mx-auto px-4 relative z-10">
+        <div className="text-center mb-12">
+          <h2 className="text-sm font-bold tracking-[0.2em] text-amber-600 uppercase mb-3">Client Stories</h2>
+          <h3 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white">Trust in <span className="text-amber-600">Quality</span></h3>
         </div>
 
-        <div className="relative">
-          {/* Premium Card with Fixed Height and Swipe Listeners */}
-          <div 
-            ref={cardRef}
-            className="relative bg-white dark:bg-slate-950 rounded-3xl p-6 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 dark:border-gray-800 group transition-all duration-500 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex flex-col cursor-grab active:cursor-grabbing touch-pan-y h-[520px] md:h-[450px]"
-          >
-            
-            {/* Large Decorative Quote Icon */}
-            <div className="absolute top-8 right-8 md:top-12 md:right-12 text-amber-500/10 group-hover:text-amber-500/20 transition-colors duration-500 transform group-hover:scale-110">
-              <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-            </div>
+        <div className="relative bg-white dark:bg-slate-950 rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-gray-100 dark:border-gray-800 min-h-[460px] md:min-h-0 md:h-[460px] flex flex-col">
 
-            <div className="relative z-10 flex flex-col h-full">
-              {/* Star Rating & Badge */}
-              <div className="flex flex-row items-center justify-between mb-6 w-full gap-4 flex-shrink-0">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-wider shadow-sm">
-                  <div className="relative w-3.5 h-3.5 bg-white rounded-full p-0.5 shadow-sm">
-                    <Image 
-                      src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" 
-                      alt="Google" 
-                      fill 
-                      className="object-contain" 
-                    />
-                  </div>
-                  Verified Google Review
-                </div>
-                <StarRating />
+          <div className="flex justify-between items-center mb-8 shrink-0">
+            <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-100 dark:border-blue-800">
+              <div className="relative w-4 h-4 bg-white rounded-full p-0.5 shadow-sm">
+                <Image src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" fill className="object-contain" />
               </div>
+              <span className="text-[10px] font-black uppercase text-blue-700 dark:text-blue-400">Verified Review</span>
+            </div>
+            <StarRating />
+          </div>
 
-              {/* Text Content - Fixed scrollable area */}
-              <div key={currentReviewIndex} className="transition-all duration-500 flex flex-col flex-grow min-h-0 overflow-hidden" style={{ animation: 'fadeIn 0.5s ease-out' }}>
-                <div 
-                  className="h-[300px] md:h-auto md:flex-grow overflow-y-auto pr-2 mb-6 custom-scrollbar touch-pan-y pointer-events-auto scrollable-review-text"
-                >
-                  <p className="text-base md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed italic font-light text-justify px-1">
-                    &quot;{currentReview.quote}&quot;
+          <div className="relative flex-1">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.5, ease: "anticipate" }}
+                className="absolute inset-0 flex flex-col"
+              >
+                <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar mb-6">
+                  <p className="text-base md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed italic font-medium">
+                    &quot;{current.quote}&quot;
                   </p>
                 </div>
 
-                {/* Author & Nav (Inside the card, bottom-aligned) */}
-                <div className="flex flex-col sm:flex-row items-center sm:items-center justify-between gap-6 sm:gap-6 border-t border-gray-50 dark:border-gray-800 pt-6 mt-auto flex-shrink-0">
-                  {/* Author Info */}
-                  <div className="flex items-center gap-4 text-center sm:text-left">
-                    {currentReview.image ? (
-                      <div className="relative w-12 h-12 rounded-full overflow-hidden border border-gray-100 shadow-sm flex-shrink-0">
-                        <Image src={currentReview.image} alt={currentReview.name} fill className="object-cover" />
-                      </div>
-                    ) : (
-                      <InitialsAvatar name={currentReview.name} />
-                    )}
-                    <div className="overflow-hidden">
-                      <Link 
-                        href={currentReview.link || "#"} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-base font-bold text-gray-900 dark:text-white hover:text-[#4285F4] hover:underline transition-all decoration-blue-500/30 flex items-center gap-1 group/name truncate"
-                      >
-                        {currentReview.name}
-                        <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/name:opacity-100 transition-opacity" />
-                      </Link>
-                      <p className="text-[10px] text-amber-600 font-semibold tracking-wide uppercase truncate">{currentReview.role}</p>
+                <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-8 border-t border-gray-100 dark:border-gray-800 shrink-0">
+                  <div className="flex items-center gap-4">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-amber-600 ring-4 ring-amber-600/10">
+                      <Image src={current.image} alt={current.name} fill className="object-cover" />
+                    </div>
+                    <div>
+                      <h4 className="font-black text-slate-900 dark:text-white text-lg">{current.name}</h4>
+                      <p className="text-[10px] font-bold text-amber-600 uppercase tracking-widest">{current.role}</p>
                     </div>
                   </div>
 
-                  {/* Navigation Arrows */}
-                  <div className="flex items-center gap-4 flex-shrink-0">
-                    <button 
-                      onClick={prevReview}
-                      aria-label="Previous Review"
-                      className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 flex items-center justify-center hover:bg-[#4285F4] hover:text-white hover:border-[#4285F4] transition-all duration-300 shadow-md text-gray-600 dark:text-gray-400 group/btn"
-                    >
-                      <ArrowLeft className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
+                  <div className="flex gap-4">
+                    <button onClick={prev} className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-amber-600 hover:text-white transition-all shadow-lg active:scale-95">
+                      <ArrowLeft className="w-5 h-5" />
                     </button>
-                    <button 
-                      onClick={nextReview}
-                      aria-label="Next Review"
-                      className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white dark:bg-slate-900 border border-gray-100 dark:border-gray-800 flex items-center justify-center hover:bg-[#4285F4] hover:text-white hover:border-[#4285F4] transition-all duration-300 shadow-md text-gray-600 dark:text-gray-400 group/btn"
-                    >
-                      <ArrowRight className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
+                    <button onClick={next} className="p-4 rounded-2xl bg-amber-600 text-white shadow-lg shadow-amber-600/20 hover:bg-amber-700 transition-all active:scale-95">
+                      <ArrowRight className="w-5 h-5" />
                     </button>
                   </div>
                 </div>
-              </div>
-            </div>
-
-            {/* Premium Animated Progress Bar */}
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-50 dark:bg-gray-800 overflow-hidden rounded-b-3xl">
-              <div 
-                className="h-full bg-gradient-to-r from-[#4285F4] to-blue-600 transition-all duration-700 ease-out" 
-                style={{ width: `${((currentReviewIndex + 1) / testimonials.length) * 100}%` }}
-              ></div>
-            </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          {/* Custom Animation & Scrollbar Styles */}
-          <style jsx>{`
-            @keyframes fadeIn {
-              from { opacity: 0; transform: translateY(10px); }
-              to { opacity: 1; transform: translateY(0); }
-            }
-            .custom-scrollbar::-webkit-scrollbar {
-              width: 4px;
-            }
-            .custom-scrollbar::-webkit-scrollbar-track {
-              background: #f1f1f1;
-              border-radius: 10px;
-            }
-            .custom-scrollbar::-webkit-scrollbar-thumb {
-              background: #fbbf24;
-              border-radius: 10px;
-            }
-            .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-              background: #d97706;
-            }
-          `}</style>
+          <div className="absolute top-12 right-12 text-slate-200/50 dark:text-white/5 pointer-events-none">
+            <svg width="120" height="120" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+            </svg>
+          </div>
         </div>
 
-        {/* CTA Below Card (Refined Blue Button) */}
-        <div className="mt-5 text-center flex flex-col items-center justify-center gap-8 bg-gray-50/50 dark:bg-slate-900/50 p-10 rounded-[2rem] border border-gray-100 dark:border-gray-800 shadow-inner">
-           <div className="flex flex-col items-center">
-              <div className="flex -space-x-3 mb-4">
-                 {testimonials.slice(0, 5).map((review) => (
-                   <div key={review.id} className="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 bg-gray-100 dark:bg-gray-800 overflow-hidden relative shadow-sm">
-                     <Image src={review.image} alt="Customer" fill className="object-cover" />
-                   </div>
-                 ))}
-                 <div className="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-500 flex items-center justify-center text-xs font-bold z-10 shadow-sm">
-                   99+
-                 </div>
+        <div className="mt-16 flex flex-col items-center gap-8">
+          {/* Trust Indicator: Avatar Group + Text */}
+          <div className="flex flex-col items-center gap-5">
+            <div className="flex -space-x-3">
+              {testimonials.slice(0, 5).map((t, i) => (
+                <div key={i} className="relative w-12 h-12 rounded-full border-4 border-white dark:border-slate-950 overflow-hidden shadow-lg transform hover:scale-110 transition-transform duration-300 z-[5]">
+                  <Image src={t.image} alt={t.name} fill className="object-cover" />
+                </div>
+              ))}
+              <div className="relative w-12 h-12 rounded-full border-4 border-white dark:border-slate-950 bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center shadow-lg z-0">
+                <span className="text-[10px] font-black text-orange-600 dark:text-orange-400">99+</span>
               </div>
-              <p className="text-sm text-gray-500 dark:text-gray-400 font-medium italic">Real experiences from Delhi NCR&apos;s most premium homes and offices</p>
-           </div>
+            </div>
+            <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 font-medium italic max-w-xs text-center leading-relaxed">
+              Real experiences from Delhi NCR&apos;s most premium homes and offices
+            </p>
+          </div>
 
-            <div className="w-full sm:w-auto">
-              <Link 
-                 href="https://g.page/r/CYSAtoMtUCKLEBE/review" 
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 className="group shine-btn relative inline-flex items-center justify-center gap-3 bg-[#4285F4] hover:bg-[#357ae8] text-white px-10 py-5 rounded-full text-sm font-bold uppercase tracking-widest transition-all shadow-xl hover:shadow-blue-500/30 overflow-hidden active:scale-95"
-              >
-                 <div className="relative w-6 h-6 bg-white rounded-full p-1 shadow-sm">
-                   <Image 
-                     src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" 
-                     alt="Google Logo" 
-                     fill 
-                     className="object-contain" 
-                   />
-                 </div>
-                 Rate Us on Google
-                 <ArrowUpRight className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-           </div>
+          {/* Google Review Button */}
+          <Link
+            href="https://g.page/r/CYSAtoMtUCKLEBE/review"
+            target="_blank"
+            className="inline-flex items-center gap-3 bg-white dark:bg-slate-900 px-8 py-4 rounded-full text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-amber-600 hover:text-amber-600 transition-all shadow-xl"
+          >
+            <div className="relative w-5 h-5 bg-white rounded-full p-1 shadow-sm">
+              <Image src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" fill className="object-contain" />
+            </div>
+            Write a Google Review
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
         </div>
-
       </div>
+
+      <style jsx>{`
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #fbbf24; border-radius: 10px; }
+      `}</style>
     </section>
   );
 }

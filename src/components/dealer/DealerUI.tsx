@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Key, TrendingUp, Handshake, CheckCircle2, 
-  ShieldCheck, ArrowRight, Building2, X 
+  ShieldCheck, ArrowRight
 } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
@@ -167,7 +167,7 @@ export function SuccessOverlay() {
 /*                              3. FLOATING INPUT                             */
 /* -------------------------------------------------------------------------- */
 
-export function FloatingInput({ icon: Icon, label, ...props }: any) {
+export function FloatingInput({ icon: Icon, label, ...props }: { icon: React.ElementType; label: string; [key: string]: unknown }) {
   const [isFocused, setIsFocused] = useState(false);
   const isFilled = props.value && props.value !== "";
 
@@ -203,7 +203,7 @@ export function FloatingInput({ icon: Icon, label, ...props }: any) {
 /*                              4. RADIO CARD                                 */
 /* -------------------------------------------------------------------------- */
 
-export function RadioCard({ icon: Icon, label, active, onClick }: any) {
+export function RadioCard({ icon: Icon, label, active, onClick }: { icon: React.ElementType; label: string; active: boolean; onClick: () => void }) {
   return (
     <motion.button
       type="button"

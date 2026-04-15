@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  User, Mail, Phone, Building2, MapPin, Grid, 
+  User, Mail, Phone, Building2, 
   Target, Layers, ShieldCheck, ArrowRight, ArrowLeft, 
   Upload, X, CheckCircle2, AlertCircle,
   Map, Navigation2, Store, Warehouse, HardHat, Palette, BarChart3, FileText
@@ -106,9 +106,10 @@ export default function DealerWizard() {
         } else {
             throw new Error(result.error || "Submission failed.");
         }
-    } catch (err: any) {
+    } catch (err) {
+        const errorMessage = err instanceof Error ? err.message : "Failed to submit application. Please try again.";
         console.error("Submission Error:", err);
-        setError(err.message || "Failed to submit application. Please try again.");
+        setError(errorMessage);
     } finally {
         setIsSubmitting(false);
     }
@@ -172,6 +173,7 @@ export default function DealerWizard() {
                   <div className="space-y-6">
                       <FloatingInput icon={Building2} label="Company Name" name="company" value={formData.company} onChange={handleInputChange} />
                   </div>
+                  
                   <div className="grid grid-cols-2 gap-6">
                       <FloatingInput icon={Map} label="City" name="city" value={formData.city} onChange={handleInputChange} />
                       <FloatingInput icon={Navigation2} label="State" name="state" value={formData.state} onChange={handleInputChange} />

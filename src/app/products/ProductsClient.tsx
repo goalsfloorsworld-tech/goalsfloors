@@ -25,7 +25,7 @@ export interface Product {
 }
 
 // Mapping slugs to icons and labels
-const categoryConfig: { [key: string]: { label: string; icon: any } } = {
+const categoryConfig: { [key: string]: { label: string; icon: React.ElementType } } = {
   "All": { label: "All Products", icon: Grid },
   "wall-panels": { label: "Wall Panels", icon: Layers },
   "outdoors": { label: "Exterior & Outdoor", icon: CloudSun },
@@ -57,7 +57,7 @@ export default function ProductsClient({ products }: { products: Product[] }) {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   // Group products by category in a specific order: wall-panels -> outdoors -> premium-flooring -> ceilings
-  const categoryOrder = ["wall-panels", "outdoors", "premium-flooring", "ceilings"];
+  const categoryOrder = useMemo(() => ["wall-panels", "outdoors", "premium-flooring", "ceilings"], []);
 
   const sortedProducts = useMemo(() => {
     if (!Array.isArray(products)) return [];
@@ -71,20 +71,18 @@ export default function ProductsClient({ products }: { products: Product[] }) {
       // Secondary sort by title if in same category
       return (a.title || "").localeCompare(b.title || "");
     });
-  }, [products]);
+  }, [products, categoryOrder]);
 
   const searchResults = searchQuery.length > 0 ? (sortedProducts || []).filter((product: Product) => {
-
-
     const q = searchQuery.toLowerCase();
     return (
       product.title.toLowerCase().includes(q) ||
       product.shortDescription.toLowerCase().includes(q) ||
       product.longDescription.toLowerCase().includes(q) ||
       product.category.toLowerCase().includes(q) ||
-      product.features?.some((f: any) => f.title.toLowerCase().includes(q) || f.description.toLowerCase().includes(q))
+      product.features?.some((f) => f.title.toLowerCase().includes(q) || f.description.toLowerCase().includes(q))
     );
-  }).map((product: any) => {
+  }).map((product) => {
     const q = searchQuery.toLowerCase();
     let matchText = product.title;
     if (product.shortDescription.toLowerCase().includes(q)) {
@@ -92,11 +90,11 @@ export default function ProductsClient({ products }: { products: Product[] }) {
     } else if (product.longDescription.toLowerCase().includes(q)) {
       matchText = product.longDescription;
     } else {
-      const featureMatch = product.features?.find((f: any) => f.title.toLowerCase().includes(q) || f.description.toLowerCase().includes(q));
+      const featureMatch = product.features?.find((f) => f.title.toLowerCase().includes(q) || f.description.toLowerCase().includes(q));
       if (featureMatch) matchText = featureMatch.description;
     }
     return { ...product, matchText };
-  }) : [];
+  }) : [] as (Product & { matchText: string })[];
 
   const filteredProducts = categoryParam === "All"
     ? (sortedProducts || [])
@@ -114,6 +112,9 @@ export default function ProductsClient({ products }: { products: Product[] }) {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const isResultsVisible = isSearchFocused && searchQuery.length > 0;
+
   if (!Array.isArray(sortedProducts)) return null;
 
   const dataCategories = Array.from(new Set(sortedProducts.map((p: Product) => p?.category).filter(Boolean)));
@@ -129,10 +130,6 @@ export default function ProductsClient({ products }: { products: Product[] }) {
     }
   };
 
-
-  const isResultsVisible = isSearchFocused && searchQuery.length > 0;
-
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   return (
     <div className="bg-[#fcfaf7] dark:bg-slate-950 min-h-screen pb-24 transition-colors duration-500">

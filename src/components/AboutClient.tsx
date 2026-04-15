@@ -4,15 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  ArrowRight, Star, Package, ShieldCheck,
-  Zap, HardHat, Ruler, MapPin, CheckCircle2,
-  Target, Gem
+  ArrowRight, ShieldCheck,
+  Zap, HardHat, Ruler, MapPin, 
+  Target, Package, Star, CheckCircle2
 } from "lucide-react";
 
 // --- Premium Animation Variants ---
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as any } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } }
 };
 
 const staggerContainer = {
@@ -22,17 +22,17 @@ const staggerContainer = {
 
 const fadeInLeft = {
   hidden: { opacity: 0, x: -40 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as any } }
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } }
 };
 
 const slideInRight = {
   hidden: { opacity: 0, x: 100 },
-  visible: { opacity: 1, x: 0, transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] as any } }
+  visible: { opacity: 1, x: 0, transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] as const } }
 };
 
 const slideInLeft = {
   hidden: { opacity: 0, x: -100 },
-  visible: { opacity: 1, x: 0, transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] as any } }
+  visible: { opacity: 1, x: 0, transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] as const } }
 };
 
 const floatingIcon = {
@@ -41,14 +41,14 @@ const floatingIcon = {
     transition: {
       duration: 3,
       repeat: Infinity,
-      ease: "easeInOut" as any
+      ease: "easeInOut" as const
     }
   }
 };
 
 const scaleIn = {
   hidden: { opacity: 0, scale: 0.9 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as any } }
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } }
 };
 
 // SEO Schema Markup for Local Business

@@ -155,7 +155,7 @@ export default function Home() {
       />
 
       {/* ================= HERO SECTION ================= */}
-      <section className="relative min-h-[600px] sm:min-h-[800px] md:min-h-[110vh] flex items-center justify-center overflow-hidden">
+      <section suppressHydrationWarning className="relative min-h-[400px] sm:min-h-[600px] md:min-h-[85vh] flex items-center justify-center overflow-hidden">
         {/* Background Carousel */}
         <div className="absolute inset-0 z-0 bg-black overflow-hidden">
 
@@ -233,7 +233,7 @@ export default function Home() {
               transition: { staggerChildren: 0.2 }
             }
           }}
-          className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-16 pb-48 md:pt-32 md:pb-64"
+          className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-10 pb-20 md:pt-24 md:pb-40"
         >
           {/* USP Badge */}
           <motion.div

@@ -3,14 +3,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Droplets, Ruler, Zap, Palette, Wrench, 
-  Sparkles, ShieldCheck, Flame, CheckCircle2,
+  Droplets, Zap, Wrench, 
+  Sparkles, ShieldCheck, Flame, 
   Leaf, Sun, Waves, ShieldX, Layers, Fingerprint,
   Footprints, Puzzle, VolumeX, Maximize,
-  ThermometerSun, Paintbrush, Construction, 
-  Lightbulb, Copy, Scaling, ExternalLink,
-  Heart, Feather, CloudRain, MousePointer2,
-  Trash2, ShieldAlert, BadgeCheck, Activity
+  Paintbrush, Construction, 
+  Lightbulb, Copy, ExternalLink,
+  Heart, Feather, CloudRain, 
+  BadgeCheck
 } from "lucide-react";
 import { Feature } from "@/app/products/[slug]/ProductClient";
 

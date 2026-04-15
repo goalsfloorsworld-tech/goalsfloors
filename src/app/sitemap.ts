@@ -49,12 +49,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // 3. Dynamic Blog Pages from WordPress
+  interface WPPost {
+    slug: string;
+    modified: string;
+  }
   let blogRoutes: MetadataRoute.Sitemap = [];
   try {
     const res = await fetch(`${API_BASE_URL}/posts?per_page=100`, { next: { revalidate: 3600 } });
     if (res.ok) {
       const posts = await res.json();
-      blogRoutes = posts.map((post: any) => ({
+      blogRoutes = posts.map((post: WPPost) => ({
         url: `${baseUrl}/blogs/${post.slug}`,
         lastModified: new Date(post.modified).toISOString(),
         changeFrequency: 'monthly' as const,

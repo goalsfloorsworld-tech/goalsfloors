@@ -70,7 +70,10 @@ export default function CategoryFlipCards() {
 
   // Detect if device supports hover (desktop)
   useEffect(() => {
-    setIsHoverEnabled(window.matchMedia("(hover: hover)").matches);
+    const mediaQuery = window.matchMedia("(hover: hover)");
+    requestAnimationFrame(() => {
+      setIsHoverEnabled(mediaQuery.matches);
+    });
   }, []);
 
   const handleToggle = (index: number) => {

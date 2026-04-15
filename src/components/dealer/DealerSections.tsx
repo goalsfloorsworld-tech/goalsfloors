@@ -23,8 +23,8 @@ const trustStats = [
 export function TrustBar() {
   return (
     <div className="bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-white/5 py-10 relative z-30 transition-colors duration-500">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
           {trustStats.map((stat, i) => (
             <motion.div 
               key={i}
@@ -33,7 +33,7 @@ export function TrustBar() {
               transition={{ delay: i * 0.1 }}
               whileHover={{ y: -5 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center md:items-start text-center md:text-left gap-3 group"
+              className="flex flex-col items-center justify-center text-center gap-3 group"
             >
               <div className="flex items-center gap-2 md:gap-4">
                 <div className="w-10 h-10 rounded-xl bg-amber-600/10 flex items-center justify-center text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-all shrink-0">
@@ -81,7 +81,7 @@ const partnerBenefits = [
 
 export function WhyPartnerGrid() {
   return (
-    <section className="py-10 md:py-24 bg-white dark:bg-slate-950 px-4 transition-colors duration-500">
+    <section className="py-10 md:py-10 bg-white dark:bg-slate-950 px-4 transition-colors duration-500">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white text-center uppercase tracking-tighter mb-16">
           Why Partner With <span className="text-amber-600 italic font-light font-playfair">Goals</span> Floors?
@@ -158,7 +158,7 @@ export function FAQAccordion() {
   };
 
   return (
-    <section className="py-10 md:py-24 bg-slate-50 dark:bg-slate-950 px-4 border-t border-slate-200 dark:border-white/5 relative overflow-hidden transition-colors duration-500">
+    <section className="py-10 md:py-10 bg-slate-50 dark:bg-slate-950 px-4 border-t border-slate-200 dark:border-white/5 relative overflow-hidden transition-colors duration-500">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-amber-600/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto relative z-10">
