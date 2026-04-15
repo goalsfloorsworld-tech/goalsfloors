@@ -87,7 +87,7 @@ export default function Testimonials() {
           <h3 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white">Trust in <span className="text-amber-600">Quality</span></h3>
         </div>
 
-        <div className="relative bg-white dark:bg-slate-950 rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-gray-100 dark:border-gray-800 min-h-[460px] md:min-h-0 md:h-[460px] flex flex-col">
+        <div className="relative bg-white dark:bg-slate-950 rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-gray-100 dark:border-gray-800 min-h-[550px] md:min-h-0 md:h-[480px] flex flex-col transition-all duration-300">
 
           <div className="flex justify-between items-center mb-8 shrink-0">
             <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-100 dark:border-blue-800">
@@ -103,11 +103,18 @@ export default function Testimonials() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.5, ease: "anticipate" }}
-                className="absolute inset-0 flex flex-col"
+                exit={{ opacity: 0, x: -50 }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                onDragEnd={(e, { offset, velocity }) => {
+                  const swipe = offset.x;
+                  if (swipe < -50) next();
+                  else if (swipe > 50) prev();
+                }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="absolute inset-0 flex flex-col cursor-grab active:cursor-grabbing touch-pan-y"
               >
                 <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar mb-6">
                   <p className="text-base md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed italic font-medium">
@@ -139,8 +146,8 @@ export default function Testimonials() {
             </AnimatePresence>
           </div>
 
-          <div className="absolute top-12 right-12 text-slate-200/50 dark:text-white/5 pointer-events-none">
-            <svg width="120" height="120" viewBox="0 0 24 24" fill="currentColor">
+          <div className="absolute top-8 right-8 md:top-12 md:right-12 text-slate-200/50 dark:text-white/5 pointer-events-none">
+            <svg className="w-16 h-16 md:w-32 md:h-32" viewBox="0 0 24 24" fill="currentColor">
               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
             </svg>
           </div>
