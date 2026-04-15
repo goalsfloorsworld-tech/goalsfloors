@@ -164,17 +164,17 @@ export default function Testimonials() {
             </p>
           </div>
 
-          {/* Google Review Button */}
+          {/* Premium Google Review Button */}
           <Link
             href="https://g.page/r/CYSAtoMtUCKLEBE/review"
             target="_blank"
-            className="inline-flex items-center gap-3 bg-white dark:bg-slate-900 px-8 py-4 rounded-full text-xs font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-800 hover:border-amber-600 hover:text-amber-600 transition-all shadow-xl"
+            className="group relative inline-flex items-center justify-center gap-4 px-10 py-6 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white rounded-[2.5rem] shadow-[0_20px_50px_-15px_rgba(37,99,235,0.4)] hover:shadow-[0_25px_60px_-15px_rgba(37,99,235,0.6)] transition-all duration-500 active:scale-95"
           >
-            <div className="relative w-5 h-5 bg-white rounded-full p-1 shadow-sm">
+            <div className="relative w-8 h-8 bg-white rounded-full p-1.5 shadow-sm group-hover:rotate-[360deg] transition-transform duration-700">
               <Image src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" fill className="object-contain" />
             </div>
-            Write a Google Review
-            <ArrowUpRight className="w-4 h-4" />
+            <span className="text-[13px] md:text-sm font-black uppercase tracking-[0.15em] whitespace-nowrap">Rate Us On Google</span>
+            <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
           </Link>
         </div>
       </div>
