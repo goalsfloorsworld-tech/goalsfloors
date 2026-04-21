@@ -246,7 +246,7 @@ const VariantCard = ({
               <span className="font-bold text-amber-600 dark:text-amber-500">{images[activeIndex].name}</span>
             </div>
           )}
-          {Object.entries(variant.details).map(([key, value]) => (
+          {Object.entries(variant.details).slice(0, 4).map(([key, value]) => (
              <div key={key} className="flex justify-between items-center text-sm border-b border-gray-100 dark:border-gray-800 pb-2 border-dotted">
                 <span className="text-gray-500">{key}</span>
                 <span className="font-semibold text-gray-900 dark:text-gray-200 text-right">{value}</span>
@@ -389,25 +389,40 @@ export default function ProductClient({ product, slug }: { product: Product; slu
 
   const variantPrices = (product.variants || []).map(v => parsePrice(v.price)).filter(p => p > 0);
   
+  const seller = { "@type": "Organization", "name": "Goals Floors" };
+
+  const offersSchema = variantPrices.length > 1
+    ? {
+        "@type": "AggregateOffer",
+        "priceCurrency": "INR",
+        "lowPrice": Math.min(...variantPrices),
+        "highPrice": Math.max(...variantPrices),
+        "offerCount": variantPrices.length,
+        "availability": "https://schema.org/InStock",
+        "seller": seller
+      }
+    : variantPrices.length === 1
+    ? {
+        "@type": "Offer",
+        "priceCurrency": "INR",
+        "price": variantPrices[0],
+        "availability": "https://schema.org/InStock",
+        "seller": seller
+      }
+    : {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "seller": seller
+      };
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": product.title,
     "image": product.images[0]?.url,
     "description": product.shortDescription,
-    "offers": variantPrices.length > 1 ? {
-      "@type": "AggregateOffer",
-      "priceCurrency": "INR",
-      "lowPrice": Math.min(...variantPrices),
-      "highPrice": Math.max(...variantPrices),
-      "offerCount": variantPrices.length,
-      "availability": "https://schema.org/InStock"
-    } : {
-      "@type": "Offer",
-      "priceCurrency": "INR",
-      "price": variantPrices[0] || 0,
-      "availability": "https://schema.org/InStock"
-    }
+    "brand": { "@type": "Brand", "name": "Goals Floors" },
+    "offers": offersSchema
   };
 
   return (
@@ -1144,7 +1159,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                       </div>
                     )}
                     <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-4 leading-relaxed font-medium">
-                      *Taxes, Freight & Installation are calculated extra based on project location in Delhi NCR.
+                      *Includes Tax. Freight & Installation are calculated extra based on project location in Delhi NCR.
                     </p>
                   </div>
 

@@ -87,7 +87,7 @@ export default function Testimonials() {
           <h3 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white">Trust in <span className="text-amber-600">Quality</span></h3>
         </div>
 
-        <div className="relative bg-white dark:bg-slate-950 rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-gray-100 dark:border-gray-800 min-h-[550px] md:min-h-0 md:h-[480px] flex flex-col transition-all duration-300">
+        <div className="relative bg-white dark:bg-slate-950 rounded-[2.5rem] p-5 md:p-12 shadow-2xl border border-gray-100 dark:border-gray-800 min-h-[550px] md:min-h-0 md:h-[480px] flex flex-col transition-all duration-300">
 
           <div className="flex justify-between items-center mb-8 shrink-0">
             <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-100 dark:border-blue-800">

@@ -40,9 +40,12 @@ export const metadata: Metadata = {
     images: ["https://res.cloudinary.com/dcezlxt8r/image/upload/v1775573402/Goals_Floors_Premium_Wall_Panel.png"],
   },
   icons: {
-    icon: '/icon.svg',
-    shortcut: '/icon.svg',
-    apple: '/icon.svg',
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/images/favicon.png', type: 'image/png', sizes: '512x512' },
+    ],
+    shortcut: '/images/favicon.png',
+    apple: '/images/favicon.png',
   },
 };
 

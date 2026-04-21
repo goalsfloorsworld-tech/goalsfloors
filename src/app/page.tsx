@@ -133,7 +133,7 @@ export default function Home() {
               "name": "Wall Panels & Flooring Products",
               "itemListElement": [
                 { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Tokyo Charcoal Moulding" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "WPC Fluted Panels" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Wall Panels" } },
                 { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "SPC Flooring" } },
                 { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "WPC Exterior Louvers" } },
                 { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Cobra PU Stone Panels" } },
