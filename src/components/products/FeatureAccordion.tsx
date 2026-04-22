@@ -68,7 +68,7 @@ export default function FeatureAccordion({ features, productTitle, heading, subh
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   return (
-    <section className="pt-20 pb-10 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <section className="pt-10 pb-10 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <motion.span 

@@ -98,7 +98,11 @@ export default function ProductsClient({ products }: { products: Product[] }) {
 
   const filteredProducts = categoryParam === "All"
     ? (sortedProducts || [])
-    : (sortedProducts || []).filter((p: Product) => p?.category === categoryParam);
+    : (sortedProducts || []).filter((p: Product) => {
+      // Dual-category support for Upfit Panels
+      if (categoryParam === "outdoors" && p.slug === "upfit-panels") return true;
+      return p?.category === categoryParam;
+    });
 
 
 
@@ -191,13 +195,6 @@ export default function ProductsClient({ products }: { products: Product[] }) {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-[110] text-center">
           <div className="flex flex-col items-center gap-4 mb-16">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="w-12 h-12 bg-amber-600/10 border border-amber-600/20 rounded-full flex items-center justify-center backdrop-blur-md mb-2"
-            >
-              <Sparkles className="w-5 h-5 text-amber-500" />
-            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -292,7 +289,12 @@ export default function ProductsClient({ products }: { products: Product[] }) {
                 const Icon = categoryConfig[cat]?.icon || Grid;
                 const label = categoryConfig[cat]?.label || cat;
                 const isActive = categoryParam === cat;
-                const count = cat === "All" ? sortedProducts.length : sortedProducts.filter((p: Product) => p.category === cat).length;
+                const count = cat === "All"
+                  ? sortedProducts.length
+                  : sortedProducts.filter((p: Product) => {
+                    if (cat === "outdoors" && p.slug === "upfit-panels") return true;
+                    return p.category === cat;
+                  }).length;
 
 
 
@@ -381,7 +383,12 @@ export default function ProductsClient({ products }: { products: Product[] }) {
                   const Icon = categoryConfig[cat]?.icon || Grid;
                   const label = categoryConfig[cat]?.label || cat;
                   const isActive = categoryParam === cat;
-                  const count = cat === "All" ? sortedProducts.length : sortedProducts.filter((p: Product) => p.category === cat).length;
+                  const count = cat === "All"
+                    ? sortedProducts.length
+                    : sortedProducts.filter((p: Product) => {
+                      if (cat === "outdoors" && p.slug === "upfit-panels") return true;
+                      return p.category === cat;
+                    }).length;
 
 
 
