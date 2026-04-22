@@ -61,6 +61,13 @@ export default function ProductsClient({ products }: { products: Product[] }) {
 
   const sortedProducts = useMemo(() => {
     if (!Array.isArray(products)) return [];
+
+    // Define custom product order for specific categories
+    const categoryCustomOrder: { [key: string]: string[] } = {
+      "outdoors": ["wpc-exterior-louvers", "upfit-panels", "artificial-grass", "wpc-decking"],
+      "wall-panels": ["wall-panels", "cobra-pu-stone", "tokyo-charcoal-moulding"]
+    };
+
     return [...products].sort((a, b) => {
       const indexA = categoryOrder.indexOf(a.category);
       const indexB = categoryOrder.indexOf(b.category);
@@ -68,7 +75,20 @@ export default function ProductsClient({ products }: { products: Product[] }) {
       const sortB = indexB === -1 ? 999 : indexB;
 
       if (sortA !== sortB) return sortA - sortB;
-      // Secondary sort by title if in same category
+
+      // Custom priority within the same category
+      const customOrder = categoryCustomOrder[a.category];
+      if (customOrder) {
+        const pIndexA = customOrder.indexOf(a.slug);
+        const pIndexB = customOrder.indexOf(b.slug);
+        if (pIndexA !== -1 || pIndexB !== -1) {
+          const sA = pIndexA === -1 ? 999 : pIndexA;
+          const sB = pIndexB === -1 ? 999 : pIndexB;
+          if (sA !== sB) return sA - sB;
+        }
+      }
+
+      // Default secondary sort by title
       return (a.title || "").localeCompare(b.title || "");
     });
   }, [products, categoryOrder]);
@@ -99,8 +119,8 @@ export default function ProductsClient({ products }: { products: Product[] }) {
   const filteredProducts = categoryParam === "All"
     ? (sortedProducts || [])
     : (sortedProducts || []).filter((p: Product) => {
-      // Dual-category support for Upfit Panels
-      if (categoryParam === "outdoors" && p.slug === "upfit-panels") return true;
+      // Dual-category support for Upfit Panels (Primary: outdoors, Secondary: wall-panels)
+      if (categoryParam === "wall-panels" && p.slug === "upfit-panels") return true;
       return p?.category === categoryParam;
     });
 
@@ -292,7 +312,7 @@ export default function ProductsClient({ products }: { products: Product[] }) {
                 const count = cat === "All"
                   ? sortedProducts.length
                   : sortedProducts.filter((p: Product) => {
-                    if (cat === "outdoors" && p.slug === "upfit-panels") return true;
+                    if (cat === "wall-panels" && p.slug === "upfit-panels") return true;
                     return p.category === cat;
                   }).length;
 
@@ -386,7 +406,7 @@ export default function ProductsClient({ products }: { products: Product[] }) {
                   const count = cat === "All"
                     ? sortedProducts.length
                     : sortedProducts.filter((p: Product) => {
-                      if (cat === "outdoors" && p.slug === "upfit-panels") return true;
+                      if (cat === "wall-panels" && p.slug === "upfit-panels") return true;
                       return p.category === cat;
                     }).length;
 
@@ -425,7 +445,7 @@ export default function ProductsClient({ products }: { products: Product[] }) {
       </AnimatePresence>
 
       {/* Products Display Grid - Responsive for all screens */}
-      <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-2 lg:px-8 py-1">
         <motion.div
           layout
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-10"

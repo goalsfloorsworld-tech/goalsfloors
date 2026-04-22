@@ -117,7 +117,7 @@ export default function Testimonials() {
                 className="absolute inset-0 flex flex-col cursor-grab active:cursor-grabbing touch-pan-y"
               >
                 <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar mb-6">
-                  <p className="text-base md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed italic font-medium">
+                  <p className="text-base md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed italic font-medium font-roboto">
                     &quot;{current.quote}&quot;
                   </p>
                 </div>

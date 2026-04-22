@@ -7,10 +7,16 @@ import FloatingWidgets from "@/components/FloatingWidgets";
 
 const Footer = dynamic(() => import("@/components/Footer"));
 
-import { Inter } from "next/font/google";
+import { Inter, Roboto } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
+const roboto = Roboto({ 
+  weight: ["400", "500", "700", "900"], 
+  subsets: ["latin"], 
+  display: "swap", 
+  variable: "--font-roboto" 
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://goalsfloors.com"),
@@ -59,7 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       {/* suppressHydrationWarning is essential for dark mode hydration */}
-      <body className={`${inter.className} antialiased bg-white dark:bg-slate-950 pt-14`}>
+      <body className={`${inter.className} ${roboto.variable} antialiased bg-white dark:bg-slate-950 pt-14`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

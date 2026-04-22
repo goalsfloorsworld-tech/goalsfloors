@@ -139,10 +139,10 @@ const VariantCard = ({
         const width = scrollRef.current.clientWidth;
         scrollRef.current.scrollTo({
           left: nextIndex * width,
-          behavior: 'smooth'
+          behavior: "smooth"
         });
       }
-    }, 4000); // Slide every 4 seconds
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [activeIndex, images.length, isPaused]);
@@ -179,7 +179,7 @@ const VariantCard = ({
                 {/* ID Badge logic: Try to extract an ID from variant.name, otherwise use the first word */}
                 <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-md px-2 py-1 rounded-sm z-20 border border-white/10">
                   <span className="text-[10px] text-white font-bold tracking-wider uppercase">
-                    {images[activeIndex]?.name || variant.name.split(' ')[0]}
+                    {images[activeIndex]?.name || variant.name.split(" ")[0]}
                   </span>
                 </div>
               </div>
@@ -197,7 +197,7 @@ const VariantCard = ({
                 e.stopPropagation();
                 if (scrollRef.current) {
                   const newIndex = activeIndex === 0 ? images.length - 1 : activeIndex - 1;
-                  scrollRef.current.scrollTo({ left: newIndex * scrollRef.current.clientWidth, behavior: 'smooth' });
+                  scrollRef.current.scrollTo({ left: newIndex * scrollRef.current.clientWidth, behavior: "smooth" });
                 }
               }}
               className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-1.5 bg-black/30 hover:bg-black/60 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
@@ -209,7 +209,7 @@ const VariantCard = ({
                 e.stopPropagation();
                 if (scrollRef.current) {
                   const newIndex = activeIndex === images.length - 1 ? 0 : activeIndex + 1;
-                  scrollRef.current.scrollTo({ left: newIndex * scrollRef.current.clientWidth, behavior: 'smooth' });
+                  scrollRef.current.scrollTo({ left: newIndex * scrollRef.current.clientWidth, behavior: "smooth" });
                 }
               }}
               className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-1.5 bg-black/30 hover:bg-black/60 backdrop-blur-md rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity"
@@ -223,10 +223,22 @@ const VariantCard = ({
         {images.length > 1 && (
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
             {images.map((_, i) => (
-              <div
+              <button
                 key={i}
-                className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === activeIndex ? "bg-amber-600 w-4" : "bg-white/50"
-                  }`}
+                aria-label={`Go to image ${i + 1}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (scrollRef.current) {
+                    scrollRef.current.scrollTo({
+                      left: i * scrollRef.current.clientWidth,
+                      behavior: "smooth"
+                    });
+                    setActiveIndex(i);
+                  }
+                }}
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  i === activeIndex ? "bg-amber-600 w-4" : "bg-white/50 w-1.5 hover:bg-white/80"
+                }`}
               />
             ))}
           </div>
@@ -471,20 +483,12 @@ export default function ProductClient({ product, slug }: { product: Product; slu
 
               {/* Mobile Image: Shown only on mobile between heading and description */}
               <div className="lg:hidden relative aspect-[4/3] w-full mb-6 rounded-sm overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm bg-gray-50 dark:bg-slate-900 group/hero">
-                {/* 2-Layer Technique: Layer 1 (Blurred BG) */}
-                <Image
-                  src={product.images[0].url}
-                  alt=""
-                  fill
-                  className="object-cover blur-3xl opacity-50 scale-125 transition-transform duration-1000 group-hover/hero:scale-150"
-                />
-                <div className="absolute inset-0 bg-white/20 dark:bg-black/30 backdrop-blur-[2px]" />
                 {/* 2-Layer Technique: Layer 2 (Main Image) */}
                 <Image
                   src={product.images[0].url}
                   alt={product.images[0].alt}
                   fill
-                  className="object-cover relative z-10 transition-transform duration-700 hover:scale-110"
+                  className="object-cover relative z-10 transition-transform duration-700 hover:scale-105"
                   priority
                 />
               </div>
@@ -517,20 +521,12 @@ export default function ProductClient({ product, slug }: { product: Product; slu
               transition={{ duration: 0.8, delay: 0.3, type: 'spring', stiffness: 50 }}
             >
               <div className="relative aspect-[4/3] w-full max-w-[600px] mx-auto bg-gray-50 dark:bg-slate-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm group/hero">
-                {/* 2-Layer Technique: Layer 1 (Blurred BG) */}
-                <Image
-                  src={product.images[0].url}
-                  alt=""
-                  fill
-                  className="object-cover blur-3xl opacity-60 scale-125 transition-transform duration-1000 group-hover/hero:scale-150"
-                />
-                <div className="absolute inset-0 bg-white/20 dark:bg-black/40 backdrop-blur-[2px]" />
                 {/* 2-Layer Technique: Layer 2 (Main Image) */}
                 <Image
                   src={product.images[0].url}
                   alt={product.images[0].alt}
                   fill
-                  className="object-cover relative z-10 transition-transform duration-700 hover:scale-110"
+                  className="object-cover relative z-10 transition-transform duration-700 hover:scale-105"
                   priority
                 />
               </div>
@@ -608,60 +604,60 @@ export default function ProductClient({ product, slug }: { product: Product; slu
               </p>
             </div>
 
-            {!isGalleryExpanded ? (
-              <div className="grid grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 md:gap-4 lg:h-[500px]">
-                {product.installedImages.slice(0, 6).map((img, i) => (
-                  <motion.div
-                    key={i}
-                    className={`relative group cursor-zoom-in rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-2xl transition-all duration-500 ${
-                      i === 0 ? "lg:col-start-1 lg:row-start-1 h-[150px] md:h-[200px] lg:h-auto" :
-                      i === 1 ? "lg:col-start-1 lg:row-start-2 h-[150px] md:h-[200px] lg:h-auto" :
-                      i === 2 ? "lg:col-start-2 lg:row-start-1 lg:row-span-2 h-full" :
-                      i === 3 ? "lg:col-start-3 lg:row-start-1 h-[150px] md:h-[200px] lg:h-auto" :
-                      i === 4 ? "lg:col-start-3 lg:row-start-2 h-[150px] md:h-[200px] lg:h-auto" :
-                      i === 5 ? "lg:col-start-4 lg:row-start-1 lg:row-span-2 h-full" : ""
-                    }`}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    onClick={() => setFullscreenImage(img.url)}
-                  >
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={img.url}
-                        alt={img.alt}
-                        fill
-                        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      {/* Overlay on hover */}
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <div className="p-4 text-center">
-                          <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white mb-3 mx-auto">
-                            <Plus className="w-6 h-6" />
-                          </div>
-                          <p className="text-[10px] font-bold text-white uppercase tracking-widest leading-tight px-2">{img.alt}</p>
+            <div className="grid grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 md:gap-4 lg:h-[500px]">
+              {product.installedImages.slice(0, 6).map((img, i) => (
+                <motion.div
+                  key={`first-${i}`}
+                  className={`relative group cursor-zoom-in rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300 ${
+                    i === 0 ? "lg:col-start-1 lg:row-start-1 h-[150px] md:h-[200px] lg:h-auto" :
+                    i === 1 ? "lg:col-start-1 lg:row-start-2 h-[150px] md:h-[200px] lg:h-auto" :
+                    i === 2 ? "lg:col-start-2 lg:row-start-1 lg:row-span-2 h-full" :
+                    i === 3 ? "lg:col-start-3 lg:row-start-1 h-[150px] md:h-[200px] lg:h-auto" :
+                    i === 4 ? "lg:col-start-3 lg:row-start-2 h-[150px] md:h-[200px] lg:h-auto" :
+                    i === 5 ? "lg:col-start-4 lg:row-start-1 lg:row-span-2 h-full" : ""
+                  }`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  onClick={() => setFullscreenImage(img.url)}
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={img.url}
+                      alt={img.alt}
+                      fill
+                      sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                      className="object-cover transform-gpu transition-transform duration-300 group-hover:scale-[1.03]"
+                    />
+                    {/* Overlay on hover */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="p-4 text-center">
+                        <div className="w-10 h-10 rounded-full bg-white/25 flex items-center justify-center text-white mb-3 mx-auto">
+                          <Plus className="w-6 h-6" />
                         </div>
+                        <p className="text-[10px] font-bold text-white uppercase tracking-widest leading-tight px-2">{img.alt}</p>
                       </div>
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            ) : (
-              <div className="columns-2 md:columns-3 lg:columns-4 gap-2 md:gap-4 space-y-2 md:space-y-4 transition-all duration-700">
-                {product.installedImages.map((img, i) => (
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {isGalleryExpanded && product.installedImages.length > 6 && (
+              <div className="columns-2 md:columns-3 lg:columns-4 gap-2 md:gap-4 space-y-2 md:space-y-4 mt-2 md:mt-4 transition-all duration-700">
+                {product.installedImages.slice(6).map((img, i) => (
                   <motion.div
-                    key={i}
-                    className="break-inside-avoid relative group cursor-zoom-in rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-2xl transition-all duration-500"
+                    key={`rest-${i}`}
+                    className="break-inside-avoid relative group cursor-zoom-in rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, delay: i * 0.02 }}
                     onClick={() => setFullscreenImage(img.url)}
                   >
                     <div className={`relative w-full ${
-                      img.aspect === "portrait" ? "aspect-[3/4.5]" : 
-                      img.aspect === "landscape" ? "aspect-[4/3]" : 
+                      img.aspect === "portrait" ? "aspect-[3/4.5]" :
+                      img.aspect === "landscape" ? "aspect-[4/3]" :
                       "aspect-square"
                     }`}>
                       <Image
@@ -669,12 +665,12 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                         alt={img.alt}
                         fill
                         sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        className="object-cover transform-gpu transition-transform duration-300 group-hover:scale-[1.03]"
                       />
                       {/* Overlay on hover */}
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <div className="p-4 text-center">
-                          <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white mb-3 mx-auto">
+                          <div className="w-10 h-10 rounded-full bg-white/25 flex items-center justify-center text-white mb-3 mx-auto">
                             <Plus className="w-6 h-6" />
                           </div>
                           <p className="text-[10px] font-bold text-white uppercase tracking-widest">{img.alt}</p>
@@ -746,27 +742,19 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                     stiffness: 40
                   }}
                 >
-                  {/* 2-Layer Technique: Layer 1 (Blurred BG) */}
-                  <Image
-                    src={img.url}
-                    alt=""
-                    fill
-                    className="object-cover blur-3xl opacity-50 scale-125 transition-transform duration-1000 group-hover/story:scale-150"
-                  />
-                  <div className="absolute inset-0 bg-white/20 dark:bg-black/40 backdrop-blur-[2px]" />
                   {/* 2-Layer Technique: Layer 2 (Main Image) */}
                   <Image
                     src={img.url}
                     alt={img.alt}
                     fill
-                    className="object-cover relative z-10 transition-transform duration-700 hover:scale-110"
+                    className="object-cover relative z-10 transition-transform duration-700 hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
                 </motion.div>
               ))}
 
               {/* Decorative Accent */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-amber-500/5 blur-3xl rounded-full -z-10" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-amber-500/5 blur-2xl rounded-full -z-10" />
             </div>
           </div>
         </div>
@@ -818,7 +806,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 {/* Decorative Glow */}
-                <div className="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/20 blur-3xl rounded-full pointer-events-none group-hover:bg-amber-500/30 transition-colors duration-500" />
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/20 blur-2xl rounded-full pointer-events-none group-hover:bg-amber-500/30 transition-colors duration-500" />
 
                 <div className="relative z-10">
                   <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-6 text-amber-500">

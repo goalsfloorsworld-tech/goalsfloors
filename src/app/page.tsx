@@ -25,8 +25,8 @@ const desktopHeroImages = [
     alt: "Premium Wall Panel by Goals Floors"
   },
   {
-    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_1920/v1775573402/Wpc_Baffle_For_Ceiling.png",
-    alt: "WPC Baffle For Ceiling"
+    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_800/v1775749408/Goals_Floors_Wall_Panels.png",
+    alt: "Premium Wall Panels"
   },
   {
     src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_1920/v1775573399/Exterior_Louvers_For_Facade.png",
@@ -44,7 +44,7 @@ const desktopHeroImages = [
 
 const mobileHeroImages = [
   {
-    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_800/v1775749408/Goals_Floors_Wall_Panels.png",
+    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1776858154/premium_wall_panels_in_gurugram.png",
     alt: "Premium Wall Panels"
   },
   {
@@ -152,21 +152,17 @@ export default function Home() {
             }
           })
         }}
-      />
-
-      {/* ================= HERO SECTION ================= */}
-      <section suppressHydrationWarning className="relative min-h-[400px] sm:min-h-[600px] md:min-h-[85vh] flex items-center justify-center overflow-hidden">
+      />      {/* ================= HERO SECTION ================= */}
+      <section suppressHydrationWarning className="relative min-h-[500px] sm:min-h-[600px] md:min-h-[65vh] flex items-center justify-center overflow-hidden">
         {/* Background Carousel */}
         <div className="absolute inset-0 z-0 bg-black overflow-hidden">
-
-          {/* Desktop Carousel (5 images) */}
+          {/* Desktop Images */}
           <div className="hidden md:block absolute inset-0">
             {desktopHeroImages.map((img, i) => (
               <div
                 key={i}
-                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                  i === desktopIndex ? "opacity-70" : "opacity-0"
-                }`}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${i === desktopIndex ? "opacity-70" : "opacity-0"
+                  }`}
                 style={{
                   transform: i === desktopIndex ? "scale(1.05)" : "scale(1)",
                   transition: "opacity 1s ease-in-out, transform 5s linear",
@@ -176,24 +172,21 @@ export default function Home() {
                   src={img.src}
                   alt={img.alt}
                   fill
-                  sizes="(max-width: 767px) 1px, 100vw"
-                  quality={62}
                   priority={i === 0}
-                  loading={i === 0 ? "eager" : "lazy"}
                   className="object-cover"
+                  sizes="100vw"
                 />
               </div>
             ))}
           </div>
 
-          {/* Mobile Carousel (5 images) */}
-          <div className="block md:hidden absolute inset-0">
+          {/* Mobile Images */}
+          <div className="md:hidden absolute inset-0">
             {mobileHeroImages.map((img, i) => (
               <div
                 key={i}
-                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                  i === mobileIndex ? "opacity-70" : "opacity-0"
-                }`}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${i === mobileIndex ? "opacity-70" : "opacity-0"
+                  }`}
                 style={{
                   transform: i === mobileIndex ? "scale(1.05)" : "scale(1)",
                   transition: "opacity 1s ease-in-out, transform 5s linear",
@@ -203,29 +196,27 @@ export default function Home() {
                   src={img.src}
                   alt={img.alt}
                   fill
-                  sizes="(min-width: 768px) 1px, 100vw"
-                  quality={62}
                   priority={i === 0}
-                  loading={i === 0 ? "eager" : "lazy"}
                   className="object-cover"
+                  sizes="100vw"
                 />
               </div>
             ))}
           </div>
 
-          {/* Transition Fog / Overlay */}
-          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white/90 via-white/50 to-transparent z-10 dark:from-slate-950/90 dark:via-slate-950/50 transition-colors duration-700" />
-
-          {/* Subtle top vignette for better navbar visibility */}
-          <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/60 to-transparent z-0" />
-
           {/* Luxury Radial Gradient Overlay */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-black/20 to-black/70 z-0 pointer-events-none" />
+
+          {/* Decorative Bottom Glow Line - Intensified */}
+          <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-amber-500 to-transparent z-20 shadow-[0_0_25px_rgba(251,191,36,0.8)]" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-[4px] bg-amber-400/40 blur-xl z-20" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-[8px] bg-amber-500/20 blur-2xl z-20" />
         </div>
 
         <motion.div
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
+          viewport={{ once: true }}
           variants={{
             hidden: { opacity: 0 },
             visible: {
@@ -233,45 +224,47 @@ export default function Home() {
               transition: { staggerChildren: 0.2 }
             }
           }}
-          className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-10 pb-20 md:pt-24 md:pb-40"
+          className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-10 pb-20 md:pt-24 md:pb-40 flex flex-col items-center"
         >
           {/* USP Badge */}
           <motion.div
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-12 sm:mb-8 shadow-xl"
+            className="sm:relative absolute top-10 left-1/2 -translate-x-1/2 sm:top-0 sm:left-0 sm:translate-x-0 inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-12 sm:mb-8 shadow-xl z-50 whitespace-nowrap w-fit"
           >
             <Clock className="w-4 h-4 text-amber-500" />
             <span className="text-xs sm:text-sm font-medium tracking-widest uppercase shadow-sm">2-Hour Express Delivery in NCR</span>
           </motion.div>
 
-          {/* Headline - Thinner, more elegant font */}
-          <motion.h1
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
-            className="text-3xl sm:text-4xl md:text-6xl font-semibold text-white mb-6 tracking-tight leading-[1.1] drop-shadow-2xl px-2 relative"
-          >
-            Goals Floors: India&apos;s <br />
-            <span className="relative inline-block mt-2">
-              {/* Intensified Multi-Layer Glow Effect */}
-              <span className="absolute -inset-x-20 inset-y-0 bg-amber-500/40 blur-[100px] rounded-full -z-10 animate-pulse"></span>
-              <span className="absolute -inset-x-10 inset-y-0 bg-yellow-400/20 blur-[40px] rounded-full -z-10 animate-pulse delay-700"></span>
+          <div className="flex flex-col items-center justify-center flex-1 py-20">
+            {/* Headline - Thinner, more elegant font */}
+            <motion.h1
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
+              className="text-3xl sm:text-4xl md:text-6xl font-semibold text-white mb-6 tracking-tight leading-[1.1] drop-shadow-2xl px-2 pt-5 relative"
+            >
+              Goals Floors: India&apos;s <br />
+              <span className="relative inline-block mt-2">
+                {/* Intensified Multi-Layer Glow Effect */}
+                <span className="absolute -inset-x-20 inset-y-0 bg-amber-500/40 blur-[100px] rounded-full -z-10 animate-pulse"></span>
+                <span className="absolute -inset-x-10 inset-y-0 bg-yellow-400/20 blur-[40px] rounded-full -z-10 animate-pulse delay-700"></span>
 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-600 italic font-light pr-2 pb-1 md:whitespace-nowrap block sm:inline drop-shadow-[0_4px_40px_rgba(251,191,36,0.8)]">
-                Fastest Growing Wall Panels & Flooring Brand
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-600 italic font-light pr-2 pb-1 md:whitespace-nowrap block sm:inline drop-shadow-[0_4px_40px_rgba(251,191,36,0.8)]">
+                  Fastest Growing Wall Panels & Flooring Brand
+                </span>
               </span>
-            </span>
-          </motion.h1>
+            </motion.h1>
 
-          <motion.p
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
-            className="mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-4xl mx-auto font-light leading-relaxed mb-16 sm:mb-10 text-shadow-md"
-          >
-            Unmatched Quality in Wall Panels & Flooring | 90% Warranty Backed | 400+ Dealers | 2-Hour Express Material Supply in Gurgaon & NCR.
-          </motion.p>
+            <motion.p
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
+              className="mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-4xl mx-auto font-light leading-relaxed mb-12 sm:mb-10 pt-2 text-shadow-md"
+            >
+              Unmatched Quality in Wall Panels & Flooring | 90% Warranty Backed | 400+ Dealers | 2-Hour Express Material Supply in Gurgaon & NCR.
+            </motion.p>
+          </div>
 
           {/* CTAs */}
           <motion.div
             variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } } }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0 mt-auto"
           >
             <Link
               href="/contact"
@@ -286,7 +279,7 @@ export default function Home() {
             </Link>
 
             <Link
-              href="#categories"
+              href="/products"
               className="flex items-center gap-2 bg-black/40 backdrop-blur-md hover:bg-white/10 border border-white/30 hover:border-amber-500/50 text-white px-8 py-4 text-sm font-semibold uppercase tracking-widest transition-all duration-300 w-full sm:w-auto justify-center rounded-sm"
             >
               Explore Collection
@@ -296,7 +289,7 @@ export default function Home() {
       </section>
 
       {/* ================= STATS BAR ================= */}
-      <div className="bg-white dark:bg-slate-900 py-8 border-b border-gray-100 dark:border-gray-800 relative z-20 -mt-10 mx-4 sm:mx-8 lg:mx-auto max-w-6xl shadow-2xl dark:shadow-none transition-colors duration-300">
+      <div className="bg-white dark:bg-slate-900 py-8 border-b border-gray-100 dark:border-gray-800 relative z-20 -mt-8 sm:-mt-12 lg:-mt-14 mx-4 sm:mx-8 lg:mx-auto max-w-6xl shadow-[0_30px_70px_rgba(0,0,0,0.15)] dark:shadow-none transition-colors duration-300 rounded-sm">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 px-4 md:px-6">
           {[
             { label: "Premium Products", value: "2500+" },
@@ -318,7 +311,7 @@ export default function Home() {
       </div>
 
       {/* ================= CATEGORIES SECTION ================= */}
-      <section id="categories" className="py-10 bg-gray-50 dark:bg-slate-950 transition-colors duration-300">
+      <section id="categories" className="py-20 pt-36 bg-gray-50 dark:bg-slate-950 transition-colors duration-300 -mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-black text-gray-900 dark:text-white mb-4 tracking-tighter uppercase leading-[0.9]">
@@ -347,13 +340,13 @@ export default function Home() {
               <div className="relative h-[400px] w-full mb-10 lg:hidden group/img">
                 {/* Intensified Background Glow for Mobile */}
                 <div className="absolute -inset-6 bg-amber-500/30 blur-[60px] rounded-full opacity-60 animate-pulse" />
-                
+
                 <div className="relative h-full w-full rounded-sm overflow-hidden shadow-[0_0_50px_rgba(251,191,36,0.3)] z-10 transition-transform duration-500 group-hover/img:scale-[1.02]">
                   <Image
                     src="https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749408/Goals_Floors_Fluted_Panel.jpg"
-                    alt="Professional interior wood flooring and wall paneling installation in Gurugram and Delhi NCR - Goals Floors Architectural Excellence" 
-                    fill 
-                    sizes="100vw" 
+                    alt="Professional interior wood flooring and wall paneling installation in Gurugram and Delhi NCR - Goals Floors Architectural Excellence"
+                    fill
+                    sizes="100vw"
                     className="object-cover"
                   />
                 </div>
@@ -383,21 +376,21 @@ export default function Home() {
             {/* Right side large image - Hidden on mobile, shown on desktop */}
             <div className="relative h-full min-h-[600px] hidden lg:flex items-center justify-center">
               {/* Ultra-Bold Background Glow Effect */}
-              <motion.div 
-                animate={{ 
+              <motion.div
+                animate={{
                   scale: [1, 1.25, 1],
                   opacity: [0.4, 0.8, 0.4]
                 }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute inset-0 bg-amber-500/35 blur-[130px] rounded-full z-0"
               />
-              
+
               <div className="relative h-full w-full rounded-sm overflow-hidden shadow-[0_0_100px_rgba(251,191,36,0.3)] z-10 group/img-desktop overflow-hidden transition-all duration-700 hover:shadow-[0_0_120px_rgba(251,191,36,0.5)]">
                 <Image
                   src="https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749408/Goals_Floors_Fluted_Panel.jpg"
-                  alt="Professional interior wood flooring and wall paneling installation in Gurugram and Delhi NCR - Goals Floors Architectural Excellence" 
-                  fill 
-                  sizes="(max-width: 1024px) 100vw, 50vw" 
+                  alt="Professional interior wood flooring and wall paneling installation in Gurugram and Delhi NCR - Goals Floors Architectural Excellence"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover transition-transform duration-1000 group-hover/img-desktop:scale-110"
                 />
               </div>

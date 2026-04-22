@@ -123,9 +123,9 @@ export default function Navbar() {
                     <div>
                       <h3 className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Wall Panels (Indoor)</h3>
                       <ul className="space-y-3">
-                        <li><Link href="/products/wall-panel" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Wall Panels</Link></li>
-                        <li><Link href="/products/tokyo-charcoal-moulding" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Tokyo Moulding</Link></li>
+                        <li><Link href="/products/wall-panels" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Wall Panels</Link></li>
                         <li><Link href="/products/upfit-panels" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Upfit Panels</Link></li>
+                        <li><Link href="/products/tokyo-charcoal-moulding" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Tokyo Moulding</Link></li>
                         <li><Link href="/products/cobra-pu-stone" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Cobra PU Stone</Link></li>
                       </ul>
                     </div>
@@ -226,9 +226,9 @@ export default function Navbar() {
                   <div className="space-y-3">
                     <h4 className="text-[10px] font-bold text-amber-600 uppercase tracking-widest">Wall Panels (Indoor)</h4>
                     <div className="flex flex-col gap-2">
-                      <Link href="/products/wall-panel" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Wall Panels</Link>
-                      <Link href="/products/tokyo-charcoal-moulding" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Tokyo Moulding</Link>
+                      <Link href="/products/wall-panels" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Wall Panels</Link>
                       <Link href="/products/upfit-panels" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Upfit Panels</Link>
+                      <Link href="/products/tokyo-charcoal-moulding" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Tokyo Moulding</Link>
                       <Link href="/products/cobra-pu-stone" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Cobra PU Stone</Link>
                     </div>
                   </div>

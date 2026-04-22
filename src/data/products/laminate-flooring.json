@@ -142,6 +142,56 @@
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544853/Golden_Teak_Laminate_Flooring_installed_Image.png",
       "alt": "Golden Teak Laminate Flooring Installed on Site",
       "aspect": "landscape"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853840/light_walnut_laminate_flooring_installed_image.png",
+      "alt": "Light Walnut Laminate Flooring Installed in Modern Home",
+      "aspect": "landscape"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853836/Walnut_color_laminate_flooring_2.png",
+      "alt": "Premium Walnut Color Laminate Flooring Finish",
+      "aspect": "square"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853834/Grey_Color_Laminate_Flooring.png",
+      "alt": "Modern Grey Color Laminate Flooring Installation",
+      "aspect": "tall"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853833/Majestic_laminate_flooring_installed_image.png",
+      "alt": "Majestic Series Laminate Flooring Installed Project",
+      "aspect": "wide"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853828/Laminate_Flooring_In_Gurgaon.png",
+      "alt": "Laminate Flooring Project Execution in Gurgaon NCR",
+      "aspect": "portrait"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853826/Laminate_flooring_latest_design.png",
+      "alt": "Latest Design Trends in Laminate Wooden Flooring",
+      "aspect": "landscape"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853825/laminate_flooring_installed_in_bedroom.png",
+      "alt": "Luxury Bedroom with Installed Laminate Flooring",
+      "aspect": "square"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853819/laminate_flooring_design.png",
+      "alt": "Elegant Laminate Flooring Design Pattern",
+      "aspect": "tall"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853818/wooden_flooring_latest_shades.png",
+      "alt": "Latest Shades of Premium Wooden Laminate Flooring",
+      "aspect": "wide"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853816/wooden_flooring_design_for_bedroom.png",
+      "alt": "Modern Wooden Flooring Design for Bedroom Interior",
+      "aspect": "portrait"
     }
   ],
   "variants": [
@@ -208,6 +258,82 @@
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544837/Golden_Teak_Laminate_Flooring.png",
           "alt": "Golden Teak Laminate Flooring",
           "name": "Golden Teak"
+        }
+      ]
+    },
+    {
+      "name": "Majestic Laminate Series",
+      "price": "₹129",
+      "mrp": "₹215",
+      "discount": "40% off",
+      "unit": "per Sqft",
+      "details": {
+        "Thickness": "8mm",
+        "Grade": "AC-4",
+        "Plank Size": "1218 x 198 x 8mm",
+        "Box Packing": "25.95 sq ft (10 Planks)",
+        "Material": "HDF"
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853814/Blanche_Oak_783_Laminate_Flooring.png",
+          "alt": "Blanche Oak 783 Laminate Flooring",
+          "name": "Blanche Oak 783"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853812/Bran_Oak_782_Laminate_Flooring.png",
+          "alt": "Bran Oak 782 Laminate Flooring",
+          "name": "Bran Oak 782"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853810/Burlington_Oak_7812_Laminate_Flooring.png",
+          "alt": "Burlington Oak 7812 Laminate Flooring",
+          "name": "Burlington Oak 7812"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853808/Gunmetal_Hue_784_Laminate_Flooring.png",
+          "alt": "Gunmetal Hue 784 Laminate Flooring",
+          "name": "Gunmetal Hue 784"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853806/Ivory_Oak_788_Laminate_Flooring.png",
+          "alt": "Ivory Oak 788 Laminate Flooring",
+          "name": "Ivory Oak 788"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853804/Loft_Oak_789_Laminate_Flooring.png",
+          "alt": "Loft Oak 789 Laminate Flooring",
+          "name": "Loft Oak 789"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853802/Quattro_Walnut_785_Laminate_Flooring.png",
+          "alt": "Quattro Walnut 785 Laminate Flooring",
+          "name": "Quattro Walnut 785"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853800/Stretto_Walnut_786_Laminate_Flooring.png",
+          "alt": "Stretto Walnut 786 Laminate Flooring",
+          "name": "Stretto Walnut 786"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853798/Stripped_Rosewood_787_Laminate_Flooring.png",
+          "alt": "Stripped Rosewood 787 Laminate Flooring",
+          "name": "Stripped Rosewood 787"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853794/Stripped_Walnut_7811_Laminate_Flooring.png",
+          "alt": "Stripped Walnut 7811 Laminate Flooring",
+          "name": "Stripped Walnut 7811"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853793/Vita_Barrel_Oak_7814_Laminate_Flooring.png",
+          "alt": "Vita Barrel Oak 7814 Laminate Flooring",
+          "name": "Vita Barrel Oak 7814"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776853792/Wild_Walnut_781_Laminate_Flooring.png",
+          "alt": "Wild Walnut 781 Laminate Flooring",
+          "name": "Wild Walnut 781"
         }
       ]
     }

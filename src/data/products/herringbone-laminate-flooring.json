@@ -85,8 +85,8 @@
   ],
   "images": [
     {
-      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478769/grey_color_laminate_flooring.png",
-      "alt": "Premium Herringbone Flooring in Gurgaon Apartment"
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775411703/Luxury_Penthouse_Living_Room_with_Light_Oak_Herringbone_Flooring_Gurugram.jpg",
+      "alt": "Luxury Penthouse Living Room with Light Oak Herringbone Flooring Gurugram"
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478803/light_walnut_laminate_flooring_installed_image.png",
@@ -98,11 +98,7 @@
     }
   ],
   "installedImages": [
-    {
-      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775411703/Luxury_Penthouse_Living_Room_with_Light_Oak_Herringbone_Flooring_Gurugram.jpg",
-      "alt": "Luxury Penthouse Living Room with Light Oak Herringbone Flooring Gurugram",
-      "aspect": "portrait"
-    },
+    
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Modern_Master_Bedroom_with_Dark_Walnut_Herringbone_Floor_Delhi_NCR.jpg",
       "alt": "Modern Master Bedroom with Dark Walnut Herringbone Floor Delhi NCR",
@@ -137,6 +133,31 @@
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Modern_High-End_Kitchen_with_Grey_Herringbone_Flooring.jpg",
       "alt": "Modern High-End Kitchen with Grey Herringbone Flooring",
       "aspect": "square"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776850667/Zig_Zag_Wooden_Flooring.jpg",
+      "alt": "Premium Zig Zag Wooden Flooring Design Gurugram",
+      "aspect": "landscape"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776850667/Water_Resistant_Wooden_Flooring.jpg",
+      "alt": "Water Resistant Wooden Flooring for Modern Homes Delhi NCR",
+      "aspect": "square"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776850667/Herringbone_Flooring_Design.jpg",
+      "alt": "Elegant Herringbone Flooring Design Pattern",
+      "aspect": "tall"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776850666/Herringbone_Flooring_Grey_Color_installed_design.jpg",
+      "alt": "Modern Grey Color Herringbone Flooring Installed Design",
+      "aspect": "wide"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776850666/Goals_Floors_Wooden_Flooring.jpg",
+      "alt": "Goals Floors Premium Wooden Flooring Installation",
+      "aspect": "portrait"
     }
   ],
   "variants": [
