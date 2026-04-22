@@ -44,8 +44,8 @@ const desktopHeroImages = [
 
 const mobileHeroImages = [
   {
-    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1776858154/premium_wall_panels_in_gurugram.png",
-    alt: "Premium Wall Panels"
+    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775749444/Spc_FlooringInstalled_In_Bedrooom.png",
+    alt: "SPC Flooring Installed In Bedrooom"
   },
   {
     src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto,w_800/v1775749408/Baffle_Ceiling.png",
@@ -153,7 +153,7 @@ export default function Home() {
           })
         }}
       />      {/* ================= HERO SECTION ================= */}
-      <section suppressHydrationWarning className="relative min-h-[500px] sm:min-h-[600px] md:min-h-[65vh] flex items-center justify-center overflow-hidden">
+      <section suppressHydrationWarning className="relative min-h-[500px] sm:min-h-[600px] md:min-h-[85vh] flex items-center justify-center overflow-hidden">
         {/* Background Carousel */}
         <div className="absolute inset-0 z-0 bg-black overflow-hidden">
           {/* Desktop Images */}
@@ -224,47 +224,45 @@ export default function Home() {
               transition: { staggerChildren: 0.2 }
             }
           }}
-          className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-10 pb-20 md:pt-24 md:pb-40 flex flex-col items-center"
+          className="relative z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-10 pb-20 md:pt-24 md:pb-40"
         >
           {/* USP Badge */}
           <motion.div
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
-            className="sm:relative absolute top-10 left-1/2 -translate-x-1/2 sm:top-0 sm:left-0 sm:translate-x-0 inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-12 sm:mb-8 shadow-xl z-50 whitespace-nowrap w-fit"
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white mb-12 sm:mb-8 shadow-xl"
           >
             <Clock className="w-4 h-4 text-amber-500" />
             <span className="text-xs sm:text-sm font-medium tracking-widest uppercase shadow-sm">2-Hour Express Delivery in NCR</span>
           </motion.div>
 
-          <div className="flex flex-col items-center justify-center flex-1 py-20">
-            {/* Headline - Thinner, more elegant font */}
-            <motion.h1
-              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
-              className="text-3xl sm:text-4xl md:text-6xl font-semibold text-white mb-6 tracking-tight leading-[1.1] drop-shadow-2xl px-2 pt-5 relative"
-            >
-              Goals Floors: India&apos;s <br />
-              <span className="relative inline-block mt-2">
-                {/* Intensified Multi-Layer Glow Effect */}
-                <span className="absolute -inset-x-20 inset-y-0 bg-amber-500/40 blur-[100px] rounded-full -z-10 animate-pulse"></span>
-                <span className="absolute -inset-x-10 inset-y-0 bg-yellow-400/20 blur-[40px] rounded-full -z-10 animate-pulse delay-700"></span>
+          {/* Headline - Thinner, more elegant font */}
+          <motion.h1
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
+            className="text-3xl sm:text-4xl md:text-6xl font-semibold text-white mb-6 tracking-tight leading-[1.1] drop-shadow-2xl px-2 relative"
+          >
+            Goals Floors: India&apos;s <br />
+            <span className="relative inline-block mt-2">
+              {/* Intensified Multi-Layer Glow Effect */}
+              <span className="absolute -inset-x-20 inset-y-0 bg-amber-500/40 blur-[100px] rounded-full -z-10 animate-pulse"></span>
+              <span className="absolute -inset-x-10 inset-y-0 bg-yellow-400/20 blur-[40px] rounded-full -z-10 animate-pulse delay-700"></span>
 
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-600 italic font-light pr-2 pb-1 md:whitespace-nowrap block sm:inline drop-shadow-[0_4px_40px_rgba(251,191,36,0.8)]">
-                  Fastest Growing Wall Panels & Flooring Brand
-                </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-600 italic font-light pr-2 pb-1 md:whitespace-nowrap block sm:inline drop-shadow-[0_4px_40px_rgba(251,191,36,0.8)]">
+                Fastest Growing Wall Panels & Flooring Brand
               </span>
-            </motion.h1>
+            </span>
+          </motion.h1>
 
-            <motion.p
-              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
-              className="mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-4xl mx-auto font-light leading-relaxed mb-12 sm:mb-10 pt-2 text-shadow-md"
-            >
-              Unmatched Quality in Wall Panels & Flooring | 90% Warranty Backed | 400+ Dealers | 2-Hour Express Material Supply in Gurgaon & NCR.
-            </motion.p>
-          </div>
+          <motion.p
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
+            className="mt-6 text-base sm:text-lg md:text-xl text-gray-200 max-w-4xl mx-auto font-light leading-relaxed mb-12 sm:mb-10 text-shadow-md"
+          >
+            Unmatched Quality in Wall Panels & Flooring | 90% Warranty Backed | 400+ Dealers | 2-Hour Express Material Supply in Gurgaon & NCR.
+          </motion.p>
 
           {/* CTAs */}
           <motion.div
             variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } } }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0 mt-auto"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-0"
           >
             <Link
               href="/contact"
