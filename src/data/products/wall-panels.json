@@ -5,7 +5,7 @@
   "category": "wall-panels",
   "priceRange": "Luxury Series",
   "shortDescription": "Upgrade your interiors with premium wall panels in India. A+ grade PVC & WPC, extra-wide 12-inch PVC Panels, and India’s first fabric-texture PVC & Fluted Panels. Fast 2-hour delivery in Gurgaon & Delhi NCR.",
-  "longDescription": "Redefine your interior spaces with the finest collection of premium wall panels in India. Designed for architects, designers, and uncompromising homeowners, Goals Floors delivers an unmatched aesthetic experience. Whether you are seeking a minimalist backdrop or a striking focal point, our wall panels set a new standard for luxury and endurance.\n\n**Architectural-Grade WPC Wall Panels**\nEngineered for permanence, our solid Wood Plastic Composite (WPC) wall panels provide an authentic 3D architectural look. Completely waterproof and termite-proof, they are the definitive choice for modern living spaces, offering the warmth of wood without the maintenance.\n\n**Next-Generation PVC Wall Panels**\nExperience the evolution of interior cladding with our A+ Grade PVC wall panels. Crafted in an expansive 12-inch width for a seamless, grander appearance, these panels feature premium surface films that resist fading and wear, ensuring your walls remain immaculate for years.\n\n**India’s First Fabric Texture Panels**\nInnovation meets elegance. We proudly introduce India’s first fabric texture panels, available in both PVC and fluted profiles. This groundbreaking finish brings the soft, sophisticated touch of premium textiles to your walls, creating unparalleled acoustic and visual warmth.\n\n**Unrivaled Delivery & Pan-India Supply**\nTime is the ultimate luxury. For residential and commercial projects requiring wall panels in Gurgaon and Delhi NCR, we offer an exclusive 2-hour rapid delivery service. Beyond the capital region, our robust Pan-India supply network ensures that wherever you are, uncompromising quality arrives exactly when you need it.",
+  "longDescription": "Redefine your interiors with premium wall panels in India by Goals Floors. Designed for architects, interior designers, and modern homeowners, our panels combine luxury aesthetics with long-lasting durability. Choose from architectural-grade WPC wall panels that offer a natural 3D wood look with waterproof and termite-proof performance, or upgrade to A+ grade PVC wall panels available in extra-wide 12-inch designs for a seamless and elegant finish. We also introduce India’s first fabric texture wall panels, bringing a soft, sophisticated feel with enhanced acoustic comfort. Ideal for both residential and commercial spaces, our panels ensure low maintenance and high performance. Get fast 2-hour delivery in Gurgaon & Delhi NCR, along with reliable Pan-India supply for projects of any scale.",
   "features": [
     {
       "title": "Architectural Grade Durability",
@@ -139,11 +139,6 @@
       "aspect": "portrait"
     },
     {
-      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832078/Metallic_Fluted_Panel.jpg",
-      "alt": "Metallic Fluted Wall Panel architectural finish by Goals Floors",
-      "aspect": "portrait"
-    },
-    {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832079/Premium_Wall_Panels.jpg",
       "alt": "Premium Wall Panels for luxury living room backdrop by Goals Floors",
       "aspect": "portrait"
@@ -156,11 +151,6 @@
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832077/Pvc_Panel_Installed_in_Bedroom.jpg",
       "alt": "PVC Wall Panel installed in luxury bedroom behind headboard by Goals Floors",
-      "aspect": "landscape"
-    },
-    {
-      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832072/Pvc_Panel.jpg",
-      "alt": "Standard PVC Wall Panel installation by Goals Floors",
       "aspect": "landscape"
     },
     {
@@ -190,49 +180,9 @@
     }
   ],
   "variants": [
+    
     {
-      "name": "Premium 17mm Fluted Series",
-      "price": "₹499",
-      "mrp": "₹999",
-      "discount": "50% off",
-      "unit": "per panel",
-      "details": {
-        "Series": "17mm Heavy Series",
-        "Thickness": "17 MM",
-        "Dimensions": "2930 x 169 MM",
-        "Material": "A+ WPC",
-        "Quantity": "10 PC / Box (5.28 sqft / Panel)"
-      },
-      "images": [
-        {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Premium_Black_Color_WPC_Louvers.png",
-          "alt": "Premium Black Color 17mm WPC Louvers - Goals Floors",
-          "name": "Premium Black Louver"
-        },
-        {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477063/Pencilclad_Wpc_Louvers_2.png",
-          "alt": "Pencilclad 17mm WPC Louvers Project - Goals Floors",
-          "name": "Pencilclad Louver"
-        },
-        {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477066/Wpc_Fluted_Panel.png",
-          "alt": "17mm WPC Fluted Panel Architectural Finish - Goals Floors",
-          "name": "Fluted Panel Texture"
-        },
-        {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477069/Imageclad_Premium_Wpc_Louvers.png",
-          "alt": "Imageclad Premium 17mm WPC Louvers - Goals Floors",
-          "name": "Imageclad Louver"
-        },
-        {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477072/17mm_Wpc_Fluted_Panel.png",
-          "alt": "17mm WPC Fluted Panel Series - Goals Floors",
-          "name": "Premium Fluted Panel"
-        }
-      ]
-    },
-    {
-      "name": "Wood Series (FP 701 - 713)",
+      "name": "Primo Fluted Panel (FP 701 - 713)",
       "price": "₹550",
       "mrp": "₹1290",
       "discount": "57% off",
@@ -338,17 +288,22 @@
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_Copper_Mettalic.png",
           "alt": "Goals Floors Elegant Copper Metallic Fluted Panel",
           "name": "Copper Metallic"
+        }, 
+         
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832078/Metallic_Fluted_Panel.jpg",
+          "alt": "Metallic Fluted Wall Panel architectural finish by Goals Floors"
         }
       ]
     },
     {
-      "name": "Diff Fluted Design Series (FP 714 - 722)",
+      "name": "Elite Fluted Panels (FP 714 - 722)",
       "price": "₹600",
       "mrp": "₹1290",
       "discount": "53% off",
       "unit": "per panel",
       "details": {
-        "Series": "Diff Fluted Design",
+        "Series": "Fluted Design",
         "Thickness": "9 MM",
         "Dimensions": "2950 x 300 MM",
         "Weight": "3.2 kg / PC"
@@ -356,48 +311,89 @@
       "images": [
         {
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_FP_-_714.png",
-          "alt": "Goals Floors FP-714 Diff Fluted Design Premium Panel",
+          "alt": "Goals Floors FP-714 Fluted Design Premium Panel",
           "name": "FP-714"
         },
         {
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_FP_-_715.png",
-          "alt": "Goals Floors FP-715 Designer Diff Fluted Texture",
+          "alt": "Goals Floors FP-715 Designer Fluted Texture",
           "name": "FP-715"
         },
         {
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_FP_-_716.png",
-          "alt": "Goals Floors FP-716 Modern Diff Fluted Design",
+          "alt": "Goals Floors FP-716 Modern Fluted Design",
           "name": "FP-716"
         },
         {
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_FP_-_717.png",
-          "alt": "Goals Floors FP-717 Architectural Diff Fluted Finish",
+          "alt": "Goals Floors FP-717 Architectural Fluted Finish",
           "name": "FP-717"
         },
         {
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_FP_-_718.png",
-          "alt": "Goals Floors FP-718 Premium Diff Fluted Wall Panel",
+          "alt": "Goals Floors FP-718 Premium Fluted Wall Panel",
           "name": "FP-718"
         },
         {
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_FP_-_719.png",
-          "alt": "Goals Floors FP-719 Elegant Diff Fluted Design",
+          "alt": "Goals Floors FP-719 Elegant Fluted Design",
           "name": "FP-719"
         },
         {
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_FP_-_720.png",
-          "alt": "Goals Floors FP-720 Luxury Diff Fluted Texture",
+          "alt": "Goals Floors FP-720 Luxury Fluted Texture",
           "name": "FP-720"
         },
         {
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_FP_-_721.png",
-          "alt": "Goals Floors FP-721 Contemporary Diff Fluted Design",
+          "alt": "Goals Floors FP-721 Contemporary Fluted Design",
           "name": "FP-721"
         },
         {
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_FP_-_722.png",
-          "alt": "Goals Floors FP-722 Designer Series Diff Fluted Finish",
+          "alt": "Goals Floors FP-722 Designer Series Fluted Finish",
           "name": "FP-722"
+        }
+      ]
+    },
+    {
+      "name": "Premium 17mm Fluted Series",
+      "price": "₹499",
+      "mrp": "₹999",
+      "discount": "50% off",
+      "unit": "per panel",
+      "details": {
+        "Series": "17mm Heavy Series",
+        "Thickness": "17 MM",
+        "Dimensions": "2930 x 169 MM",
+        "Material": "A+ WPC",
+        "Quantity": "10 PC / Box (5.28 sqft / Panel)"
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Premium_Black_Color_WPC_Louvers.png",
+          "alt": "Premium Black Color 17mm WPC Louvers - Goals Floors",
+          "name": "Premium Black Louver"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477063/Pencilclad_Wpc_Louvers_2.png",
+          "alt": "Pencilclad 17mm WPC Louvers Project - Goals Floors",
+          "name": "Pencilclad Louver"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477066/Wpc_Fluted_Panel.png",
+          "alt": "17mm WPC Fluted Panel Architectural Finish - Goals Floors",
+          "name": "Fluted Panel Texture"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477069/Imageclad_Premium_Wpc_Louvers.png",
+          "alt": "Imageclad Premium 17mm WPC Louvers - Goals Floors",
+          "name": "Imageclad Louver"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477072/17mm_Wpc_Fluted_Panel.png",
+          "alt": "17mm WPC Fluted Panel Series - Goals Floors",
+          "name": "Premium Fluted Panel"
         }
       ]
     },

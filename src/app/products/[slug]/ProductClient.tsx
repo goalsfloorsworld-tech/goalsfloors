@@ -608,7 +608,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
               {product.installedImages.slice(0, 6).map((img, i) => (
                 <motion.div
                   key={`first-${i}`}
-                  className={`relative group cursor-zoom-in rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300 ${
+                  className={`relative group cursor-pointer rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300 ${
                     i === 0 ? "lg:col-start-1 lg:row-start-1 h-[150px] md:h-[200px] lg:h-auto" :
                     i === 1 ? "lg:col-start-1 lg:row-start-2 h-[150px] md:h-[200px] lg:h-auto" :
                     i === 2 ? "lg:col-start-2 lg:row-start-1 lg:row-span-2 h-full" :
@@ -649,10 +649,10 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                 {product.installedImages.slice(6).map((img, i) => (
                   <motion.div
                     key={`rest-${i}`}
-                    className="break-inside-avoid relative group cursor-zoom-in rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300"
+                    className="break-inside-avoid relative group cursor-pointer rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: i * 0.02 }}
+                    transition={{ duration: 0.3, delay: i * 0.01 }}
                     onClick={() => setFullscreenImage(img.url)}
                   >
                     <div className={`relative w-full ${

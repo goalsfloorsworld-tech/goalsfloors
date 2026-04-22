@@ -164,7 +164,7 @@ export default function Home() {
                 className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${i === desktopIndex ? "opacity-70" : "opacity-0"
                   }`}
                 style={{
-                  transform: i === desktopIndex ? "scale(1.05)" : "scale(1)",
+                  transform: "scale(1)",
                   transition: "opacity 1s ease-in-out, transform 5s linear",
                 }}
               >
@@ -188,7 +188,7 @@ export default function Home() {
                 className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${i === mobileIndex ? "opacity-70" : "opacity-0"
                   }`}
                 style={{
-                  transform: i === mobileIndex ? "scale(1.05)" : "scale(1)",
+                  transform: "scale(1)",
                   transition: "opacity 1s ease-in-out, transform 5s linear",
                 }}
               >
