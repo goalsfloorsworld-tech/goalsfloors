@@ -152,8 +152,8 @@ export default async function SingleBlogPage({
       </div>
       
       {/* Mobile Featured Image - Without border overlap for smaller screens */}
-      <div className="w-full relative sm:hidden">
-         <div className="aspect-[16/9] relative overflow-hidden bg-gray-100">
+      <div className="w-full relative sm:hidden px-4 py-3">
+         <div className="aspect-[16/9] relative overflow-hidden bg-gray-100 rounded-2xl">
           {imageUrl ? (
             <Image src={imageUrl} alt={imageAlt} fill priority className="object-cover" />
           ) : (
@@ -165,11 +165,10 @@ export default async function SingleBlogPage({
       {/* Article Content */}
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 md:mt-20">
         <div 
-          className="prose prose-lg md:prose-xl prose-stone dark:prose-invert max-w-none
+          className="wp-content prose prose-lg md:prose-xl prose-stone dark:prose-invert max-w-none
                      prose-headings:font-bold prose-headings:tracking-tight prose-a:text-amber-600 hover:prose-a:text-amber-700
                      prose-h2:text-black dark:prose-h2:text-white prose-h2:text-xl md:prose-h2:text-2xl prose-h2:font-bold prose-h2:tracking-tight
                      [&_h2_strong]:text-inherit
-                     prose-img:rounded-3xl prose-img:shadow-xl prose-img:border prose-img:border-gray-100 dark:prose-img:border-gray-800
                      prose-blockquote:border-l-4 prose-blockquote:border-amber-500 prose-blockquote:bg-gray-50 dark:prose-blockquote:bg-slate-900 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-2xl prose-blockquote:font-medium prose-blockquote:italic
                      prose-strong:text-black dark:prose-strong:text-amber-100"
           dangerouslySetInnerHTML={{ __html: post.content.rendered }}
