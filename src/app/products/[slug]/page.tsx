@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { notFound } from "next/navigation";
 import { getProductBySlug } from "@/lib/data";
 import ProductClient, { Product } from "./ProductClient";
 
@@ -10,16 +10,25 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!product) {
     return {
       title: "Product Not Found | Goals Floors",
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
   const title = `${product.title} | Premium B2B Supplier in NCR | Goals Floors`;
   const description = product.shortDescription;
+  const canonical = `/products/${slug}`;
 
   return {
     title,
     description,
+    alternates: {
+      canonical,
+    },
     openGraph: {
+      url: canonical,
       title,
       description,
       images: [product.images[0]?.url],
@@ -32,15 +41,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const product = getProductBySlug(slug) as Product | null;
 
   if (!product) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-slate-950 transition-colors duration-300">
-        <div className="text-center">
-          <h1 className="text-2xl font-medium text-gray-900 dark:text-white mb-2">Product Not Found</h1>
-          <Link href="/products" className="text-amber-600 dark:text-amber-500 hover:underline">Return to Catalog</Link>
-        </div>
-      </div>
-    );
+    notFound();
   }
 
-  return <ProductClient product={product} slug={slug} />;
+  return <ProductClient product={product} />;
 }

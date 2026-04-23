@@ -105,7 +105,7 @@ export default function Footer() {
                   <Mail className="w-4 h-4 text-amber-500" />
                 </div>
                 <a href="mailto:support@goalsfloors.com" className="text-gray-300 hover:text-amber-400 transition-colors font-medium">
-                 support@goalsfloors.com
+                  support@goalsfloors.com
                 </a>
               </li>
             </ul>

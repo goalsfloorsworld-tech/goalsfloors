@@ -26,9 +26,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const resolvedParams = await params;
   const post = await getPostData(resolvedParams.slug);
+  const canonical = `/blogs/${resolvedParams.slug}`;
   
   if (!post) {
-    return { title: "Article Not Found | Goals Floors" };
+    return {
+      title: "Article Not Found | Goals Floors",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
   }
 
   const plainExcerpt = post.excerpt.rendered.replace(/<[^>]*>?/gm, '');
@@ -36,6 +43,14 @@ export async function generateMetadata({
   return {
     title: `${post.title.rendered} | Goals Floors Insights`,
     description: plainExcerpt,
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      url: canonical,
+      title: `${post.title.rendered} | Goals Floors Insights`,
+      description: plainExcerpt,
+    },
   };
 }
 

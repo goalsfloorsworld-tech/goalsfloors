@@ -40,6 +40,11 @@ export interface Feature {
   description: string;
 }
 
+export interface BeforeAfterItem {
+  before: { url: string; alt: string };
+  after: { url: string; alt: string };
+}
+
 export interface InstallationStep {
   title: string;
   description?: string;
@@ -69,7 +74,13 @@ export interface Product {
   maintenance: string;
   faqs: FAQ[];
   images: { url: string; alt: string }[];
-  installedImages?: { url: string; alt: string; aspect?: string }[];
+  installedImages?: {
+    url: string;
+    alt: string;
+    aspect?: string;
+    beforeAfter?: BeforeAfterItem;
+  }[];
+  beforeAfter?: BeforeAfterItem[];
   variants?: Variant[];
   architectHeading?: string;
   architectSubheading?: string;
@@ -106,6 +117,100 @@ const AnimationStyles = () => (
     }
   ` }} />
 );
+
+const AbBadge = () => (
+  <div className="absolute top-3 right-3 z-20">
+    <Image
+      src="/A%26B.png"
+      alt="A/B compare available"
+      width={78}
+      height={36}
+      className="h-6 w-auto drop-shadow-sm"
+    />
+  </div>
+);
+
+const BeforeAfterDemo = ({
+  item
+}: {
+  item: BeforeAfterItem;
+}) => {
+  const [splitPercent, setSplitPercent] = useState(50);
+  const frameRef = useRef<HTMLDivElement>(null);
+
+  const updateSplitFromClientX = (clientX: number) => {
+    if (!frameRef.current) return;
+    const rect = frameRef.current.getBoundingClientRect();
+    const relativeX = clientX - rect.left;
+    const nextPercent = (relativeX / rect.width) * 100;
+    setSplitPercent(Math.max(0, Math.min(100, nextPercent)));
+  };
+
+  return (
+    <div
+      ref={frameRef}
+      className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-slate-900 shadow-sm select-none touch-none"
+      onPointerMove={(e) => {
+        if (e.buttons !== 1) return;
+        updateSplitFromClientX(e.clientX);
+      }}
+      onPointerDown={(e) => {
+        e.currentTarget.setPointerCapture(e.pointerId);
+        updateSplitFromClientX(e.clientX);
+      }}
+    >
+      <Image
+        src={item.before.url}
+        alt={item.before.alt}
+        fill
+        sizes="(max-width: 1024px) 100vw, 960px"
+        className="object-cover"
+      />
+
+      <div
+        className="absolute inset-0"
+        style={{ clipPath: `inset(0 0 0 ${splitPercent}%)` }}
+      >
+        <Image
+          src={item.after.url}
+          alt={item.after.alt}
+          fill
+          sizes="(max-width: 1024px) 100vw, 960px"
+          className="object-cover"
+        />
+      </div>
+
+      <div className="absolute top-3 left-3 flex gap-2 z-20">
+        <span className="px-2 py-1 rounded-sm bg-black/65 text-white text-[10px] font-bold uppercase tracking-wider">Before</span>
+        <span className="px-2 py-1 rounded-sm bg-white/90 text-gray-900 text-[10px] font-bold uppercase tracking-wider">After</span>
+      </div>
+
+      <AbBadge />
+
+      <div
+        className="absolute top-0 bottom-0 w-0.5 bg-white/95 shadow-[0_0_8px_rgba(0,0,0,0.5)] z-20"
+        style={{ left: `${splitPercent}%`, transform: "translateX(-50%)" }}
+      />
+
+      <div
+        className="absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border-2 border-white bg-black/55 backdrop-blur-sm text-white z-30 flex items-center justify-center text-xs font-bold"
+        style={{ left: `${splitPercent}%`, transform: "translate(-50%, -50%)" }}
+      >
+        ↔
+      </div>
+
+      <input
+        type="range"
+        min={0}
+        max={100}
+        value={splitPercent}
+        onChange={(e) => setSplitPercent(Number(e.target.value))}
+        aria-label="Before and after image comparison"
+        className="absolute inset-0 z-40 w-full h-full opacity-0 cursor-ew-resize"
+      />
+    </div>
+  );
+};
 
 const VariantCard = ({
   variant,
@@ -290,7 +395,7 @@ const VariantCard = ({
   );
 };
 
-export default function ProductClient({ product, slug }: { product: Product; slug: string }) {
+export default function ProductClient({ product }: { product: Product }) {
   const [selectedVariant, setSelectedVariant] = useState<Variant | null>(null);
   const [activeDrawerImageIndex, setActiveDrawerImageIndex] = useState(0);
 
@@ -365,6 +470,7 @@ export default function ProductClient({ product, slug }: { product: Product; slu
   const quickFeatures = getQuickFeatures(product);
 
   const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
+  const [comparePopupItem, setComparePopupItem] = useState<BeforeAfterItem | null>(null);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [activeStep, setActiveStep] = useState(0);
   const [isGalleryExpanded, setIsGalleryExpanded] = useState(false);
@@ -437,6 +543,8 @@ export default function ProductClient({ product, slug }: { product: Product; slu
     "brand": { "@type": "Brand", "name": "Goals Floors" },
     "offers": offersSchema
   };
+
+  const compareItems = (product.beforeAfter || []).slice(0, 2);
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 font-sans antialiased transition-colors duration-300">
@@ -592,6 +700,24 @@ export default function ProductClient({ product, slug }: { product: Product; slu
       {product.installedImages && product.installedImages.length > 0 && (
         <div className="bg-white dark:bg-slate-950 py-10 transition-colors duration-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {compareItems.length > 0 && (
+              <div className="mb-8 md:mb-10">
+                <div className="text-center mb-4 md:mb-5">
+                  <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.28em] text-amber-600">
+                    Before / After Demo
+                  </p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+                    Divider ko drag karke transformation compare kariye.
+                  </p>
+                </div>
+                <div className={compareItems.length === 1 ? "grid grid-cols-1 gap-4 md:gap-5 max-w-3xl mx-auto" : "grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-5"}>
+                  {compareItems.map((item, i) => (
+                    <BeforeAfterDemo key={`before-after-${i}`} item={item} />
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="text-center mb-10">
               <h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-600 mb-4 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 inline-block rounded-sm">
                 Project Gallery
@@ -620,7 +746,13 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  onClick={() => setFullscreenImage(img.url)}
+                  onClick={() => {
+                    if (img.beforeAfter) {
+                      setComparePopupItem(img.beforeAfter);
+                      return;
+                    }
+                    setFullscreenImage(img.url);
+                  }}
                 >
                   <div className="relative w-full h-full">
                     <Image
@@ -630,13 +762,16 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                       sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                       className="object-cover transform-gpu transition-transform duration-300 group-hover:scale-[1.03]"
                     />
+                    {img.beforeAfter && <AbBadge />}
                     {/* Overlay on hover */}
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="p-4 text-center">
                         <div className="w-10 h-10 rounded-full bg-white/25 flex items-center justify-center text-white mb-3 mx-auto">
                           <Plus className="w-6 h-6" />
                         </div>
-                        <p className="text-[10px] font-bold text-white uppercase tracking-widest leading-tight px-2">{img.alt}</p>
+                        <p className="text-[10px] font-bold text-white uppercase tracking-widest leading-tight px-2">
+                          {img.beforeAfter ? "Compare Before / After" : img.alt}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -653,7 +788,13 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: i * 0.01 }}
-                    onClick={() => setFullscreenImage(img.url)}
+                    onClick={() => {
+                      if (img.beforeAfter) {
+                        setComparePopupItem(img.beforeAfter);
+                        return;
+                      }
+                      setFullscreenImage(img.url);
+                    }}
                   >
                     <div className={`relative w-full ${
                       img.aspect === "portrait" ? "aspect-[3/4.5]" :
@@ -667,13 +808,16 @@ export default function ProductClient({ product, slug }: { product: Product; slu
                         sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                         className="object-cover transform-gpu transition-transform duration-300 group-hover:scale-[1.03]"
                       />
+                      {img.beforeAfter && <AbBadge />}
                       {/* Overlay on hover */}
                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <div className="p-4 text-center">
                           <div className="w-10 h-10 rounded-full bg-white/25 flex items-center justify-center text-white mb-3 mx-auto">
                             <Plus className="w-6 h-6" />
                           </div>
-                          <p className="text-[10px] font-bold text-white uppercase tracking-widest">{img.alt}</p>
+                          <p className="text-[10px] font-bold text-white uppercase tracking-widest">
+                            {img.beforeAfter ? "Compare Before / After" : img.alt}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -1254,6 +1398,30 @@ export default function ProductClient({ product, slug }: { product: Product; slu
               className="object-contain"
               priority
             />
+          </div>
+        </div>
+      )}
+
+      {/* ================= 12. A/B COMPARE POPUP ================= */}
+      {comparePopupItem && (
+        <div
+          className="fixed inset-0 z-[130] bg-black/95 flex items-center justify-center p-4 md:p-8 transition-all animate-in fade-in duration-300"
+          onClick={() => setComparePopupItem(null)}
+        >
+          <button
+            className="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all z-[140]"
+            onClick={(e) => {
+              e.stopPropagation();
+              setComparePopupItem(null);
+            }}
+            aria-label="Close compare popup"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          <div className="w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
+            <p className="text-center text-white/80 text-xs font-bold tracking-[0.28em] uppercase mb-4">A/B Compare</p>
+            <BeforeAfterDemo item={comparePopupItem} />
           </div>
         </div>
       )}

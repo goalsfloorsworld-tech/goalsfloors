@@ -4,10 +4,33 @@ import { ChevronLeft, ChevronRight, FileX } from "lucide-react";
 import SearchBar from "@/components/search-bar";
 import BlogCard, { BlogPost } from "@/components/blog-card";
 
-export const metadata: Metadata = {
-  title: "Insights & Industry News | Goals Floors",
-  description: "Explore the latest trends, insights, and expert knowledge in premium flooring, architectural ceilings, and facade solutions.",
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}): Promise<Metadata> {
+  const params = await searchParams;
+  const pageParam = typeof params.page === "string" ? parseInt(params.page, 10) : 1;
+  const queryParam = typeof params.q === "string" ? params.q.trim() : "";
+  const shouldNoIndex = Number.isFinite(pageParam) && pageParam > 1 || queryParam.length > 0;
+
+  return {
+    title: "Insights & Industry News | Goals Floors",
+    description: "Explore the latest trends, insights, and expert knowledge in premium flooring, architectural ceilings, and facade solutions.",
+    alternates: {
+      canonical: "/blogs",
+    },
+    robots: shouldNoIndex
+      ? {
+          index: false,
+          follow: true,
+        }
+      : {
+          index: true,
+          follow: true,
+        },
+  };
+}
 
 const API_BASE_URL = "https://lime-hummingbird-549929.hostingersite.com/wp-json/wp/v2";
 

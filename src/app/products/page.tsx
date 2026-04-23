@@ -6,6 +6,9 @@ import ProductsClient from "./ProductsClient";
 export const metadata: Metadata = {
   title: "Luxury Flooring & Wall Panel Collection - Goals Floors Gurugram",
   description: "Browse 2500+ premium products including WPC Louvers, Charcoal Panels, and Wooden Flooring. Ready stock for immediate dispatch in NCR.",
+  alternates: {
+    canonical: "/products",
+  },
 };
 
 export default async function AllProductsPage() {

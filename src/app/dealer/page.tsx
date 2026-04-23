@@ -6,6 +6,9 @@ import { TrustBar, WhyPartnerGrid, FAQAccordion } from "@/components/dealer/Deal
 export const metadata: Metadata = {
   title: "Become a Dealer - Partner with Goals Floors in Delhi NCR",
   description: "Join India's fastest-growing architectural surfaces brand. Exclusive dealership opportunities for premium interior and exterior solutions.",
+  alternates: {
+    canonical: "/dealer",
+  },
 };
 
 export default function DealerPage() {

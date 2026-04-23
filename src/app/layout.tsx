@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://goalsfloors.com"),
   title: "Goals Floors: India’s Fastest Growing Wall Panels & Flooring Brand",
   description: "Goals Floors: India's Fastest Growing Wall Panels & Flooring Brand. Unmatched Quality in Wall Panels & Flooring | 90% Warranty Backed | 400+ Dealers | 2-Hour Express Material Supply in Gurgaon & NCR.",
+  alternates: {
+    canonical: "/",
+  },
   keywords: ["Wall Panels", "Flooring", "WPC Louvers", "SPC Flooring", "Charcoal Moulding", "Delhi NCR", "Gurugram", "PU Stone"],
   openGraph: {
     type: "website",

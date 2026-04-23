@@ -100,7 +100,7 @@ export default function Home() {
             "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775573402/Goals_Floors_Premium_Wall_Panel.png",
             "description": "Goals Floors is India's fastest growing premium brand for Wall Panels, WPC Louvers, Charcoal Moulding, SPC Flooring, and Architectural Finishes in Delhi NCR, Gurugram, Noida, and Faridabad.",
             "telephone": "+91-7217644573",
-            "email": "goalsfloors@gmail.com",
+            "email": "support@goalsfloors.com",
             "priceRange": "₹₹",
             "currenciesAccepted": "INR",
             "paymentAccepted": "Cash, Credit Card, UPI, Bank Transfer",

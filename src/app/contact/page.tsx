@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { 
-  MapPin, Phone, Mail, Clock, ArrowRight, User, 
+import {
+  MapPin, Phone, Mail, Clock, ArrowRight, User,
   Building2, MessageSquare, ShieldCheck, CheckCircle2,
   ChevronDown, Plus, Minus, Instagram, MessageCircle
 } from "lucide-react";
@@ -19,7 +19,7 @@ interface Particle {
 
 // Infinite Confetti Component
 const ConfettiBurst = () => {
-  const [particles] = useState<Particle[]>(() => 
+  const [particles] = useState<Particle[]>(() =>
     Array.from({ length: 80 }).map((_, i) => ({
       id: i,
       left: Math.random() * 100,
@@ -47,7 +47,7 @@ const ConfettiBurst = () => {
         }
       `}</style>
       {particles.map(p => (
-        <div 
+        <div
           key={p.id}
           className="confetti-piece"
           style={{
@@ -70,7 +70,7 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="border border-gray-200 dark:border-gray-800 rounded-sm bg-gray-50 dark:bg-slate-900 overflow-hidden transition-all duration-300">
-      <button 
+      <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex cursor-pointer items-center justify-between gap-4 p-6 text-gray-900 dark:text-white font-bold hover:bg-amber-50 dark:hover:bg-amber-900/10 transition-colors text-left outline-none"
       >
@@ -80,7 +80,7 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
           <Minus className={`absolute inset-0 w-5 h-5 transition-all duration-300 text-amber-600 dark:text-amber-500 ${isOpen ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'}`} />
         </div>
       </button>
-      <div 
+      <div
         className={`grid transition-all duration-500 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
       >
         <div className="overflow-hidden">
@@ -143,7 +143,7 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
-    
+
     try {
       const response = await fetch("/api/send", {
         method: "POST",
@@ -179,11 +179,11 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-950 pt-0 transition-colors duration-300">
-      
+
       {/* Premium Minimal Header */}
       <div className="bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-gray-800 py-8 md:py-12 text-center relative overflow-hidden transition-colors duration-300">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-amber-50 dark:bg-amber-900/10 blur-[100px] rounded-full pointer-events-none"></div>
-        
+
         <div className="relative z-10 px-4">
           <h1 className="text-sm font-black text-amber-600 uppercase tracking-[0.3em] mb-4">
             Expert Consultation & Project Support
@@ -192,23 +192,21 @@ export default function ContactPage() {
             Let&apos;s Transform Your Vision Into <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 dark:from-white to-gray-500">Reality.</span>
           </h2>
           <p className="mt-6 text-gray-500 dark:text-gray-400 text-lg max-w-xl mx-auto leading-relaxed font-normal">
-            From premium WPC louvers to luxury laminate flooring, our architectural experts are ready to elevate your next project.
+            Book a free site visit in Gurugaon and Delhi NCR. Our experts will provide tailored recommendations for flooring and wall paneling solutions that perfectly match your project needs.
           </p>
         </div>
       </div>
 
       {/* The Split Screen Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-        <div className="flex flex-col-reverse lg:flex-row shadow-2xl dark:shadow-none rounded-sm overflow-hidden border border-gray-100 dark:border-gray-800 bg-white dark:bg-slate-900 relative transition-colors duration-300">
-          
-          {isSubmitted && <ConfettiBurst />}
+        <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] gap-4 md:gap-6 lg:gap-0 items-stretch">
 
           {/* ================= LEFT COLUMN: INFO & MAP ================= */}
-          <div className="w-full lg:w-[45%] bg-gray-950 text-white relative flex flex-col">
-            
-            <div className="p-10 md:p-8 relative z-10 flex-1">
+          <div className="order-2 lg:order-1 w-[calc(100%+2rem)] sm:w-full -mx-4 sm:mx-0 bg-gray-950 text-white relative flex flex-col rounded-none sm:rounded-sm overflow-hidden border-y border-gray-900 sm:border shadow-2xl dark:shadow-none">
+
+            <div className="px-10 pt-8 pb-8 md:p-8 relative z-10 flex-1">
               <h3 className="text-2xl md:text-3xl font-bold mb-6 tracking-tight">Visit Our Corporate Studio in Gurugram</h3>
-              
+
               <div className="space-y-8">
                 <div className="flex items-start gap-4 group">
                   <div className="w-12 h-12 bg-gray-900 border border-gray-800 rounded-sm flex items-center justify-center flex-shrink-0 group-hover:border-amber-500 transition-colors">
@@ -242,7 +240,7 @@ export default function ContactPage() {
                   <div>
                     <h4 className="text-sm font-bold uppercase tracking-widest mb-1">Email Us</h4>
                     <p className="text-gray-400 text-sm leading-relaxed font-normal">
-                      goalsfloors@gmail.com
+                      support@goalsfloors.com
                     </p>
                   </div>
                 </div>
@@ -251,29 +249,29 @@ export default function ContactPage() {
                 <div className="pt-8 mt-8 border-t border-gray-800">
                   <h4 className="text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-4">Connect With Us</h4>
                   <div className="flex items-center gap-4">
-                    
+
                     {/* WhatsApp Button */}
-                    <a 
-                      href="https://wa.me/917217644573" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <a
+                      href="https://wa.me/917217644573"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-2 px-4 py-2.5 bg-green-500/10 text-green-500 border border-green-500/20 rounded-sm hover:bg-green-500 hover:text-white transition-all text-xs font-bold uppercase tracking-widest"
                     >
                       <MessageCircle className="w-4 h-4" />
                       WhatsApp
                     </a>
-                    
+
                     {/* Instagram Button */}
-                    <a 
-                      href="https://www.instagram.com/goalsfloors" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <a
+                      href="https://www.instagram.com/goalsfloors"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex items-center gap-2 px-4 py-2.5 bg-gray-900 text-gray-400 border border-gray-800 rounded-sm hover:text-pink-500 hover:border-pink-500/50 transition-all text-xs font-bold uppercase tracking-widest"
                     >
                       <Instagram className="w-4 h-4" />
                       Instagram
                     </a>
-                    
+
                   </div>
                 </div>
 
@@ -298,8 +296,8 @@ export default function ContactPage() {
 
             {/* Google Map Replacement - FULL COLOR */}
             <div className="w-full h-72 border-t border-gray-800">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.223326176543!2d77.09584351500486!3d28.479814282478546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d190e2e81d48b%3A0x8b22502d83b68084!2sGoals%20Floors!5e0!3m2!1sen!2sin!4v1711100000000!5m2!1sen!2sin" 
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3506.223326176543!2d77.09584351500486!3d28.479814282478546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d190e2e81d48b%3A0x8b22502d83b68084!2sGoals%20Floors!5e0!3m2!1sen!2sin!4v1711100000000!5m2!1sen!2sin"
                 className="w-full h-full"
                 style={{ border: 0 }}
                 allowFullScreen={false}
@@ -310,13 +308,14 @@ export default function ContactPage() {
           </div>
 
           {/* ================= RIGHT COLUMN: FORM / SUCCESS STATE ================= */}
-          <div className="w-full lg:w-[55%] bg-white dark:bg-slate-900 p-6 md:p-10 flex flex-col justify-center min-h-[650px] relative z-10 transition-colors duration-300">
+          <div className="order-1 lg:order-2 w-full bg-white dark:bg-slate-900 p-6 md:p-10 flex flex-col justify-center min-h-[650px] rounded-sm border border-gray-100 dark:border-gray-800 shadow-2xl dark:shadow-none relative z-10 transition-colors duration-300">
+            {isSubmitted && <ConfettiBurst />}
             {!isSubmitted ? (
               <div className="animate-in fade-in slide-in-from-right-4 duration-500">
                 <div className="mb-10">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Request a Quote</h3>
                   <p className="text-gray-500 dark:text-gray-400 text-sm font-normal">Fill out the details below and our project manager will contact you within 2 business hours.</p>
-                  
+
                   {error && (
                     <div className="mt-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-600 dark:text-red-400 text-xs rounded-sm">
                       {error}
@@ -405,7 +404,7 @@ export default function ContactPage() {
                     {isSubmitting ? "Processing..." : "Submit Enquiry"}
                     {!isSubmitting && <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />}
                   </button>
-                  
+
                   <div className="flex items-center justify-center gap-2 text-xs text-gray-400 mt-4 font-normal">
                     <ShieldCheck className="w-4 h-4 text-amber-500" /> Your information is strictly confidential. We do not spam.
                   </div>
@@ -430,7 +429,7 @@ export default function ContactPage() {
                     <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-3 tracking-tight">
                       Request Secured, <span className="text-amber-600 dark:text-amber-500">{formData.name}</span>.
                     </h3>
-                    
+
                     <div className="w-16 h-[2px] bg-gray-100 dark:bg-gray-800 mx-auto my-6"></div>
 
                     <p className="text-gray-500 dark:text-gray-400 text-sm mb-8 leading-relaxed font-normal">
@@ -446,7 +445,7 @@ export default function ContactPage() {
                       <Clock className="w-6 h-6 text-amber-500 opacity-50" />
                     </div>
 
-                    <button 
+                    <button
                       onClick={() => { setIsSubmitted(false); setFormData({ name: "", phone: "", email: "", company: "", address: "", interest: "", message: "" }); }}
                       className="w-full border border-gray-200 dark:border-gray-700 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-gray-500 font-bold text-[10px] uppercase tracking-[0.2em] py-4 transition-all"
                     >
@@ -464,7 +463,7 @@ export default function ContactPage() {
       {/* ================= EXTENSION 1: THE CONSULTATION PROCESS (Dark/Light Theme) ================= */}
       <div className="bg-gray-50 dark:bg-slate-950 pt-16 pb-8 border-t border-gray-200 dark:border-gray-800 relative overflow-hidden transition-colors duration-300">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-amber-100/50 dark:bg-amber-900/10 blur-[120px] rounded-full pointer-events-none"></div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white tracking-tight mb-4">Our Signature Approach</h2>

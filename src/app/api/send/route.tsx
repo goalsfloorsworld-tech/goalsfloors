@@ -19,14 +19,14 @@ export async function POST(req: Request) {
       to: ['goalsfloors.world@gmail.com'],
       subject: `New Lead: ${name} - ${interest}`,
       react: (
-        <ContactEmail 
-          name={name} 
-          email={email} 
-          phone={phone} 
-          company={company} 
-          address={address} 
-          interest={interest} 
-          message={message} 
+        <ContactEmail
+          name={name}
+          email={email}
+          phone={phone}
+          company={company}
+          address={address}
+          interest={interest}
+          message={message}
         />
       ),
     });
