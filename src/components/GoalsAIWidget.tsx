@@ -129,14 +129,14 @@ export default function GoalsAIWidget() {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-            className="absolute bottom-12 md:bottom-24 right-0 w-[calc(100vw-48px)] md:w-[480px] h-[600px] md:h-[780px] max-h-[85vh] z-20 flex flex-col"
+            transition={{ type: "spring", damping: 25, stiffness: 200, mass: 0.5 }}
+            className="absolute bottom-12 md:bottom-16 right-0 w-[calc(100vw-48px)] md:w-[480px] h-[600px] md:h-[780px] max-h-[80vh] z-20 flex flex-col"
           >
             {/* Morphing Background */}
             <motion.div
               layoutId="ai-widget"
               className="absolute inset-0 bg-slate-950/95 backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_30px_100px_rgba(0,0,0,0.7)]"
-              transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+              transition={{ type: "spring", damping: 25, stiffness: 200, mass: 0.5 }}
             />
 
             {/* Content Container (Fixed Size/Coordinate System) */}
@@ -254,7 +254,7 @@ export default function GoalsAIWidget() {
               <motion.div
                 layoutId="ai-widget"
                 className="absolute inset-0 bg-amber-600 rounded-full shadow-[0_10px_30px_rgba(217,119,6,0.4)]"
-                transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+                transition={{ type: "spring", damping: 25, stiffness: 200, mass: 0.5 }}
               />
               
               <div className="absolute inset-0 bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full z-0" />

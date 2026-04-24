@@ -10,7 +10,8 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 export default function WhatsAppFloat() {
   const phoneNumber = "917217644573";
-  const whatsappUrl = `https://wa.me/${phoneNumber}`;
+  const defaultMessage = "Hi Goals Floors team, I want details for wall panels and flooring. Please assist me.";
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
 
   return (
     <div className="fixed bottom-[92px] md:bottom-6 right-6 z-[10001] whatsapp-float-container">

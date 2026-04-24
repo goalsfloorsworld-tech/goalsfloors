@@ -192,7 +192,7 @@ export default function ContactPage() {
             Let&apos;s Transform Your Vision Into <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 dark:from-white to-gray-500">Reality.</span>
           </h2>
           <p className="mt-6 text-gray-500 dark:text-gray-400 text-lg max-w-xl mx-auto leading-relaxed font-normal">
-            Book a free site visit in Gurugaon and Delhi NCR. Our experts will provide tailored recommendations for flooring and wall paneling solutions that perfectly match your project needs.
+            Book a free site visit in Gurugaon and Delhi NCR. Our experts will provide best recommendations for flooring and wall paneling solutions that perfectly match your project needs.
           </p>
         </div>
       </div>
@@ -252,7 +252,7 @@ export default function ContactPage() {
 
                     {/* WhatsApp Button */}
                     <a
-                      href="https://wa.me/917217644573"
+                      href={`https://wa.me/917217644573?text=${encodeURIComponent("Hi Goals Floors team, I am interested in your products. Please share details and price.")}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 px-4 py-2.5 bg-green-500/10 text-green-500 border border-green-500/20 rounded-sm hover:bg-green-500 hover:text-white transition-all text-xs font-bold uppercase tracking-widest"

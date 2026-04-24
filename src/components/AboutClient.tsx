@@ -57,7 +57,7 @@ const jsonLd = {
   "@type": "HomeAndConstructionBusiness",
   "name": "Goals Floors",
   "url": "https://www.goalsfloors.com",
-  "logo": "https://www.goalsfloors.com/images/goals-floors-logo.svg",
+  "logo": "https://www.goalsfloors.com/images/goals%20floors%20logo.png",
   "description": "Goals Floors is India's premier B2B importer and distributor of luxury interior surfaces, wall panels, and flooring. Known for industry-first 120-minute express dispatch in Delhi NCR.",
   "founder": {
     "@type": "Person",

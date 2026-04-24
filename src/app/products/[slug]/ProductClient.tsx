@@ -707,7 +707,7 @@ export default function ProductClient({ product }: { product: Product }) {
                     Before / After Demo
                   </p>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                    Divider ko drag karke transformation compare kariye.
+                    Compare the difference by dragging the slider
                   </p>
                 </div>
                 <div className={compareItems.length === 1 ? "grid grid-cols-1 gap-4 md:gap-5 max-w-3xl mx-auto" : "grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-5"}>
@@ -1360,7 +1360,7 @@ export default function ProductClient({ product }: { product: Product }) {
                     Enquire for Project
                   </Link>
                   <a
-                    href={`https://wa.me/917217644573?text=Hi, I am interested in ${product.title} - ${selectedVariant.name}`}
+                    href={`https://wa.me/917217644573?text=${encodeURIComponent(`Hi Goals Floors team, I am interested in ${product.title} (${selectedVariant.name}). Please share price and availability.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full bg-green-600 hover:bg-green-700 text-white font-bold text-center uppercase tracking-widest py-4 rounded-sm transition-all flex items-center justify-center gap-2 shadow-lg"

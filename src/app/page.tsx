@@ -96,7 +96,7 @@ export default function Home() {
             "name": "Goals Floors",
             "alternateName": "Goals Floors India",
             "url": "https://goalsfloors.com",
-            "logo": "https://goalsfloors.com/icon.svg",
+            "logo": "https://goalsfloors.com/images/goals%20floors%20logo.png",
             "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775573402/Goals_Floors_Premium_Wall_Panel.png",
             "description": "Goals Floors is India's fastest growing premium brand for Wall Panels, WPC Louvers, Charcoal Moulding, SPC Flooring, and Architectural Finishes in Delhi NCR, Gurugram, Noida, and Faridabad.",
             "telephone": "+91-7217644573",
