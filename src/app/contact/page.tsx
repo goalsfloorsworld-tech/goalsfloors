@@ -6,6 +6,8 @@ import {
   Building2, MessageSquare, ShieldCheck, CheckCircle2,
   ChevronDown, Plus, Minus, Instagram, MessageCircle
 } from "lucide-react";
+import { useSearchParams } from 'next/navigation';
+import { useEffect, Suspense } from "react";
 
 interface Particle {
   id: number;
@@ -93,7 +95,7 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
   );
 };
 
-export default function ContactPage() {
+function ContactPageContent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -106,6 +108,21 @@ export default function ContactPage() {
     interest: "",
     message: ""
   });
+
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const interest = searchParams.get('interest');
+    const message = searchParams.get('message');
+    
+    if (interest || message) {
+      setFormData(prev => ({
+        ...prev,
+        interest: interest || prev.interest,
+        message: message || prev.message
+      }));
+    }
+  }, [searchParams]);
 
   const faqs = [
     {
@@ -331,7 +348,7 @@ export default function ContactPage() {
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                           <User className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                         </div>
-                        <input name="name" value={formData.name} onChange={handleInputChange} type="text" required className={getInputClass(formData.name)} placeholder="John Doe" />
+                        <input name="name" value={formData.name} onChange={handleInputChange} type="text" required className={getInputClass(formData.name)} placeholder="John Doe" autoComplete="name" />
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -340,7 +357,7 @@ export default function ContactPage() {
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                           <Phone className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                         </div>
-                        <input name="phone" value={formData.phone} onChange={handleInputChange} type="tel" required className={getInputClass(formData.phone)} placeholder="+91 XXXXX XXXXX" />
+                        <input name="phone" value={formData.phone} onChange={handleInputChange} type="tel" required className={getInputClass(formData.phone)} placeholder="+91 XXXXX XXXXX" autoComplete="tel" />
                       </div>
                     </div>
                   </div>
@@ -352,7 +369,7 @@ export default function ContactPage() {
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                           <Mail className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                         </div>
-                        <input name="email" value={formData.email} onChange={handleInputChange} type="email" className={getInputClass(formData.email)} placeholder="john@example.com" />
+                        <input name="email" value={formData.email} onChange={handleInputChange} type="email" className={getInputClass(formData.email)} placeholder="john@example.com" autoComplete="email" />
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -361,7 +378,7 @@ export default function ContactPage() {
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                           <Building2 className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                         </div>
-                        <input name="company" value={formData.company} onChange={handleInputChange} type="text" className={getInputClass(formData.company)} placeholder="Architecture Studio" />
+                        <input name="company" value={formData.company} onChange={handleInputChange} type="text" className={getInputClass(formData.company)} placeholder="Architecture Studio" autoComplete="organization" />
                       </div>
                     </div>
                   </div>
@@ -372,7 +389,7 @@ export default function ContactPage() {
                       <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                         <MapPin className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                       </div>
-                      <input name="address" value={formData.address} onChange={handleInputChange} type="text" required className={getInputClass(formData.address)} placeholder="Complete Site Address or City" />
+                      <input name="address" value={formData.address} onChange={handleInputChange} type="text" required className={getInputClass(formData.address)} placeholder="Complete Site Address or City" autoComplete="street-address" />
                     </div>
                   </div>
 
@@ -507,6 +524,14 @@ export default function ContactPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading...</div>}>
+      <ContactPageContent />
+    </Suspense>
   );
 }
 

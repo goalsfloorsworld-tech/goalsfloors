@@ -1,0 +1,24 @@
+{
+  "id": "spc-oak",
+  "name": "Oak Wood SPC Flooring",
+  "categoryName": "Flooring",
+  "description": "Durable and waterproof SPC flooring with a natural Oak wood finish. Combines the beauty of natural wood with the invincible strength of stone plastic composite.",
+  "priceInfo": "Starting from ₹120/sq.ft",
+  "features": [
+    "100% Waterproof Core",
+    "Scratch & Stain Resistant",
+    "Click-Lock Easy Installation",
+    "Anti-skid Surface"
+  ],
+  "seo": {
+    "title": "Oak SPC Flooring - Waterproof & Durable | Goals Floors",
+    "description": "Upgrade your space with Oak Wood SPC Flooring. Scratch-resistant, waterproof, and long-lasting flooring solution."
+  },
+  "images": [
+    {
+      "url": "https://placehold.co/600x400/png",
+      "alt": "SPC Oak Sample",
+      "name": "Oak-01"
+    }
+  ]
+}
