@@ -9,6 +9,7 @@ const Footer = dynamic(() => import("@/components/Footer"));
 
 import { Inter, Roboto } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 const roboto = Roboto({ 
@@ -69,6 +70,29 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       {/* suppressHydrationWarning is essential for dark mode hydration */}
       <body className={`${inter.className} ${roboto.variable} antialiased bg-white dark:bg-slate-950 pt-14`}>
+        <Script id="meta-pixel" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '743951148712714');
+            fbq('track', 'PageView');
+          `}
+        </Script>
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=743951148712714&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
