@@ -30,8 +30,7 @@ export default function WhatsAppFloat() {
       // Capitalize
       productName = productName.replace(/\b\w/g, l => l.toUpperCase());
       
-      const pageUrl = window.location.origin + pathname;
-      setMessage(`Hi Goals Floors team, I am interested in "${productName}". Please share details and price. (Ref: ${pageUrl})`);
+      setMessage(`Hi Goals Floors team, I am interested in "${productName}". Please share details and price.`);
     } else {
       // Default message for all other pages
       setMessage("Hi Goals Floors team, I want details for wall panels and flooring. Please assist me.");
