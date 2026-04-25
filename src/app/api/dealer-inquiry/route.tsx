@@ -88,7 +88,12 @@ export async function POST(req: Request) {
             email,
             phone,
             company,
-            gstNumber
+            gstNumber,
+            city,
+            state,
+            businessType,
+            turnover,
+            message: finalMessage
           }),
         });
       } catch (sheetError) {
