@@ -75,6 +75,27 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: error.message }, { status: 400 });
     }
 
+    // --- Send Data to Google Sheets ---
+    if (process.env.GOOGLE_DEALER_SCRIPT_URL) {
+      try {
+        await fetch(process.env.GOOGLE_DEALER_SCRIPT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            company,
+            gstNumber
+          }),
+        });
+      } catch (sheetError) {
+        console.error('Google Sheets Dealer Error:', sheetError);
+      }
+    }
+
     return NextResponse.json({ success: true, data });
   } catch (error) {
     console.error("Internal Server Error:", error);

@@ -153,6 +153,14 @@ function ContactPageContent() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+    
+    if (name === "phone") {
+      // Keep only digits and limit to 10 characters
+      const cleaned = value.replace(/\D/g, "").slice(0, 10);
+      setFormData(prev => ({ ...prev, [name]: cleaned }));
+      return;
+    }
+
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
@@ -160,6 +168,12 @@ function ContactPageContent() {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
+
+    if (formData.phone.length !== 10) {
+      setError("Please enter a valid 10-digit phone number.");
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       const response = await fetch("/api/send", {
@@ -209,7 +223,7 @@ function ContactPageContent() {
             Let&apos;s Transform Your Vision Into <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 dark:from-white to-gray-500">Reality.</span>
           </h2>
           <p className="mt-6 text-gray-500 dark:text-gray-400 text-lg max-w-xl mx-auto leading-relaxed font-normal">
-            Book a free site visit in Gurugaon and Delhi NCR. Our experts will provide best recommendations for flooring and wall paneling solutions that perfectly match your project needs.
+            Book a free site visit in Gurugaon and Delhi NCR.
           </p>
         </div>
       </div>
@@ -357,7 +371,7 @@ function ContactPageContent() {
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                           <Phone className="h-4 w-4 text-gray-400 dark:text-gray-500" />
                         </div>
-                        <input name="phone" value={formData.phone} onChange={handleInputChange} type="tel" required className={getInputClass(formData.phone)} placeholder="+91 XXXXX XXXXX" autoComplete="tel" />
+                        <input name="phone" value={formData.phone} onChange={handleInputChange} type="tel" required className={getInputClass(formData.phone)} placeholder="10-digit mobile number" autoComplete="tel" />
                       </div>
                     </div>
                   </div>

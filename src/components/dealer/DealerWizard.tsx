@@ -34,7 +34,7 @@ export default function DealerWizard() {
   });
 
   // --- Step Validation ---
-  const isStep1Valid = formData.name && formData.email && formData.phone;
+  const isStep1Valid = formData.name && formData.email && formData.phone.length === 10;
   const isStep2Valid = formData.company && formData.city && formData.state && formData.businessType && formData.turnover && formData.gstNumber;
   const isStep3Valid = !!formData.businessCardBase64;
 
@@ -58,6 +58,14 @@ export default function DealerWizard() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+
+    if (name === "phone") {
+      // Keep only digits and limit to 10 characters
+      const cleaned = value.replace(/\D/g, "").slice(0, 10);
+      setFormData(prev => ({ ...prev, [name]: cleaned }));
+      return;
+    }
+
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 

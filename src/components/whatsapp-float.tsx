@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" className={className} fill="currentColor">
@@ -10,8 +12,33 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 export default function WhatsAppFloat() {
   const phoneNumber = "917217644573";
-  const defaultMessage = "Hi Goals Floors team, I want details for wall panels and flooring. Please assist me.";
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(defaultMessage)}`;
+  const pathname = usePathname();
+  const [message, setMessage] = useState("Hi Goals Floors team, I want details for wall panels and flooring. Please assist me.");
+
+  useEffect(() => {
+    if (!pathname) return;
+
+    // Only apply dynamic messages to individual product/variant pages
+    const isProductSlugPage = 
+      (pathname.startsWith('/products/') && pathname !== '/products' && pathname !== '/products/') ||
+      (pathname.startsWith('/multiverse/') && pathname !== '/multiverse' && pathname !== '/multiverse/');
+
+    if (isProductSlugPage) {
+      const parts = pathname.split('/').filter(Boolean);
+      let productName = parts[parts.length - 1];
+      productName = decodeURIComponent(productName).replace(/-/g, ' ');
+      // Capitalize
+      productName = productName.replace(/\b\w/g, l => l.toUpperCase());
+      
+      const pageUrl = window.location.origin + pathname;
+      setMessage(`Hi Goals Floors team, I am interested in "${productName}". Please share details and price. (Ref: ${pageUrl})`);
+    } else {
+      // Default message for all other pages
+      setMessage("Hi Goals Floors team, I want details for wall panels and flooring. Please assist me.");
+    }
+  }, [pathname]);
+
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   return (
     <div className="fixed bottom-[92px] md:bottom-6 right-6 z-[10001] whatsapp-float-container">
@@ -32,7 +59,7 @@ export default function WhatsAppFloat() {
 
           {/* === FIXED PULSE === */}
           <motion.div
-            animate={{ 
+            animate={{
               scale: [1, 2.2],
               opacity: [0.6, 0]
             }}

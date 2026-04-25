@@ -36,6 +36,31 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: false, error }, { status: 400 });
     }
 
+    // Google Sheets Integration
+    // Send data to Google Apps Script Web App
+    if (process.env.GOOGLE_SCRIPT_URL) {
+      try {
+        await fetch(process.env.GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            phone,
+            company,
+            address,
+            interest,
+            message
+          }),
+        });
+      } catch (sheetError) {
+        console.error('Google Sheets Error:', sheetError);
+        // We log the error but don't fail the response since email was sent successfully
+      }
+    }
+
     return NextResponse.json({ success: true, data });
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : "Internal Server Error";
