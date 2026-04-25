@@ -61,6 +61,21 @@ export const metadata: Metadata = {
 
 import SmoothScrolling from "@/components/SmoothScrolling";
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Goals Floors",
+  "url": "https://goalsfloors.com",
+  "logo": "https://goalsfloors.com/icon.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-7217644573",
+    "contactType": "sales",
+    "areaServed": "IN",
+    "availableLanguage": ["English", "Hindi"]
+  }
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -68,6 +83,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
       {/* suppressHydrationWarning is essential for dark mode hydration */}
       <body className={`${inter.className} ${roboto.variable} antialiased bg-white dark:bg-slate-950 pt-14`}>
         <Script id="meta-pixel" strategy="afterInteractive">
