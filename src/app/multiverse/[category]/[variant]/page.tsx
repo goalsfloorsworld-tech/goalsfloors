@@ -281,6 +281,26 @@ export default async function MultiverseVariantPage({ params }: { params: Promis
                   </div>
                 </div>
               )}
+
+              {/* 🔗 Related Links (SEO Booster) */}
+              {data.relatedLinks && data.relatedLinks.length > 0 && (
+                <div className="bg-slate-50 dark:bg-zinc-900/50 p-8 rounded-3xl border border-slate-200 dark:border-zinc-800 transition-colors duration-300 mt-4">
+                  <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-gray-100 flex items-center gap-2">
+                    <span className="text-emerald-500">🔗</span> Related Products
+                  </h3>
+                  <div className="flex flex-wrap gap-4">
+                    {data.relatedLinks.map((link: any, idx: number) => (
+                      <Link
+                        key={idx}
+                        href={link.url}
+                        className="bg-white dark:bg-zinc-800 text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 border border-gray-200 dark:border-zinc-700 px-5 py-3 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-sm font-semibold"
+                      >
+                        {link.title}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

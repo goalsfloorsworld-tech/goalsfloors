@@ -1,5 +1,5 @@
 {
-  "id": "primo",
+  "id": "primo-12-inch-pvc-panel",
   "name": "Primo Wall Panels",
   "categoryName": "Wall Panels",
   "description": "Primo PVC Wall Panels by Goals Floors are premium 12-inch interior wall panels designed for modern Indian homes and commercial spaces. These panels offer a seamless, waterproof, and termite-proof solution for upgrading walls without paint or polish. Ideal for living rooms, TV units, offices, and damp walls, Primo panels combine aesthetic design with long-lasting durability. Available in multiple textures and wood finishes, they provide a luxury look at an affordable price in India.",
@@ -291,6 +291,16 @@
     {
       "question": "Does it look like real wood?",
       "answer": "Yes, our Classic Wood series features hyper-realistic architectural films that mimic the exact grain, texture, and warmth of natural timber without any of the maintenance drawbacks."
+    }
+  ],
+  "relatedLinks": [
+    {
+      "title": "Elite 12 Inch Fluted Panel",
+      "url": "/multiverse/wall-panels/elite-12-inch-fluted-panel"
+    },
+    {
+      "title": "Metallic Fluted Wall Panels",
+      "url": "/multiverse/wall-panels/metallic-fluted-panel"
     }
   ]
 }
