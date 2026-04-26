@@ -37,11 +37,12 @@ export default function BlogCard({ post, index }: { post: BlogPost; index: numbe
   const readTime = Math.max(1, Math.ceil(wordCount / 200));
 
   // Date formatting
-  const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
+  const formattedDate = new Intl.DateTimeFormat("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
-  });
+    timeZone: "UTC",
+  }).format(new Date(post.date));
 
   return (
     <motion.article

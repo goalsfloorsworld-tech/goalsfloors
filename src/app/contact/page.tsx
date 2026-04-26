@@ -19,17 +19,22 @@ interface Particle {
   borderRadius: string;
 }
 
+function seededValue(seed: number) {
+  const x = Math.sin(seed * 9999) * 10000;
+  return x - Math.floor(x);
+}
+
 // Infinite Confetti Component
 const ConfettiBurst = () => {
   const [particles] = useState<Particle[]>(() =>
     Array.from({ length: 80 }).map((_, i) => ({
       id: i,
-      left: Math.random() * 100,
-      delay: Math.random() * 5,
-      size: Math.random() * 8 + 4,
-      color: ['#f59e0b', '#fbbf24', '#d97706', '#fef3c7'][Math.floor(Math.random() * 4)],
-      duration: Math.random() * 3 + 4,
-      borderRadius: Math.random() > 0.5 ? '50%' : '2px'
+      left: seededValue(i + 1) * 100,
+      delay: seededValue(i + 101) * 5,
+      size: seededValue(i + 201) * 8 + 4,
+      color: ['#f59e0b', '#fbbf24', '#d97706', '#fef3c7'][Math.floor(seededValue(i + 301) * 4)],
+      duration: seededValue(i + 401) * 3 + 4,
+      borderRadius: seededValue(i + 501) > 0.5 ? '50%' : '2px'
     }))
   );
 

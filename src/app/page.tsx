@@ -2,20 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
+import Counter from "@/components/Counter";
+import Testimonials from "@/components/Testimonials";
+import BrandMarquee from "@/components/BrandMarquee";
+import CategoryFlipCards from "@/components/home/CategoryFlipCards";
+import GetAQuoteMonolith from "@/components/home/GetAQuoteMonolith";
 import {
   motion,
   AnimatePresence,
 } from "framer-motion";
 import { ArrowRight, Clock, ShieldCheck, Trophy, Truck, Users, CheckCircle2 } from "lucide-react";
-
-// Dynamically import heavy components below the fold
-const Counter = dynamic(() => import("@/components/Counter"), { ssr: false });
-const Testimonials = dynamic(() => import("@/components/Testimonials"), { ssr: false });
-const BrandMarquee = dynamic(() => import("@/components/BrandMarquee"), { ssr: false });
-const CategoryFlipCards = dynamic(() => import("@/components/home/CategoryFlipCards"), { ssr: false });
-const GetAQuoteMonolith = dynamic(() => import("@/components/home/GetAQuoteMonolith"), { ssr: false });
 
 
 

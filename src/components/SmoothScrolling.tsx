@@ -4,7 +4,7 @@ import { ReactLenis } from 'lenis/react';
 import React, { useEffect, useState } from 'react';
 
 export default function SmoothScrolling({ children }: { children: React.ReactNode }) {
-  const [isMobile, setIsMobile] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     // Disable smooth scrolling on mobile to reduce main-thread work and TBT
@@ -14,19 +14,15 @@ export default function SmoothScrolling({ children }: { children: React.ReactNod
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  if (isMobile) {
-    return <>{children}</>;
-  }
-
   return (
     <ReactLenis 
       root 
       options={{ 
         lerp: 0.1, // Smoothness (0 to 1)
         duration: 1.5, // Scroll duration
-        smoothWheel: true,
-        wheelMultiplier: 1.1,
-        touchMultiplier: 2,
+        smoothWheel: !isMobile,
+        wheelMultiplier: isMobile ? 1 : 1.1,
+        touchMultiplier: isMobile ? 1 : 2,
         infinite: false,
       }}
     >

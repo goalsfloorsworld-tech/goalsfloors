@@ -90,7 +90,7 @@ export default function RootLayout({
         />
       </head>
       {/* suppressHydrationWarning is essential for dark mode hydration */}
-      <body className={`${inter.className} ${roboto.variable} antialiased bg-white dark:bg-slate-950 pt-14`}>
+      <body suppressHydrationWarning className={`${inter.className} ${roboto.variable} antialiased bg-white dark:bg-slate-950 pt-14`}>
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
@@ -120,15 +120,15 @@ export default function RootLayout({
           enableSystem={false}
         >
           <SmoothScrolling>
-            <div className="relative overflow-clip">
+            <div className="relative">
               <Navbar />
               <main className="min-h-screen">
                 {children}
               </main>
               <Footer />
-              <FloatingWidgets />
             </div>
           </SmoothScrolling>
+          <FloatingWidgets />
         </ThemeProvider>
       </body>
       <GoogleAnalytics gaId="G-6Z28W9Y8PY" />
