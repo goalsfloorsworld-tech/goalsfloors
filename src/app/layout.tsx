@@ -52,9 +52,8 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/icon.png', type: 'image/png' },
-      { url: '/favicon.ico', sizes: 'any' },
     ],
-    shortcut: '/favicon.ico',
+    shortcut: '/icon.png',
     apple: '/apple-icon.png',
   },
 };
@@ -66,7 +65,7 @@ const organizationSchema = {
   "@type": "Organization",
   "name": "Goals Floors",
   "url": "https://goalsfloors.com",
-  "logo": "https://goalsfloors.com/icon.png",
+  "logo": "https://goalsfloors.com/images/goals%20floors%20logo.png",
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+91-7217644573",

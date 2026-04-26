@@ -143,23 +143,13 @@ export default async function SingleBlogPage({
             />
           ) : (
             <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-gray-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center">
-              {/* Light Mode Logo */}
               <Image
-                src="/images/goals floors logo.svg"
+                src="/images/goals floors logo.png"
                 alt="Goals Floors"
                 width={200}
                 height={60}
                 priority
-                className="opacity-40 block dark:hidden object-contain"
-              />
-              {/* Dark Mode Logo */}
-              <Image
-                src="/images/goals-floors-logo-white.svg"
-                alt="Goals Floors"
-                width={200}
-                height={60}
-                priority
-                className="opacity-20 hidden dark:block object-contain"
+                className="opacity-30 object-contain dark:invert"
               />
             </div>
           )}

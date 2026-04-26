@@ -51,38 +51,9 @@ const scaleIn = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } }
 };
 
-// SEO Schema Markup for Local Business
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
-  "name": "Goals Floors",
-  "url": "https://www.goalsfloors.com",
-  "logo": "https://www.goalsfloors.com/images/goals%20floors%20logo.png",
-  "description": "Goals Floors is India's premier B2B importer and distributor of luxury interior surfaces, wall panels, and flooring. Known for industry-first 120-minute express dispatch in Delhi NCR.",
-  "founder": {
-    "@type": "Person",
-    "name": "Shakti FTN"
-  },
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Sikanderpur",
-    "addressLocality": "Gurugram",
-    "addressRegion": "Haryana",
-    "addressCountry": "IN"
-  },
-  "areaServed": ["Gurugram", "Delhi", "Noida", "NCR"],
-  "priceRange": "$$"
-};
-
 export default function AboutClient() {
   return (
     <main className="min-h-screen bg-white dark:bg-slate-950 font-sans antialiased selection:bg-amber-500/30">
-
-      {/* Inject SEO Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
 
       {/* ================= 1. DENSE HERO SECTION ================= */}
       <header className="relative py-10 overflow-hidden border-b border-gray-200 dark:border-gray-800">

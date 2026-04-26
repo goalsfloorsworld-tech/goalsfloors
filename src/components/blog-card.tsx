@@ -67,24 +67,14 @@ export default function BlogCard({ post, index }: { post: BlogPost; index: numbe
           />
         ) : (
           <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-gray-100 dark:from-slate-800 dark:to-slate-900 flex flex-col items-center justify-center transform group-hover:scale-105 transition-transform duration-700 ease-out">
-             {/* Light Mode Logo */}
-             <Image
-                src="/images/goals floors logo.svg"
-                alt="Goals Floors"
-                width={120}
-                height={40}
-                priority
-                className="opacity-40 block dark:hidden object-contain"
-              />
-             {/* Dark Mode Logo */}
-             <Image
-                src="/images/goals-floors-logo-white.svg"
-                alt="Goals Floors"
-                width={120}
-                height={40}
-                priority
-                className="opacity-20 hidden dark:block object-contain"
-              />
+            <Image
+              src="/images/goals floors logo.png"
+              alt="Goals Floors"
+              width={120}
+              height={40}
+              priority
+              className="opacity-30 object-contain dark:invert"
+            />
           </div>
         )}
       </div>

@@ -508,7 +508,7 @@ export default function ProductClient({ product }: { product: Product }) {
 
   const variantPrices = (product.variants || []).map(v => parsePrice(v.price)).filter(p => p > 0);
 
-  const seller = { "@type": "Organization", "name": "Goals Floors" };
+  const seller = { "@type": "Brand", "name": "Goals Floors" };
 
   const offersSchema = variantPrices.length > 1
     ? {

@@ -12,6 +12,7 @@ export default function Navbar() {
   const [isDesktopProductsOpen, setIsDesktopProductsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -21,6 +22,11 @@ export default function Navbar() {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsDesktopProductsOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
 
   const toggleTheme = (e: React.MouseEvent) => {
     // Fallback for browsers that don't support View Transition API
@@ -56,13 +62,6 @@ export default function Navbar() {
       );
     });
   };
-
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true);
-  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
