@@ -84,6 +84,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta name="deployment" content="v2.1-production-fixes-2026-04-26" />
+        {/* Deployment: 2026-04-26 | All 6 critical production fixes applied | Build: fixes-v2.1 */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
