@@ -100,7 +100,7 @@ export default function CategoryFlipCards() {
       {categories.map((cat, i) => (
         <div 
           key={cat.slug}
-          className="group h-[500px] w-full"
+          className={`group h-[500px] w-full ${cat.slug === "wall-panels" ? "order-first sm:order-none" : ""}`}
           style={{ perspective: "1500px" }}
           onClick={() => handleToggle(i)}
           onMouseEnter={() => handleMouseEnter(i)}

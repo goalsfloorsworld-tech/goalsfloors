@@ -215,7 +215,7 @@
     
     {
       "name": "Primo Fluted Panel (FP 701 - 713)",
-      "price": "₹550",
+      "price": "₹599",
       "mrp": "₹1290",
       "discount": "57% off",
       "unit": "per panel",
@@ -330,7 +330,7 @@
     },
     {
       "name": "Elite Fluted Panels (FP 714 - 722)",
-      "price": "₹600",
+      "price": "₹599",
       "mrp": "₹1290",
       "discount": "53% off",
       "unit": "per panel",
@@ -388,47 +388,7 @@
         }
       ]
     },
-    {
-      "name": "Premium 17mm Fluted Series",
-      "price": "₹499",
-      "mrp": "₹999",
-      "discount": "50% off",
-      "unit": "per panel",
-      "details": {
-        "Series": "17mm Heavy Series",
-        "Thickness": "17 MM",
-        "Dimensions": "2930 x 169 MM",
-        "Material": "A+ WPC",
-        "Quantity": "10 PC / Box (5.28 sqft / Panel)"
-      },
-      "images": [
-        {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Premium_Black_Color_WPC_Louvers.png",
-          "alt": "Premium Black Color 17mm WPC Louvers - Goals Floors",
-          "name": "Premium Black Louver"
-        },
-        {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477063/Pencilclad_Wpc_Louvers_2.png",
-          "alt": "Pencilclad 17mm WPC Louvers Project - Goals Floors",
-          "name": "Pencilclad Louver"
-        },
-        {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477066/Wpc_Fluted_Panel.png",
-          "alt": "17mm WPC Fluted Panel Architectural Finish - Goals Floors",
-          "name": "Fluted Panel Texture"
-        },
-        {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477069/Imageclad_Premium_Wpc_Louvers.png",
-          "alt": "Imageclad Premium 17mm WPC Louvers - Goals Floors",
-          "name": "Imageclad Louver"
-        },
-        {
-          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477072/17mm_Wpc_Fluted_Panel.png",
-          "alt": "17mm WPC Fluted Panel Series - Goals Floors",
-          "name": "Premium Fluted Panel"
-        }
-      ]
-    },
+    
     {
       "name": "Elite PVC Panel (12 Inch)",
       "price": "₹549",
@@ -657,6 +617,47 @@
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776779855/GF-324_Stone_Look_PVC_Panel.png",
           "alt": "GF-324 Stone Look PVC Panel",
           "name": "GF-324"
+        }
+      ]
+    },
+    {
+      "name": "Premium 17mm Fluted Series",
+      "price": "₹499",
+      "mrp": "₹999",
+      "discount": "50% off",
+      "unit": "per panel",
+      "details": {
+        "Series": "17mm Heavy Series",
+        "Thickness": "17 MM",
+        "Dimensions": "2930 x 169 MM",
+        "Material": "A+ WPC",
+        "Quantity": "10 PC / Box (5.28 sqft / Panel)"
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Premium_Black_Color_WPC_Louvers.png",
+          "alt": "Premium Black Color 17mm WPC Louvers - Goals Floors",
+          "name": "Premium Black Louver"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477063/Pencilclad_Wpc_Louvers_2.png",
+          "alt": "Pencilclad 17mm WPC Louvers Project - Goals Floors",
+          "name": "Pencilclad Louver"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477066/Wpc_Fluted_Panel.png",
+          "alt": "17mm WPC Fluted Panel Architectural Finish - Goals Floors",
+          "name": "Fluted Panel Texture"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477069/Imageclad_Premium_Wpc_Louvers.png",
+          "alt": "Imageclad Premium 17mm WPC Louvers - Goals Floors",
+          "name": "Imageclad Louver"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477072/17mm_Wpc_Fluted_Panel.png",
+          "alt": "17mm WPC Fluted Panel Series - Goals Floors",
+          "name": "Premium Fluted Panel"
         }
       ]
     }
