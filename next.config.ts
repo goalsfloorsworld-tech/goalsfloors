@@ -2,7 +2,6 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -33,6 +32,19 @@ const nextConfig: NextConfig = {
         hostname: 'assets.zyrosite.com',
       },
     ],
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*\\.(?:png|jpg|jpeg|gif|webp|avif|ico|svg|woff|woff2|ttf|eot))$',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+    ];
   },
 };
 

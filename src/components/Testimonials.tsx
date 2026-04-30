@@ -78,8 +78,8 @@ export default function Testimonials() {
   return (
     <section className="py-16 bg-white dark:bg-slate-900 relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-amber-100/30 dark:bg-amber-900/10 blur-3xl opacity-50 rounded-full" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-100/30 dark:bg-amber-900/10 blur-3xl opacity-50 rounded-full" />
+      <div className="absolute top-0 right-0 w-96 max-w-full h-96 bg-amber-100/30 dark:bg-amber-900/10 blur-3xl opacity-50 rounded-full" />
+      <div className="absolute bottom-0 left-0 w-96 max-w-full h-96 bg-amber-100/30 dark:bg-amber-900/10 blur-3xl opacity-50 rounded-full" />
 
       <div className="max-w-5xl mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
@@ -92,7 +92,7 @@ export default function Testimonials() {
           <div className="flex justify-between items-center mb-8 shrink-0">
             <div className="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 rounded-full border border-blue-100 dark:border-blue-800">
               <div className="relative w-4 h-4 bg-white rounded-full p-0.5 shadow-sm">
-                <Image src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" fill className="object-contain" />
+                <Image src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" fill sizes="16px" className="object-contain" />
               </div>
               <span className="text-[10px] font-black uppercase text-blue-700 dark:text-blue-400">Verified Review</span>
             </div>
@@ -125,7 +125,7 @@ export default function Testimonials() {
                 <div className="flex flex-col md:flex-row justify-between items-center gap-8 pt-8 border-t border-gray-100 dark:border-gray-800 shrink-0">
                   <div className="flex items-center gap-4">
                     <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-amber-600 ring-4 ring-amber-600/10">
-                      <Image src={current.image} alt={current.name} fill className="object-cover" />
+                      <Image src={current.image} alt={current.name} fill sizes="56px" className="object-cover" />
                     </div>
                     <div>
                       <h4 className="font-black text-slate-900 dark:text-white text-lg">{current.name}</h4>
@@ -159,7 +159,7 @@ export default function Testimonials() {
             <div className="flex -space-x-3">
               {testimonials.slice(0, 5).map((t, i) => (
                 <div key={i} className="relative w-12 h-12 rounded-full border-4 border-white dark:border-slate-950 overflow-hidden shadow-lg transform hover:scale-110 transition-transform duration-300 z-[5]">
-                  <Image src={t.image} alt={t.name} fill className="object-cover" />
+                  <Image src={t.image} alt={t.name} fill sizes="48px" className="object-cover" />
                 </div>
               ))}
               <div className="relative w-12 h-12 rounded-full border-4 border-white dark:border-slate-950 bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center shadow-lg z-0">
@@ -175,12 +175,12 @@ export default function Testimonials() {
           <Link
             href="https://g.page/r/CYSAtoMtUCKLEBE/review"
             target="_blank"
-            className="group relative inline-flex items-center justify-center gap-4 px-10 py-6 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white rounded-[2.5rem] shadow-[0_20px_50px_-15px_rgba(37,99,235,0.4)] hover:shadow-[0_25px_60px_-15px_rgba(37,99,235,0.6)] transition-all duration-500 active:scale-95"
+            className="group relative inline-flex items-center justify-center gap-4 px-10 py-6 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white rounded-[2.5rem] shadow-[0_20px_50px_-15px_rgba(37,99,235,0.4)] hover:shadow-[0_25px_60px_-15px_rgba(37,99,235,0.6)] transition-all duration-500 active:scale-95 max-w-full min-w-0"
           >
             <div className="relative w-8 h-8 bg-white rounded-full p-1.5 shadow-sm group-hover:rotate-[360deg] transition-transform duration-700">
-              <Image src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" fill className="object-contain" />
+              <Image src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="G" fill sizes="32px" className="object-contain" />
             </div>
-            <span className="text-[13px] md:text-sm font-black uppercase tracking-[0.15em] whitespace-nowrap">Rate Us On Google</span>
+            <span className="text-[13px] md:text-sm font-black uppercase tracking-[0.15em] sm:whitespace-nowrap break-words text-center min-w-0">Rate Us On Google</span>
             <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
           </Link>
         </div>

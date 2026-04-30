@@ -547,7 +547,7 @@ export default function ProductClient({ product }: { product: Product }) {
   const compareItems = (product.beforeAfter || []).slice(0, 2);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 font-sans antialiased transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-slate-950 font-sans antialiased transition-colors duration-300 overflow-x-hidden max-w-full min-w-0">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

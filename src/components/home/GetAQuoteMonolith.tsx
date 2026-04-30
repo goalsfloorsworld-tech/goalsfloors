@@ -40,7 +40,7 @@ export default function GetAQuoteMonolith() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative py-8 md:py-12 px-4 overflow-hidden bg-gray-50 dark:bg-slate-950 transition-colors duration-500 flex items-center justify-center min-h-[400px] md:min-h-[600px]"
+      className="relative py-8 md:py-12 px-4 overflow-hidden bg-gray-50 dark:bg-slate-950 transition-colors duration-500 flex items-center justify-center min-h-[400px] md:min-h-[600px] w-full max-w-full box-border"
     >
       {/* Background Decor Elements (Floating 3D-like shapes) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -87,7 +87,7 @@ export default function GetAQuoteMonolith() {
           rotateY,
           transformStyle: "preserve-3d",
         }}
-        className="relative w-full max-w-4xl z-10"
+        className="relative w-full max-w-4xl z-10 min-w-0"
       >
         <div
           style={{ transform: "translateZ(80px)" }}
@@ -96,7 +96,7 @@ export default function GetAQuoteMonolith() {
           {/* Subtle Inner Glow */}
           <div className="absolute -inset-px bg-gradient-to-br from-amber-500/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center min-w-0">
 
             {/* Left Content */}
             <div style={{ transform: "translateZ(40px)" }}>

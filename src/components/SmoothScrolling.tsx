@@ -7,8 +7,8 @@ export default function SmoothScrolling({ children }: { children: React.ReactNod
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Disable smooth scrolling on mobile to reduce main-thread work and TBT
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    // Disable smooth scrolling on mobile/tablet to reduce main-thread work and TBT
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
