@@ -90,12 +90,12 @@ export default function TermsClient() {
     <div className="min-h-screen bg-white dark:bg-black font-sans selection:bg-amber-100 dark:selection:bg-amber-900/30">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-8 md:pt-10 pb-8 md:pb-10 flex flex-col md:flex-row gap-8 md:gap-24">
         {/* Sticky Sidebar Navigation */}
-        <aside className="md:w-1/4 hidden md:block">
-          <div className="sticky top-32">
+        <aside className="md:w-1/4 hidden md:block relative">
+          <div className="sticky top-[50vh] -translate-y-1/2">
             <p className="text-xs font-semibold tracking-widest text-slate-400 dark:text-zinc-600 uppercase mb-8">
               Contents
             </p>
-            <ul className="space-y-6 text-sm">
+            <ul className="space-y-6 text-base">
               {termsSections.map((s) => (
                 <li key={s.id}>
                   <a
@@ -201,7 +201,7 @@ export default function TermsClient() {
                 <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900 dark:text-white mb-4">
                   {s.title}
                 </h2>
-                <div className="text-lg md:text-[21px] text-slate-800 dark:text-zinc-200 font-normal leading-relaxed space-y-6 text-justify">
+                <div className="text-base md:text-lg text-slate-800 dark:text-zinc-500 font-normal leading-relaxed space-y-6 text-justify">
                   <p>{s.content}</p>
                 </div>
               </section>

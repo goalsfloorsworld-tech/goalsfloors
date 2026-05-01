@@ -81,7 +81,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="overflow-x-hidden scrollbar-hide">
       <head>
         <meta name="deployment" content="v2.3-production-fixes-2026-04-26" />
         {/* Deployment: 2026-04-26 | All 6 critical production fixes applied | Build: fixes-v2.1 */}
@@ -91,7 +91,7 @@ export default function RootLayout({
         />
       </head>
       {/* suppressHydrationWarning is essential for dark mode hydration */}
-      <body suppressHydrationWarning className={`${inter.className} ${roboto.variable} antialiased bg-white dark:bg-slate-950 pt-14`}>
+      <body suppressHydrationWarning className={`${inter.className} ${roboto.variable} antialiased bg-white dark:bg-slate-950 pt-14 overflow-x-hidden scrollbar-hide`}>
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
