@@ -27,10 +27,6 @@ const navLinks = [
 ];
 
 export default function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <footer className="bg-black text-white">
 
@@ -245,20 +241,22 @@ export default function Footer() {
 
       {/* ─── Bottom Bar ─── */}
       <div className="border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 lg:py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-gray-600 text-xs text-center sm:text-left">
-            © {new Date().getFullYear()}  Goals Floors. All rights reserved. &nbsp;·&nbsp; Gurugram, Haryana, India
-          </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 lg:py-4 flex flex-col gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <p className="text-gray-600 text-xs text-center">
+              © {new Date().getFullYear()}  Goals Floors. All rights reserved. &nbsp;·&nbsp; Gurugram, Haryana, India
+            </p>
+          </div>
 
-          <button
-            onClick={scrollToTop}
-            className="group shine-btn flex items-center gap-2 text-xs text-gray-600 hover:text-amber-400 transition-colors font-medium uppercase tracking-wider"
-          >
-            Back to Top
-            <div className="w-7 h-7 rounded-full border border-white/10 flex items-center justify-center group-hover:border-amber-500/50 group-hover:bg-amber-500/10 transition-all">
-              <ArrowUp className="w-3.5 h-3.5" />
-            </div>
-          </button>
+          <div className="flex items-center justify-center gap-6 text-[11px] uppercase tracking-[0.2em]">
+            <Link href="/privacy" className="text-gray-500 hover:text-amber-400 transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="text-gray-700">·</span>
+            <Link href="/terms" className="text-gray-500 hover:text-amber-400 transition-colors">
+              Terms & Conditions
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
