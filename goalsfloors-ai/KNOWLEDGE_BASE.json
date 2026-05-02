@@ -1,0 +1,992 @@
+{
+  "developer_info": {
+    "developed_by": "Neyab Ansari",
+    "role": "Full Stack Developer",
+    "location": "Gurugram, Haryana",
+    "message_for_ai": "If any user asks who developed, designed, or built this website or AI, proudly state that it was developed by Neyab Ansari, a skilled self-taught developer from Gurugram."
+  },
+  "company_pages": {
+    "home": {
+      "url": "/",
+      "company_name": "Goals Floors",
+      "tagline": "NCR's fastest-growing luxury surface brand",
+      "core_message": "We don't just supply surfaces; we deliver the speed, scale, and innovation that your luxury projects deserve.",
+      "key_statistics": {
+        "premium_products": "2500+",
+        "happy_clients": "20K+",
+        "dealers": "400+",
+        "warranty_backed": "90%",
+        "express_dispatch_time": "2 hours"
+      },
+      "main_advantages": [
+        "2-Hour Express Dispatch (NCR's fastest logistics)",
+        "2500+ Designs | 400+ Dealers Network",
+        "Quarterly New Product Launches (global trends)",
+        "90% Products Warranty Backed",
+        "Professional Technical Guidance"
+      ]
+    },
+    "about": {
+      "url": "/about",
+      "company_name": "Goals Floors",
+      "headquarters": "Sikanderpur, Gurugram",
+      "founded_by": "Shakti FTN",
+      "parent_company_legacy": "Goals Enterprises (founded by Mr. Umesh Kumar)",
+      "mission": "Fix a broken industry by providing international-grade wall panels and premium flooring at honest prices with 2-hour express delivery and flawless installation support",
+      "founder_quote": "We aren't just selling materials; we are fixing the supply chain. Quality and speed shouldn't be a luxury; they should be the industry standard.",
+      "key_differentiators": [
+        "2-hour express dispatch from Sikanderpur, Gurugram headquarters",
+        "Minimum 7-year warranty",
+        "2500+ unique designs",
+        "Eliminated supply chain inefficiencies",
+        "International-grade materials at affordable prices"
+      ]
+    },
+    "dealership": {
+      "url": "/dealer",
+      "page_title": "Become a Dealer - Partner with Goals Floors",
+      "dealer_margins": "40% to 50% off website retail price (MRP)",
+      "lead_system": "Trust Score-based (seniority + purchase volume + proximity)",
+      "catalog_cost": "₹1,500 per physical sample catalog folder",
+      "key_message": "Exclusive dealership opportunities for premium interior and exterior solutions"
+    },
+    "contact": {
+      "url": "/contact",
+      "headquarters_location": "Sikanderpur, Gurugram",
+      "region_served": "Delhi NCR (2-hour express dispatch)",
+      "email": "support@goalsfloors.com",
+      "primary_contact_method": "Form submission or direct phone call"
+    }
+  },
+  "legal_and_policies": {
+    "privacy_policy": {
+      "url": "/privacy",
+      "last_updated": "May 2026",
+      "contact_email": "support@goalsfloors.com",
+      "sections": [
+        {
+          "id": "collection",
+          "title": "Information We Collect",
+          "full_clause": "When you apply to become a dealer, we collect necessary business information. This includes your Name, Email Address, Phone Number, Business Address (City/State), an image of your Visiting Card, your estimated annual business revenue, and a short business description that you provide."
+        },
+        {
+          "id": "sharing",
+          "title": "Data Sharing & Third Parties",
+          "full_clause": "Goals Floors has a strict 'No Sell' policy. We do NOT sell your personal or business data to any third-party marketing companies. However, to fulfill your orders, we must share essential details (like your phone number and delivery address) with our delivery drivers, transport partners, and secure payment gateways."
+        },
+        {
+          "id": "marketing",
+          "title": "Promotional Marketing & Communications",
+          "full_clause": "Currently, Goals Floors does not send promotional messages. In the future, we may send you important business updates, new catalog launches, or special offers via WhatsApp, SMS, or Email. When this service starts, we will always provide a clear and easy 'Unsubscribe' option if you do not wish to receive them."
+        },
+        {
+          "id": "tracking",
+          "title": "Website Tracking, Analytics & Cookies",
+          "full_clause": "To improve our website performance and understand dealer needs, we use Google Analytics and Meta Pixel to track website activity. Currently, we do not use login cookies, but we will introduce cookies in the near future to keep you logged in and make your portal experience faster and smoother."
+        },
+        {
+          "id": "retention",
+          "title": "Data Retention & Account Deletion",
+          "full_clause": "Currently, there is no 'Delete Account' button on the website. If you wish to close your dealership account, please call our support team. Please note: Even if your account is deleted, the Indian Government's tax laws require us to keep your billing, invoice, and GST records securely stored in our system for a few years for audit purposes."
+        },
+        {
+          "id": "security",
+          "title": "Data Security",
+          "full_clause": "We store your information on highly secure databases and servers. While we take the best possible security measures to protect your data, no system on the internet is 100% safe. By using our services, you accept this standard level of digital risk."
+        }
+      ]
+    },
+    "terms_and_conditions": {
+      "url": "/terms",
+      "last_updated": "May 2026",
+      "contact_email": "support@goalsfloors.com",
+      "jurisdiction": "Courts of Gurugram, Haryana",
+      "governing_law": "Laws of India",
+      "sections": [
+        {
+          "id": "dealership",
+          "title": "Dealership Appointment & Exclusivity",
+          "full_clause": "Goals Floors does not give strict area exclusivity to just one dealer in a location. Instead, we share retail leads based on our 'Trust Score' system. Your Trust Score depends on three things: 1) How long you have been our dealer, 2) How much material you have bought from us, and 3) How close you are to the customer's location. If your score is good, we will forward local retail leads to you with zero commission. The only condition is that you must use Goals Floors materials for these projects. Also, please note that physical sample catalogs are not free. Each catalog folder costs exactly ₹1,500."
+        },
+        {
+          "id": "pricing",
+          "title": "Pricing, Margins & Payments",
+          "full_clause": "Dealers get a clear margin of 40% to 50% off the website Retail Price (MRP). Please remember that GST is NOT included in this discount; GST will be added extra on your final bill. Normally, we strictly require a 100% advance payment before we send any material. However, if you have been a loyal dealer with us for a few years and buy in good quantities, we can offer you a 'Credit Facility' based on your business history. Market prices can change, but if you have made the full payment for an order, we will give you the material at the old booked rate, even if the market price increases before delivery."
+        },
+        {
+          "id": "shipping",
+          "title": "Logistics, Shipping & Restocking",
+          "full_clause": "There is no Minimum Order Quantity (MOQ) for dealers in Gurugram and Delhi NCR. Outstation dealers must order a minimum quantity. For Gurugram/NCR, we try to deliver within 2 hours. But please note: we cannot guarantee this 2-hour time because of heavy traffic, road accidents, or driver emergencies. If a product is out of stock, it can take up to 120 hours to restock. Because of these reasons, we strongly advise you to place your orders at least 1 week (7 days) in advance. Dealers pay the delivery (freight) charges, but Goals Floors will cover the cost if the material breaks on the way."
+        },
+        {
+          "id": "liability",
+          "title": "Limitation of Liability (Late Deliveries)",
+          "full_clause": "Goals Floors is not legally or financially responsible for any penalties, fines, or losses charged by your clients (customers/builders) due to delivery delays. It is the dealer's responsibility to manage their client's timeline and order materials 7 days in advance to avoid any project delays."
+        },
+        {
+          "id": "account-security",
+          "title": "Account Security & Responsibility",
+          "full_clause": "As a dealer, you are completely responsible for keeping your portal password and OTPs safe. If any unauthorized person places an order using your account, you will be held 100% financially responsible for that payment."
+        },
+        {
+          "id": "termination",
+          "title": "Account Termination & Blocking",
+          "full_clause": "Goals Floors reserves the right to immediately block or delete a dealer's account without prior warning if they are found doing any of the following: 1) Selling cheap counterfeit products using the Goals Floors brand name, 2) Doing payment fraud or bouncing cheques, 3) Misbehaving with company staff, or 4) Damaging the brand's reputation in the market."
+        },
+        {
+          "id": "force-majeure",
+          "title": "Unforeseen Events (Force Majeure)",
+          "full_clause": "Goals Floors will not be held responsible for any delays in delivery or service caused by events outside our control. This includes natural disasters, heavy floods, government curfews, strikes, riots, or global pandemics."
+        },
+        {
+          "id": "warranty",
+          "title": "Warranty & Returns",
+          "full_clause": "We give a 7-year warranty on our SPC flooring and Wall Panels. However, we have a strict NO RETURN policy. We will only accept a return within 3 days of delivery if the box is 100% sealed and packed. If you open a box and use even one single piece, we will not take the rest of the box back."
+        },
+        {
+          "id": "jurisdiction",
+          "title": "Governing Law",
+          "full_clause": "These rules follow the laws of India. If there is ever any legal problem, it will only be solved in the courts of Gurugram, Haryana. All website content belongs to Goals Floors, and copying our images will result in strict legal action."
+        }
+      ]
+    }
+  },
+  "products": [
+    {
+      "id": "spc-flooring",
+      "name": "SPC Flooring (Cobra Gold Series)",
+      "slug": "spc-flooring",
+      "category": "premium-flooring",
+      "url": "/products/spc-flooring",
+      "price_range": "₹180-₹215/sq.ft",
+      "short_description": "100% waterproof luxury wooden flooring made with stone plastic composite core that never gets damaged by water, scratches, or termites.",
+      "details": {
+        "material": "Stone Plastic Composite (100% waterproof)",
+        "wear_layer": "0.5mm commercial-grade protective layer",
+        "thickness_range": "6mm with acoustic foam cushion underlay",
+        "core_technology": "Strong stone core - zero moisture absorption",
+        "surface_finish": "Handscrapped or EIR real wood grain (3D printing texture)",
+        "installation": "Uniclick click-lock system (glue-free, no nails needed) - direct install over existing tiles/marble",
+        "waterproofing": "100% waterproof - completely safe for kitchens and moisture-prone areas",
+        "termite_proof": "Yes - polymer core is immune to insects and borers",
+        "warranty": "10 years residential / 5 years commercial",
+        "key_features": [
+          "Ultra-tough 0.5mm top layer resists scratches from high heels and pet claws",
+          "Feels like real wood with authentic texture",
+          "Acoustic foam underlay for quiet, comfortable walking",
+          "Premium painted V-groove edges for expensive hardwood look",
+          "Fire-retardant for family safety",
+          "Requires no cement demolition - installs directly on old tiles"
+        ],
+        "maintenance": "Sweep or vacuum daily. Can use wet mop (100% waterproof). Avoid harsh wire scrubbers.",
+        "applications": "Luxury living rooms, modern kitchens, corporate offices, retail showrooms, hotel rooms, basement areas"
+      },
+      "variants": [
+        {
+          "name": "G-F SPC 301 (Cobra Silver)",
+          "price": "₹180/sq.ft",
+          "mrp": "₹390/sq.ft",
+          "discount": "54% OFF",
+          "specifications": {
+            "plank_size": "1220mm x 153mm x 6mm",
+            "wear_layer": "0.5mm",
+            "surface": "Handscrapped texture",
+            "installation": "Uniclick",
+            "packing": "10 planks = 20 sq.ft/box",
+            "warranty": "10Y Residential / 5Y Commercial"
+          }
+        },
+        {
+          "name": "G-F SPC 303 (Smoked Ash)",
+          "price": "₹195/sq.ft",
+          "mrp": "₹490/sq.ft",
+          "discount": "60% OFF",
+          "specifications": {
+            "plank_size": "1220mm x 183mm x 6mm",
+            "wear_layer": "0.5mm",
+            "surface": "EIR Real Wood Grain",
+            "warranty": "10Y Residential / 5Y Commercial"
+          }
+        },
+        {
+          "name": "G-F SPC 302 (Herringbone)",
+          "price": "₹215/sq.ft",
+          "mrp": "₹495/sq.ft",
+          "discount": "56% OFF",
+          "specifications": {
+            "plank_size": "600mm x 125mm x 6mm (zigzag pattern)",
+            "wear_layer": "0.5mm",
+            "surface": "Handscrapped handscrapped texture",
+            "packing": "20 planks = 16.15 sq.ft/box",
+            "warranty": "10Y Residential / 5Y Commercial"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wpc-exterior-louvers",
+      "name": "WPC Exterior Louvers",
+      "slug": "wpc-exterior-louvers",
+      "category": "outdoors",
+      "url": "/products/wpc-exterior-louvers",
+      "price_range": "₹349/sq.ft (panels) | ₹1,349/piece (L-profiles)",
+      "short_description": "Premium UV-coated WPC exterior louvers for modern building facades, balcony ceilings, and outdoor walls. 100% waterproof, termite-proof, fade-resistant.",
+      "details": {
+        "material": "Exterior-grade WPC (Wood Plastic Composite)",
+        "waterproofing": "100% waterproof - zero moisture absorption",
+        "uv_protection": "Advanced UV shield coating prevents fading, discoloration, brittleness under direct sunlight",
+        "termite_proof": "Yes - polymer core immune to insects and borers",
+        "fire_resistant": "Yes - inherent fire-resistant properties",
+        "design": "3D fluted (ribbed) architectural design with natural wooden appearance",
+        "wind_load_capacity": "Designed for heavy wind loads on high-rise facades",
+        "structural_strength": "High impact resistance and rigidity",
+        "installation": "Sub-frame of aluminum or MS pipes + hidden stainless-steel clips (no visible screws)",
+        "maintenance": "Zero annual maintenance - occasional water hose wash or soft brush with mild soap",
+        "applications": "Commercial building elevations, luxury villa facades, balcony privacy screens, rooftop cafes, boundary walls, hotel exteriors, showroom entrances",
+        "eco_friendly": "100% recyclable materials"
+      },
+      "variants": [
+        {
+          "name": "Exterior WPC Louvers Coffee",
+          "price": "₹349/sq.ft",
+          "mrp": "₹550/sq.ft",
+          "discount": "36% off",
+          "specifications": { "color": "Coffee", "material": "Exterior Grade WPC" }
+        },
+        {
+          "name": "Exterior WPC Louvers Teak",
+          "price": "₹349/sq.ft",
+          "mrp": "₹550/sq.ft",
+          "discount": "36% off",
+          "specifications": { "color": "Teak", "material": "Exterior Grade WPC" }
+        },
+        {
+          "name": "Exterior WPC Louvers Grey",
+          "price": "₹349/sq.ft",
+          "mrp": "₹550/sq.ft",
+          "discount": "36% off",
+          "specifications": { "color": "Grey", "material": "Exterior Grade WPC" }
+        },
+        {
+          "name": "Exterior WPC Louvers Ipe",
+          "price": "₹349/sq.ft",
+          "mrp": "₹550/sq.ft",
+          "discount": "36% off",
+          "specifications": { "color": "Ipe", "material": "Exterior Grade WPC" }
+        },
+        {
+          "name": "Corner L-profile (All 4 Colors)",
+          "price": "₹1,349/piece",
+          "mrp": "₹1,999/piece",
+          "discount": "32% off",
+          "specifications": {
+            "application": "90-degree corner finishing",
+            "colors": "Coffee, Teak, Grey, Ipe"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wall-panels",
+      "name": "Wall Panels (WPC & PVC Premium Series)",
+      "slug": "wall-panels",
+      "category": "wall-panels",
+      "url": "/products/wall-panels",
+      "price_range": "₹499-₹999+/panel",
+      "short_description": "Premium wall panels in A+ grade WPC and PVC with India's first fabric-texture finish. Extra-wide 12-inch seamless panels for luxury interiors.",
+      "details": {
+        "material_types": "High-density WPC (Wood Plastic Composite) and A+ grade PVC",
+        "thickness": "9mm standard (fluted panels) / 5mm (PVC panels)",
+        "panel_dimensions": "2950mm x 300mm typical (2950mm x 300mm for 12-inch extra-wide PVC)",
+        "weight": "3.2 kg/pc typical",
+        "waterproof": "Yes - 100% waterproof construction",
+        "termite_proof": "Yes - 100% termite-proof",
+        "unique_feature": "India's first fabric texture panels available in both PVC and fluted formats",
+        "interlocking": "Precision tongue-and-groove (Uniclick) mechanism",
+        "installation": "PU adhesive + concealed brad nails on leveled walls/structural grids - no heavy carpentry",
+        "surface_finish": "Scratch-resistant pre-finished with premium surface films - zero painting required",
+        "acoustic": "Fluted design provides acoustic comfort",
+        "warranty": "7+ years standard",
+        "maintenance": "Dry microfiber cloth or soft vacuum brush - no harsh chemicals"
+      },
+      "variants": [
+        {
+          "name": "Primo Fluted Panel (FP 701-713)",
+          "price": "₹599/panel",
+          "mrp": "₹1,290/panel",
+          "discount": "57% off",
+          "specifications": {
+            "series": "Classic Wood",
+            "thickness": "9mm",
+            "dimensions": "2950 x 300mm",
+            "weight": "3.2 kg/pc",
+            "colors": "FP-701 through FP-713 (13 classic wood finishes)"
+          }
+        },
+        {
+          "name": "Elite PVC Panel (12 Inch)",
+          "price": "₹549/panel",
+          "mrp": "₹1,290/panel",
+          "discount": "57% off",
+          "specifications": {
+            "panel_length": "2950mm (116 inches)",
+            "panel_width": "300mm (12 inches - extra-wide seamless)",
+            "thickness": "5mm",
+            "area_per_panel": "9.5 sq.ft",
+            "weight": "2.8 kg/pc",
+            "packing": "10 PCS/Box",
+            "colors": "12+ premium designs including fabric texture"
+          }
+        }
+      ]
+    },
+    {
+      "id": "upfit-panels",
+      "name": "Upfit Panels (Exterior Soffit Ceiling Panels)",
+      "slug": "upfit-panels",
+      "category": "outdoors",
+      "url": "/products/upfit-panels",
+      "price_range": "₹1,200-₹1,400/panel",
+      "short_description": "Premium waterproof soffit ceiling panels for balconies, porch ceilings, roof soffits, and modern exterior facades.",
+      "details": {
+        "material": "Advanced high-strength waterproof material",
+        "waterproofing": "100% waterproof - never rots or swells",
+        "flexibility": "Unbreakable and flexible - resists cracking under normal conditions",
+        "weight": "Ultra-lightweight - minimal stress on ceiling structure",
+        "fire_safety": "Fire-resistant treatment applied during manufacturing",
+        "maintenance": "Zero maintenance required - no painting, polishing, or expensive upkeep",
+        "cleaning": "Simple water wash or soft brush with mild soap",
+        "sizes": "Two primary options: 230mm (narrow design) or 305mm (wider grand look)",
+        "standard_lengths": "2950mm (230mm variant) or 3660mm (305mm variant)",
+        "thickness": "1.2mm",
+        "installation": "Lightweight aluminum or iron framework + hidden screw fixings + matching J-trims and L-corner profiles",
+        "finish_appearance": "Pre-finished with premium natural wood textures"
+      },
+      "variants": [
+        {
+          "name": "Upfit 230 - Classic Wood Series",
+          "price": "₹1,200/panel",
+          "mrp": "₹1,890/panel",
+          "discount": "36% off",
+          "specifications": {
+            "size": "2950mm x 230mm (9.75ft x 0.75ft)",
+            "thickness": "1.2mm",
+            "coverage": "7.3 sq.ft",
+            "weight": "2.0 kg",
+            "colors": "White, Teak, Walnut, Brown"
+          }
+        },
+        {
+          "name": "Upfit 305 - Classic Wood Series",
+          "price": "₹1,400/panel",
+          "mrp": "₹2,290/panel",
+          "discount": "61% off",
+          "specifications": {
+            "size": "3660mm x 305mm (12ft x 1ft)",
+            "thickness": "1.2mm",
+            "coverage": "12 sq.ft",
+            "weight": "2.7 kg",
+            "colors": "White, Teak, Walnut, Brown"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wpc-baffle-ceiling",
+      "name": "WPC Baffle Ceiling (Architectural Linear Ceiling System)",
+      "slug": "wpc-baffle-ceiling",
+      "category": "ceilings",
+      "url": "/products/wpc-baffle-ceiling",
+      "price_range": "₹890/panel (50% off ₹1,790)",
+      "short_description": "Premium WPC Baffle Ceilings for luxury offices, cafes, and commercial spaces. Open architectural linear ceiling systems with waterproof, termite-proof construction.",
+      "details": {
+        "material": "A+ Grade WPC (Wood Plastic Composite)",
+        "panel_dimensions": "2950mm length x 50mm width x 60mm height",
+        "weight": "Varies per color",
+        "color_options": "Cobra Wenge (dark), Cobra Pure (light oak), Cobra Nayur (warm teak), Cobra Cure (roasted ash)",
+        "fire_safety": "Class B1 fire-retardant properties",
+        "waterproofing": "100% waterproof and termite-proof core",
+        "installation": "Precision-engineered GI suspension framework + concealed carrier clips (completely screw-free finish)",
+        "wiring_access": "Seamless integration of AC ducts, electrical wiring, fire systems, hanging lights, linear LEDs",
+        "maintenance_access": "Future accessibility for maintenance teams maintained",
+        "acoustic_benefit": "Vertical baffle structure diffuses sound reflections, reducing echo in large spaces",
+        "applications": "Luxury office receptions, co-working spaces, designer cafes, premium retail showrooms, luxury residences, home theaters"
+      },
+      "variants": [
+        {
+          "name": "Cobra Wenge",
+          "price": "₹890/panel",
+          "mrp": "₹1,790/panel",
+          "discount": "50% off",
+          "specifications": {
+            "material": "A+ Grade WPC",
+            "dimensions": "2950 x 50 x 60mm",
+            "color": "Dark Wood Texture (Wenge)"
+          }
+        },
+        {
+          "name": "Cobra Pure",
+          "price": "₹890/panel",
+          "mrp": "₹1,790/panel",
+          "discount": "50% off",
+          "specifications": {
+            "material": "A+ Grade WPC",
+            "dimensions": "2950 x 50 x 60mm",
+            "color": "Light Oak Texture (Pure)"
+          }
+        },
+        {
+          "name": "Cobra Nayur",
+          "price": "₹890/panel",
+          "mrp": "₹1,790/panel",
+          "discount": "50% off",
+          "specifications": {
+            "material": "A+ Grade WPC",
+            "dimensions": "2950 x 50 x 60mm",
+            "color": "Warm Teak Texture (Nayur)"
+          }
+        },
+        {
+          "name": "Cobra Cure",
+          "price": "₹890/panel",
+          "mrp": "₹1,790/panel",
+          "discount": "50% off",
+          "specifications": {
+            "material": "A+ Grade WPC",
+            "dimensions": "2950 x 50 x 60mm",
+            "color": "Roasted Ash Texture (Cure)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wpc-decking",
+      "name": "WPC Decking & Outdoor Flooring",
+      "slug": "wpc-decking",
+      "category": "outdoors",
+      "url": "/products/wpc-decking",
+      "price_range": "₹379-₹490/sq.ft",
+      "short_description": "Premium WPC Decking for balconies, swimming pools, terraces, and gardens. Waterproof, anti-slip, UV-resistant with zero maintenance.",
+      "details": {
+        "material": "High-performance Wood Plastic Composite",
+        "board_dimensions_22mm": "2900mm x 145mm x 22mm",
+        "board_dimensions_21mm": "2900mm x 145mm x 21mm",
+        "waterproofing": "100% waterproof - zero water absorption",
+        "termite_proof": "100% termite and borer-proof throughout lifetime",
+        "anti_slip": "Textured surface for safety around pools and wet areas",
+        "uv_resistant": "Advanced UV-protected surface layers for color stability under continuous sunlight",
+        "installation": "Hidden stainless steel clip system + aluminum/galvanized metal framework with proper drainage/ventilation",
+        "maintenance": "No polishing, painting, varnishing, or waterproof coatings needed - routine cleaning with water/mild soap",
+        "applications": "Luxury swimming pool areas, premium balconies/terraces, garden pathways, outdoor cafes/resorts, commercial rooftop lounges"
+      },
+      "variants": [
+        {
+          "name": "WPC Decking CEO Wine",
+          "price": "₹379/sq.ft",
+          "mrp": "₹650/sq.ft",
+          "discount": "41% off",
+          "specifications": {
+            "board": "2900 x 145 x 22mm",
+            "material": "A+ WPC",
+            "coverage": "4.53 sq.ft per board"
+          }
+        },
+        {
+          "name": "WPC Decking CEO Brown",
+          "price": "₹379/sq.ft",
+          "mrp": "₹650/sq.ft",
+          "discount": "41% off",
+          "specifications": {
+            "board": "2900 x 145 x 22mm",
+            "material": "A+ WPC",
+            "coverage": "4.53 sq.ft per board"
+          }
+        },
+        {
+          "name": "WPC Decking G-F Series (4 colors)",
+          "price": "₹490/sq.ft",
+          "mrp": "₹850/sq.ft",
+          "discount": "42% off",
+          "specifications": {
+            "board": "2900 x 145 x 21mm",
+            "material": "A+ WPC",
+            "coverage": "4.53 sq.ft per board",
+            "colors": "Ipe, Teak, Grey, Redwood"
+          }
+        }
+      ]
+    },
+    {
+      "id": "artificial-grass",
+      "name": "Artificial Grass (Premium Turf)",
+      "slug": "artificial-grass",
+      "category": "outdoors",
+      "url": "/products/artificial-grass",
+      "price_range": "₹45-₹110/sq.ft",
+      "short_description": "Premium artificial grass with hyper-realistic 4-tone micro-yarn, UV protection, pet-friendly, and advanced drainage system.",
+      "details": {
+        "material": "100% polyethylene (non-toxic, lead-free, hypoallergenic)",
+        "yarn_composition": "4-tone micro-yarn: Emerald green + Olive green + Brown curled thatch layer",
+        "yarn_quality": "Dtex ratings: 9000-12000 depending on thickness",
+        "stitches_per_10cm": "14-24 depending on grade",
+        "max_drain_system": "Double-layered polyurethane backing with precision-punched drainage holes",
+        "drainage": "Instant rainwater drainage (no pooling)",
+        "uv_stabilization": "Advanced UV stabilization technology - maintains color under harsh sunlight",
+        "pile_heights": "25mm (14,650/M2) / 35mm (16,900/M2) / 40mm (16,900/M2) / 50mm (24,900/M2 luxury)",
+        "commercial_durability": "Stitch densities up to 24,900/M2 for heavy foot traffic",
+        "pet_friendly": "100% non-toxic, lead-free, hypoallergenic - pet waste easily scooped",
+        "installation": "On hard surfaces: Double-sided turf tape or synthetic adhesive. On soil: Ground leveling + crushed stone dust base + U-pin securing",
+        "maintenance": "Liquid waste drains instantly, solid waste scooped normally, quick wash with mild soapy water",
+        "area_per_roll": "539 sq.ft standard commercial roll"
+      },
+      "variants": [
+        {
+          "name": "Premium Grass 25mm",
+          "price": "₹45/sq.ft",
+          "mrp": "₹90/sq.ft",
+          "discount": "50% OFF",
+          "specifications": {
+            "pile": "25mm",
+            "stitches": "14/10cm",
+            "density": "14,650/M2",
+            "dtex": "9000",
+            "backing": "Double",
+            "roll": "539 sq.ft"
+          }
+        },
+        {
+          "name": "Premium Grass 35mm",
+          "price": "₹65/sq.ft",
+          "mrp": "₹130/sq.ft",
+          "discount": "50% OFF",
+          "specifications": {
+            "pile": "35mm",
+            "stitches": "16/10cm",
+            "density": "16,900/M2",
+            "dtex": "10,500"
+          }
+        },
+        {
+          "name": "Premium Grass 40mm",
+          "price": "₹75/sq.ft",
+          "mrp": "₹150/sq.ft",
+          "discount": "50% OFF",
+          "specifications": {
+            "pile": "40mm",
+            "stitches": "16/10cm",
+            "density": "16,900/M2"
+          }
+        },
+        {
+          "name": "Premium Grass 50mm",
+          "price": "₹110/sq.ft",
+          "mrp": "₹220/sq.ft",
+          "discount": "50% OFF",
+          "specifications": {
+            "pile": "50mm",
+            "stitches": "24/10cm",
+            "density": "24,900/M2 (ultra-luxury)",
+            "dtex": "12,000"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cobra-pu-stone",
+      "name": "PU Stone Panels (Cobra Series)",
+      "slug": "cobra-pu-stone",
+      "category": "wall-panels",
+      "url": "/products/cobra-pu-stone",
+      "price_range": "₹1,490-₹1,790/sheet",
+      "short_description": "Premium lightweight PU stone panels molded from real stone slabs. 90% lighter than natural stone with realistic stone finish.",
+      "details": {
+        "material": "High-density polyurethane foam with multi-layered premium paint finish",
+        "weight": "90% lighter than natural stone (1.5-2.5 kg per panel vs real stone weight)",
+        "dimensions": "1200mm x 600mm panel size",
+        "thickness_options": "30mm or 60mm (thicker = deeper shadow effects, more realistic)",
+        "weight_per_panel": "Approx 1.5-2.5 kg (extremely lightweight)",
+        "molding_method": "Molded directly from real natural stone slabs - captures authentic texture",
+        "waterproofing": "100% waterproof and non-porous - zero moisture absorption",
+        "fire_safety": "Class B1 fire-retardant properties",
+        "sound_absorption": "Thick foam core naturally absorbs sound echoes",
+        "installation": "Dry process - no cement/mortar needed. Cut with normal wood saw. Apply with PU adhesives (3M compatible). Concealed screws for high walls.",
+        "maintenance": "Non-porous surface repels dust and stains - wipe with damp cloth or vacuum",
+        "applications": "TV walls, living room feature walls, office receptions, restaurant interiors, hotel lobbies, bedroom accent walls"
+      },
+      "variants": [
+        {
+          "name": "Cobra PU Stone 099 (30mm)",
+          "price": "₹1,490/sheet",
+          "mrp": "₹2,490/sheet",
+          "discount": "40% off",
+          "specifications": {
+            "size": "1200 x 600mm",
+            "thickness": "30mm",
+            "area": "7.75 sq.ft",
+            "packing": "13 sheets/box",
+            "color": "White"
+          }
+        },
+        {
+          "name": "Cobra PU Stone 098 (30mm)",
+          "price": "₹1,490/sheet",
+          "mrp": "₹2,490/sheet",
+          "discount": "40% off",
+          "specifications": {
+            "size": "1200 x 600mm",
+            "thickness": "30mm",
+            "color": "Black"
+          }
+        },
+        {
+          "name": "Cobra PU Stone 097 (30mm)",
+          "price": "₹1,490/sheet",
+          "mrp": "₹2,490/sheet",
+          "discount": "40% off",
+          "specifications": {
+            "size": "1200 x 600mm",
+            "thickness": "30mm",
+            "color": "Grey"
+          }
+        },
+        {
+          "name": "Cobra PU Stone 095 (60mm)",
+          "price": "₹1,790/sheet",
+          "mrp": "₹2,890/sheet",
+          "discount": "38% off",
+          "specifications": {
+            "size": "1200 x 600mm",
+            "thickness": "60mm",
+            "packing": "10 sheets/box"
+          }
+        }
+      ]
+    },
+    {
+      "id": "laminate-flooring",
+      "name": "Laminate Flooring (Premium HDF Series)",
+      "slug": "laminate-flooring",
+      "category": "premium-flooring",
+      "url": "/products/laminate-flooring",
+      "price_range": "₹90-₹129/sq.ft",
+      "short_description": "Premium wooden laminate flooring with HDF core and AC-4 scratch resistance. Easy click-lock installation over existing tiles.",
+      "details": {
+        "material": "HDF (High-Density Fiberboard - NOT cheap MDF)",
+        "thickness": "8mm standard",
+        "grade": "AC-4 commercial-grade durability for heavy foot traffic",
+        "plank_dimensions": "1218mm x 198mm x 8mm typical",
+        "top_layer": "High-definition printed wood grain with protective scratch-resistant coating",
+        "edge_finish": "Premium painted V-groove with beveled edges for authentic hardwood appearance",
+        "installation": "Click-Lock system (glue-free, no cement/adhesive needed) - installs directly over existing tiles/marble",
+        "scratch_resistance": "AC-4 commercial grade provides high resistance to shoe scratches, toys, furniture",
+        "fire_safety": "Cigarette burn resistant",
+        "termite_protection": "HDF core treated to resist termites",
+        "maintenance": "Sweep/vacuum daily. Use slightly damp microfiber mop - avoid excess water.",
+        "box_packing": "Varies by variant (20-26 sq.ft per box)",
+        "warranty": "Varies by series"
+      },
+      "variants": [
+        {
+          "name": "Classic Laminate Series",
+          "price": "₹90/sq.ft",
+          "mrp": "₹150/sq.ft",
+          "discount": "40% off",
+          "specifications": {
+            "thickness": "8mm",
+            "grade": "AC-4",
+            "box": "20.80 sq.ft (8 planks)",
+            "material": "HDF",
+            "colors": "10+ options (Walnut, Borneo Merbau, Oak Wheat, etc)"
+          }
+        },
+        {
+          "name": "Majestic Laminate Series",
+          "price": "₹129/sq.ft",
+          "mrp": "₹215/sq.ft",
+          "discount": "40% off",
+          "specifications": {
+            "thickness": "8mm",
+            "grade": "AC-4",
+            "box": "25.95 sq.ft (10 planks)",
+            "material": "HDF"
+          }
+        }
+      ]
+    },
+    {
+      "id": "herringbone-laminate-flooring",
+      "name": "Herringbone Laminate Flooring",
+      "slug": "herringbone-laminate-flooring",
+      "category": "premium-flooring",
+      "url": "/products/herringbone-laminate-flooring",
+      "price_range": "₹189/sq.ft",
+      "short_description": "Luxury herringbone pattern laminate flooring with AC-4 scratch resistance, water-resistant surface, and classic V-shaped zigzag design.",
+      "details": {
+        "material": "HDF (High-Density Fiberboard) core with AC-4 durability rating",
+        "thickness": "8mm",
+        "pattern": "Classic V-shaped zigzag design (parquet-style) creating European luxury appearance",
+        "surface_finish": "Water-resistant top layer (not 100% waterproof, but resists normal daily spills if wiped immediately)",
+        "grade": "AC-4 commercial-grade for heavy foot traffic",
+        "scratch_resistance": "High resistance from AC-4 rating",
+        "installation": "Click-Lock system (glue-free) - professional installation recommended for perfect zigzag pattern alignment",
+        "direct_installation": "Can install directly over existing flat tiles/marble",
+        "termite_protection": "HDF core chemically treated for termite resistance",
+        "maintenance": "Sweep/vacuum daily. Slightly damp (wrung) microfiber mop acceptable. Avoid excess water.",
+        "applications": "Luxury living/dining areas, modern office cabins, retail boutiques, master bedrooms, designer studios, luxury villas"
+      },
+      "variants": [
+        {
+          "name": "G-F HB 5001-5006 Series",
+          "price": "₹189/sq.ft",
+          "mrp": "₹349/sq.ft",
+          "discount": "45% off",
+          "specifications": {
+            "thickness": "8mm",
+            "grade": "AC-4",
+            "box": "20.41 sq.ft",
+            "material": "HDF",
+            "colors": "6 options - Dark Reddish Brown, Light Oak, Medium Brown, Greyish White, Dark Espresso, Natural Oak"
+          }
+        }
+      ]
+    },
+    {
+      "id": "tokyo-charcoal-moulding",
+      "name": "Tokyo Moulding (Charcoal Decorative Trim)",
+      "slug": "tokyo-charcoal-moulding",
+      "category": "wall-panels",
+      "url": "/products/tokyo-charcoal-moulding",
+      "price_range": "₹90-₹999/piece",
+      "short_description": "Premium waterproof Tokyo Moulding for luxury wall designs. Pre-primed, ready-to-paint decorative trim for TV backdrops and panel walls.",
+      "details": {
+        "material": "High-density advanced polymer composite (100% waterproof and termite-proof)",
+        "finish": "Pre-primed white ready-to-paint format for perfect interior color matching",
+        "waterproofing": "100% waterproof core - never bends, cracks, swells, or gets damaged by moisture",
+        "termite_proof": "Zero vulnerability to insects throughout lifetime",
+        "installation": "No heavy carpentry needed. Cut with standard tools. Applied with strong PU adhesive (nail-free).",
+        "applications": "Luxury TV unit backdrops, modern bedroom panel designs, elegant living room decorative frames, hotel interiors, corporate offices, luxury cafes, villa feature walls",
+        "fire_retardant": "Yes - fire-retardant properties",
+        "acoustic": "Thickness provides acoustic absorption",
+        "maintenance": "Simple cleaning with soft dry cloth or slightly damp microfiber cloth"
+      },
+      "variants": [
+        {
+          "name": "T-M 22mm",
+          "price": "₹90/pc",
+          "mrp": "₹140/pc",
+          "discount": "35% off",
+          "specifications": {
+            "length": "2440mm (8ft)",
+            "width": "22mm",
+            "thickness": "12mm",
+            "weight": "0.175 kg/pc"
+          }
+        },
+        {
+          "name": "T-M 30mm",
+          "price": "₹160/pc",
+          "mrp": "₹245/pc",
+          "discount": "34% off",
+          "specifications": {
+            "length": "2440mm (8ft)",
+            "width": "30mm",
+            "thickness": "16mm",
+            "weight": "0.22 kg/pc"
+          }
+        },
+        {
+          "name": "T-M 38mm",
+          "price": "₹260/pc",
+          "mrp": "₹399/pc",
+          "discount": "34% off",
+          "specifications": {
+            "length": "2440mm (8ft)",
+            "width": "38mm",
+            "thickness": "20mm",
+            "weight": "0.5 kg/pc"
+          }
+        },
+        {
+          "name": "T-M 45mm",
+          "price": "₹360/pc",
+          "mrp": "₹550/pc",
+          "discount": "34% off",
+          "specifications": {
+            "length": "2440mm (8ft)",
+            "width": "45mm",
+            "thickness": "23mm",
+            "weight": "0.8 kg/pc"
+          }
+        },
+        {
+          "name": "T-M 65mm",
+          "price": "₹479/pc",
+          "mrp": "₹725/pc",
+          "discount": "34% off",
+          "specifications": {
+            "length": "2440mm (8ft)",
+            "width": "65mm",
+            "thickness": "23mm",
+            "weight": "1 kg/pc"
+          }
+        },
+        {
+          "name": "Skirting 150mm",
+          "price": "₹999/pc",
+          "mrp": "₹1,515/pc",
+          "discount": "34% off",
+          "specifications": {
+            "length": "2440mm (8ft)",
+            "width": "150mm",
+            "thickness": "14mm",
+            "weight": "1.7 kg/pc",
+            "application": "Paintable floor skirting"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wpc-timber-tubes",
+      "name": "WPC Timber Tubes (Hollow Partition Tubes)",
+      "slug": "wpc-timber-tubes",
+      "category": "ceilings",
+      "url": "/products/wpc-timber-tubes",
+      "price_range": "₹1,390/panel",
+      "short_description": "Premium WPC timber tubes for modern room partitions, ceiling louvers, and wall dividers. 100% waterproof, termite-proof, zero maintenance.",
+      "details": {
+        "material": "A+ Grade WPC (Wood Plastic Composite)",
+        "dimensions": "100mm width x 50mm height, 2950mm standard length (can be cut on-site)",
+        "finish": "Dual-sided premium finish - consistent beautiful wood texture on all sides (perfect for open partitions)",
+        "waterproofing": "100% waterproof and termite-proof construction",
+        "structure": "Hollow tube design - lightweight yet structurally stable",
+        "installation": "Hidden metal clip system - clips fixed to floor/ceiling, tube locks onto clips (no visible screws/nails)",
+        "structural_stability": "Stays perfectly straight (never warps, bends, or cracks unlike natural wood)",
+        "gap_recommendation": "50-100mm between tubes for balanced professional appearance",
+        "eco_friendly": "Sustainable, recyclable materials",
+        "applications": "Luxury room partitions/dividers, modern ceiling louvers, corporate lobby accents, restaurant privacy screens, staircase/hallway paneling"
+      },
+      "variants": [
+        {
+          "name": "Cobra Walnut",
+          "price": "₹1,390/panel",
+          "mrp": "₹2,190/panel",
+          "discount": "37% off",
+          "specifications": {
+            "material": "A+ Grade WPC",
+            "length": "2950mm",
+            "width": "100mm",
+            "height": "50mm",
+            "color": "Dark Luxury Wood (Walnut)"
+          }
+        },
+        {
+          "name": "Cobra TOG",
+          "price": "₹1,390/panel",
+          "mrp": "₹2,190/panel",
+          "discount": "37% off",
+          "specifications": {
+            "material": "A+ Grade WPC",
+            "color": "Rich Teak Tones (TOG)"
+          }
+        },
+        {
+          "name": "Cobra Natural",
+          "price": "₹1,390/panel",
+          "mrp": "₹2,190/panel",
+          "discount": "37% off",
+          "specifications": {
+            "material": "A+ Grade WPC",
+            "color": "Bright Modern Wood (Natural)"
+          }
+        },
+        {
+          "name": "Cobra Wenge",
+          "price": "₹1,390/panel",
+          "mrp": "₹2,190/panel",
+          "discount": "37% off",
+          "specifications": {
+            "material": "A+ Grade WPC",
+            "color": "Deep Charcoal Wood (Wenge)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hybrid-laminate-flooring",
+      "name": "Hybrid Laminate Flooring (100% Waterproof Series)",
+      "slug": "hybrid-laminate-flooring",
+      "category": "premium-flooring",
+      "url": "/products/hybrid-laminate-flooring",
+      "price_range": "₹279-₹329/sq.ft",
+      "short_description": "100% waterproof hybrid laminate flooring with AC-5 scratch resistance, wooden texture finish, and easy wet-mop maintenance.",
+      "details": {
+        "material_core": "Hybrid waterproof composite (combines natural wood appearance with advanced waterproof core technology)",
+        "thickness": "12mm",
+        "grade": "AC-5 (highest commercial scratch resistance - tougher than AC-4)",
+        "top_layer": "Luxury real wood finish with realistic grain patterns and natural texture",
+        "waterproofing": "100% waterproof core - will not swell, warp, or get damaged by water spills or high humidity",
+        "bathroom_safe": "Suitable for bathroom dry areas (no direct shower spray)",
+        "pet_friendly": "Extremely scratch-resistant AC-5 rating handles dog claws and active children",
+        "termite_protection": "Core treated to resist termites and borers",
+        "installation": "Click-Lock system (glue-free) - installs directly over existing flat tiles/marble",
+        "maintenance": "Extremely easy - can safely clean daily with wet mop (pocha) unlike standard laminate",
+        "warranty": "Industry-standard commercial warranty implied",
+        "applications": "Modern kitchens/dining areas, luxury bathroom dry zones, living rooms/bedrooms, ground floor/basement renovations, commercial showrooms, pet-friendly apartments"
+      },
+      "variants": [
+        {
+          "name": "Smartline 101",
+          "price": "₹279/sq.ft",
+          "mrp": "₹449/sq.ft",
+          "discount": "38% off",
+          "specifications": {
+            "thickness": "12mm",
+            "grade": "AC-4",
+            "box": "18.5 sq.ft",
+            "core": "Water-Resistant Hybrid",
+            "color": "Light Greyish Beige"
+          }
+        },
+        {
+          "name": "Smartline 102",
+          "price": "₹279/sq.ft",
+          "mrp": "₹449/sq.ft",
+          "discount": "38% off",
+          "specifications": {
+            "thickness": "12mm",
+            "grade": "AC-4",
+            "box": "18.5 sq.ft",
+            "core": "Water-Resistant Hybrid",
+            "color": "Warm Golden Sand"
+          }
+        },
+        {
+          "name": "Hybrid Oak 101",
+          "price": "₹329/sq.ft",
+          "mrp": "₹549/sq.ft",
+          "discount": "40% off",
+          "specifications": {
+            "thickness": "12mm",
+            "grade": "AC-5",
+            "box": "15.8 sq.ft",
+            "core": "Premium Hybrid Waterproof",
+            "color": "Medium Brown Natural"
+          }
+        },
+        {
+          "name": "Hybrid Oak 102",
+          "price": "₹329/sq.ft",
+          "mrp": "₹549/sq.ft",
+          "discount": "40% off",
+          "specifications": {
+            "thickness": "12mm",
+            "grade": "AC-5",
+            "box": "15.8 sq.ft",
+            "core": "Premium Hybrid Waterproof",
+            "color": "Light Beige Sand"
+          }
+        }
+      ]
+    }
+  ]
+}

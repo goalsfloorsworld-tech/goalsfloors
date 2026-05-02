@@ -8,33 +8,51 @@ from fastapi import FastAPI, Request, HTTPException
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from huggingface_hub import AsyncInferenceClient
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# JSON Data Load Karna
-with open("data.json", "r") as file:
+# Nayi JSON Data file load karna
+with open("KNOWLEDGE_BASE.json", "r", encoding="utf-8") as file:
     goals_data = json.load(file)
 
-# Dynamic System Prompt Banana
-SYSTEM_PROMPT = f"""You are the Virtual Architectural Consultant for Goals Floors.
+# Naya Master System Prompt
+SYSTEM_PROMPT = f"""
+You are the Virtual Architectural Consultant for Goals Floors, an expert AI assistant developed by Neyab Ansari.
+Your goal is to provide highly engaging, consultative, and professional support to Architects, Interior Designers, Builders, and Retailers based strictly on the following KNOWLEDGE BASE:
 
-CORE BRAND INFO: {goals_data['brand_info']}
-PRODUCTS: {json.dumps(goals_data['products'])}
-POLICIES: {json.dumps(goals_data['policies'])}
+{json.dumps(goals_data)}
 
-RULES:
-1. MATCH LANGUAGE: Always reply in the exact language the user uses (English or Hinglish).
-2. TONE: Premium, professional, highly polite, and consultative.
-3. PRICING: NEVER give exact prices. Guide them to connect with an Account Manager.
+CORE RULES FOR YOUR BEHAVIOR:
+
+1. LANGUAGE & TONE: Always reply in the exact language the user uses. If they use Hinglish (Roman Hindi), reply in natural, friendly, and engaging Hinglish. Use emojis to make the conversation lively, but keep them limited (don't overuse).
+
+2. BE A CONSULTANT, NOT JUST A BOT: If a user asks open-ended questions like "Deewar pe kya lagau?" (What should I put on the wall?) or "Ise kaise lagau?" (How to install?), give them creative interior design suggestions and practical installation advice based ONLY on Goals Floors products. Make the conversation fun, interesting, and highly valuable.
+
+3. PRODUCT LINKS (MANDATORY): Whenever you suggest a product or a policy/page, you MUST include its relative URL at the end of the suggestion in this exact Markdown format: [View Design](/products/exact-url-from-data) or [Apply Here](/dealer).
+
+4. HANDLING OUTSIDE/COMPETITOR PRODUCTS (THE PIVOT STRATEGY): You strictly deal in Goals Floors products. If a user asks about an outside product (e.g., Wallpaper, Normal Paint, Real Wood, Tile):
+   - Step A: Politely point out a practical flaw or disadvantage of that outside product (e.g., Wallpaper tears easily and gets ruined by dampness/seelan; Paint requires regular maintenance; Real wood gets termites).
+   - Step B: Immediately pitch a Goals Floors product as the perfect, premium alternative (e.g., "Iski jagah aap humare 100% waterproof WPC Fluted Panels ya PU Stone lagaiye...").
+
+5. DEVELOPER CREDITS: If anyone asks who created you or the website, proudly state that you and the website were developed by Neyab Ansari, a Full Stack Developer from Gurugram.
+
+6. LINKS & NAVIGATION: Always provide clickable links in Markdown format `[Text](/url)` when mentioning key pages.
+   - For collections: `[Explore Collection](/)`
+   - For becoming a dealer: `[Become a Dealer](/dealer)`
+   - For contact: `[Contact Us](/contact)`
+   - Use these links naturally in your sentences to help the user navigate.
+
+7. BOUNDARIES: Do not invent prices, policies, or products. If something is completely out of scope, guide them to contact the team at +91 7217644573.
 """
 
-# Baaki code tumhara same rahega...
-HF_TOKEN = os.environ.get("HF_TOKEN", "").strip()
-MODEL_ID = "meta-llama/Meta-Llama-3-8B-Instruct"
+# Gemini Settings
+GEMINI_API_KEY = (os.environ.get("GEMINI_API_KEY") or "").strip()
+GEMINI_MODEL = "gemini-flash-latest"
+
+# Google Sheets Webhook
 WEBHOOK_URL = os.environ.get("GOOGLE_SHEET_URL", "").strip()
-# ... [Baaki ka FastApi Code] ...
+
 app = FastAPI(title="Goals Floors AI API")
 
 app.add_middleware(
@@ -44,8 +62,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-client = AsyncInferenceClient(model=MODEL_ID, token=HF_TOKEN)
 
 class Message(BaseModel):
     role: str
@@ -75,36 +91,153 @@ async def send_to_google_sheets(user_message: str, ai_response: str):
     except Exception as e:
         logger.error(f"Connection failure to Google Sheets: {e}")
 
+
+def build_history(messages: List[dict]):
+    history = []
+    for message in messages[:-1]:
+        role = message.get("role", "user")
+        content = message.get("content", "").strip()
+
+        if not content or role == "system":
+            continue
+
+        if role == "assistant":
+            role = "model"
+
+        history.append({"role": role, "parts": [{"text": content}]})
+
+    return history
+
+
+def extract_gemini_text(event: dict) -> str:
+    candidates = event.get("candidates") or []
+    if not candidates:
+        return ""
+
+    content = candidates[0].get("content") or {}
+    parts = content.get("parts") or []
+    texts = []
+
+    for part in parts:
+        text = part.get("text")
+        if text:
+            texts.append(text)
+
+    return "".join(texts)
+
 async def generate_stream(messages: List[dict]):
-    try:
-        conversation = [{"role": "system", "content": SYSTEM_PROMPT}]
-        conversation.extend(messages)
+    max_retries = 3
+    retry_delay = 2  # Seconds to wait before first retry
 
-        stream = await client.chat_completion(
-            messages=conversation,
-            stream=True,
-            max_tokens=512,
-            temperature=0.7
-        )
+    for attempt in range(max_retries):
+        try:
+            if not GEMINI_API_KEY:
+                raise ValueError("GEMINI_API_KEY missing in app.py")
 
-        full_response = ""
-        async for chunk in stream:
-            if hasattr(chunk, 'choices') and chunk.choices and len(chunk.choices) > 0:
-                content = chunk.choices[0].delta.content
-                if content:
-                    full_response += content
-                    # Stream chunk to frontend instantly
-                    yield f"data: {json.dumps({'content': content})}\n\n"
-                
-        yield "data: [DONE]\n\n"
+            history = build_history(messages)
 
-        # FIRE & FORGET: After stream is complete, send data to Google Sheets
-        user_msg = messages[-1]["content"] if messages and messages[-1]["role"] == "user" else ""
-        asyncio.create_task(send_to_google_sheets(user_msg, full_response))
+            user_message = ""
+            for message in reversed(messages):
+                if message.get("role") == "user" and message.get("content", "").strip():
+                    user_message = message["content"].strip()
+                    break
 
-    except Exception as e:
-        logger.error(f"Error: {e}")
-        yield f"data: {json.dumps({'error': str(e)})}\n\n"
+            if not user_message:
+                raise ValueError("No user message found in request")
+
+            full_response = ""
+            gemini_url = (
+                f"https://generativelanguage.googleapis.com/v1beta/models/"
+                f"{GEMINI_MODEL}:streamGenerateContent?key={GEMINI_API_KEY}&alt=sse"
+            )
+            
+            # Build contents with system prompt as first message
+            contents = [{"role": "user", "parts": [{"text": SYSTEM_PROMPT}]}, {"role": "model", "parts": [{"text": "Understood. I will follow all these rules."}]}]
+            contents.extend(history)
+            contents.append({"role": "user", "parts": [{"text": user_message}]})
+            
+            payload = {
+                "contents": contents,
+                "generationConfig": {
+                    "temperature": 0.7,
+                    "maxOutputTokens": 1024,
+                },
+            }
+
+            async with httpx.AsyncClient(timeout=None) as http_client:
+                async with http_client.stream("POST", gemini_url, json=payload) as response:
+                    if response.status_code >= 400:
+                        error_text = await response.aread()
+                        error_msg = error_text.decode('utf-8', errors='ignore')
+                        error_lower = error_msg.lower()
+                        # FULL error log karo taaki debug ho sake
+                        logger.error(f"[Gemini Error] Status: {response.status_code} | Body: {error_msg[:500]}")
+
+                        # API Key invalid/missing check (specific)
+                        if response.status_code in (401, 403) or "api key" in error_lower or "api_key" in error_lower or "not valid" in error_lower:
+                            raise ValueError("API_KEY_INVALID")
+                        # Rate limit check
+                        elif response.status_code == 429 or "quota" in error_lower or "rate limit" in error_lower or "resource_exhausted" in error_lower:
+                            if attempt < max_retries - 1:
+                                logger.warning(f"Rate limit hit. Attempt {attempt + 1}, retrying in {retry_delay}s...")
+                                await asyncio.sleep(retry_delay)
+                                retry_delay *= 2
+                                continue
+                            raise ValueError("TRAFFIC_HIGH")
+                        # Model not found check (specific to model errors)
+                        elif response.status_code == 404 or ("model" in error_lower and ("not found" in error_lower or "does not exist" in error_lower)):
+                            raise ValueError(f"MODEL_INVALID: {error_msg[:200]}")
+                        else:
+                            raise ValueError(f"Gemini API error {response.status_code}: {error_msg[:200]}")
+
+                    async for line in response.aiter_lines():
+                        if not line or not line.startswith("data:"):
+                            continue
+
+                        data = line[5:].strip()
+                        if data == "[DONE]":
+                            break
+
+                        try:
+                            event = json.loads(data)
+                        except json.JSONDecodeError:
+                            continue
+
+                        content = extract_gemini_text(event)
+                        if content:
+                            full_response += content
+                            yield f"data: {json.dumps({'content': content})}\n\n"
+                    
+            yield "data: [DONE]\n\n"
+
+            # FIRE & FORGET: After stream is complete, send data to Google Sheets
+            user_msg = messages[-1]["content"] if messages and messages[-1]["role"] == "user" else ""
+            asyncio.create_task(send_to_google_sheets(user_msg, full_response))
+            return # Success, exit retry loop
+
+        except Exception as e:
+            error_str = str(e)
+            logger.error(f"Attempt {attempt + 1} failed: {error_str}")
+
+            if "API_KEY_INVALID" in error_str:
+                friendly_message = "⚙️ AI configuration error: API key is invalid or missing. Please contact the admin."
+                yield f"data: {json.dumps({'error': friendly_message})}\n\n"
+                break
+
+            if "MODEL_INVALID" in error_str:
+                friendly_message = "⚙️ AI model configuration error. Please contact the admin."
+                yield f"data: {json.dumps({'error': friendly_message})}\n\n"
+                break
+
+            if attempt < max_retries - 1 and "TRAFFIC_HIGH" not in error_str:
+                await asyncio.sleep(retry_delay)
+                retry_delay *= 2
+                continue
+
+            # Final failure message
+            friendly_message = "We apologize! 😅 Our server is currently experiencing high traffic or has reached its daily limit. Please try again after a few moments or contact us at +91 7217644573. 🙏"
+            yield f"data: {json.dumps({'error': friendly_message})}\n\n"
+            break
 
 @app.get("/")
 async def keep_alive():
@@ -112,7 +245,7 @@ async def keep_alive():
 
 @app.post("/api/chat")
 async def chat_endpoint(request: ChatRequest):
-    if not HF_TOKEN:
-        raise HTTPException(status_code=500, detail="HF_TOKEN missing in settings")
+    if not GEMINI_API_KEY or GEMINI_API_KEY == "PASTE_YOUR_GEMINI_API_KEY_HERE":
+        raise HTTPException(status_code=500, detail="GEMINI_API_KEY missing in app.py")
     messages_dict = [m.model_dump() for m in request.messages]
     return StreamingResponse(generate_stream(messages_dict), media_type="text/event-stream")
