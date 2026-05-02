@@ -1,22 +1,23 @@
 {
   "id": "cobra-pu-stone",
-  "title": "Cobra PU Stone Panels",
+  "title": "PU Stone Panels",
+  "shortTitle": "PU Stone Panels",
   "slug": "cobra-pu-stone",
   "category": "wall-panels",
   "priceRange": "Luxury Accent",
-  "shortDescription": "Ultra-lightweight artificial stone panels. Get a highly realistic, premium stone wall look in Delhi NCR without the heavy weight or messy cement work.",
-  "longDescription": "Goals Floors brings the revolutionary Cobra PU (Polyurethane) Stone series to Gurugram, Delhi, and Noida. If you love the rugged, natural look of stone walls but hate the hassle of installing them, this is the perfect solution. These panels look exactly like real natural stone but are incredibly lightweight and easy to handle.\n\nReal stone cladding is extremely heavy, requires strong reinforced walls, and involves days of messy cement and mortar work. Our Cobra PU Stone solves all these problems. Weighing almost 90% less than real stone, they can be directly pasted onto any dry wall, plywood, or existing surface in just a few hours. This makes them the ultimate choice for quick luxury renovations in high-rise apartments, Aerocity hotel lobbies, and Cyber City corporate offices.\n\nAs a top project supplier in Delhi NCR, we guarantee panels that not only look stunning but are technically advanced. They are 100% waterproof, fire-retardant, and even help in absorbing echoes in large rooms.",
+  "shortDescription": "Premium PU Stone Panels in Gurgaon & Delhi NCR for TV walls, lobby walls, cafes, and luxury interiors. Lightweight, waterproof, realistic stone finish, and easy installation without cement work.",
+  "longDescription": "Goals Floors supplies premium PU Stone Panels in Gurgaon, Delhi, Noida, and across NCR for luxury interior wall designs. PU Stone Panels are widely used for TV background walls, lobby walls, bedroom feature walls, restaurant interiors, office reception areas, and decorative stone wall designs.\n\nUnlike real stone cladding, PU Stone Panels are lightweight, easy to install, waterproof, and require no cement work. These artificial stone panels provide the exact look of natural stone while reducing wall load and installation time.\n\nOur PU Stone wall panels are ideal for modern homes, cafes, hotels, retail stores, and commercial projects. They are fire-retardant, moisture-resistant, durable, and suitable for Indian weather conditions.\n\nWe provide multiple texture and color options in 30mm and 60mm thickness depending on your interior theme and project requirements.\n\nWhether you need PU Stone Panels for a luxury TV wall, office reception, restaurant feature wall, or commercial interior project in Gurgaon or Delhi NCR, Goals Floors provides high-quality panels with wholesale pricing and fast delivery.",
   "features": [
     {
-      "title": "Ultra-Lightweight Material",
+      "title": "Lightweight PU Stone Panels",
       "description": "It weighs almost 90% less than real natural stone. This means it puts zero heavy load on your walls and is extremely easy to carry up to high-rise apartments."
     },
     {
-      "title": "Hyper-Realistic Natural Look",
+      "title": "Natural Stone Finish",
       "description": "These panels are molded directly from real stone slabs. Every rough texture, vein, and organic cut is captured perfectly so it doesn't look artificial or 'plasticky'."
     },
     {
-      "title": "Fast, Cement-Free Installation",
+      "title": "Easy Installation Without Cement",
       "description": "Say goodbye to messy cement, water, and sand. These panels can be easily cut with a normal wood saw and pasted directly onto the wall using strong structural glue."
     },
     {
@@ -29,18 +30,20 @@
     }
   ],
   "applications": [
-    "Luxury Living Room TV Walls & Backdrops",
-    "Hotel Receptions & Entrance Lobbies",
-    "Restaurant & Cafe Themed Interiors",
-    "Premium Bathroom Dry-Area Walls",
-    "High-end Retail Store Displays",
-    "Semi-Covered Balconies & Porches"
-  ],
+  "PU Stone TV Wall Designs",
+  "Living Room Feature Walls",
+  "Office Reception Stone Walls",
+  "Restaurant & Cafe Interiors",
+  "Hotel Lobby Wall Designs",
+  "Bedroom Stone Accent Walls",
+  "Retail Store Decorative Walls",
+  "Luxury Interior Stone Cladding"
+],
   "installation": "This is the fastest stone installation system available today. You do not need any messy mortar. The panels can be easily cut to size and pasted onto any flat, dust-free surface (like plaster, plywood, or drywall) using heavy-duty PU adhesives (like 3M). For high walls or ceilings, concealed screws are used in the joints for extra safety.",
   "maintenance": "It requires completely zero maintenance. Since the surface is non-porous, it does not absorb dust or liquid stains. You can simply clean it by wiping with a damp cloth or using a vacuum cleaner with a brush attachment to clean the deep textures.",
   "faqs": [
     {
-      "question": "What exactly is PU Stone?",
+      "question": "What are PU Stone Panels?",
       "answer": "PU (Polyurethane) Stone is an advanced artificial wall panel. It is made from high-density foam that is molded and painted to look exactly like real natural stone. It gives you the luxury look of stone without the heavy weight and installation hassle."
     },
     {
@@ -52,7 +55,7 @@
       "answer": "No cement or water is needed. Installation is a completely dry and clean process. The panels are pasted directly onto your wall or plywood using strong structural PU glue."
     },
     {
-      "question": "Can I install PU Stone on an existing painted wall or plywood?",
+      "question": "Can PU Stone Panels be installed on plywood or painted walls?",
       "answer": "Yes, absolutely. As long as the wall or plywood is flat, dry, and free from peeling paint or dust, you can directly glue the PU stone panels onto it."
     },
     {
@@ -78,7 +81,15 @@
     {
       "question": "Do you supply PU Stone in bulk for commercial projects in Delhi NCR?",
       "answer": "Yes, Goals Floors is a major B2B supplier of PU Stone in Gurugram, Delhi, and Noida. We offer special project pricing, bulk discounts, and ready stock for architects, builders, and interior contractors."
-    }
+    },
+    {
+  "question": "Are PU Stone Panels good for TV walls?",
+  "answer": "Yes, PU Stone Panels are one of the most popular choices for luxury TV wall designs because they provide a realistic stone finish, lightweight installation, and premium modern appearance."
+},
+{
+  "question": "What is the price of PU Stone Panels in Gurgaon?",
+  "answer": "PU Stone Panel prices depend on thickness, texture, and project size. Goals Floors provides wholesale pricing for residential and commercial projects across Gurgaon and Delhi NCR."
+}
   ],
   "images": [
     {
@@ -91,7 +102,7 @@
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477250/Pu_Stone_Installed_Design.jpg",
-      "alt": "Cobra PU Stone Panels Project Supplier in Delhi NCR"
+      "alt": "PU Stone Panels for Luxury TV Wall Design in Gurgaon"
     }
   ],
   "installedImages": [
@@ -252,7 +263,7 @@
       "images": [
         {
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477269/Grey_Color_Pu_FauxStone.png",
-          "alt": "Grey 60mm Cobra PU Faux Stone Project NCR",
+          "alt": "60mm Grey PU Stone Panel for Interior Wall Design",
           "name": "Cobra PU Stone 094 (60mm)"
         }
       ]
@@ -328,5 +339,11 @@
         "Touch up any visible cut edges with matching paint for a 100% realistic look."
       ]
     }
+  ],
+  "relatedLinks": [
+    { "label": "Wall Panels", "href": "/products/wall-panels", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png" },
+    { "label": "Tokyo Moulding", "href": "/products/tokyo-charcoal-moulding", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774970794/charcoal-gray_paneled_wall..jpg" },
+    { "label": "WPC Baffle Ceiling", "href": "/products/wpc-baffle-ceiling", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp" },
+    { "label": "Laminate Flooring", "href": "/products/laminate-flooring", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544853/oak_color_laminate_flooring_installed_images.png" }
   ]
 }

@@ -1,16 +1,21 @@
 {
   "id": "herringbone-laminate-flooring",
   "title": "Herringbone Laminate Flooring",
+  "shortTitle": "Herringbone Flooring",
   "slug": "herringbone-laminate-flooring",
   "category": "premium-flooring",
   "priceRange": "Premium",
-  "shortDescription": "Premium zigzag pattern laminate flooring. Looks like luxury real wood but is much stronger and scratch-resistant. Fast delivery available in Gurugram and Delhi NCR.",
-  "longDescription": "Upgrade your home or office with Goals Floors' Cobra Herringbone Laminate Flooring. This beautiful zigzag pattern gives a very expensive and luxury look to any room. Traditionally, this design was only available in real hardwood, which is very hard to maintain. We bring you this exact premium look in a tough, easy-to-maintain laminate format.\n\nOur herringbone flooring is built for the dynamic lifestyle of Delhi NCR. It has a strong High-Density Fiber (HDF) core and a tough AC-4 top layer. This means it can easily handle extreme weather changes, heavy foot traffic, and moving furniture without getting damaged.\n\nWhether you are renovating a living room in DLF Gurugram or setting up a modern office in Noida, this flooring provides the perfect balance of luxury and strength. It is highly scratch-resistant, very easy to clean, and gives your space an instant premium makeover.",
+"shortDescription": "Luxury herringbone laminate flooring in Gurugram & Delhi NCR with premium zigzag wood pattern, AC4 scratch resistance, waterproof surface, and easy maintenance for homes and offices.",
+  "longDescription": "Upgrade your home or office with Goals Floors' Cobra Herringbone Laminate Flooring. This beautiful zigzag pattern gives a very expensive and luxury look to any room. Traditionally, this design was only available in real hardwood, which is very hard to maintain. We bring you this exact premium look in a tough, easy-to-maintain laminate format.\n\nOur herringbone flooring is built for the dynamic lifestyle of Delhi NCR. It has a strong High-Density Fiber (HDF) core and a tough AC-4 top layer. This means it can easily handle extreme weather changes, heavy foot traffic, and moving furniture without getting damaged.\n\nThis premium wooden flooring is highly popular for luxury apartments, cafes, studio spaces, offices, and modern villas across Gurugram, Delhi, Noida, and Faridabad. Many customers search for this design as zigzag laminate flooring, chevron wooden flooring, parquet-style laminate floor, or luxury wooden flooring because of its rich European interior look.\n\nWhether you are renovating a living room in DLF Gurugram or setting up a modern office in Noida, this flooring provides the perfect balance of luxury and strength. It is highly scratch-resistant, very easy to clean, and gives your space an instant premium makeover.",
   "features": [
     {
       "title": "Classic Zigzag Design",
       "description": "The timeless V-shaped pattern gives your room a larger, more expensive, and luxurious feel compared to normal straight planks."
     },
+    {
+  "title": "Luxury European Interior Look",
+  "description": "Inspired by premium European parquet flooring styles, the herringbone pattern instantly gives homes, cafes, offices, and luxury interiors a rich designer appearance."
+},
     {
       "title": "Highly Durable (AC-4 Grade)",
       "description": "Built tough to handle heavy foot traffic. It is perfect for busy homes, showrooms, and corporate office spaces."
@@ -37,7 +42,10 @@
     "Modern Office Cabins & Receptions",
     "Boutiques & Retail Showrooms",
     "Master Bedrooms & Studio Apartments",
-    "Premium Cafes & Lounges"
+    "Premium Cafes & Lounges",
+    "Luxury Villas & Penthouses",
+"Designer Studio Apartments",
+"European Style Interior Projects"
   ],
   "installation": "It uses a modern 'Click-Lock' system, meaning the planks easily lock into each other without any messy glue. To get the perfect zigzag pattern, you need a flat floor and a soft foam underlay sheet. Because the pattern needs perfect alignment, we highly recommend using professional installers.",
   "maintenance": "Very easy to clean. Just use a normal broom or vacuum for daily dust. For deep cleaning, use a slightly damp (wet) microfiber mop. Please avoid using abrasive scrubbers or throwing buckets of water on the floor.",
@@ -81,7 +89,19 @@
     {
       "question": "Can I buy it for a single bedroom, or do you only do large projects?",
       "answer": "We do both! While we are major suppliers for architects and builders in NCR, you can easily order this premium flooring for just a single bedroom or living room makeover."
-    }
+    },
+    {
+  "question": "Is herringbone flooring better than normal straight laminate flooring?",
+  "answer": "Yes, herringbone flooring gives a much more premium and luxurious interior appearance compared to normal straight plank flooring. It is widely used in designer homes, luxury cafes, and modern offices."
+},
+{
+  "question": "Is this flooring waterproof?",
+  "answer": "The surface layer is water-resistant and safe from normal daily spills. However, like all wooden laminate flooring, standing water should be avoided for long-term durability."
+},
+{
+  "question": "Why is herringbone flooring popular in luxury interiors?",
+  "answer": "The zigzag parquet-style pattern creates a rich European interior look that instantly makes rooms feel more premium, stylish, and visually larger."
+}
   ],
   "images": [
     {
@@ -136,7 +156,7 @@
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776850667/Zig_Zag_Wooden_Flooring.jpg",
-      "alt": "Premium Zig Zag Wooden Flooring Design Gurugram",
+      "alt": "Luxury Herringbone Laminate Flooring Installation in Gurugram",
       "aspect": "landscape"
     },
     {
@@ -146,7 +166,7 @@
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776850667/Herringbone_Flooring_Design.jpg",
-      "alt": "Elegant Herringbone Flooring Design Pattern",
+      "alt": "European Style Herringbone Wooden Flooring Pattern",
       "aspect": "tall"
     },
     {
@@ -351,5 +371,11 @@
         "Check closely to make sure there are no visible gaps between the patterns."
       ]
     }
+  ],
+  "relatedLinks": [
+    { "label": "Laminate Flooring", "href": "/products/laminate-flooring", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544853/oak_color_laminate_flooring_installed_images.png" },
+    { "label": "Hybrid Flooring", "href": "/products/hybrid-laminate-flooring", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477090/Ocean_Waterproof_Laminate_FLooring.jpg" },
+    { "label": "SPC Flooring", "href": "/products/spc-flooring", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774612492/screenshot-2024-11-05-074302-YKb68R7lNDueGKEV.jpg" },
+    { "label": "Wall Panels", "href": "/products/wall-panels", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png" }
   ]
 }

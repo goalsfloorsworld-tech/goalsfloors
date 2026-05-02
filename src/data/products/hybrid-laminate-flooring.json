@@ -1,15 +1,24 @@
 {
   "id": "hybrid-laminate-flooring",
   "title": "Hybrid Laminate Flooring",
+  "shortTitle": "Hybrid Flooring",
   "slug": "hybrid-laminate-flooring",
   "category": "premium-flooring",
   "priceRange": "Premium",
-  "shortDescription": "100% waterproof wooden flooring. Enjoy the luxury look of real wood with the safety of a waterproof core. Perfect for kitchens, bathrooms, and living rooms in Delhi NCR.",
-  "longDescription": "Goals Floors brings you the ultimate solution for wooden flooring: The Cobra Hybrid Series. If you love the warm, rich look of real wooden floors but are worried about water damage, swelling, or scratches, this is exactly what you need.\n\nOur Hybrid Flooring combines the beautiful texture of natural wood with a 100% waterproof core. Whether you are renovating a modern kitchen in Gurugram, a dining area in Delhi, or a ground-floor home in Noida, this flooring easily handles water spills, high humidity, and daily cleaning without any damage. It features an ultra-tough AC-5 top layer, making it highly scratch-resistant and safe for homes with active kids and pets. Enjoy luxury flooring without the stress of maintenance.",
+  "shortDescription": "100% waterproof hybrid laminate flooring in Gurugram & Delhi NCR with AC5 scratch resistance, wooden texture finish, termite protection, and easy wet-mop maintenance for kitchens, bedrooms, and offices.",
+  "longDescription": "Goals Floors brings you the ultimate solution for wooden flooring: The Cobra Hybrid Series. If you love the warm, rich look of real wooden floors but are worried about water damage, swelling, or scratches, this is exactly what you need.\n\nOur Hybrid Flooring combines the beautiful texture of natural wood with a 100% waterproof core. Whether you are renovating a modern kitchen in Gurugram, a dining area in Delhi, or a ground-floor home in Noida, this flooring easily handles water spills, high humidity, and daily cleaning without any damage. It features an ultra-tough AC-5 top layer, making it highly scratch-resistant and safe for homes with active kids and pets. Enjoy luxury flooring without the stress of maintenance.\n\nThis waterproof wooden flooring is highly popular for modern apartments, modular kitchens, luxury villas, cafes, office spaces, and pet-friendly homes across Delhi NCR. Many customers also search for this product as waterproof laminate flooring, waterproof wooden flooring, water-resistant wood floor, AC5 laminate flooring, and premium hybrid floor because of its luxury wooden appearance and zero-maintenance performance.",
   "features": [
     {
       "title": "100% Waterproof Core",
       "description": "Unlike standard wooden floors, this flooring will not swell, warp, or get damaged by water spills or high humidity."
+    },
+    {
+      "title": "Luxury Real Wood Finish",
+      "description": "Designed with deep natural wood textures and realistic grain patterns that give your home or office the rich appearance of premium hardwood flooring."
+    },
+    {
+      "title": "Perfect for Pet-Friendly Homes",
+      "description": "Its waterproof and scratch-resistant surface makes it ideal for homes with dogs, cats, and active children."
     },
     {
       "title": "Safe for Kitchens & Bathrooms",
@@ -33,7 +42,11 @@
     "Luxury Bathroom Dry Zones",
     "Living Rooms & Bedrooms",
     "Ground Floor & Basement Renovations",
-    "High-Traffic Commercial Showrooms"
+    "High-Traffic Commercial Showrooms",
+    "Pet-Friendly Apartments",
+    "Luxury Modular Kitchens",
+    "Modern Studio Homes",
+    "Premium Cafes & Restaurants"
   ],
   "installation": "It features a very easy 'Click-Lock' system. The planks simply lock into each other without using any messy glue. The best part is, we can install this directly over your existing flat tiles or marble, saving you the heavy cost and mess of breaking your old floor.",
   "maintenance": "It is extremely easy to maintain. Unlike regular wooden flooring, you can safely use a wet mop to clean it daily. Regular sweeping or vacuuming will keep it looking brand new for years.",
@@ -77,12 +90,24 @@
     {
       "question": "How long will this flooring last?",
       "answer": "Because of its waterproof nature and AC-5 scratch resistance, this flooring is built to last for decades in normal residential conditions with very little maintenance."
-    }
+    },
+    {
+  "question": "Is hybrid flooring better than normal laminate flooring?",
+  "answer": "Yes. Hybrid flooring combines the luxury look of laminate wood with a waterproof core, making it much safer for kitchens, dining areas, and moisture-prone spaces."
+},
+{
+  "question": "Can hybrid flooring handle daily water spills?",
+  "answer": "Yes, the waterproof hybrid core protects the floor from swelling and damage caused by daily spills, wet mopping, and humidity."
+},
+{
+  "question": "Why is hybrid flooring becoming popular in Delhi NCR homes?",
+  "answer": "People prefer hybrid flooring because it gives the premium look of real wooden flooring while being waterproof, scratch-resistant, easy to maintain, and suitable for Indian weather conditions."
+}
   ],
   "images": [
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477090/Ocean_Waterproof_Laminate_FLooring.jpg",
-      "alt": "Luxury Hybrid Waterproof Flooring in Gurgaon Kitchen"
+      "alt": "Waterproof Hybrid Wooden Flooring Installation in Gurgaon Kitchen"
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477239/waterproof_wooden_flooring_supplier_in_gurgaon.jpg",
@@ -90,7 +115,7 @@
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477243/hybrid_waterproof_laminate_flooring.jpg",
-      "alt": "Hybrid Waterproof Laminate Flooring"
+      "alt": "100% Waterproof Hybrid Laminate Flooring Delhi NCR"
     }
   ],
   "installedImages": [
@@ -121,7 +146,7 @@
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Detailed_Shot_of_Hybrid_Plank_Installation_Mechanism.png",
-      "alt": "Detailed Shot of Hybrid Plank Installation Mechanism",
+      "alt": "Click Lock Waterproof Hybrid Flooring Installation System",
       "aspect": "portrait"
     },
     {
@@ -325,6 +350,28 @@
       "points": [
         "Once the whole floor is laid out, install matching wooden skirting on the walls to cover the edges and give a perfect finish."
       ]
+    }
+  ],
+  "relatedLinks": [
+    {
+      "label": "Laminate Flooring",
+      "href": "/products/laminate-flooring",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544853/oak_color_laminate_flooring_installed_images.png"
+    },
+    {
+      "label": "Herringbone Flooring",
+      "href": "/products/herringbone-laminate-flooring",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775411703/Luxury_Penthouse_Living_Room_with_Light_Oak_Herringbone_Flooring_Gurugram.jpg"
+    },
+    {
+      "label": "SPC Flooring",
+      "href": "/products/spc-flooring",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774612492/screenshot-2024-11-05-074302-YKb68R7lNDueGKEV.jpg"
+    },
+    {
+      "label": "Wall Panels",
+      "href": "/products/wall-panels",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png"
     }
   ]
 }

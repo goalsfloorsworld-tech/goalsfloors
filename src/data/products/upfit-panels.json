@@ -1,10 +1,11 @@
 {
   "id": "upfit-panels",
   "title": "Upfit Panels for Exteriors & Soffits",
+  "shortTitle": "Upfit Panels",
   "slug": "upfit-panels",
   "category": "outdoors",
   "priceRange": "Exterior & Soffit Grade",
-  "shortDescription": "A premium, unbreakable exterior ceiling panel. 100% waterproof and fire-resistant, perfect for balconies, roofs, and modern facades in Delhi NCR.",
+  "shortDescription": "Premium waterproof soffit ceiling panels for balconies, porch ceilings, roof soffits, and modern exterior facades in Gurugram, Delhi & Noida.",
   "longDescription": "Upgrade your building's exterior and outdoor ceilings with Goals Floors' premium Upfit Panels. If you are tired of using heavy wood that rots or cheap plastic that breaks easily outside, this is the perfect and permanent solution.\n\nDesigned specifically for the harsh weather of Gurugram and Delhi NCR, these panels are 100% waterproof, fire-resistant, and virtually unbreakable. They are incredibly lightweight, which means they do not put heavy stress on your ceiling structure. Whether you are covering a balcony roof, an outdoor driveway ceiling, or upgrading a modern building facade, Upfit Panels give a clean, luxury finish.\n\nAvailable in beautiful natural finishes and two different sizes (230mm for narrow lines and 305mm for a wider look), these panels offer premium architectural quality with absolutely zero maintenance.",
   "features": [
     {
@@ -12,7 +13,7 @@
       "description": "Made from advanced high-strength materials. They do not crack or break easily, making them highly durable and safe for long-term outdoor use."
     },
     {
-      "title": "100% Weather & Waterproof",
+      "title": "100% Waterproof Exterior Panels",
       "description": "Built to survive heavy rain, moisture, and extreme summer heat. They will never rot, swell, or grow fungus like natural wood."
     },
     {
@@ -25,7 +26,7 @@
     },
     {
       "title": "Zero Maintenance",
-      "description": "You do not need to spend money on paints or expensive polishing. They keep their beautiful color and texture naturally."
+      "description": "No polishing, painting, or expensive maintenance required. These exterior ceiling panels retain their premium finish and natural texture for years."
     },
     {
       "title": "Easy to Clean",
@@ -33,13 +34,13 @@
     }
   ],
   "applications": [
-    "Outdoor Balcony & Porch Ceilings",
-    "Exterior Roof Soffits (Chajja)",
-    "Commercial Driveways & Parking Ceilings",
-    "Modern Building Facades & Cladding",
-    "Decorative Outdoor Wall Accents"
-  ],
-  "installation": "The installation is fast, clean, and hassle-free. A basic metal frame (Aluminum or Iron) is prepared on the ceiling. The Upfit Panels simply interlock into each other and are screwed into the frame. We also provide matching edge corners (J-Trims and L-Profiles) to give your ceiling a perfect, professional border.",
+  "Balcony Ceiling Panels",
+  "Roof Soffit & Chajja Ceilings",
+  "Porch & Driveway Ceiling Designs",
+  "Modern Exterior Facade Cladding",
+  "Commercial Outdoor Ceiling Systems"
+],
+  "installation": "Installation is fast and professional. A lightweight aluminum or iron framework is first prepared on the ceiling surface. The Upfit soffit panels then interlock seamlessly and are fixed using hidden screws for a clean finish. Matching J-trims and L-corners are used to complete the edges and give the ceiling a premium architectural appearance.",
   "maintenance": "It requires almost zero maintenance. To clean the outdoor dust, simply wipe it down with a damp cloth. You can even wash the exterior panels with mild soap and water without worrying about water damage.",
   "faqs": [
     {
@@ -86,15 +87,15 @@
   "images": [
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774525633/goals-floors-upfit-panels-m7Vw49PE2qSaDNaG.jpg",
-      "alt": "Premium Upfit Panels for Exterior Soffits and Ceilings in Gurugram NCR"
+      "alt": "Waterproof Upfit Soffit Ceiling Panels for Balcony and Exterior Ceilings in Gurugram"
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774525741/leben-soffit-panel-A3QwX9j5pWFZGqjX.jpg",
-      "alt": "Goals Floors Soffit Panel Project Supplier in Delhi NCR"
+      "alt": "Modern Exterior Soffit Ceiling Panel Installation in Delhi NCR"
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774525799/leben-soffit-panel-2-m2Wpw9nKDwf1RwrW.jpg",
-      "alt": "Weatherproof Upfit Panels for Modern Building Facades in India"
+      "alt": "Weatherproof Upfit Soffit Panels for Modern Exterior Facades"
     }
   ],
   "installedImages": [
@@ -213,8 +214,8 @@
     {
       "name": "Upfit 305 - Classic Wood Series",
       "price": "₹1400",
-      "mrp": "₹12290",
-      "discount": "88% off",
+      "mrp": "₹2290",
+      "discount": "61% off",
       "unit": "per panel",
       "details": {
         "Size": "3660mm x 305mm (12ft x 1ft)",
@@ -248,8 +249,8 @@
     {
       "name": "Upfit 305 - Modern Texture Series",
       "price": "₹1400",
-      "mrp": "₹12290",
-      "discount": "88% off",
+      "mrp": "₹2290",
+      "discount": "61% off",
       "unit": "per panel",
       "details": {
         "Size": "3660mm x 305mm (12ft x 1ft)",
@@ -315,5 +316,11 @@
         "This hides all cut edges and gives the ceiling a professional border."
       ]
     }
+  ],
+  "relatedLinks": [
+    { "label": "WPC Exterior Louvers", "href": "/products/wpc-exterior-louvers", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775818177/exterior_louvaring.jpg" },
+    { "label": "WPC Decking", "href": "/products/wpc-decking", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478659/premium_wpc_decking_supplier_in_gurgaon.jpg" },
+    { "label": "Artificial Grass", "href": "/products/artificial-grass", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772476444/artificial_grass_supplier_in_india.jpg" },
+    { "label": "WPC Baffle Ceiling", "href": "/products/wpc-baffle-ceiling", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp" }
   ]
 }

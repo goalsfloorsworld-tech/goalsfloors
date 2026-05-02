@@ -1,11 +1,12 @@
 {
   "id": "artificial-grass",
-  "title": "Artificial Grass & Synthetic Turf",
+  "title": "Artificial Grass in Gurgaon & Delhi NCR | Balcony, Terrace & Garden Grass Price | Goals Floors",
+  "shortTitle": "Artificial Grass",
   "slug": "artificial-grass",
   "category": "outdoors",
   "priceRange": "Commercial Grade",
-  "shortDescription": "Premium, heavy-duty, UV-treated synthetic grass rolls. Engineered for luxury balconies, terrace gardens, and high-traffic commercial landscaping across Delhi NCR.",
-  "longDescription": "Transform your outdoor and indoor spaces into breathtaking, evergreen sanctuaries with Goals Floors' Ultra-Premium Artificial Grass collection. Meticulously engineered for the extreme climate of North India, our synthetic turf defies the scorching Gurugram summer heat without fading or drying out. Furthermore, it effortlessly handles heavy Delhi monsoons thanks to our advanced high-flow Max-Drain backing system, preventing any waterlogging.\n\nWhether you are upgrading a luxury high-rise apartment balcony in Noida, designing a lush terrace garden, or executing a massive commercial landscaping project for a corporate park in Cyber City, our grass provides a hyper-realistic, 4-tone natural appearance. Say goodbye to the endless costs and hassles of watering, mowing, fertilizers, and gardeners.\n\nAs a trusted project distributor in Haryana and the NCR region, we supply high-density turf ranging from a practical 25mm to a luxurious 50mm pile height. Our products are 100% pet-friendly, child-safe, and built for heavy foot traffic. Experience the ultimate blend of architectural aesthetics and zero-maintenance durability.",
+  "shortDescription": "Buy premium artificial grass in Gurgaon and Delhi NCR for balconies, terrace gardens, offices, schools, and landscaping projects. Waterproof, UV-protected, pet-friendly, and available in 25mm to 50mm thickness.",
+  "longDescription": "Goals Floors provides premium artificial grass in Gurgaon, Delhi, Noida, and across NCR for residential and commercial projects. Our artificial grass is designed for balconies, terrace gardens, office spaces, schools, cafes, and landscaping areas.\n\nUnlike natural grass, artificial grass requires zero watering, zero maintenance, and stays green throughout the year. It is 100% waterproof, UV-protected, pet-friendly, and ideal for Indian weather conditions including heavy rain and harsh summer heat.\n\nWe offer multiple thickness options including 25mm, 35mm, 40mm, and luxury 50mm artificial grass depending on your budget and project type.\n\nOur artificial grass is widely used for:\n- Balcony grass installation\n- Terrace garden flooring\n- Outdoor landscaping\n- Backyard grass\n- Rooftop cafes\n- Indoor decorative grass walls\n\nWhether you need artificial grass for a small balcony or a large commercial landscaping project in Gurgaon, Goals Floors provides high-quality grass rolls at wholesale prices with fast delivery across Delhi NCR.",
   "features": [
     {
       "title": "Advanced UV Stabilization Technology",
@@ -82,6 +83,18 @@
     {
       "question": "Do I have to purchase a full roll, or can I buy customized cut sizes?",
       "answer": "While our primary focus is bulk B2B roll supplies (539 sq. ft. per roll), we absolutely cater to residential projects by offering custom cut sizes (sold by running feet) for balconies and small terraces. Please share your exact dimensions with our team for a precise quote."
+    },
+    {
+      "question": "What is the price of artificial grass in Gurgaon?",
+      "answer": "Artificial grass price starts from ₹45/sq.ft and goes up depending on thickness, density, and quality."
+    },
+    {
+      "question": "Which artificial grass is best for balconies?",
+      "answer": "35mm and 40mm artificial grass are the most popular choices for balconies and terrace gardens because they provide a natural look and soft feel."
+    },
+    {
+      "question": "Can artificial grass be installed on tiles?",
+      "answer": "Yes, artificial grass can be directly installed on tiles, concrete, balconies, and terrace floors using adhesive or turf tape."
     }
   ],
   "images": [
@@ -278,5 +291,11 @@
         "Use a stiff-bristled broom or a power brush machine against the grain to make all the grass fibers stand up perfectly straight"
       ]
     }
+  ],
+  "relatedLinks": [
+    { "label": "WPC Decking", "href": "/products/wpc-decking", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478659/premium_wpc_decking_supplier_in_gurgaon.jpg" },
+    { "label": "WPC Exterior Louvers", "href": "/products/wpc-exterior-louvers", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775818177/exterior_louvaring.jpg" },
+    { "label": "Upfit Panels", "href": "/products/upfit-panels", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774525633/goals-floors-upfit-panels-m7Vw49PE2qSaDNaG.jpg" },
+    { "label": "Wall Panels", "href": "/products/wall-panels", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png" }
   ]
 }

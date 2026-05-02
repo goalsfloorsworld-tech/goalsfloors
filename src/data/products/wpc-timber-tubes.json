@@ -1,11 +1,11 @@
 {
   "id": "wpc-timber-tubes",
-  "title": "WPC Timber Tubes",
-  "slug": "wpc-timber-tubes",
+"title": "WPC Timber Tube",
+  "shortTitle": "WPC Timber Tubes",
   "category": "ceilings",
   "priceRange": "Premium",
-  "shortDescription": "Premium WPC timber tubes for luxury room partitions and ceiling designs. 100% waterproof, termite-proof, and requires absolutely no polishing.",
-  "longDescription": "Transform your interiors with Goals Floors' premium WPC Timber Tubes. Perfect for creating stunning room dividers, modern ceiling louvers, and elegant corporate lobbies across Delhi NCR.\n\nUnlike natural wood that warps, cracks, or requires constant expensive polishing, our Wood Plastic Composite (WPC) tubes offer a lifelong, zero-maintenance solution. They are 100% waterproof, termite-proof, and feature a highly realistic wood grain finish on all sides. Whether you are designing a high-end restaurant in Cyber City or a luxury apartment in Gurgaon, these timber tubes provide a flawless architectural look without the hassle of traditional carpentry.",
+  "shortDescription": "Premium WPC timber tube for modern room partitions, ceiling louvers, wall dividers, and office interiors in Gurgaon and Delhi NCR. 100% waterproof, termite-proof, and zero maintenance.",
+"longDescription": "Goals Floors provides premium WPC timber tube designs in Gurgaon, Delhi, Noida, and across Delhi NCR for modern home and commercial interiors. Our WPC timber tubes are widely used for room partitions, ceiling louvers, wall dividers, office cabins, staircase paneling, restaurant partitions, and decorative interior designs. Unlike natural wood, WPC timber tubes are 100% waterproof, termite-proof, moisture-resistant, and require zero polishing or maintenance. These timber tubes provide the natural wooden look without cracking, bending, or warping over time. Available in multiple wood finishes like walnut, teak, natural wood, and wenge, our WPC timber tube panels are ideal for luxury living rooms, offices, cafes, hotel lobbies, and commercial interiors. The hidden clip installation system creates a seamless modern finish without visible screws or nails. Whether you need timber tube partitions for a home in Gurgaon or bulk WPC timber tube supply for commercial projects in Delhi NCR, Goals Floors provides premium-quality products with fast delivery and professional installation support.",
   "features": [
     {
       "title": "100% Waterproof & Termite Proof",
@@ -39,13 +39,21 @@
     "Restaurant & Cafe Privacy Screens",
     "Staircase & Hallway Vertical Paneling"
   ],
-  "installation": "Installation is fast, clean, and highly secure. The tubes are mounted using a heavy-duty internal metal frame or specialized hidden L-clips attached to the floor and ceiling. The WPC tubes simply snap onto these clips, hiding all screws inside and providing a clean, 'floating' architectural finish.",
-  "maintenance": "Extremely easy to maintain. Since the smooth surface does not attract dust easily, a simple wipe-down with a dry or slightly damp microfiber cloth is all it takes to keep them looking brand new for decades.",
+"installation": "WPC timber tubes are installed using a hidden metal clip system fixed on the floor and ceiling. The hollow timber tube slides over the clips, creating a clean modern finish without visible screws. Installation is fast, dust-free, and suitable for homes, offices, restaurants, and commercial interiors.",
+"maintenance": "WPC timber tubes require almost zero maintenance. Simply clean the surface using a dry or slightly wet cloth to remove dust and keep the wood finish looking new for years.",
   "faqs": [
     {
       "question": "What are WPC Timber Tubes used for?",
       "answer": "They are primarily used to create beautiful, modern room dividers, open partitions, and premium ceiling louver designs in homes and commercial spaces."
     },
+    {
+  "question": "What is the price of WPC timber tubes in Gurgaon?",
+  "answer": "WPC timber tube prices start from ₹1390 per panel depending on size, finish, and project requirements."
+},
+{
+  "question": "Which is better, WPC timber tube or natural wood partition?",
+  "answer": "WPC timber tubes are better for modern interiors because they are waterproof, termite-proof, low maintenance, and more durable than natural wood."
+},
     {
       "question": "Do they look like real natural wood?",
       "answer": "Yes, they feature a deep 3D wood grain texture on all sides. Once installed, they are almost indistinguishable from expensive natural timber."
@@ -90,7 +98,7 @@
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775468038/wpc-timber-tube-5-YKblODzGRMHZbWMQ.avif",
-      "alt": "Modern vertical WPC timber tube partition in Gurugram interior"
+      "alt": "WPC timber tube partition design in Gurgaon"
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775468034/goals-floors-timber-tube-A85VnGP9z5UpNLpq.avif",
@@ -115,7 +123,7 @@
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478736/wpc_timber_tube_for_partition_Use.png",
-      "alt": "wpc timber tube for partition Use",
+      "alt": "WPC timber tube room partition design",
       "aspect": "portrait"
     },
     {
@@ -125,7 +133,7 @@
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478740/Installed_Timber_tube.png",
-      "alt": "Installed Timber tube",
+      "alt": "WPC timber tube ceiling design",
       "aspect": "wide"
     }
   ],
@@ -238,5 +246,11 @@
         "Install the matching WPC end-caps at the top and bottom for a seamless, closed finish."
       ]
     }
+  ],
+  "relatedLinks": [
+    { "label": "WPC Baffle Ceiling", "href": "/products/wpc-baffle-ceiling", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp" },
+    { "label": "Wall Panels", "href": "/products/wall-panels", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png" },
+    { "label": "Tokyo Moulding", "href": "/products/tokyo-charcoal-moulding", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774970794/charcoal-gray_paneled_wall..jpg" },
+    { "label": "WPC Exterior Louvers", "href": "/products/wpc-exterior-louvers", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775818177/exterior_louvaring.jpg" }
   ]
 }

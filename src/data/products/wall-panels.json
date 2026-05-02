@@ -1,6 +1,7 @@
 {
   "id": "wall-panels",
   "title": "Wall Panels",
+  "shortTitle": "Wall Panels",
   "slug": "wall-panels",
   "category": "wall-panels",
   "priceRange": "Luxury Series",
@@ -695,5 +696,11 @@
         "Fasten the concealed lip using brad nails to lock the architectural finish securely in place."
       ]
     }
+  ],
+  "relatedLinks": [
+    { "label": "PU Stone Panels", "href": "/products/cobra-pu-stone", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477246/Pu_Stone_Colors.jpg" },
+    { "label": "Tokyo Moulding", "href": "/products/tokyo-charcoal-moulding", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774970794/charcoal-gray_paneled_wall..jpg" },
+    { "label": "Laminate Flooring", "href": "/products/laminate-flooring", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544853/oak_color_laminate_flooring_installed_images.png" },
+    { "label": "WPC Baffle Ceiling", "href": "/products/wpc-baffle-ceiling", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp" }
   ]
 }

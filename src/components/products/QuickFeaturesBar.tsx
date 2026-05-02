@@ -71,9 +71,9 @@ export default function QuickFeaturesBar({ features }: QuickFeaturesBarProps) {
               </div>
 
               {/* Text Content */}
-              <h4 className="text-[11px] lg:text-[12px] font-bold text-gray-900 dark:text-white mb-1 uppercase tracking-wider leading-tight">
+              <p className="text-[11px] lg:text-[12px] font-bold text-gray-900 dark:text-white mb-1 uppercase tracking-wider leading-tight">
                 {item.title}
-              </h4>
+              </p>
               <p className="text-[10px] lg:text-xs text-gray-500 dark:text-gray-400 font-medium max-w-[140px]">
                 {item.desc}
               </p>

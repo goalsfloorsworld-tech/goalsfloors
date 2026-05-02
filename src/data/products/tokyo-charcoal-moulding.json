@@ -1,11 +1,12 @@
 {
   "id": "charcoal-moulding",
   "title": "Tokyo Moulding",
+  "shortTitle": "Tokyo Moulding",
   "slug": "tokyo-charcoal-moulding",
   "category": "wall-panels",
   "priceRange": "Premium",
-  "shortDescription": "Transform your plain walls with premium Tokyo Moulding. A stylish, ready-to-paint, and waterproof wall panelling solution for luxury homes and offices in Delhi NCR.",
-  "longDescription": "Goals Floors brings you the elegant Tokyo Moulding series to completely transform your interior spaces in Gurugram, Delhi, and Noida. If you want to give your plain walls a luxurious, architectural look without heavy wood-work, this is the perfect solution.\n\nMade from high-density, waterproof materials, these wall mouldings look like premium wood but are much better. Unlike normal wood, they will never warp, bend, or get damaged by water and extreme weather. They come pre-primed, which means you can easily paint them in any color to perfectly match your room's theme.\n\nWhether you are designing a beautiful living room TV backdrop, a luxury bedroom wall, or a modern office reception, Tokyo Moulding gives a flawless, premium finish. It is highly durable, termite-proof, and super easy to install.",
+  "shortDescription": "Premium waterproof Tokyo Moulding for luxury wall designs. Create elegant TV backdrops, panel walls, and decorative interiors without heavy carpentry in Delhi NCR.",
+  "longDescription": "Goals Floors brings premium Tokyo Moulding solutions for luxury interior wall designs across Gurugram, Delhi, Noida, and complete Delhi NCR. If you want to transform plain walls into elegant designer spaces without expensive woodwork or heavy carpentry, Tokyo Moulding is the perfect modern solution.\n\nMade from high-density waterproof polymer material, these decorative mouldings deliver the rich appearance of luxury wooden wall panels while offering far better durability. Unlike traditional wooden mouldings, they never bend, crack, swell, or get damaged from moisture and changing weather conditions. The mouldings come pre-primed and ready to paint, allowing architects and homeowners to perfectly match any interior theme or wall color.\n\nWhether you are creating a premium TV unit backdrop, luxury bedroom panel wall, elegant living room frames, hotel corridors, office receptions, or modern commercial interiors, Tokyo Moulding provides a seamless high-end finish with minimal maintenance. It is waterproof, termite-proof, lightweight, fire-retardant, and extremely easy to install.\n\nMade from high-density, waterproof materials, these wall mouldings look like premium wood but are much better. Unlike normal wood, they will never warp, bend, or get damaged by water and extreme weather. They come pre-primed, which means you can easily paint them in any color to perfectly match your room's theme.\n\nWhether you are designing a beautiful living room TV backdrop, a luxury bedroom wall, or a modern office reception, Tokyo Moulding gives a flawless, premium finish. It is highly durable, termite-proof, and super easy to install.",
   "features": [
     {
       "title": "100% Waterproof & Termite Proof",
@@ -31,18 +32,28 @@
   "architectHeading": "WHY ARCHITECTS CHOOSE OUR TOKYO MOULDING",
   "architectSubheading": "Tokyo Moulding Comes With Japanese Technologies - EASY TO FIX, READY TO PAINT",
   "applications": [
-    "Luxury TV Units & Bedroom Backdrops",
-    "Living Room Accent & Frame Walls",
-    "Corporate Boardrooms & Cabins",
-    "Hotel Receptions & Corridors",
-    "Premium Cafes & Restaurants"
+    "Luxury TV Unit Backdrop Walls",
+    "Modern Bedroom Panel Designs",
+    "Living Room Decorative Frame Walls",
+    "Hotel Reception & Lobby Interiors",
+    "Corporate Offices & Cabins",
+    "Luxury Cafes & Restaurant Interiors",
+    "Villa & Apartment Feature Walls"
   ],
-  "installation": "Installation is incredibly fast and clean. No heavy machinery or drilling is required. The mouldings are easily cut to your required size and pasted directly onto any flat wall or plywood using strong PU adhesive (like 3M). It gives a beautiful, seamless finish with no visible nail marks.",
-  "maintenance": "It is completely hassle-free. You can easily wipe off dust with a dry or slightly damp microfiber cloth. Because it is waterproof, you don't have to worry about moisture damage. Just avoid using harsh chemicals or wire scrubbers to keep the paint safe.",
+  "installation": "Installation is fast, clean, and completely hassle-free. Tokyo Moulding can be fixed directly on flat walls, plywood, MDF, or gypsum surfaces using premium PU adhesive without heavy drilling or nail work. The mouldings are cut according to the design layout and pasted seamlessly to create elegant decorative wall patterns. After installation, the surface can be painted in any shade for a luxury finished look.",
+  "maintenance": "Tokyo Moulding requires very little maintenance. Simply clean the surface using a soft dry cloth or a slightly damp microfiber cloth to remove dust. Because the material is waterproof and termite-proof, it stays durable for years without swelling or cracking. Avoid using harsh chemicals or metal scrubbers directly on painted surfaces.",
   "faqs": [
     {
       "question": "What is Tokyo Moulding used for?",
       "answer": "It is a premium architectural decor item used to create beautiful frames, panels, and borders on plain walls, giving them a luxurious, French-style or modern look."
+    },
+    {
+      "question": "Is Tokyo Moulding better than traditional wooden moulding?",
+      "answer": "Yes. Tokyo Moulding is waterproof, termite-proof, lightweight, and easier to maintain compared to traditional wooden mouldings. It provides the same premium luxury appearance without problems like swelling, cracking, or moisture damage."
+    },
+    {
+      "question": "Can Tokyo Moulding be used for modern wall panel designs?",
+      "answer": "Absolutely. Tokyo Moulding is widely used for modern decorative wall frames, TV unit backdrops, luxury bedroom walls, hotel interiors, and designer living room concepts."
     },
     {
       "question": "Is it made of real wood?",
@@ -103,12 +114,12 @@
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772476499/premium_charcoal_mulding_In_Gurgaon.jpg",
-      "alt": "premium_charcoal_mulding_In_Gurgaon",
+      "alt": "Luxury Decorative Tokyo Moulding Installation Project in Gurugram",
       "aspect": "landscape"
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772476504/Premium_Charcoal_Moulding.jpg",
-      "alt": "Premium_Charcoal_Moulding",
+      "alt": "Premium Tokyo Moulding Design for Luxury Interior Walls in Delhi NCR",
       "aspect": "square"
     },
     {
@@ -123,7 +134,7 @@
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772476665/best_charcoal_moulding_in_gurgaon.jpg",
-      "alt": "best_charcoal_moulding_in_gurgaon",
+      "alt": "Waterproof Tokyo Charcoal Moulding Wall Design for Modern Homes",
       "aspect": "square"
     }
   ],
@@ -325,6 +336,28 @@
         "Check with a leveler to ensure it is perfectly straight.",
         "Wipe away any extra glue immediately with a damp cloth."
       ]
+    }
+  ],
+  "relatedLinks": [
+    {
+      "label": "Wall Panels",
+      "href": "/products/wall-panels",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png"
+    },
+    {
+      "label": "PU Stone Panels",
+      "href": "/products/cobra-pu-stone",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477246/Pu_Stone_Colors.jpg"
+    },
+    {
+      "label": "WPC Baffle Ceiling",
+      "href": "/products/wpc-baffle-ceiling",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp"
+    },
+    {
+      "label": "Laminate Flooring",
+      "href": "/products/laminate-flooring",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544853/oak_color_laminate_flooring_installed_images.png"
     }
   ]
 }

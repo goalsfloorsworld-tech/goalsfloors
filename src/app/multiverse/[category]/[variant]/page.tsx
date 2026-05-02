@@ -105,7 +105,7 @@ export default async function MultiverseVariantPage({ params }: { params: Promis
               {/* 📖 Deep SEO Editorial Content Block */}
               {data.longDescription && (
                 <article className="bg-white dark:bg-zinc-900 p-8 md:p-12 rounded-3xl shadow-sm border border-gray-200 dark:border-zinc-800 transition-colors duration-300">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white border-b border-gray-200 dark:border-zinc-800 pb-4">Overview</h2>
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white border-b border-gray-200 dark:border-zinc-800 pb-4">Overview of {data.name}</h2>
                   <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed text-justify">
                     {data.longDescription}
                   </p>
@@ -126,7 +126,7 @@ export default async function MultiverseVariantPage({ params }: { params: Promis
                   </ul>
                   {data.applications && (
                     <div className="mt-8 pt-8 border-t border-gray-100 dark:border-zinc-800">
-                      <h3 className="text-lg font-bold mb-4 text-gray-800 dark:text-gray-100">Best For</h3>
+                      <p className="text-lg font-bold mb-4 text-gray-800 dark:text-gray-100">Best For</p>
                       <div className="flex flex-wrap gap-2">
                         {data.applications.map((app: string, idx: number) => (
                           <span key={idx} className="bg-emerald-50 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 border border-emerald-100 dark:border-emerald-800/50 px-3 py-1.5 rounded-lg text-xs font-semibold shadow-sm">
@@ -140,7 +140,7 @@ export default async function MultiverseVariantPage({ params }: { params: Promis
 
                 {data.benefits && (
                   <div className="bg-slate-900 dark:bg-zinc-950 p-8 rounded-3xl shadow-sm border border-slate-800 dark:border-zinc-800 text-white transition-colors duration-300">
-                    <h3 className="text-xl font-bold mb-6 text-emerald-400">Technical Benefits</h3>
+                    <h3 className="text-xl font-bold mb-6 text-emerald-400">Technical Specifications of {data.name}</h3>
                     <div className="space-y-6">
                       {data.benefits.map((bene: any, idx: number) => (
                         <div key={idx} className="bg-white/5 border border-white/10 p-5 rounded-2xl">
@@ -188,7 +188,7 @@ export default async function MultiverseVariantPage({ params }: { params: Promis
               </div>
 
               <div className="bg-white dark:bg-zinc-900 p-8 md:p-12 rounded-3xl shadow-sm border border-gray-200 dark:border-zinc-800 transition-colors duration-300">
-                <h2 className="text-3xl font-extrabold mb-8 text-gray-900 dark:text-white border-b border-gray-200 dark:border-zinc-800 pb-4">Explore Series & Variants</h2>
+                <h2 className="text-3xl font-extrabold mb-8 text-gray-900 dark:text-white border-b border-gray-200 dark:border-zinc-800 pb-4">{data.name} Series & Variants</h2>
                 
                 {data.collections ? (
                   data.collections.map((collection: any, colIdx: number) => (
@@ -261,7 +261,7 @@ export default async function MultiverseVariantPage({ params }: { params: Promis
               {/* 💬 Frequently Asked Questions (SEO Goldmine) */}
               {data.faqs && (
                 <div className="bg-white dark:bg-zinc-900 p-8 md:p-12 rounded-3xl shadow-sm border border-gray-200 dark:border-zinc-800 transition-colors duration-300">
-                  <h2 className="text-3xl font-extrabold mb-8 text-gray-900 dark:text-white border-b border-gray-200 dark:border-zinc-800 pb-4">Frequently Asked Questions</h2>
+                  <h2 className="text-3xl font-extrabold mb-8 text-gray-900 dark:text-white border-b border-gray-200 dark:border-zinc-800 pb-4">FAQs about {data.name}</h2>
                   <div className="space-y-4">
                     {data.faqs.map((faq: any, idx: number) => (
                       <details key={idx} className="group border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800/50 rounded-2xl [&_summary::-webkit-details-marker]:hidden transition-colors duration-300">

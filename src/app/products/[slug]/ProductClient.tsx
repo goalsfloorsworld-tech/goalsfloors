@@ -61,6 +61,7 @@ export interface AfterInstallation {
 export interface Product {
   id: string;
   title: string;
+  shortTitle?: string;
   slug: string;
   category: string;
   priceRange: string;
@@ -84,6 +85,7 @@ export interface Product {
   variants?: Variant[];
   architectHeading?: string;
   architectSubheading?: string;
+  relatedLinks?: { label: string; href: string; image?: string }[];
 }
 
 const StarRating = () => (
@@ -581,7 +583,7 @@ export default function ProductClient({ product }: { product: Product }) {
               <StarRating />
 
               <motion.h1
-                className="text-3xl md:text-5xl lg:text-6xl font-semibold text-gray-900 dark:text-white leading-[1.1] mb-4"
+                className="text-xl md:text-3xl lg:text-4xl font-semibold text-gray-900 dark:text-white leading-[1.1] mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -651,12 +653,12 @@ export default function ProductClient({ product }: { product: Product }) {
         <div className="bg-gray-50 dark:bg-slate-900 pt-0 pb-12 lg:pt-4 lg:pb-10 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-600 mb-4 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 inline-block rounded-sm">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-600 mb-4 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 inline-block rounded-sm">
                 Available Selection
+              </p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white">
+                {product.shortTitle || product.title} Sizes & Project Pricing
               </h2>
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white">
-                Choose Your Size & Get Project Pricing
-              </h3>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -691,7 +693,7 @@ export default function ProductClient({ product }: { product: Product }) {
       {/* ================= 3. CORE SPECIFICATIONS / FEATURES ================= */}
       <FeatureAccordion
         features={product.features}
-        productTitle={product.title}
+        productTitle={product.shortTitle || product.title}
         heading={product.architectHeading}
         subheading={product.architectSubheading}
       />
@@ -719,14 +721,14 @@ export default function ProductClient({ product }: { product: Product }) {
             )}
 
             <div className="text-center mb-10">
-              <h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-600 mb-4 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 inline-block rounded-sm">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-600 mb-4 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 inline-block rounded-sm">
                 Project Gallery
+              </p>
+              <h2 className="text-2xl md:text-4xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tight">
+                {product.shortTitle || product.title} <span className="text-amber-600 italic">Installation Gallery</span>
               </h2>
-              <h3 className="text-2xl md:text-4xl font-black text-gray-900 dark:text-white mb-4 uppercase tracking-tight">
-                Installed <span className="text-amber-600 italic">Visuals</span>
-              </h3>
               <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-base font-medium">
-                See how our premium {product.title} transforms real spaces across Delhi NCR. Clean, architectural, and built to last.
+                See how our premium {product.shortTitle || product.title} transforms real spaces across Delhi NCR. Clean, architectural, and built to last.
               </p>
             </div>
 
@@ -922,7 +924,7 @@ export default function ProductClient({ product }: { product: Product }) {
                   <div className="w-10 h-10 rounded-full bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center text-amber-600 dark:text-amber-500">
                     <BarChart3 className="w-5 h-5" />
                   </div>
-                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Where to Use These Panels</h3>
+                  <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">Where to Use {product.shortTitle || product.title}</h2>
                 </div>
                 <ul className="space-y-0 border border-gray-200 dark:border-gray-800 rounded-sm overflow-hidden shadow-sm transition-colors duration-300">
                   {product.applications.map((app, i) => (
@@ -974,8 +976,8 @@ export default function ProductClient({ product }: { product: Product }) {
                   <Wrench className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Easy Installation Guide</h3>
-                  <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mt-1">{product.title} (Professional Guide)</p>
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">{product.shortTitle || product.title} Installation Guide</h2>
+                  <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mt-1">{product.shortTitle || product.title} (Professional Guide)</p>
                 </div>
               </div>
 
@@ -1097,7 +1099,7 @@ export default function ProductClient({ product }: { product: Product }) {
             >
               <div className="flex items-center gap-4 mb-4 text-amber-500">
                 <Hammer className="w-6 h-6" />
-                <h3 className="text-2xl font-semibold text-white">Pro Installation Tips</h3>
+                <h2 className="text-2xl font-semibold text-white">{product.shortTitle || product.title} Installation Tips</h2>
               </div>
               <p className="text-gray-300 text-lg leading-relaxed font-light text-justify">
                 {product.installation}
@@ -1113,7 +1115,7 @@ export default function ProductClient({ product }: { product: Product }) {
             >
               <div className="flex items-center gap-4 mb-4 text-amber-500">
                 <Sparkles className="w-6 h-6" />
-                <h3 className="text-2xl font-semibold text-white">How to Clean & Maintain</h3>
+                <h2 className="text-2xl font-semibold text-white">{product.shortTitle || product.title} Cleaning & Maintenance</h2>
               </div>
               <p className="text-gray-300 text-lg leading-relaxed font-light text-justify">
                 {product.maintenance}
@@ -1128,7 +1130,7 @@ export default function ProductClient({ product }: { product: Product }) {
       <div className="bg-gray-50 dark:bg-slate-900 py-10 lg:py-16 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-2">Common Questions (FAQs)</h2>
+            <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-2">Frequently Asked Questions About {product.shortTitle || product.title}</h2>
             <p className="text-gray-600 dark:text-gray-400 text-lg">Detailed answers for project-level planning.</p>
           </div>
 
@@ -1172,6 +1174,57 @@ export default function ProductClient({ product }: { product: Product }) {
         </div>
       </div>
 
+      {/* ================= 8.5. RELATED PRODUCTS ================= */}
+      {product.relatedLinks && product.relatedLinks.length > 0 && (
+        <div className="bg-gray-50 dark:bg-slate-900 py-12 lg:py-16 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.3em] text-amber-600 mb-3 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 rounded-sm">
+                Explore More
+              </span>
+              <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white">
+                {product.shortTitle || product.title} Related Products
+              </h2>
+              <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">Complementary products for complete project solutions.</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+              {product.relatedLinks.map((link, i) => (
+                <Link
+                  key={i}
+                  href={link.href}
+                  className="group relative flex flex-col bg-white dark:bg-slate-950 rounded-xl overflow-hidden border border-gray-300 dark:border-gray-700 hover:border-amber-500 dark:hover:border-amber-500 hover:shadow-xl hover:shadow-amber-500/10 transition-all duration-300"
+                >
+                  {/* Image */}
+                  <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-slate-800">
+                    {link.image ? (
+                      <Image
+                        src={link.image}
+                        alt={link.label}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Layers className="w-8 h-8 text-gray-300 dark:text-gray-600" />
+                      </div>
+                    )}
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                  {/* Label Section */}
+                  <div className="flex items-center justify-between px-3 py-4 bg-gray-200 dark:bg-slate-900 border-t border-gray-200 dark:border-gray-800">
+                    <span className="text-[11px] xs:text-sm md:text-base font-bold text-gray-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors duration-300 leading-tight">
+                      {link.label}
+                    </span>
+                    <ArrowRight className="w-4 h-4 text-amber-600 group-hover:text-amber-500 -translate-x-1 group-hover:translate-x-0 opacity-0 group-hover:opacity-100 transition-all duration-300 shrink-0 ml-2" />
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
 
       {/* ================= 9. B2B CONVERSION BAR ================= */}
@@ -1184,7 +1237,7 @@ export default function ProductClient({ product }: { product: Product }) {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="text-center sm:text-left">
-            <h4 className="text-base font-semibold text-gray-900 dark:text-white">{product.title}</h4>
+            <h4 className="text-base font-semibold text-gray-900 dark:text-white">{product.shortTitle || product.title}</h4>
             <div className="flex items-center justify-center sm:justify-start gap-2 mt-1 hidden md:flex">
               <Lock className="w-3 h-3 text-green-600 dark:text-green-500" />
               <p className="text-xs font-semibold uppercase tracking-wider text-green-700 dark:text-green-500">Premium B2B Fulfillment in NCR</p>

@@ -1,6 +1,7 @@
 {
   "id": "spc-flooring",
-  "title": "SPC Flooring",
+  "title": "Best SPC Flooring Supplier in Gurgaon | Waterproof Wooden Flooring",
+  "shortTitle": "SPC Flooring",
   "slug": "spc-flooring",
   "category": "premium-flooring",
   "priceRange": "Premium B2B Grade",
@@ -366,5 +367,11 @@
         "It allows the building to naturally shift without buckling the floor."
       ]
     }
+  ],
+  "relatedLinks": [
+    { "label": "Laminate Flooring", "href": "/products/laminate-flooring", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544853/oak_color_laminate_flooring_installed_images.png" },
+    { "label": "Herringbone Flooring", "href": "/products/herringbone-laminate-flooring", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775411703/Luxury_Penthouse_Living_Room_with_Light_Oak_Herringbone_Flooring_Gurugram.jpg" },
+    { "label": "Hybrid Flooring", "href": "/products/hybrid-laminate-flooring", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477090/Ocean_Waterproof_Laminate_FLooring.jpg" },
+    { "label": "WPC Decking", "href": "/products/wpc-decking", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478659/premium_wpc_decking_supplier_in_gurgaon.jpg" }
   ]
 }

@@ -1,6 +1,7 @@
 {
   "id": "laminate-flooring",
   "title": "Laminate Flooring",
+  "shortTitle": "Laminate Flooring",
   "slug": "laminate-flooring",
   "category": "premium-flooring",
   "priceRange": "Premium",
@@ -22,6 +23,10 @@
     {
       "title": "Fast, Glue-Free Installation",
       "description": "Uses a smart 'Click-Lock' system. The wooden planks easily join together like a puzzle without any messy cement or adhesive."
+    },
+    {
+      "title": "Fire & Burn Resistant",
+      "description": "The protective top layer is resistant to cigarette burns and normal heat exposure."
     },
     {
       "title": "Safe for Family & Kids",
@@ -57,6 +62,18 @@
     {
       "question": "Will this flooring attract termites (deemak)?",
       "answer": "No. Our premium HDF core is chemically treated during the manufacturing process to be highly resistant to termites and borers, keeping your home safe."
+    },
+    {
+      "question": "What is the difference between laminate flooring and SPC flooring?",
+      "answer": "Laminate flooring gives a warmer and more natural wooden feel underfoot, while SPC flooring is fully waterproof and slightly harder. Laminate is best for bedrooms and living rooms, whereas SPC is better for kitchens and moisture-prone areas."
+    },
+    {
+      "question": "Which is better: laminate or vinyl flooring?",
+      "answer": "Laminate flooring usually looks and feels more like real wood because of its textured HDF surface. Vinyl flooring is softer and more waterproof. The right choice depends on your room usage and budget."
+    },
+    {
+      "question": "What thickness is best for laminate flooring?",
+      "answer": "For most homes and offices in Delhi NCR, 8mm laminate flooring with an AC-4 rating provides the ideal balance of comfort, durability, and price."
     },
     {
       "question": "Does it get scratched easily by furniture or kids?",
@@ -374,6 +391,28 @@
         "Use small spacer blocks to hold this gap while installing."
       ],
       "tip": "Wood naturally expands slightly in different seasons. This small gap prevents the floor from buckling upwards."
+    }
+  ],
+  "relatedLinks": [
+    {
+      "label": "Herringbone Flooring",
+      "href": "/products/herringbone-laminate-flooring",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775411703/Luxury_Penthouse_Living_Room_with_Light_Oak_Herringbone_Flooring_Gurugram.jpg"
+    },
+    {
+      "label": "Hybrid Flooring",
+      "href": "/products/hybrid-laminate-flooring",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477090/Ocean_Waterproof_Laminate_FLooring.jpg"
+    },
+    {
+      "label": "SPC Flooring",
+      "href": "/products/spc-flooring",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774612492/screenshot-2024-11-05-074302-YKb68R7lNDueGKEV.jpg"
+    },
+    {
+      "label": "Wall Panels",
+      "href": "/products/wall-panels",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png"
     }
   ]
 }

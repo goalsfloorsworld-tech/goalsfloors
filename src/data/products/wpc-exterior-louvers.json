@@ -1,10 +1,11 @@
 {
   "id": "wpc-exterior-louvers",
   "title": "WPC Exterior Louvers",
+  "shortTitle": "WPC Exterior Louvers",
   "slug": "wpc-exterior-louvers",
   "category": "outdoors",
-  "priceRange": "Exterior Grade",
-  "shortDescription": "Premium 100% waterproof exterior wall panels. Give your building facade a luxury 3D wooden look that never fades, rots, or requires painting in Delhi NCR.",
+  "priceRange": "Premium Exterior Grade",
+"shortDescription": "Premium UV-coated WPC exterior louvers for modern building facades, balcony ceilings, and outdoor walls. 100% waterproof, termite-proof, fade-resistant, and maintenance-free for Delhi NCR weather.",
   "longDescription": "Upgrade your building's front elevation with Goals Floors' premium WPC Exterior Louvers. If you want a beautiful wooden facade but want to avoid the heavy maintenance, rotting, and termite issues of real wood, this is the perfect solution.\n\nDesigned specifically for the extreme summer heat and heavy monsoons of Delhi NCR, these exterior cladding panels are 100% waterproof and UV-protected. They will not fade, warp, or crack under direct sunlight. Whether you are designing a modern commercial building in Gurgaon, cladding a luxury villa in South Delhi, or creating a privacy screen for a balcony, our louvers give a striking 3D architectural look.\n\nAs a leading outdoor supplier, we offer materials that provide unparalleled structural strength against heavy winds, with absolutely zero yearly maintenance or polishing required.",
   "features": [
     {
@@ -33,12 +34,15 @@
     }
   ],
   "applications": [
-    "Commercial Building Front Elevations",
-    "Luxury Villa Facade Cladding",
-    "Balcony Privacy Screens & Ceilings",
-    "Outdoor Boundary Walls & Gates",
-    "Rooftop Cafe & Restaurant Exteriors"
-  ],
+  "Commercial Building Front Elevations",
+  "Luxury Villa Facade Cladding",
+  "Balcony Privacy Screens & Outdoor Ceilings",
+  "High-Rise Apartment Exterior Designs",
+  "Boundary Walls & Main Gates",
+  "Rooftop Cafes & Restaurant Exteriors",
+  "Hotel & Resort Exterior Facades",
+  "Showroom & Office Entrance Designs"
+],
   "installation": "The installation is highly secure and durable. A strong sub-frame of Aluminium or MS (Iron) pipes is fixed to the wall. The louvers are then interlocked onto this frame using specialized hidden stainless-steel clips. This ensures maximum wind-load capacity and leaves no ugly screws visible on the outside.",
   "maintenance": "It is virtually maintenance-free. You can simply use a standard water hose to wash away exterior dust. For stubborn dirt or bird droppings, use a soft brush with mild soapy water. Never use harsh industrial acids.",
   "faqs": [
@@ -46,6 +50,18 @@
       "question": "What are WPC Exterior Louvers used for?",
       "answer": "They are premium architectural panels used on the outside of buildings (front elevations, boundary walls, balconies) to give a luxurious, 3D wooden look."
     },
+    {
+  "question": "Can WPC exterior louvers be installed directly under sunlight and rain?",
+  "answer": "Yes. These louvers are specially manufactured for outdoor use and are fully UV-protected, waterproof, and weather-resistant for harsh Indian climate conditions."
+},
+{
+  "question": "Which is better for exterior walls: WPC Louvers or ACP Sheets?",
+  "answer": "WPC louvers provide a warmer and more premium wooden architectural look compared to ACP sheets. They also offer better aesthetics for luxury homes, villas, and facade elevations."
+},
+{
+  "question": "Can these louvers be installed on curved or custom designs?",
+  "answer": "Yes, experienced fabricators can customize the metal framework to create unique facade patterns, feature walls, and designer elevations."
+},
     {
       "question": "Will the color fade in the hot summer sun of Delhi NCR?",
       "answer": "No. Our WPC exterior louvers have an advanced UV-resistant shield. This technology protects the material from cracking or fading under intense direct sunlight."
@@ -86,11 +102,11 @@
   "images": [
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775818177/exterior_louvaring.jpg",
-      "alt": "Best WPC Exterior Fluted Panel for Building Facades in India"
+      "alt": "Modern Exterior WPC Fluted Louvers for Luxury Front Elevation Design"
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478706/Wpc_Exterior_Louvers.png",
-      "alt": "Premium WPC Exterior Louvers Project Supplier in Gurugram NCR"
+      "alt": "Teak Finish WPC Exterior Louvers Installed on Modern Building Facade in Gurugram"
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478704/wpc_Exterior_Louvers_2.png",
@@ -135,7 +151,7 @@
       "price": "₹349",
       "mrp": "₹550",
       "discount": "36% off",
-      "unit": "Sqft",
+      "unit": "per sq.ft",
       "details": {
         "Color": "Coffee",
         "Material": "Exterior Grade WPC"
@@ -153,7 +169,7 @@
       "price": "₹349",
       "mrp": "₹550",
       "discount": "36% off",
-      "unit": "Sqft",
+      "unit": "per sq.ft",
       "details": {
         "Color": "Teak",
         "Material": "Exterior Grade WPC"
@@ -171,7 +187,7 @@
       "price": "₹349",
       "mrp": "₹550",
       "discount": "36% off",
-      "unit": "Sqft",
+      "unit": "per sq.ft",
       "details": {
         "Color": "Grey",
         "Material": "Exterior Grade WPC"
@@ -189,7 +205,7 @@
       "price": "₹349",
       "mrp": "₹550",
       "discount": "36% off",
-      "unit": "Sqft",
+      "unit": "per sq.ft",
       "details": {
         "Color": "Ipe",
         "Material": "Exterior Grade WPC"
@@ -207,7 +223,7 @@
       "price": "₹1349",
       "mrp": "₹1999",
       "discount": "32% off",
-      "unit": "Per Pcs",
+      "unit": "per piece",
       "details": {
         "Color": "Coffee",
         "Application": "Edge Finishing"
@@ -225,7 +241,7 @@
       "price": "₹1349",
       "mrp": "₹1999",
       "discount": "32% off",
-      "unit": "Per Pcs",
+      "unit": "per piece",
       "details": {
         "Color": "Teak",
         "Application": "Edge Finishing"
@@ -243,7 +259,7 @@
       "price": "₹1349",
       "mrp": "₹1999",
       "discount": "32% off",
-      "unit": "Per Pcs",
+      "unit": "per piece",
       "details": {
         "Color": "Grey",
         "Application": "Edge Finishing"
@@ -261,7 +277,7 @@
       "price": "₹1349",
       "mrp": "₹1999",
       "discount": "32% off",
-      "unit": "Per Pcs",
+      "unit": "per piece",
       "details": {
         "Color": "Ipe",
         "Application": "Edge Finishing"
@@ -304,5 +320,11 @@
         "This gives the facade a clean and professional border."
       ]
     }
+  ],
+  "relatedLinks": [
+    { "label": "WPC Decking", "href": "/products/wpc-decking", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478659/premium_wpc_decking_supplier_in_gurgaon.jpg" },
+    { "label": "Upfit Panels", "href": "/products/upfit-panels", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774525633/goals-floors-upfit-panels-m7Vw49PE2qSaDNaG.jpg" },
+    { "label": "Artificial Grass", "href": "/products/artificial-grass", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772476444/artificial_grass_supplier_in_india.jpg" },
+    { "label": "WPC Baffle Ceiling", "href": "/products/wpc-baffle-ceiling", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp" }
   ]
 }

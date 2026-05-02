@@ -44,5 +44,31 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     notFound();
   }
 
-  return <ProductClient product={product} />;
+  // TASK 1: Dynamic FAQ Schema (server-rendered, unique per product)
+  const faqSchema = product.faqs && product.faqs.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": product.faqs.map((faq: { question: string; answer: string }) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer,
+          },
+        })),
+      }
+    : null;
+
+  return (
+    <>
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
+      <ProductClient product={product} />
+    </>
+  );
 }

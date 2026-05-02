@@ -70,14 +70,14 @@ export default function FeatureAccordion({ features, productTitle, heading, subh
   return (
     <section className="pt-10 pb-10 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12">
+        <div className="mb-12 text-center">
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="inline-block text-[10px] font-semibold uppercase tracking-[0.3em] text-amber-600 mb-6 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 rounded-sm"
           >
-            {subheading || "Premium Engineering"}
+            {subheading || (productTitle ? `${productTitle} — Material Philosophy` : "Premium Engineering")}
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -86,7 +86,7 @@ export default function FeatureAccordion({ features, productTitle, heading, subh
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white mb-8 leading-tight"
           >
-            {heading || (productTitle ? `Why Architects Choose ${productTitle}` : "Premium Materials for Luxury Interiors.")}
+            {heading || (productTitle ? `Why Architects Choose ${productTitle}` : "Premium materials for luxury interiors.")}
           </motion.h2>
         </div>
 

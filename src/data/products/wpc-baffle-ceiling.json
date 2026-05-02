@@ -1,49 +1,50 @@
 {
   "id": "wpc-baffle-ceiling",
   "title": "WPC Baffle Ceiling",
+  "shortTitle": "WPC Baffle Ceiling",
   "slug": "wpc-baffle-ceiling",
   "category": "ceilings",
-  "priceRange": "Premium",
-  "shortDescription": "Premium WPC Baffle Ceiling system. Get a modern, open ceiling look that is 100% waterproof, termite-proof, and easy to maintain for luxury offices and homes in Delhi NCR.",
-  "longDescription": "Transform your ceiling into a modern architectural masterpiece with Goals Floors' WPC Baffle Ceilings. Perfect for luxury offices in Cyber City and premium homes in Delhi NCR, these linear panels give your space a highly professional, open, and spacious look.\n\nUnlike traditional POP or gypsum ceilings that get damaged by water and require regular painting, our WPC (Wood Plastic Composite) baffles are 100% waterproof, termite-proof, and require zero painting. They are installed using a smart hidden-clip system, which means no ugly screws are visible. This open design also makes it incredibly easy to hide AC ducts, wires, and fire pipes above the ceiling while keeping them completely accessible for future maintenance.",
-  "features": [
-    {
-      "title": "Premium Wood Look (A+ Grade)",
-      "description": "It looks exactly like expensive natural wood but is made from advanced composite materials, giving you the best of both worlds."
-    },
-    {
-      "title": "100% Waterproof & Termite Proof",
-      "description": "Completely safe from water damage, roof dampness (seelan), and termites (deemak). It will never rot, swell, or bend."
-    },
-    {
-      "title": "Hides Wires & AC Ducts Perfectly",
-      "description": "The open linear design is perfect for hiding ugly ceiling wires, pipes, and AC ducts while keeping them easy to reach for repairs."
-    },
-    {
-      "title": "Easy Light Integration",
-      "description": "You can easily fit beautiful hanging lights, modern LED profiles, or spot lights between the ceiling panels for a stunning look."
-    },
-    {
-      "title": "Zero Maintenance Needed",
-      "description": "It requires absolutely no painting or polishing. Just wipe the dust away to keep it looking brand new for years."
-    },
-    {
-      "title": "Reduces Room Echo",
-      "description": "The unique vertical shape of the baffles helps in breaking sound waves, making large offices and living rooms quieter and more comfortable."
-    }
-  ],
+  "priceRange": "Luxury Architectural Series",
+"shortDescription": "Upgrade modern interiors with premium WPC Baffle Ceilings in Gurgaon & Delhi NCR. Waterproof, termite-proof, open linear ceiling systems for luxury offices, cafes, commercial spaces, and designer homes.",
+"longDescription": "Redefine modern ceiling architecture with premium WPC Baffle Ceiling systems by Goals Floors. Designed for luxury commercial spaces, modern offices, hospitality interiors, and designer homes, our architectural linear ceiling systems create a bold open-ceiling aesthetic with exceptional durability.\n\nCrafted using A+ grade WPC materials, these baffle ceilings deliver the sophisticated appearance of natural wood while remaining completely waterproof, termite-proof, and low maintenance. Unlike conventional gypsum or POP ceilings that require continuous repainting and are vulnerable to moisture damage, our WPC Baffle Ceiling systems are engineered for long-term structural stability and premium visual performance.\n\nThe intelligent open-linear design allows seamless integration of AC ducts, electrical wiring, fire safety systems, hanging lights, and linear LED profiles while maintaining easy future accessibility for maintenance teams. Installed using precision concealed carrier systems, the final finish remains completely screw-free and architecturally clean.\n\nIdeal for luxury offices in Gurgaon, premium retail showrooms, cafes, reception areas, corporate lobbies, airports, and high-end residential interiors, Goals Floors supplies premium WPC Baffle Ceilings across Delhi NCR with reliable project support and bulk commercial supply.",
+ "features": [
+  {
+    "title": "Architectural Open Ceiling Design",
+    "description": "Creates a modern linear ceiling aesthetic widely used in luxury offices, premium retail showrooms, airports, and commercial interiors."
+  },
+  {
+    "title": "A+ Grade Wood Finish",
+    "description": "Manufactured using premium WPC materials that replicate the elegance of natural wood while offering significantly higher durability and moisture resistance."
+  },
+  {
+    "title": "100% Waterproof & Termite-Proof",
+    "description": "Engineered to resist water damage, ceiling seepage, humidity, termites, swelling, warping, and structural deterioration."
+  },
+  {
+    "title": "Concealed Clip Installation System",
+    "description": "Installed using precision hidden carrier clips that eliminate visible screws and deliver a clean, seamless architectural finish."
+  },
+  {
+    "title": "Integrated Lighting & Services Access",
+    "description": "Allows easy integration of linear LEDs, hanging lights, AC ducts, wiring, and fire systems while maintaining future accessibility."
+  },
+  {
+    "title": "Acoustic Comfort Enhancement",
+    "description": "The vertical baffle structure helps diffuse sound reflections and reduce echo in large commercial and residential spaces."
+  }
+],
   "applications": [
-    "Corporate Office Workstations & Cabins",
-    "High-End Retail Showrooms",
-    "Luxury Residential Living Areas",
-    "Modern Restaurant & Cafe Ceilings",
-    "Public Transport & Metro Lobbies"
-  ],
-  "installation": "Installation is fast and professional. A strong metal frame (GI channel) is installed on the roof. The WPC Baffles are then easily snapped into specialized hidden carrier clips. This means there are no visible screws or nails, giving your ceiling a perfectly clean and premium architectural finish.",
-  "maintenance": "It is virtually maintenance-free. To clean it, simply use a feather duster or a vacuum with a soft brush attachment. For any accidental stains, wiping it with a slightly damp cloth is more than enough.",
+  "Luxury Corporate Offices & Reception Areas",
+  "Modern Co-Working Spaces & Conference Rooms",
+  "Designer Cafes, Restaurants & Hospitality Ceilings",
+  "Premium Retail Showrooms & Shopping Spaces",
+  "Luxury Residential Living Rooms & Home Theaters"
+],
+"installation": "Our WPC Baffle Ceiling systems are installed using a precision-engineered GI suspension framework combined with concealed carrier clips for a completely screw-free architectural finish. The open linear system ensures fast installation while allowing seamless integration of electrical services, AC ducts, fire systems, and decorative lighting.",
+"maintenance": "Designed for long-term commercial and residential performance, our WPC Baffle Ceilings require virtually zero maintenance. The premium decorative surface resists dust accumulation, moisture damage, and staining. Regular cleaning requires only a soft microfiber cloth, feather duster, or low-pressure vacuum brush.",
   "faqs": [
     {
-      "question": "What exactly is a WPC Baffle Ceiling?",
+      "question": "What is a WPC Baffle Ceiling system?",
       "answer": "A baffle ceiling is a modern design made of vertical, wooden-looking panels hanging from a frame. It gives the room a deep, open look and is very popular in luxury offices and cafes."
     },
     {
@@ -86,7 +87,7 @@
   "images": [
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp",
-      "alt": "Modern WPC Baffle Ceiling Installation in Luxury Office"
+      "alt": "Luxury WPC Baffle Ceiling design for modern corporate office in Gurgaon"
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466450/whatsapp-image-2024-10-29-at-8.30.37-am-1-1-ALpn7DNvJ5IVXjJb.webp",
@@ -105,7 +106,7 @@
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775467552/Trendy_Cafe_Interior_in_Gurgaon_with_Warm_Teak_WPC_Baffle_Ceiling.jpg",
-      "alt": "Trendy Cafe Interior in Gurgaon with Warm Teak WPC Baffle Ceiling",
+      "alt": "Warm teak WPC Baffle Ceiling installed in designer cafe interior in Gurgaon",
       "aspect": "square"
     },
     {
@@ -250,5 +251,11 @@
         "If needed, easily trim the edges with a normal wood saw for a perfect fit."
       ]
     }
+  ],
+  "relatedLinks": [
+    { "label": "WPC Timber Tubes", "href": "/products/wpc-timber-tubes", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478739/Timber_Tube.png" },
+    { "label": "Wall Panels", "href": "/products/wall-panels", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png" },
+    { "label": "Tokyo Moulding", "href": "/products/tokyo-charcoal-moulding", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774970794/charcoal-gray_paneled_wall..jpg" },
+    { "label": "WPC Exterior Louvers", "href": "/products/wpc-exterior-louvers", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775818177/exterior_louvaring.jpg" }
   ]
 }
