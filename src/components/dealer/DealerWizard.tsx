@@ -3,69 +3,35 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  User, Mail, Phone, Building2, 
-  Target, Layers, ShieldCheck, ArrowRight, ArrowLeft, 
-  Upload, X, CheckCircle2, AlertCircle,
-  Map, Navigation2, Store, Warehouse, HardHat, Palette, BarChart3, FileText
-} from "lucide-react";
-import { MotivationPanel, SuccessOverlay, FloatingInput, RadioCard } from "./DealerUI";
+import { ArrowRight, ArrowLeft, Upload, X, CheckCircle2 } from "lucide-react";
 
 export default function DealerWizard() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
   
   const [formData, setFormData] = useState({
     name: "",
+    company: "",
     email: "",
     phone: "",
-    company: "",
-    address: "",
     city: "",
     state: "",
-    zip: "",
+    gstNumber: "",
     businessType: "",
     turnover: "",
-    gstNumber: "",
     message: "",
     businessCardBase64: ""
   });
 
-  // --- Step Validation ---
-  const isStep1Valid = formData.name && formData.email && formData.phone.length === 10;
-  const isStep2Valid = formData.company && formData.city && formData.state && formData.businessType && formData.turnover && formData.gstNumber;
-  const isStep3Valid = !!formData.businessCardBase64;
-
-  const nextStep = () => {
-    if (currentStep === 1 && !isStep1Valid) {
-        setError("Please fill all contact details to proceed.");
-        return;
-    }
-    if (currentStep === 2 && !isStep2Valid) {
-        setError("Please complete your business profile to proceed.");
-        return;
-    }
-    setError(null);
-    setCurrentStep(prev => Math.min(prev + 1, 3));
-  };
-
-  const prevStep = () => {
-    setError(null);
-    setCurrentStep(prev => Math.max(prev - 1, 1));
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-
     if (name === "phone") {
-      // Keep only digits and limit to 10 characters
       const cleaned = value.replace(/\D/g, "").slice(0, 10);
       setFormData(prev => ({ ...prev, [name]: cleaned }));
       return;
     }
-
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
@@ -73,7 +39,7 @@ export default function DealerWizard() {
     const file = e.target.files?.[0];
     if (file) {
       if (file.size > 5 * 1024 * 1024) {
-        setError("File size exceeds 5MB limit.");
+        setError("Document exceeds 5MB limit.");
         return;
       }
       const reader = new FileReader();
@@ -85,10 +51,31 @@ export default function DealerWizard() {
     }
   };
 
+  const nextStep = () => {
+    if (step === 1) {
+      if (!formData.name || !formData.company || !formData.email || formData.phone.length < 10 || !formData.city || !formData.state) {
+        setError("Please fill all required fields to continue.");
+        return;
+      }
+    } else if (step === 2) {
+      if (!formData.businessType || !formData.turnover) {
+        setError("Please select your Expertise and Revenue to continue.");
+        return;
+      }
+    }
+    setError(null);
+    setStep(prev => prev + 1);
+  };
+
+  const prevStep = () => {
+    setError(null);
+    setStep(prev => prev - 1);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isStep3Valid) {
-        setError("Please upload your business card for verification.");
+    if (!formData.businessCardBase64) {
+        setError("Please upload your Visiting Card to finish.");
         return;
     }
     setIsSubmitting(true);
@@ -101,10 +88,8 @@ export default function DealerWizard() {
             body: JSON.stringify({
                 ...formData,
                 interest: "Dealer Application",
-                zip: formData.zip || "000000",
-                dob: "N/A", 
-                city: formData.city,
-                state: formData.state
+                zip: "000000",
+                dob: "N/A"
             }),
         });
 
@@ -115,199 +100,228 @@ export default function DealerWizard() {
             throw new Error(result.error || "Submission failed.");
         }
     } catch (err) {
-        const errorMessage = err instanceof Error ? err.message : "Failed to submit application. Please try again.";
-        console.error("Submission Error:", err);
-        setError(errorMessage);
+        setError(err instanceof Error ? err.message : "Failed to submit application. Please try again.");
     } finally {
         setIsSubmitting(false);
     }
   };
 
-  return (
-    <div className="h-auto md:min-h-screen bg-white dark:bg-slate-950 flex flex-col md:flex-row transition-colors duration-500 overflow-hidden relative">
-      
-      {/* ─── PREMIUM SUCCESS OVERLAY ─── */}
-      <AnimatePresence>
-          {isSubmitted && <SuccessOverlay />}
-      </AnimatePresence>
-
-      {/* --- FORM SECTION (LEFT SIDE) --- */}
-      <div className={`w-full md:w-1/2 bg-white dark:bg-slate-900/40 backdrop-blur-3xl relative z-10 transition-all duration-500 overflow-y-auto ${isSubmitted ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
-        <div className="p-8 md:p-12 lg:p-20 flex flex-col justify-start md:justify-center h-auto md:min-h-screen pt-10 pb-10 md:pt-12 md:pb-20">
-        
-        {/* Header (Simplified for both mobile and desktop) */}
-        <div className="mb-10">
-            <span className="text-[10px] font-black tracking-[0.4em] text-amber-600 uppercase">Step {currentStep} of 3</span>
-            <h1 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mt-2 uppercase tracking-tight">Dealer Partnership</h1>
-            
-            {/* Step Indicator (Line) - Visible on Phone and Laptop */}
-            <div className="flex gap-2 mt-6">
-              {[1, 2, 3].map(step => (
-                <div key={step} className={`h-1.5 rounded-full flex-1 transition-all duration-500 ${currentStep >= step ? 'bg-amber-600' : 'bg-slate-100 dark:bg-slate-800'}`} />
-              ))}
+  if (isSubmitted) {
+    return (
+      <div className="py-14 px-6 text-center text-slate-900 dark:text-white transition-colors duration-500 bg-[#E0E5EC] dark:bg-[#1A1F2A]">
+        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="max-w-2xl mx-auto flex flex-col items-center">
+            <div className="w-24 h-24 rounded-full flex items-center justify-center mb-6 bg-[#E0E5EC] dark:bg-[#1A1F2A] shadow-[9px_9px_16px_rgb(163,177,198,0.6),_-9px_-9px_16px_rgba(255,255,255,0.5)] dark:shadow-[9px_9px_16px_rgb(15,18,25,0.8),_-9px_-9px_16px_rgba(40,48,65,0.5)]">
+                <CheckCircle2 className="w-12 h-12 text-amber-500" />
             </div>
-        </div>
-
-        <div className="max-w-md w-full mx-auto">
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentStep}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="space-y-8"
-            >
-              {/* Error Banner */}
-              {error && (
-                  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800 rounded-xl flex items-center gap-3 text-red-600 dark:text-red-400 text-sm font-bold">
-                      <AlertCircle className="w-5 h-5 flex-shrink-0" />
-                      {error}
-                  </motion.div>
-              )}
-
-              {/* --- ALL FORM FIELDS --- */}
-              {currentStep === 1 && (
-                <div className="space-y-6">
-                  <FloatingInput icon={User} label="Full Name" name="name" value={formData.name} onChange={handleInputChange} />
-                  <FloatingInput icon={Mail} label="Professional Email" name="email" type="email" value={formData.email} onChange={handleInputChange} />
-                  <FloatingInput icon={Phone} label="Direct Contact Number" name="phone" type="tel" value={formData.phone} onChange={handleInputChange} />
-                </div>
-              )}
-
-              {currentStep === 2 && (
-                <div className="space-y-6">
-                  <div className="space-y-6">
-                      <FloatingInput icon={Building2} label="Company Name" name="company" value={formData.company} onChange={handleInputChange} />
-                  </div>
-                  
-                  <div className="grid grid-cols-2 gap-6">
-                      <FloatingInput icon={Map} label="City" name="city" value={formData.city} onChange={handleInputChange} />
-                      <FloatingInput icon={Navigation2} label="State" name="state" value={formData.state} onChange={handleInputChange} />
-                  </div>
-                  
-                  <FloatingInput icon={FileText} label="GST Number" name="gstNumber" value={formData.gstNumber} onChange={handleInputChange} />
-                  
-                  <div className="pt-4">
-                      <label className="text-[10px] font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 uppercase mb-4 block ml-1">Type of Expertise <span className="text-red-500">*</span></label>
-                      <div className="grid grid-cols-2 gap-3">
-                          <RadioCard icon={Store} label="Retailer" active={formData.businessType === "Retailer"} onClick={() => setFormData(p => ({ ...p, businessType: "Retailer" }))} />
-                          <RadioCard icon={Warehouse} label="Wholesaler" active={formData.businessType === "Wholesaler"} onClick={() => setFormData(p => ({ ...p, businessType: "Wholesaler" }))} />
-                          <RadioCard icon={HardHat} label="Contractor" active={formData.businessType === "Contractor"} onClick={() => setFormData(p => ({ ...p, businessType: "Contractor" }))} />
-                          <RadioCard icon={Palette} label="Designer" active={formData.businessType === "Designer"} onClick={() => setFormData(p => ({ ...p, businessType: "Designer" }))} />
-                      </div>
-                  </div>
-
-                  <div>
-                      <label className="text-[10px] font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 uppercase mb-4 block ml-1">Business Scale (Annual) <span className="text-red-500">*</span></label>
-                      <div className="grid grid-cols-2 gap-3">
-                          <RadioCard icon={BarChart3} label="Upto ₹10L" active={formData.turnover === "10L"} onClick={() => setFormData(p => ({ ...p, turnover: "10L" }))} />
-                          <RadioCard icon={BarChart3} label="Upto ₹50L" active={formData.turnover === "50L"} onClick={() => setFormData(p => ({ ...p, turnover: "50L" }))} />
-                          <RadioCard icon={BarChart3} label="Upto ₹1Cr" active={formData.turnover === "1Cr"} onClick={() => setFormData(p => ({ ...p, turnover: "1Cr" }))} />
-                          <RadioCard icon={BarChart3} label="Above ₹1Cr" active={formData.turnover === ">1Cr"} onClick={() => setFormData(p => ({ ...p, turnover: ">1Cr" }))} />
-                      </div>
-                  </div>
-                </div>
-              )}
-
-              {currentStep === 3 && (
-                <div className="space-y-8">
-                  <div className="relative group">
-                      <label className="text-[10px] font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 uppercase mb-4 block ml-1">Verify Professional Status <span className="text-red-500">*</span></label>
-                      
-                      {!formData.businessCardBase64 ? (
-                          <label className={`border-2 border-dashed rounded-2xl p-10 flex flex-col items-center gap-4 cursor-pointer transition-all bg-slate-50 dark:bg-slate-800/20 group text-center lg:text-left ${
-                              formData.businessCardBase64 
-                              ? 'border-amber-600' 
-                              : 'border-slate-300 dark:border-slate-700 hover:border-amber-600/30'
-                          }`}>
-                              <input type="file" className="hidden" accept="image/*" onChange={handleFileChange} />
-                              <div className="w-16 h-16 mx-auto lg:mx-0 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl flex items-center justify-center text-slate-400 group-hover:text-amber-600 transition-colors">
-                                  <Upload className="w-6 h-6" />
-                              </div>
-                              <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest block mt-4">Click to Upload Business Card</span>
-                              <span className="text-[10px] text-slate-400">JPG or PNG / Max 5MB</span>
-                          </label>
-                      ) : (
-                          <div className="relative rounded-2xl overflow-hidden border border-amber-600 ring-1 ring-amber-600/20 shadow-2xl h-64">
-                              <Image 
-                                src={formData.businessCardBase64} 
-                                alt="Preview" 
-                                fill 
-                                unoptimized
-                                className="object-cover" 
-                              />
-                              <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                                  <button 
-                                      onClick={() => setFormData(p => ({ ...p, businessCardBase64: "" }))}
-                                      className="bg-white text-slate-900 px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest flex items-center gap-2 hover:bg-amber-600 hover:text-white transition-all shadow-xl"
-                                  >
-                                      <X className="w-4 h-4" /> Change Image
-                                  </button>
-                              </div>
-                              <div className="absolute top-4 right-4 bg-amber-600 text-white p-2 rounded-full shadow-lg">
-                                  <CheckCircle2 className="w-4 h-4" />
-                              </div>
-                          </div>
-                      )}
-                  </div>
-                  
-                  <div className="space-y-2">
-                      <label className="text-[10px] font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 uppercase mb-2 block ml-1">Additional Project Insight</label>
-                      <textarea 
-                          name="message" 
-                          value={formData.message} 
-                          onChange={handleInputChange}
-                          placeholder="Tell us about your upcoming architectural projects..." 
-                          className={`w-full bg-slate-50 dark:bg-slate-800/30 border rounded-2xl p-6 text-sm focus:outline-none transition-all font-medium text-slate-900 dark:text-white h-32 resize-none ${
-                                formData.message 
-                                ? 'border-amber-600 ring-1 ring-amber-600/10' 
-                                : 'border-slate-200 dark:border-slate-700'
-                          }`}
-                      />
-                  </div>
-                </div>
-              )}
-            </motion.div>
-          </AnimatePresence>
-
-          {/* --- ACTION BUTTONS --- */}
-          <div className="mt-12 flex gap-4">
-            {currentStep > 1 && (
-              <button 
-                onClick={prevStep}
-                disabled={isSubmitting}
-                className="px-8 py-5 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors disabled:opacity-30 flex items-center justify-center"
-              >
-                <ArrowLeft className="w-5 h-5" />
-              </button>
-            )}
-            
-            <button 
-              onClick={currentStep === 3 ? handleSubmit : nextStep}
-              disabled={isSubmitting}
-              className={`flex-1 flex items-center justify-between px-10 py-5 bg-slate-900 dark:bg-amber-600 text-white rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] transition-all hover:scale-[1.02] active:scale-95 shadow-xl disabled:opacity-50 ${isSubmitting ? 'animate-pulse' : ''}`}
-            >
-              {currentStep === 3 ? (isSubmitting ? 'Securing Application...' : 'Complete Registration') : 'Continue Partnership'}
-              <ArrowRight className="w-4 h-4" />
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Application Received!</h2>
+            <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">
+                Thank you for your interest in partnering with Goals Floors. Our team will review your credentials and contact you immediately.
+            </p>
+            <button onClick={() => window.location.href = '/products'} className="px-8 py-4 bg-[#E0E5EC] dark:bg-[#1A1F2A] text-amber-600 dark:text-amber-500 rounded-full font-bold uppercase tracking-widest text-xs transition-all shadow-[6px_6px_12px_rgb(163,177,198,0.6),_-6px_-6px_12px_rgba(255,255,255,0.5)] dark:shadow-[6px_6px_12px_rgb(15,18,25,0.8),_-6px_-6px_12px_rgba(40,48,65,0.5)] active:shadow-[inset_4px_4px_8px_rgb(163,177,198,0.6),_inset_-4px_-4px_8px_rgba(255,255,255,0.5)] dark:active:shadow-[inset_4px_4px_8px_rgb(15,18,25,0.8),_inset_-4px_-4px_8px_rgba(40,48,65,0.5)]">
+                Explore Products
             </button>
-          </div>
-          
-          <p className="mt-8 text-center text-[10px] text-slate-400 dark:text-slate-500 uppercase tracking-widest flex items-center justify-center gap-2">
-              <ShieldCheck className="w-3 h-3 text-amber-600" /> B2B Partner Verification Required
-          </p>
+        </motion.div>
+      </div>
+    );
+  }
+
+  // Real 3D Input (Debossed / Carved In)
+  const inputClasses = "w-full bg-[#E0E5EC] dark:bg-[#1A1F2A] rounded-2xl px-6 py-5 text-base focus:outline-none transition-all shadow-[inset_6px_6px_10px_rgb(163,177,198,0.6),_inset_-6px_-6px_10px_rgba(255,255,255,0.5)] dark:shadow-[inset_6px_6px_10px_rgb(15,18,25,0.8),_inset_-6px_-6px_10px_rgba(40,48,65,0.5)] text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 border-none focus:ring-1 focus:ring-amber-500/50";
+  
+  // Real 3D Button (Embossed / Popped Out)
+  const getButtonClass = (isActive: boolean) => {
+    if (isActive) {
+      return "py-5 px-4 rounded-2xl text-sm md:text-base font-bold transition-all text-amber-600 dark:text-amber-500 bg-[#E0E5EC] dark:bg-[#1A1F2A] shadow-[inset_6px_6px_10px_rgb(163,177,198,0.6),_inset_-6px_-6px_10px_rgba(255,255,255,0.5)] dark:shadow-[inset_6px_6px_10px_rgb(15,18,25,0.8),_inset_-6px_-6px_10px_rgba(40,48,65,0.5)] scale-[0.98]";
+    }
+    return "py-5 px-4 rounded-2xl text-sm md:text-base font-bold transition-all text-slate-600 dark:text-slate-400 bg-[#E0E5EC] dark:bg-[#1A1F2A] shadow-[6px_6px_12px_rgb(163,177,198,0.6),_-6px_-6px_12px_rgba(255,255,255,0.5)] dark:shadow-[6px_6px_12px_rgb(15,18,25,0.8),_-6px_-6px_12px_rgba(40,48,65,0.5)] hover:text-amber-500 active:shadow-[inset_4px_4px_8px_rgb(163,177,198,0.6),_inset_-4px_-4px_8px_rgba(255,255,255,0.5)] dark:active:shadow-[inset_4px_4px_8px_rgb(15,18,25,0.8),_inset_-4px_-4px_8px_rgba(40,48,65,0.5)]";
+  };
+
+  const actionButtonClasses = "py-4 md:py-5 px-4 md:px-8 rounded-[2rem] font-black uppercase tracking-widest text-xs md:text-sm flex items-center justify-center gap-3 transition-all bg-[#E0E5EC] dark:bg-[#1A1F2A] text-amber-600 dark:text-amber-500 shadow-[8px_8px_16px_rgb(163,177,198,0.6),_-8px_-8px_16px_rgba(255,255,255,0.6)] dark:shadow-[8px_8px_16px_rgb(15,18,25,0.8),_-8px_-8px_16px_rgba(40,48,65,0.4)] active:shadow-[inset_4px_4px_8px_rgb(163,177,198,0.6),_inset_-4px_-4px_8px_rgba(255,255,255,0.5)] dark:active:shadow-[inset_4px_4px_8px_rgb(15,18,25,0.8),_inset_-4px_-4px_8px_rgba(40,48,65,0.5)] active:scale-[0.98] hover:text-amber-500 disabled:opacity-50 disabled:pointer-events-none";
+
+  return (
+    <div className="w-full bg-[#E0E5EC] dark:bg-[#1A1F2A] text-slate-900 dark:text-white py-6 md:py-24 px-6 md:px-16 transition-colors duration-500 selection:bg-amber-500 selection:text-white font-sans">
+      <div className="max-w-4xl mx-auto">
+        
+        <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+              Ready to Grow Your Business? <br />
+              <span className="font-playfair italic font-normal text-amber-500 drop-shadow-md">Start Your Inquiry Today!</span>
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto">
+              Complete the form below to initiate your partnership with Goals Floors.
+            </p>
         </div>
+
+        {/* 3D Neumorphic Form Container */}
+        <div className="bg-[#E0E5EC] dark:bg-[#1A1F2A] p-8 md:p-14 rounded-[3rem] shadow-[16px_16px_32px_rgb(163,177,198,0.6),_-16px_-16px_32px_rgba(255,255,255,0.5)] dark:shadow-[16px_16px_32px_rgb(15,18,25,0.8),_-16px_-16px_32px_rgba(40,48,65,0.5)] relative overflow-hidden">
+            
+            {/* Step Indicators */}
+            <div className="flex justify-center items-center mb-12">
+                {[1, 2, 3].map((num, idx) => (
+                    <div key={num} className="flex items-center">
+                        <div className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg transition-all duration-500 ${step === num ? 'text-amber-500 shadow-[inset_4px_4px_8px_rgb(163,177,198,0.6),_inset_-4px_-4px_8px_rgba(255,255,255,0.5)] dark:shadow-[inset_4px_4px_8px_rgb(15,18,25,0.8),_inset_-4px_-4px_8px_rgba(40,48,65,0.5)]' : step > num ? 'text-emerald-500 shadow-[6px_6px_12px_rgb(163,177,198,0.6),_-6px_-6px_12px_rgba(255,255,255,0.5)] dark:shadow-[6px_6px_12px_rgb(15,18,25,0.8),_-6px_-6px_12px_rgba(40,48,65,0.5)]' : 'text-slate-400 dark:text-slate-600 shadow-[6px_6px_12px_rgb(163,177,198,0.6),_-6px_-6px_12px_rgba(255,255,255,0.5)] dark:shadow-[6px_6px_12px_rgb(15,18,25,0.8),_-6px_-6px_12px_rgba(40,48,65,0.5)]'}`}>
+                            {step > num ? <CheckCircle2 className="w-6 h-6" /> : num}
+                        </div>
+                        {idx < 2 && (
+                            <div className="w-12 md:w-20 mx-4 h-1 rounded-full relative overflow-hidden shadow-[inset_2px_2px_4px_rgb(163,177,198,0.6),_inset_-2px_-2px_4px_rgba(255,255,255,0.5)] dark:shadow-[inset_2px_2px_4px_rgb(15,18,25,0.8),_inset_-2px_-2px_4px_rgba(40,48,65,0.5)]">
+                                <div className={`absolute top-0 left-0 h-full bg-emerald-500 transition-all duration-500 ${step > num ? 'w-full' : 'w-0'}`} />
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
+
+            {error && (
+                <div className="mb-10 bg-[#E0E5EC] dark:bg-[#1A1F2A] text-red-500 p-4 rounded-2xl text-sm font-bold flex items-center gap-3 shadow-[inset_4px_4px_8px_rgb(163,177,198,0.6),_inset_-4px_-4px_8px_rgba(255,255,255,0.5)] dark:shadow-[inset_4px_4px_8px_rgb(15,18,25,0.8),_inset_-4px_-4px_8px_rgba(40,48,65,0.5)] border border-red-500/20">
+                    <X className="w-5 h-5 shrink-0" />
+                    {error}
+                </div>
+            )}
+
+            <form onSubmit={step === 3 ? handleSubmit : (e) => e.preventDefault()} className="relative">
+                <AnimatePresence mode="wait">
+                    {step === 1 && (
+                        <motion.div key="step1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }} className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4 pl-2">Full Name *</label>
+                                <input type="text" name="name" value={formData.name} onChange={handleInputChange} className={inputClasses} placeholder="John Doe" />
+                            </div>
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4 pl-2">Business Name *</label>
+                                <input type="text" name="company" value={formData.company} onChange={handleInputChange} className={inputClasses} placeholder="Doe Interiors" />
+                            </div>
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4 pl-2">Email Address *</label>
+                                <input type="email" name="email" value={formData.email} onChange={handleInputChange} className={inputClasses} placeholder="john@example.com" />
+                            </div>
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4 pl-2">Phone Number *</label>
+                                <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} className={inputClasses} placeholder="9876543210" />
+                            </div>
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4 pl-2">City *</label>
+                                <input type="text" name="city" value={formData.city} onChange={handleInputChange} className={inputClasses} placeholder="New Delhi" />
+                            </div>
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4 pl-2">State *</label>
+                                <input type="text" name="state" value={formData.state} onChange={handleInputChange} className={inputClasses} placeholder="Delhi" />
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {step === 2 && (
+                        <motion.div key="step2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }} className="grid grid-cols-1 gap-12">
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4 pl-2">GST Number (Optional)</label>
+                                <input type="text" name="gstNumber" value={formData.gstNumber} onChange={handleInputChange} className={inputClasses} placeholder="22AAAAA0000A1Z5" />
+                            </div>
+                            
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-6 pl-2">Type of Expertise *</label>
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                    {[
+                                        { label: "Retailer", value: "Retailer" },
+                                        { label: "Wholesaler", value: "Wholesaler" },
+                                        { label: "Contractor", value: "Contractor" },
+                                        { label: "Designer", value: "Designer" }
+                                    ].map(opt => (
+                                        <button
+                                            key={opt.value}
+                                            type="button"
+                                            onClick={() => setFormData(p => ({ ...p, businessType: opt.value }))}
+                                            className={getButtonClass(formData.businessType === opt.value)}
+                                        >
+                                            {opt.label}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-6 pl-2">Estimated Annual Revenue *</label>
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                                    {[
+                                        { label: "Upto ₹10L", value: "10L" },
+                                        { label: "₹10L - ₹50L", value: "50L" },
+                                        { label: "₹50L - ₹1Cr", value: "1Cr" },
+                                        { label: "Above ₹1Cr", value: ">1Cr" }
+                                    ].map(opt => (
+                                        <button
+                                            key={opt.value}
+                                            type="button"
+                                            onClick={() => setFormData(p => ({ ...p, turnover: opt.value }))}
+                                            className={getButtonClass(formData.turnover === opt.value)}
+                                        >
+                                            {opt.label}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+
+                    {step === 3 && (
+                        <motion.div key="step3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.3 }} className="space-y-12">
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4 pl-2">Additional Details (Optional)</label>
+                                <textarea 
+                                    name="message" 
+                                    value={formData.message} 
+                                    onChange={handleInputChange}
+                                    placeholder="Tell us about your requirements or projects..." 
+                                    className={`${inputClasses} h-40 resize-none`}
+                                />
+                            </div>
+
+                            <div className="relative">
+                                <label className="block text-xs font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4 pl-2">Visiting Card Upload *</label>
+                                {!formData.businessCardBase64 ? (
+                                    <div className="w-full">
+                                        <input id="card-upload" type="file" className="hidden" accept="image/*" onChange={handleFileChange} />
+                                        <label htmlFor="card-upload" className="block w-full rounded-[2rem] p-12 cursor-pointer text-center bg-[#E0E5EC] dark:bg-[#1A1F2A] shadow-[inset_6px_6px_10px_rgb(163,177,198,0.6),_inset_-6px_-6px_10px_rgba(255,255,255,0.5)] dark:shadow-[inset_6px_6px_10px_rgb(15,18,25,0.8),_inset_-6px_-6px_10px_rgba(40,48,65,0.5)] group transition-all">
+                                            <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 bg-[#E0E5EC] dark:bg-[#1A1F2A] shadow-[6px_6px_12px_rgb(163,177,198,0.6),_-6px_-6px_12px_rgba(255,255,255,0.5)] dark:shadow-[6px_6px_12px_rgb(15,18,25,0.8),_-6px_-6px_12px_rgba(40,48,65,0.5)] group-hover:text-amber-500 group-hover:scale-105 transition-all">
+                                               <Upload className="w-8 h-8 text-slate-400 dark:text-slate-500 group-hover:text-amber-500 transition-colors" />
+                                            </div>
+                                            <span className="text-lg font-bold text-slate-700 dark:text-slate-300 block mb-2">Click to Upload Visiting Card</span>
+                                            <span className="text-sm font-medium text-slate-500 dark:text-slate-500">JPG or PNG (Max 5MB)</span>
+                                        </label>
+                                    </div>
+                                ) : (
+                                    <div className="relative w-full md:w-1/2 aspect-video rounded-3xl overflow-hidden group shadow-[6px_6px_16px_rgb(163,177,198,0.8),_-6px_-6px_16px_rgba(255,255,255,0.6)] dark:shadow-[6px_6px_16px_rgb(15,18,25,1),_-6px_-6px_16px_rgba(40,48,65,0.4)] border-4 border-[#E0E5EC] dark:border-[#1A1F2A]">
+                                        <Image src={formData.businessCardBase64} alt="Preview" fill unoptimized className="object-cover" />
+                                        <div className="absolute inset-0 bg-[#E0E5EC]/80 dark:bg-[#1A1F2A]/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity backdrop-blur-sm">
+                                            <button type="button" onClick={() => setFormData(p => ({ ...p, businessCardBase64: "" }))} className="px-6 py-4 bg-[#E0E5EC] dark:bg-[#1A1F2A] text-red-500 text-xs font-bold uppercase tracking-widest rounded-full transition-all flex items-center gap-2 shadow-[4px_4px_8px_rgb(163,177,198,0.6),_-4px_-4px_8px_rgba(255,255,255,0.5)] dark:shadow-[4px_4px_8px_rgb(15,18,25,0.8),_-4px_-4px_8px_rgba(40,48,65,0.5)] active:shadow-[inset_2px_2px_4px_rgb(163,177,198,0.6),_inset_-2px_-2px_4px_rgba(255,255,255,0.5)] dark:active:shadow-[inset_2px_2px_4px_rgb(15,18,25,0.8),_inset_-2px_-2px_4px_rgba(40,48,65,0.5)]">
+                                                <X className="w-4 h-4" /> Remove
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+
+                <div className="pt-10 md:pt-12 flex flex-col-reverse md:flex-row gap-5 md:gap-6">
+                    {step > 1 && (
+                        <button type="button" onClick={prevStep} className={`${actionButtonClasses} w-full md:w-48`}>
+                            <ArrowLeft className="w-5 h-5" /> Back
+                        </button>
+                    )}
+                    
+                    {step < 3 ? (
+                        <button type="button" onClick={nextStep} className={`${actionButtonClasses} w-full flex-1`}>
+                            Continue <ArrowRight className="w-5 h-5" />
+                        </button>
+                    ) : (
+                        <button type="submit" disabled={isSubmitting} className={`${actionButtonClasses} w-full flex-1`}>
+                            {isSubmitting ? 'Submitting...' : 'Submit Application'} <ArrowRight className="w-5 h-5" />
+                        </button>
+                    )}
+                </div>
+                
+            </form>
         </div>
       </div>
-
-      {/* --- MOTIVATION PANEL (RIGHT SIDE) --- */}
-      <div className={`hidden md:flex w-1/2 relative bg-slate-50 dark:bg-slate-950 border-l border-slate-200 dark:border-white/5 shadow-2xl z-20 transition-all duration-500 ${isSubmitted ? 'opacity-0 scale-105' : 'opacity-100 scale-100'}`}>
-        <div className="w-full h-full flex items-center justify-center">
-          <MotivationPanel currentStep={currentStep} />
-        </div>
-      </div>
-
     </div>
   );
 }

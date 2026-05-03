@@ -1,219 +1,159 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { 
-  Users, MapPin, Truck, IndianRupee, 
-  Handshake, Target, LayoutDashboard, 
-  HelpCircle, Plus, Minus, ChevronDown,
-  TrendingUp, Megaphone, Zap, UserCheck, Package
+  Percent, Target, Zap, ShieldCheck, 
+  CheckCircle2, ArrowRight, Search
 } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
-/*                                1. TRUST BAR                                */
+/*                             1. WHY PARTNER GRID                            */
 /* -------------------------------------------------------------------------- */
-
-const trustStats = [
-  { icon: Users, label: "Dealers", value: "400+" },
-  { icon: Zap, label: "2 Hour Dispatch", value: "2 Hour" },
-  { icon: Package, label: "Products", value: "2500+" },
-  { icon: IndianRupee, label: "Value Delivered", value: "50CR+" },
-];
-
-export function TrustBar() {
-  return (
-    <div className="bg-slate-50 dark:bg-slate-950 border-y border-slate-200 dark:border-white/5 py-10 relative z-30 transition-colors duration-500">
-      <div className="max-w-5xl mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
-          {trustStats.map((stat, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -5 }}
-              viewport={{ once: true }}
-              className="flex flex-col items-center justify-center text-center gap-3 group"
-            >
-              <div className="flex items-center gap-2 md:gap-4">
-                <div className="w-10 h-10 rounded-xl bg-amber-600/10 flex items-center justify-center text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-all shrink-0">
-                  <stat.icon className="w-5 h-5" />
-                </div>
-                <div className="text-left">
-                   <h3 className="text-xl md:text-2xl font-black text-slate-900 dark:text-white tracking-tight">{stat.value}</h3>
-                   <p className="text-[9px] md:text-[10px] font-black uppercase tracking-widest md:tracking-[0.2em] text-slate-400 dark:text-slate-500 whitespace-nowrap">{stat.label}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*                             2. WHY PARTNER GRID                            */
-/* -------------------------------------------------------------------------- */
-
-const partnerBenefits = [
-  { 
-    icon: TrendingUp, 
-    title: "High Margins", 
-    desc: "Unbeatable B2B pricing with clear volume-based slabs and performance rewards." 
-  },
-  { 
-    icon: Megaphone, 
-    title: "Marketing Support", 
-    desc: "Free sample boxes, premium catalogs, and high-res digital assets for your showroom and social media." 
-  },
-  { 
-    icon: Zap, 
-    title: "Priority Dispatch", 
-    desc: "Exclusive access to our dedicated supply chain, ensuring your projects never face material delays." 
-  },
-  { 
-    icon: UserCheck, 
-    title: "Dedicated Manager", 
-    desc: "A single, direct point of contact for all your technical, logistics, and sales queries." 
-  },
-];
 
 export function WhyPartnerGrid() {
+  const benefits = [
+    {
+      title: "Unbeatable Margins",
+      desc: "We provide our dealers with a solid 40% to 50% margin directly on the website's Retail Price (MRP). Your profit is our top priority!",
+      icon: Percent,
+      span: "md:col-span-2",
+      delay: 0
+    },
+    {
+      title: "Local SEO Boost",
+      desc: "We write dedicated, SEO-optimized articles for our top dealers on our website. This boosts your local visibility and brings customers directly to you through our platform.",
+      icon: Search,
+      span: "md:col-span-1",
+      delay: 0.1
+    },
+    {
+      title: "Zero Commission Leads",
+      desc: "Smart 'Trust Score' system. We forward local retail inquiries directly to our loyal dealers—at 0% commission!",
+      icon: Target,
+      span: "md:col-span-1",
+      delay: 0.2
+    },
+    {
+      title: "Lightning Fast Logistics",
+      desc: "No more project delays. A 2-Hour Express Dispatch service is available for all dealers across Gurugram and Delhi NCR.",
+      icon: Zap,
+      span: "md:col-span-1",
+      delay: 0.3
+    },
+    {
+      title: "Premium Quality & Warranty",
+      desc: "100% waterproof materials (WPC, PU Stone, etc.) backed by a 7-year warranty to ensure long-term satisfaction.",
+      icon: ShieldCheck,
+      span: "md:col-span-1",
+      delay: 0.4
+    }
+  ];
+
   return (
-    <section className="py-10 md:py-10 bg-white dark:bg-slate-950 px-4 transition-colors duration-500">
+    <section className="py-6 md:py-24 bg-white dark:bg-slate-950 px-6 md:px-16 text-slate-900 dark:text-white transition-colors duration-500 selection:bg-amber-500 selection:text-white">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white text-center uppercase tracking-tighter mb-16">
-          Why Partner With <span className="text-amber-600 italic font-light font-playfair">Goals</span> Floors?
-        </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {partnerBenefits.map((benefit, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="p-8 rounded-[2rem] bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-white/5 hover:border-amber-600/30 transition-all group relative overflow-hidden shadow-sm dark:shadow-none"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              
-              <div className="w-14 h-14 bg-amber-600/10 rounded-2xl flex items-center justify-center text-amber-600 mb-8 group-hover:scale-110 transition-transform duration-500">
-                <benefit.icon className="w-6 h-6" />
-              </div>
-              
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white uppercase tracking-tight mb-4">{benefit.title}</h3>
-              <p className="text-slate-500 dark:text-slate-400 text-sm font-medium leading-relaxed">{benefit.desc}</p>
-              
-              <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-amber-600/5 blur-3xl group-hover:bg-amber-600/10 transition-all" />
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*                               3. FAQ ACCORDION                             */
-/* -------------------------------------------------------------------------- */
-
-const faqItems = [
-  {
-    question: "What is the Minimum Order Quantity (MOQ) to maintain active dealership?",
-    answer: "We offer flexible MOQs depending on your business scale (Retailer vs. Wholesaler). Specific slab details will be shared by your account manager upon approval."
-  },
-  {
-    question: "How are the B2B margins structured?",
-    answer: "We operate on a tiered pricing model. The higher your annual turnover and order volume, the deeper your margins."
-  },
-  {
-    question: "What is your standard dispatch time?",
-    answer: "For standard catalog items, we ensure dispatch within 2 business hours from our central warehouse."
-  },
-  {
-    question: "How do you handle transit damages?",
-    answer: "All our shipments are fully insured. In the rare event of transit damage, we provide hassle-free replacements upon immediate visual proof."
-  },
-  {
-    question: "Do you provide physical display units and sample catalogs?",
-    answer: "Yes! Verified dealers receive a comprehensive 'Starter Kit' including shade cards, physical catalogs, and premium acrylic display stands for their showroom."
-  },
-  {
-    question: "Will I get dedicated support?",
-    answer: "Absolutely. Every verified partner is assigned a dedicated Account Manager for priority order processing and technical support."
-  },
-  {
-    question: "Do you offer area exclusivity?",
-    answer: "We offer pincode or city-level exclusivity for our 'Premium Tier' partners who commit to specific annual targets, ensuring you don't face local undercutting."
-  }
-];
-
-export function FAQAccordion() {
-  const [openId, setOpenId] = useState<number | null>(null);
-
-  const toggleFaq = (index: number) => {
-    setOpenId(openId === index ? null : index);
-  };
-
-  return (
-    <section className="py-10 md:py-10 bg-slate-50 dark:bg-slate-950 px-4 border-t border-slate-200 dark:border-white/5 relative overflow-hidden transition-colors duration-500">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-amber-600/5 blur-[120px] pointer-events-none" />
-
-      <div className="max-w-4xl mx-auto relative z-10">
-        <div className="flex flex-col items-center gap-4 mb-16 text-center">
-            <div className="w-14 h-14 bg-amber-600/10 border border-amber-600/20 rounded-2xl flex items-center justify-center text-amber-600 mb-2 shadow-2xl shadow-amber-900/20">
-                <HelpCircle className="w-7 h-7" />
-            </div>
-            <h2 className="text-3xl md:text-6xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-none mb-4">
-              B2B Partnership <span className="text-amber-600 italic font-light drop-shadow-md font-playfair">FAQ</span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+              Why Partner <br /> <span className="font-playfair italic font-normal text-amber-500">With Us?</span>
             </h2>
-            <p className="text-slate-500 dark:text-slate-400 font-medium text-lg">Detailed insights for prospective Goals Floors partners.</p>
+            <p className="text-slate-600 dark:text-slate-400 max-w-sm text-base leading-relaxed">
+              What's in it for me? Here is why 400+ dealers trust Goals Floors for their architectural surface needs.
+            </p>
         </div>
-
-        <div className="space-y-4">
-          {faqItems.map((faq, i) => {
-            const isOpen = openId === i;
-            
+        
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[auto] md:auto-rows-[320px]">
+          {benefits.map((item, i) => {
+            const Icon = item.icon;
             return (
               <motion.div 
-                key={i} 
-                className="border border-slate-200 dark:border-white/5 bg-white dark:bg-slate-900 rounded-lg shadow-sm overflow-hidden transition-all duration-300 hover:border-amber-600/30"
+                key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ duration: 0.6, delay: item.delay }}
+                className={`${item.span} bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-white/5 p-8 md:p-12 flex flex-col justify-between group hover:border-amber-500/50 transition-all duration-500 rounded-3xl relative overflow-hidden`}
               >
-                <button 
-                  onClick={() => toggleFaq(i)}
-                  className="w-full text-left p-6 md:p-8 flex items-center justify-between focus:outline-none bg-white dark:bg-slate-900 group transition-colors duration-300"
-                >
-                  <h4 className={`text-base md:text-lg font-bold pr-8 transition-colors duration-300 ${isOpen ? 'text-amber-600' : 'text-slate-900 dark:text-white'}`}>
-                    {faq.question}
-                  </h4>
-                  <div className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}>
-                    {isOpen ? (
-                      <Minus className="w-5 h-5 text-amber-600 shrink-0" />
-                    ) : (
-                      <Plus className="w-5 h-5 text-slate-300 dark:text-slate-400 group-hover:text-amber-600 shrink-0" />
-                    )}
-                  </div>
-                </button>
-                <div 
-                  className={`px-6 md:px-8 overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96 pb-8 opacity-100' : 'max-h-0 opacity-0'}`}
-                >
-                  <div className="border-t border-slate-100 dark:border-white/5 pt-4 mt-2 transition-colors duration-300">
-                    <p className="text-slate-500 dark:text-slate-400 text-sm md:text-base leading-relaxed font-medium">
-                      {faq.answer}
+                {/* Background Icon Watermark */}
+                <Icon className="absolute -top-6 -right-6 w-40 h-40 text-amber-500/20 dark:text-amber-500/5 -rotate-12 pointer-events-none transition-transform duration-700 group-hover:scale-110 group-hover:rotate-0" strokeWidth={1} />
+                
+                <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 dark:bg-amber-500/10 blur-[80px] rounded-full group-hover:bg-amber-500/10 dark:group-hover:bg-amber-500/20 transition-all duration-700 pointer-events-none" />
+                
+                <div className="relative z-10 mt-auto">
+                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight mb-4">{item.title}</h3>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base leading-relaxed">
+                      {item.desc}
                     </p>
-                  </div>
                 </div>
               </motion.div>
-            );
+            )
           })}
         </div>
       </div>
     </section>
   );
+}
+
+/* -------------------------------------------------------------------------- */
+/*                     2. DEALERSHIP RULES & TRANSPARENCY                     */
+/* -------------------------------------------------------------------------- */
+
+export function FAQAccordion() {
+  return (
+    <section className="py-6 md:py-24 bg-slate-50 dark:bg-slate-900 px-6 md:px-16 text-slate-900 dark:text-white transition-colors duration-500 border-t border-slate-200 dark:border-white/5 selection:bg-amber-500 selection:text-white">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16 lg:gap-24 items-center">
+        
+        <div className="w-full md:w-1/2">
+            <span className="text-amber-500 font-bold uppercase tracking-widest text-xs mb-4 block">Clear Expectations</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+              Dealership Rules & <br /> <span className="font-playfair italic font-normal text-slate-500 dark:text-slate-400">Transparency.</span>
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">
+              We are professionals, and we believe our partners deserve absolute clarity from day one.
+            </p>
+        </div>
+
+        <div className="w-full md:w-1/2 space-y-6">
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-white dark:bg-slate-950 p-8 rounded-3xl border border-slate-200 dark:border-white/5 shadow-xl shadow-slate-200/20 dark:shadow-none flex gap-6"
+            >
+                <div className="shrink-0 mt-1">
+                    <CheckCircle2 className="w-6 h-6 text-amber-500" />
+                </div>
+                <div>
+                    <h3 className="text-xl font-bold tracking-tight mb-3">No Minimum Order Quantity (MOQ)</h3>
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm md:text-base">
+                        There is no MOQ for dealers in Gurugram and NCR; you can order exactly what you need.
+                    </p>
+                </div>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-white dark:bg-slate-950 p-8 rounded-3xl border border-slate-200 dark:border-white/5 shadow-xl shadow-slate-200/20 dark:shadow-none flex gap-6"
+            >
+                <div className="shrink-0 mt-1">
+                    <CheckCircle2 className="w-6 h-6 text-amber-500" />
+                </div>
+                <div>
+                    <h3 className="text-xl font-bold tracking-tight mb-3">Professional Sample Catalogs</h3>
+                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm md:text-base">
+                        Our premium physical sample catalogs are available at a fixed price of ₹1,500 per folder, designed to help you confidently close sales during client meetings.
+                    </p>
+                </div>
+            </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function TrustBar() {
+  return null; // Removed as per request to focus on the 4 main sections
 }

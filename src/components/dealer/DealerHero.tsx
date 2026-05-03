@@ -1,56 +1,73 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShieldCheck, ChevronDown } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
 export default function DealerHero() {
   return (
-    <section className="relative h-auto md:h-[80vh] flex flex-col items-center justify-start md:justify-center text-center px-4 overflow-hidden border-b border-slate-200 dark:border-white/5 pt-5 pb-5 md:py-20 bg-white dark:bg-slate-950 transition-colors duration-500">
+    <section className="relative w-full h-[80svh] md:h-[100svh] flex flex-col justify-center overflow-hidden selection:bg-amber-600 selection:text-white bg-slate-900">
       
-      {/* Dynamic Background */}
+      {/* Immersive Background Image */}
       <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-600/5 dark:bg-amber-600/10 blur-[130px] rounded-full -mr-48 -mt-48" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-600/5 blur-[110px] rounded-full -ml-32 -mb-32 opacity-30 dark:opacity-50" />
-          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] opacity-[0.03] dark:opacity-20" />
+        <motion.div
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2, ease: "easeOut" }}
+          className="w-full h-full relative"
+        >
+          <Image 
+            src="/images/hero-arch.png" 
+            alt="Luxury Architecture" 
+            fill 
+            priority
+            className="object-cover opacity-60 dark:opacity-80"
+          />
+        </motion.div>
+        {/* Cinematic Vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent dark:from-slate-950 dark:via-slate-950/60" />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto space-y-6 md:space-y-8">
-          <motion.div 
-             initial={{ opacity: 0, scale: 0.8 }}
-             animate={{ opacity: 1, scale: 1 }}
-             className="inline-flex items-center gap-3 px-4 py-2 bg-amber-600/10 border border-amber-600/20 rounded-full text-amber-600 dark:text-amber-500 text-[10px] font-black uppercase tracking-[0.2em] backdrop-blur-xl"
-          >
-              <ShieldCheck className="w-4 h-4" /> B2B Exclusive Partnership
-          </motion.div>
+      <div className="relative z-10 w-full px-6 md:px-16 py-10 md:py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-end justify-between gap-12"
+        >
+          <div className="max-w-4xl">
+              <motion.p 
+                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1 }}
+                 className="text-white/70 font-sans text-xs md:text-sm tracking-[0.3em] uppercase mb-6 flex items-center gap-4"
+              >
+                <span className="w-8 h-[1px] bg-white/70"></span> Exclusive Network
+              </motion.p>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1]">
+                Partner with Goals Floors – <br className="hidden md:block" />
+                <span className="font-playfair italic font-normal text-amber-400">NCR’s Fastest Growing Luxury Surface Brand!</span>
+              </h1>
+          </div>
 
-          <motion.h1 
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-4xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tighter uppercase leading-[0.9] drop-shadow-sm dark:drop-shadow-2xl"
-          >
-            The Grand <br />
-            <span className="text-amber-600 italic font-light font-playfair">Architectural</span> Legacy.
-          </motion.h1>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-slate-600 dark:text-slate-400 text-base md:text-xl font-medium max-w-2xl mx-auto leading-relaxed"
-          >
-            Goals Floors is more than just a brand. It is an architectural commitment. Join our exclusive partner network to gain access to premium catalogs and dealer-only margins.
-          </motion.p>
-          
-          <motion.div 
-              animate={{ y: [0, 10, 0] }} 
-              transition={{ duration: 2, repeat: Infinity }}
-              className="pt-8 md:pt-12 flex flex-col items-center gap-2"
-          >
-              <div className="w-[1px] h-10 md:h-20 bg-gradient-to-b from-amber-600 to-transparent" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-600/50">Apply Below</span>
-              <ChevronDown className="w-5 h-5 text-amber-600/50" />
-          </motion.div>
+          <div className="flex flex-col gap-8 md:max-w-md shrink-0">
+             <motion.p 
+               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 1 }}
+               className="text-white/90 text-base md:text-lg leading-relaxed font-light"
+             >
+               Join our network of 400+ happy dealers. Get exclusive access to 2500+ premium interior & exterior products with 2-hour express dispatch in Delhi NCR.
+             </motion.p>
+             
+             <motion.button 
+               onClick={() => document.getElementById('apply')?.scrollIntoView({ behavior: 'smooth' })}
+               initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.9, duration: 1 }}
+               className="group relative flex items-center justify-between w-full md:w-auto bg-amber-500 text-black px-8 py-4 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-500 overflow-hidden"
+             >
+               <span className="relative z-10 mr-12">Start Your Inquiry</span>
+               <div className="w-10 h-10 rounded-full bg-black/10 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-colors duration-500 relative z-10">
+                  <ArrowRight className="w-4 h-4" />
+               </div>
+             </motion.button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
