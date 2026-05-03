@@ -155,15 +155,13 @@ export default function GoalsAIWidget() {
             transition={{ type: "spring", damping: 25, stiffness: 200, mass: 0.5 }}
             className="absolute bottom-12 md:bottom-16 right-0 w-[calc(100vw-48px)] md:w-[480px] h-[600px] md:h-[780px] max-h-[80vh] z-20 flex flex-col"
           >
-            <motion.div
-              layoutId="ai-widget"
+            <div
               className="absolute inset-0 bg-slate-950/95 backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_30px_100px_rgba(0,0,0,0.7)]"
-              transition={{ type: "spring", damping: 25, stiffness: 200, mass: 0.5 }}
             />
 
             <div className="relative z-10 flex-1 flex flex-col overflow-hidden rounded-[2rem] h-full">
               {/* Header */}
-              <div className="shrink-0 bg-gradient-to-r from-slate-900 to-slate-950 p-4 border-b border-white/10 flex items-center justify-between shadow-md relative overflow-hidden">
+              <div className="shrink-0 bg-gradient-to-r from-slate-900 to-slate-950 p-3 md:p-4 border-b border-white/10 flex items-center justify-between shadow-md relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-50" />
                 
                 <div className="flex items-center gap-3 relative z-10">
@@ -187,22 +185,35 @@ export default function GoalsAIWidget() {
 
               {/* Chat Area */}
               <div 
-                className="flex-1 overflow-y-auto min-h-0 p-6 space-y-6 scrollbar-hide overscroll-contain"
+                className="flex-1 overflow-y-auto min-h-0 p-3 md:p-6 space-y-4 md:space-y-6 scrollbar-hide overscroll-contain"
                 data-lenis-prevent="true"
               >
                 {messages.map((msg, idx) => (
                   <div 
                     key={idx} 
-                    className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"} gap-2`}
+                    className={`flex flex-col ${msg.role === "user" ? "items-end" : "items-start"} gap-1`}
                   >
-                    {msg.role === "assistant" && (
-                      <div className="w-6 h-6 rounded-full bg-amber-600/20 border border-amber-500/30 flex items-center justify-center shrink-0 mt-1">
-                        <Bot className="w-3 h-3 text-amber-500" />
-                      </div>
-                    )}
+                    {/* Icon above bubble */}
+                    <div className="flex items-center gap-2 px-1">
+                      {msg.role === "assistant" ? (
+                        <>
+                          <div className="w-5 h-5 rounded-full bg-amber-600/20 border border-amber-500/30 flex items-center justify-center shrink-0">
+                            <Bot className="w-3 h-3 text-amber-500" />
+                          </div>
+                          <span className="text-[10px] text-slate-500 font-medium uppercase tracking-tight">Consultant</span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="text-[10px] text-slate-500 font-medium uppercase tracking-tight text-right">You</span>
+                          <div className="w-5 h-5 rounded-full bg-slate-800 flex items-center justify-center shrink-0">
+                            <User className="w-3 h-3 text-slate-400" />
+                          </div>
+                        </>
+                      )}
+                    </div>
                     
                     <div 
-                      className={`max-w-[80%] p-3 text-sm leading-relaxed ${
+                      className={`max-w-[92%] md:max-w-[85%] p-2.5 md:p-3 text-sm leading-relaxed ${
                         msg.role === "user" 
                           ? "bg-amber-600 text-white rounded-2xl rounded-tr-sm shadow-md" 
                           : "bg-slate-800/60 text-slate-200 border border-white/5 rounded-2xl rounded-tl-sm"
@@ -211,25 +222,24 @@ export default function GoalsAIWidget() {
                       {/* Advanced Markdown rendering for bold and Links */}
                       {msg.content.split('\n').map((line, i) => (
                         <div key={i} className="mb-1 last:mb-0">
-                          {line.split(/(\*\*.*?\*\*|\[.*?\]\(.*?\))/g).map((part, j) => {
+                          {line.split(/(\*\*.*?\*\*|\[.*?\]\s*\(.*?\))/g).map((part, j) => {
                             if (part.startsWith('**') && part.endsWith('**')) {
                               return <strong key={j} className="text-white font-bold">{part.slice(2, -2)}</strong>;
                             }
-                            if (part.startsWith('[') && part.includes('](')) {
-                              const match = part.match(/\[(.*?)\]\((.*?)\)/);
-                              if (match) {
-                                const [_, text, url] = match;
-                                return (
-                                  <Link 
-                                    key={j} 
-                                    href={url} 
-                                    className="inline-flex items-center gap-0.5 text-amber-400 hover:text-amber-300 font-semibold underline underline-offset-4 decoration-amber-500/50 hover:decoration-amber-400 transition-all mx-1"
-                                  >
-                                    {text}
-                                    <ExternalLink className="w-3 h-3" />
-                                  </Link>
-                                );
-                              }
+                            // Link check with optional whitespace: [text] (url) or [text](url)
+                            const linkMatch = part.match(/\[(.*?)\]\s*\((.*?)\)/);
+                            if (linkMatch) {
+                              const [_, text, url] = linkMatch;
+                              return (
+                                <Link 
+                                  key={j} 
+                                  href={url} 
+                                  className="inline-flex items-center gap-0.5 text-amber-400 hover:text-amber-300 font-semibold underline underline-offset-4 decoration-amber-500/50 hover:decoration-amber-400 transition-all mx-1"
+                                >
+                                  {text}
+                                  <ExternalLink className="w-3 h-3" />
+                                </Link>
+                              );
                             }
                             return <span key={j}>{part}</span>;
                           })}
@@ -244,19 +254,13 @@ export default function GoalsAIWidget() {
                         </span>
                       )}
                     </div>
-
-                    {msg.role === "user" && (
-                      <div className="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center shrink-0 mt-1">
-                        <User className="w-3 h-3 text-slate-400" />
-                      </div>
-                    )}
                   </div>
                 ))}
                 <div ref={messagesEndRef} />
               </div>
 
               {/* Input Area */}
-              <div className="shrink-0 p-4 bg-slate-900 border-t border-white/10">
+              <div className="shrink-0 p-3 md:p-4 bg-slate-900 border-t border-white/10">
                 <form onSubmit={handleSubmit} className="relative flex items-center">
                   <input
                     type="text"
@@ -290,10 +294,8 @@ export default function GoalsAIWidget() {
               whileTap={{ scale: 0.95 }}
               className="w-14 h-14 text-white rounded-full flex items-center justify-center relative z-20"
             >
-              <motion.div
-                layoutId="ai-widget"
+              <div
                 className="absolute inset-0 bg-amber-600 rounded-full shadow-[0_10px_30px_rgba(217,119,6,0.4)]"
-                transition={{ type: "spring", damping: 25, stiffness: 200, mass: 0.5 }}
               />
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
