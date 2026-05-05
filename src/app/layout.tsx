@@ -56,6 +56,9 @@ export const metadata: Metadata = {
     shortcut: '/icon.png',
     apple: '/apple-icon.png',
   },
+  verification: {
+    google: "oU2AKS2XI0vdkHcoFkx_WswqEvbBFI06kvXb2rfZlpM",
+  },
 };
 
 import SmoothScrolling from "@/components/SmoothScrolling";
