@@ -324,7 +324,7 @@ export default function DealerWizard() {
                             )}
                         </AnimatePresence>
 
-                        <div className="pt-12 flex items-center gap-4 mt-8 border-t border-slate-200 dark:border-slate-800/50">
+                        <div className={`pt-12 flex items-center gap-4 mt-8 ${step === 1 ? "" : "border-t border-slate-200 dark:border-slate-800/50"}`}>
                             {step > 1 && (
                                 <button type="button" onClick={prevStep} className="p-4 md:py-5 md:px-8 border border-slate-200 dark:border-slate-700 font-bold uppercase tracking-widest text-xs transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 flex items-center gap-2 shrink-0">
                                     <ArrowLeft className="w-5 h-5" /> <span className="hidden md:inline">Back</span>
