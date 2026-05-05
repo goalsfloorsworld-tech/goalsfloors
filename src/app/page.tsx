@@ -40,9 +40,9 @@ export default function Home() {
       </div>
 
       {/* ================= CATEGORIES SECTION ================= */}
-      <section id="categories" className="py-10 pt-36 bg-gray-50 dark:bg-slate-950 transition-colors duration-300 -mt-24">
+      <section id="categories" className="py-10 pt-28 lg:pt-36 bg-gray-50 dark:bg-slate-950 transition-colors duration-300 -mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 lg:mb-16">
             <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-black text-gray-900 dark:text-white mb-4 tracking-tighter uppercase leading-[0.9]">
               Explore Our <br />
               <span className="text-amber-500 italic">Collections</span>
