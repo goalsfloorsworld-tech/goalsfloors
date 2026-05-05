@@ -52,13 +52,10 @@ export function WhyPartnerGrid() {
   return (
     <section className="py-6 md:py-24 bg-white dark:bg-slate-950 px-6 md:px-16 text-slate-900 dark:text-white transition-colors duration-500 selection:bg-amber-500 selection:text-white">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
-              Why Partner <br /> <span className="font-playfair italic font-normal text-amber-500">With Us?</span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-16 gap-8 items-center md:items-start">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] text-center md:text-left">
+              Why Partner <br className="md:hidden" /> <span className="font-playfair italic font-normal text-amber-500">With Us?</span>
             </h2>
-            <p className="text-slate-600 dark:text-slate-400 max-w-sm text-base leading-relaxed">
-              What's in it for me? Here is why 400+ dealers trust Goals Floors for their architectural surface needs.
-            </p>
         </div>
         
         {/* Bento Grid */}
