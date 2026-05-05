@@ -20,7 +20,6 @@ const productCategories = [
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Products", href: "/products" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
   { name: "Become a Dealer", href: "/dealer" },
@@ -110,7 +109,7 @@ export default function Footer() {
             <div className="grid grid-cols-2 gap-x-6 gap-y-8 w-full max-w-xs mx-auto lg:hidden">
               <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
                 <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-500 mb-6">
-                  Products
+                  <Link href="/products" className="hover:text-white transition-colors">Products</Link>
                 </h3>
                 <ul className="flex flex-col items-center lg:items-start gap-3">
                   {productCategories.map((p) => (
@@ -181,7 +180,7 @@ export default function Footer() {
           {/* ── Col 3 – Products (desktop only) ── */}
           <div className="hidden lg:flex lg:col-span-2 flex-col items-start text-left lg:order-2">
             <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-500 mb-6">
-              Products
+              <Link href="/products" className="hover:text-white transition-colors">Products</Link>
             </h3>
             <ul className="flex flex-col items-start gap-3">
               {productCategories.map((p) => (
