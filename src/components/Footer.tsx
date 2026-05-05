@@ -248,7 +248,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex items-center justify-center gap-6 text-[11px] uppercase tracking-[0.2em]">
+          <div className="flex flex-nowrap items-center justify-center gap-4 sm:gap-6 text-[10px] sm:text-[11px] uppercase tracking-[0.15em] sm:tracking-[0.2em] whitespace-nowrap">
             <Link href="/privacy" className="text-gray-500 hover:text-amber-400 transition-colors">
               Privacy Policy
             </Link>
