@@ -31,6 +31,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: canonical,
       title,
       description,
+      images: [
+        {
+          url: product.images[0]?.url,
+          width: 1200,
+          height: 630,
+          alt: product.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
       images: [product.images[0]?.url],
     },
   };

@@ -76,7 +76,7 @@ export default function Testimonials() {
   const current = testimonials[currentIndex];
 
   return (
-    <section className="py-16 bg-white dark:bg-slate-900 relative overflow-hidden">
+    <section className="py-10 bg-white dark:bg-slate-900 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-96 max-w-full h-96 bg-amber-100/30 dark:bg-amber-900/10 blur-3xl opacity-50 rounded-full" />
       <div className="absolute bottom-0 left-0 w-96 max-w-full h-96 bg-amber-100/30 dark:bg-amber-900/10 blur-3xl opacity-50 rounded-full" />

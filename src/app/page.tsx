@@ -40,7 +40,7 @@ export default function Home() {
       </div>
 
       {/* ================= CATEGORIES SECTION ================= */}
-      <section id="categories" className="py-20 pt-36 bg-gray-50 dark:bg-slate-950 transition-colors duration-300 -mt-24">
+      <section id="categories" className="py-10 pt-36 bg-gray-50 dark:bg-slate-950 transition-colors duration-300 -mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-black text-gray-900 dark:text-white mb-4 tracking-tighter uppercase leading-[0.9]">
@@ -58,7 +58,7 @@ export default function Home() {
 
 
       {/* ================= WHY CHOOSE US ================= */}
-      <section className="pt-8 pb-24 bg-white dark:bg-slate-900 transition-colors duration-300">
+      <section className="pt-8 pb-14 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch min-w-0 max-w-full">
             <div className="min-w-0">

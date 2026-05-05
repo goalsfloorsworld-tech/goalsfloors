@@ -40,7 +40,7 @@ export default function GetAQuoteMonolith() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative py-8 md:py-12 px-4 overflow-hidden bg-gray-50 dark:bg-slate-950 transition-colors duration-500 flex items-center justify-center min-h-[400px] md:min-h-[600px] w-full max-w-full box-border"
+      className="relative py-8 md:py-12 px-4 overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500 flex items-center justify-center min-h-[400px] md:min-h-[600px] w-full max-w-full box-border"
     >
       {/* Background Decor Elements (Floating 3D-like shapes) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
