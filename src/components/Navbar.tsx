@@ -251,7 +251,7 @@ export default function Navbar() {
                   <div className="space-y-3">
                     <h4 className="text-[10px] font-bold text-amber-600 uppercase tracking-widest">Architectural Ceilings</h4>
                     <div className="flex flex-col gap-2">
-                      <Link href="/products/baffle-ceiling" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Baffle Ceiling</Link>
+                      <Link href="/products/wpc-baffle-ceiling" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Baffle Ceiling</Link>
                       <Link href="/products/wpc-timber-tubes" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">WPC Timber Tubes</Link>
                     </div>
                   </div>
