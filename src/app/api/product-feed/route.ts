@@ -34,7 +34,9 @@ export async function GET() {
           const id = `${variantNameSafe}-opt-${index}`;
           const title = `${product.shortTitle} - ${variant.name} (Option ${index + 1})`;
           const description = product.shortDescription;
-          const link = `${domain}/products/${product.slug}`;
+          const safeVariantName = encodeURIComponent(variant.name);
+          const link = `${domain}/products/${product.slug}?variant=${safeVariantName}`;
+          const itemGroupId = product.slug;
           const imageLink = imageObj.url;
           const priceValue = variant.priceValue || 0;
           const currency = variant.currency || 'INR';
@@ -45,6 +47,7 @@ export async function GET() {
           xmlItems += `
     <item>
       <g:id>${escapeXml(id)}</g:id>
+      <g:item_group_id>${escapeXml(itemGroupId)}</g:item_group_id>
       <g:title>${escapeXml(title)}</g:title>
       <g:description>${escapeXml(description)}</g:description>
       <g:link>${escapeXml(link)}</g:link>
