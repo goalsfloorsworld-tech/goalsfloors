@@ -1,7 +1,8 @@
 import { getAllProducts } from '@/lib/data';
 
-function escapeXml(unsafe: string) {
-  return unsafe.replace(/[<>&'"]/g, function (c) {
+function escapeXml(unsafe: string | null | undefined) {
+  if (!unsafe) return '';
+  return String(unsafe).replace(/[<>&'"]/g, function (c) {
     switch (c) {
       case '<': return '&lt;';
       case '>': return '&gt;';
@@ -30,13 +31,15 @@ export async function GET() {
             : [];
 
         imagesToIterate.forEach((imageObj: { url: string }, index: number) => {
-          const variantNameSafe = variant.name.replace(/\s+/g, '-').toLowerCase();
+          const vName = variant.name || `option-${index}`;
+          const variantNameSafe = vName.replace(/\s+/g, '-').toLowerCase();
           const id = `${variantNameSafe}-opt-${index}`;
-          const title = `${product.shortTitle} - ${variant.name} (Option ${index + 1})`;
+          const title = `${product.shortTitle} - ${vName} (Option ${index + 1})`;
           const description = product.shortDescription;
-          const safeVariantName = encodeURIComponent(variant.name);
-          const link = `${domain}/products/${product.slug}?variant=${safeVariantName}`;
-          const itemGroupId = product.slug;
+          const safeVariantName = encodeURIComponent(vName);
+          const pSlug = product.slug || product.id || '';
+          const link = `${domain}/products/${pSlug}?variant=${safeVariantName}`;
+          const itemGroupId = pSlug;
           const imageLink = imageObj.url;
           const priceValue = variant.priceValue || 0;
           const currency = variant.currency || 'INR';
