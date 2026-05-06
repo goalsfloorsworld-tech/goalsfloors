@@ -1,11 +1,11 @@
 {
   "id": "wpc-timber-tubes",
-"title": "WPC Timber Tube",
+  "title": "WPC Timber Tube",
   "shortTitle": "WPC Timber Tubes",
   "category": "ceilings",
   "priceRange": "Premium",
   "shortDescription": "Premium WPC timber tube for modern room partitions, ceiling louvers, wall dividers, and office interiors in Gurgaon and Delhi NCR. 100% waterproof, termite-proof, and zero maintenance.",
-"longDescription": "Goals Floors provides premium WPC timber tube designs in Gurgaon, Delhi, Noida, and across Delhi NCR for modern home and commercial interiors. Our WPC timber tubes are widely used for room partitions, ceiling louvers, wall dividers, office cabins, staircase paneling, restaurant partitions, and decorative interior designs. Unlike natural wood, WPC timber tubes are 100% waterproof, termite-proof, moisture-resistant, and require zero polishing or maintenance. These timber tubes provide the natural wooden look without cracking, bending, or warping over time. Available in multiple wood finishes like walnut, teak, natural wood, and wenge, our WPC timber tube panels are ideal for luxury living rooms, offices, cafes, hotel lobbies, and commercial interiors. The hidden clip installation system creates a seamless modern finish without visible screws or nails. Whether you need timber tube partitions for a home in Gurgaon or bulk WPC timber tube supply for commercial projects in Delhi NCR, Goals Floors provides premium-quality products with fast delivery and professional installation support.",
+  "longDescription": "Goals Floors provides premium WPC timber tube designs in Gurgaon, Delhi, Noida, and across Delhi NCR for modern home and commercial interiors. Our WPC timber tubes are widely used for room partitions, ceiling louvers, wall dividers, office cabins, staircase paneling, restaurant partitions, and decorative interior designs. Unlike natural wood, WPC timber tubes are 100% waterproof, termite-proof, moisture-resistant, and require zero polishing or maintenance. These timber tubes provide the natural wooden look without cracking, bending, or warping over time. Available in multiple wood finishes like walnut, teak, natural wood, and wenge, our WPC timber tube panels are ideal for luxury living rooms, offices, cafes, hotel lobbies, and commercial interiors. The hidden clip installation system creates a seamless modern finish without visible screws or nails. Whether you need timber tube partitions for a home in Gurgaon or bulk WPC timber tube supply for commercial projects in Delhi NCR, Goals Floors provides premium-quality products with fast delivery and professional installation support.",
   "features": [
     {
       "title": "100% Waterproof & Termite Proof",
@@ -39,21 +39,21 @@
     "Restaurant & Cafe Privacy Screens",
     "Staircase & Hallway Vertical Paneling"
   ],
-"installation": "WPC timber tubes are installed using a hidden metal clip system fixed on the floor and ceiling. The hollow timber tube slides over the clips, creating a clean modern finish without visible screws. Installation is fast, dust-free, and suitable for homes, offices, restaurants, and commercial interiors.",
-"maintenance": "WPC timber tubes require almost zero maintenance. Simply clean the surface using a dry or slightly wet cloth to remove dust and keep the wood finish looking new for years.",
+  "installation": "WPC timber tubes are installed using a hidden metal clip system fixed on the floor and ceiling. The hollow timber tube slides over the clips, creating a clean modern finish without visible screws. Installation is fast, dust-free, and suitable for homes, offices, restaurants, and commercial interiors.",
+  "maintenance": "WPC timber tubes require almost zero maintenance. Simply clean the surface using a dry or slightly wet cloth to remove dust and keep the wood finish looking new for years.",
   "faqs": [
     {
       "question": "What are WPC Timber Tubes used for?",
       "answer": "They are primarily used to create beautiful, modern room dividers, open partitions, and premium ceiling louver designs in homes and commercial spaces."
     },
     {
-  "question": "What is the price of WPC timber tubes in Gurgaon?",
-  "answer": "WPC timber tube prices start from ₹1390 per panel depending on size, finish, and project requirements."
-},
-{
-  "question": "Which is better, WPC timber tube or natural wood partition?",
-  "answer": "WPC timber tubes are better for modern interiors because they are waterproof, termite-proof, low maintenance, and more durable than natural wood."
-},
+      "question": "What is the price of WPC timber tubes in Gurgaon?",
+      "answer": "WPC timber tube prices start from ₹1390 per panel depending on size, finish, and project requirements."
+    },
+    {
+      "question": "Which is better, WPC timber tube or natural wood partition?",
+      "answer": "WPC timber tubes are better for modern interiors because they are waterproof, termite-proof, low maintenance, and more durable than natural wood."
+    },
     {
       "question": "Do they look like real natural wood?",
       "answer": "Yes, they feature a deep 3D wood grain texture on all sides. Once installed, they are almost indistinguishable from expensive natural timber."
@@ -156,7 +156,12 @@
           "alt": "Cobra Walnut - Dark Luxury Wood Texture",
           "name": "Cobra Walnut"
         }
-      ]
+      ],
+      "priceValue": 1390,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Cobra TOG",
@@ -176,7 +181,12 @@
           "alt": "Cobra TOG - Rich Teak Tones",
           "name": "Cobra TOG"
         }
-      ]
+      ],
+      "priceValue": 1390,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Cobra Natural",
@@ -196,7 +206,12 @@
           "alt": "Cobra Natural - Bright Modern Wood Texture",
           "name": "Cobra Natural"
         }
-      ]
+      ],
+      "priceValue": 1390,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Cobra Wenge",
@@ -216,7 +231,12 @@
           "alt": "Cobra Wenge - Deep Charcoal Wood Tone",
           "name": "Cobra Wenge"
         }
-      ]
+      ],
+      "priceValue": 1390,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     }
   ],
   "installationSteps": [
@@ -248,9 +268,25 @@
     }
   ],
   "relatedLinks": [
-    { "label": "WPC Baffle Ceiling", "href": "/products/wpc-baffle-ceiling", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp" },
-    { "label": "Wall Panels", "href": "/products/wall-panels", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png" },
-    { "label": "Tokyo Moulding", "href": "/products/tokyo-charcoal-moulding", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774970794/charcoal-gray_paneled_wall..jpg" },
-    { "label": "WPC Exterior Louvers", "href": "/products/wpc-exterior-louvers", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775818177/exterior_louvaring.jpg" }
+    {
+      "label": "WPC Baffle Ceiling",
+      "href": "/products/wpc-baffle-ceiling",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp"
+    },
+    {
+      "label": "Wall Panels",
+      "href": "/products/wall-panels",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png"
+    },
+    {
+      "label": "Tokyo Moulding",
+      "href": "/products/tokyo-charcoal-moulding",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774970794/charcoal-gray_paneled_wall..jpg"
+    },
+    {
+      "label": "WPC Exterior Louvers",
+      "href": "/products/wpc-exterior-louvers",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775818177/exterior_louvaring.jpg"
+    }
   ]
 }

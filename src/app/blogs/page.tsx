@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight, FileX } from "lucide-react";
 import SearchBar from "@/components/search-bar";
 import BlogCard, { BlogPost } from "@/components/blog-card";
+import WriteBlogCard from "@/components/WriteBlogCard";
+import { createClient } from "@supabase/supabase-js";
 
 export async function generateMetadata({
   searchParams,
@@ -58,7 +60,35 @@ async function getPosts(page: number, query: string) {
     }
 
     const totalPages = parseInt(res.headers.get("x-wp-totalpages") || "1", 10);
-    const posts = await res.json();
+    const wpPosts = await res.json();
+    
+    let supabasePosts: any[] = [];
+    if (page === 1 && !query) {
+      const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!);
+      const { data: supabaseData, error: supabaseError } = await supabase
+        .from('blogs')
+        .select('*')
+        .eq('is_published', true)
+        .order('created_at', { ascending: false });
+        
+      console.log("Supabase Fetch in Blogs List:", supabaseData, supabaseError);
+        
+      if (supabaseData) {
+        supabasePosts = supabaseData.map((blog) => ({
+          id: blog.id || Math.random(),
+          slug: blog.slug,
+          title: { rendered: blog.title },
+          excerpt: { rendered: blog.description },
+          content: { rendered: blog.content },
+          date: blog.created_at || new Date().toISOString(),
+          _embedded: {
+            "wp:featuredmedia": blog.featured_image ? [{ source_url: blog.featured_image, alt_text: blog.featured_image_alt || blog.title }] : []
+          }
+        }));
+      }
+    }
+
+    const posts = [...supabasePosts, ...wpPosts];
 
     return { posts, totalPages, error: false };
   } catch (error) {
@@ -126,6 +156,8 @@ export default async function BlogsPage({
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <WriteBlogCard />
+
             {posts.map((post: BlogPost, index: number) => (
               <BlogCard key={post.id} post={post} index={index} />
             ))}

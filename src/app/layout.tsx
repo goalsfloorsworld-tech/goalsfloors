@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Goals Floors: Premium Architectural Products",
     description: "India's fastest growing brand for Wall Panels, WPC, and Flooring in Delhi NCR.",
-    images: ["https://res.cloudinary.com/dcezlxt8r/image/upload/v1775573402/Goals_Floors_Premium_Wall_Panel.png"],
+    images: ["https://res.cloudinary.com/dcezlxt8r/image/upload/v1775448942/goals-floors-og.jpg"],
   },
   icons: {
     icon: [
@@ -84,8 +85,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="overflow-x-hidden scrollbar-hide">
-      <head>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning className="overflow-x-hidden scrollbar-hide">
+        <head>
         <meta name="deployment" content="v2.3-production-fixes-2026-04-26" />
         {/* Deployment: 2026-04-26 | All 6 critical production fixes applied | Build: fixes-v2.1 */}
         <script
@@ -136,6 +138,7 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
       <GoogleAnalytics gaId="G-6Z28W9Y8PY" />
-    </html>
+      </html>
+    </ClerkProvider>
   );
 }

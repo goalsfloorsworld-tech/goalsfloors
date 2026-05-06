@@ -3,6 +3,12 @@
 
 @variant dark (&:where(.dark, .dark *));
 
+/* Hide Manage account in Clerk UserButton dropdown */
+.cl-userButtonPopoverActionButton__manageAccount,
+[data-localization-key="userButton.action__manageAccount"] {
+  display: none !important;
+}
+
 html {
   view-transition-name: root;
 }
@@ -421,3 +427,10 @@ html {
   display: table;
   clear: both;
 }
+
+/* Dark-mode backdrop for Clerk modal */
+.dark .cl-modalBackdrop {
+  background-color: rgba(2, 6, 23, 0.85) !important;
+  backdrop-filter: blur(4px) !important;
+}
+

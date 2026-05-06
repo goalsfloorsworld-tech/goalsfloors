@@ -276,7 +276,12 @@
           "alt": "Golden Teak Laminate Flooring",
           "name": "Golden Teak"
         }
-      ]
+      ],
+      "priceValue": 90,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Majestic Laminate Series",
@@ -352,7 +357,12 @@
           "alt": "Wild Walnut 781 Laminate Flooring",
           "name": "Wild Walnut 781"
         }
-      ]
+      ],
+      "priceValue": 129,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     }
   ],
   "installationSteps": [

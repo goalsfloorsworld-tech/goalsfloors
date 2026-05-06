@@ -217,17 +217,20 @@ const BeforeAfterDemo = ({
 const VariantCard = ({
   variant,
   onVariantClick,
-  onImageClick
+  onImageClick,
+  globalFullscreenImage
 }: {
   variant: Variant,
   onVariantClick: (v: Variant) => void,
-  onImageClick: (url: string) => void
+  onImageClick: (url: string) => void,
+  globalFullscreenImage: string | null
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const images = variant.images || [];
+  const isImageFullscreen = images.some(img => img.url === globalFullscreenImage);
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const scrollLeft = e.currentTarget.scrollLeft;
@@ -238,7 +241,7 @@ const VariantCard = ({
 
   // Auto-slide logic
   useEffect(() => {
-    if (images.length <= 1 || isPaused) return;
+    if (images.length <= 1 || isPaused || isImageFullscreen) return;
 
     const interval = setInterval(() => {
       if (scrollRef.current) {
@@ -252,7 +255,7 @@ const VariantCard = ({
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [activeIndex, images.length, isPaused]);
+  }, [activeIndex, images.length, isPaused, isImageFullscreen]);
 
   return (
     <div
@@ -682,6 +685,7 @@ export default function ProductClient({ product }: { product: Product }) {
                       setActiveDrawerImageIndex(0);
                     }}
                     onImageClick={setFullscreenImage}
+                    globalFullscreenImage={fullscreenImage}
                   />
                 </motion.div>
               ))}

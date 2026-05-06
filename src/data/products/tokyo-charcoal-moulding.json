@@ -157,7 +157,12 @@
           "alt": "Tokyo T-M 22mm Charcoal Moulding Project Supplier Gurugram NCR",
           "name": "T-M 22mm"
         }
-      ]
+      ],
+      "priceValue": 90,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "T-M 30mm",
@@ -177,7 +182,12 @@
           "alt": "T-M 30mm Paintable Charcoal Moulding Project Delhi NCR",
           "name": "T-M 30mm"
         }
-      ]
+      ],
+      "priceValue": 160,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "T-M 38mm",
@@ -197,7 +207,12 @@
           "alt": "T-M 38mm Tapper Charcoal Moulding Project Supplier NCR",
           "name": "T-M 38mm"
         }
-      ]
+      ],
+      "priceValue": 260,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "T-M 45mm",
@@ -217,7 +232,12 @@
           "alt": "T-M 45mm Charcoal Moulding Project Price Gurugram",
           "name": "T-M 45mm"
         }
-      ]
+      ],
+      "priceValue": 360,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Taj 22mm",
@@ -237,7 +257,12 @@
           "alt": "Taj 22mm Charcoal Moulding Project Supplier Delhi NCR",
           "name": "Taj 22mm"
         }
-      ]
+      ],
+      "priceValue": 90,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Taj 30mm",
@@ -257,7 +282,12 @@
           "alt": "Taj 30mm Paintable Charcoal Moulding Project Gurugram",
           "name": "Taj 30mm"
         }
-      ]
+      ],
+      "priceValue": 160,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "T-M 65mm",
@@ -277,7 +307,12 @@
           "alt": "T-M 65mm Charcoal Moulding Project Supplier NCR",
           "name": "T-M 65mm"
         }
-      ]
+      ],
+      "priceValue": 479,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Skirting 150mm",
@@ -297,7 +332,12 @@
           "alt": "150mm Paintable Skirting for Floors Project NCR",
           "name": "Skirting 150mm"
         }
-      ]
+      ],
+      "priceValue": 999,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     }
   ],
   "installationSteps": [

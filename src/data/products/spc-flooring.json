@@ -168,7 +168,12 @@
           "alt": "G-F SPC 300",
           "name": "G-F SPC 300"
         }
-      ]
+      ],
+      "priceValue": 180,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "G-F SPC 303 (Smoked Ash)",
@@ -213,7 +218,12 @@
           "alt": "G-F SPC 306",
           "name": "G-F SPC 306"
         }
-      ]
+      ],
+      "priceValue": 195,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "G-F SPC 302 (Herringbone)",
@@ -247,7 +257,12 @@
           "alt": "H-GAZLENUT",
           "name": "H-GAZLENUT"
         }
-      ]
+      ],
+      "priceValue": 215,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Matching SPC Skirting",
@@ -267,7 +282,12 @@
           "alt": "SPC Flooring Matching Skirting Profile Supplier Gurugram",
           "name": "Matching SPC Skirting"
         }
-      ]
+      ],
+      "priceValue": 800,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Floor Transition Reducer",
@@ -287,7 +307,12 @@
           "alt": "SPC Flooring Transition Reducer Profile NCR",
           "name": "Floor Transition Reducer"
         }
-      ]
+      ],
+      "priceValue": 750,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "SPC T-Profile",
@@ -307,7 +332,12 @@
           "alt": "SPC Flooring T-Profile Room Separator Delhi",
           "name": "SPC T-Profile"
         }
-      ]
+      ],
+      "priceValue": 750,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Quarter Round Beeding",
@@ -327,7 +357,12 @@
           "alt": "SPC Flooring Quarter Round Beeding Finish Noida",
           "name": "Quarter Round Beeding"
         }
-      ]
+      ],
+      "priceValue": 450,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     }
   ],
   "installationSteps": [
@@ -369,9 +404,25 @@
     }
   ],
   "relatedLinks": [
-    { "label": "Laminate Flooring", "href": "/products/laminate-flooring", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544853/oak_color_laminate_flooring_installed_images.png" },
-    { "label": "Herringbone Flooring", "href": "/products/herringbone-laminate-flooring", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775411703/Luxury_Penthouse_Living_Room_with_Light_Oak_Herringbone_Flooring_Gurugram.jpg" },
-    { "label": "Hybrid Flooring", "href": "/products/hybrid-laminate-flooring", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477090/Ocean_Waterproof_Laminate_FLooring.jpg" },
-    { "label": "WPC Decking", "href": "/products/wpc-decking", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478659/premium_wpc_decking_supplier_in_gurgaon.jpg" }
+    {
+      "label": "Laminate Flooring",
+      "href": "/products/laminate-flooring",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544853/oak_color_laminate_flooring_installed_images.png"
+    },
+    {
+      "label": "Herringbone Flooring",
+      "href": "/products/herringbone-laminate-flooring",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775411703/Luxury_Penthouse_Living_Room_with_Light_Oak_Herringbone_Flooring_Gurugram.jpg"
+    },
+    {
+      "label": "Hybrid Flooring",
+      "href": "/products/hybrid-laminate-flooring",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477090/Ocean_Waterproof_Laminate_FLooring.jpg"
+    },
+    {
+      "label": "WPC Decking",
+      "href": "/products/wpc-decking",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478659/premium_wpc_decking_supplier_in_gurgaon.jpg"
+    }
   ]
 }

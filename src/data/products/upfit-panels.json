@@ -34,12 +34,12 @@
     }
   ],
   "applications": [
-  "Balcony Ceiling Panels",
-  "Roof Soffit & Chajja Ceilings",
-  "Porch & Driveway Ceiling Designs",
-  "Modern Exterior Facade Cladding",
-  "Commercial Outdoor Ceiling Systems"
-],
+    "Balcony Ceiling Panels",
+    "Roof Soffit & Chajja Ceilings",
+    "Porch & Driveway Ceiling Designs",
+    "Modern Exterior Facade Cladding",
+    "Commercial Outdoor Ceiling Systems"
+  ],
   "installation": "Installation is fast and professional. A lightweight aluminum or iron framework is first prepared on the ceiling surface. The Upfit soffit panels then interlock seamlessly and are fixed using hidden screws for a clean finish. Matching J-trims and L-corners are used to complete the edges and give the ceiling a premium architectural appearance.",
   "maintenance": "It requires almost zero maintenance. To clean the outdoor dust, simply wipe it down with a damp cloth. You can even wash the exterior panels with mild soap and water without worrying about water damage.",
   "faqs": [
@@ -174,7 +174,12 @@
           "alt": "G-F UF Brown Upfit 230 Soffit Panel",
           "name": "G-F UF Brown"
         }
-      ]
+      ],
+      "priceValue": 1200,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Upfit 230 - Modern Texture Series",
@@ -209,7 +214,12 @@
           "alt": "G-F UF Premium Upfit 230 Panel",
           "name": "G-F UF Premium"
         }
-      ]
+      ],
+      "priceValue": 1200,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Upfit 305 - Classic Wood Series",
@@ -244,7 +254,12 @@
           "alt": "UF Brown 305mm Upfit Ceiling Panel",
           "name": "UF Brown 30"
         }
-      ]
+      ],
+      "priceValue": 1400,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Upfit 305 - Modern Texture Series",
@@ -279,7 +294,12 @@
           "alt": "UF Premium 305mm Upfit Ceiling Panel",
           "name": "UF Premium 30"
         }
-      ]
+      ],
+      "priceValue": 1400,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     }
   ],
   "installationSteps": [
@@ -318,9 +338,25 @@
     }
   ],
   "relatedLinks": [
-    { "label": "WPC Exterior Louvers", "href": "/products/wpc-exterior-louvers", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775818177/exterior_louvaring.jpg" },
-    { "label": "WPC Decking", "href": "/products/wpc-decking", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478659/premium_wpc_decking_supplier_in_gurgaon.jpg" },
-    { "label": "Artificial Grass", "href": "/products/artificial-grass", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772476444/artificial_grass_supplier_in_india.jpg" },
-    { "label": "WPC Baffle Ceiling", "href": "/products/wpc-baffle-ceiling", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp" }
+    {
+      "label": "WPC Exterior Louvers",
+      "href": "/products/wpc-exterior-louvers",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775818177/exterior_louvaring.jpg"
+    },
+    {
+      "label": "WPC Decking",
+      "href": "/products/wpc-decking",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478659/premium_wpc_decking_supplier_in_gurgaon.jpg"
+    },
+    {
+      "label": "Artificial Grass",
+      "href": "/products/artificial-grass",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772476444/artificial_grass_supplier_in_india.jpg"
+    },
+    {
+      "label": "WPC Baffle Ceiling",
+      "href": "/products/wpc-baffle-ceiling",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp"
+    }
   ]
 }

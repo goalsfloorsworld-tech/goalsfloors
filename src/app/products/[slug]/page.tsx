@@ -28,9 +28,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       canonical,
     },
     openGraph: {
+      type: "website",
       url: canonical,
       title,
       description,
+      siteName: "Goals Floors",
       images: [
         {
           url: product.images[0]?.url,
@@ -73,6 +75,26 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       }
     : null;
 
+  // TASK 2: Product Rich Snippets Schema
+  const hasVariants = product.variants && product.variants.length > 0;
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.title,
+    "description": product.shortDescription,
+    "image": product.images?.map((img: { url: string }) => img.url),
+    ...(hasVariants && {
+      "offers": product.variants!.map((v: any) => ({
+        "@type": "Offer",
+        "name": v.name,
+        "price": v.priceValue || 0,
+        "priceCurrency": v.currency || "INR",
+        "availability": v.availability === "in_stock" ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+        "itemCondition": v.condition === "new" ? "https://schema.org/NewCondition" : "https://schema.org/Condition",
+      }))
+    })
+  };
+
   return (
     <>
       {faqSchema && (
@@ -81,6 +103,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       <ProductClient product={product} />
     </>
   );

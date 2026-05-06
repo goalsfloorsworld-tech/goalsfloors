@@ -5,43 +5,43 @@
   "slug": "wpc-baffle-ceiling",
   "category": "ceilings",
   "priceRange": "Luxury Architectural Series",
-"shortDescription": "Upgrade modern interiors with premium WPC Baffle Ceilings in Gurgaon & Delhi NCR. Waterproof, termite-proof, open linear ceiling systems for luxury offices, cafes, commercial spaces, and designer homes.",
-"longDescription": "Redefine modern ceiling architecture with premium WPC Baffle Ceiling systems by Goals Floors. Designed for luxury commercial spaces, modern offices, hospitality interiors, and designer homes, our architectural linear ceiling systems create a bold open-ceiling aesthetic with exceptional durability.\n\nCrafted using A+ grade WPC materials, these baffle ceilings deliver the sophisticated appearance of natural wood while remaining completely waterproof, termite-proof, and low maintenance. Unlike conventional gypsum or POP ceilings that require continuous repainting and are vulnerable to moisture damage, our WPC Baffle Ceiling systems are engineered for long-term structural stability and premium visual performance.\n\nThe intelligent open-linear design allows seamless integration of AC ducts, electrical wiring, fire safety systems, hanging lights, and linear LED profiles while maintaining easy future accessibility for maintenance teams. Installed using precision concealed carrier systems, the final finish remains completely screw-free and architecturally clean.\n\nIdeal for luxury offices in Gurgaon, premium retail showrooms, cafes, reception areas, corporate lobbies, airports, and high-end residential interiors, Goals Floors supplies premium WPC Baffle Ceilings across Delhi NCR with reliable project support and bulk commercial supply.",
- "features": [
-  {
-    "title": "Architectural Open Ceiling Design",
-    "description": "Creates a modern linear ceiling aesthetic widely used in luxury offices, premium retail showrooms, airports, and commercial interiors."
-  },
-  {
-    "title": "A+ Grade Wood Finish",
-    "description": "Manufactured using premium WPC materials that replicate the elegance of natural wood while offering significantly higher durability and moisture resistance."
-  },
-  {
-    "title": "100% Waterproof & Termite-Proof",
-    "description": "Engineered to resist water damage, ceiling seepage, humidity, termites, swelling, warping, and structural deterioration."
-  },
-  {
-    "title": "Concealed Clip Installation System",
-    "description": "Installed using precision hidden carrier clips that eliminate visible screws and deliver a clean, seamless architectural finish."
-  },
-  {
-    "title": "Integrated Lighting & Services Access",
-    "description": "Allows easy integration of linear LEDs, hanging lights, AC ducts, wiring, and fire systems while maintaining future accessibility."
-  },
-  {
-    "title": "Acoustic Comfort Enhancement",
-    "description": "The vertical baffle structure helps diffuse sound reflections and reduce echo in large commercial and residential spaces."
-  }
-],
+  "shortDescription": "Upgrade modern interiors with premium WPC Baffle Ceilings in Gurgaon & Delhi NCR. Waterproof, termite-proof, open linear ceiling systems for luxury offices, cafes, commercial spaces, and designer homes.",
+  "longDescription": "Redefine modern ceiling architecture with premium WPC Baffle Ceiling systems by Goals Floors. Designed for luxury commercial spaces, modern offices, hospitality interiors, and designer homes, our architectural linear ceiling systems create a bold open-ceiling aesthetic with exceptional durability.\n\nCrafted using A+ grade WPC materials, these baffle ceilings deliver the sophisticated appearance of natural wood while remaining completely waterproof, termite-proof, and low maintenance. Unlike conventional gypsum or POP ceilings that require continuous repainting and are vulnerable to moisture damage, our WPC Baffle Ceiling systems are engineered for long-term structural stability and premium visual performance.\n\nThe intelligent open-linear design allows seamless integration of AC ducts, electrical wiring, fire safety systems, hanging lights, and linear LED profiles while maintaining easy future accessibility for maintenance teams. Installed using precision concealed carrier systems, the final finish remains completely screw-free and architecturally clean.\n\nIdeal for luxury offices in Gurgaon, premium retail showrooms, cafes, reception areas, corporate lobbies, airports, and high-end residential interiors, Goals Floors supplies premium WPC Baffle Ceilings across Delhi NCR with reliable project support and bulk commercial supply.",
+  "features": [
+    {
+      "title": "Architectural Open Ceiling Design",
+      "description": "Creates a modern linear ceiling aesthetic widely used in luxury offices, premium retail showrooms, airports, and commercial interiors."
+    },
+    {
+      "title": "A+ Grade Wood Finish",
+      "description": "Manufactured using premium WPC materials that replicate the elegance of natural wood while offering significantly higher durability and moisture resistance."
+    },
+    {
+      "title": "100% Waterproof & Termite-Proof",
+      "description": "Engineered to resist water damage, ceiling seepage, humidity, termites, swelling, warping, and structural deterioration."
+    },
+    {
+      "title": "Concealed Clip Installation System",
+      "description": "Installed using precision hidden carrier clips that eliminate visible screws and deliver a clean, seamless architectural finish."
+    },
+    {
+      "title": "Integrated Lighting & Services Access",
+      "description": "Allows easy integration of linear LEDs, hanging lights, AC ducts, wiring, and fire systems while maintaining future accessibility."
+    },
+    {
+      "title": "Acoustic Comfort Enhancement",
+      "description": "The vertical baffle structure helps diffuse sound reflections and reduce echo in large commercial and residential spaces."
+    }
+  ],
   "applications": [
-  "Luxury Corporate Offices & Reception Areas",
-  "Modern Co-Working Spaces & Conference Rooms",
-  "Designer Cafes, Restaurants & Hospitality Ceilings",
-  "Premium Retail Showrooms & Shopping Spaces",
-  "Luxury Residential Living Rooms & Home Theaters"
-],
-"installation": "Our WPC Baffle Ceiling systems are installed using a precision-engineered GI suspension framework combined with concealed carrier clips for a completely screw-free architectural finish. The open linear system ensures fast installation while allowing seamless integration of electrical services, AC ducts, fire systems, and decorative lighting.",
-"maintenance": "Designed for long-term commercial and residential performance, our WPC Baffle Ceilings require virtually zero maintenance. The premium decorative surface resists dust accumulation, moisture damage, and staining. Regular cleaning requires only a soft microfiber cloth, feather duster, or low-pressure vacuum brush.",
+    "Luxury Corporate Offices & Reception Areas",
+    "Modern Co-Working Spaces & Conference Rooms",
+    "Designer Cafes, Restaurants & Hospitality Ceilings",
+    "Premium Retail Showrooms & Shopping Spaces",
+    "Luxury Residential Living Rooms & Home Theaters"
+  ],
+  "installation": "Our WPC Baffle Ceiling systems are installed using a precision-engineered GI suspension framework combined with concealed carrier clips for a completely screw-free architectural finish. The open linear system ensures fast installation while allowing seamless integration of electrical services, AC ducts, fire systems, and decorative lighting.",
+  "maintenance": "Designed for long-term commercial and residential performance, our WPC Baffle Ceilings require virtually zero maintenance. The premium decorative surface resists dust accumulation, moisture damage, and staining. Regular cleaning requires only a soft microfiber cloth, feather duster, or low-pressure vacuum brush.",
   "faqs": [
     {
       "question": "What is a WPC Baffle Ceiling system?",
@@ -159,7 +159,12 @@
           "alt": "Cobra Wenge Dark Wood Texture",
           "name": "Cobra Wenge"
         }
-      ]
+      ],
+      "priceValue": 890,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Cobra Pure",
@@ -179,7 +184,12 @@
           "alt": "Cobra Pure Light Oak Texture",
           "name": "Cobra Pure"
         }
-      ]
+      ],
+      "priceValue": 890,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Cobra Nayur",
@@ -199,7 +209,12 @@
           "alt": "Cobra Nayur Warm Teak Texture",
           "name": "Cobra Nayur"
         }
-      ]
+      ],
+      "priceValue": 890,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Cobra Cure",
@@ -219,7 +234,12 @@
           "alt": "Cobra Cure Roasted Ash Texture",
           "name": "Cobra Cure"
         }
-      ]
+      ],
+      "priceValue": 890,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     }
   ],
   "installationSteps": [
@@ -253,9 +273,25 @@
     }
   ],
   "relatedLinks": [
-    { "label": "WPC Timber Tubes", "href": "/products/wpc-timber-tubes", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478739/Timber_Tube.png" },
-    { "label": "Wall Panels", "href": "/products/wall-panels", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png" },
-    { "label": "Tokyo Moulding", "href": "/products/tokyo-charcoal-moulding", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774970794/charcoal-gray_paneled_wall..jpg" },
-    { "label": "WPC Exterior Louvers", "href": "/products/wpc-exterior-louvers", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775818177/exterior_louvaring.jpg" }
+    {
+      "label": "WPC Timber Tubes",
+      "href": "/products/wpc-timber-tubes",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478739/Timber_Tube.png"
+    },
+    {
+      "label": "Wall Panels",
+      "href": "/products/wall-panels",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png"
+    },
+    {
+      "label": "Tokyo Moulding",
+      "href": "/products/tokyo-charcoal-moulding",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774970794/charcoal-gray_paneled_wall..jpg"
+    },
+    {
+      "label": "WPC Exterior Louvers",
+      "href": "/products/wpc-exterior-louvers",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775818177/exterior_louvaring.jpg"
+    }
   ]
 }

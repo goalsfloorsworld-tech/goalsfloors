@@ -92,17 +92,17 @@
       "answer": "Because of its waterproof nature and AC-5 scratch resistance, this flooring is built to last for decades in normal residential conditions with very little maintenance."
     },
     {
-  "question": "Is hybrid flooring better than normal laminate flooring?",
-  "answer": "Yes. Hybrid flooring combines the luxury look of laminate wood with a waterproof core, making it much safer for kitchens, dining areas, and moisture-prone spaces."
-},
-{
-  "question": "Can hybrid flooring handle daily water spills?",
-  "answer": "Yes, the waterproof hybrid core protects the floor from swelling and damage caused by daily spills, wet mopping, and humidity."
-},
-{
-  "question": "Why is hybrid flooring becoming popular in Delhi NCR homes?",
-  "answer": "People prefer hybrid flooring because it gives the premium look of real wooden flooring while being waterproof, scratch-resistant, easy to maintain, and suitable for Indian weather conditions."
-}
+      "question": "Is hybrid flooring better than normal laminate flooring?",
+      "answer": "Yes. Hybrid flooring combines the luxury look of laminate wood with a waterproof core, making it much safer for kitchens, dining areas, and moisture-prone spaces."
+    },
+    {
+      "question": "Can hybrid flooring handle daily water spills?",
+      "answer": "Yes, the waterproof hybrid core protects the floor from swelling and damage caused by daily spills, wet mopping, and humidity."
+    },
+    {
+      "question": "Why is hybrid flooring becoming popular in Delhi NCR homes?",
+      "answer": "People prefer hybrid flooring because it gives the premium look of real wooden flooring while being waterproof, scratch-resistant, easy to maintain, and suitable for Indian weather conditions."
+    }
   ],
   "images": [
     {
@@ -179,7 +179,12 @@
           "alt": "Smartline 101 Light Greyish Beige",
           "name": "Smartline 101"
         }
-      ]
+      ],
+      "priceValue": 279,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Smartline 102",
@@ -199,7 +204,12 @@
           "alt": "Smartline 102 Warm Golden Sand",
           "name": "Smartline 102"
         }
-      ]
+      ],
+      "priceValue": 279,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Smartline 103",
@@ -219,7 +229,12 @@
           "alt": "Smartline 103 Natural Honey Oak",
           "name": "Smartline 103"
         }
-      ]
+      ],
+      "priceValue": 279,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Smartline 104",
@@ -239,7 +254,12 @@
           "alt": "Smartline 104 Muted Grey-Brown",
           "name": "Smartline 104"
         }
-      ]
+      ],
+      "priceValue": 279,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Hybrid oak 101",
@@ -259,7 +279,12 @@
           "alt": "Hybrid Oak 101 Medium Brown Natural",
           "name": "Hybrid Oak 101"
         }
-      ]
+      ],
+      "priceValue": 329,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Hybrid oak 102",
@@ -279,7 +304,12 @@
           "alt": "Hybrid Oak 102 Light Beige Sand",
           "name": "Hybrid Oak 102"
         }
-      ]
+      ],
+      "priceValue": 329,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Hybrid oak 103",
@@ -299,7 +329,12 @@
           "alt": "Hybrid Oak 103 Soft Natural Oak",
           "name": "Hybrid Oak 103"
         }
-      ]
+      ],
+      "priceValue": 329,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Hybrid oak 104",
@@ -319,7 +354,12 @@
           "alt": "Hybrid Oak 104 Deep Brown Walnut",
           "name": "Hybrid Oak 104"
         }
-      ]
+      ],
+      "priceValue": 329,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     }
   ],
   "installationSteps": [

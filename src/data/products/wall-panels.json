@@ -119,14 +119,14 @@
       "alt": "Premium Fluted Wall Panel design for modern interiors by Goals Floors",
       "aspect": "landscape",
       "beforeAfter": {
-           "before": {
-        "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776938630/before_wall_panel_installation_image.png",
-        "alt": "Before wall panel installation for TV unit area"
-          },
-           "after": {
-        "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832082/Premium_Fluted_Panel.jpg",
-        "alt": "After premium fluted wall panel installation"
-           }
+        "before": {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776938630/before_wall_panel_installation_image.png",
+          "alt": "Before wall panel installation for TV unit area"
+        },
+        "after": {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832082/Premium_Fluted_Panel.jpg",
+          "alt": "After premium fluted wall panel installation"
+        }
       }
     },
     {
@@ -162,7 +162,7 @@
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832077/Pvc_Panel_Installed_in_Bedroom.jpg",
       "alt": "PVC Wall Panel installed in luxury bedroom behind headboard by Goals Floors",
-      "aspect": "landscape"      
+      "aspect": "landscape"
     },
     {
       "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832072/Wall_Panels_For_Tv_Cabinet.jpg",
@@ -199,7 +199,7 @@
       "after": {
         "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832086/Twelve_Inch_Pvc_Panel.jpg",
         "alt": "After goalsfloors wall panel installation"
-      }  
+      }
     },
     {
       "before": {
@@ -213,7 +213,6 @@
     }
   ],
   "variants": [
-    
     {
       "name": "Primo Fluted Panel (FP 701 - 713)",
       "price": "₹599",
@@ -292,7 +291,12 @@
           "alt": "Goals Floors FP-713 Premium Finish Fluted Panel",
           "name": "FP-713"
         }
-      ]
+      ],
+      "priceValue": 599,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Metallic Fluted Series",
@@ -321,13 +325,17 @@
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_Copper_Mettalic.png",
           "alt": "Goals Floors Elegant Copper Metallic Fluted Panel",
           "name": "Copper Metallic"
-        }, 
-         
+        },
         {
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832078/Metallic_Fluted_Panel.jpg",
           "alt": "Metallic Fluted Wall Panel architectural finish by Goals Floors"
         }
-      ]
+      ],
+      "priceValue": 650,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Elite Fluted Panels (FP 714 - 722)",
@@ -387,9 +395,13 @@
           "alt": "Goals Floors FP-722 Designer Series Fluted Finish",
           "name": "FP-722"
         }
-      ]
+      ],
+      "priceValue": 599,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
-    
     {
       "name": "Elite PVC Panel (12 Inch)",
       "price": "₹549",
@@ -465,7 +477,12 @@
           "alt": "GF-412 12 inch Pvc Panel",
           "name": "GF-412"
         }
-      ]
+      ],
+      "priceValue": 549,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Primo Series (GF-301 - GF-312)",
@@ -542,7 +559,12 @@
           "alt": "GF-312 Pvc Panel Wooden Color",
           "name": "GF-312"
         }
-      ]
+      ],
+      "priceValue": 499,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Primo Series (GF-313 - GF-324)",
@@ -619,7 +641,12 @@
           "alt": "GF-324 Stone Look PVC Panel",
           "name": "GF-324"
         }
-      ]
+      ],
+      "priceValue": 499,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Premium 17mm Fluted Series",
@@ -660,7 +687,12 @@
           "alt": "17mm WPC Fluted Panel Series - Goals Floors",
           "name": "Premium Fluted Panel"
         }
-      ]
+      ],
+      "priceValue": 499,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     }
   ],
   "installationSteps": [
@@ -698,9 +730,25 @@
     }
   ],
   "relatedLinks": [
-    { "label": "PU Stone Panels", "href": "/products/cobra-pu-stone", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477246/Pu_Stone_Colors.jpg" },
-    { "label": "Tokyo Moulding", "href": "/products/tokyo-charcoal-moulding", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774970794/charcoal-gray_paneled_wall..jpg" },
-    { "label": "Laminate Flooring", "href": "/products/laminate-flooring", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544853/oak_color_laminate_flooring_installed_images.png" },
-    { "label": "WPC Baffle Ceiling", "href": "/products/wpc-baffle-ceiling", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp" }
+    {
+      "label": "PU Stone Panels",
+      "href": "/products/cobra-pu-stone",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477246/Pu_Stone_Colors.jpg"
+    },
+    {
+      "label": "Tokyo Moulding",
+      "href": "/products/tokyo-charcoal-moulding",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774970794/charcoal-gray_paneled_wall..jpg"
+    },
+    {
+      "label": "Laminate Flooring",
+      "href": "/products/laminate-flooring",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544853/oak_color_laminate_flooring_installed_images.png"
+    },
+    {
+      "label": "WPC Baffle Ceiling",
+      "href": "/products/wpc-baffle-ceiling",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp"
+    }
   ]
 }

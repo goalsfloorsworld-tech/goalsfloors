@@ -184,7 +184,12 @@
           "alt": "25mm Premium Artificial Grass Project Gurugram NCR",
           "name": "Premium Grass 25mm"
         }
-      ]
+      ],
+      "priceValue": 45,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Premium Grass 35mm",
@@ -206,7 +211,12 @@
           "alt": "35mm Premium Artificial Grass Project Delhi NCR",
           "name": "Premium Grass 35mm"
         }
-      ]
+      ],
+      "priceValue": 65,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Premium Grass 40mm",
@@ -228,7 +238,12 @@
           "alt": "40mm Premium Artificial Grass Project NCR",
           "name": "Premium Grass 40mm"
         }
-      ]
+      ],
+      "priceValue": 75,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Premium Grass 50mm",
@@ -250,7 +265,12 @@
           "alt": "50mm Premium Artificial Grass Project Delhi",
           "name": "Premium Grass 50mm"
         }
-      ]
+      ],
+      "priceValue": 110,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     }
   ],
   "installationSteps": [
@@ -293,9 +313,25 @@
     }
   ],
   "relatedLinks": [
-    { "label": "WPC Decking", "href": "/products/wpc-decking", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478659/premium_wpc_decking_supplier_in_gurgaon.jpg" },
-    { "label": "WPC Exterior Louvers", "href": "/products/wpc-exterior-louvers", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775818177/exterior_louvaring.jpg" },
-    { "label": "Upfit Panels", "href": "/products/upfit-panels", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774525633/goals-floors-upfit-panels-m7Vw49PE2qSaDNaG.jpg" },
-    { "label": "Wall Panels", "href": "/products/wall-panels", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png" }
+    {
+      "label": "WPC Decking",
+      "href": "/products/wpc-decking",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478659/premium_wpc_decking_supplier_in_gurgaon.jpg"
+    },
+    {
+      "label": "WPC Exterior Louvers",
+      "href": "/products/wpc-exterior-louvers",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775818177/exterior_louvaring.jpg"
+    },
+    {
+      "label": "Upfit Panels",
+      "href": "/products/upfit-panels",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774525633/goals-floors-upfit-panels-m7Vw49PE2qSaDNaG.jpg"
+    },
+    {
+      "label": "Wall Panels",
+      "href": "/products/wall-panels",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png"
+    }
   ]
 }

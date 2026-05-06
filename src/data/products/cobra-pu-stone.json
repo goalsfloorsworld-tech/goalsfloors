@@ -30,15 +30,15 @@
     }
   ],
   "applications": [
-  "PU Stone TV Wall Designs",
-  "Living Room Feature Walls",
-  "Office Reception Stone Walls",
-  "Restaurant & Cafe Interiors",
-  "Hotel Lobby Wall Designs",
-  "Bedroom Stone Accent Walls",
-  "Retail Store Decorative Walls",
-  "Luxury Interior Stone Cladding"
-],
+    "PU Stone TV Wall Designs",
+    "Living Room Feature Walls",
+    "Office Reception Stone Walls",
+    "Restaurant & Cafe Interiors",
+    "Hotel Lobby Wall Designs",
+    "Bedroom Stone Accent Walls",
+    "Retail Store Decorative Walls",
+    "Luxury Interior Stone Cladding"
+  ],
   "installation": "This is the fastest stone installation system available today. You do not need any messy mortar. The panels can be easily cut to size and pasted onto any flat, dust-free surface (like plaster, plywood, or drywall) using heavy-duty PU adhesives (like 3M). For high walls or ceilings, concealed screws are used in the joints for extra safety.",
   "maintenance": "It requires completely zero maintenance. Since the surface is non-porous, it does not absorb dust or liquid stains. You can simply clean it by wiping with a damp cloth or using a vacuum cleaner with a brush attachment to clean the deep textures.",
   "faqs": [
@@ -83,13 +83,13 @@
       "answer": "Yes, Goals Floors is a major B2B supplier of PU Stone in Gurugram, Delhi, and Noida. We offer special project pricing, bulk discounts, and ready stock for architects, builders, and interior contractors."
     },
     {
-  "question": "Are PU Stone Panels good for TV walls?",
-  "answer": "Yes, PU Stone Panels are one of the most popular choices for luxury TV wall designs because they provide a realistic stone finish, lightweight installation, and premium modern appearance."
-},
-{
-  "question": "What is the price of PU Stone Panels in Gurgaon?",
-  "answer": "PU Stone Panel prices depend on thickness, texture, and project size. Goals Floors provides wholesale pricing for residential and commercial projects across Gurgaon and Delhi NCR."
-}
+      "question": "Are PU Stone Panels good for TV walls?",
+      "answer": "Yes, PU Stone Panels are one of the most popular choices for luxury TV wall designs because they provide a realistic stone finish, lightweight installation, and premium modern appearance."
+    },
+    {
+      "question": "What is the price of PU Stone Panels in Gurgaon?",
+      "answer": "PU Stone Panel prices depend on thickness, texture, and project size. Goals Floors provides wholesale pricing for residential and commercial projects across Gurgaon and Delhi NCR."
+    }
   ],
   "images": [
     {
@@ -166,7 +166,12 @@
           "alt": "White 30mm Cobra PU Stone Panel Project Delhi NCR",
           "name": "Cobra PU Stone 099 (30mm)"
         }
-      ]
+      ],
+      "priceValue": 1490,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Cobra PU Stone 098 (30mm)",
@@ -186,7 +191,12 @@
           "alt": "Black 30mm Cobra PU Stone Panel Project Gurugram",
           "name": "Cobra PU Stone 098 (30mm)"
         }
-      ]
+      ],
+      "priceValue": 1490,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Cobra PU Stone 097 (30mm)",
@@ -206,7 +216,12 @@
           "alt": "Grey 30mm Cobra PU Stone Panel Project NCR",
           "name": "Cobra PU Stone 097 (30mm)"
         }
-      ]
+      ],
+      "priceValue": 1490,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Cobra PU Stone 096 (30mm)",
@@ -226,7 +241,12 @@
           "alt": "30mm Cobra PU Faux Stone Panel Project Delhi",
           "name": "Cobra PU Stone 096 (30mm)"
         }
-      ]
+      ],
+      "priceValue": 1490,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Cobra PU Stone 095 (60mm)",
@@ -246,7 +266,12 @@
           "alt": "60mm Cobra PU Stone Project Supplier Gurugram",
           "name": "Cobra PU Stone 095 (60mm)"
         }
-      ]
+      ],
+      "priceValue": 1790,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Cobra PU Stone 094 (60mm)",
@@ -266,7 +291,12 @@
           "alt": "60mm Grey PU Stone Panel for Interior Wall Design",
           "name": "Cobra PU Stone 094 (60mm)"
         }
-      ]
+      ],
+      "priceValue": 1790,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Cobra PU Stone 093 (60mm)",
@@ -286,7 +316,12 @@
           "alt": "60mm Cobra PU Stone Panel Project Delhi NCR",
           "name": "Cobra PU Stone 093 (60mm)"
         }
-      ]
+      ],
+      "priceValue": 1790,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     },
     {
       "name": "Cobra PU Stone 092 (60mm)",
@@ -306,7 +341,12 @@
           "alt": "Lightweight 60mm PU Stone Panel Project Gurugram",
           "name": "Cobra PU Stone 092 (60mm)"
         }
-      ]
+      ],
+      "priceValue": 1790,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
     }
   ],
   "installationSteps": [
@@ -341,9 +381,25 @@
     }
   ],
   "relatedLinks": [
-    { "label": "Wall Panels", "href": "/products/wall-panels", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png" },
-    { "label": "Tokyo Moulding", "href": "/products/tokyo-charcoal-moulding", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774970794/charcoal-gray_paneled_wall..jpg" },
-    { "label": "WPC Baffle Ceiling", "href": "/products/wpc-baffle-ceiling", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp" },
-    { "label": "Laminate Flooring", "href": "/products/laminate-flooring", "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544853/oak_color_laminate_flooring_installed_images.png" }
+    {
+      "label": "Wall Panels",
+      "href": "/products/wall-panels",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png"
+    },
+    {
+      "label": "Tokyo Moulding",
+      "href": "/products/tokyo-charcoal-moulding",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774970794/charcoal-gray_paneled_wall..jpg"
+    },
+    {
+      "label": "WPC Baffle Ceiling",
+      "href": "/products/wpc-baffle-ceiling",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp"
+    },
+    {
+      "label": "Laminate Flooring",
+      "href": "/products/laminate-flooring",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544853/oak_color_laminate_flooring_installed_images.png"
+    }
   ]
 }

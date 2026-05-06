@@ -58,13 +58,21 @@ export default function BlogCard({ post, index }: { post: BlogPost; index: numbe
 
       <div className="relative aspect-[16/10] overflow-hidden bg-gray-50 dark:bg-slate-950 flex items-center justify-center">
         {imageUrl ? (
-          <Image
-            src={imageUrl}
-            alt={imageAlt}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
-          />
+          imageUrl.includes('supabase.co') ? (
+            <img
+              src={imageUrl}
+              alt={imageAlt}
+              className="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
+          ) : (
+            <Image
+              src={imageUrl}
+              alt={imageAlt}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              className="object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
+          )
         ) : (
           <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-gray-100 dark:from-slate-800 dark:to-slate-900 flex flex-col items-center justify-center transform group-hover:scale-105 transition-transform duration-700 ease-out">
             <Image
