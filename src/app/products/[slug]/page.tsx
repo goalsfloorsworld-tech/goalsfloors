@@ -19,7 +19,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   const title = `${product.title} | Premium B2B Supplier in NCR | Goals Floors`;
   const description = product.shortDescription;
-  const canonical = `/products/${slug}`;
+  const baseUrl = "https://goalsfloors.com";
+  const canonical = `${baseUrl}/products/${slug}`;
+  const imageUrlRaw = product.images[0]?.url || "";
+  const absoluteImageUrl = imageUrlRaw.startsWith("http")
+    ? imageUrlRaw
+    : `${baseUrl}${imageUrlRaw.startsWith("/") ? "" : "/"}${imageUrlRaw}`;
+
+  let optimizedImageUrl = absoluteImageUrl;
+  if (optimizedImageUrl.includes("res.cloudinary.com") && optimizedImageUrl.includes("/upload/")) {
+    optimizedImageUrl = optimizedImageUrl.replace("/upload/", "/upload/f_jpg,q_70,w_1200,h_630,c_fill/");
+  }
 
   return {
     title,
@@ -35,18 +45,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: "Goals Floors",
       images: [
         {
-          url: product.images[0]?.url,
+          url: optimizedImageUrl,
           width: 1200,
           height: 630,
           alt: product.title,
         },
       ],
+      locale: "en_IN",
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [product.images[0]?.url],
+      images: [optimizedImageUrl],
     },
   };
 }
