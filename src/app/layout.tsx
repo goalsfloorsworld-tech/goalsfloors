@@ -62,6 +62,7 @@ export const metadata: Metadata = {
   },
 };
 
+import { headers } from "next/headers";
 import SmoothScrolling from "@/components/SmoothScrolling";
 
 const organizationSchema = {
@@ -79,11 +80,15 @@ const organizationSchema = {
   }
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") || "";
+  const isAdminPath = pathname.startsWith("/admin");
+
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning className="overflow-x-hidden scrollbar-hide">
@@ -96,7 +101,7 @@ export default function RootLayout({
         />
       </head>
       {/* suppressHydrationWarning is essential for dark mode hydration */}
-      <body suppressHydrationWarning className={`${inter.className} ${roboto.variable} antialiased bg-white dark:bg-slate-950 pt-14 overflow-x-hidden scrollbar-hide`}>
+      <body suppressHydrationWarning className={`${inter.className} ${roboto.variable} antialiased bg-white dark:bg-slate-950 ${isAdminPath ? '' : 'pt-14'} overflow-x-hidden scrollbar-hide`}>
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
@@ -125,16 +130,22 @@ export default function RootLayout({
           defaultTheme="light"
           enableSystem={false}
         >
-          <SmoothScrolling>
-            <div className="relative">
-              <Navbar />
-              <main className="min-h-screen">
-                {children}
-              </main>
-              <Footer />
+          {isAdminPath ? (
+            <div className="relative min-h-screen">
+              {children}
             </div>
-          </SmoothScrolling>
-          <FloatingWidgets />
+          ) : (
+            <SmoothScrolling>
+              <div className="relative">
+                <Navbar />
+                <main className="min-h-screen">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+            </SmoothScrolling>
+          )}
+          {!isAdminPath && <FloatingWidgets />}
         </ThemeProvider>
       </body>
       <GoogleAnalytics gaId="G-6Z28W9Y8PY" />

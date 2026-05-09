@@ -296,11 +296,23 @@
   "relatedLinks": [
     {
       "title": "Elite 12 Inch Fluted Panel",
-      "url": "/multiverse/wall-panels/elite-12-inch-fluted-panel"
+      "url": "/multiverse/wall-panels/elite-12-inch-fluted-panel",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_FP_-_701.png"
     },
     {
-      "title": "Metallic Fluted Wall Panels",
-      "url": "/multiverse/wall-panels/metallic-fluted-panel"
+      "title": "Oak Wood SPC Flooring",
+      "url": "/multiverse/flooring/spc-oak",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775452465/G-F_SPC_295.avif"
+    },
+    {
+      "title": "Metallic Fluted Panels",
+      "url": "/multiverse/wall-panels/metallic-fluted-panel",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_Silver_Metallic.png"
+    },
+    {
+      "title": "PU Stone Wall Panels",
+      "url": "/multiverse/wall-panels/pu-stone-panels",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477290/Pu_Stone_30mm_White_Color.png"
     }
   ]
 }

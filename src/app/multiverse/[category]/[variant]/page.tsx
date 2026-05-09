@@ -282,20 +282,35 @@ export default async function MultiverseVariantPage({ params }: { params: Promis
                 </div>
               )}
 
-              {/* 🔗 Related Links (SEO Booster) */}
               {data.relatedLinks && data.relatedLinks.length > 0 && (
-                <div className="bg-slate-50 dark:bg-zinc-900/50 p-8 rounded-3xl border border-slate-200 dark:border-zinc-800 transition-colors duration-300 mt-4">
-                  <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-gray-100 flex items-center gap-2">
-                    <span className="text-emerald-500">🔗</span> Related Products
+                <div className="mt-16">
+                  <h3 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100 flex items-center gap-3">
+                    <span className="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm font-bold">🔗</span>
+                    Related Dimensional Products
                   </h3>
-                  <div className="flex flex-wrap gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {data.relatedLinks.map((link: any, idx: number) => (
                       <Link
                         key={idx}
                         href={link.url}
-                        className="bg-white dark:bg-zinc-800 text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 border border-gray-200 dark:border-zinc-700 px-5 py-3 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 text-sm font-semibold"
+                        className="group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-gray-200 dark:border-zinc-800 hover:border-emerald-500 transition-all shadow-sm hover:shadow-xl"
                       >
-                        {link.title}
+                        {link.image && (
+                          <div className="relative aspect-video w-full overflow-hidden">
+                            <Image 
+                              src={link.image} 
+                              alt={link.title} 
+                              fill 
+                              className="object-cover group-hover:scale-110 transition-transform duration-500"
+                            />
+                          </div>
+                        )}
+                        <div className="p-4">
+                          <h4 className="font-bold text-gray-900 dark:text-gray-100 group-hover:text-emerald-500 transition-colors text-sm">
+                            {link.title}
+                          </h4>
+                          <span className="text-emerald-500 text-xs font-semibold mt-2 inline-block">Explore Dimension &rarr;</span>
+                        </div>
                       </Link>
                     ))}
                   </div>

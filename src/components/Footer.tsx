@@ -128,7 +128,7 @@ export default function Footer() {
 
               <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
                 <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-500 mb-6">
-                  Links
+                  <Link href="/multiverse" className="hover:text-white transition-colors">Links</Link>
                 </h3>
                 <ul className="flex flex-col items-center lg:items-start gap-3">
                   {navLinks.map((l) => (
@@ -200,7 +200,7 @@ export default function Footer() {
           {/* ── Col 4 – Quick Nav (desktop only) ── */}
           <div className="hidden lg:flex lg:col-span-2 flex-col items-start text-left lg:order-3">
             <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-500 mb-6">
-              Links
+              <Link href="/multiverse" className="hover:text-white transition-colors">Links</Link>
             </h3>
             <ul className="flex flex-col items-start gap-3">
               {navLinks.map((l) => (

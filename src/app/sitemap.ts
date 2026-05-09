@@ -69,5 +69,44 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error fetching WordPress blogs for sitemap:', error);
   }
 
-  return [...staticRoutes, ...productRoutes, ...blogRoutes];
+  // 4. Multiverse Dynamic Pages
+  const multiverseDirectory = path.join(process.cwd(), 'src', 'data', 'multiverse');
+  let multiverseRoutes: MetadataRoute.Sitemap = [];
+
+  try {
+    // Add Multiverse Hub
+    multiverseRoutes.push({
+      url: `${baseUrl}/multiverse`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    });
+
+    const categories = fs.readdirSync(multiverseDirectory);
+    categories.forEach(category => {
+      const categoryPath = path.join(multiverseDirectory, category);
+      if (fs.statSync(categoryPath).isDirectory()) {
+        const variants = fs.readdirSync(categoryPath);
+        variants.forEach(variantFile => {
+          if (variantFile.endsWith('.json')) {
+            const variantSlug = variantFile.replace('.json', '');
+            const filePath = path.join(categoryPath, variantFile);
+            const stats = fs.statSync(filePath);
+            
+            multiverseRoutes.push({
+              url: `${baseUrl}/multiverse/${category}/${variantSlug}`,
+              lastModified: stats.mtime.toISOString(),
+              changeFrequency: 'weekly' as const,
+              priority: 0.9,
+            });
+          }
+        });
+      }
+    });
+  } catch (error) {
+    console.error('Error reading multiverse files for sitemap:', error);
+  }
+
+  return [...staticRoutes, ...productRoutes, ...blogRoutes, ...multiverseRoutes];
 }
+

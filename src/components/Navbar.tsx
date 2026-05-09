@@ -3,18 +3,30 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ChevronDown, Menu, X, ArrowRight, Sun, Moon } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowRight, Sun, Moon, Settings } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { SignInButton, UserButton, useUser } from '@clerk/nextjs';
+import { checkIsAdmin } from '@/actions/user';
 
 export default function Navbar() {
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [isDesktopProductsOpen, setIsDesktopProductsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
-  const { isLoaded, isSignedIn } = useUser();
+  const { isLoaded, isSignedIn, user } = useUser();
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    if (user?.id) {
+      const verifyAdmin = async () => {
+        const isAdminUser = await checkIsAdmin();
+        setIsAdmin(isAdminUser);
+      };
+      verifyAdmin();
+    }
+  }, [user?.id]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -41,7 +53,7 @@ export default function Navbar() {
     let y: number;
 
     // Check if profile picture exists (signed in) to originate animation from it
-    const profilePic = document.querySelector('.cl-userButtonTrigger');
+    const profilePic = document.getElementById('user-button-wrap') || document.querySelector('.cl-userButtonTrigger');
     if (profilePic) {
       const rect = profilePic.getBoundingClientRect();
       x = rect.left + rect.width / 2;
@@ -193,43 +205,62 @@ export default function Navbar() {
             </nav>
 
             {/* 3. Right Section */}
-            <div className="flex items-center gap-4">
-              {mounted && !isSignedIn ? (
-                <button
-                  onClick={toggleTheme as any}
-                  className="p-2 rounded-full bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors"
-                  aria-label="Toggle Dark Mode"
-                >
-                  {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-                </button>
-              ) : !mounted && (
-                <div className="w-8 h-8 rounded-full bg-gray-100 dark:bg-slate-800 animate-pulse"></div>
-              )}
+            <div className="flex items-center gap-2 md:gap-4">
+              {isLoaded && mounted ? (
+                <>
+                  {!isSignedIn && (
+                    <button
+                      onClick={toggleTheme as any}
+                      className="p-2 rounded-full bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors"
+                      aria-label="Toggle Dark Mode"
+                    >
+                      {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                    </button>
+                  )}
 
-              <div className="hidden md:block">
-                {isLoaded ? (
-                  isSignedIn ? (
-                    <UserButton appearance={{ elements: { userButtonPopoverActionButton__manageAccount: 'hidden' } }}>
-                      <UserButton.MenuItems>
-                        <UserButton.Action 
-                          label={theme === 'dark' ? "Light Mode" : "Dark Mode"}
-                          labelIcon={theme === 'dark' ? <Sun className="w-4 h-4 ml-1" /> : <Moon className="w-4 h-4 ml-1" />}
-                          onClick={() => toggleTheme()}
-                        />
-                      </UserButton.MenuItems>
-                    </UserButton>
+                  {isSignedIn ? (
+                    <div id="user-button-wrap" className="relative flex items-center justify-center">
+                      <UserButton 
+                        appearance={{ 
+                          elements: { 
+                            userButtonPopoverActionButton__manageAccount: 'hidden',
+                            // Center the popup card on mobile screens, keep default Clerk behavior on desktop
+                            userButtonPopoverCard: 'max-md:!fixed max-md:!left-1/2 max-md:!-translate-x-1/2 max-md:!top-[70px] max-w-[calc(100vw-2rem)] mx-auto shadow-2xl border border-gray-100 dark:border-gray-800'
+                          } 
+                        }}
+                      >
+                        <UserButton.MenuItems>
+                          {isAdmin && (
+                            <UserButton.Link
+                              label="Admin Panel"
+                              labelIcon={<Settings className="w-4 h-4 ml-1" />}
+                              href="/admin"
+                            />
+                          )}
+                          <UserButton.Action 
+                            label={theme === 'dark' ? "Light Mode" : "Dark Mode"}
+                            labelIcon={theme === 'dark' ? <Sun className="w-4 h-4 ml-1" /> : <Moon className="w-4 h-4 ml-1" />}
+                            onClick={() => toggleTheme()}
+                          />
+                        </UserButton.MenuItems>
+                      </UserButton>
+                    </div>
                   ) : (
                     <SignInButton mode="modal">
-                      <button className="shine-btn bg-gray-900 dark:bg-amber-600 text-white px-5 py-2 text-sm font-normal hover:bg-amber-600 dark:hover:bg-amber-700 transition-all active:scale-95 rounded-sm">
+                      <button className="shine-btn bg-gray-900 dark:bg-amber-600 text-white px-3 py-1.5 md:px-5 md:py-2 text-sm font-normal hover:bg-amber-600 dark:hover:bg-amber-700 transition-all active:scale-95 rounded-sm">
                         Login
                       </button>
                     </SignInButton>
-                  )
-                ) : (
-                  <div className="w-[92px] h-9 rounded-sm bg-gray-100 dark:bg-slate-800 animate-pulse" />
-                )}
-              </div>
-              <button onClick={toggleMenu} className="md:hidden p-2 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-full transition-colors">
+                  )}
+                </>
+              ) : (
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-gray-100 dark:bg-slate-800 animate-pulse"></div>
+                  <div className="w-[70px] md:w-[92px] h-8 md:h-9 rounded-sm bg-gray-100 dark:bg-slate-800 animate-pulse" />
+                </div>
+              )}
+
+              <button onClick={toggleMenu} className="md:hidden p-2 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-slate-800 rounded-full transition-colors ml-1">
                 {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>

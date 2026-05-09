@@ -101,11 +101,24 @@
   "relatedLinks": [
     {
       "title": "Primo 12 Inch PVC Panel",
-      "url": "/multiverse/wall-panels/primo-12-inch-pvc-panel"
+      "url": "/multiverse/wall-panels/primo-12-inch-pvc-panel",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_FP_-_701.png"
     },
     {
-      "title": "Elite 12 Inch Fluted Panel",
-      "url": "/multiverse/wall-panels/elite-12-inch-fluted-panel"
+      "title": "Oak Wood SPC Flooring",
+      "url": "/multiverse/flooring/spc-oak",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775452465/G-F_SPC_295.avif"
+    },
+    {
+      "title": "PU Stone Wall Panels",
+      "url": "/multiverse/wall-panels/pu-stone-panels",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477290/Pu_Stone_30mm_White_Color.png"
+    },
+    {
+      "title": "Tokyo Charcoal Moulding",
+      "url": "/multiverse/wall-panels/charcoal-moulding",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774970794/charcoal-gray_paneled_wall..jpg"
     }
   ]
 }
+

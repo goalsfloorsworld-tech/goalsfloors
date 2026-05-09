@@ -2,23 +2,148 @@
   "id": "spc-oak",
   "name": "Oak Wood SPC Flooring",
   "categoryName": "Flooring",
-  "description": "Durable and waterproof SPC flooring with a natural Oak wood finish. Combines the beauty of natural wood with the invincible strength of stone plastic composite.",
-  "priceInfo": "Starting from ₹120/sq.ft",
+  "description": "Goals Floors' Oak Wood SPC (Stone Plastic Composite) Flooring is a 100% waterproof, termite-proof, and highly durable architectural solution for modern Indian homes. Designed with a rock-solid stone core, it offers the natural warmth and beauty of real oak hardwood without any of the maintenance issues. Perfectly suited for humid climates and heavy foot traffic, our SPC flooring is the ultimate choice for luxury living rooms, kitchens, and commercial spaces in Delhi NCR and across India.",
+  "priceInfo": "Starting ₹180 - ₹215 per sq.ft",
   "features": [
-    "100% Waterproof Core",
-    "Scratch & Stain Resistant",
-    "Click-Lock Easy Installation",
-    "Anti-skid Surface"
+    "100% Waterproof & Termite-Proof",
+    "High-Impact Stone Plastic Core",
+    "Scratch-Resistant 0.5mm Wear Layer",
+    "Glue-Free Uniclick Installation"
   ],
   "seo": {
-    "title": "Oak SPC Flooring - Waterproof & Durable | Goals Floors",
-    "description": "Upgrade your space with Oak Wood SPC Flooring. Scratch-resistant, waterproof, and long-lasting flooring solution."
+    "title": "Oak Wood SPC Flooring India | Waterproof Wooden Floors Price ₹180 | Goals Floors",
+    "description": "Buy premium Oak Wood SPC Flooring in India at ₹180-₹215 per sq.ft. 100% waterproof, termite-proof & scratch resistant. Ideal for living room & kitchen. Fast delivery in Delhi NCR."
   },
-  "images": [
+  "collections": [
     {
-      "url": "https://placehold.co/600x400/png",
-      "alt": "SPC Oak Sample",
-      "name": "Oak-01"
+      "name": "Cobra Silver Series (G-F 301)",
+      "price": "₹180",
+      "mrp": "₹390",
+      "discount": "54% off",
+      "unit": "per sq.ft",
+      "details": {
+        "Thickness": "6mm (with Cushion)",
+        "Wear Layer": "0.5mm",
+        "Texture": "Handscrapped Wood Grain",
+        "Packing": "20 SQF / Box"
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775452465/G-F_SPC_295.avif",
+          "alt": "G-F SPC 295 Premium Oak Finish",
+          "name": "Oak Silver 295"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775452464/G-F_SPC_296.avif",
+          "alt": "G-F SPC 296 Natural Oak Planks",
+          "name": "Oak Silver 296"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775452460/G-F_SPC_297.avif",
+          "alt": "G-F SPC 297 Luxury Wooden Flooring",
+          "name": "Oak Silver 297"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775452460/G-F_SPC_298.avif",
+          "alt": "G-F SPC 298 Durable Floor Planks",
+          "name": "Oak Silver 298"
+        }
+      ]
+    },
+    {
+      "name": "EIR Real Wood Series (G-F 303)",
+      "price": "₹195",
+      "mrp": "₹490",
+      "discount": "60% off",
+      "unit": "per sq.ft",
+      "details": {
+        "Thickness": "6mm",
+        "Wear Layer": "0.5mm",
+        "Technology": "EIR (Embossed In Register)",
+        "Finish": "Hyper-Realistic Wood Texture"
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775453026/G-F_SPC_301.avif",
+          "alt": "G-F SPC 301 EIR Texture Oak",
+          "name": "Oak EIR 301"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775453027/G-F_SPC_302.avif",
+          "alt": "G-F SPC 302 Smoked Oak Finish",
+          "name": "Oak EIR 302"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775453027/G-F_SPC_303.avif",
+          "alt": "G-F SPC 303 Premium Ash Wood",
+          "name": "Oak EIR 303"
+        }
+      ]
+    }
+  ],
+  "longDescription": "Upgrade your home to the next generation of flooring with Goals Floors Oak Wood SPC (Stone Plastic Composite). While traditional laminate floors can swell and peel when exposed to water, SPC is built with a rock-solid core of stone and virgin polymer. This makes it 100% waterproof and completely immune to termite attacks. With a commercial-grade 0.5mm wear layer, it is designed to handle heavy foot traffic, moving furniture, and pet claws without losing its shine. The Uniclick locking system allows for a dust-free and glue-free installation that can be completed in just one day. Whether it's your kitchen, bathroom dry area, or luxury living room, our Oak SPC flooring provides the authentic look of hardwood with zero maintenance tension.",
+  "priceDetails": "SPC flooring price in India starts from ₹180 per sq.ft for standard series and goes up to ₹215 for premium EIR textures and Herringbone patterns.",
+  "comparison": "Compared to wooden laminate, SPC is 100% waterproof and termite-proof. Compared to real hardwood, it is much more affordable and requires no periodic polishing.",
+  "installation": "Our SPC flooring uses the 'Uniclick' smart locking system. It is installed over a 1.5mm acoustic foam underlay to ensure a quiet and comfortable walking experience. No glue or cement is required.",
+  "benefits": [
+    {
+      "title": "100% Waterproof Core",
+      "description": "Zero moisture absorption. Perfect for Indian homes where wet mopping (pocha) is a daily routine."
+    },
+    {
+      "title": "Ultra-Tough Surface",
+      "description": "Features a high-micron UV coating and 0.5mm wear layer that resists deep scratches and stains."
+    },
+    {
+      "title": "Termite & Borer Proof",
+      "description": "Unlike wood-based products, the stone composite material will never attract termites or wood borers."
+    }
+  ],
+  "applications": [
+    "Luxury Living Rooms & Bedrooms",
+    "Modern Kitchens & Dining Areas",
+    "Corporate Offices & Cabins",
+    "Retail Showrooms & Boutiques",
+    "Damp-Prone Basements"
+  ],
+  "faqs": [
+    {
+      "question": "Can I install SPC flooring over my existing tiles?",
+      "answer": "Yes! As long as your existing floor is flat and level, SPC planks can be installed directly over them, saving you demolition costs and time."
+    },
+    {
+      "question": "Is it safe for kids and pets?",
+      "answer": "Absolutely. It is non-toxic, formaldehyde-free, and has an anti-skid surface, making it perfectly safe for children and pets."
+    },
+    {
+      "question": "Does it sound hollow when walking?",
+      "answer": "No. We use a premium IXPE sound-absorbing underlay which eliminates the hollow sound and provides a cushioned feel."
+    },
+    {
+      "question": "How do I clean SPC flooring?",
+      "answer": "You can clean it exactly like tiles. Use a wet mop (pocha) with any standard floor cleaner. It is 100% waterproof."
+    }
+  ],
+  "relatedLinks": [
+    {
+      "title": "Primo PVC Wall Panels",
+      "url": "/multiverse/wall-panels/primo-12-inch-pvc-panel",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_FP_-_701.png"
+    },
+    {
+      "title": "Metallic Fluted Panels",
+      "url": "/multiverse/wall-panels/metallic-fluted-panel",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_Silver_Metallic.png"
+    },
+    {
+      "title": "PU Stone Wall Panels",
+      "url": "/multiverse/wall-panels/pu-stone-panels",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477290/Pu_Stone_30mm_White_Color.png"
+    },
+    {
+      "title": "Tokyo Charcoal Moulding",
+      "url": "/multiverse/wall-panels/charcoal-moulding",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774970794/charcoal-gray_paneled_wall..jpg"
     }
   ]
 }

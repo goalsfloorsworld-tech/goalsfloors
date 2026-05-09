@@ -1,5 +1,5 @@
 {
-  "id": "elite-12-inch- fluted-panel",
+  "id": "elite-12-inch-fluted-panel",
   "name": "Elite PVC Panel (12 Inch)",
   "categoryName": "Wall Panels",
   "description": "Elite 12 Inch PVC Wall Panels by Goals Floors are premium extra-wide panels designed for modern interiors in India. These 12-inch panels reduce visible joints, creating a seamless wall finish ideal for living rooms, offices, and commercial spaces. Made from high-quality waterproof and termite-proof PVC, they offer a long-lasting and low-maintenance alternative to paint, wallpaper, and laminate wall finishes.",
@@ -199,11 +199,23 @@
   "relatedLinks": [
     {
       "title": "Primo 12 Inch PVC Panel",
-      "url": "/multiverse/wall-panels/primo-12-inch-pvc-panel"
+      "url": "/multiverse/wall-panels/primo-12-inch-pvc-panel",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_FP_-_701.png"
     },
     {
       "title": "Metallic Fluted Wall Panels",
-      "url": "/multiverse/wall-panels/metallic-fluted-panel"
+      "url": "/multiverse/wall-panels/metallic-fluted-panel",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Fluted_Panel_Silver_Metallic.png"
+    },
+    {
+      "title": "Oak Wood SPC Flooring",
+      "url": "/multiverse/flooring/spc-oak",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775452465/G-F_SPC_295.avif"
+    },
+    {
+      "title": "PU Stone Wall Panels",
+      "url": "/multiverse/wall-panels/pu-stone-panels",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477290/Pu_Stone_30mm_White_Color.png"
     }
   ]
 }
