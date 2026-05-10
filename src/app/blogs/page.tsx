@@ -39,7 +39,7 @@ const API_BASE_URL = "https://lime-hummingbird-549929.hostingersite.com/wp-json/
 async function getPosts(page: number, query: string) {
   const url = new URL(`${API_BASE_URL}/posts`);
   url.searchParams.append("_embed", "true");
-  url.searchParams.append("per_page", "9");
+  url.searchParams.append("per_page", "11");
   url.searchParams.append("page", page.toString());
   
   if (query) {
