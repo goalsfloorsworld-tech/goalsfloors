@@ -3,6 +3,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import RouteChrome from "@/components/RouteChrome";
+import OnboardingCheck from "@/components/auth/OnboardingCheck";
 
 import { Inter, Roboto } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -125,6 +126,7 @@ export default async function RootLayout({
           defaultTheme="light"
           enableSystem={false}
         >
+          <OnboardingCheck />
           <RouteChrome initialIsAdminPath={isAdminPath}>{children}</RouteChrome>
         </ThemeProvider>
       </body>

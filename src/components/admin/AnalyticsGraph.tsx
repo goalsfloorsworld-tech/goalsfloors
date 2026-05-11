@@ -125,7 +125,7 @@ export default function AnalyticsGraph({ data }: { data: AnalyticsGraphPoint[] }
           <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Trend Graph</h2>
           <p className="text-sm text-slate-600 dark:text-slate-400">Three daily metrics with quick visibility toggles.</p>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mb-6">
           {METRICS.map((metric) => {
             const isActive = visibleMetrics[metric.key];
             return (
@@ -150,9 +150,9 @@ export default function AnalyticsGraph({ data }: { data: AnalyticsGraphPoint[] }
         </div>
       </div>
 
-      <div className="mt-5 h-[340px] w-full">
+      <div className="mt-5 h-[350px] md:h-[450px] w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data} margin={{ top: 10, right: 18, left: 0, bottom: 0 }}>
+          <LineChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>
             </defs>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.22)" />
@@ -183,8 +183,11 @@ export default function AnalyticsGraph({ data }: { data: AnalyticsGraphPoint[] }
               width={60}
               tickFormatter={(value) => formatDurationTick(Number(value))}
             />
-            <Tooltip content={<TooltipContent visibleMetrics={visibleMetrics} />} />
-            <Legend />
+            <Tooltip 
+              content={<TooltipContent visibleMetrics={visibleMetrics} />} 
+              cursor={{ stroke: 'rgba(148,163,184,0.1)', strokeWidth: 2 }}
+              isAnimationActive={false}
+            />
             {visibleMetrics.views && (
               <Line
                 type="monotone"

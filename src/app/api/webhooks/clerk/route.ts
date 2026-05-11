@@ -53,8 +53,16 @@ export async function POST(req: Request) {
   const eventType = evt.type;
 
   if (eventType === 'user.created' || eventType === 'user.updated') {
-    const { id, email_addresses, first_name, last_name, image_url } = evt.data;
+    const { id, email_addresses, first_name, last_name, image_url, external_accounts } = evt.data as any;
     
+    // Determine the Auth Provider
+    let auth_provider = 'Email';
+    if (external_accounts && Array.isArray(external_accounts) && external_accounts.length > 0) {
+      if (external_accounts[0].provider === 'oauth_google') {
+        auth_provider = 'Google';
+      }
+    }
+
     // Safely extract the primary email address
     const email = email_addresses && email_addresses.length > 0 
       ? email_addresses[0].email_address 
@@ -70,6 +78,7 @@ export async function POST(req: Request) {
           first_name,
           last_name,
           image_url,
+          auth_provider,          // Track Google vs Email signup
           role: 'user',           // Default value constraint
         }, { onConflict: 'id' });
 
