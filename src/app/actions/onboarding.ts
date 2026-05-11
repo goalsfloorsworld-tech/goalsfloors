@@ -46,23 +46,27 @@ export async function completeOnboarding(data: {
   if (!userId) return { error: 'Not authenticated' };
 
   try {
+    // Use upsert to handle cases where the webhook might not have finished creating the profile
     const { error } = await supabaseAdmin
       .from('profiles')
-      .update({
+      .upsert({
+        id: userId,
         full_name: data.full_name,
         phone_number: data.phone_number,
         role: data.role,
         referral_source: data.referral_source,
         onboarding_completed: true,
-      })
-      .eq('id', userId);
+      }, { onConflict: 'id' });
 
-    if (error) throw error;
+    if (error) {
+      console.error('Supabase error during onboarding:', error);
+      return { error: `Database error: ${error.message}` };
+    }
 
     revalidatePath('/');
     return { success: true };
-  } catch (error) {
-    console.error('Error completing onboarding:', error);
-    return { error: 'Failed to save details' };
+  } catch (error: any) {
+    console.error('Exception during onboarding:', error);
+    return { error: `Server error: ${error.message || 'Unknown error'}` };
   }
 }
