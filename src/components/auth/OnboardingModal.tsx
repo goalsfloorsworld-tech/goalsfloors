@@ -96,9 +96,9 @@ export default function OnboardingModal() {
                   <button
                     key={role}
                     type="button"
-                    onClick={() => setFormData({ ...formData, role })}
+                    onClick={() => setFormData({ ...formData, role: role.toLowerCase() })}
                     className={`py-2 text-[10px] font-bold uppercase tracking-tight rounded-lg border transition-all ${
-                      formData.role === role
+                      formData.role === role.toLowerCase()
                         ? 'bg-amber-600 border-amber-600 text-white shadow-md shadow-amber-600/30'
                         : 'bg-white dark:bg-slate-900 border-gray-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-amber-500/50'
                     }`}

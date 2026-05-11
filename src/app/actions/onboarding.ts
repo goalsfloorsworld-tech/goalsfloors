@@ -53,7 +53,7 @@ export async function completeOnboarding(data: {
         id: userId,
         full_name: data.full_name,
         phone_number: data.phone_number,
-        role: data.role,
+        role: data.role.toLowerCase(), // Save as lowercase for DB constraint
         referral_source: data.referral_source,
         onboarding_completed: true,
       }, { onConflict: 'id' });
