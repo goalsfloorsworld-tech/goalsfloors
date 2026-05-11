@@ -15,55 +15,66 @@ function escapeXml(unsafe: string | null | undefined) {
 }
 
 export async function GET() {
-  const products = getAllProducts();
+  const standardProducts = getAllProducts();
   const domain = 'https://goalsfloors.com';
 
   let xmlItems = '';
 
-  products.forEach((product: any) => {
+  // Process Standard Products
+  standardProducts.forEach((product: any) => {
     if (product.variants && product.variants.length > 0) {
-      product.variants.forEach((variant: any) => {
-        // Iterate through variant images if available, else fallback
-        const imagesToIterate = variant.images && variant.images.length > 0
-          ? variant.images
-          : product.images && product.images.length > 0
-            ? [{ url: product.images[0].url }]
-            : [];
+      product.variants.forEach((variant: any, vIdx: number) => {
+        // ONE variant = ONE Merchant Center product
+        const variantImages = variant.images && variant.images.length > 0 ? variant.images : [];
+        const productImages = product.images && product.images.length > 0 ? product.images : [];
+        const allImages = [...variantImages, ...productImages].map((img: any) => img.url).filter(Boolean);
+        const uniqueImages = Array.from(new Set(allImages));
+        
+        if (uniqueImages.length === 0) return; // Skip if no image
 
-        imagesToIterate.forEach((imageObj: { url: string }, index: number) => {
-          const vName = variant.name || `option-${index}`;
-          const variantNameSafe = vName.replace(/\s+/g, '-').toLowerCase();
-          const id = `${variantNameSafe}-opt-${index}`;
-          const title = `${product.shortTitle} - ${vName} (Option ${index + 1})`;
-          const description = product.shortDescription;
-          const safeVariantName = encodeURIComponent(vName);
-          const pSlug = product.slug || product.id || '';
-          const link = `${domain}/products/${pSlug}?variant=${safeVariantName}`;
-          const itemGroupId = pSlug;
-          const imageLink = imageObj.url;
-          const priceValue = variant.priceValue || 0;
-          const currency = variant.currency || 'INR';
-          const availability = variant.availability || 'in_stock';
-          const condition = variant.condition || 'new';
-          const brand = variant.brand || 'Goals Floors';
+        const mainImage = uniqueImages[0] as string;
+        const additionalImages = uniqueImages.slice(1, 10).map((url) => `\n      <g:additional_image_link>${escapeXml(url as string)}</g:additional_image_link>`).join('');
 
-          xmlItems += `
+        // Improve Title safely
+        const safeProductType = product.shortTitle || product.title || '';
+        const useCasePart = product.applications && product.applications.length > 0 
+          ? ` for ${product.applications[0].replace(/designs/i, 'Design').replace(/walls/i, 'Wall')}`
+          : '';
+        
+        let title = variant.name || safeProductType;
+        if (variant.name && !variant.name.toLowerCase().includes(safeProductType.toLowerCase())) {
+          title = `${variant.name} ${safeProductType}`;
+        }
+        title = `${title}${useCasePart}`.trim().substring(0, 140);
+
+        const pSlug = product.slug || product.id || '';
+        const id = `${pSlug}-opt-${vIdx}`;
+        // Merchant Center feed links should point to stable canonical product URLs ONLY
+        const link = `${domain}/products/${pSlug}`;
+        
+        const priceValue = variant.priceValue || 0;
+        const currency = variant.currency || 'INR';
+        const brand = variant.brand || 'Goals Floors';
+
+        xmlItems += `
     <item>
       <g:id>${escapeXml(id)}</g:id>
-      <g:item_group_id>${escapeXml(itemGroupId)}</g:item_group_id>
+      <g:item_group_id>${escapeXml(pSlug)}</g:item_group_id>
       <g:title>${escapeXml(title)}</g:title>
-      <g:description>${escapeXml(description)}</g:description>
+      <g:description>${escapeXml(product.shortDescription || title)}</g:description>
       <g:link>${escapeXml(link)}</g:link>
-      <g:image_link>${escapeXml(imageLink)}</g:image_link>
+      <g:image_link>${escapeXml(mainImage)}</g:image_link>${additionalImages}
       <g:price>${priceValue} ${currency}</g:price>
-      <g:availability>${escapeXml(availability)}</g:availability>
-      <g:condition>${escapeXml(condition)}</g:condition>
+      <g:availability>${escapeXml(variant.availability || 'in_stock')}</g:availability>
+      <g:condition>${escapeXml(variant.condition || 'new')}</g:condition>
       <g:brand>${escapeXml(brand)}</g:brand>
+      <g:identifier_exists>no</g:identifier_exists>
     </item>`;
-        });
       });
     }
   });
+
+
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">

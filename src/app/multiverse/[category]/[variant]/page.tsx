@@ -62,17 +62,34 @@ export default async function MultiverseVariantPage({ params }: { params: Promis
   }
 
   // Generate SEO Schemas dynamically
+  const canonicalUrl = `https://goalsfloors.com/multiverse/${category}/${variant}`;
+  
+  let lowPrice = 499;
+  if (data.collections && data.collections.length > 0) {
+    const prices = data.collections.map((c: any) => c.priceValue || parseInt(String(c.price).replace(/[^0-9]/g, '')) || 0).filter((p: number) => p > 0);
+    if (prices.length > 0) {
+      lowPrice = Math.min(...prices);
+    }
+  }
+
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": data.seo?.title || data.name,
     "description": data.seo?.description || data.description,
     "image": collectMultiverseImageUrls(data),
+    "brand": {
+      "@type": "Brand",
+      "name": "Goals Floors"
+    },
     "offers": {
       "@type": "AggregateOffer",
+      "url": canonicalUrl,
       "priceCurrency": "INR",
-      "lowPrice": "499",
-      "offerCount": data.collections?.length || 1
+      "lowPrice": lowPrice.toString(),
+      "offerCount": data.collections?.length || 1,
+      "availability": "https://schema.org/InStock",
+      "itemCondition": "https://schema.org/NewCondition"
     }
   };
 

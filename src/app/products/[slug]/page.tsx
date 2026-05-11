@@ -99,20 +99,28 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   // TASK 2: Product Rich Snippets Schema
   const hasVariants = product.variants && product.variants.length > 0;
+  const baseUrl = "https://goalsfloors.com";
+  const canonical = `${baseUrl}/products/${slug}`;
+
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": product.title,
     "description": product.shortDescription,
     "image": collectProductImageUrls(product),
+    "brand": {
+      "@type": "Brand",
+      "name": "Goals Floors"
+    },
     ...(hasVariants && {
       "offers": product.variants!.map((v: any) => ({
         "@type": "Offer",
         "name": v.name,
         "price": v.priceValue || 0,
         "priceCurrency": v.currency || "INR",
+        "url": canonical,
         "availability": v.availability === "in_stock" ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-        "itemCondition": v.condition === "new" ? "https://schema.org/NewCondition" : "https://schema.org/Condition",
+        "itemCondition": v.condition === "new" ? "https://schema.org/NewCondition" : "https://schema.org/NewCondition",
       }))
     })
   };
