@@ -3,6 +3,17 @@ import { notFound } from "next/navigation";
 import { getProductBySlug } from "@/lib/data";
 import ProductClient, { Product } from "./ProductClient";
 
+function collectProductImageUrls(product: Product) {
+  const imageUrls = [
+    ...(product.images || []).map((image) => image.url),
+    ...(product.installedImages || []).map((image) => image.url),
+    ...(product.beforeAfter || []).flatMap((pair) => [pair.before.url, pair.after.url]),
+    ...(product.variants || []).flatMap((variant) => (variant.images || []).map((image) => image.url)),
+  ];
+
+  return Array.from(new Set(imageUrls.filter(Boolean)));
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const product = getProductBySlug(slug) as Product | null;
@@ -93,7 +104,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     "@type": "Product",
     "name": product.title,
     "description": product.shortDescription,
-    "image": product.images?.map((img: { url: string }) => img.url),
+    "image": collectProductImageUrls(product),
     ...(hasVariants && {
       "offers": product.variants!.map((v: any) => ({
         "@type": "Offer",

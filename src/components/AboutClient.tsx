@@ -159,7 +159,7 @@ export default function AboutClient() {
             >
               <Image
                 src="https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775755978/Shakti_FTN.jpg"
-                alt="Shakti FTN, Founder of Goals Floors Headquarters Gurugram"
+                alt="Shakti FTN, Founder of Goals Floors"
                 fill
                 className="object-cover object-top hover:scale-105 transition-transform duration-1000"
               />

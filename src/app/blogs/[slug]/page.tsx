@@ -95,6 +95,18 @@ export async function generateMetadata({
       url: canonical,
       title: `${post.title} | Goals Floors Insights`,
       description: post.excerpt,
+      images: post.imageUrl ? [
+        {
+          url: post.imageUrl,
+          alt: post.imageAlt,
+        },
+      ] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | Goals Floors Insights`,
+      description: post.excerpt,
+      images: post.imageUrl ? [post.imageUrl] : undefined,
     },
   };
 }

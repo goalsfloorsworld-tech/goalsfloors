@@ -4,16 +4,50 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
+function collectMultiverseImageUrls(data: any) {
+  const imageUrls = [
+    ...(data.collections || []).flatMap((collection: any) => (collection.images || []).map((image: any) => image.url)),
+    ...(data.relatedLinks || []).map((link: any) => link.image).filter(Boolean),
+  ];
+
+  return Array.from(new Set(imageUrls.filter(Boolean)));
+}
+
 // 1. Generate Dynamic SEO Meta Tags
 export async function generateMetadata({ params }: { params: Promise<{ category: string, variant: string }> }): Promise<Metadata> {
   const { category, variant } = await params;
   const data = getMultiverseData(category, variant);
   
   if (!data) return { title: 'Product Not Found' };
+
+  const primaryImage = collectMultiverseImageUrls(data)[0];
   
   return {
     title: data.seo.title,
     description: data.seo.description,
+    alternates: {
+      canonical: `/multiverse/${category}/${variant}`,
+    },
+    openGraph: primaryImage ? {
+      title: data.seo.title,
+      description: data.seo.description,
+      url: `/multiverse/${category}/${variant}`,
+      images: [{ url: primaryImage, alt: data.name }],
+    } : {
+      title: data.seo.title,
+      description: data.seo.description,
+      url: `/multiverse/${category}/${variant}`,
+    },
+    twitter: primaryImage ? {
+      card: 'summary_large_image',
+      title: data.seo.title,
+      description: data.seo.description,
+      images: [primaryImage],
+    } : {
+      card: 'summary_large_image',
+      title: data.seo.title,
+      description: data.seo.description,
+    },
   };
 }
 
@@ -33,6 +67,7 @@ export default async function MultiverseVariantPage({ params }: { params: Promis
     "@type": "Product",
     "name": data.seo?.title || data.name,
     "description": data.seo?.description || data.description,
+    "image": collectMultiverseImageUrls(data),
     "offers": {
       "@type": "AggregateOffer",
       "priceCurrency": "INR",

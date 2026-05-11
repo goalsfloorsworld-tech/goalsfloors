@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -17,6 +17,40 @@ export default function Navbar() {
   const { isLoaded, isSignedIn, user } = useUser();
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const scrollYRef = useRef(0);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const html = document.documentElement;
+    const body = document.body;
+
+    scrollYRef.current = window.scrollY;
+
+    const prevHtmlOverflow = html.style.overflow;
+    const prevBodyPosition = body.style.position;
+    const prevBodyTop = body.style.top;
+    const prevBodyLeft = body.style.left;
+    const prevBodyRight = body.style.right;
+    const prevBodyWidth = body.style.width;
+
+    html.style.overflow = 'hidden';
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollYRef.current}px`;
+    body.style.left = '0';
+    body.style.right = '0';
+    body.style.width = '100%';
+
+    return () => {
+      html.style.overflow = prevHtmlOverflow;
+      body.style.position = prevBodyPosition;
+      body.style.top = prevBodyTop;
+      body.style.left = prevBodyLeft;
+      body.style.right = prevBodyRight;
+      body.style.width = prevBodyWidth;
+      window.scrollTo(0, scrollYRef.current);
+    };
+  }, [isMenuOpen]);
 
   useEffect(() => {
     if (user?.id) {
@@ -275,7 +309,7 @@ export default function Navbar() {
           : 'translate-x-full opacity-0 pointer-events-none hidden'
           }`}
       >
-        <nav className="flex flex-col p-6 pb-24 gap-4 h-full overflow-y-auto bg-white dark:bg-slate-950 flex-1">
+        <nav className="flex flex-col p-6 pb-24 gap-4 h-full overflow-y-auto overscroll-contain bg-white dark:bg-slate-950 flex-1">
           <Link href="/" onClick={toggleMenu} className="text-lg font-normal text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-3">
             Home
           </Link>

@@ -13,6 +13,15 @@ html {
   view-transition-name: root;
 }
 
+body.fullscreen-viewer-open {
+  overflow: hidden !important;
+}
+
+body.fullscreen-viewer-open .whatsapp-float-container,
+body.fullscreen-viewer-open .goals-ai-widget-container {
+  display: none !important;
+}
+
 @theme {
   --color-txt-main: var(--txt-main);
   --color-txt-muted: var(--txt-muted);
@@ -434,3 +443,12 @@ html {
   backdrop-filter: blur(4px) !important;
 }
 
+/* Force Clerk modal to be perfectly centered from all sides */
+.cl-modalContainer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.cl-modalContent {
+  margin: auto !important;
+}

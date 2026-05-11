@@ -145,7 +145,7 @@ export default function GoalsAIWidget() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 md:right-[88px] z-[999] font-sans">
+    <div className="fixed bottom-6 right-6 md:right-[88px] z-[999] font-sans goals-ai-widget-container">
       <AnimatePresence>
         {isOpen && (
           <motion.div

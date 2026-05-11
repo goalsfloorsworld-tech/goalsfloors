@@ -1,10 +1,44 @@
 "use client";
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Menu, X, LayoutDashboard, FileText, BarChart3, Settings, Globe } from 'lucide-react';
 
 export default function MobileTopBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const scrollYRef = useRef(0);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const html = document.documentElement;
+    const body = document.body;
+
+    scrollYRef.current = window.scrollY;
+
+    const prevHtmlOverflow = html.style.overflow;
+    const prevBodyPosition = body.style.position;
+    const prevBodyTop = body.style.top;
+    const prevBodyLeft = body.style.left;
+    const prevBodyRight = body.style.right;
+    const prevBodyWidth = body.style.width;
+
+    html.style.overflow = 'hidden';
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollYRef.current}px`;
+    body.style.left = '0';
+    body.style.right = '0';
+    body.style.width = '100%';
+
+    return () => {
+      html.style.overflow = prevHtmlOverflow;
+      body.style.position = prevBodyPosition;
+      body.style.top = prevBodyTop;
+      body.style.left = prevBodyLeft;
+      body.style.right = prevBodyRight;
+      body.style.width = prevBodyWidth;
+      window.scrollTo(0, scrollYRef.current);
+    };
+  }, [isOpen]);
 
   return (
     <div className="md:hidden">
@@ -26,7 +60,7 @@ export default function MobileTopBar() {
       {isOpen && (
         <div className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm" onClick={() => setIsOpen(false)}>
           <div 
-            className="fixed right-0 top-[73px] bottom-0 w-64 bg-white dark:bg-slate-950 border-l border-gray-200 dark:border-gray-800 p-4 shadow-2xl flex flex-col"
+            className="fixed right-0 top-[73px] bottom-0 w-64 bg-white dark:bg-slate-950 border-l border-gray-200 dark:border-gray-800 p-4 shadow-2xl flex flex-col overflow-y-auto overscroll-contain"
             onClick={(e) => e.stopPropagation()}
           >
             {/* View Site Link */}
@@ -37,7 +71,7 @@ export default function MobileTopBar() {
               </Link>
             </div>
 
-            <nav className="flex-1 space-y-2 mt-4 overflow-y-auto">
+            <nav className="flex-1 space-y-2 mt-4">
               <Link href="/admin" onClick={() => setIsOpen(false)} className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-900 transition-colors text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
                 <LayoutDashboard size={20} />
                 <span className="font-medium">Dashboard</span>

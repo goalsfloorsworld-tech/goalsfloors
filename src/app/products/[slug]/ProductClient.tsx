@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useState, useRef, useEffect } from "react";
 import {
   motion,
@@ -86,6 +87,32 @@ export interface Product {
   architectHeading?: string;
   architectSubheading?: string;
   relatedLinks?: { label: string; href: string; image?: string }[];
+}
+
+interface ImageItem {
+  url: string;
+  alt: string;
+}
+
+interface ViewerDetail {
+  label: string;
+  value: string;
+}
+
+interface ViewerContext {
+  title: string;
+  category: string;
+  priceRange: string;
+  variants?: any[];
+  description?: string;
+  details?: ViewerDetail[];
+  showDetails?: boolean;
+}
+
+interface FullscreenViewerState {
+  imageUrl: string;
+  images: ImageItem[];
+  context: ViewerContext;
 }
 
 const StarRating = () => (
@@ -214,15 +241,28 @@ const BeforeAfterDemo = ({
   );
 };
 
+function collectProductImageUrls(product: Product) {
+  const imageUrls = [
+    ...(product.images || []).map((image) => image.url),
+    ...(product.installedImages || []).map((image) => image.url),
+    ...(product.beforeAfter || []).flatMap((pair) => [pair.before.url, pair.after.url]),
+    ...(product.variants || []).flatMap((variant) => (variant.images || []).map((image) => image.url)),
+  ];
+
+  return Array.from(new Set(imageUrls.filter(Boolean)));
+}
+
 const VariantCard = ({
   variant,
   onVariantClick,
   onImageClick,
+  productCategory,
   globalFullscreenImage
 }: {
   variant: Variant,
   onVariantClick: (v: Variant) => void,
-  onImageClick: (url: string) => void,
+  onImageClick: (url: string, images: ImageItem[], context: ViewerContext) => void,
+  productCategory: string,
   globalFullscreenImage: string | null
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -278,7 +318,24 @@ const VariantCard = ({
               >
                 <div
                   className="absolute inset-0 cursor-zoom-in z-10"
-                  onClick={() => onImageClick(img.url)}
+                  onClick={() => onImageClick(
+                    img.url,
+                    images.map((image, imageIndex) => ({
+                      url: image.url,
+                      alt: image.alt || `${variant.name} detail ${imageIndex + 1}`
+                    })),
+                    {
+                      title: variant.name,
+                      category: productCategory,
+                      priceRange: variant.price,
+                      variants: [variant],
+                      description: img.alt || `${variant.name} detail ${i + 1}`,
+                      details: Object.entries(variant.details).slice(0, 4).map(([label, value]) => ({
+                        label,
+                        value
+                      }))
+                    }
+                  )}
                 />
                 <Image
                   src={img.url}
@@ -474,11 +531,17 @@ export default function ProductClient({ product }: { product: Product }) {
 
   const quickFeatures = getQuickFeatures(product);
 
-  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
+  const [fullscreenViewer, setFullscreenViewer] = useState<FullscreenViewerState | null>(null);
   const [comparePopupItem, setComparePopupItem] = useState<BeforeAfterItem | null>(null);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [activeStep, setActiveStep] = useState(0);
   const [isGalleryExpanded, setIsGalleryExpanded] = useState(false);
+
+  const openFullscreenViewer = (imageUrl: string, images: ImageItem[], context: ViewerContext) => {
+    setFullscreenViewer({ imageUrl, images, context });
+  };
+
+  const closeFullscreenViewer = () => setFullscreenViewer(null);
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -543,12 +606,13 @@ export default function ProductClient({ product }: { product: Product }) {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": product.title,
-    "image": product.images[0]?.url,
+    "image": collectProductImageUrls(product),
     "description": product.shortDescription,
     "brand": { "@type": "Brand", "name": "Goals Floors" },
     "offers": offersSchema
   };
 
+  const installedImages = product.installedImages || [];
   const compareItems = (product.beforeAfter || []).slice(0, 2);
 
   return (
@@ -680,12 +744,13 @@ export default function ProductClient({ product }: { product: Product }) {
                 >
                   <VariantCard
                     variant={variant}
+                    productCategory={product.category}
                     onVariantClick={(v) => {
                       setSelectedVariant(v);
                       setActiveDrawerImageIndex(0);
                     }}
-                    onImageClick={setFullscreenImage}
-                    globalFullscreenImage={fullscreenImage}
+                    onImageClick={openFullscreenViewer}
+                    globalFullscreenImage={fullscreenViewer?.imageUrl || null}
                   />
                 </motion.div>
               ))}
@@ -740,7 +805,7 @@ export default function ProductClient({ product }: { product: Product }) {
               {product.installedImages.slice(0, 6).map((img, i) => (
                 <motion.div
                   key={`first-${i}`}
-                  className={`relative group cursor-pointer rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300 ${
+                  className={`relative group ${img.beforeAfter ? "cursor-pointer" : ""} rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300 ${
                     i === 0 ? "lg:col-start-1 lg:row-start-1 h-[150px] md:h-[200px] lg:h-auto" :
                     i === 1 ? "lg:col-start-1 lg:row-start-2 h-[150px] md:h-[200px] lg:h-auto" :
                     i === 2 ? "lg:col-start-2 lg:row-start-1 lg:row-span-2 h-full" :
@@ -757,7 +822,18 @@ export default function ProductClient({ product }: { product: Product }) {
                       setComparePopupItem(img.beforeAfter);
                       return;
                     }
-                    setFullscreenImage(img.url);
+                    openFullscreenViewer(
+                      img.url,
+                      installedImages.slice(0, 6).map(image => ({ url: image.url, alt: image.alt })),
+                      {
+                        title: product.title,
+                        category: product.category,
+                        priceRange: product.priceRange,
+                        variants: product.variants,
+                        description: img.alt,
+                        showDetails: false
+                      }
+                    );
                   }}
                 >
                   <div className="relative w-full h-full">
@@ -790,7 +866,7 @@ export default function ProductClient({ product }: { product: Product }) {
                 {product.installedImages.slice(6).map((img, i) => (
                   <motion.div
                     key={`rest-${i}`}
-                    className="break-inside-avoid relative group cursor-pointer rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300"
+                    className={`break-inside-avoid relative group ${img.beforeAfter ? "cursor-pointer" : ""} rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300`}
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: i * 0.01 }}
@@ -799,7 +875,18 @@ export default function ProductClient({ product }: { product: Product }) {
                         setComparePopupItem(img.beforeAfter);
                         return;
                       }
-                      setFullscreenImage(img.url);
+                      openFullscreenViewer(
+                        img.url,
+                        installedImages.slice(6).map((image) => ({ url: image.url, alt: image.alt })),
+                        {
+                          title: product.title,
+                          category: product.category,
+                          priceRange: product.priceRange,
+                          variants: product.variants,
+                          description: img.alt,
+                          showDetails: false
+                        }
+                      );
                     }}
                   >
                     <div className={`relative w-full ${
@@ -1303,7 +1390,26 @@ export default function ProductClient({ product }: { product: Product }) {
                     className="absolute inset-0 cursor-zoom-in"
                     onClick={() => {
                       const images = selectedVariant.images || [];
-                      if (images.length > 0) setFullscreenImage(images[activeDrawerImageIndex].url);
+                      if (images.length > 0) {
+                        openFullscreenViewer(
+                          images[activeDrawerImageIndex].url,
+                          images.map((image, imageIndex) => ({
+                            url: image.url,
+                            alt: image.alt || `${selectedVariant.name} detail ${imageIndex + 1}`
+                          })),
+                          {
+                            title: selectedVariant.name,
+                            category: product.category,
+                            priceRange: selectedVariant.price,
+                            variants: [selectedVariant],
+                            description: images[activeDrawerImageIndex].alt || selectedVariant.name,
+                            details: Object.entries(selectedVariant.details).slice(0, 4).map(([label, value]) => ({
+                              label,
+                              value
+                            }))
+                          }
+                        );
+                      }
                     }}
                   >
                     {selectedVariant.images && selectedVariant.images.length > 0 ? (
@@ -1432,56 +1538,45 @@ export default function ProductClient({ product }: { product: Product }) {
       </AnimatePresence>
 
       {/* ================= 11. FULLSCREEN LIGHTBOX ================= */}
-      {fullscreenImage && (
-        <div
-          className="fixed inset-0 z-[120] bg-black/95 flex items-center justify-center p-4 md:p-10 transition-all animate-in fade-in duration-300"
-          onClick={() => setFullscreenImage(null)}
-        >
-          <button
-            className="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all z-[130]"
-            onClick={(e) => {
-              e.stopPropagation();
-              setFullscreenImage(null);
-            }}
-          >
-            <X className="w-6 h-6" />
-          </button>
-
-          <div className="relative w-full h-full flex items-center justify-center">
-            <Image
-              src={fullscreenImage}
-              alt="Fullscreen view"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
-        </div>
+      {fullscreenViewer && (
+        <FullscreenImageViewer
+          imageUrl={fullscreenViewer.imageUrl}
+          allImages={fullscreenViewer.images}
+          context={fullscreenViewer.context}
+          onClose={closeFullscreenViewer}
+          onNavigate={(url) => setFullscreenViewer((current) => current ? { ...current, imageUrl: url } : current)}
+        />
       )}
-
-      {/* ================= 12. A/B COMPARE POPUP ================= */}
-      {comparePopupItem && (
-        <div
-          className="fixed inset-0 z-[130] bg-black/95 flex items-center justify-center p-4 md:p-8 transition-all animate-in fade-in duration-300"
-          onClick={() => setComparePopupItem(null)}
-        >
-          <button
-            className="absolute top-6 right-6 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all z-[140]"
-            onClick={(e) => {
-              e.stopPropagation();
-              setComparePopupItem(null);
-            }}
-            aria-label="Close compare popup"
+      {/* ================= 12. BEFORE / AFTER POPUP ================= */}
+      <AnimatePresence>
+        {comparePopupItem && (
+          <div 
+            className="fixed inset-0 z-[120] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 transition-all duration-300"
+            onClick={() => setComparePopupItem(null)}
           >
-            <X className="w-6 h-6" />
-          </button>
-
-          <div className="w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
-            <p className="text-center text-white/80 text-xs font-bold tracking-[0.28em] uppercase mb-4">A/B Compare</p>
-            <BeforeAfterDemo item={comparePopupItem} />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-5xl shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close Button */}
+              <button
+                className="absolute -top-14 right-0 md:-right-14 text-white/50 hover:text-white bg-white/10 hover:bg-white/20 p-2 md:p-3 rounded-full transition-all z-[130]"
+                onClick={() => setComparePopupItem(null)}
+                aria-label="Close compare view"
+              >
+                <X className="w-5 h-5 md:w-6 md:h-6" />
+              </button>
+              
+              <div className="rounded-xl overflow-hidden border border-white/10">
+                <BeforeAfterDemo item={comparePopupItem} />
+              </div>
+            </motion.div>
           </div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
 
     </div>
   );
@@ -1496,3 +1591,5 @@ const SpecRow = ({ label, value }: { label: string; value: string }) => (
     </div>
   </>
 );
+
+const FullscreenImageViewer = dynamic(() => import("@/components/products/FullscreenImageViewer"), { ssr: false });

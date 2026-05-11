@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
-import dynamic from "next/dynamic";
-import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/theme-provider";
-import FloatingWidgets from "@/components/FloatingWidgets";
-
-const Footer = dynamic(() => import("@/components/Footer"));
+import RouteChrome from "@/components/RouteChrome";
 
 import { Inter, Roboto } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -63,7 +59,6 @@ export const metadata: Metadata = {
 };
 
 import { headers } from "next/headers";
-import SmoothScrolling from "@/components/SmoothScrolling";
 
 const organizationSchema = {
   "@context": "https://schema.org",
@@ -101,7 +96,7 @@ export default async function RootLayout({
         />
       </head>
       {/* suppressHydrationWarning is essential for dark mode hydration */}
-      <body suppressHydrationWarning className={`${inter.className} ${roboto.variable} antialiased bg-white dark:bg-slate-950 ${isAdminPath ? '' : 'pt-14'} overflow-x-hidden scrollbar-hide`}>
+      <body suppressHydrationWarning className={`${inter.className} ${roboto.variable} antialiased bg-white dark:bg-slate-950 overflow-x-hidden scrollbar-hide`}>
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
@@ -130,22 +125,7 @@ export default async function RootLayout({
           defaultTheme="light"
           enableSystem={false}
         >
-          {isAdminPath ? (
-            <div className="relative min-h-screen">
-              {children}
-            </div>
-          ) : (
-            <SmoothScrolling>
-              <div className="relative">
-                <Navbar />
-                <main className="min-h-screen">
-                  {children}
-                </main>
-                <Footer />
-              </div>
-            </SmoothScrolling>
-          )}
-          {!isAdminPath && <FloatingWidgets />}
+          <RouteChrome initialIsAdminPath={isAdminPath}>{children}</RouteChrome>
         </ThemeProvider>
       </body>
       <GoogleAnalytics gaId="G-6Z28W9Y8PY" />
