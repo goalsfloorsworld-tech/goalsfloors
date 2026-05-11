@@ -12,18 +12,13 @@ const Footer = dynamic(() => import('@/components/Footer'));
 
 export default function RouteChrome({
   children,
-  initialIsAdminPath,
 }: {
   children: ReactNode;
-  initialIsAdminPath: boolean;
 }) {
   const pathname = usePathname() || '';
   const isAdminPath = pathname.startsWith('/admin');
 
-  // Avoid a flash/mismatch on first paint.
-  const effectiveIsAdminPath = typeof window === 'undefined' ? initialIsAdminPath : isAdminPath;
-
-  if (effectiveIsAdminPath) {
+  if (isAdminPath) {
     return <div className="relative min-h-screen">{children}</div>;
   }
 

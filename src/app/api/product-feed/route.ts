@@ -48,7 +48,23 @@ export async function GET() {
         title = `${title}${useCasePart}`.trim().substring(0, 140);
 
         const pSlug = product.slug || product.id || '';
-        const id = `${pSlug}-opt-${vIdx}`;
+        
+        // Generate deterministic, human-readable ID
+        let id = `${pSlug}-opt-${vIdx}`; // Safe fallback
+        if (variant.name) {
+          const safeVariantSlug = variant.name
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/-+/g, '-')
+            .replace(/^-|-$/g, '');
+            
+          // Prevent duplicate pSlug prefix (e.g. wall-panel-wall-panel-gf-301)
+          if (safeVariantSlug.includes(pSlug)) {
+            id = safeVariantSlug;
+          } else {
+            id = `${pSlug}-${safeVariantSlug}`;
+          }
+        }
         // Merchant Center feed links should point to stable canonical product URLs ONLY
         const link = `${domain}/products/${pSlug}`;
         

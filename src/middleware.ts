@@ -16,16 +16,6 @@ export default clerkMiddleware(async (auth, request) => {
   if (!isPublicRoute(request)) {
     await auth.protect();
   }
-  
-  // Pass the pathname to the layout
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set('x-pathname', request.nextUrl.pathname);
-  
-  return NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  });
 });
 
 export const config = {

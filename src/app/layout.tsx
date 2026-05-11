@@ -59,8 +59,6 @@ export const metadata: Metadata = {
   },
 };
 
-import { headers } from "next/headers";
-
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -81,10 +79,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = await headers();
-  const pathname = headersList.get("x-pathname") || "";
-  const isAdminPath = pathname.startsWith("/admin");
-
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning className="overflow-x-hidden scrollbar-hide">
@@ -127,7 +121,7 @@ export default async function RootLayout({
           enableSystem={false}
         >
           <OnboardingCheck />
-          <RouteChrome initialIsAdminPath={isAdminPath}>{children}</RouteChrome>
+          <RouteChrome>{children}</RouteChrome>
         </ThemeProvider>
       </body>
       <GoogleAnalytics gaId="G-6Z28W9Y8PY" />
