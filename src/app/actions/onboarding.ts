@@ -45,6 +45,12 @@ export async function completeOnboarding(data: {
   const { userId } = await auth();
   if (!userId) return { error: 'Not authenticated' };
 
+  // Validate phone number (exactly 10 digits)
+  const phoneRegex = /^[0-9]{10}$/;
+  if (!phoneRegex.test(data.phone_number)) {
+    return { error: 'Phone number must be exactly 10 digits' };
+  }
+
   try {
     // Use upsert to handle cases where the webhook might not have finished creating the profile
     const { error } = await supabaseAdmin
