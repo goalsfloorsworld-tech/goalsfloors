@@ -1,6 +1,6 @@
 import { BarChart3, Eye, MousePointerClick, Percent, Users } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
-import AnalyticsChart, { type AnalyticsChartPoint } from '@/components/admin/AnalyticsChart';
+import AnalyticsChart, { type AnalyticsChartPoint } from '@/components/admin/analytics/AnalyticsChart';
 
 type SiteStatRow = {
   stat_date: string;

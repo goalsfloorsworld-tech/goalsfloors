@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowDown, ArrowUp, ArrowUpDown, Search } from 'lucide-react';
+import { ArrowDown, ArrowUp, ArrowUpDown, BarChart3 } from 'lucide-react';
 import { useMemo, useState } from 'react';
 
 type SiteStatRow = {
@@ -42,16 +42,11 @@ function normalizeEngagementToPercent(value: number) {
 }
 
 export default function AnalyticsTableClient({ rows }: Props) {
-  const [searchQuery, setSearchQuery] = useState('');
   const [sortKey, setSortKey] = useState<SortKey>(null);
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
+  const [isExpanded, setIsExpanded] = useState(false);
 
-  const filteredRows = useMemo(() => {
-    const query = searchQuery.trim().toLowerCase();
-    if (!query) return rows;
-
-    return rows.filter((row) => row.page_path.toLowerCase().includes(query));
-  }, [rows, searchQuery]);
+  const filteredRows = rows;
 
   const sortedRows = useMemo(() => {
     if (!sortKey) return filteredRows;
@@ -64,6 +59,8 @@ export default function AnalyticsTableClient({ rows }: Props) {
 
     return sorted;
   }, [filteredRows, sortKey, sortDirection]);
+
+  const displayRows = isExpanded ? sortedRows : sortedRows.slice(0, 10);
 
   const handleSort = (key: Exclude<SortKey, null>) => {
     if (sortKey === key) {
@@ -96,32 +93,21 @@ export default function AnalyticsTableClient({ rows }: Props) {
             <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Raw Stats</h2>
             <p className="text-sm text-slate-600 dark:text-slate-400">
               Rows: <span className="font-semibold">{formatNumber(rows.length)}</span>
-              {searchQuery.trim() ? (
-                <>
-                  {' '}
-                  · Showing <span className="font-semibold">{formatNumber(sortedRows.length)}</span> match(es)
-                </>
-              ) : null}
             </p>
           </div>
         </div>
 
-        <div className="relative w-full max-w-xl">
-          <Search size={16} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search by page path..."
-            className="h-11 w-full rounded-xl border border-gray-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/60 pl-11 pr-4 text-sm text-slate-900 dark:text-slate-100 shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/30"
-          />
-        </div>
+
       </div>
 
       {rows.length === 0 ? (
-        <div className="p-10 text-center">
-          <p className="text-slate-600 dark:text-slate-400 font-medium">
-            No data found for the selected date range.
+        <div className="flex flex-col items-center justify-center p-12 text-center">
+          <div className="h-16 w-16 bg-slate-100 dark:bg-slate-800/50 text-slate-400 rounded-full flex items-center justify-center mb-4">
+            <BarChart3 size={32} />
+          </div>
+          <h3 className="text-lg font-medium text-slate-900 dark:text-slate-100 mb-1">No data available</h3>
+          <p className="text-slate-500 dark:text-slate-400 max-w-sm">
+            We couldn't find any data for the selected date range. Try selecting a different range.
           </p>
         </div>
       ) : sortedRows.length === 0 ? (
@@ -136,7 +122,6 @@ export default function AnalyticsTableClient({ rows }: Props) {
             <thead className="bg-gray-50/80 dark:bg-slate-900/40">
               <tr>
                 <th className="text-left px-5 py-3 text-xs font-semibold text-slate-600 dark:text-slate-300 whitespace-nowrap">Date</th>
-                <th className="text-left px-5 py-3 text-xs font-semibold text-slate-600 dark:text-slate-300">Page Path</th>
                 <th className="text-right px-5 py-3 text-xs font-semibold text-slate-600 dark:text-slate-300 whitespace-nowrap">
                   {renderSortButton('Views', 'views')}
                 </th>
@@ -150,7 +135,7 @@ export default function AnalyticsTableClient({ rows }: Props) {
               </tr>
             </thead>
             <tbody>
-              {sortedRows.map((r, idx) => {
+              {displayRows.map((r, idx) => {
                 const views = typeof r.views === 'number' ? r.views : 0;
                 const users = typeof r.active_users === 'number' ? r.active_users : 0;
                 const events = typeof r.event_count === 'number' ? r.event_count : 0;
@@ -163,11 +148,6 @@ export default function AnalyticsTableClient({ rows }: Props) {
                   >
                     <td className="px-5 py-3 whitespace-nowrap text-slate-700 dark:text-slate-200">
                       {formatNiceDate(r.stat_date)}
-                    </td>
-                    <td className="px-5 py-3">
-                      <span className="block max-w-[380px] truncate font-medium text-slate-900 dark:text-slate-100">
-                        {r.page_path}
-                      </span>
                     </td>
                     <td className="px-5 py-3 text-right font-semibold text-slate-900 dark:text-slate-100">
                       {formatNumber(views)}
@@ -186,6 +166,17 @@ export default function AnalyticsTableClient({ rows }: Props) {
               })}
             </tbody>
           </table>
+        </div>
+      )}
+
+      {sortedRows.length > 10 && (
+        <div className="p-4 border-t border-gray-200 dark:border-slate-800 bg-gray-50/30 dark:bg-slate-900/20 text-center">
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="text-sm font-semibold text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 transition-colors"
+          >
+            {isExpanded ? 'Show less' : `Show all ${sortedRows.length} days data`}
+          </button>
         </div>
       )}
     </div>

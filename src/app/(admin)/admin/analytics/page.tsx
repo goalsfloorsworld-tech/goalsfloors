@@ -1,8 +1,24 @@
 import { Clock3, Eye, MousePointerClick, Percent, Users } from 'lucide-react';
-import { createClient } from '@supabase/supabase-js';
-import DateRangeFilter from '@/components/admin/DateRangeFilter';
-import AnalyticsGraph, { type AnalyticsGraphPoint } from '@/components/admin/AnalyticsGraph';
-import AnalyticsTableClient from '@/components/admin/AnalyticsTableClient';
+import DateRangeFilter from '@/components/admin/analytics/DateRangeFilter';
+import AnalyticsGraph, { type AnalyticsGraphPoint } from '@/components/admin/analytics/AnalyticsGraph';
+import AnalyticsTableClient from '@/components/admin/analytics/AnalyticsTableClient';
+import AnalyticsInsightsTables from '@/components/admin/analytics/AnalyticsInsightsTables';
+import AnalyticsTabs from '@/components/admin/analytics/AnalyticsTabs';
+import {
+  getCoreMetrics,
+  getDailyGraphData,
+  getSearchConsoleData,
+  getTrafficSources,
+  getTopPages,
+} from '@/lib/ga';
+import {
+  getDeviceData,
+  getGeoData,
+  getUserTypeData,
+  getEventData,
+} from '@/lib/ga-advanced';
+import AudienceView from '@/components/admin/analytics/AudienceView';
+import BehaviorView from '@/components/admin/analytics/BehaviorView';
 
 type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
 
@@ -14,6 +30,15 @@ type SiteStatRow = {
   engagement_rate: number | null;
   event_count: number | null;
   avg_time: number | null;
+};
+
+type DailyGraphRow = {
+  date: string;
+  pageviews?: number | null;
+  totalUsers?: number | null;
+  views?: number | null;
+  users?: number | null;
+  avgTime?: number | null;
 };
 
 function pickParam(value: string | string[] | undefined) {
@@ -53,10 +78,6 @@ function normalizeEngagementToPercent(value: number) {
   return value <= 1 ? value * 100 : value;
 }
 
-function normalizeDuration(seconds: number) {
-  return Math.max(0, seconds || 0);
-}
-
 function formatDuration(seconds: number) {
   const total = Math.max(0, Math.round(seconds));
   const minutes = Math.floor(total / 60);
@@ -86,8 +107,7 @@ export default async function AdminAnalyticsPage({
     endDate = endParam;
   }
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
+  const currentTab = pickParam(params.tab) || 'overview';
 
   let rows: SiteStatRow[] = [];
   let totalViews = 0;
@@ -96,77 +116,84 @@ export default async function AdminAnalyticsPage({
   let avgEngagementRate = 0;
   let totalAvgTime = 0;
   let graphData: AnalyticsGraphPoint[] = [];
+  let trafficSources: Awaited<ReturnType<typeof getTrafficSources>> = [];
+  let topPages: Awaited<ReturnType<typeof getTopPages>> = [];
+  let searchConsoleSummary = { clicks: 0, impressions: 0, ctr: 0 };
+  
+  // Advanced Data
+  let deviceData: Awaited<ReturnType<typeof getDeviceData>> = [];
+  let geoData: Awaited<ReturnType<typeof getGeoData>> = [];
+  let userTypeData: Awaited<ReturnType<typeof getUserTypeData>> = [];
+  let eventData: Awaited<ReturnType<typeof getEventData>> = [];
 
   try {
-    if (!supabaseUrl || !supabaseKey) {
-      console.error('Missing Supabase env for site_stats. Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.');
-      throw new Error('Supabase env missing');
+    if (currentTab === 'overview') {
+      const [coreMetrics, dailyData, searchConsoleData, sources, pages] = await Promise.all([
+        getCoreMetrics(startDate, endDate),
+        getDailyGraphData(startDate, endDate),
+        getSearchConsoleData(startDate, endDate),
+        getTrafficSources(startDate, endDate),
+        getTopPages(startDate, endDate),
+      ]);
+
+      const normalizedDaily = (dailyData || []) as DailyGraphRow[];
+
+      graphData = normalizedDaily.map((day) => {
+        const views = day.pageviews ?? day.views ?? 0;
+        const users = day.totalUsers ?? day.users ?? 0;
+        const avgTime = day.avgTime ?? 0;
+
+        return {
+          date: day.date,
+          label: formatNiceDate(day.date),
+          views,
+          users,
+          avgTime,
+        };
+      });
+
+      rows = normalizedDaily.map((day) => {
+        const views = day.pageviews ?? day.views ?? 0;
+        const users = day.totalUsers ?? day.users ?? 0;
+        const avgTime = day.avgTime ?? 0;
+
+        return {
+          stat_date: day.date,
+          page_path: '/',
+          views,
+          active_users: users,
+          engagement_rate: 0,
+          event_count: 0,
+          avg_time: avgTime,
+        };
+      });
+
+      totalViews = coreMetrics.pageviews;
+      totalUsers = coreMetrics.totalUsers;
+      totalEvents = Math.round(searchConsoleData.clicks);
+      avgEngagementRate = normalizeEngagementToPercent(searchConsoleData.ctr);
+      totalAvgTime = normalizedDaily.reduce((sum, day) => sum + (day.avgTime ?? 0), 0);
+
+      trafficSources = sources;
+      topPages = pages;
+      searchConsoleSummary = searchConsoleData;
+    } else if (currentTab === 'audience') {
+      const [device, geo, userType] = await Promise.all([
+        getDeviceData(startDate, endDate),
+        getGeoData(startDate, endDate),
+        getUserTypeData(startDate, endDate),
+      ]);
+      deviceData = device;
+      geoData = geo;
+      userTypeData = userType;
+    } else if (currentTab === 'behavior') {
+      const [events] = await Promise.all([
+        getEventData(startDate, endDate),
+      ]);
+      eventData = events;
     }
-
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
-    const { data, error } = await supabase
-      .from('site_stats')
-      .select('stat_date,page_path,views,active_users,engagement_rate,event_count,avg_time')
-      .gte('stat_date', startDate)
-      .lte('stat_date', endDate)
-      .order('stat_date', { ascending: false });
-
-    if (error) throw error;
-
-    rows = (data || []) as SiteStatRow[];
-
-    let engagementSum = 0;
-    let engagementCount = 0;
-    const dailyMap = new Map<string, { views: number; users: number; avgTimeSum: number; avgTimeCount: number }>();
-
-    const start = new Date(`${startDate}T00:00:00Z`);
-    const end = new Date(`${endDate}T00:00:00Z`);
-    for (const cursor = new Date(start); cursor <= end; cursor.setDate(cursor.getDate() + 1)) {
-      const dateKey = cursor.toISOString().slice(0, 10);
-      dailyMap.set(dateKey, { views: 0, users: 0, avgTimeSum: 0, avgTimeCount: 0 });
-    }
-
-    for (const r of rows) {
-      const views = typeof r.views === 'number' ? r.views : 0;
-      const users = typeof r.active_users === 'number' ? r.active_users : 0;
-      const events = typeof r.event_count === 'number' ? r.event_count : 0;
-      const engagement = typeof r.engagement_rate === 'number' ? r.engagement_rate : null;
-      const avgTime = typeof r.avg_time === 'number' ? normalizeDuration(r.avg_time) : 0;
-
-      totalViews += views;
-      totalUsers += users;
-      totalEvents += events;
-      totalAvgTime += avgTime;
-
-      if (engagement !== null) {
-        engagementSum += normalizeEngagementToPercent(engagement);
-        engagementCount += 1;
-      }
-
-      if (r.stat_date) {
-        const day = dailyMap.get(r.stat_date) || { views: 0, users: 0, avgTimeSum: 0, avgTimeCount: 0 };
-        day.views += views;
-        day.users += users;
-        day.avgTimeSum += avgTime;
-        day.avgTimeCount += typeof r.avg_time === 'number' ? 1 : 0;
-        dailyMap.set(r.stat_date, day);
-      }
-    }
-
-    avgEngagementRate = engagementCount > 0 ? engagementSum / engagementCount : 0;
-
-    graphData = Array.from(dailyMap.entries())
-      .sort(([a], [b]) => a.localeCompare(b))
-      .map(([date, value]) => ({
-        date,
-        label: formatNiceDate(date),
-        views: value.views,
-        users: value.users,
-        avgTime: value.avgTimeCount > 0 ? value.avgTimeSum / value.avgTimeCount : 0,
-      }));
   } catch (error) {
-    console.error('Error fetching site_stats:', error);
+    console.error('Error fetching Google analytics data:', error);
   }
 
   return (
@@ -186,68 +213,96 @@ export default async function AdminAnalyticsPage({
       </div>
 
       <DateRangeFilter />
+      <AnalyticsTabs />
 
-      <AnalyticsGraph data={graphData} />
+      {currentTab === 'overview' && (
+        <>
+          <AnalyticsGraph data={graphData} />
 
       {/* Summary */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
-        <div className="rounded-2xl border border-gray-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 backdrop-blur shadow-sm p-5 flex items-center justify-between">
+      <div className="grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5">
+        <div className="rounded-2xl border border-gray-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 backdrop-blur shadow-sm p-4 md:p-5 flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">Total Views</p>
-            <p className="mt-1 text-2xl font-bold text-slate-900 dark:text-slate-100">{formatNumber(totalViews)}</p>
-            <p className="mt-2 text-xs text-slate-500 dark:text-slate-500">Selected range</p>
+            <p className="text-[10px] md:text-xs font-semibold text-slate-500 dark:text-slate-400">Total Views</p>
+            <p className="mt-1 text-lg md:text-2xl font-bold text-slate-900 dark:text-slate-100">{formatNumber(totalViews)}</p>
+            <p className="mt-2 text-[10px] text-slate-500 dark:text-slate-500">Selected range</p>
           </div>
-          <div className="h-12 w-12 rounded-xl bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center shadow-inner">
-            <Eye size={22} />
+          <div className="h-10 w-10 md:h-12 md:w-12 rounded-xl bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center shadow-inner shrink-0">
+            <Eye size={20} />
           </div>
         </div>
 
-        <div className="rounded-2xl border border-gray-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 backdrop-blur shadow-sm p-5 flex items-center justify-between">
+        <div className="rounded-2xl border border-gray-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 backdrop-blur shadow-sm p-4 md:p-5 flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">Total Users</p>
-            <p className="mt-1 text-2xl font-bold text-slate-900 dark:text-slate-100">{formatNumber(totalUsers)}</p>
-            <p className="mt-2 text-xs text-slate-500 dark:text-slate-500">Selected range</p>
+            <p className="text-[10px] md:text-xs font-semibold text-slate-500 dark:text-slate-400">Total Users</p>
+            <p className="mt-1 text-lg md:text-2xl font-bold text-slate-900 dark:text-slate-100">{formatNumber(totalUsers)}</p>
+            <p className="mt-2 text-[10px] text-slate-500 dark:text-slate-500">Selected range</p>
           </div>
-          <div className="h-12 w-12 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shadow-inner">
-            <Users size={22} />
+          <div className="h-10 w-10 md:h-12 md:w-12 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shadow-inner shrink-0">
+            <Users size={20} />
           </div>
         </div>
 
-        <div className="rounded-2xl border border-gray-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 backdrop-blur shadow-sm p-5 flex items-center justify-between">
+        <div className="rounded-2xl border border-gray-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 backdrop-blur shadow-sm p-4 md:p-5 flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">Avg Engagement Rate</p>
-            <p className="mt-1 text-2xl font-bold text-slate-900 dark:text-slate-100">{avgEngagementRate.toFixed(1)}%</p>
-            <p className="mt-2 text-xs text-slate-500 dark:text-slate-500">Average (rows)</p>
+            <p className="text-[10px] md:text-xs font-semibold text-slate-500 dark:text-slate-400">Avg Engagement Rate</p>
+            <p className="mt-1 text-lg md:text-2xl font-bold text-slate-900 dark:text-slate-100">{avgEngagementRate.toFixed(1)}%</p>
+            <p className="mt-2 text-[10px] text-slate-500 dark:text-slate-500">Average (rows)</p>
           </div>
-          <div className="h-12 w-12 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-inner">
-            <Percent size={22} />
+          <div className="h-10 w-10 md:h-12 md:w-12 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shadow-inner shrink-0">
+            <Percent size={20} />
           </div>
         </div>
 
-        <div className="rounded-2xl border border-gray-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 backdrop-blur shadow-sm p-5 flex items-center justify-between">
+        <div className="rounded-2xl border border-gray-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 backdrop-blur shadow-sm p-4 md:p-5 flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">Total Events</p>
-            <p className="mt-1 text-2xl font-bold text-slate-900 dark:text-slate-100">{formatNumber(totalEvents)}</p>
-            <p className="mt-2 text-xs text-slate-500 dark:text-slate-500">Selected range</p>
+            <p className="text-[10px] md:text-xs font-semibold text-slate-500 dark:text-slate-400">Total Events</p>
+            <p className="mt-1 text-lg md:text-2xl font-bold text-slate-900 dark:text-slate-100">{formatNumber(totalEvents)}</p>
+            <p className="mt-2 text-[10px] text-slate-500 dark:text-slate-500">Selected range</p>
           </div>
-          <div className="h-12 w-12 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-center shadow-inner">
-            <MousePointerClick size={22} />
+          <div className="h-10 w-10 md:h-12 md:w-12 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-center shadow-inner shrink-0">
+            <MousePointerClick size={20} />
           </div>
         </div>
 
-        <div className="rounded-2xl border border-gray-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 backdrop-blur shadow-sm p-5 flex items-center justify-between sm:col-span-2 xl:col-span-4">
+        <div className="rounded-2xl border border-gray-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 backdrop-blur shadow-sm p-4 md:p-5 flex items-center justify-between col-span-2 sm:col-span-2 xl:col-span-4">
           <div>
-            <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">Average Time</p>
-            <p className="mt-1 text-2xl font-bold text-slate-900 dark:text-slate-100">{formatDuration(totalAvgTime / Math.max(rows.length, 1))}</p>
-            <p className="mt-2 text-xs text-slate-500 dark:text-slate-500">Daily average (rows)</p>
+            <p className="text-[10px] md:text-xs font-semibold text-slate-500 dark:text-slate-400">Average Time</p>
+            <p className="mt-1 text-lg md:text-2xl font-bold text-slate-900 dark:text-slate-100">{formatDuration(totalAvgTime / Math.max(rows.length, 1))}</p>
+            <p className="mt-2 text-[10px] text-slate-500 dark:text-slate-500">Daily average (rows)</p>
           </div>
-          <div className="h-12 w-12 rounded-xl bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center shadow-inner">
-            <Clock3 size={22} />
+          <div className="h-10 w-10 md:h-12 md:w-12 rounded-xl bg-orange-50 dark:bg-orange-500/10 text-orange-600 dark:text-orange-400 flex items-center justify-center shadow-inner shrink-0">
+            <Clock3 size={20} />
           </div>
         </div>
       </div>
 
       <AnalyticsTableClient rows={rows} />
+
+      <section className="space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Advanced Insights</h2>
+            <p className="text-sm text-slate-600 dark:text-slate-400">
+              Search Console: {formatNumber(searchConsoleSummary.clicks)} clicks ·{' '}
+              {formatNumber(searchConsoleSummary.impressions)} impressions ·{' '}
+              {(searchConsoleSummary.ctr * 100).toFixed(2)}% CTR
+            </p>
+          </div>
+        </div>
+
+        <AnalyticsInsightsTables trafficSources={trafficSources} topPages={topPages} />
+      </section>
+        </>
+      )}
+
+      {currentTab === 'audience' && (
+        <AudienceView deviceData={deviceData} geoData={geoData} userTypeData={userTypeData} />
+      )}
+
+      {currentTab === 'behavior' && (
+        <BehaviorView eventData={eventData} />
+      )}
     </div>
   );
 }
