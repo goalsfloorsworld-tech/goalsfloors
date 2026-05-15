@@ -310,7 +310,11 @@ export default function Editor({ value, onChange }: EditorProps) {
               return;
             }
             // update link
-            editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
+            let validUrl = url;
+            if (!validUrl.match(/^(https?:\/\/|mailto:|tel:|\/|#)/i)) {
+              validUrl = `https://${validUrl}`;
+            }
+            editor.chain().focus().extendMarkRange('link').setLink({ href: validUrl }).run();
           }}
           className={`p-2 rounded hover:bg-slate-700 transition-colors ${editor.isActive("link") ? "bg-slate-700 text-white" : "text-gray-400"}`}
           title="Add Link"

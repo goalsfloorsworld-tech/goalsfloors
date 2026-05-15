@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Clock, Calendar, User, Share2 } from "lucide-react";
+import { clerkClient } from "@clerk/nextjs/server";
 
 import { createClient } from "@supabase/supabase-js";
 
@@ -19,6 +20,7 @@ type NormalizedPost = {
   imageUrl: string | null;
   imageAlt: string;
   date: string;
+  authorId?: string;
 };
 
 async function getUniversalPostData(slug: string): Promise<NormalizedPost | null> {
@@ -38,6 +40,7 @@ async function getUniversalPostData(slug: string): Promise<NormalizedPost | null
       imageUrl: supabaseBlog.featured_image || null,
       imageAlt: supabaseBlog.featured_image_alt || supabaseBlog.title,
       date: supabaseBlog.created_at || new Date().toISOString(),
+      authorId: supabaseBlog.author_id,
     };
   }
 
@@ -123,10 +126,22 @@ export default async function SingleBlogPage({
     notFound();
   }
 
-  const { title, content, imageUrl, imageAlt, date } = post;
+  const { title, content, imageUrl, imageAlt, date, authorId } = post;
 
   // Extract author name
-  const authorName = "Goals Floors Team";
+  let authorName = "Goals Floors Team";
+  if (authorId) {
+    try {
+      const client = await clerkClient();
+      const user = await client.users.getUser(authorId);
+      const name = `${user.firstName || ""} ${user.lastName || ""}`.trim();
+      if (name) {
+        authorName = name;
+      }
+    } catch (e) {
+      console.error("Failed to fetch author name", e);
+    }
+  }
 
   // Calculate read time
   const wordCount = content.replace(/<[^>]*>?/gm, '').split(/\s+/).length;

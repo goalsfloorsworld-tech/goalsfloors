@@ -6,10 +6,12 @@ import Image from 'next/image';
 import { ChevronDown, Menu, X, ArrowRight, Sun, Moon, Settings } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { SignInButton, UserButton, useUser } from '@clerk/nextjs';
-import { checkIsAdmin } from '@/actions/user';
+import { checkIsAdmin, getUserRole } from '@/actions/user';
+import RoleBadge from './shared/RoleBadge';
 
 export default function Navbar() {
   const [isAdmin, setIsAdmin] = useState(false);
+  const [userRole, setUserRole] = useState<string | null>(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [isDesktopProductsOpen, setIsDesktopProductsOpen] = useState(false);
@@ -54,11 +56,15 @@ export default function Navbar() {
 
   useEffect(() => {
     if (user?.id) {
-      const verifyAdmin = async () => {
-        const isAdminUser = await checkIsAdmin();
+      const verifyRole = async () => {
+        const [isAdminUser, role] = await Promise.all([
+          checkIsAdmin(),
+          getUserRole()
+        ]);
         setIsAdmin(isAdminUser);
+        setUserRole(role);
       };
-      verifyAdmin();
+      verifyRole();
     }
   }, [user?.id]);
 
@@ -278,6 +284,12 @@ export default function Navbar() {
                           />
                         </UserButton.MenuItems>
                       </UserButton>
+                      {/* Universal Round Image Badge for Staff */}
+                      {userRole && ["administrator", "admin", "team"].includes(userRole) && (
+                        <div className="absolute bottom-[-15px] right-[-10px] pointer-events-none z-10">
+                          <RoleBadge role={userRole} size="lg" showText={false} className="border-2 border-white dark:border-slate-950 rounded-full" />
+                        </div>
+                      )}
                     </div>
                   ) : (
                     <SignInButton mode="modal">

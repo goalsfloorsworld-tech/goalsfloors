@@ -1,10 +1,72 @@
 "use client";
+
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, LayoutDashboard, FileText, BarChart3, Settings, Globe } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { 
+  Menu, X, LayoutDashboard, FileText, BarChart3, 
+  Globe, Rocket, ShoppingBag, Database, UserPlus, Loader2 
+} from 'lucide-react';
+
+const NAV_ITEMS = [
+  { 
+    href: '/admin', 
+    label: 'Dashboard', 
+    icon: LayoutDashboard, 
+    color: 'hover:bg-blue-50 dark:hover:bg-blue-900/20 text-slate-700 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-300',
+    iconColor: 'text-blue-500'
+  },
+  { 
+    href: '/admin/blogs', 
+    label: 'Blogs', 
+    icon: FileText, 
+    color: 'hover:bg-amber-50 dark:hover:bg-amber-900/20 text-slate-700 dark:text-slate-300 hover:text-amber-700 dark:hover:text-amber-300',
+    iconColor: 'text-amber-500'
+  },
+  { 
+    href: '/admin/analytics', 
+    label: 'Analytics', 
+    icon: BarChart3, 
+    color: 'hover:bg-indigo-50 dark:hover:bg-indigo-900/20 text-slate-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300',
+    iconColor: 'text-indigo-500'
+  },
+  { 
+    href: '/admin/gsc', 
+    label: 'SEO Command', 
+    icon: Rocket, 
+    color: 'hover:bg-sky-50 dark:hover:bg-sky-900/20 text-slate-700 dark:text-slate-300 hover:text-sky-700 dark:hover:text-sky-300',
+    iconColor: 'text-sky-500'
+  },
+  { 
+    href: '/admin/gmc', 
+    label: 'Merchant Center', 
+    icon: ShoppingBag, 
+    color: 'hover:bg-rose-50 dark:hover:bg-rose-900/20 text-slate-700 dark:text-slate-300 hover:text-rose-700 dark:hover:text-rose-300',
+    iconColor: 'text-rose-500'
+  },
+];
+
+const ADMIN_TOOLS = [
+  { 
+    href: '/admin/database', 
+    label: 'Database', 
+    icon: Database, 
+    color: 'hover:bg-purple-50 dark:hover:bg-purple-900/20 text-slate-700 dark:text-slate-300 hover:text-purple-700 dark:hover:text-purple-300',
+    iconColor: 'text-purple-500'
+  },
+  { 
+    href: '/admin/team', 
+    label: 'Team', 
+    icon: UserPlus, 
+    color: 'hover:bg-emerald-50 dark:hover:bg-emerald-900/20 text-slate-700 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-300',
+    iconColor: 'text-emerald-500'
+  },
+];
 
 export default function MobileTopBar() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [loadingPath, setLoadingPath] = useState<string | null>(null);
   const scrollYRef = useRef(0);
 
   useEffect(() => {
@@ -40,6 +102,38 @@ export default function MobileTopBar() {
     };
   }, [isOpen]);
 
+  // Reset loading state when pathname changes and close menu
+  useEffect(() => {
+    setLoadingPath(null);
+    setIsOpen(false);
+  }, [pathname]);
+
+  const MobileLink = ({ item }: { item: typeof NAV_ITEMS[0] }) => {
+    const isActive = pathname === item.href;
+    const isLoading = loadingPath === item.href;
+
+    return (
+      <Link 
+        href={item.href} 
+        onClick={() => {
+          if (pathname !== item.href) setLoadingPath(item.href);
+          // Don't close immediately if we want to see the spinner
+          // The useEffect on pathname will close it
+        }}
+        className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 group ${item.color} ${isActive ? 'bg-slate-100 dark:bg-slate-900 font-bold' : ''}`}
+      >
+        <div className="w-5 h-5 flex items-center justify-center">
+          {isLoading ? (
+            <Loader2 size={18} className="animate-spin text-slate-400" />
+          ) : (
+            <item.icon size={20} className={`${isActive ? item.iconColor : 'text-slate-500 group-hover:' + item.iconColor} transition-colors`} />
+          )}
+        </div>
+        <span className="font-medium">{item.label}</span>
+      </Link>
+    );
+  };
+
   return (
     <div className="md:hidden">
       {/* Top Bar */}
@@ -71,26 +165,19 @@ export default function MobileTopBar() {
               </Link>
             </div>
 
-            <nav className="flex-1 space-y-2 mt-4">
-              <Link href="/admin" onClick={() => setIsOpen(false)} className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-900 transition-colors text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
-                <LayoutDashboard size={20} />
-                <span className="font-medium">Dashboard</span>
-              </Link>
-              <Link href="/admin/blogs" onClick={() => setIsOpen(false)} className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-900 transition-colors text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
-                <FileText size={20} />
-                <span className="font-medium">Blogs</span>
-              </Link>
-              <Link href="/admin/analytics" onClick={() => setIsOpen(false)} className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-900 transition-colors text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
-                <BarChart3 size={20} />
-                <span className="font-medium">Analytics</span>
-              </Link>
+            <nav className="flex-1 space-y-1 mt-4">
+              {NAV_ITEMS.map((item) => (
+                <MobileLink key={item.href} item={item} />
+              ))}
+              
+              <div className="pt-4 pb-2">
+                <p className="px-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Admin Tools</p>
+              </div>
+              
+              {ADMIN_TOOLS.map((item) => (
+                <MobileLink key={item.href} item={item} />
+              ))}
             </nav>
-            <div className="mt-auto border-t border-gray-200 dark:border-gray-800 pt-4">
-              <Link href="/admin/settings" onClick={() => setIsOpen(false)} className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-900 transition-colors text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white">
-                <Settings size={20} />
-                <span className="font-medium">Settings</span>
-              </Link>
-            </div>
           </div>
         </div>
       )}

@@ -30,8 +30,9 @@ export default async function AdminLayout({
     .eq('id', userId)
     .single();
 
-  // Redirect non-admins instantly to the public homepage
-  if (error || !profile || profile.role !== 'admin') {
+  // Redirect non-staff instantly to the public homepage
+  const isStaff = profile?.role === 'admin' || profile?.role === 'team' || profile?.role === 'administrator';
+  if (error || !profile || !isStaff) {
     redirect('/');
   }
 
@@ -41,8 +42,8 @@ export default async function AdminLayout({
       <AdminSidebar />
       <MobileTopBar />
       
-      <main className="flex-1 flex flex-col h-screen mt-[73px] flex-shrink-0 min-w-0 md:mt-0 w-full transition-all duration-300 z-10 overflow-y-auto">
-        <div className="p-4 md:p-8 max-w-7xl mx-auto w-full h-full">
+      <main className="flex-1 flex flex-col min-h-0 mt-[73px] md:mt-0 w-full transition-all duration-300 overflow-y-auto">
+        <div className="p-4 md:p-8 pb-24 max-w-7xl mx-auto w-full">
           {children}
         </div>
       </main>
