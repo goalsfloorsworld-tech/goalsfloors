@@ -35,7 +35,7 @@ export async function approveBlog(id: string) {
   }
 
   revalidatePath("/blogs");
-  revalidatePath("/admin/blog");
+  revalidatePath("/admin/blogs");
   
   return { success: true };
 }
@@ -52,7 +52,7 @@ export async function rejectBlog(id: string) {
   }
 
   revalidatePath("/blogs");
-  revalidatePath("/admin/blog");
+  revalidatePath("/admin/blogs");
   
   return { success: true };
 }
