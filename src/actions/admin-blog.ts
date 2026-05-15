@@ -54,5 +54,5 @@ export async function rejectBlog(id: string) {
   revalidatePath("/blogs");
   revalidatePath("/admin/blogs");
   
-  return { success: true };
+  return { success: true } ;
 }
