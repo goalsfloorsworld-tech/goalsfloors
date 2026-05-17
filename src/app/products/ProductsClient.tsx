@@ -25,7 +25,7 @@ export interface Product {
 }
 
 // Mapping slugs to icons and labels
-const categoryConfig: { [key: string]: { label: string; icon: React.ElementType } } = {
+const categoryConfig: { [key: string]: { label: string; icon: React.ComponentType<any> } } = {
   "All": { label: "All Products", icon: Grid },
   "wall-panels": { label: "Wall Panels", icon: Layers },
   "outdoors": { label: "Exterior & Outdoor", icon: CloudSun },
