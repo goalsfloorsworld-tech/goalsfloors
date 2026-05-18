@@ -52,6 +52,7 @@ export async function publishToGmc(formData: {
   link: string;
   imageLink: string;
   price: string;
+  itemGroupId?: string;
 }): Promise<{ success: boolean; error?: string }> {
   try {
     const merchantId = getMerchantId();
@@ -65,6 +66,7 @@ export async function publishToGmc(formData: {
         description: formData.description,
         link: formData.link,
         imageLink: formData.imageLink,
+        itemGroupId: formData.itemGroupId,
         contentLanguage: "en",
         targetCountry: "IN",
         channel: "online",

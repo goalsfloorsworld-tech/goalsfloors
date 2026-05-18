@@ -211,14 +211,14 @@ export default function FeatureAccordion({ features, productTitle, heading, subh
                     </motion.div>
 
                     {/* Title */}
-                    <motion.h3 
+                    <motion.div 
                       layout
                       className={`text-lg font-semibold tracking-tight transition-colors duration-500 ${
                         isActive ? "text-white" : "text-gray-900 dark:text-white"
                       }`}
                     >
                       {feature.title}
-                    </motion.h3>
+                    </motion.div>
 
                     {/* Expanded Indicator */}
                     <motion.div 

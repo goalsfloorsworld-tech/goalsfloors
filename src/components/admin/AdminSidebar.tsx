@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
   LayoutDashboard, FileText, BarChart3, Globe, Rocket, 
-  ShoppingBag, Database, UserPlus, Loader2 
+  ShoppingBag, Database, UserPlus, Loader2, PackagePlus
 } from 'lucide-react';
 import { getCurrentUserProfile } from '@/actions/admin-core';
 import RoleBadge from '@/components/shared/RoleBadge';
@@ -63,6 +63,13 @@ const ADMIN_TOOLS = [
     color: 'hover:bg-emerald-50 dark:hover:bg-emerald-900/20 text-slate-700 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-300',
     iconColor: 'text-emerald-500'
   },
+  {
+    href: '/admin/dynamic-products',
+    label: 'Dynamic Products',
+    icon: PackagePlus,
+    color: 'hover:bg-orange-50 dark:hover:bg-orange-900/20 text-slate-700 dark:text-slate-300 hover:text-orange-700 dark:hover:text-orange-300',
+    iconColor: 'text-orange-500'
+  }
 ];
 
 export default function AdminSidebar() {

@@ -60,7 +60,7 @@ export default function GmcManageTab() {
     try {
       const res = await deleteGmcProduct(productId);
       if (res.success) {
-        toast.success("Product deleted from GMC");
+        toast.success("Product removed from Google Merchant Center. Database entry preserved.");
         setSelectedProduct(null);
         await loadProducts();
       } else {

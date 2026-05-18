@@ -568,60 +568,13 @@ export default function ProductClient({ product }: { product: Product }) {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
-  // Parse numeric price from string (e.g., "₹180" -> 180)
-  const parsePrice = (priceStr: string): number => {
-    const numericValue = priceStr.replace(/[^0-9.]/g, "");
-    return parseFloat(numericValue) || 0;
-  };
 
-  const variantPrices = (product.variants || []).map(v => parsePrice(v.price)).filter(p => p > 0);
-
-  const seller = { "@type": "Brand", "name": "Goals Floors" };
-
-  const offersSchema = variantPrices.length > 1
-    ? {
-      "@type": "AggregateOffer",
-      "priceCurrency": "INR",
-      "lowPrice": Math.min(...variantPrices),
-      "highPrice": Math.max(...variantPrices),
-      "offerCount": variantPrices.length,
-      "availability": "https://schema.org/InStock",
-      "seller": seller
-    }
-    : variantPrices.length === 1
-      ? {
-        "@type": "Offer",
-        "priceCurrency": "INR",
-        "price": variantPrices[0],
-        "availability": "https://schema.org/InStock",
-        "seller": seller
-      }
-      : {
-        "@type": "Offer",
-        "availability": "https://schema.org/InStock",
-        "seller": seller
-      };
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": product.title,
-    "image": collectProductImageUrls(product),
-    "description": product.shortDescription,
-    "brand": { "@type": "Brand", "name": "Goals Floors" },
-    "offers": offersSchema
-  };
 
   const installedImages = product.installedImages || [];
   const compareItems = (product.beforeAfter || []).slice(0, 2);
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950 font-sans antialiased transition-colors duration-300 overflow-x-hidden max-w-full min-w-0">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
       {/* ================= 1. CLEAN HERO OVERVIEW ================= */}
       <div className="border-b border-gray-200 dark:border-gray-800 pt-5 pb-8 lg:pt-5 lg:pb-5 text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1239,9 +1192,9 @@ export default function ProductClient({ product }: { product: Product }) {
                   onClick={() => toggleFaq(i)}
                   className="w-full text-left p-6 flex items-center justify-between focus:outline-none bg-white dark:bg-slate-950 group transition-colors duration-300"
                 >
-                  <h4 className={`text-base md:text-lg font-medium pr-8 transition-colors duration-300 ${openFaqIndex === i ? 'text-amber-600 dark:text-amber-500' : 'text-gray-900 dark:text-white'}`}>
+                  <h3 className={`text-base md:text-lg font-medium pr-8 transition-colors duration-300 ${openFaqIndex === i ? 'text-amber-600 dark:text-amber-500' : 'text-gray-900 dark:text-white'}`}>
                     {faq.question}
-                  </h4>
+                  </h3>
                   <div className={`transition-transform duration-300 ${openFaqIndex === i ? 'rotate-180' : 'rotate-0'}`}>
                     {openFaqIndex === i ? (
                       <Minus className="w-5 h-5 text-amber-600 dark:text-amber-500 shrink-0" />

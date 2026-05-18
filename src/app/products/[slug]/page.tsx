@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProductBySlug } from "@/lib/data";
 import ProductClient, { Product } from "./ProductClient";
+import { createClient } from "@supabase/supabase-js";
 
 function collectProductImageUrls(product: Product) {
   const imageUrls = [
@@ -81,6 +82,25 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     notFound();
   }
 
+  try {
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
+    
+    const { data: dbProducts, error } = await supabase
+      .from('page_products')
+      .select('product_data')
+      .eq('page_slug', slug);
+
+    if (!error && dbProducts) {
+      const dynamicProducts = dbProducts.map(row => row.product_data);
+      product.variants = [...(product.variants || []), ...dynamicProducts];
+    }
+  } catch (err) {
+    console.error("Failed to fetch dynamic products:", err);
+  }
+
   // TASK 1: Dynamic FAQ Schema (server-rendered, unique per product)
   const faqSchema = product.faqs && product.faqs.length > 0
     ? {
@@ -97,45 +117,86 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       }
     : null;
 
-  // TASK 2: Product Rich Snippets Schema
-  const hasVariants = product.variants && product.variants.length > 0;
   const baseUrl = "https://goalsfloors.com";
   const canonical = `${baseUrl}/products/${slug}`;
 
-  const productSchema = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": product.title,
-    "description": product.shortDescription,
-    "image": collectProductImageUrls(product),
-    "brand": {
-      "@type": "Brand",
-      "name": "Goals Floors"
-    },
-    ...(hasVariants && {
-      "offers": product.variants!.map((v: any) => ({
-        "@type": "Offer",
-        "name": v.name,
-        "price": v.priceValue || 0,
-        "priceCurrency": v.currency || "INR",
-        "url": canonical,
-        "availability": v.availability === "in_stock" ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-        "itemCondition": v.condition === "new" ? "https://schema.org/NewCondition" : "https://schema.org/NewCondition",
-      }))
-    })
-  };
+
+  const productGroupSchemas: any[] = [];
+
+  if (product.variants && Array.isArray(product.variants)) {
+    product.variants.forEach((card: any) => {
+      const parsedPrice = typeof card.priceValue === 'number' ? card.priceValue : 
+                         (typeof card.price === 'string' ? parseFloat(card.price.replace(/[^0-9.]/g, '')) : 0) || 0;
+                         
+      const images = Array.isArray(card.images) ? card.images : [];
+      
+      const productGroup: any = {
+        "@context": "https://schema.org",
+        "@type": "ProductGroup",
+        "name": card.name || product.title,
+        "description": card.gmc_description?.trim() || product.shortDescription || "Premium product",
+        "productGroupID": `${slug}-${(card.name || '').replace(/\s+/g, '-').toLowerCase()}`,
+        "brand": {
+          "@type": "Brand",
+          "name": "Goals Floors"
+        },
+        "hasVariant": []
+      };
+
+      if (images.length === 0) {
+        productGroupSchemas.push({
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": card.name || product.title || "Product Variant",
+          "description": card.gmc_description?.trim() || product.shortDescription || "Premium product",
+          "sku": card.name || slug,
+          "brand": {
+            "@type": "Brand",
+            "name": "Goals Floors"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": parsedPrice,
+            "priceCurrency": card.currency || "INR",
+            "url": canonical,
+            "availability": card.availability === "out_of_stock" ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
+            "itemCondition": card.condition === "refurbished" ? "https://schema.org/RefurbishedCondition" : "https://schema.org/NewCondition"
+          }
+        });
+      } else {
+        productGroup.hasVariant = images.map((img: any) => ({
+          "@type": "Product",
+          "name": img.gmc_title?.trim() || img.name?.trim() || img.alt?.trim() || card.name || product.title || "Product Variant",
+          "image": img.url,
+          "description": img.gmc_variant_description?.trim() || card.gmc_description?.trim() || product.shortDescription || "Premium product",
+          "sku": img.name?.trim() || card.name || slug,
+          "offers": {
+            "@type": "Offer",
+            "price": parsedPrice,
+            "priceCurrency": card.currency || "INR",
+            "url": canonical,
+            "availability": card.availability === "out_of_stock" ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
+            "itemCondition": card.condition === "refurbished" ? "https://schema.org/RefurbishedCondition" : "https://schema.org/NewCondition"
+          }
+        })).filter((v: any) => v.image); // Ensure we don't push variants without an image
+        
+        if (productGroup.hasVariant.length > 0) {
+          productGroupSchemas.push(productGroup);
+        }
+      }
+    });
+  }
+
+  const finalJsonLd = [
+    ...(faqSchema ? [faqSchema] : []),
+    ...productGroupSchemas
+  ];
 
   return (
     <>
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(finalJsonLd) }}
       />
       <ProductClient product={product} />
     </>
