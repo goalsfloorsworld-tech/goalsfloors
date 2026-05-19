@@ -1,6 +1,7 @@
 import { Clock3, Eye, MousePointerClick, Percent, Users } from 'lucide-react';
 import DateRangeFilter from '@/components/admin/analytics/DateRangeFilter';
-import AnalyticsGraph, { type AnalyticsGraphPoint } from '@/components/admin/analytics/AnalyticsGraph';
+import AnalyticsGraphWrapper from '@/components/admin/analytics/AnalyticsGraphWrapper';
+import type { AnalyticsGraphPoint } from '@/components/admin/analytics/AnalyticsGraph';
 import AnalyticsTableClient from '@/components/admin/analytics/AnalyticsTableClient';
 import AnalyticsInsightsTables from '@/components/admin/analytics/AnalyticsInsightsTables';
 import AnalyticsTabs from '@/components/admin/analytics/AnalyticsTabs';
@@ -217,7 +218,7 @@ export default async function AdminAnalyticsPage({
 
       {currentTab === 'overview' && (
         <>
-          <AnalyticsGraph data={graphData} />
+          <AnalyticsGraphWrapper data={graphData} />
 
       {/* Summary */}
       <div className="grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5">

@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: [
+    'googleapis',
+    '@googleapis/analyticsdata',
+    'google-auth-library',
+  ],
   output: 'standalone',
   images: {
     remotePatterns: [

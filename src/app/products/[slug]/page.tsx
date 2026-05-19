@@ -97,6 +97,20 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       const dynamicProducts = dbProducts.map(row => row.product_data);
       product.variants = [...(product.variants || []), ...dynamicProducts];
     }
+
+    const { data: dbImages, error: imgError } = await supabase
+      .from('page_installed_images')
+      .select('image_url, alt_text, aspect_ratio')
+      .eq('page_slug', slug);
+
+    if (!imgError && dbImages) {
+      const dynamicImages = dbImages.map(row => ({
+        url: row.image_url,
+        alt: row.alt_text,
+        aspect: row.aspect_ratio
+      }));
+      product.installedImages = [...(product.installedImages || []), ...dynamicImages];
+    }
   } catch (err) {
     console.error("Failed to fetch dynamic products:", err);
   }

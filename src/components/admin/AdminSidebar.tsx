@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
   LayoutDashboard, FileText, BarChart3, Globe, Rocket, 
-  ShoppingBag, Database, UserPlus, Loader2, PackagePlus
+  ShoppingBag, Database, UserPlus, Loader2, PackagePlus, Image as ImageIcon
 } from 'lucide-react';
 import { getCurrentUserProfile } from '@/actions/admin-core';
 import RoleBadge from '@/components/shared/RoleBadge';
@@ -69,6 +69,13 @@ const ADMIN_TOOLS = [
     icon: PackagePlus,
     color: 'hover:bg-orange-50 dark:hover:bg-orange-900/20 text-slate-700 dark:text-slate-300 hover:text-orange-700 dark:hover:text-orange-300',
     iconColor: 'text-orange-500'
+  },
+  {
+    href: '/admin/installed-images',
+    label: 'Installed Images',
+    icon: ImageIcon,
+    color: 'hover:bg-pink-50 dark:hover:bg-pink-900/20 text-slate-700 dark:text-slate-300 hover:text-pink-700 dark:hover:text-pink-300',
+    iconColor: 'text-pink-500'
   }
 ];
 

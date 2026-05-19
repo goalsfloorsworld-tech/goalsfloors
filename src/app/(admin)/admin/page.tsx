@@ -1,16 +1,11 @@
 import { BarChart3, Eye, MousePointerClick, Percent, Users } from 'lucide-react';
-import { createClient } from '@supabase/supabase-js';
 import AnalyticsChart, { type AnalyticsChartPoint } from '@/components/admin/analytics/AnalyticsChart';
-
-type SiteStatRow = {
-  stat_date: string;
-  page_path: string;
-  views: number | null;
-  active_users: number | null;
-  engagement_rate: number | null;
-  event_count: number | null;
-  last_updated: string | null;
-};
+import {
+  getCoreMetrics,
+  getDailyGraphData,
+  getSearchConsoleData,
+  getTopPages,
+} from '@/lib/ga';
 
 type TopPageRow = {
   page_path: string;
@@ -18,11 +13,6 @@ type TopPageRow = {
 };
 
 export default async function AdminDashboard() {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-  const supabaseKey =
-    process.env.SUPABASE_SERVICE_ROLE_KEY ||
-    '';
-
   const now = new Date();
   const start = new Date(now);
   start.setDate(start.getDate() - 29); // inclusive 30 days incl today
@@ -31,18 +21,6 @@ export default async function AdminDashboard() {
 
   const formatNumber = (val: number) => new Intl.NumberFormat('en-IN').format(val);
   const formatPercent = (val: number) => `${val.toFixed(1)}%`;
-
-  const formatLatestSync = (iso: string) => {
-    const syncedAt = new Date(iso);
-    const diffMs = Date.now() - syncedAt.getTime();
-    const diffMins = Math.floor(diffMs / 60000);
-    if (diffMins < 2) return 'Synced just now';
-    if (diffMins < 60) return `Synced ${diffMins} min ago`;
-    const diffHours = Math.floor(diffMins / 60);
-    if (diffHours < 24) return `Synced ${diffHours}h ago`;
-    const diffDays = Math.floor(diffHours / 24);
-    return `Last sync ${diffDays}d ago`;
-  };
 
   const formatChartLabel = (iso: string) => {
     const d = new Date(`${iso}T00:00:00`);
@@ -60,10 +38,6 @@ export default async function AdminDashboard() {
     return points;
   };
 
-  let rows: SiteStatRow[] = [];
-  let latestSyncText: string | null = null;
-  let latestSyncIso: string | null = null;
-
   let totalViews = 0;
   let totalActiveUsers = 0;
   let totalEvents = 0;
@@ -71,113 +45,81 @@ export default async function AdminDashboard() {
 
   let chartData: AnalyticsChartPoint[] = buildDateRange(startDate, endDate);
   let topPages: TopPageRow[] = [];
+  let errorMsg: string | null = null;
+  let hasData = false;
 
   try {
-    if (!supabaseUrl || !supabaseKey) {
-      console.error('Missing Supabase env for site_stats. Set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.');
-      throw new Error('Supabase env missing');
+    const [coreMetrics, dailyData, searchConsoleData, pages] = await Promise.all([
+      getCoreMetrics(startDate, endDate),
+      getDailyGraphData(startDate, endDate),
+      getSearchConsoleData(startDate, endDate),
+      getTopPages(startDate, endDate),
+    ]);
+
+    totalViews = coreMetrics.pageviews;
+    totalActiveUsers = coreMetrics.totalUsers;
+    totalEvents = searchConsoleData.clicks;
+    avgEngagementRate = searchConsoleData.ctr * 100;
+
+    const byDate = new Map<string, number>();
+    for (const day of dailyData || []) {
+      byDate.set(day.date, day.pageviews);
     }
 
-    const supabase = createClient(supabaseUrl, supabaseKey);
+    chartData = chartData.map((p) => ({
+      ...p,
+      views: byDate.get(p.date) || 0,
+    }));
 
-    // Fetch last 30 days of stats
-    const { data, error } = await supabase
-      .from('site_stats')
-      .select('stat_date,page_path,views,active_users,engagement_rate,event_count,last_updated')
-      .gte('stat_date', startDate);
+    topPages = (pages || [])
+      .map((p) => ({ page_path: p.pagePath, views: p.pageviews }))
+      .slice(0, 5);
 
-    if (error) throw error;
-    rows = (data || []) as SiteStatRow[];
-
-    if (rows.length > 0) {
-      // Latest sync info
-      latestSyncIso = rows
-        .map((r) => r.last_updated)
-        .filter((v): v is string => Boolean(v))
-        .sort((a, b) => (a < b ? 1 : -1))[0] || null;
-      if (latestSyncIso) latestSyncText = formatLatestSync(latestSyncIso);
-
-      // Metric aggregates (over last 30 days)
-      let engagementSum = 0;
-      let engagementCount = 0;
-
-      const byDate = new Map<string, number>();
-      const byPage = new Map<string, number>();
-
-      for (const r of rows) {
-        const v = typeof r.views === 'number' ? r.views : 0;
-        const au = typeof r.active_users === 'number' ? r.active_users : 0;
-        const ev = typeof r.event_count === 'number' ? r.event_count : 0;
-        const er = typeof r.engagement_rate === 'number' ? r.engagement_rate : null;
-
-        totalViews += v;
-        totalActiveUsers += au;
-        totalEvents += ev;
-
-        if (er !== null) {
-          // engagement_rate appears as fraction (0-1). Normalize to percent later.
-          engagementSum += er;
-          engagementCount += 1;
-        }
-
-        // Views grouped by stat_date for chart
-        if (r.stat_date) {
-          byDate.set(r.stat_date, (byDate.get(r.stat_date) || 0) + v);
-        }
-
-        // Top pages by total views
-        if (r.page_path) {
-          byPage.set(r.page_path, (byPage.get(r.page_path) || 0) + v);
-        }
-      }
-
-      avgEngagementRate = engagementCount > 0 ? (engagementSum / engagementCount) * 100 : 0;
-
-      chartData = chartData.map((p) => ({
-        ...p,
-        views: byDate.get(p.date) || 0,
-      }));
-
-      topPages = Array.from(byPage.entries())
-        .map(([page_path, views]) => ({ page_path, views }))
-        .sort((a, b) => b.views - a.views)
-        .slice(0, 5);
-    }
-  } catch (error) {
-    console.error('Error fetching site_stats:', error);
-    // graceful fallbacks already set
+    hasData = true;
+  } catch (error: any) {
+    console.error('Error fetching Google analytics dashboard data:', error);
+    errorMsg = error.message || 'Unknown error occurred';
+    hasData = false;
   }
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
       {/* Header */}
       <div className="flex flex-col gap-2">
-        <div className="flex flex-wrap items-end justify-between gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
               Analytics
             </h1>
             <p className="text-slate-600 dark:text-slate-400">
-              A clean snapshot of the last 30 days.
+              A clean snapshot of the last 30 days (Real-time GA4).
             </p>
           </div>
-          {latestSyncText && (
-            <div className="rounded-xl border border-gray-200 dark:border-slate-800 bg-white/60 dark:bg-slate-950/60 backdrop-blur px-4 py-2 shadow-sm">
-              <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Data status</p>
-              <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">{latestSyncText}</p>
-            </div>
-          )}
+          <div className="flex items-center gap-3">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400 shadow-sm border border-emerald-200/50 dark:border-emerald-500/20">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400 animate-pulse"></span>
+              Live API Mode
+            </span>
+          </div>
         </div>
       </div>
 
-      {rows.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-gray-300 dark:border-slate-800 bg-white/60 dark:bg-slate-950/40 backdrop-blur p-10 shadow-sm">
-          <p className="text-center text-slate-600 dark:text-slate-400 font-medium">
-            No analytics data available yet.
+      {!hasData ? (
+        <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-gray-300 dark:border-slate-800 bg-white/60 dark:bg-slate-950/40 backdrop-blur p-12 shadow-sm text-center">
+          <div className="h-12 w-12 rounded-full bg-rose-50 dark:bg-rose-500/10 flex items-center justify-center text-rose-500 mb-4">
+            <BarChart3 size={24} />
+          </div>
+          <h3 className="text-lg font-semibold text-slate-950 dark:text-slate-50">
+            Failed to load Google Analytics
+          </h3>
+          <p className="text-sm text-slate-600 dark:text-slate-400 max-w-md mt-2">
+            Could not fetch live report data from Google Analytics. Please verify that your credentials (`GA_PROPERTY_ID`, `GOOGLE_REFRESH_TOKEN`, etc.) in `.env.local` are set correctly.
           </p>
-          <p className="text-center text-xs text-slate-500 dark:text-slate-500 mt-2">
-            Once your sync populates the `site_stats` table, metrics and charts will appear here.
-          </p>
+          {errorMsg && (
+            <p className="text-xs text-rose-600 dark:text-rose-400 bg-rose-50/50 dark:bg-rose-500/5 px-3 py-1.5 rounded-lg font-mono mt-4">
+              {errorMsg}
+            </p>
+          )}
         </div>
       ) : (
         <>
@@ -230,19 +172,12 @@ export default async function AdminDashboard() {
 
           {/* Section 2: Trend Chart */}
           <div className="rounded-2xl border border-gray-200 dark:border-slate-800 bg-white/70 dark:bg-slate-950/50 backdrop-blur shadow-sm p-5">
-            <div className="flex items-center justify-between gap-4 flex-wrap">
-              <div>
-                <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-                  <BarChart3 size={18} className="text-amber-600 dark:text-amber-400" />
-                  Views Trend
-                </h2>
-                <p className="text-sm text-slate-600 dark:text-slate-400">Daily views across the last 30 days</p>
-              </div>
-              {latestSyncIso && (
-                <p className="text-xs text-slate-500 dark:text-slate-500">
-                  Latest sync: {new Date(latestSyncIso).toLocaleString('en-IN')}
-                </p>
-              )}
+            <div>
+              <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                <BarChart3 size={18} className="text-amber-600 dark:text-amber-400" />
+                Views Trend
+              </h2>
+              <p className="text-sm text-slate-600 dark:text-slate-400">Daily views across the last 30 days (Direct API)</p>
             </div>
             <div className="mt-4">
               <AnalyticsChart data={chartData} />

@@ -10,6 +10,7 @@ import {
   deleteDynamicProduct 
 } from "@/actions/dynamic-products";
 import toast from "react-hot-toast";
+import { optimizeCloudinaryUrl } from "@/lib/utils";
 
 const VALID_SLUGS = [
   { label: 'Artificial Grass', value: 'artificial-grass' },
@@ -460,7 +461,7 @@ export default function DynamicProductsPage() {
                   </div>
                   <div className="flex-1 space-y-2 w-full">
                     <input
-                      type="url" value={img.url} onChange={(e) => handleImageChange(index, 'url', e.target.value)}
+                      type="url" value={img.url} onChange={(e) => handleImageChange(index, 'url', optimizeCloudinaryUrl(e.target.value))}
                       placeholder="Image URL" required={index === 0}
                       className="w-full p-2.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:ring-2 focus:ring-emerald-500 outline-none"
                     />

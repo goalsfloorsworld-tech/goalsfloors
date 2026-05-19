@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
+import { createClient } from '@supabase/supabase-js';
 
 const API_BASE_URL = "https://lime-hummingbird-549929.hostingersite.com/wp-json/wp/v2";
 
@@ -79,6 +80,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let productRoutes: MetadataRoute.Sitemap = [];
   
   try {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    // Fetch latest installed images to update lastModified date
+    const { data: installedImagesData } = await supabase
+      .from('page_installed_images')
+      .select('page_slug, created_at');
+
+    const latestImageDates: Record<string, string> = {};
+    if (installedImagesData) {
+      installedImagesData.forEach((img: any) => {
+        if (!latestImageDates[img.page_slug] || new Date(img.created_at) > new Date(latestImageDates[img.page_slug])) {
+          latestImageDates[img.page_slug] = img.created_at;
+        }
+      });
+    }
+
     const filenames = fs.readdirSync(productsDirectory);
     productRoutes = filenames
       .filter((name) => name.endsWith('.json'))
@@ -86,13 +105,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         const filePath = path.join(productsDirectory, name);
         const fileContent = fs.readFileSync(filePath, 'utf-8');
         const product = JSON.parse(fileContent);
-        // Using file modified time as lastModified
-        const stats = fs.statSync(filePath);
+        const slug = product.slug || name.replace('.json', '');
         const images = collectProductImages(product);
         
+        const stats = fs.statSync(filePath);
+        let lastMod = stats.mtime.toISOString();
+        
+        // If there is a newer installed image for this slug, force a recrawl
+        if (latestImageDates[slug] && new Date(latestImageDates[slug]) > new Date(lastMod)) {
+          lastMod = new Date(latestImageDates[slug]).toISOString();
+        }
+        
         return {
-          url: `${baseUrl}/products/${product.slug || name.replace('.json', '')}`,
-          lastModified: stats.mtime.toISOString(),
+          url: `${baseUrl}/products/${slug}`,
+          lastModified: lastMod,
           changeFrequency: 'weekly' as const,
           priority: 0.9,
           images: images.length > 0 ? images : undefined,
