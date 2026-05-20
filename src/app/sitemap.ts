@@ -68,12 +68,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/products',
     '/privacy',
     '/terms'
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString(),
-    changeFrequency: 'weekly' as const,
-    priority: route === '' ? 1.0 : 0.8,
-  }));
+  ].map((route) => {
+    let images: string[] | undefined = undefined;
+    
+    if (route === '/about') {
+      images = [
+        "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775755978/Shakti_FTN.jpg",
+        "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749425/Goals_Floors_Wpc_Exterior_Louvers.png",
+        "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749444/Spc_FlooringInstalled_In_Bedrooom.png"
+      ];
+    }
+
+    return {
+      url: `${baseUrl}${route}`,
+      lastModified: new Date().toISOString(),
+      changeFrequency: 'weekly' as const,
+      priority: route === '' ? 1.0 : 0.8,
+      images: images,
+    };
+  });
 
   // 2. Dynamic Product Pages
   const productsDirectory = path.join(process.cwd(), 'src', 'data', 'products');
