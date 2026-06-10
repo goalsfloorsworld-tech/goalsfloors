@@ -140,7 +140,21 @@ Schema:
     throw new Error("Empty response from AI");
   }
 
-  const parsedData = JSON.parse(resultText);
+  let parsedData;
+  try {
+    parsedData = JSON.parse(resultText);
+  } catch (parseError) {
+    console.warn("Initial JSON parse failed, attempting to clean up AI output.");
+    try {
+      // Extract the largest JSON object or array from the text using regex
+      const jsonMatch = resultText.match(/\{[\s\S]*\}|\[[\s\S]*\]/);
+      if (!jsonMatch) throw new Error("No JSON structure found in output");
+      parsedData = JSON.parse(jsonMatch[0]);
+    } catch (secondError) {
+      console.error("Failed to parse AI output even after cleanup:", resultText.substring(0, 200) + "...");
+      throw new Error("AI returned an invalid data format. Please try again.");
+    }
+  }
 
   const newComparison = {
     slug,

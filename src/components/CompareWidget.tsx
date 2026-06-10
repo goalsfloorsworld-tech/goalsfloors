@@ -114,13 +114,19 @@ export default function CompareWidget({ currentProductSlug }: CompareWidgetProps
               "Our architectural comparison engine is handling a high wave of traffic right now. Please wait a few seconds and try again.",
           });
         } else {
-          alert(data.error || "Failed to compare. Please try again.");
+          setAiError({
+            title: "Comparison Interrupted ⚠️",
+            message: data.error || "Failed to generate comparison. Please try again.",
+          });
         }
         setIsGenerating(false);
       }
     } catch (err) {
       console.error("Routing error:", err);
-      alert("An error occurred. Please check your connection and try again.");
+      setAiError({
+        title: "Connection Error ⚠️",
+        message: "An error occurred. Please check your internet connection and try again."
+      });
       setIsGenerating(false);
     }
   };
