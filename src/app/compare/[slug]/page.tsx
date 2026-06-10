@@ -207,11 +207,54 @@ export default async function CompareResultPage({
       }
     } catch (err) {
       console.error("[Fatal Error] Failed during API fetch or Gemini generation:", err);
-      notFound();
+      // Return beautiful "Breathing" UI instead of a default Chrome error or 404
+      return (
+        <div className="min-h-[80vh] flex items-center justify-center bg-slate-50 dark:bg-slate-950 p-4 relative overflow-hidden">
+          {/* Subtle Background Pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+          
+          <div className="relative bg-white dark:bg-slate-900 border border-rose-500/30 rounded-2xl p-8 md:p-12 max-w-lg w-full text-center shadow-2xl overflow-hidden z-10">
+            {/* Top Breathing Line */}
+            <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-rose-500 via-amber-500 to-rose-500 animate-pulse" />
+            
+            <div className="w-24 h-24 mx-auto bg-rose-500/10 border border-rose-500/20 rounded-full flex items-center justify-center mb-6 animate-[pulse_2s_ease-in-out_infinite]">
+              <span className="text-5xl">🤖</span>
+            </div>
+            
+            <h2 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mb-4">AI is Catching Its Breath</h2>
+            
+            <p className="text-slate-600 dark:text-slate-400 mb-8 text-sm md:text-base leading-relaxed">
+              Our AI consultant is currently analyzing a massive volume of architectural requests. Please give it a few seconds and try again.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+               <a 
+                 href={`/compare/${slug}?category=${encodeURIComponent(category || "flooring")}&productA=${encodeURIComponent(productA || "Product A")}&productB=${encodeURIComponent(productB || "Product B")}`} 
+                 className="px-6 py-3 bg-rose-500 hover:bg-rose-600 text-white font-bold rounded-xl transition-all duration-300 w-full sm:w-auto shadow-lg shadow-rose-500/25"
+               >
+                 Retry Comparison
+               </a>
+               <a 
+                 href="/compare" 
+                 className="px-6 py-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold rounded-xl transition-all duration-300 w-full sm:w-auto"
+               >
+                 Back to Tool
+               </a>
+            </div>
+          </div>
+        </div>
+      );
     }
   }
 
-  if (!comparison) notFound();
+  // Safety check, though the above catch should handle it
+  if (!comparison) {
+    return (
+      <div className="min-h-[50vh] flex items-center justify-center">
+        <h2 className="text-xl text-slate-500">Comparison data could not be loaded.</h2>
+      </div>
+    );
+  }
 
   let relatedComparisons: any[] = [];
   try {
