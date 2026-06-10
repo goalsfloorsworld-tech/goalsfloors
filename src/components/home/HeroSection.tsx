@@ -55,6 +55,30 @@ const mobileHeroImages = [
 export default function HeroSection() {
   const [desktopIndex, setDesktopIndex] = useState(0);
   const [mobileIndex, setMobileIndex] = useState(0);
+  
+  // Track which images have been mounted to the DOM to preload the next ones
+  const [mountedDesktop, setMountedDesktop] = useState<number[]>([0, 1]);
+  const [mountedMobile, setMountedMobile] = useState<number[]>([0, 1]);
+
+  useEffect(() => {
+    setMountedDesktop(prev => {
+      const next = (desktopIndex + 1) % desktopHeroImages.length;
+      if (!prev.includes(desktopIndex) || !prev.includes(next)) {
+        return Array.from(new Set([...prev, desktopIndex, next]));
+      }
+      return prev;
+    });
+  }, [desktopIndex]);
+
+  useEffect(() => {
+    setMountedMobile(prev => {
+      const next = (mobileIndex + 1) % mobileHeroImages.length;
+      if (!prev.includes(mobileIndex) || !prev.includes(next)) {
+        return Array.from(new Set([...prev, mobileIndex, next]));
+      }
+      return prev;
+    });
+  }, [mobileIndex]);
 
   // Auto-rotate hero images
   useEffect(() => {
@@ -86,8 +110,7 @@ export default function HeroSection() {
                 transition: "opacity 1s ease-in-out, transform 5s linear",
               }}
             >
-              {/* Load ONLY priority first image eagerly, lazy load the rest */}
-              {(i === 0 || i === desktopIndex) && (
+              {mountedDesktop.includes(i) && (
                 <Image
                   src={img.src}
                   alt={img.alt}
@@ -114,7 +137,7 @@ export default function HeroSection() {
                 transition: "opacity 1s ease-in-out, transform 5s linear",
               }}
             >
-              {(i === 0 || i === mobileIndex) && (
+              {mountedMobile.includes(i) && (
                 <Image
                   src={img.src}
                   alt={img.alt}
@@ -167,9 +190,8 @@ export default function HeroSection() {
         >
           Goals Floors: India&apos;s <br />
           <span className="relative inline-block mt-2">
-            {/* Intensified Multi-Layer Glow Effect */}
-            <span className="absolute -inset-x-20 inset-y-0 bg-amber-500/40 blur-[100px] rounded-full -z-10 animate-pulse"></span>
-            <span className="absolute -inset-x-10 inset-y-0 bg-yellow-400/20 blur-[40px] rounded-full -z-10 animate-pulse delay-700"></span>
+            <span className="absolute -inset-x-20 inset-y-0 bg-amber-500/40 blur-[100px] rounded-full -z-10"></span>
+            <span className="absolute -inset-x-10 inset-y-0 bg-yellow-400/20 blur-[40px] rounded-full -z-10"></span>
 
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-600 italic font-light pr-2 pb-1 md:whitespace-nowrap block sm:inline drop-shadow-[0_4px_40px_rgba(251,191,36,0.8)]">
               Fastest Growing Wall Panels & Flooring Brand

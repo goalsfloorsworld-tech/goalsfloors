@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Plus, Minus, Maximize } from "lucide-react";
 import Image from "next/image";
 
 interface ViewerDetail {
@@ -36,6 +36,27 @@ export default function FullscreenImageViewer({
   onNavigate
 }: FullscreenImageViewerProps) {
   const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    // Reset zoom when image changes
+    setScale(1);
+  }, [imageUrl]);
+
+  const handleZoomIn = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setScale(s => Math.min(s + 0.5, 4));
+  };
+
+  const handleZoomOut = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setScale(s => Math.max(s - 0.5, 1));
+  };
+
+  const resetZoom = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setScale(1);
+  };
 
   // Prevent background page scroll and mark fullscreen mode for global UI toggles.
   useEffect(() => {
@@ -132,6 +153,7 @@ export default function FullscreenImageViewer({
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStart === null) return;
+    if (scale > 1) return; // Prevent swipe navigation when zoomed in
 
     const touchEnd = e.changedTouches[0].clientX;
     const diff = touchStart - touchEnd;
@@ -167,26 +189,62 @@ export default function FullscreenImageViewer({
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Image */}
-          <div className="relative w-full h-full max-h-[90vh] md:max-h-full flex items-center justify-center">
+          <div className="relative w-full h-full max-h-[90vh] md:max-h-full flex items-center justify-center overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
                 key={imageUrl}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+                initial={{ opacity: 0, scale: 1, x: 0, y: 0 }}
+                animate={{ opacity: 1, scale }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="relative w-full h-full flex items-center justify-center"
+                drag={scale > 1}
+                dragConstraints={{ left: -300 * scale, right: 300 * scale, top: -300 * scale, bottom: 300 * scale }}
+                dragElastic={0.1}
+                onDoubleClick={(e) => {
+                  e.stopPropagation();
+                  setScale(s => s > 1 ? 1 : 2.5);
+                }}
+                className={`relative w-full h-full flex items-center justify-center ${scale > 1 ? 'cursor-grab active:cursor-grabbing' : 'cursor-zoom-in'}`}
               >
                 <Image
                   src={imageUrl}
                   alt={getCurrentImage()?.alt || "Product image"}
                   fill
                   className="object-contain"
+                  draggable={false}
                   priority
                 />
               </motion.div>
             </AnimatePresence>
+          </div>
+
+          {/* Zoom Controls */}
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/60 backdrop-blur-md rounded-full p-1.5 z-40" onClick={e => e.stopPropagation()}>
+            <button
+              onClick={handleZoomOut}
+              className="p-1.5 hover:bg-white/20 rounded-full text-white transition-colors disabled:opacity-30"
+              disabled={scale <= 1}
+              aria-label="Zoom out"
+            >
+              <Minus className="w-4 h-4" />
+            </button>
+            <span className="text-white text-[11px] font-bold w-10 text-center">{Math.round(scale * 100)}%</span>
+            <button
+              onClick={handleZoomIn}
+              className="p-1.5 hover:bg-white/20 rounded-full text-white transition-colors disabled:opacity-30"
+              disabled={scale >= 4}
+              aria-label="Zoom in"
+            >
+              <Plus className="w-4 h-4" />
+            </button>
+            <div className="w-px h-4 bg-white/20 mx-1" />
+            <button
+              onClick={resetZoom}
+              className="p-1.5 hover:bg-white/20 rounded-full text-white transition-colors"
+              aria-label="Reset zoom"
+            >
+              <Maximize className="w-4 h-4" />
+            </button>
           </div>
 
           {/* Navigation Arrows - Desktop visible on hover, Mobile always visible */}
@@ -280,13 +338,24 @@ export default function FullscreenImageViewer({
               <p className="text-white text-lg font-semibold leading-tight">{context.title}</p>
             </div>
 
-            {/* Image Alt Text / Description */}
-            {(context.description || getCurrentImage()?.alt) && (
+            {/* Active Image Alt — reactive h2, updates on every nav */}
+            {getCurrentImage()?.alt && (
               <>
                 <div className="h-px bg-white/10" />
                 <div>
-                  <p className="text-white/60 text-xs uppercase tracking-[0.2em] font-bold mb-2">Description</p>
-                  <p className="text-white/80 text-sm leading-relaxed">{context.description || getCurrentImage().alt}</p>
+                  <p className="text-white/60 text-xs uppercase tracking-[0.2em] font-bold mb-3">Viewing</p>
+                  <AnimatePresence mode="wait">
+                    <motion.h2
+                      key={imageUrl}
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.22 }}
+                      className="text-white font-semibold text-sm leading-snug tracking-tight"
+                    >
+                      {getCurrentImage().alt}
+                    </motion.h2>
+                  </AnimatePresence>
                 </div>
               </>
             )}

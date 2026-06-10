@@ -20,6 +20,7 @@ const productCategories = [
 
 const navLinks = [
   { name: "Home", href: "/" },
+  { name: "AI Compare", href: "/compare" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
   { name: "Become a Dealer", href: "/dealer" },

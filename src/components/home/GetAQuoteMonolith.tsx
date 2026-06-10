@@ -44,40 +44,8 @@ export default function GetAQuoteMonolith() {
     >
       {/* Background Decor Elements (Floating 3D-like shapes) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 45, 0],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[10%] left-[15%] w-32 h-32 bg-amber-500/10 dark:bg-amber-500/5 blur-3xl rounded-full"
-        />
-        <motion.div
-          animate={{
-            y: [0, 30, 0],
-            rotate: [0, -30, 0],
-            scale: [1, 0.9, 1]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-[20%] right-[10%] w-64 h-64 bg-slate-200/50 dark:bg-slate-800/20 blur-3xl rounded-full"
-        />
-
-        {/* Floating Architectural Lines */}
-        {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.1, x: [0, 100, 0], y: [0, -50, 0] }}
-            transition={{ duration: 15 + i * 2, repeat: Infinity, ease: "linear" }}
-            className="absolute h-px bg-amber-600 w-96 origin-left"
-            style={{
-              top: `${20 + i * 15}%`,
-              left: `${-10 + i * 5}%`,
-              transform: `rotate(${15 + i * 10}deg)`
-            }}
-          />
-        ))}
+        <div className="absolute top-[10%] left-[15%] w-32 h-32 bg-amber-500/10 dark:bg-amber-500/5 blur-3xl rounded-full" />
+        <div className="absolute bottom-[20%] right-[10%] w-64 h-64 bg-slate-200/50 dark:bg-slate-800/20 blur-3xl rounded-full" />
       </div>
 
       {/* The 3D Monolith Card */}
@@ -147,11 +115,6 @@ export default function GetAQuoteMonolith() {
                     left: `calc(50% + ${swatch.x}px)`,
                     top: `calc(50% + ${swatch.y}px)`
                   }}
-                  animate={{
-                    y: [0, 10, 0],
-                    rotate: [0, i % 2 === 0 ? 5 : -5, 0]
-                  }}
-                  transition={{ duration: 5 + i, repeat: Infinity, ease: "easeInOut" }}
                   className={`absolute w-12 h-12 ${swatch.color} border border-amber-500/20 rounded-sm flex flex-col items-center justify-center backdrop-blur-sm shadow-sm pointer-events-none`}
                 >
                   <div className="w-4 h-px bg-amber-500/30 mb-1" />
@@ -211,8 +174,6 @@ export default function GetAQuoteMonolith() {
       <motion.div
         style={{ transform: "translateZ(140px)" }}
         className="absolute top-20 right-[18%] w-20 h-24 bg-amber-600 hidden xl:flex items-center justify-center shadow-2xl rounded-sm z-50 overflow-visible"
-        animate={{ y: [0, 15, 0], rotate: [0, 5, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
       >
         <div className="text-white font-black text-3xl leading-none">GF</div>
         {/* Decorative shadow layer */}

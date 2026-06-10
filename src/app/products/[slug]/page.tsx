@@ -4,6 +4,7 @@ import { getProductBySlug } from "@/lib/data";
 import ProductClient, { Product } from "./ProductClient";
 import { createClient } from "@supabase/supabase-js";
 
+export const revalidate = 3600; // ISR cache for 1 hour
 function collectProductImageUrls(product: Product) {
   const imageUrls = [
     ...(product.images || []).map((image) => image.url),
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
-  const title = `${product.title} | Premium B2B Supplier in NCR | Goals Floors`;
+  const title = product.metatitle || `${product.title} | Premium B2B Supplier in NCR | Goals Floors`;
   const description = product.shortDescription;
   const baseUrl = "https://goalsfloors.com";
   const canonical = `${baseUrl}/products/${slug}`;
@@ -135,6 +136,15 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const canonical = `${baseUrl}/products/${slug}`;
 
 
+  const getAbsoluteUrl = (url?: string) => {
+    if (!url) return "";
+    return url.startsWith("http") ? url : `${baseUrl}${url.startsWith("/") ? "" : "/"}${url}`;
+  };
+  
+  const allInstalledImageUrls = Array.isArray(product.installedImages) 
+    ? product.installedImages.map((img: any) => getAbsoluteUrl(img.url)).filter(Boolean)
+    : [];
+
   const productGroupSchemas: any[] = [];
 
   if (product.variants && Array.isArray(product.variants)) {
@@ -162,6 +172,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           "@context": "https://schema.org",
           "@type": "Product",
           "name": card.name || product.title || "Product Variant",
+          "image": allInstalledImageUrls.length > 0 ? allInstalledImageUrls : undefined,
           "description": card.gmc_description?.trim() || product.shortDescription || "Premium product",
           "sku": card.name || slug,
           "brand": {
@@ -181,7 +192,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         productGroup.hasVariant = images.map((img: any) => ({
           "@type": "Product",
           "name": img.gmc_title?.trim() || img.name?.trim() || img.alt?.trim() || card.name || product.title || "Product Variant",
-          "image": img.url,
+          "image": [getAbsoluteUrl(img.url), ...allInstalledImageUrls].filter(Boolean),
           "description": img.gmc_variant_description?.trim() || card.gmc_description?.trim() || product.shortDescription || "Premium product",
           "sku": img.name?.trim() || card.name || slug,
           "offers": {
@@ -192,7 +203,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             "availability": card.availability === "out_of_stock" ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
             "itemCondition": card.condition === "refurbished" ? "https://schema.org/RefurbishedCondition" : "https://schema.org/NewCondition"
           }
-        })).filter((v: any) => v.image); // Ensure we don't push variants without an image
+        })).filter((v: any) => v.image && v.image.length > 0); // Ensure we don't push variants without an image
         
         if (productGroup.hasVariant.length > 0) {
           productGroupSchemas.push(productGroup);

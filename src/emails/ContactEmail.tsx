@@ -19,6 +19,8 @@ interface ContactEmailProps {
   address: string;
   interest: string;
   message: string;
+  source?: string;
+  discountStatus?: string;
 }
 
 export const ContactEmail = ({
@@ -29,6 +31,8 @@ export const ContactEmail = ({
   address,
   interest,
   message,
+  source,
+  discountStatus,
 }: ContactEmailProps) => {
   const previewText = `Shubh Agaman: A Noble Prospect for Goals Floors - ${name}`;
 
@@ -83,6 +87,18 @@ export const ContactEmail = ({
                   <td style={labelCell}>PRODUCT INTEREST</td>
                   <td style={interestValue}>{interest.replace('_', ' ').toUpperCase()}</td>
                 </tr>
+                {source && (
+                  <tr>
+                    <td style={labelCell}>LEAD SOURCE</td>
+                    <td style={valueCell}>{source.replace('_', ' ')}</td>
+                  </tr>
+                )}
+                {discountStatus && (
+                  <tr>
+                    <td style={labelCell}>DISCOUNT STATUS</td>
+                    <td style={{...valueCell, color: discountStatus.includes('Expired') ? '#dc2626' : '#16a34a', fontWeight: 'bold'}}>{discountStatus}</td>
+                  </tr>
+                )}
               </table>
             </div>
           </Section>

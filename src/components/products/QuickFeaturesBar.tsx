@@ -41,6 +41,7 @@ export default function QuickFeaturesBar({ features }: QuickFeaturesBarProps) {
   return (
     <div className="bg-gray-50 dark:bg-slate-900 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2 lg:pt-6 lg:pb-4">
+        <h2 className="sr-only">Product Features</h2>
         {/* Mobile: Swipeable Carousel | Desktop: 6-Col Grid */}
         <motion.div 
           variants={containerVariants}
@@ -71,9 +72,9 @@ export default function QuickFeaturesBar({ features }: QuickFeaturesBarProps) {
               </div>
 
               {/* Text Content */}
-              <p className="text-[11px] lg:text-[12px] font-bold text-gray-900 dark:text-white mb-1 uppercase tracking-wider leading-tight">
+              <h3 className="text-[11px] lg:text-[12px] font-bold text-gray-900 dark:text-white mb-1 uppercase tracking-wider leading-tight">
                 {item.title}
-              </p>
+              </h3>
               <p className="text-[10px] lg:text-xs text-gray-500 dark:text-gray-400 font-medium max-w-[140px]">
                 {item.desc}
               </p>

@@ -3,14 +3,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, memo } from "react";
 import {
   motion,
   AnimatePresence,
   useScroll,
   useSpring,
   useTransform,
-  useMotionValueEvent
+  useMotionValueEvent,
+  useInView
 } from "framer-motion";
 import {
   ChevronRight, ShieldCheck, Droplets, Sun,
@@ -20,6 +21,7 @@ import {
 } from "lucide-react";
 import FeatureAccordion from "@/components/products/FeatureAccordion";
 import QuickFeaturesBar from "@/components/products/QuickFeaturesBar";
+import CompareWidget from "@/components/CompareWidget";
 
 export interface FAQ {
   question: string;
@@ -32,7 +34,9 @@ export interface Variant {
   mrp?: string;
   discount?: string;
   unit?: string;
-  images?: { url: string; alt: string; name?: string }[];
+  gmc_title?: string;
+  gmc_description?: string;
+  images?: { url: string; alt: string; name?: string; gmc_title?: string; gmc_variant_description?: string }[];
   details: Record<string, string>;
 }
 
@@ -62,6 +66,7 @@ export interface AfterInstallation {
 export interface Product {
   id: string;
   title: string;
+  metatitle?: string;
   shortTitle?: string;
   slug: string;
   category: string;
@@ -139,7 +144,7 @@ const AnimationStyles = () => (
       100% { transform: scale(1); opacity: 1; }
     }
     .animate-ripple {
-      animation: ripple 1.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+      animation: ripple 1.2s cubic-bezier(0, 0, 0.2, 1) forwards;
     }
     .animate-bounce-pop {
       animation: bounce-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
@@ -252,7 +257,7 @@ function collectProductImageUrls(product: Product) {
   return Array.from(new Set(imageUrls.filter(Boolean)));
 }
 
-const VariantCard = ({
+const VariantCard = memo(({
   variant,
   onVariantClick,
   onImageClick,
@@ -268,6 +273,7 @@ const VariantCard = ({
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(scrollRef, { once: false, amount: 0.1 });
 
   const images = variant.images || [];
   const isImageFullscreen = images.some(img => img.url === globalFullscreenImage);
@@ -281,7 +287,7 @@ const VariantCard = ({
 
   // Auto-slide logic
   useEffect(() => {
-    if (images.length <= 1 || isPaused || isImageFullscreen) return;
+    if (images.length <= 1 || isPaused || isImageFullscreen || !isInView) return;
 
     const interval = setInterval(() => {
       if (scrollRef.current) {
@@ -295,7 +301,7 @@ const VariantCard = ({
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [activeIndex, images.length, isPaused, isImageFullscreen]);
+  }, [activeIndex, images.length, isPaused, isImageFullscreen, isInView]);
 
   return (
     <div
@@ -303,6 +309,27 @@ const VariantCard = ({
       onMouseLeave={() => setIsPaused(false)}
       className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-800 rounded-sm shadow-sm hover:shadow-xl transition-all flex flex-col overflow-hidden group h-full"
     >
+      {/* ── SEO: always-rendered, visually hidden. Googlebot reads this on initial load
+           since the sidebar/lightbox are only mounted on click. sr-only = position:absolute
+           1×1px clip → zero layout shift, zero paint cost. ── */}
+      <div className="sr-only" aria-hidden="true">
+        <h2>{variant.gmc_title || variant.name}</h2>
+        {variant.gmc_description && <p>{variant.gmc_description}</p>}
+        {variant.images?.map((img, idx) => (
+          <h3 key={idx}>{img.alt}</h3>
+        ))}
+        {variant.details && (
+          <dl>
+            {Object.entries(variant.details).map(([key, value]) => (
+              <div key={key}>
+                <dt>{key}</dt>
+                <dd>{String(value)}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+      </div>
+
       {/* Image Carousel Area */}
       <div className="relative aspect-square bg-gray-100 dark:bg-slate-800 overflow-hidden">
         {images.length > 0 ? (
@@ -341,6 +368,7 @@ const VariantCard = ({
                   src={img.url}
                   alt={img.alt || `${variant.name} detail ${i + 1}`}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 sm:group-hover:scale-105"
                 />
                 {/* ID Badge logic: Try to extract an ID from variant.name, otherwise use the first word */}
@@ -436,7 +464,7 @@ const VariantCard = ({
         <div className="mb-6 mt-auto">
           <div className="text-2xl font-black text-gray-900 dark:text-white flex items-center gap-1">
             {variant.price}
-            {variant.unit && <span className="text-xs font-normal text-gray-500 lowercase">per {variant.unit}</span>}
+            {variant.unit && <span className="text-xs font-normal text-gray-500 lowercase">{variant.unit.toLowerCase().startsWith('per') ? variant.unit : `per ${variant.unit}`}</span>}
           </div>
           {(variant.mrp || variant.discount) && (
             <div className="text-xs text-gray-400 mt-1 flex items-center gap-2">
@@ -455,7 +483,9 @@ const VariantCard = ({
       </div>
     </div>
   );
-};
+});
+
+VariantCard.displayName = "VariantCard";
 
 export default function ProductClient({ product }: { product: Product }) {
   const [selectedVariant, setSelectedVariant] = useState<Variant | null>(null);
@@ -555,11 +585,19 @@ export default function ProductClient({ product }: { product: Product }) {
     restDelta: 0.001
   });
 
-  // Track the progress to update the active step state less frequently
-  useMotionValueEvent(smoothProgress, "change", (latest) => {
+  const maxProgressRef = useRef(0);
+  const maxProgressMotion = useTransform(smoothProgress, (latest) => {
+    if (latest > maxProgressRef.current) {
+      maxProgressRef.current = latest;
+    }
+    return maxProgressRef.current;
+  });
+
+  // Track the progress to update the active step state only forwards
+  useMotionValueEvent(maxProgressMotion, "change", (latest) => {
     const stepCount = product.installationSteps.length;
     const currentStep = Math.floor(latest * stepCount);
-    if (currentStep !== activeStep) {
+    if (currentStep > activeStep) {
       setActiveStep(currentStep);
     }
   });
@@ -592,13 +630,35 @@ export default function ProductClient({ product }: { product: Product }) {
                 delayChildren: 0.1
               }}
             >
-              <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-4">
-                <Link href="/" className="hover:text-amber-600 transition-colors">Home</Link>
-                <ChevronRight className="w-3 h-3" />
-                <Link href="/products" className="hover:text-amber-600 transition-colors">Products</Link>
-                <ChevronRight className="w-3 h-3" />
-                <span className="text-gray-900 dark:text-gray-300">{product.category.replace('-', ' ')}</span>
-              </div>
+              <nav aria-label="Breadcrumb">
+                <ol className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-4 list-none p-0 m-0">
+                  <li className="flex items-center gap-2">
+                    <Link href="/" className="hover:text-amber-600 transition-colors">Home</Link>
+                    <ChevronRight className="w-3 h-3" />
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Link href="/products" className="hover:text-amber-600 transition-colors">Products</Link>
+                    <ChevronRight className="w-3 h-3" />
+                  </li>
+                  <li className="flex items-center">
+                    <span className="text-gray-900 dark:text-gray-300" aria-current="page">{product.category.replace('-', ' ')}</span>
+                  </li>
+                </ol>
+                <script
+                  type="application/ld+json"
+                  dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                      "@context": "https://schema.org",
+                      "@type": "BreadcrumbList",
+                      "itemListElement": [
+                        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://goalsfloors.com/" },
+                        { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://goalsfloors.com/products" },
+                        { "@type": "ListItem", "position": 3, "name": product.title, "item": `https://goalsfloors.com/products/${product.slug}` }
+                      ]
+                    })
+                  }}
+                />
+              </nav>
 
               <StarRating />
 
@@ -618,6 +678,7 @@ export default function ProductClient({ product }: { product: Product }) {
                   src={product.images[0].url}
                   alt={product.images[0].alt}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover relative z-10 transition-transform duration-700 hover:scale-105"
                   priority
                 />
@@ -656,6 +717,7 @@ export default function ProductClient({ product }: { product: Product }) {
                   src={product.images[0].url}
                   alt={product.images[0].alt}
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover relative z-10 transition-transform duration-700 hover:scale-105"
                   priority
                 />
@@ -754,11 +816,17 @@ export default function ProductClient({ product }: { product: Product }) {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 md:gap-4 lg:h-[500px]">
-              {product.installedImages.slice(0, 6).map((img, i) => (
-                <motion.div
+            <motion.div 
+              className="grid grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 md:gap-4 lg:h-[500px]"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              {product.installedImages.map((img, i) => (
+                <div
                   key={`first-${i}`}
-                  className={`relative group ${img.beforeAfter ? "cursor-pointer" : ""} rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300 ${
+                  className={`${i >= 6 ? "hidden" : "block"} relative group ${img.beforeAfter ? "cursor-pointer" : ""} rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300 ${
                     i === 0 ? "lg:col-start-1 lg:row-start-1 h-[150px] md:h-[200px] lg:h-auto" :
                     i === 1 ? "lg:col-start-1 lg:row-start-2 h-[150px] md:h-[200px] lg:h-auto" :
                     i === 2 ? "lg:col-start-2 lg:row-start-1 lg:row-span-2 h-full" :
@@ -766,10 +834,6 @@ export default function ProductClient({ product }: { product: Product }) {
                     i === 4 ? "lg:col-start-3 lg:row-start-2 h-[150px] md:h-[200px] lg:h-auto" :
                     i === 5 ? "lg:col-start-4 lg:row-start-1 lg:row-span-2 h-full" : ""
                   }`}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
                   onClick={() => {
                     if (img.beforeAfter) {
                       setComparePopupItem(img.beforeAfter);
@@ -804,25 +868,24 @@ export default function ProductClient({ product }: { product: Product }) {
                         <div className="w-10 h-10 rounded-full bg-white/25 flex items-center justify-center text-white mb-3 mx-auto">
                           <Plus className="w-6 h-6" />
                         </div>
-                        <p className="text-[10px] font-bold text-white uppercase tracking-widest leading-tight px-2">
+                        <h3 className="text-[10px] font-bold text-white uppercase tracking-widest leading-tight px-2">
                           {img.beforeAfter ? "Compare Before / After" : img.alt}
-                        </p>
+                        </h3>
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </div>
+            </motion.div>
 
-            {isGalleryExpanded && product.installedImages.length > 6 && (
+            {/* ── SEO: The masonry grid is ALWAYS rendered in the DOM, removing React state truncation. 
+                 Hiding is handled via CSS classes on the wrapper elements ── */}
+            {product.installedImages.length > 6 && (
               <div className="columns-2 md:columns-3 lg:columns-4 gap-2 md:gap-4 space-y-2 md:space-y-4 mt-2 md:mt-4 transition-all duration-700">
-                {product.installedImages.slice(6).map((img, i) => (
-                  <motion.div
+                {product.installedImages.map((img, i) => (
+                  <div
                     key={`rest-${i}`}
-                    className={`break-inside-avoid relative group ${img.beforeAfter ? "cursor-pointer" : ""} rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300`}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: i * 0.01 }}
+                    className={`${i < 6 || (!isGalleryExpanded && i >= 6) ? "hidden" : "block"} break-inside-avoid relative group ${img.beforeAfter ? "cursor-pointer" : ""} rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300`}
                     onClick={() => {
                       if (img.beforeAfter) {
                         setComparePopupItem(img.beforeAfter);
@@ -861,13 +924,13 @@ export default function ProductClient({ product }: { product: Product }) {
                           <div className="w-10 h-10 rounded-full bg-white/25 flex items-center justify-center text-white mb-3 mx-auto">
                             <Plus className="w-6 h-6" />
                           </div>
-                          <p className="text-[10px] font-bold text-white uppercase tracking-widest">
+                          <h3 className="text-[10px] font-bold text-white uppercase tracking-widest">
                             {img.beforeAfter ? "Compare Before / After" : img.alt}
-                          </p>
+                          </h3>
                         </div>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             )}
@@ -903,9 +966,9 @@ export default function ProductClient({ product }: { product: Product }) {
               <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.3em] text-amber-600 mb-6 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 rounded-sm">
                 Material Philosophy
               </span>
-              <h3 className="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white mb-8 leading-tight">
-                Premium materials for <span className="text-amber-600">luxury</span> interiors.
-              </h3>
+              <h2 className="text-4xl md:text-5xl font-semibold text-gray-900 dark:text-white mb-8 leading-tight">
+                Premium {(product.shortTitle || product.title).toLowerCase()} for <span className="text-amber-600">luxury</span> interiors.
+              </h2>
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed font-light italic border-l-4 border-amber-600 pl-6 py-2 text-justify">
                   {product.longDescription}
@@ -972,28 +1035,20 @@ export default function ProductClient({ product }: { product: Product }) {
                 </div>
                 <ul className="space-y-0 border border-gray-200 dark:border-gray-800 rounded-sm overflow-hidden shadow-sm transition-colors duration-300">
                   {product.applications.map((app, i) => (
-                    <motion.li
+                    <li
                       key={i}
                       className="flex items-center gap-4 p-5 bg-white dark:bg-slate-950 border-b border-gray-200 dark:border-gray-800 last:border-0 hover:bg-gray-50 dark:hover:bg-slate-900 transition-colors"
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
                     >
                       <Check className="w-5 h-5 text-amber-500 shrink-0" />
-                      <span className="text-base font-medium text-gray-800 dark:text-gray-300">{app}</span>
-                    </motion.li>
+                      <h3 className="text-base font-medium text-gray-800 dark:text-gray-300">{app}</h3>
+                    </li>
                   ))}
                 </ul>
               </div>
 
               {/* High-Converting B2B Sticky Card */}
-              <motion.div
+              <div
                 className="bg-gradient-to-br from-gray-900 to-slate-900 dark:from-slate-900 dark:to-black rounded-lg p-8 shadow-xl border border-gray-800 relative overflow-hidden group"
-                initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
               >
                 {/* Decorative Glow */}
                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/20 blur-2xl rounded-full pointer-events-none group-hover:bg-amber-500/30 transition-colors duration-500" />
@@ -1010,7 +1065,7 @@ export default function ProductClient({ product }: { product: Product }) {
                     Request Quote <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
             {/* Installation Steps */}
@@ -1032,7 +1087,7 @@ export default function ProductClient({ product }: { product: Product }) {
                 {/* The Smooth Continuous Progress Line (GPU Accelerated) */}
                 <motion.div
                   className="absolute left-[19px] top-5 bottom-8 w-0.5 bg-gradient-to-b from-amber-400 via-orange-500 to-amber-600 z-10 shadow-[0_0_12px_rgba(245,158,11,0.6)] origin-top"
-                  style={{ scaleY: smoothProgress }}
+                  style={{ scaleY: maxProgressMotion }}
                 />
 
                 {/* Steps List */}
@@ -1061,7 +1116,7 @@ export default function ProductClient({ product }: { product: Product }) {
 
                         {/* Content REVEAL animation - REMOVED BLUR FOR LAG-FREE PERFORMANCE */}
                         <div className={`space-y-4 transition-all duration-700 ease-out transform-gpu ${isActive ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-                          <h4 className={`text-lg font-bold uppercase tracking-tight transition-colors duration-500 ${isActive ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-gray-600'}`}>{step.title}</h4>
+                          <h3 className={`text-lg font-bold uppercase tracking-tight transition-colors duration-500 ${isActive ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-gray-600'}`}>{step.title}</h3>
 
                           {step.description && (
                             <p className="text-sm font-semibold text-amber-600 dark:text-amber-500 italic">{step.description}</p>
@@ -1103,7 +1158,7 @@ export default function ProductClient({ product }: { product: Product }) {
                     <div className="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shadow-sm transition-transform hover:rotate-12">
                       <Sparkles className="w-4 h-4" />
                     </div>
-                    <h4 className="text-xl font-bold text-gray-900 dark:text-white uppercase tracking-wider">{product.afterInstallation.title}</h4>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white uppercase tracking-wider">{product.afterInstallation.title}</h3>
                   </div>
 
                   <ul className="space-y-4 mb-6">
@@ -1207,7 +1262,7 @@ export default function ProductClient({ product }: { product: Product }) {
                   className={`px-6 overflow-hidden transition-all duration-300 ease-in-out ${openFaqIndex === i ? 'max-h-96 pb-6 opacity-100' : 'max-h-0 opacity-0'}`}
                 >
                   <div className="border-t border-gray-200 dark:border-gray-800 pt-4 mt-2 transition-colors duration-300">
-                    <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed whitespace-pre-line">
                       {faq.answer}
                     </p>
                   </div>
@@ -1258,9 +1313,9 @@ export default function ProductClient({ product }: { product: Product }) {
                   </div>
                   {/* Label Section */}
                   <div className="flex items-center justify-between px-3 py-4 bg-gray-200 dark:bg-slate-900 border-t border-gray-200 dark:border-gray-800">
-                    <span className="text-[11px] xs:text-sm md:text-base font-bold text-gray-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors duration-300 leading-tight">
+                    <h3 className="text-[11px] xs:text-sm md:text-base font-bold text-gray-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors duration-300 leading-tight">
                       {link.label}
-                    </span>
+                    </h3>
                     <ArrowRight className="w-4 h-4 text-amber-600 group-hover:text-amber-500 -translate-x-1 group-hover:translate-x-0 opacity-0 group-hover:opacity-100 transition-all duration-300 shrink-0 ml-2" />
                   </div>
                 </Link>
@@ -1270,6 +1325,13 @@ export default function ProductClient({ product }: { product: Product }) {
         </div>
       )}
 
+
+      {/* ================= 8.75. AI COMPARE WIDGET ================= */}
+      <div className="bg-white dark:bg-slate-950 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <CompareWidget currentProductSlug={product.slug} />
+        </div>
+      </div>
 
       {/* ================= 9. B2B CONVERSION BAR ================= */}
       <motion.div
@@ -1370,6 +1432,7 @@ export default function ProductClient({ product }: { product: Product }) {
                         src={selectedVariant.images[activeDrawerImageIndex].url}
                         alt={selectedVariant.images[activeDrawerImageIndex].alt || selectedVariant.name}
                         fill
+                        sizes="100vw"
                         className="object-cover"
                       />
                     ) : (
@@ -1425,15 +1488,35 @@ export default function ProductClient({ product }: { product: Product }) {
               {/* Specs Content */}
               <div className="p-6 md:p-10">
                 <div className="border-b border-gray-200 dark:border-gray-800 pb-6 mb-8 relative">
-                  <h1 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white uppercase tracking-tighter mb-2">
+                  <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white uppercase tracking-tighter mb-2">
                     {selectedVariant.name}
-                  </h1>
+                  </h2>
                   <p className="text-sm font-medium text-amber-600 tracking-widest uppercase">Technical Specifications</p>
 
                   <div className="absolute top-0 right-0 text-gray-100 dark:text-slate-800 font-black text-6xl -z-10 tracking-tighter opacity-50 select-none overflow-hidden">
                     {product.category.split('-')[0].toUpperCase()}
                   </div>
                 </div>
+
+                {/* GMC Title & Description Block */}
+                {(selectedVariant.gmc_title || selectedVariant.gmc_description) && (
+                  <div className="mb-8 p-5 bg-slate-950 dark:bg-black border border-gray-800 rounded-sm relative overflow-hidden">
+                    {/* Subtle amber accent line */}
+                    <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-amber-600" />
+                    <div className="pl-4">
+                      {(selectedVariant.gmc_title || selectedVariant.name) && (
+                        <h2 className="text-base font-bold text-white tracking-tight leading-snug mb-2">
+                          {selectedVariant.gmc_title || selectedVariant.name}
+                        </h2>
+                      )}
+                      {selectedVariant.gmc_description && (
+                        <p className="text-sm text-gray-400 leading-relaxed">
+                          {selectedVariant.gmc_description}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
 
                 <div className="grid grid-cols-[1fr_2fr] gap-y-5 mb-10">
                   {selectedVariant.images?.[activeDrawerImageIndex]?.name && (

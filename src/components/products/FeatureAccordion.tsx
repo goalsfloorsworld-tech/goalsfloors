@@ -139,33 +139,31 @@ export default function FeatureAccordion({ features, productTitle, heading, subh
                     <Icon className="w-7 h-7" />
                   </motion.div>
 
-                  {/* Title & Description Container */}
+                  {/* Title & Description Container - ALWAYS IN DOM FOR SEO */}
                   <div className="flex-1 flex flex-col justify-center overflow-hidden">
-                    {!isActive ? (
-                      /* Shrunk State: Vertical Text */
-                      <motion.h3 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="text-lg font-semibold text-gray-400 dark:text-gray-500 tracking-widest whitespace-nowrap origin-left rotate-90 absolute left-1/2 -translate-x-1/2 bottom-12 select-none"
-                      >
+                    {/* Shrunk State: Vertical Text */}
+                    <motion.div 
+                      initial={false}
+                      animate={{ opacity: isActive ? 0 : 1 }}
+                      className={`text-lg font-semibold text-gray-400 dark:text-gray-500 tracking-widest whitespace-nowrap origin-left rotate-90 absolute left-1/2 -translate-x-1/2 bottom-12 select-none ${isActive ? 'pointer-events-none z-0' : 'z-10'}`}
+                    >
+                      {feature.title}
+                    </motion.div>
+
+                    {/* Expanded State: Horizontal Content */}
+                    <motion.div 
+                      initial={false}
+                      animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : -20 }}
+                      transition={{ delay: isActive ? 0.2 : 0 }}
+                      className={`max-w-md pr-12 ${isActive ? 'relative z-10' : 'absolute pointer-events-none z-0'}`}
+                    >
+                      <h3 className="text-2xl lg:text-3xl font-semibold text-white tracking-tight mb-4 leading-tight">
                         {feature.title}
-                      </motion.h3>
-                    ) : (
-                      /* Expanded State: Horizontal Content */
-                      <motion.div 
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="max-w-md pr-12"
-                      >
-                        <h3 className="text-2xl lg:text-3xl font-semibold text-white tracking-tight mb-4 leading-tight">
-                          {feature.title}
-                        </h3>
-                        <p className="text-gray-400 text-lg leading-relaxed font-medium">
-                          {feature.description}
-                        </p>
-                      </motion.div>
-                    )}
+                      </h3>
+                      <p className="text-gray-400 text-lg leading-relaxed font-medium">
+                        {feature.description}
+                      </p>
+                    </motion.div>
                   </div>
 
                   {/* Bottom Number */}
@@ -181,7 +179,7 @@ export default function FeatureAccordion({ features, productTitle, heading, subh
         </div>
 
         {/* Mobile Layout (Tap-to-Expand Vertical Accordion) */}
-        <div className="flex md:hidden flex-col gap-4">
+        <div className="flex md:hidden flex-col gap-4" aria-hidden="true">
           {features.map((feature, idx) => {
             const Icon = getFeatureIcon(feature.title);
             const isActive = activeIndex === idx;
@@ -232,27 +230,22 @@ export default function FeatureAccordion({ features, productTitle, heading, subh
                     </motion.div>
                   </div>
 
-                  {/* Description (Reveal on active) */}
-                  <AnimatePresence>
-                    {isActive && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="overflow-hidden"
-                      >
-                        <div className="pt-4 pl-16 pr-4">
-                          <p className="text-gray-400 text-sm leading-relaxed font-medium pb-2">
-                            {feature.description}
-                          </p>
-                          <div className="text-xs font-bold text-amber-500/50 mt-2 tracking-widest uppercase">
-                            Feature {String(idx + 1).padStart(2, '0')}
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {/* Description - ALWAYS IN DOM FOR SEO */}
+                  <motion.div
+                    initial={false}
+                    animate={{ height: isActive ? "auto" : 0, opacity: isActive ? 1 : 0 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pt-4 pl-16 pr-4">
+                      <div className="text-gray-400 text-sm leading-relaxed font-medium pb-2">
+                        {feature.description}
+                      </div>
+                      <div className="text-xs font-bold text-amber-500/50 mt-2 tracking-widest uppercase">
+                        Feature {String(idx + 1).padStart(2, '0')}
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
               </motion.div>
             );

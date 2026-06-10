@@ -1,20 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+
 
 export default function AdvantageImage() {
   return (
     <div className="relative h-full min-h-[600px] hidden lg:flex items-center justify-center">
       {/* Ultra-Bold Background Glow Effect */}
-      <motion.div
-        animate={{
-          scale: [1, 1.25, 1],
-          opacity: [0.4, 0.8, 0.4]
-        }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-0 bg-amber-500/35 blur-[130px] rounded-full z-0"
-      />
+      <div className="absolute inset-0 bg-amber-500/35 blur-[130px] rounded-full z-0" />
 
       <div className="relative h-full w-full rounded-sm overflow-hidden shadow-[0_0_100px_rgba(251,191,36,0.3)] z-10 group/img-desktop overflow-hidden transition-all duration-700 hover:shadow-[0_0_120px_rgba(251,191,36,0.5)]">
         <Image

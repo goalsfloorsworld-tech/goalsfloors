@@ -8,8 +8,7 @@ import GetAQuoteMonolith from "@/components/home/GetAQuoteMonolith";
 import { Truck, Trophy, CheckCircle2, ShieldCheck, Users } from "lucide-react";
 import HeroSection from "@/components/home/HeroSection";
 import AdvantageImage from "@/components/home/AdvantageImage";
-
-
+import CompareWidget from "@/components/CompareWidget";
 
 export default function Home() {
   return (
@@ -53,9 +52,13 @@ export default function Home() {
           </div>
 
           <CategoryFlipCards />
+
+          {/* Compare AI Lead Magnet */}
+          <div className="mt-16 border-t border-gray-200 dark:border-gray-800 py-10">
+            <CompareWidget />
+          </div>
         </div>
       </section>
-
 
       {/* ================= WHY CHOOSE US ================= */}
       <section className="pt-8 pb-14 bg-white dark:bg-slate-900 transition-colors duration-300">

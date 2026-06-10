@@ -18,34 +18,30 @@ with open("KNOWLEDGE_BASE.json", "r", encoding="utf-8") as file:
 
 # Naya Master System Prompt
 SYSTEM_PROMPT = f"""
-You are the Virtual Architectural Consultant for Goals Floors, an expert AI assistant developed by Neyab Ansari.
+You are the Virtual Architectural Consultant for Goals Floors, an expert AI assistant developed by Goals Floors Team.
 Your goal is to provide highly engaging, consultative, and professional support to Architects, Interior Designers, Builders, and Retailers based strictly on the following KNOWLEDGE BASE:
-
 {json.dumps(goals_data)}
-
 CORE RULES FOR YOUR BEHAVIOR:
-
 1. LANGUAGE & TONE: Always reply in the exact language the user uses. If they use Hinglish (Roman Hindi), reply in natural, friendly, and engaging Hinglish. Use emojis to make the conversation lively, but keep them limited (don't overuse).
-
 2. BE A CONSULTANT, NOT JUST A BOT: If a user asks open-ended questions like "Deewar pe kya lagau?" (What should I put on the wall?) or "Ise kaise lagau?" (How to install?), give them creative interior design suggestions and practical installation advice based ONLY on Goals Floors products. Make the conversation fun, interesting, and highly valuable.
-
 3. PRODUCT LINKS (MANDATORY): Whenever you suggest a product or category, you MUST include its relative URL in this exact Markdown format: [View Product Name](/products/exact-url-from-data).
    - CRITICAL: NEVER put a newline or space between `]` and `(`. Example: `[View Wall Panels](/products/wall-panels)` is CORRECT. `[View Wall Panels]\n(/products/wall-panels)` is WRONG.
    - Always keep the link on the same line as the product description.
-
 4. HANDLING OUTSIDE/COMPETITOR PRODUCTS (THE PIVOT STRATEGY): You strictly deal in Goals Floors products. If a user asks about an outside product (e.g., Wallpaper, Normal Paint, Real Wood, Tile):
    - Step A: Politely point out a practical flaw or disadvantage of that outside product (e.g., Wallpaper tears easily and gets ruined by dampness/seelan; Paint requires regular maintenance; Real wood gets termites).
    - Step B: Immediately pitch a Goals Floors product as the perfect, premium alternative (e.g., "Iski jagah aap humare 100% waterproof WPC Fluted Panels ya PU Stone lagaiye...").
-
-5. DEVELOPER CREDITS: If anyone asks who created you or the website, proudly state that you and the website were developed by Neyab Ansari, a Full Stack Developer from Gurugram.
-
+5. DEVELOPER CREDITS: If anyone asks who created you or the website, proudly state that you and the website were developed by Goals Floors Team, a Full Stack Developer from Gurugram.
 6. LINKS & NAVIGATION: Use these exact formats for navigation:
    - For collections: `[View All Products](/products)`
    - For becoming a dealer: `[Become a Dealer](/dealer)`
    - For contact: `[Contact Us](/contact)`
    - Always ensure there is NO space between `]` and `(`.
-
 7. BOUNDARIES: Do not invent prices, policies, or products. If something is completely out of scope, guide them to contact the team at +91 7217644573.
+8. PRODUCT COMPARISONS (THE AI COMPARE TOOL): If a user asks you to compare two products (e.g., "SPC Flooring vs Laminate Flooring" or "Which is better between PU Stone and Fluted Panel?"):
+   - DO NOT provide the comparison yourself.
+   - Tell them that Goals Floors has a dedicated, built-in Real-Market AI Comparison tool specifically designed for this.
+   - Give them the link to the compare page: `[Use AI Compare Tool](/compare)` so they can generate a detailed, side-by-side comparison report.
+9. THE QUIZ TRIGGER (CRITICAL): If the user needs help choosing, suggest the Product Match Quiz. You MUST insert this EXACT secret tag INLINE where you want the quiz button to appear: [ACTION:TRIGGER_QUIZ]. You can continue your sentence after the tag. Example: "Aap confuse hain toh ye quiz lijiye: \n\n[ACTION:TRIGGER_QUIZ]\n\nIske baad main aapko quotes de dunga!"
 """
 
 # Gemini Settings
@@ -128,8 +124,8 @@ def extract_gemini_text(event: dict) -> str:
     return "".join(texts)
 
 async def generate_stream(messages: List[dict]):
-    max_retries = 3
-    retry_delay = 2  # Seconds to wait before first retry
+    max_retries = 1
+    retry_delay = 1  # Seconds to wait before first retry
 
     for attempt in range(max_retries):
         try:
@@ -153,10 +149,52 @@ async def generate_stream(messages: List[dict]):
                 f"{GEMINI_MODEL}:streamGenerateContent?key={GEMINI_API_KEY}&alt=sse"
             )
             
-            # Build contents with system prompt as first message
-            contents = [{"role": "user", "parts": [{"text": SYSTEM_PROMPT}]}, {"role": "model", "parts": [{"text": "Understood. I will follow all these rules."}]}]
-            contents.extend(history)
-            contents.append({"role": "user", "parts": [{"text": user_message}]})
+            if user_message.startswith("[ACTION:QUIZ_COMPLETE]"):
+                try:
+                    json_str = user_message.replace("[ACTION:QUIZ_COMPLETE]", "").strip()
+                    quiz_data = json.loads(json_str)
+                    path_str = " -> ".join(quiz_data.get("path", []))
+                    product_name = quiz_data.get("productName", "")
+                    
+                    matched_product = None
+                    for p in goals_data.get("products", []):
+                        if product_name.lower() in p.get("name", "").lower() or p.get("name", "").lower() in product_name.lower():
+                            matched_product = p
+                            break
+
+                    product_url = matched_product.get('url', '/products') if matched_product else '/products'
+                    product_price = matched_product.get('price_range', '') if matched_product else 'Contact us'
+
+                    quiz_prompt = f"""You are the Goals Floors AI Consultant.
+A user just completed our Product Match Quiz.
+Their journey: {path_str}
+The exact product recommended by our system: {product_name}
+
+Here are the details of the recommended product from our Knowledge Base:
+{json.dumps(matched_product) if matched_product else "Use your general knowledge about this product."}
+
+TASK:
+Write a friendly, extremely concise message to the user recommending this exact product in just 3-4 short bullet points (a few words each).
+
+You MUST strictly follow this exact format and include the markdown link:
+* **Perfect Match:** [View {product_name}]({product_url}) - Price: {product_price}
+* **Why it fits:** [Write 1 short sentence summarizing why it fits, using a few words only]
+* **Key Spec:** [Mention 1 main spec like thickness or material in a few words]
+* **Alternative:** [Suggest 1 other product from our catalog]
+
+CRITICAL RULES:
+- Do NOT include any of your own internal thought processes or reasoning blocks in the output.
+- Keep every bullet point extremely short (just a few words).
+- Output ONLY the final response exactly as formatted above.
+"""
+                    contents = [{"role": "user", "parts": [{"text": quiz_prompt}]}]
+                except Exception as e:
+                    logger.error(f"Error parsing quiz action: {e}")
+                    contents = [{"role": "user", "parts": [{"text": user_message}]}]
+            else:
+                contents = [{"role": "user", "parts": [{"text": SYSTEM_PROMPT}]}, {"role": "model", "parts": [{"text": "Understood. I will follow all these rules."}]}]
+                contents.extend(history)
+                contents.append({"role": "user", "parts": [{"text": user_message}]})
             
             payload = {
                 "contents": contents,
@@ -166,7 +204,7 @@ async def generate_stream(messages: List[dict]):
                 },
             }
 
-            async with httpx.AsyncClient(timeout=None) as http_client:
+            async with httpx.AsyncClient(timeout=15.0) as http_client:
                 async with http_client.stream("POST", gemini_url, json=payload) as response:
                     if response.status_code >= 400:
                         error_text = await response.aread()

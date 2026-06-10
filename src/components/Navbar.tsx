@@ -82,7 +82,7 @@ export default function Navbar() {
     setMounted(true);
   }, []);
 
-  const toggleTheme = (e?: React.MouseEvent | Event) => {
+  const toggleTheme = () => {
     // Fallback for browsers that don't support View Transition API
     if (!document.startViewTransition) {
       setTheme(theme === 'dark' ? 'light' : 'dark');
@@ -92,16 +92,17 @@ export default function Navbar() {
     let x: number;
     let y: number;
 
-    // Check if profile picture exists (signed in) to originate animation from it
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
     const profilePic = document.getElementById('user-button-wrap') || document.querySelector('.cl-userButtonTrigger');
-    if (profilePic) {
+
+    if (!isSignedIn && themeToggleBtn) {
+      const rect = themeToggleBtn.getBoundingClientRect();
+      x = rect.left + rect.width / 2;
+      y = rect.top + rect.height / 2;
+    } else if (isSignedIn && profilePic) {
       const rect = profilePic.getBoundingClientRect();
       x = rect.left + rect.width / 2;
       y = rect.top + rect.height / 2;
-    } else if (e && 'clientX' in e && (e as React.MouseEvent).clientX > 0) {
-      // Use click coordinates if clicked natively on the outside button
-      x = (e as React.MouseEvent).clientX;
-      y = (e as React.MouseEvent).clientY;
     } else {
       // Fallback
       x = window.innerWidth - 60;
@@ -238,6 +239,7 @@ export default function Navbar() {
                 </div>
               </div>
 
+              <Link href="/compare" className="text-txt-main hover:text-amber-700 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">AI Compare</Link>
               <Link href="/blogs" className="text-txt-main hover:text-amber-700 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">Blogs</Link>
               <Link href="/about" className="text-txt-main hover:text-amber-700 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">About</Link>
               <Link href="/contact" className="text-txt-main hover:text-amber-700 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">Contact</Link>
@@ -250,7 +252,8 @@ export default function Navbar() {
                 <>
                   {!isSignedIn && (
                     <button
-                      onClick={toggleTheme as any}
+                      id="theme-toggle-btn"
+                      onClick={() => toggleTheme()}
                       className="p-2 rounded-full bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-slate-700 transition-colors"
                       aria-label="Toggle Dark Mode"
                     >
@@ -380,7 +383,7 @@ export default function Navbar() {
             </div>
           </div>
 
-
+          <Link href="/compare" onClick={toggleMenu} className="text-lg font-medium text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">AI Compare</Link>
           <Link href="/blogs" onClick={toggleMenu} className="text-lg font-medium text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">Blogs</Link>
           <Link href="/about" onClick={toggleMenu} className="text-lg font-medium text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">About Us</Link>
           <Link href="/dealer" onClick={toggleMenu} className="text-lg font-normal text-amber-600 border-b border-gray-100 dark:border-gray-800 pb-3">Become a Dealer</Link>

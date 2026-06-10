@@ -6,7 +6,7 @@ export async function POST(req: Request) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     const body = await req.json();
-    const { name, email, phone, company, address, interest, message } = body;
+    const { name, email, phone, company, address, interest, message, source, discountStatus } = body;
 
     // Check if API key exists
     if (!process.env.RESEND_API_KEY) {
@@ -26,6 +26,8 @@ export async function POST(req: Request) {
           address={address}
           interest={interest}
           message={message}
+          source={source}
+          discountStatus={discountStatus}
         />
       ),
     });
@@ -38,25 +40,57 @@ export async function POST(req: Request) {
     // Google Sheets Integration
     // Send data to Google Apps Script Web App
     if (process.env.GOOGLE_SCRIPT_URL) {
-      try {
-        await fetch(process.env.GOOGLE_SCRIPT_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            phone,
-            company,
-            address,
-            interest,
-            message
-          }),
-        });
-      } catch (sheetError) {
-        console.error('Google Sheets Error:', sheetError);
-        // We log the error but don't fail the response since email was sent successfully
+      const sheetPayload = JSON.stringify({
+        name,
+        email,
+        phone,
+        company,
+        address,
+        interest,
+        message,
+        source,
+        discountStatus
+      });
+
+      const maxRetries = 3;
+      let attempt = 0;
+      let success = false;
+
+      while (attempt < maxRetries && !success) {
+        try {
+          const controller = new AbortController();
+          // 8 second timeout per request
+          const timeoutId = setTimeout(() => controller.abort(), 8000); 
+
+          const res = await fetch(process.env.GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: sheetPayload,
+            signal: controller.signal
+          });
+
+          clearTimeout(timeoutId);
+
+          if (res.ok) {
+            success = true;
+          } else {
+            throw new Error(`Google Script returned ${res.status}`);
+          }
+        } catch (sheetError) {
+          attempt++;
+          console.error(`Google Sheets Error (Attempt ${attempt}/${maxRetries}):`, sheetError);
+          
+          if (attempt < maxRetries) {
+            // Wait 1.5 seconds before retrying
+            await new Promise(resolve => setTimeout(resolve, 1500));
+          }
+        }
+      }
+
+      if (!success) {
+        console.error('CRITICAL: Failed to sync lead with Google Sheets after all retries.');
       }
     }
 

@@ -3,8 +3,35 @@
 
 export const maxDuration = 60; // 60 second timeout for streaming (Vercel)
 
+// Lightweight IP Rate Limiting (In-Memory)
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
+const MAX_REQUESTS = 10; // Max 10 requests per minute per IP
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const limitData = rateLimitMap.get(ip);
+
+  if (!limitData || now > limitData.resetTime) {
+    rateLimitMap.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW });
+    return false;
+  }
+
+  limitData.count++;
+  return limitData.count > MAX_REQUESTS;
+}
+
 export async function POST(req: Request) {
   try {
+    const ip = req.headers.get("x-forwarded-for") || req.headers.get("x-real-ip") || "unknown";
+    if (isRateLimited(ip)) {
+      console.warn(`[GoalsAI] Rate limit exceeded for IP: ${ip}`);
+      return new Response(
+        `data: ${JSON.stringify({ error: "⏳ Too many requests. Please wait a minute." })}\n\ndata: [DONE]\n\n`,
+        { status: 429, headers: { "Content-Type": "text/event-stream" } }
+      );
+    }
+
     const body = await req.json();
 
     // .env.local se Hugging Face Space URL uthaao

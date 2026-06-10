@@ -22,6 +22,64 @@ body.fullscreen-viewer-open .goals-ai-widget-container {
   display: none !important;
 }
 
+/* Mobile Image Lightbox */
+.mobile-lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.mobile-lightbox-overlay.active {
+  display: flex;
+}
+.mobile-lightbox-overlay img {
+  max-width: 100%;
+  max-height: 90vh;
+  border-radius: 16px;
+  object-fit: contain;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  font-size: 32px;
+  font-weight: 900;
+  cursor: pointer;
+  line-height: 1;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+}
+
+/* Compare Page Wave Animations */
+.wave-left {
+  animation: crashLeft 6s infinite cubic-bezier(0.25, 1, 0.5, 1);
+}
+.wave-right {
+  animation: crashRight 6s infinite cubic-bezier(0.25, 1, 0.5, 1);
+}
+@keyframes crashLeft {
+  0%, 30% { transform: translateX(-100%); opacity: 0; }
+  45% { transform: translateX(0%); opacity: 0.6; }
+  49% { transform: translateX(0%); opacity: 1; }
+  65%, 100% { transform: translateX(0%); opacity: 0; }
+}
+@keyframes crashRight {
+  0%, 30% { transform: translateX(100%); opacity: 0; }
+  45% { transform: translateX(0%); opacity: 0.6; }
+  49% { transform: translateX(0%); opacity: 1; }
+  65%, 100% { transform: translateX(0%); opacity: 0; }
+}
+
 @theme {
   --color-txt-main: var(--txt-main);
   --color-txt-muted: var(--txt-muted);
@@ -79,6 +137,46 @@ body.fullscreen-viewer-open .goals-ai-widget-container {
     -ms-overflow-style: none; /* IE and High Contrast */
     scrollbar-width: none; /* Firefox */
   }
+
+  /* ── Compare Page — Clash Animation ─────────────────── */
+  @keyframes slideInFromLeft {
+    0%   { opacity: 0; transform: translateX(-80px); }
+    20%  { opacity: 1; transform: translateX(0); }
+    75%  { opacity: 1; transform: translateX(0); }
+    100% { opacity: 0; transform: translateX(-30px); }
+  }
+  @keyframes slideInFromRight {
+    0%   { opacity: 0; transform: translateX(80px); }
+    20%  { opacity: 1; transform: translateX(0); }
+    75%  { opacity: 1; transform: translateX(0); }
+    100% { opacity: 0; transform: translateX(30px); }
+  }
+  @keyframes vsBadgePop {
+    0%   { opacity: 0; transform: scale(0.5); }
+    25%  { opacity: 1; transform: scale(1.15); }
+    40%  { transform: scale(1); }
+    75%  { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.8); }
+  }
+  @keyframes floatUpDown {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-8px); }
+  }
+  @keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px rgba(217, 119, 6, 0.3); }
+    50%       { box-shadow: 0 0 40px rgba(217, 119, 6, 0.7); }
+  }
+  .animate-slide-left  { animation: slideInFromLeft 3.5s ease-in-out infinite; }
+  .animate-slide-right { animation: slideInFromRight 3.5s ease-in-out infinite; }
+  .animate-vs-pop      { animation: vsBadgePop 3.5s ease-in-out infinite; }
+  .animate-float       { animation: floatUpDown 3s ease-in-out infinite; }
+  .animate-gradient    { animation: gradientShift 4s ease infinite; background-size: 200% 200%; }
+  .animate-glow        { animation: pulseGlow 2s ease-in-out infinite; }
 
   /* Global 3-Second Shine Effect */
   @keyframes shine-anim {

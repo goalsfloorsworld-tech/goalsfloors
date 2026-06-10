@@ -67,7 +67,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/dealer',
     '/products',
     '/privacy',
-    '/terms'
+    '/terms',
+    '/compare',
   ].map((route) => {
     let images: string[] | undefined = undefined;
     
@@ -83,7 +84,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}${route}`,
       lastModified: new Date().toISOString(),
       changeFrequency: 'weekly' as const,
-      priority: route === '' ? 1.0 : 0.8,
+      priority: route === '' ? 1.0 : route === '/compare' ? 1.0 : 0.8,
       images: images,
     };
   });
@@ -214,6 +215,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error reading multiverse files for sitemap:', error);
   }
 
-  return [...staticRoutes, ...productRoutes, ...blogRoutes, ...multiverseRoutes];
+  // 5. Dynamic Comparison Pages from Supabase
+  let compareRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+    const supabaseCompare = createClient(supabaseUrl, supabaseKey);
+
+    const { data: comparisons } = await supabaseCompare
+      .from('product_comparisons')
+      .select('slug, created_at');
+
+    if (comparisons) {
+      compareRoutes = comparisons.map((row: { slug: string; created_at: string }) => ({
+        url: `${baseUrl}/compare/${row.slug}`,
+        lastModified: new Date(row.created_at).toISOString(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      }));
+    }
+  } catch (error) {
+    console.error('Error fetching compare slugs for sitemap:', error);
+  }
+
+  return [...staticRoutes, ...productRoutes, ...blogRoutes, ...multiverseRoutes, ...compareRoutes];
 }
 

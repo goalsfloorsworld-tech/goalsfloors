@@ -168,8 +168,8 @@ export default function DealerWizard() {
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
         
         {/* Left Side: Elegant Branding & Progress */}
-        <div className="w-full lg:w-1/3 flex flex-col justify-between">
-            <div>
+        <div className="w-full lg:w-1/3 flex flex-col justify-start">
+            <div className="sticky top-24">
                 <span className="text-amber-500 font-bold uppercase tracking-widest text-xs mb-4 block">Dealer Portal</span>
                 <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
                     Join the <br />
@@ -179,40 +179,45 @@ export default function DealerWizard() {
                     Partner with Goals Floors to access exclusive margins, priority dispatch, and premium architectural surfaces.
                 </p>
             </div>
-
-            {/* Architectural Progress Indicator */}
-            <div className="hidden lg:flex flex-col gap-8 relative">
-                <div className="absolute left-[3px] top-2 bottom-2 w-[2px] bg-slate-100 dark:bg-slate-800" />
-                {[
-                    { num: 1, title: "Basic Information", desc: "Your contact details" },
-                    { num: 2, title: "Business Profile", desc: "Expertise & revenue" },
-                    { num: 3, title: "Verification", desc: "Upload visiting card" }
-                ].map((item) => (
-                    <div key={item.num} className={`relative pl-8 transition-opacity duration-500 ${step === item.num ? 'opacity-100' : step > item.num ? 'opacity-50' : 'opacity-30'}`}>
-                        <div className={`absolute left-0 top-1.5 w-2 h-2 rounded-full transition-all duration-500 ${step >= item.num ? 'bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]' : 'bg-slate-300 dark:bg-slate-700'}`} />
-                        <h4 className={`text-sm font-bold uppercase tracking-widest ${step === item.num ? 'text-amber-500' : 'text-slate-900 dark:text-white'}`}>0{item.num}. {item.title}</h4>
-                        <p className="text-xs text-slate-500 mt-1">{item.desc}</p>
-                    </div>
-                ))}
-            </div>
         </div>
 
         {/* Right Side: The Form */}
         <div className="w-full lg:w-2/3">
-            {/* Mobile Progress */}
-            <div className="flex lg:hidden items-center justify-between mb-12 text-xs font-bold uppercase tracking-widest">
-                <span className={step === 1 ? 'text-amber-500' : 'text-slate-400'}>01. Info</span>
-                <div className="flex-1 mx-4 h-[2px] bg-slate-100 dark:bg-slate-800 relative">
-                    <div className="absolute top-0 left-0 h-full bg-amber-500 transition-all" style={{ width: step === 1 ? '33%' : step === 2 ? '66%' : '100%' }} />
+            {/* Unified Horizontal Progress */}
+            <div className="flex items-center justify-between mb-10 md:mb-12 relative z-10 w-full max-w-md mx-auto">
+              {[
+                { num: 1, title: "Basic Info" },
+                { num: 2, title: "Business" },
+                { num: 3, title: "Verification" }
+              ].map((item) => (
+                <div key={item.num} className="flex flex-col items-center relative z-10 w-1/3">
+                  <div 
+                    className={`w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center font-bold text-xs md:text-sm mb-3 transition-all duration-500 shadow-md ${
+                      step >= item.num 
+                        ? 'bg-amber-500 text-white shadow-amber-500/40 border-2 border-amber-500' 
+                        : 'bg-white dark:bg-slate-900 text-slate-400 border-2 border-slate-200 dark:border-slate-800'
+                    }`}
+                  >
+                    {step > item.num ? <CheckCircle2 className="w-4 h-4 md:w-5 md:h-5" /> : `0${item.num}`}
+                  </div>
+                  <span className={`text-[9px] md:text-[11px] font-bold uppercase tracking-widest transition-colors duration-500 text-center ${
+                    step >= item.num ? 'text-amber-500' : 'text-slate-400 dark:text-slate-500'
+                  }`}>
+                    {item.title}
+                  </span>
                 </div>
-                <span className={step === 2 ? 'text-amber-500' : 'text-slate-400'}>02. Biz</span>
-                <div className="flex-1 mx-4 h-[2px] bg-slate-100 dark:bg-slate-800 relative">
-                    <div className="absolute top-0 left-0 h-full bg-amber-500 transition-all" style={{ width: step === 3 ? '100%' : '0%' }} />
-                </div>
-                <span className={step === 3 ? 'text-amber-500' : 'text-slate-400'}>03. Doc</span>
+              ))}
+              
+              {/* Connecting Lines */}
+              <div className="absolute top-4 md:top-5 left-[16.66%] right-[16.66%] h-[2px] bg-slate-200 dark:bg-slate-800 -z-10">
+                <div 
+                  className="absolute top-0 left-0 h-full bg-amber-500 transition-all duration-500" 
+                  style={{ width: step === 1 ? '0%' : step === 2 ? '50%' : '100%' }} 
+                />
+              </div>
             </div>
 
-            <div className="bg-slate-50 dark:bg-[#0B101A] p-5 md:p-14 rounded-3xl border border-slate-100 dark:border-slate-800/50 shadow-2xl relative overflow-hidden">
+            <div className="bg-slate-50 dark:bg-[#0B101A] p-6 md:p-14 rounded-[2rem] border border-slate-200 dark:border-slate-800/50 shadow-2xl relative overflow-hidden">
                 {/* Subtle Grid Background */}
                 <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
 

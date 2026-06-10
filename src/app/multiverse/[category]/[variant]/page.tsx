@@ -325,7 +325,7 @@ export default async function MultiverseVariantPage({ params }: { params: Promis
                             </svg>
                           </span>
                         </summary>
-                        <div className="px-6 pb-6 text-gray-600 dark:text-gray-300 leading-relaxed text-justify">
+                        <div className="px-6 pb-6 text-gray-600 dark:text-gray-300 leading-relaxed text-justify whitespace-pre-line">
                           {faq.answer}
                         </div>
                       </details>

@@ -56,20 +56,6 @@ export default function WhatsAppFloat() {
             <WhatsAppIcon className="w-8 h-8" />
           </motion.a>
 
-          {/* === FIXED PULSE === */}
-          <motion.div
-            animate={{
-              scale: [1, 2.2],
-              opacity: [0.6, 0]
-            }}
-            transition={{
-              duration: 2.2,
-              ease: "easeOut",
-              repeat: Infinity,
-              repeatDelay: 0.5
-            }}
-            className="absolute inset-0 bg-[#25D366] rounded-full z-10"
-          />
         </div>
       </div>
     </div>
