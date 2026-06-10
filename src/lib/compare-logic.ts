@@ -105,22 +105,32 @@ Schema:
   ]
 }`;
 
-  // 2. Call Gemini API
-  const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
-  
-  const aiResponse = await fetch(geminiUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: { response_mime_type: "application/json" }
-    })
-  });
+  // 2. Call Gemini API with Fallback Logic
+  const models = ["gemini-2.5-flash", "gemini-flash-latest"];
+  let aiResponse;
 
-  if (!aiResponse.ok) {
-    const errorText = await aiResponse.text();
-    console.error("Gemini API Error:", errorText);
-    throw new Error(`Failed to generate comparison from AI: ${aiResponse.status}`);
+  for (const model of models) {
+    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
+    
+    aiResponse = await fetch(geminiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: { response_mime_type: "application/json" }
+      })
+    });
+
+    if (aiResponse.ok) {
+      break; // Success! Break out of the loop
+    } else {
+      const errorText = await aiResponse.text();
+      console.warn(`[Gemini Warning] Model ${model} failed:`, errorText);
+    }
+  }
+
+  if (!aiResponse || !aiResponse.ok) {
+    throw new Error(`Failed to generate comparison from AI after trying models: ${models.join(", ")}`);
   }
 
   const aiData = await aiResponse.json();
