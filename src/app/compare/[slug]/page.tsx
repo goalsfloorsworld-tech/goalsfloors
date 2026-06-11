@@ -8,70 +8,70 @@ import { supabaseAdmin } from "@/lib/supabase";
 const PRODUCT_IMAGE_MAP: Record<string, string[]> = {
   // Premium Flooring
   "spc-flooring": [
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Luxury_Master_Bathroom_in_Delhi_Villa_with_Waterproof_Cobra_Gold_SPC_Flooring.jpg",
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544840/walnut_color_laminate_flooring_installed_images.png"
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774612492/screenshot-2024-11-05-074302-YKb68R7lNDueGKEV.jpg",
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774612503/herringbone-spc-floooring-AoPqoyR9nDu8Zjll.jpg"
   ],
   "laminate-flooring": [
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544840/walnut_color_laminate_flooring_installed_images.png",
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Pet-Friendly_Hybrid_Flooring_in_Modern_Noida_Villa_Living_Room.png"
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544853/oak_color_laminate_flooring_installed_images.png",
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477089/Waterproof_Laminate_FLooring_In_Gurgaon.jpg"
   ],
   "herringbone-flooring": [
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Modern_Master_Bedroom_with_Dark_Walnut_Herringbone_Floor_Delhi_NCR.jpg",
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Luxury_Master_Bathroom_in_Delhi_Villa_with_Waterproof_Cobra_Gold_SPC_Flooring.jpg"
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775411703/Luxury_Penthouse_Living_Room_with_Light_Oak_Herringbone_Flooring_Gurugram.jpg",
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478803/light_walnut_laminate_flooring_installed_image.png"
   ],
   "hybrid-flooring": [
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Pet-Friendly_Hybrid_Flooring_in_Modern_Noida_Villa_Living_Room.png",
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775544840/walnut_color_laminate_flooring_installed_images.png"
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477090/Ocean_Waterproof_Laminate_FLooring.jpg",
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477239/waterproof_wooden_flooring_supplier_in_gurgaon.jpg"
   ],
 
   // Wall Panels & Cladding
   "wall-panels": [
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477068/Imageclad_Wpc_Fluted_Panel.png",
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775467165/Luxury_Villa_in_Gurgaon_with_White_Upfit_Panel_Exterior_Soffits.jpg"
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png",
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477064/Pencilclad_Wpc_Louvers.png"
   ],
   "cobra-pu-stone": [
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775375435/Luxury_Living_Room_with_Grey_PU_Stone_Feature_Wall_Gurugram.jpg",
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772476503/Premium_Moulding_IN_Gurgaon.jpg"
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477246/Pu_Stone_Colors.jpg",
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477248/White_Color_Pu_Stone.jpg"
   ],
   "exterior-louvers": [
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774972022/Exterior_lovaring_in_gurgaon.jpg",
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775490065/Luxury_Swimming_Pool_Area_in_Gurgaon_Farmhouse_with_Teak-Finish_WPC_Decking.jpg"
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775818177/exterior_louvaring.jpg",
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478706/Wpc_Exterior_Louvers.png"
   ],
   "charcoal-moulding": [
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772476503/Premium_Moulding_IN_Gurgaon.jpg",
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477068/Imageclad_Wpc_Fluted_Panel.png"
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774970794/charcoal-gray_paneled_wall..jpg",
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772476676/Charcoal_Moulding_Design_For_Walls.jpg"
   ],
 
   // Ceilings & Partitions
   "baffle-ceiling": [
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775467543/Modern_Corporate_Office_Reception_in_Cyber_City_with_Wenge_WPC_Baffle_Ceiling.jpg",
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478750/wpc_timber_tube_for_commercial_use.png"
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp",
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466450/whatsapp-image-2024-10-29-at-8.30.37-am-1-1-ALpn7DNvJ5IVXjJb.webp"
   ],
   "wpc-timber-tubes": [
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478750/wpc_timber_tube_for_commercial_use.png",
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775467543/Modern_Corporate_Office_Reception_in_Cyber_City_with_Wenge_WPC_Baffle_Ceiling.jpg"
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478739/Timber_Tube.png",
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775468038/wpc-timber-tube-5-YKblODzGRMHZbWMQ.avif"
   ],
   "upfit-panels": [
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775467165/Luxury_Villa_in_Gurgaon_with_White_Upfit_Panel_Exterior_Soffits.jpg",
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477068/Imageclad_Wpc_Fluted_Panel.png"
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774525633/goals-floors-upfit-panels-m7Vw49PE2qSaDNaG.jpg",
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774525741/leben-soffit-panel-A3QwX9j5pWFZGqjX.jpg"
   ],
 
   // Fallbacks
   "pu-stone": [
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775375435/Luxury_Living_Room_with_Grey_PU_Stone_Feature_Wall_Gurugram.jpg",
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772476503/Premium_Moulding_IN_Gurgaon.jpg"
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477246/Pu_Stone_Colors.jpg",
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477248/White_Color_Pu_Stone.jpg"
   ],
   "wpc-fluted-panel": [
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477068/Imageclad_Wpc_Fluted_Panel.png",
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775467165/Luxury_Villa_in_Gurgaon_with_White_Upfit_Panel_Exterior_Soffits.jpg"
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477058/Wpc_Fluted_Panel_In_Gurgaon.png",
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477064/Pencilclad_Wpc_Louvers.png"
   ],
   "wpc-decking": [
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775490065/Luxury_Swimming_Pool_Area_in_Gurgaon_Farmhouse_with_Teak-Finish_WPC_Decking.jpg",
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774972022/Exterior_lovaring_in_gurgaon.jpg"
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478659/premium_wpc_decking_supplier_in_gurgaon.jpg",
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772478482/Wpc_Decking_Installed_Design.jpg"
   ],
   "artificial-grass": [
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772476497/artificial_grass_wholesaler_in_delhi.jpg",
-    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775490065/Luxury_Swimming_Pool_Area_in_Gurgaon_Farmhouse_with_Teak-Finish_WPC_Decking.jpg"
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772476444/artificial_grass_supplier_in_india.jpg",
+    "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775794785/artificial_grass_Installation_Process.jpg"
   ]
 };
 
