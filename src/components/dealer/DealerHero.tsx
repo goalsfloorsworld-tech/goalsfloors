@@ -17,10 +17,11 @@ export default function DealerHero() {
           className="w-full h-full relative"
         >
           <Image 
-            src="/images/hero-arch.png" 
+            src="/images/hero-arch.jpg" 
             alt="Luxury Architecture" 
             fill 
             priority
+            fetchPriority="high"
             className="object-cover opacity-60 dark:opacity-80"
           />
         </motion.div>

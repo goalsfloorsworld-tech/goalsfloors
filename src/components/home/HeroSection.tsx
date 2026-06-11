@@ -116,6 +116,7 @@ export default function HeroSection() {
                   alt={img.alt}
                   fill
                   priority={i === 0}
+                  fetchPriority={i === 0 ? "high" : "auto"}
                   loading={i === 0 ? undefined : "lazy"}
                   className="object-cover"
                   sizes="100vw"
@@ -143,6 +144,7 @@ export default function HeroSection() {
                   alt={img.alt}
                   fill
                   priority={i === 0}
+                  fetchPriority={i === 0 ? "high" : "auto"}
                   loading={i === 0 ? undefined : "lazy"}
                   className="object-cover"
                   sizes="100vw"

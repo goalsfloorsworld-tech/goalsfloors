@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Bot, User, RefreshCw, Send, CheckCircle2, ChevronDown, ChevronRight, MessageSquare, ExternalLink, Sparkles, X, ArrowLeft } from "lucide-react";
 import knowledgeBase from "../../goalsfloors-ai/KNOWLEDGE_BASE.json";
 import VisualQuizFunnel from "./VisualQuizFunnel";
@@ -262,8 +263,8 @@ export default function GoalsAIWidget() {
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-50" />
 
                 <div className="flex items-center gap-3 relative z-10">
-                  <div className="w-10 h-10 border border-amber-500/30 rounded-full flex items-center justify-center overflow-hidden shrink-0">
-                    <img src="/images/goals-ai.png" alt="Goals Consultant" className="w-full h-full object-cover" />
+                  <div className="w-10 h-10 border border-amber-500/30 rounded-full flex items-center justify-center overflow-hidden shrink-0 relative">
+                    <Image src="/images/goals-ai.jpg" alt="Goals Consultant" fill sizes="40px" className="object-cover" />
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-sm tracking-wide">Goals Consultant</h3>
@@ -325,8 +326,8 @@ export default function GoalsAIWidget() {
                           <div className="flex items-center gap-2 px-1">
                             {msg.role === "assistant" ? (
                               <>
-                                <div className="w-5 h-5 rounded-full border border-amber-500/30 flex items-center justify-center shrink-0 overflow-hidden">
-                                  <img src="/images/goals-ai.png" alt="Goals Consultant" className="w-full h-full object-cover" />
+                                <div className="w-5 h-5 rounded-full border border-amber-500/30 flex items-center justify-center shrink-0 overflow-hidden relative">
+                                  <Image src="/images/goals-ai.jpg" alt="Goals Consultant" fill sizes="20px" className="object-cover" />
                                 </div>
                                 <span className="text-[10px] text-slate-500 font-medium uppercase tracking-tight">Consultant</span>
                               </>
@@ -471,7 +472,7 @@ export default function GoalsAIWidget() {
                 exit={{ opacity: 0, scale: 0.8 }}
                 className="relative z-30 w-full h-full rounded-full overflow-hidden"
               >
-                <img src="/images/goals-ai.png" alt="Goals Consultant" className="w-full h-full object-cover scale-125" />
+                <Image src="/images/goals-ai.jpg" alt="Goals Consultant" fill sizes="56px" className="object-cover scale-125" />
               </motion.div>
             </motion.button>
 

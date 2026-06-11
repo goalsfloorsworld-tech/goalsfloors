@@ -59,6 +59,9 @@ export const metadata: Metadata = {
       "oU2AKS2XI0vdkHcoFkx_WswqEvbBFI06kvXb2rfZlpM",
       "rqgEDkWeT5A3SjaDOTOICY2wyEPzmJs6vakiwJj3vYI"
     ],
+    other: {
+      "p:domain_verify": ["1f362d87ae09c823fe3d2019f7c692f7"],
+    },
   },
 };
 
