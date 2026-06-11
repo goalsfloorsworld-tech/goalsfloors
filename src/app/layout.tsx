@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     ],
     other: {
       "p:domain_verify": ["1f362d87ae09c823fe3d2019f7c692f7"],
-    },
+     },
   },
 };
 
