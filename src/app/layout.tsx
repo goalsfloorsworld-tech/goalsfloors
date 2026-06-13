@@ -61,6 +61,7 @@ export const metadata: Metadata = {
     ],
     other: {
       "p:domain_verify": ["1f362d87ae09c823fe3d2019f7c692f7"],
+      "trustpilot-one-time-domain-verification-id": ["75937e5a-9e73-488f-aeab-bb96645abab5"],
      },
   },
 };

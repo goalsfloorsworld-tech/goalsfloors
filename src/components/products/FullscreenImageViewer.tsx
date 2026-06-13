@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Plus, Minus, Maximize } from "lucide-react";
 import Image from "next/image";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 interface ViewerDetail {
   label: string;
@@ -148,6 +149,10 @@ export default function FullscreenImageViewer({
 
   // Touch/Swipe support
   const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length > 1) {
+      setTouchStart(null);
+      return;
+    }
     setTouchStart(e.touches[0].clientX);
   };
 
@@ -183,8 +188,8 @@ export default function FullscreenImageViewer({
         {/** Hide details panel when context.showDetails === false (simple viewer) */}
         <div className="w-full h-full flex flex-col md:flex-row items-center justify-center">
         {/* Main Image Area */}
-          <div
-            className={"w-full " + (context.showDetails === false ? "md:w-full" : "md:w-2/3") + " h-full flex items-center justify-center relative md:p-10 p-4 group"}
+        <div
+          className={"w-full " + (context.showDetails === false ? "md:w-full" : "md:w-2/3") + " h-full flex items-center justify-center relative md:p-10 p-4 group"}
           onClick={(e) => e.stopPropagation()}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
@@ -193,61 +198,83 @@ export default function FullscreenImageViewer({
             <AnimatePresence mode="wait">
               <motion.div
                 key={imageUrl}
-                initial={{ opacity: 0, scale: 1, x: 0, y: 0 }}
-                animate={{ opacity: 1, scale }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                drag={scale > 1}
-                dragConstraints={{ left: -300 * scale, right: 300 * scale, top: -300 * scale, bottom: 300 * scale }}
-                dragElastic={0.1}
-                onDoubleClick={(e) => {
-                  e.stopPropagation();
-                  setScale(s => s > 1 ? 1 : 2.5);
-                }}
-                className={`relative w-full h-full flex items-center justify-center ${scale > 1 ? 'cursor-grab active:cursor-grabbing' : 'cursor-zoom-in'}`}
+                className="w-full h-full flex items-center justify-center"
               >
-                <Image
-                  src={imageUrl}
-                  alt={getCurrentImage()?.alt || "Product image"}
-                  fill
-                  className="object-contain"
-                  draggable={false}
-                  priority
-                />
+                <TransformWrapper
+                  key={imageUrl}
+                  initialScale={1}
+                  minScale={1}
+                  maxScale={4}
+                  centerOnInit={true}
+                  onTransform={(ref) => setScale(ref.state.scale)}
+                >
+                  {({ zoomIn, zoomOut, resetTransform }) => (
+                    <div className="relative w-full h-full flex items-center justify-center">
+                      <TransformComponent
+                        wrapperClass="!w-full !h-full"
+                        contentClass="!w-full !h-full flex items-center justify-center"
+                      >
+                        <div className="relative w-screen h-[70vh] md:w-full md:h-[90vh] flex items-center justify-center select-none">
+                          <Image
+                            src={imageUrl}
+                            alt={getCurrentImage()?.alt || "Product image"}
+                            fill
+                            className="object-contain pointer-events-none"
+                            draggable={false}
+                            priority
+                          />
+                        </div>
+                      </TransformComponent>
+
+                      {/* Zoom Controls */}
+                      <div className="absolute top-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/60 backdrop-blur-md rounded-full p-1.5 z-40" onClick={e => e.stopPropagation()}>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            zoomOut(0.5);
+                          }}
+                          className="p-1.5 hover:bg-white/20 rounded-full text-white transition-colors disabled:opacity-30"
+                          disabled={scale <= 1}
+                          aria-label="Zoom out"
+                        >
+                          <Minus className="w-4 h-4" />
+                        </button>
+                        <span className="text-white text-[11px] font-bold w-10 text-center">{Math.round(scale * 100)}%</span>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            zoomIn(0.5);
+                          }}
+                          className="p-1.5 hover:bg-white/20 rounded-full text-white transition-colors disabled:opacity-30"
+                          disabled={scale >= 4}
+                          aria-label="Zoom in"
+                        >
+                          <Plus className="w-4 h-4" />
+                        </button>
+                        <div className="w-px h-4 bg-white/20 mx-1" />
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            resetTransform();
+                          }}
+                          className="p-1.5 hover:bg-white/20 rounded-full text-white transition-colors"
+                          aria-label="Reset zoom"
+                        >
+                          <Maximize className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </TransformWrapper>
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Zoom Controls */}
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/60 backdrop-blur-md rounded-full p-1.5 z-40" onClick={e => e.stopPropagation()}>
-            <button
-              onClick={handleZoomOut}
-              className="p-1.5 hover:bg-white/20 rounded-full text-white transition-colors disabled:opacity-30"
-              disabled={scale <= 1}
-              aria-label="Zoom out"
-            >
-              <Minus className="w-4 h-4" />
-            </button>
-            <span className="text-white text-[11px] font-bold w-10 text-center">{Math.round(scale * 100)}%</span>
-            <button
-              onClick={handleZoomIn}
-              className="p-1.5 hover:bg-white/20 rounded-full text-white transition-colors disabled:opacity-30"
-              disabled={scale >= 4}
-              aria-label="Zoom in"
-            >
-              <Plus className="w-4 h-4" />
-            </button>
-            <div className="w-px h-4 bg-white/20 mx-1" />
-            <button
-              onClick={resetZoom}
-              className="p-1.5 hover:bg-white/20 rounded-full text-white transition-colors"
-              aria-label="Reset zoom"
-            >
-              <Maximize className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* Navigation Arrows - Desktop visible on hover, Mobile always visible */}
+          {/* Navigation Arrows - Desktop visible on hover, Mobile always visible at bottom */}
           {uniqueImages.length > 1 && (
             <>
               {/* Desktop Navigation - hidden on mobile */}
@@ -262,19 +289,6 @@ export default function FullscreenImageViewer({
                 <ChevronLeft className="w-6 h-6" />
               </button>
 
-              {/* Mobile: Left button - always visible */}
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  goToPrevious();
-                }}
-                className="md:hidden absolute left-2 top-1/2 -translate-y-1/2 z-30 p-2.5 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full text-white transition-all"
-                aria-label="Previous image"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-
-              {/* Desktop: Right button */}
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -286,13 +300,25 @@ export default function FullscreenImageViewer({
                 <ChevronRight className="w-6 h-6" />
               </button>
 
-              {/* Mobile: Right button - always visible */}
+              {/* Mobile: Left button - bottom-left corner */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToPrevious();
+                }}
+                className="md:hidden absolute left-4 bottom-1 z-30 p-3 bg-white/10 active:bg-white/30 backdrop-blur-md rounded-full text-white transition-all"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              {/* Mobile: Right button - bottom-right corner */}
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   goToNext();
                 }}
-                className="md:hidden absolute right-2 top-1/2 -translate-y-1/2 z-30 p-2.5 bg-white/20 hover:bg-white/40 backdrop-blur-md rounded-full text-white transition-all"
+                className="md:hidden absolute right-4 bottom-1 z-30 p-3 bg-white/10 active:bg-white/30 backdrop-blur-md rounded-full text-white transition-all"
                 aria-label="Next image"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -300,23 +326,21 @@ export default function FullscreenImageViewer({
             </>
           )}
 
-          {/* Mobile: Image counter and swipe hint */}
-          <div className="absolute bottom-4 left-4 right-4 md:hidden flex flex-col gap-2 z-20">
-            <div className="flex items-center justify-between bg-black/50 backdrop-blur-md rounded-full px-4 py-2">
-              <span className="text-white text-sm font-semibold">
+          {/* Mobile: Image counter and swipe hint - centered at bottom */}
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 md:hidden z-20">
+            <div className="flex items-center gap-2 bg-black/60 backdrop-blur-md rounded-full px-4 py-2.5">
+              <span className="text-white text-xs font-semibold whitespace-nowrap">
                 {currentImageIndex + 1} / {uniqueImages.length}
               </span>
-              <span className="text-white/60 text-xs">← Swipe →</span>
+              <span className="text-white/40 text-[10px] whitespace-nowrap">| Swipe</span>
             </div>
           </div>
         </div>
-
         {/* Desktop: Info Panel */}
-          {/* Desktop: Info Panel (optional) */}
-          {context.showDetails !== false && (
-            <div className="hidden md:flex md:w-1/3 h-full flex-col bg-gradient-to-b from-white/5 to-black/20 backdrop-blur-md border-l border-white/10 p-8 overflow-y-auto" data-fullscreen-scroll="allow" data-lenis-prevent="true">
-              <div className="space-y-8">
-            {/* Image Counter */}
+        {context.showDetails !== false && (
+          <div className="hidden md:flex md:w-1/3 h-full flex-col bg-gradient-to-b from-white/5 to-black/20 backdrop-blur-md border-l border-white/10 p-8 overflow-y-auto" data-fullscreen-scroll="allow" data-lenis-prevent="true">
+            <div className="space-y-8">
+              {/* Image Counter */}
             <div>
               <p className="text-white/60 text-xs uppercase tracking-[0.2em] font-bold mb-2">Image</p>
               <div className="flex items-center gap-3">

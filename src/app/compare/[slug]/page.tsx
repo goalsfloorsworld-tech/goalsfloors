@@ -406,72 +406,126 @@ export default async function CompareResultPage({
             <span className="text-white">{cat}</span>
           </nav>
 
-          <div className="flex flex-row items-stretch justify-between relative z-10 gap-4 md:gap-8">
-
-            {/* Left Side: Product A */}
-            <div className="w-[48%] flex flex-col items-center md:items-start text-center md:text-left relative">
-              <div className="flex-1 flex flex-col">
-                <h2 className="text-xl sm:text-2xl md:text-5xl lg:text-5xl font-black tracking-tight mb-2 md:mb-4 leading-none">{product_a}</h2>
-                {quote_a && (
-                  <h3 className="text-base md:text-lg italic text-amber-200/80 font-medium mb-4 md:mb-6">"{quote_a}"</h3>
-                )}
-                <h3 className="text-slate-300 text-xs sm:text-sm md:text-xl font-medium mb-8 md:mb-12 max-w-md line-clamp-3 md:line-clamp-none">{descA}</h3>
+          {/* ========================================================= */}
+          {/* MOBILE ONLY: Grid Layout for perfect horizontal alignment */}
+          {/* ========================================================= */}
+          <div className="md:hidden relative z-10 w-full mb-12">
+            <div className="grid grid-cols-2 gap-4">
+              {/* === TITLES === */}
+              <div className="flex items-end justify-center">
+                <h2 className="text-xl sm:text-2xl font-black tracking-tight mb-2 leading-none text-center">{product_a}</h2>
+              </div>
+              <div className="flex items-end justify-center">
+                <h2 className="text-xl sm:text-2xl font-black tracking-tight mb-2 leading-none text-center">{product_b}</h2>
               </div>
 
-              {/* Images A - Mobile: 1 Elegant Image | Desktop: 2 Stacked Images */}
-              <div className="w-full mt-6 md:mt-8 relative md:absolute md:top-[100%] z-20 group md:-translate-x-16 md:h-[400px]">
-                {/* Mobile: Primary Image | Desktop: Back Image */}
-                <div
-                  className="w-full aspect-[3/4] sm:aspect-square md:w-[80%] md:h-auto md:aspect-video bg-slate-800 rounded-2xl md:rounded-3xl border-2 md:border-4 border-slate-900 shadow-xl md:shadow-2xl overflow-hidden relative md:absolute md:top-0 md:right-0 z-10 md:hover:z-30 md:hover:scale-105 transition-all duration-500 cursor-pointer mobile-img-tap"
-                >
+              {/* === QUOTES === */}
+              <div className="flex items-start justify-center">
+                {quote_a ? <h3 className="text-base italic text-amber-200/80 font-medium mb-4 text-center">"{quote_a}"</h3> : <div />}
+              </div>
+              <div className="flex items-start justify-center">
+                {quote_b ? <h3 className="text-base italic text-amber-200/80 font-medium mb-4 text-center">"{quote_b}"</h3> : <div />}
+              </div>
+
+              {/* === DESCRIPTIONS === */}
+              <div className="flex items-start justify-center">
+                <h3 className="text-slate-300 text-xs sm:text-sm font-medium mb-8 max-w-md text-center line-clamp-3">{descA}</h3>
+              </div>
+              <div className="flex items-start justify-center">
+                <h3 className="text-slate-300 text-xs sm:text-sm font-medium mb-8 max-w-md text-center line-clamp-3">{descB}</h3>
+              </div>
+
+              {/* === IMAGES === */}
+              <div className="col-span-2 relative mt-4 pt-6">
+                {/* Mobile VS Badge - Positioned exactly at the top edge of images */}
+                <div className="absolute left-1/2 top-6 -translate-x-1/2 -translate-y-1/2 z-30 flex items-center justify-center pointer-events-none">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-slate-800 text-amber-500 font-black text-lg sm:text-xl rounded-full flex items-center justify-center shadow-xl shadow-black/50 border-2 border-slate-700 transition-transform relative z-10 pointer-events-auto">
+                    VS
+                  </div>
+                </div>
+
+                <div className="flex justify-between gap-4">
+                  {/* Product A Images */}
+                  <div className="w-[48%] relative z-20 group">
+                    <div className="w-full aspect-[3/4] sm:aspect-square bg-slate-800 rounded-2xl border-2 border-slate-900 shadow-xl overflow-hidden relative z-10 active:scale-95 transition-all duration-300 cursor-pointer mobile-img-tap">
+                      <img src={getProductImages(product_a)[0]} alt={product_a} className="w-full h-full object-cover" />
+                    </div>
+                  </div>
+
+                  {/* Product B Images */}
+                  <div className="w-[48%] relative z-20 group">
+                    <div className="w-full aspect-[3/4] sm:aspect-square bg-slate-800 rounded-2xl border-2 border-slate-900 shadow-xl overflow-hidden relative z-10 active:scale-95 transition-all duration-300 cursor-pointer mobile-img-tap">
+                      <img src={getProductImages(product_b)[0]} alt={product_b} className="w-full h-full object-cover" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ========================================================= */}
+          {/* DESKTOP ONLY: Original Flex Layout                        */}
+          {/* ========================================================= */}
+          <div className="hidden md:flex flex-row items-stretch justify-between relative z-10 gap-8">
+            {/* Left Side: Product A */}
+            <div className="w-[48%] flex flex-col items-start text-left relative">
+              <div className="flex-1 flex flex-col">
+                <h2 className="text-5xl lg:text-5xl font-black tracking-tight mb-4 leading-none">{product_a}</h2>
+                {quote_a && (
+                  <h3 className="text-lg italic text-amber-200/80 font-medium mb-6">"{quote_a}"</h3>
+                )}
+                <h3 className="text-slate-300 text-xl font-medium mb-12 line-clamp-none">{descA}</h3>
+              </div>
+
+              {/* Images A - Desktop */}
+              <div className="w-full mt-8 absolute top-[100%] z-20 group -translate-x-16 h-[400px]">
+                {/* Back Image */}
+                <div className="w-[80%] h-auto aspect-video bg-slate-800 rounded-3xl border-4 border-slate-900 shadow-2xl overflow-hidden absolute top-0 right-0 z-10 hover:z-30 hover:scale-105 transition-all duration-500 cursor-pointer">
                   <img src={getProductImages(product_a)[0]} alt={product_a} className="w-full h-full object-cover" />
                 </div>
-                {/* Desktop ONLY: Front Image */}
-                <div className="hidden md:block w-[90%] h-auto aspect-video bg-slate-800 rounded-3xl border-4 border-slate-900 shadow-2xl overflow-hidden absolute -bottom-12 -left-12 z-20 hover:z-30 transition-all duration-500 hover:scale-105">
+                {/* Front Image */}
+                <div className="block w-[90%] h-auto aspect-video bg-slate-800 rounded-3xl border-4 border-slate-900 shadow-2xl overflow-hidden absolute -bottom-12 -left-12 z-20 hover:z-30 transition-all duration-500 hover:scale-105 cursor-pointer">
                   <img src={getProductImages(product_a)[1] || getProductImages(product_a)[0]} alt={product_a} className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
 
-            {/* Center Elements: VS Badge & Capsule Button */}
-            <div className="absolute left-1/2 top-28 sm:top-32 md:top-[35%] -translate-x-1/2 -translate-y-1/2 z-30 flex items-center justify-center">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-slate-800 text-amber-500 font-black text-lg sm:text-xl lg:text-2xl rounded-full flex items-center justify-center shadow-xl shadow-black/50 border-2 border-slate-700 transition-transform relative z-10">
+            {/* Center Elements: VS Badge */}
+            <div className="absolute left-1/2 top-[35%] -translate-x-1/2 -translate-y-1/2 z-30 flex items-center justify-center">
+              <div className="w-16 h-16 lg:w-20 lg:h-20 bg-slate-800 text-amber-500 font-black text-xl lg:text-2xl rounded-full flex items-center justify-center shadow-xl shadow-black/50 border-2 border-slate-700 transition-transform relative z-10">
                 VS
               </div>
             </div>
 
-            {/* Jump to Verdict Capsule (Pushed significantly lower) */}
-            <div className="absolute left-1/2 top-[100%] mt-56 sm:mt-72 md:mt-116 -translate-x-1/2 z-40 hidden md:flex items-center justify-center">
+            {/* Jump to Verdict Capsule */}
+            <div className="absolute left-1/2 top-[100%] mt-72 lg:mt-116 -translate-x-1/2 z-40 flex items-center justify-center">
               <a href="#verdict" className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-black px-8 py-4 rounded-full shadow-2xl shadow-amber-500/30 transition-all hover:scale-110 flex items-center gap-2 whitespace-nowrap border-4 border-slate-900 group">
                 Jump to Verdict <ArrowDown className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
               </a>
             </div>
 
             {/* Right Side: Product B */}
-            <div className="w-[48%] flex flex-col items-center md:items-end text-center md:text-right relative">
-              <div className="flex-1 flex flex-col items-center md:items-end">
-                <h2 className="text-xl sm:text-2xl md:text-5xl lg:text-5xl font-black tracking-tight mb-2 md:mb-4 leading-none">{product_b}</h2>
+            <div className="w-[48%] flex flex-col items-end text-right relative">
+              <div className="flex-1 flex flex-col items-end">
+                <h2 className="text-5xl lg:text-5xl font-black tracking-tight mb-4 leading-none">{product_b}</h2>
                 {quote_b && (
-                  <h3 className="text-base md:text-lg italic text-amber-200/80 font-medium mb-4 md:mb-6">"{quote_b}"</h3>
+                  <h3 className="text-lg italic text-amber-200/80 font-medium mb-6">"{quote_b}"</h3>
                 )}
-                <h3 className="text-slate-300 text-xs sm:text-sm md:text-xl font-medium mb-8 md:mb-12 max-w-md line-clamp-3 md:line-clamp-none">{descB}</h3>
+                <h3 className="text-slate-300 text-xl font-medium mb-12 line-clamp-none">{descB}</h3>
               </div>
 
-              {/* Images B - Mobile: 1 Elegant Image | Desktop: 2 Stacked Images */}
-              <div className="w-full mt-6 md:mt-8 relative md:absolute md:top-[100%] z-20 group md:translate-x-16 md:h-[400px]">
-                {/* Mobile: Primary Image | Desktop: Back Image */}
-                <div
-                  className="w-full aspect-[3/4] sm:aspect-square md:w-[80%] md:h-auto md:aspect-video bg-slate-800 rounded-2xl md:rounded-3xl border-2 md:border-4 border-slate-900 shadow-xl md:shadow-2xl overflow-hidden relative md:absolute md:top-0 md:left-0 z-10 md:hover:z-30 md:hover:scale-105 transition-all duration-500 cursor-pointer mobile-img-tap"
-                >
+              {/* Images B - Desktop */}
+              <div className="w-full mt-8 absolute top-[100%] z-20 group translate-x-16 h-[400px]">
+                {/* Back Image */}
+                <div className="w-[80%] h-auto aspect-video bg-slate-800 rounded-3xl border-4 border-slate-900 shadow-2xl overflow-hidden absolute top-0 left-0 z-10 hover:z-30 hover:scale-105 transition-all duration-500 cursor-pointer">
                   <img src={getProductImages(product_b)[0]} alt={product_b} className="w-full h-full object-cover" />
                 </div>
-                {/* Desktop ONLY: Front Image */}
-                <div className="hidden md:block w-[90%] h-auto aspect-video bg-slate-800 rounded-3xl border-4 border-slate-900 shadow-2xl overflow-hidden absolute -bottom-12 -right-12 z-20 hover:z-30 transition-all duration-500 hover:scale-105">
+                {/* Front Image */}
+                <div className="block w-[90%] h-auto aspect-video bg-slate-800 rounded-3xl border-4 border-slate-900 shadow-2xl overflow-hidden absolute -bottom-12 -right-12 z-20 hover:z-30 transition-all duration-500 hover:scale-105 cursor-pointer">
                   <img src={getProductImages(product_b)[1] || getProductImages(product_b)[0]} alt={product_b} className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </section>

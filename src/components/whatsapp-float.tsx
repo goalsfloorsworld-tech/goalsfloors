@@ -40,7 +40,7 @@ export default function WhatsAppFloat() {
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
   return (
-    <div className="fixed bottom-[92px] md:bottom-6 right-6 z-[10001] whatsapp-float-container">
+    <div className="fixed bottom-[92px] md:bottom-6 right-4 md:right-6 z-[10001] whatsapp-float-container">
       <div className="relative flex items-center flex-row-reverse gap-4 pointer-events-none">
         <div className="relative flex items-center justify-center pointer-events-auto shrink-0 z-20">
           <motion.a

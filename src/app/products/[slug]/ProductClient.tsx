@@ -618,18 +618,7 @@ export default function ProductClient({ product }: { product: Product }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center">
 
-            <motion.div
-              className="w-full lg:w-1/2"
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                type: 'spring',
-                stiffness: 100,
-                damping: 20,
-                staggerChildren: 0.2,
-                delayChildren: 0.1
-              }}
-            >
+            <div className="w-full lg:w-1/2">
               <nav aria-label="Breadcrumb">
                 <ol className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-gray-400 mb-4 list-none p-0 m-0">
                   <li className="flex items-center gap-2">
@@ -662,14 +651,9 @@ export default function ProductClient({ product }: { product: Product }) {
 
               <StarRating />
 
-              <motion.h1
-                className="text-xl md:text-3xl lg:text-4xl font-semibold text-gray-900 dark:text-white leading-[1.1] mb-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-              >
+              <h1 className="text-xl md:text-3xl lg:text-4xl font-semibold text-gray-900 dark:text-white leading-[1.1] mb-4">
                 {product.title}
-              </motion.h1>
+              </h1>
 
               {/* Mobile Image: Shown only on mobile between heading and description */}
               <div className="lg:hidden relative aspect-[4/3] w-full mb-6 rounded-sm overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm bg-gray-50 dark:bg-slate-900 group/hero">
@@ -684,33 +668,18 @@ export default function ProductClient({ product }: { product: Product }) {
                 />
               </div>
 
-              <motion.p
-                className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
+              <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
                 {product.shortDescription}
-              </motion.p>
+              </p>
 
-              <motion.div
-                className="flex flex-col sm:flex-row items-center gap-3"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
+              <div className="flex flex-col sm:flex-row items-center gap-3">
                 <Link href="/contact" className="inline-flex items-center justify-center w-full sm:w-auto bg-gray-900 dark:bg-amber-600 text-white px-8 py-3.5 text-xs font-semibold uppercase tracking-widest hover:bg-amber-600 dark:hover:bg-amber-500 transition-colors">
                   Request Quote
                 </Link>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
-            <motion.div
-              className="w-full lg:w-1/2 hidden lg:block"
-              initial={{ opacity: 0, x: 50, scale: 0.95 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3, type: 'spring', stiffness: 50 }}
-            >
+            <div className="w-full lg:w-1/2 hidden lg:block">
               <div className="relative aspect-[4/3] w-full max-w-[600px] mx-auto bg-gray-50 dark:bg-slate-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm group/hero">
                 {/* 2-Layer Technique: Layer 2 (Main Image) */}
                 <Image
@@ -722,7 +691,7 @@ export default function ProductClient({ product }: { product: Product }) {
                   priority
                 />
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
@@ -745,18 +714,7 @@ export default function ProductClient({ product }: { product: Product }) {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {product.variants.map((variant, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{
-                    duration: 0.7,
-                    delay: idx * 0.1,
-                    type: 'spring',
-                    stiffness: 80
-                  }}
-                >
+                <div key={idx}>
                   <VariantCard
                     variant={variant}
                     productCategory={product.category}
@@ -767,7 +725,7 @@ export default function ProductClient({ product }: { product: Product }) {
                     onImageClick={openFullscreenViewer}
                     globalFullscreenImage={fullscreenViewer?.imageUrl || null}
                   />
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -816,13 +774,7 @@ export default function ProductClient({ product }: { product: Product }) {
               </p>
             </div>
 
-            <motion.div 
-              className="grid grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 md:gap-4 lg:h-[500px]"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <div className="grid grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 md:gap-4 lg:h-[500px]">
               {product.installedImages.map((img, i) => (
                 <div
                   key={`first-${i}`}
@@ -876,7 +828,7 @@ export default function ProductClient({ product }: { product: Product }) {
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </div>
 
             {/* ── SEO: The masonry grid is ALWAYS rendered in the DOM, removing React state truncation. 
                  Hiding is handled via CSS classes on the wrapper elements ── */}
@@ -956,13 +908,7 @@ export default function ProductClient({ product }: { product: Product }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
             {/* Left Column: The Narrative */}
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-            >
+            <div className="relative">
               <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.3em] text-amber-600 mb-6 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 rounded-sm">
                 Material Philosophy
               </span>
@@ -974,26 +920,17 @@ export default function ProductClient({ product }: { product: Product }) {
                   {product.longDescription}
                 </p>
               </div>
-            </motion.div>
+            </div>
 
             {/* Right Column: Premium Staggered Images - Refined Size & Overlap */}
             <div className="relative h-[450px] md:h-[550px] w-full max-w-[500px] mx-auto lg:ml-auto translate-y-4">
               {product.images.slice(1, 3).map((img, i) => (
-                <motion.div
+                <div
                   key={i}
                   className={`absolute rounded-xl overflow-hidden shadow-2xl bg-gray-50 dark:bg-slate-900 border-2 border-white dark:border-slate-800 group/story transform-gpu will-change-transform ${i === 0
                       ? 'top-0 left-0 w-[65%] aspect-[4/5] z-0 hover:z-20'
                       : 'bottom-0 right-0 w-[65%] aspect-[4/5] z-10 translate-x-2 translate-y-2 hover:scale-[1.02]'
                     }`}
-                  initial={{ opacity: 0, x: 40, y: 20, rotate: i === 0 ? -5 : 5 }}
-                  whileInView={{ opacity: 1, x: 0, y: 0, rotate: 0 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 1,
-                    delay: 0.2 + (i * 0.2),
-                    type: 'spring',
-                    stiffness: 40
-                  }}
                 >
                   {/* 2-Layer Technique: Layer 2 (Main Image) */}
                   <Image
@@ -1003,7 +940,7 @@ export default function ProductClient({ product }: { product: Product }) {
                     className="object-cover relative z-10 transition-transform duration-700 hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
-                </motion.div>
+                </div>
               ))}
 
               {/* Decorative Accent */}
@@ -1147,13 +1084,7 @@ export default function ProductClient({ product }: { product: Product }) {
 
               {/* After Installation - Separate Entrance - NOW OUTSIDE RELATIVE WRAPPER */}
               {product.afterInstallation && (
-                <motion.div
-                  className="mt-32 pt-12 border-t border-gray-200 dark:border-gray-800"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40%" }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                >
+                <div className="mt-32 pt-12 border-t border-gray-200 dark:border-gray-800">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-10 h-10 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shadow-sm transition-transform hover:rotate-12">
                       <Sparkles className="w-4 h-4" />
@@ -1177,7 +1108,7 @@ export default function ProductClient({ product }: { product: Product }) {
                       </p>
                     </div>
                   )}
-                </motion.div>
+                </div>
               )}
             </div>
           </div>
@@ -1189,13 +1120,7 @@ export default function ProductClient({ product }: { product: Product }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
 
-            <motion.div
-              className="border-l-4 border-amber-600 pl-8"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <div className="border-l-4 border-amber-600 pl-8">
               <div className="flex items-center gap-4 mb-4 text-amber-500">
                 <Hammer className="w-6 h-6" />
                 <h2 className="text-2xl font-semibold text-white">{product.shortTitle || product.title} Installation Tips</h2>
@@ -1203,15 +1128,9 @@ export default function ProductClient({ product }: { product: Product }) {
               <p className="text-gray-300 text-lg leading-relaxed font-light text-justify">
                 {product.installation}
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="border-l-4 border-amber-600 pl-8"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
+            <div className="border-l-4 border-amber-600 pl-8">
               <div className="flex items-center gap-4 mb-4 text-amber-500">
                 <Sparkles className="w-6 h-6" />
                 <h2 className="text-2xl font-semibold text-white">{product.shortTitle || product.title} Cleaning & Maintenance</h2>
@@ -1219,7 +1138,7 @@ export default function ProductClient({ product }: { product: Product }) {
               <p className="text-gray-300 text-lg leading-relaxed font-light text-justify">
                 {product.maintenance}
               </p>
-            </motion.div>
+            </div>
 
           </div>
         </div>
@@ -1235,13 +1154,9 @@ export default function ProductClient({ product }: { product: Product }) {
 
           <div className="space-y-4">
             {product.faqs.map((faq, i) => (
-              <motion.div
+              <div
                 key={i}
                 className="border border-gray-200 dark:border-gray-800 bg-white dark:bg-slate-950 rounded-lg shadow-sm overflow-hidden transition-all duration-300 hover:border-gray-300 dark:hover:border-gray-700"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
               >
                 <button
                   onClick={() => toggleFaq(i)}
@@ -1267,7 +1182,7 @@ export default function ProductClient({ product }: { product: Product }) {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -1334,13 +1249,7 @@ export default function ProductClient({ product }: { product: Product }) {
       </div>
 
       {/* ================= 9. B2B CONVERSION BAR ================= */}
-      <motion.div
-        className="bg-white dark:bg-slate-950 py-4 shadow-md border-t border-gray-200 dark:border-gray-800 relative z-20 transition-colors duration-300"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
+      <div className="bg-white dark:bg-slate-950 py-4 shadow-md border-t border-gray-200 dark:border-gray-800 relative z-20 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="text-center sm:text-left">
             <h4 className="text-base font-semibold text-gray-900 dark:text-white">{product.shortTitle || product.title}</h4>
@@ -1359,7 +1268,7 @@ export default function ProductClient({ product }: { product: Product }) {
             </Link>
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* ================= 10. PREMIUM VARIANT DRAWER ================= */}
       <AnimatePresence>
