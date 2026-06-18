@@ -230,43 +230,7 @@ export default function FullscreenImageViewer({
                         </div>
                       </TransformComponent>
 
-                      {/* Zoom Controls */}
-                      <div className="absolute top-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/60 backdrop-blur-md rounded-full p-1.5 z-40" onClick={e => e.stopPropagation()}>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            zoomOut(0.5);
-                          }}
-                          className="p-1.5 hover:bg-white/20 rounded-full text-white transition-colors disabled:opacity-30"
-                          disabled={scale <= 1}
-                          aria-label="Zoom out"
-                        >
-                          <Minus className="w-4 h-4" />
-                        </button>
-                        <span className="text-white text-[11px] font-bold w-10 text-center">{Math.round(scale * 100)}%</span>
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            zoomIn(0.5);
-                          }}
-                          className="p-1.5 hover:bg-white/20 rounded-full text-white transition-colors disabled:opacity-30"
-                          disabled={scale >= 4}
-                          aria-label="Zoom in"
-                        >
-                          <Plus className="w-4 h-4" />
-                        </button>
-                        <div className="w-px h-4 bg-white/20 mx-1" />
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            resetTransform();
-                          }}
-                          className="p-1.5 hover:bg-white/20 rounded-full text-white transition-colors"
-                          aria-label="Reset zoom"
-                        >
-                          <Maximize className="w-4 h-4" />
-                        </button>
-                      </div>
+
                     </div>
                   )}
                 </TransformWrapper>

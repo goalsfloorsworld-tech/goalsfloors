@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 
 async function runSearchBot() {
-  const url = 'http://localhost:3000/compare/herringbone-flooring-vs-laminate-flooring';
+  const url = 'http://localhost:3000/products/upfit-panels';
   console.log(`🤖 Googlebot initialized. Crawling: ${url}\n`);
 
   try {

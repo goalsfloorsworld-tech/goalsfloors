@@ -9,7 +9,7 @@ import { Truck, Trophy, CheckCircle2, ShieldCheck, Users } from "lucide-react";
 import HeroSection from "@/components/home/HeroSection";
 import AdvantageImage from "@/components/home/AdvantageImage";
 import CompareWidget from "@/components/CompareWidget";
-
+import QuickCategoryGrid from "@/components/home/QuickCategoryGrid";
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden max-w-full min-w-0">
@@ -37,6 +37,9 @@ export default function Home() {
           ))}
         </div>
       </div>
+
+      {/* ================= QUICK APP CATEGORIES ================= */}
+      <QuickCategoryGrid />
 
       {/* ================= CATEGORIES SECTION ================= */}
       <section id="categories" className="py-10 pt-33 lg:pt-36 bg-gray-50 dark:bg-slate-950 transition-colors duration-300 -mt-24">

@@ -22,6 +22,7 @@ import {
 import FeatureAccordion from "@/components/products/FeatureAccordion";
 import QuickFeaturesBar from "@/components/products/QuickFeaturesBar";
 import CompareWidget from "@/components/CompareWidget";
+import PdfDownloadButton from "@/components/products/PdfDownloadButton";
 
 export interface FAQ {
   question: string;
@@ -38,6 +39,16 @@ export interface Variant {
   gmc_description?: string;
   images?: { url: string; alt: string; name?: string; gmc_title?: string; gmc_variant_description?: string }[];
   details: Record<string, string>;
+  download?: { name: string; url: string };
+}
+
+export interface Accessory {
+  name: string;
+  image: string;
+  price?: string;
+  unit?: string;
+  note?: string;
+  details?: Record<string, string>;
 }
 
 export interface Feature {
@@ -89,6 +100,9 @@ export interface Product {
   }[];
   beforeAfter?: BeforeAfterItem[];
   variants?: Variant[];
+  accessoriesTitle?: string;
+  accessoriesDescription?: string;
+  accessories?: Accessory[];
   architectHeading?: string;
   architectSubheading?: string;
   relatedLinks?: { label: string; href: string; image?: string }[];
@@ -319,14 +333,20 @@ const VariantCard = memo(({
           <h3 key={idx}>{img.alt}</h3>
         ))}
         {variant.details && (
-          <dl>
-            {Object.entries(variant.details).map(([key, value]) => (
-              <div key={key}>
-                <dt>{key}</dt>
-                <dd>{String(value)}</dd>
-              </div>
-            ))}
-          </dl>
+          <table>
+            <tbody>
+              {Object.entries(variant.details).map(([key, value]) => (
+                <tr key={key}>
+                  <th>{key}</th>
+                  <td>{String(value)}</td>
+                </tr>
+              ))}
+              <tr>
+                <th>Price</th>
+                <td>{variant.price} {variant.unit ? `per ${variant.unit}` : ''}</td>
+              </tr>
+            </tbody>
+          </table>
         )}
       </div>
 
@@ -443,23 +463,25 @@ const VariantCard = memo(({
       <div className="p-6 flex-1 flex flex-col">
         <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{variant.name}</h3>
 
-        <div className="space-y-2 mb-6 flex-1">
-          {images[activeIndex]?.name && (
-            <div className="flex justify-between items-center text-sm border-b border-gray-100 dark:border-gray-800 pb-2 border-dotted group/spec">
-              <span className="text-gray-500 flex items-center gap-1.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
-                Design Code
-              </span>
-              <span className="font-bold text-amber-600 dark:text-amber-500">{images[activeIndex].name}</span>
-            </div>
-          )}
-          {Object.entries(variant.details).slice(0, 4).map(([key, value]) => (
-            <div key={key} className="flex justify-between items-center text-sm border-b border-gray-100 dark:border-gray-800 pb-2 border-dotted">
-              <span className="text-gray-500">{key}</span>
-              <span className="font-semibold text-gray-900 dark:text-gray-200 text-right">{value}</span>
-            </div>
-          ))}
-        </div>
+        <table className="w-full mb-6 flex-1 text-sm">
+          <tbody className="space-y-2 block w-full">
+            {images[activeIndex]?.name && (
+              <tr className="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-2 border-dotted group/spec w-full">
+                <th className="font-normal text-gray-500 flex items-center gap-1.5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
+                  Design Code
+                </th>
+                <td className="font-bold text-amber-600 dark:text-amber-500 text-right">{images[activeIndex].name}</td>
+              </tr>
+            )}
+            {Object.entries(variant.details).slice(0, 4).map(([key, value]) => (
+              <tr key={key} className="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-2 border-dotted w-full">
+                <th className="font-normal text-gray-500 text-left">{key}</th>
+                <td className="font-semibold text-gray-900 dark:text-gray-200 text-right">{value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
         <div className="mb-6 mt-auto">
           <div className="text-2xl font-black text-gray-900 dark:text-white flex items-center gap-1">
@@ -725,6 +747,102 @@ export default function ProductClient({ product }: { product: Product }) {
                     onImageClick={openFullscreenViewer}
                     globalFullscreenImage={fullscreenViewer?.imageUrl || null}
                   />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ================= 4.6. ACCESSORIES ================= */}
+      {product.accessories && product.accessories.length > 0 && (
+        <div className="bg-white dark:bg-slate-950 pt-12 pb-16 lg:pt-16 lg:pb-20 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-normal text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+                {product.accessoriesTitle || 'ACCESSORIES'}
+              </h2>
+              <div className="w-16 h-0.5 bg-gray-900 dark:bg-white mx-auto mb-6"></div>
+              {product.accessoriesDescription && (
+                <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 max-w-4xl mx-auto font-normal leading-relaxed">
+                  {product.accessoriesDescription}
+                </p>
+              )}
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-8">
+              {product.accessories.map((accessory, idx) => (
+                <div key={idx} className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] min-w-[280px] max-w-[380px] bg-gray-100/60 dark:bg-slate-900/50 border border-transparent shadow-sm flex flex-col overflow-hidden">
+                  {/* Image */}
+                  <div 
+                    className="relative aspect-[4/3] bg-white dark:bg-slate-800 flex items-center justify-center border-b-2 border-gray-100 dark:border-gray-800 cursor-zoom-in group/img overflow-hidden"
+                    onClick={() => {
+                      if (accessory.image) {
+                        openFullscreenViewer(
+                          accessory.image,
+                          product.accessories?.filter(a => a.image).map(a => ({ url: a.image, alt: a.name })) || [],
+                          {
+                            title: accessory.name,
+                            category: product.category,
+                            priceRange: accessory.price || "",
+                            description: accessory.note,
+                            details: accessory.details ? Object.entries(accessory.details).map(([l, v]) => ({ label: l, value: v })) : []
+                          }
+                        );
+                      }
+                    }}
+                  >
+                    {accessory.image ? (
+                      <Image
+                        src={accessory.image}
+                        alt={accessory.name}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover/img:scale-105"
+                      />
+                    ) : (
+                      <div className="text-gray-300">No Image</div>
+                    )}
+                  </div>
+                  
+                  {/* Title Bar */}
+                  <div className="bg-[#cdcdcd] dark:bg-gray-700 px-6 py-2.5">
+                    <h3 className="text-[15px] font-bold text-gray-900 dark:text-white">{accessory.name}</h3>
+                  </div>
+
+                  {/* Details */}
+                  <div className="px-6 pt-5 pb-6 flex flex-col flex-1">
+                    <div className="flex-1">
+                      {accessory.details && Object.entries(accessory.details).length > 0 && (
+                        <table className="w-full text-left block mb-2">
+                          <tbody className="block w-full">
+                            {Object.entries(accessory.details).map(([key, value]) => (
+                              <tr key={key} className="block mb-4">
+                                <th className="block text-[13px] font-bold text-gray-900 dark:text-white">{key}</th>
+                                <td className="block text-[13px] text-gray-600 dark:text-gray-400 mt-0.5">{value}</td>
+                              </tr>
+                            ))}
+                            <tr className="sr-only">
+                              <th>Price</th>
+                              <td>{accessory.price} {accessory.unit}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      )}
+                    </div>
+
+                    <div className="mt-4 pt-0 border-t border-transparent">
+                      <div className="text-[13px] font-bold text-gray-900 dark:text-white mb-0.5">Price</div>
+                      <div className="flex items-baseline gap-1 mb-2">
+                        <span className="text-2xl font-normal text-[#40c0c0] dark:text-[#40c0c0]">{accessory.price}</span>
+                        {accessory.unit && <span className="text-[11px] font-bold text-[#40c0c0] dark:text-[#40c0c0] uppercase tracking-wider">{accessory.unit}</span>}
+                      </div>
+                      {accessory.note && (
+                        <div className="text-[11px] text-gray-500 dark:text-gray-400 mt-2">
+                          {accessory.note}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -1460,6 +1578,7 @@ export default function ProductClient({ product }: { product: Product }) {
                 </div>
 
                 <div className="flex flex-col gap-4">
+                  <PdfDownloadButton download={selectedVariant.download} />
                   <Link
                     href="/contact"
                     className="w-full bg-gray-900 dark:bg-amber-600 hover:bg-black dark:hover:bg-amber-500 text-white font-bold text-center uppercase tracking-widest py-4 rounded-sm transition-all shadow-lg hover:shadow-amber-500/20"
