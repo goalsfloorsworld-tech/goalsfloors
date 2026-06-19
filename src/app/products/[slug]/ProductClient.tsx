@@ -287,6 +287,7 @@ const VariantCard = memo(({
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const pointerDownPos = useRef<{ x: number; y: number } | null>(null);
   const isInView = useInView(scrollRef, { once: false, amount: 0.1 });
 
   const images = variant.images || [];
@@ -323,32 +324,13 @@ const VariantCard = memo(({
       onMouseLeave={() => setIsPaused(false)}
       className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-gray-800 rounded-sm shadow-sm hover:shadow-xl transition-all flex flex-col overflow-hidden group h-full"
     >
-      {/* ── SEO: always-rendered, visually hidden. Googlebot reads this on initial load
-           since the sidebar/lightbox are only mounted on click. sr-only = position:absolute
-           1×1px clip → zero layout shift, zero paint cost. ── */}
-      <div className="sr-only" aria-hidden="true">
-        <h2>{variant.gmc_title || variant.name}</h2>
-        {variant.gmc_description && <p>{variant.gmc_description}</p>}
-        {variant.images?.map((img, idx) => (
-          <h3 key={idx}>{img.alt}</h3>
-        ))}
-        {variant.details && (
-          <table>
-            <tbody>
-              {Object.entries(variant.details).map(([key, value]) => (
-                <tr key={key}>
-                  <th>{key}</th>
-                  <td>{String(value)}</td>
-                </tr>
-              ))}
-              <tr>
-                <th>Price</th>
-                <td>{variant.price} {variant.unit ? `per ${variant.unit}` : ''}</td>
-              </tr>
-            </tbody>
-          </table>
-        )}
-      </div>
+      {/* ── SEO: Include GMC metadata if present. Other details are rendered in the visible table below to avoid duplicate content. ── */}
+      {(variant.gmc_title || variant.gmc_description) && (
+        <div className="sr-only">
+          {variant.gmc_title && <h2>{variant.gmc_title}</h2>}
+          {variant.gmc_description && <p>{variant.gmc_description}</p>}
+        </div>
+      )}
 
       {/* Image Carousel Area */}
       <div className="relative aspect-square bg-gray-100 dark:bg-slate-800 overflow-hidden">
@@ -365,24 +347,35 @@ const VariantCard = memo(({
               >
                 <div
                   className="absolute inset-0 cursor-zoom-in z-10"
-                  onClick={() => onImageClick(
-                    img.url,
-                    images.map((image, imageIndex) => ({
-                      url: image.url,
-                      alt: image.alt || `${variant.name} detail ${imageIndex + 1}`
-                    })),
-                    {
-                      title: variant.name,
-                      category: productCategory,
-                      priceRange: variant.price,
-                      variants: [variant],
-                      description: img.alt || `${variant.name} detail ${i + 1}`,
-                      details: Object.entries(variant.details).slice(0, 4).map(([label, value]) => ({
-                        label,
-                        value
-                      }))
+                  onPointerDown={(e) => {
+                    pointerDownPos.current = { x: e.clientX, y: e.clientY };
+                  }}
+                  onPointerUp={(e) => {
+                    if (!pointerDownPos.current) return;
+                    const dx = Math.abs(e.clientX - pointerDownPos.current.x);
+                    const dy = Math.abs(e.clientY - pointerDownPos.current.y);
+                    if (dx < 10 && dy < 10) {
+                      onImageClick(
+                        img.url,
+                        images.map((image, imageIndex) => ({
+                          url: image.url,
+                          alt: image.alt || `${variant.name} detail ${imageIndex + 1}`
+                        })),
+                        {
+                          title: variant.name,
+                          category: productCategory,
+                          priceRange: variant.price,
+                          variants: [variant],
+                          description: img.alt || `${variant.name} detail ${i + 1}`,
+                          details: Object.entries(variant.details).slice(0, 4).map(([label, value]) => ({
+                            label,
+                            value
+                          }))
+                        }
+                      );
                     }
-                  )}
+                    pointerDownPos.current = null;
+                  }}
                 />
                 <Image
                   src={img.url}
@@ -436,7 +429,25 @@ const VariantCard = memo(({
 
         {/* Indicators */}
         {images.length > 1 && (
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+          <div 
+            className="absolute bottom-1 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 p-2 touch-none"
+            onTouchMove={(e) => {
+              const touch = e.touches[0];
+              const rect = e.currentTarget.getBoundingClientRect();
+              const x = touch.clientX - rect.left;
+              const percent = Math.max(0, Math.min(1, x / rect.width));
+              const targetIndex = Math.floor(percent * images.length);
+              const safeIndex = Math.min(images.length - 1, Math.max(0, targetIndex));
+              
+              if (safeIndex !== activeIndex && scrollRef.current) {
+                scrollRef.current.scrollTo({
+                  left: safeIndex * scrollRef.current.clientWidth,
+                  behavior: "auto"
+                });
+                setActiveIndex(safeIndex);
+              }
+            }}
+          >
             {images.map((_, i) => (
               <button
                 key={i}
@@ -474,12 +485,16 @@ const VariantCard = memo(({
                 <td className="font-bold text-amber-600 dark:text-amber-500 text-right">{images[activeIndex].name}</td>
               </tr>
             )}
-            {Object.entries(variant.details).slice(0, 4).map(([key, value]) => (
-              <tr key={key} className="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-2 border-dotted w-full">
+            {Object.entries(variant.details).map(([key, value], index) => (
+              <tr key={key} className={`flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-2 border-dotted w-full ${index >= 4 ? "sr-only" : ""}`}>
                 <th className="font-normal text-gray-500 text-left">{key}</th>
                 <td className="font-semibold text-gray-900 dark:text-gray-200 text-right">{value}</td>
               </tr>
             ))}
+            <tr className="sr-only">
+              <th>Price</th>
+              <td>{variant.price} {variant.unit ? (variant.unit.toLowerCase().startsWith('per') ? variant.unit : `per ${variant.unit}`) : ''}</td>
+            </tr>
           </tbody>
         </table>
 

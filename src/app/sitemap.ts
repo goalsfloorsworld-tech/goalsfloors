@@ -9,6 +9,18 @@ function uniqueStrings(values: Array<string | null | undefined>) {
   return Array.from(new Set(values.filter((value): value is string => Boolean(value && value.trim()))));
 }
 
+function processImageUrls(baseUrl: string, urls: Array<string | null | undefined>) {
+  const unique = uniqueStrings(urls);
+  return unique.map(url => {
+    if (url.startsWith('/')) return `${baseUrl}${url}`;
+    if (url.startsWith('http') && !url.includes(baseUrl)) {
+      // Force Googlebot to index the image via our domain instead of dropping it as cross-domain
+      return `${baseUrl}/_next/image?url=${encodeURIComponent(url)}&amp;w=3840&amp;q=75`;
+    }
+    return url;
+  });
+}
+
 function collectProductImages(product: any) {
   const imageUrls: Array<string | null | undefined> = [];
 
@@ -69,15 +81,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/privacy',
     '/terms',
     '/compare',
+    '/catalogs',
   ].map((route) => {
     let images: string[] | undefined = undefined;
     
     if (route === '/about') {
-      images = [
+      images = processImageUrls(baseUrl, [
         "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775755978/Shakti_FTN.jpg",
         "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749425/Goals_Floors_Wpc_Exterior_Louvers.png",
         "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749444/Spc_FlooringInstalled_In_Bedrooom.png"
-      ];
+      ]);
     }
 
     return {
@@ -120,7 +133,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         const fileContent = fs.readFileSync(filePath, 'utf-8');
         const product = JSON.parse(fileContent);
         const slug = product.slug || name.replace('.json', '');
-        const images = collectProductImages(product);
+        const images = processImageUrls(baseUrl, collectProductImages(product));
         
         const stats = fs.statSync(filePath);
         let lastMod = stats.mtime.toISOString();
@@ -162,7 +175,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: new Date(post.modified).toISOString(),
         changeFrequency: 'monthly' as const,
         priority: 0.7,
-        images: post._embedded?.['wp:featuredmedia']?.[0]?.source_url ? [post._embedded['wp:featuredmedia'][0].source_url as string] : undefined,
+        images: post._embedded?.['wp:featuredmedia']?.[0]?.source_url ? processImageUrls(baseUrl, [post._embedded['wp:featuredmedia'][0].source_url as string]) : undefined,
       }));
     }
   } catch (error) {
@@ -180,11 +193,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date().toISOString(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
-      images: [
+      images: processImageUrls(baseUrl, [
         `${baseUrl}/images/multiverse/hero-bg.png`,
         `${baseUrl}/images/multiverse/flooring.png`,
         `${baseUrl}/images/multiverse/wall-panels.png`,
-      ],
+      ]),
     });
 
     const categories = fs.readdirSync(multiverseDirectory);
@@ -198,7 +211,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             const filePath = path.join(categoryPath, variantFile);
             const stats = fs.statSync(filePath);
             const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-            const images = collectMultiverseImages(data);
+            const images = processImageUrls(baseUrl, collectMultiverseImages(data));
             
             multiverseRoutes.push({
               url: `${baseUrl}/multiverse/${category}/${variantSlug}`,
@@ -238,6 +251,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error fetching compare slugs for sitemap:', error);
   }
 
-  return [...staticRoutes, ...productRoutes, ...blogRoutes, ...multiverseRoutes, ...compareRoutes];
+  // 6. Dynamic Catalog Pages (PDFs)
+  let catalogRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const catalogsPath = path.join(process.cwd(), 'src', 'data', 'catalogs.json');
+    if (fs.existsSync(catalogsPath)) {
+      const catalogs = JSON.parse(fs.readFileSync(catalogsPath, 'utf8'));
+      const stats = fs.statSync(catalogsPath);
+      catalogRoutes = catalogs.map((catalog: any) => ({
+        url: `${baseUrl}/catalogs/${catalog.slug}.pdf`,
+        lastModified: stats.mtime.toISOString(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.8,
+        images: catalog.image ? processImageUrls(baseUrl, [catalog.image]) : undefined,
+      }));
+    }
+  } catch (error) {
+    console.error('Error reading catalogs for sitemap:', error);
+  }
+
+  return [...staticRoutes, ...productRoutes, ...blogRoutes, ...multiverseRoutes, ...compareRoutes, ...catalogRoutes];
 }
 

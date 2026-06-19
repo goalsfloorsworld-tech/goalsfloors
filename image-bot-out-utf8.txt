@@ -1,0 +1,234 @@
+﻿≡ƒô╕ Google Image Crawler initialized.
+Crawling: http://localhost:3000/products/upfit-panels
+
+[IMAGE 1]
+  SRC: /images/goals floors logo.svg
+  ALT: "Goals Floors Logo"
+  LOADING: eager (default)
+----------------------------------------------------
+[IMAGE 2]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1774525633%2Fgoals-floors-upfit-panels-m7Vw49PE2qSaDNaG.jpg&w=3840&q=75
+  ALT: "Waterproof Upfit Upfit Ceiling Panels for Balcony and Exterior Ceilings in Gurugram"
+  LOADING: eager (default)
+----------------------------------------------------
+[IMAGE 3]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1774525633%2Fgoals-floors-upfit-panels-m7Vw49PE2qSaDNaG.jpg&w=3840&q=75
+  ALT: "Waterproof Upfit Upfit Ceiling Panels for Balcony and Exterior Ceilings in Gurugram"
+  LOADING: eager (default)
+----------------------------------------------------
+[IMAGE 4]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695284%2FUpfit_Panels_Premium_Quality.jpg&w=3840&q=75
+  ALT: "Upfit Panel White - 2950mm"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 5]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695285%2FWhite_Color_Flexible_Panel.jpg&w=3840&q=75
+  ALT: "Upfit Panel White - 3660mm"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 6]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695277%2Fgoals_floors_upfit_Panel.jpg&w=3840&q=75
+  ALT: "Upfit Panel Teak - 2950mm"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 7]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695278%2FOutdoor_Panels_For_Ceiling.jpg&w=3840&q=75
+  ALT: "Upfit Panel Teak - 3660mm"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 8]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695278%2FSoffit_Panels.jpg&w=3840&q=75
+  ALT: "Upfit Panel Walnut - 2950mm"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 9]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695279%2FPremium_Quality_Outoor_Ceiling_Panels.jpg&w=3840&q=75
+  ALT: "Upfit Panel Walnut - 3660mm"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 10]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695276%2FBrown_Color_Upfit_Panels.jpg&w=3840&q=75
+  ALT: "Upfit Panel Brown - 2950mm"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 11]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695284%2FUpfit_Panel.jpg&w=3840&q=75
+  ALT: "Upfit Panel Brown - 3660mm"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 12]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695277%2FGoals_Upfit_Panel.jpg&w=3840&q=75
+  ALT: "Upfit Panel Ozone - 2950mm"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 13]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695279%2FOutdoor_Panels.jpg&w=3840&q=75
+  ALT: "Upfit Panel Ozone - 3660mm"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 14]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695276%2FBrown_Color_Upfit_Panels.jpg&w=3840&q=75
+  ALT: "Upfit Panel Ebony - 2950mm"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 15]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695277%2FEbony_Color_Upfit_Panel.jpg&w=3840&q=75
+  ALT: "Upfit Panel Ebony - 3660mm"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 16]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695283%2FUpfit_Panel_Manufacturer.jpg&w=3840&q=75
+  ALT: "Upfit Panel Grey - 2950mm"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 17]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695280%2FUpfit_Panel_Grey_Color.jpg&w=3840&q=75
+  ALT: "Upfit Panel Grey - 3660mm"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 18]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695284%2FUpfit_Panel_Wholesaler.jpg&w=3840&q=75
+  ALT: "Upfit Panel Premium - 2950mm"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 19]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695282%2FUpfit_Panel_In_Gurgaon.jpg&w=3840&q=75
+  ALT: "Upfit Panel Premium - 3660mm"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 20]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695282%2FUpfit_Panel_J_Profile.jpg&w=3840&q=75
+  ALT: "Upfit J Profile"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 21]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695281%2FUpfit_Panel_H_Profile.jpg&w=3840&q=75
+  ALT: "Upfit H Profile"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 22]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Fv1781695282%2FUpfit_Panel_L_Profile.jpg&w=3840&q=75
+  ALT: "Upfit L Profile"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 23]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775467165%2FLuxury_Villa_in_Gurgaon_with_White_Upfit_Panel_Exterior_Soffits.jpg&w=3840&q=75
+  ALT: "Luxury Villa in Gurgaon with White Upfit Panel Exterior Upfits"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 24]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775467153%2FVilla_in_Gurgaon_with_White_Upfit_Panel_Exterior_Soffits.jpg&w=3840&q=75
+  ALT: "White Upfit panel exterior Upfit installation on a Gurgaon villa"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 25]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775467160%2FSeamless_Balcony_Ceiling_Installation_with_Walnut_Upfit_Panels_Delhi.jpg&w=3840&q=75
+  ALT: "Seamless Balcony Ceiling Installation with Walnut Upfit Panels Delhi"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 26]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775467162%2FCommercial_Facade_Cladding_in_Cyber_City_with_Grey_Upfit_Panels.jpg&w=3840&q=75
+  ALT: "Commercial Facade Cladding in Cyber City with Grey Upfit Panels"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 27]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775467167%2FDetailed_Execution_of_Upfit_Panel_Corner_with_Matching_J-Trims.jpg&w=3840&q=75
+  ALT: "Detailed Execution of Upfit Panel Corner with Matching J-Trims"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 28]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775467160%2FHigh-End_Showroom_Ceiling_with_Multi-Finish_Upfit_Panel_System.jpg&w=3840&q=75
+  ALT: "High-End Showroom Ceiling with Multi-Finish Upfit Panel System"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 29]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775467147%2FInterlocking_Installation_Process_of_Upfit_Panels_on_Porch_Ceiling.jpg&w=3840&q=75
+  ALT: "Interlocking Installation Process of Upfit Panels on Porch Ceiling"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 30]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775467153%2FPremium_Outdoor_Driveway_Ceiling_in_Gurgaon_Residence_with_Upfit.jpg&w=3840&q=75
+  ALT: "Premium Outdoor Driveway Ceiling in Gurgaon Residence with Upfit"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 31]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775467165%2FLuxury_Villa_in_Gurgaon_with_White_Upfit_Panel_Exterior_Soffits.jpg&w=3840&q=75
+  ALT: "Luxury Villa in Gurgaon with White Upfit Panel Exterior Upfits"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 32]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775467153%2FVilla_in_Gurgaon_with_White_Upfit_Panel_Exterior_Soffits.jpg&w=3840&q=75
+  ALT: "White Upfit panel exterior Upfit installation on a Gurgaon villa"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 33]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775467160%2FSeamless_Balcony_Ceiling_Installation_with_Walnut_Upfit_Panels_Delhi.jpg&w=3840&q=75
+  ALT: "Seamless Balcony Ceiling Installation with Walnut Upfit Panels Delhi"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 34]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775467162%2FCommercial_Facade_Cladding_in_Cyber_City_with_Grey_Upfit_Panels.jpg&w=3840&q=75
+  ALT: "Commercial Facade Cladding in Cyber City with Grey Upfit Panels"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 35]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775467167%2FDetailed_Execution_of_Upfit_Panel_Corner_with_Matching_J-Trims.jpg&w=3840&q=75
+  ALT: "Detailed Execution of Upfit Panel Corner with Matching J-Trims"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 36]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775467160%2FHigh-End_Showroom_Ceiling_with_Multi-Finish_Upfit_Panel_System.jpg&w=3840&q=75
+  ALT: "High-End Showroom Ceiling with Multi-Finish Upfit Panel System"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 37]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775467147%2FInterlocking_Installation_Process_of_Upfit_Panels_on_Porch_Ceiling.jpg&w=3840&q=75
+  ALT: "Interlocking Installation Process of Upfit Panels on Porch Ceiling"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 38]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775467153%2FPremium_Outdoor_Driveway_Ceiling_in_Gurgaon_Residence_with_Upfit.jpg&w=3840&q=75
+  ALT: "Premium Outdoor Driveway Ceiling in Gurgaon Residence with Upfit"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 39]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1774525741%2Fleben-soffit-panel-A3QwX9j5pWFZGqjX.jpg&w=3840&q=75
+  ALT: "Modern Exterior Upfit Ceiling Panel Installation in Delhi NCR"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 40]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1774525799%2Fleben-soffit-panel-2-m2Wpw9nKDwf1RwrW.jpg&w=3840&q=75
+  ALT: "Weatherproof Upfit Upfit Panels for Modern Exterior Facades"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 41]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775818177%2Fexterior_louvaring.jpg&w=3840&q=75
+  ALT: "WPC Exterior Louvers"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 42]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1772478659%2Fpremium_wpc_decking_supplier_in_gurgaon.jpg&w=3840&q=75
+  ALT: "WPC Decking"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 43]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1772476444%2Fartificial_grass_supplier_in_india.jpg&w=3840&q=75
+  ALT: "Artificial Grass"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 44]
+  SRC: /_next/image?url=https%3A%2F%2Fres.cloudinary.com%2Fdcezlxt8r%2Fimage%2Fupload%2Ff_auto%2Cq_auto%2Fv1775466342%2Fscreenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp&w=3840&q=75
+  ALT: "WPC Baffle Ceiling"
+  LOADING: lazy
+----------------------------------------------------
+[IMAGE 45]
+  SRC: /images/goals-floors-logo-white.svg
+  ALT: "Goals Floors Logo"
+  LOADING: lazy
+----------------------------------------------------
+
+≡ƒôè SEO Image Crawl Summary for Googlebot:
+Total Valid Images Found: 45
+Images Missing Alt Text: 0
+
+Γ£à Perfect! All images have descriptive 'alt' text for SEO and Accessibility.

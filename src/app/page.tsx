@@ -57,14 +57,14 @@ export default function Home() {
           <CategoryFlipCards />
 
           {/* Compare AI Lead Magnet */}
-          <div className="mt-16 border-t border-gray-200 dark:border-gray-800 py-10">
+          <div className="mt-16 border-t border-gray-200 dark:border-gray-800 pt-10 pb-2 sm:pb-10">
             <CompareWidget />
           </div>
         </div>
       </section>
 
       {/* ================= WHY CHOOSE US ================= */}
-      <section className="pt-8 pb-14 bg-white dark:bg-slate-900 transition-colors duration-300">
+      <section className="pt-2 sm:pt-8 pb-14 bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch min-w-0 max-w-full">
             <div className="min-w-0">
