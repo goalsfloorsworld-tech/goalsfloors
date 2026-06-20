@@ -37,6 +37,35 @@ const categories = [
 export default function QuickCategoryGrid() {
   const [isSticky, setIsSticky] = useState(false);
   const gridRef = useRef<HTMLElement>(null);
+  const marqueeRef = useRef<HTMLDivElement>(null);
+
+  // Initialize infinite scroll position to the middle set
+  useEffect(() => {
+    if (marqueeRef.current) {
+      // Small timeout to ensure layout is complete before calculating scrollWidth
+      setTimeout(() => {
+        if (marqueeRef.current) {
+          marqueeRef.current.scrollLeft = (marqueeRef.current.scrollWidth / 14) * 6;
+        }
+      }, 100);
+    }
+  }, []);
+
+  const handleInfiniteScroll = () => {
+    if (!marqueeRef.current) return;
+    const el = marqueeRef.current;
+    const totalSets = 14;
+    const setWidth = el.scrollWidth / totalSets;
+    
+    // If getting close to the right edge (within 2 sets of the end)
+    if (el.scrollLeft + el.clientWidth >= el.scrollWidth - (setWidth * 2)) {
+      el.scrollLeft -= setWidth * 4;
+    }
+    // If getting close to the left edge (within 2 sets of the beginning)
+    else if (el.scrollLeft <= setWidth * 2) {
+      el.scrollLeft += setWidth * 4;
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -99,40 +128,50 @@ export default function QuickCategoryGrid() {
           isSticky ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex overflow-x-auto hide-scrollbar py-3 gap-6 sm:gap-8 items-center">
-            {categories.map((category, index) => (
-              <Link
-                key={category.id}
-                href={category.href || "#"}
-                className="flex flex-col items-center flex-shrink-0 gap-1.5 group cursor-pointer"
-              >
-                <div 
-                  className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full dark:bg-slate-800 flex items-center justify-center transition-transform group-hover:scale-110 overflow-hidden relative border-2 border-white dark:border-slate-800 ${
-                    [
-                      "[--glow-color:theme(colors.pink.500)] border-pink-100", 
-                      "[--glow-color:theme(colors.blue.500)] border-blue-100", 
-                      "[--glow-color:theme(colors.emerald.500)] border-emerald-100",
-                      "[--glow-color:theme(colors.amber.500)] border-amber-100", 
-                      "[--glow-color:theme(colors.purple.500)] border-purple-100", 
-                      "[--glow-color:theme(colors.rose.500)] border-rose-100",
-                      "[--glow-color:theme(colors.cyan.500)] border-cyan-100", 
-                      "[--glow-color:theme(colors.fuchsia.500)] border-fuchsia-100", 
-                      "[--glow-color:theme(colors.lime.500)] border-lime-100",
-                      "[--glow-color:theme(colors.orange.500)] border-orange-100", 
-                      "[--glow-color:theme(colors.indigo.500)] border-indigo-100", 
-                      "[--glow-color:theme(colors.teal.500)] border-teal-100",
-                      "[--glow-color:theme(colors.red.500)] border-red-100"
-                    ][index % 13]
-                  }`}
-                  style={{ boxShadow: '0 0 15px var(--glow-color)' }}
-                >
-                  <Image src={category.variantImage || category.image} alt={category.name} fill sizes="48px" className="object-cover" />
-                </div>
-                <span className="text-[10px] sm:text-xs font-semibold text-gray-700 dark:text-gray-300 whitespace-nowrap">
-                  {category.name}
-                </span>
-              </Link>
+        <div className="w-full relative">
+          <div 
+            ref={marqueeRef}
+            onScroll={handleInfiniteScroll}
+            className="flex w-full overflow-x-auto hide-scrollbar items-center py-3"
+            style={{ WebkitOverflowScrolling: 'touch' }}
+          >
+            {/* Render 14 identical sets to allow bidirectional infinite manual scrolling on any screen size */}
+            {[...Array(14)].map((_, setIndex) => (
+              <div key={`set-${setIndex}`} className="flex gap-6 sm:gap-8 items-center pr-6 sm:pr-8 flex-shrink-0">
+                {categories.map((category, index) => (
+                  <Link
+                    key={`${setIndex}-${category.id}`}
+                    href={category.href || "#"}
+                    className="flex flex-col items-center flex-shrink-0 gap-1.5 group cursor-pointer"
+                  >
+                    <div 
+                      className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full dark:bg-slate-800 flex items-center justify-center transition-transform group-hover:scale-110 overflow-hidden relative border-2 border-white dark:border-slate-800 ${
+                        [
+                          "[--glow-color:theme(colors.pink.500)] border-pink-100", 
+                          "[--glow-color:theme(colors.blue.500)] border-blue-100", 
+                          "[--glow-color:theme(colors.emerald.500)] border-emerald-100",
+                          "[--glow-color:theme(colors.amber.500)] border-amber-100", 
+                          "[--glow-color:theme(colors.purple.500)] border-purple-100", 
+                          "[--glow-color:theme(colors.rose.500)] border-rose-100",
+                          "[--glow-color:theme(colors.cyan.500)] border-cyan-100", 
+                          "[--glow-color:theme(colors.fuchsia.500)] border-fuchsia-100", 
+                          "[--glow-color:theme(colors.lime.500)] border-lime-100",
+                          "[--glow-color:theme(colors.orange.500)] border-orange-100", 
+                          "[--glow-color:theme(colors.indigo.500)] border-indigo-100", 
+                          "[--glow-color:theme(colors.teal.500)] border-teal-100",
+                          "[--glow-color:theme(colors.red.500)] border-red-100"
+                        ][index % 13]
+                      }`}
+                      style={{ boxShadow: '0 0 15px var(--glow-color)' }}
+                    >
+                      <Image src={category.variantImage || category.image} alt={category.name} fill sizes="48px" className="object-cover" />
+                    </div>
+                    <span className="text-[10px] sm:text-xs font-semibold text-gray-700 dark:text-gray-300 whitespace-nowrap">
+                      {category.name}
+                    </span>
+                  </Link>
+                ))}
+              </div>
             ))}
           </div>
         </div>

@@ -64,6 +64,24 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
       <body>
         <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">${metaTitle}</h1>
         <iframe src="${catalog.url}" title="${catalog.name}"></iframe>
+        <script>
+          window.onload = function() {
+            // Check if mobile device
+            var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            // Only auto-download on mobile where iframe PDF viewing is restricted
+            if (isMobile) {
+              var a = document.createElement('a');
+              // Add Cloudinary attachment flag to force download for cross-origin URLs
+              var downloadUrl = "${catalog.url}".replace('/upload/', '/upload/fl_attachment/');
+              a.href = downloadUrl;
+              a.download = "${actualSlug}.pdf";
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+            }
+          };
+        </script>
       </body>
     </html>
   `;

@@ -77,15 +77,16 @@ export default function CatalogsPage() {
                   </div>
                   
                   <div className="mt-auto pt-4">
-                    <Link 
+                    <a 
                       href={`/catalogs/${catalog.slug}.pdf`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      download={`${catalog.slug}.pdf`}
                       className="flex items-center justify-center w-full gap-2 py-3.5 px-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold rounded-xl hover:bg-amber-500 dark:hover:bg-amber-500 hover:text-white transition-colors duration-300 shadow-md group-hover:shadow-amber-500/20"
                     >
                       <Download className="w-4 h-4" />
                       Download PDF
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>

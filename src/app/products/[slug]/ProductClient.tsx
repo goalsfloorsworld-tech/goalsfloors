@@ -179,9 +179,11 @@ const AbBadge = () => (
 );
 
 const BeforeAfterDemo = ({
-  item
+  item,
+  isPopup = false
 }: {
   item: BeforeAfterItem;
+  isPopup?: boolean;
 }) => {
   const [splitPercent, setSplitPercent] = useState(50);
   const frameRef = useRef<HTMLDivElement>(null);
@@ -197,7 +199,9 @@ const BeforeAfterDemo = ({
   return (
     <div
       ref={frameRef}
-      className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-slate-900 shadow-sm select-none touch-none"
+      className={`relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-slate-900 shadow-sm select-none touch-none ${
+        isPopup ? "w-fit mx-auto max-w-full" : "w-full aspect-[16/10]"
+      }`}
       onPointerMove={(e) => {
         if (e.buttons !== 1) return;
         updateSplitFromClientX(e.clientX);
@@ -207,25 +211,45 @@ const BeforeAfterDemo = ({
         updateSplitFromClientX(e.clientX);
       }}
     >
-      <Image
-        src={item.before.url}
-        alt={item.before.alt}
-        fill
-        sizes="(max-width: 1024px) 100vw, 960px"
-        className="object-cover"
-      />
+      {isPopup ? (
+        <img
+          src={item.before.url}
+          alt={item.before.alt}
+          className="max-h-[70vh] md:max-h-[85vh] w-auto max-w-full object-contain block"
+          draggable={false}
+        />
+      ) : (
+        <Image
+          src={item.before.url}
+          alt={item.before.alt}
+          fill
+          sizes="(max-width: 1024px) 100vw, 960px"
+          className="object-cover"
+          draggable={false}
+        />
+      )}
 
       <div
         className="absolute inset-0"
         style={{ clipPath: `inset(0 0 0 ${splitPercent}%)` }}
       >
-        <Image
-          src={item.after.url}
-          alt={item.after.alt}
-          fill
-          sizes="(max-width: 1024px) 100vw, 960px"
-          className="object-cover"
-        />
+        {isPopup ? (
+          <img
+            src={item.after.url}
+            alt={item.after.alt}
+            className="w-full h-full object-cover block"
+            draggable={false}
+          />
+        ) : (
+          <Image
+            src={item.after.url}
+            alt={item.after.alt}
+            fill
+            sizes="(max-width: 1024px) 100vw, 960px"
+            className="object-cover"
+            draggable={false}
+          />
+        )}
       </div>
 
       <div className="absolute top-3 left-3 flex gap-2 z-20">
@@ -430,7 +454,7 @@ const VariantCard = memo(({
         {/* Indicators */}
         {images.length > 1 && (
           <div 
-            className="absolute bottom-1 left-1/2 -translate-x-1/2 flex gap-1.5 z-20 p-2 touch-none"
+            className="absolute bottom-1 inset-x-0 mx-auto w-fit max-w-full flex justify-center gap-1.5 z-20 p-2 touch-none"
             onTouchMove={(e) => {
               const touch = e.touches[0];
               const rect = e.currentTarget.getBoundingClientRect();
@@ -485,12 +509,22 @@ const VariantCard = memo(({
                 <td className="font-bold text-amber-600 dark:text-amber-500 text-right">{images[activeIndex].name}</td>
               </tr>
             )}
-            {Object.entries(variant.details).map(([key, value], index) => (
-              <tr key={key} className={`flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-2 border-dotted w-full ${index >= 4 ? "sr-only" : ""}`}>
-                <th className="font-normal text-gray-500 text-left">{key}</th>
-                <td className="font-semibold text-gray-900 dark:text-gray-200 text-right">{value}</td>
-              </tr>
-            ))}
+            {Object.entries(variant.details).map(([key, value], index) => {
+              if (index >= 4) {
+                return (
+                  <tr key={key} className="sr-only">
+                    <th>{key}</th>
+                    <td>{value}</td>
+                  </tr>
+                );
+              }
+              return (
+                <tr key={key} className="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-2 border-dotted w-full">
+                  <th className="font-normal text-gray-500 text-left">{key}</th>
+                  <td className="font-semibold text-gray-900 dark:text-gray-200 text-right">{value}</td>
+                </tr>
+              );
+            })}
             <tr className="sr-only">
               <th>Price</th>
               <td>{variant.price} {variant.unit ? (variant.unit.toLowerCase().startsWith('per') ? variant.unit : `per ${variant.unit}`) : ''}</td>
@@ -1650,7 +1684,7 @@ export default function ProductClient({ product }: { product: Product }) {
               </button>
               
               <div className="rounded-xl overflow-hidden border border-white/10">
-                <BeforeAfterDemo item={comparePopupItem} />
+                <BeforeAfterDemo item={comparePopupItem} isPopup={true} />
               </div>
             </motion.div>
           </div>
