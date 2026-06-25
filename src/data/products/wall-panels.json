@@ -702,6 +702,75 @@
       "brand": "Goals Floors"
     }
   ],
+  "accessoriesTitle": "ACCESSORIES",
+  "accessoriesDescription": "Complete your wall panel installation with our premium laminated and black profiles, designed for perfect edge finishing.",
+  "accessories": [
+    {
+      "name": "U PROFILE 5MM LAMINATED",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782376827/U_PROFILE_5MM_LAMINATED.png",
+      "price": "₹ 75",
+      "unit": "PER PC",
+      "note": "Taxes, Freight & Installation Extra",
+      "details": {
+        "Material": "Pvc Calcium",
+        "Length": "3.0m x 20mm",
+        "Thickness": "1mm",
+        "Uses": "Finishing the edges of 5mm wall panels."
+      }
+    },
+    {
+      "name": "L PROFILE 20MM LAMINATED",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782376827/L_PROFILE_20MM_LAMINATED.png",
+      "price": "₹ 75",
+      "unit": "PER PC",
+      "note": "Taxes, Freight & Installation Extra",
+      "details": {
+        "Material": "Pvc Calcium",
+        "Length": "3.0m x 20mm x 20mm",
+        "Thickness": "1mm",
+        "Uses": "Covering external corners and edges of panels."
+      }
+    },
+    {
+      "name": "CORNER PROFILE 30MM BLACK",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782376827/PROFILE_9MM_BLACK.png",
+      "price": "₹ 125",
+      "unit": "PER PC",
+      "note": "Taxes, Freight & Installation Extra",
+      "details": {
+        "Material": "Pvc Calcium",
+        "Length": "3.0m x 30mm x 30mm",
+        "Thickness": "2mm",
+        "Uses": "Providing a clean black finish for external corners."
+      }
+    },
+    {
+      "name": "CORNER PROFILE 30MM LAMINATED",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782376827/CORNER_PROFILE_30MM_LAMINATED.png",
+      "price": "₹ 150",
+      "unit": "PER PC",
+      "note": "Taxes, Freight & Installation Extra",
+      "details": {
+        "Material": "Pvc Calcium",
+        "Length": "3.0m x 30mm x 30mm",
+        "Thickness": "2mm",
+        "Uses": "Providing a seamless laminated finish for external corners."
+      }
+    },
+    {
+      "name": "U PROFILE 9MM BLACK",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782376826/U_PROFILE_9MM_BLACK.png",
+      "price": "₹ 75",
+      "unit": "PER PC",
+      "note": "Taxes, Freight & Installation Extra",
+      "details": {
+        "Material": "Pvc Calcium",
+        "Length": "3.0m x 30mm x 30mm",
+        "Thickness": "2mm",
+        "Uses": "Finishing and protecting the edges of 9mm panels."
+      }
+    }
+  ],
   "installationSteps": [
     {
       "title": "Prepare the Canvas",

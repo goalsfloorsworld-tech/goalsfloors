@@ -192,6 +192,10 @@
         "Coverage": "7.3 Sq.Ft / 12 Sq.Ft",
         "Weight": "2.0 Kg / 2.7 Kg"
       },
+      "download": {
+        "name": "Download Catalog PDF",
+        "url": "https://res.cloudinary.com/def2qsxjg/image/upload/v1781782510/Goals_Floors_Upfit_Panels_Catalogue.pdf"
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1781695277/goals_floors_upfit_Panel.jpg",
@@ -223,6 +227,10 @@
         "Thickness": "1.2mm",
         "Coverage": "7.3 Sq.Ft / 12 Sq.Ft",
         "Weight": "2.0 Kg / 2.7 Kg"
+      },
+      "download": {
+        "name": "Download Catalog PDF",
+        "url": "https://res.cloudinary.com/def2qsxjg/image/upload/v1781782510/Goals_Floors_Upfit_Panels_Catalogue.pdf"
       },
       "images": [
         {
@@ -256,6 +264,10 @@
         "Coverage": "7.3 Sq.Ft / 12 Sq.Ft",
         "Weight": "2.0 Kg / 2.7 Kg"
       },
+      "download": {
+        "name": "Download Catalog PDF",
+        "url": "https://res.cloudinary.com/def2qsxjg/image/upload/v1781782510/Goals_Floors_Upfit_Panels_Catalogue.pdf"
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1781695276/Brown_Color_Upfit_Panels.jpg",
@@ -287,6 +299,10 @@
         "Thickness": "1.2mm",
         "Coverage": "7.3 Sq.Ft / 12 Sq.Ft",
         "Weight": "2.0 Kg / 2.7 Kg"
+      },
+      "download": {
+        "name": "Download Catalog PDF",
+        "url": "https://res.cloudinary.com/def2qsxjg/image/upload/v1781782510/Goals_Floors_Upfit_Panels_Catalogue.pdf"
       },
       "images": [
         {
@@ -320,6 +336,10 @@
         "Coverage": "7.3 Sq.Ft / 12 Sq.Ft",
         "Weight": "2.0 Kg / 2.7 Kg"
       },
+      "download": {
+        "name": "Download Catalog PDF",
+        "url": "https://res.cloudinary.com/def2qsxjg/image/upload/v1781782510/Goals_Floors_Upfit_Panels_Catalogue.pdf"
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1781695276/Brown_Color_Upfit_Panels.jpg",
@@ -351,6 +371,10 @@
         "Thickness": "1.2mm",
         "Coverage": "7.3 Sq.Ft / 12 Sq.Ft",
         "Weight": "2.0 Kg / 2.7 Kg"
+      },
+      "download": {
+        "name": "Download Catalog PDF",
+        "url": "https://res.cloudinary.com/def2qsxjg/image/upload/v1781782510/Goals_Floors_Upfit_Panels_Catalogue.pdf"
       },
       "images": [
         {
@@ -384,6 +408,10 @@
         "Coverage": "7.3 Sq.Ft / 12 Sq.Ft",
         "Weight": "2.0 Kg / 2.7 Kg"
       },
+      "download": {
+        "name": "Download Catalog PDF",
+        "url": "https://res.cloudinary.com/def2qsxjg/image/upload/v1781782510/Goals_Floors_Upfit_Panels_Catalogue.pdf"
+      },
       "images": [
         {
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1781695284/Upfit_Panel_Wholesaler.jpg",
@@ -413,7 +441,8 @@
       "unit": "PER PC",
       "note": "Taxes, Freight & Installation Extra",
       "details": {
-        "Profile Size": "3050mm"
+        "Profile Size": "3050mm",
+        "Uses": "Finishing edges and providing a clean border."
       }
     },
     {
@@ -423,7 +452,8 @@
       "unit": "PER PC",
       "note": "Taxes, Freight & Installation Extra",
       "details": {
-        "Profile Size": "3050mm"
+        "Profile Size": "3050mm",
+        "Uses": "Joining two panels together seamlessly."
       }
     },
     {
@@ -433,7 +463,8 @@
       "unit": "PER PC",
       "note": "Taxes, Freight & Installation Extra",
       "details": {
-        "Specification": "3050mm x 50mm x 50mm"
+        "Specification": "3050mm x 50mm x 50mm",
+        "Uses": "Covering external corners neatly."
       }
     }
   ],

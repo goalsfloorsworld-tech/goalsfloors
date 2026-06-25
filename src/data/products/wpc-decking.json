@@ -351,6 +351,54 @@
       "brand": "Goals Floors"
     }
   ],
+  "accessoriesTitle": "ACCESSORIES",
+  "accessoriesDescription": "Make installation a cake walk with our hidden clip system and add finishing touches with our Edge profiles.",
+  "accessories": [
+    {
+      "name": "ultimaDECK Edge Profile",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782301328/Deck_Edge_Profile.avif",
+      "price": "₹ 1500",
+      "unit": "PER PC",
+      "note": "Taxes, Freight & Installation Extra",
+      "details": {
+        "Profile Size": "3050mm x 50mm x 50mm",
+        "Uses": "Finishing the exposed edges of decking."
+      }
+    },
+    {
+      "name": "linearDECK Edge Profile",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782301328/Linear_Deck_Edge_Profile.avif",
+      "price": "₹ 1000",
+      "unit": "PER PC",
+      "note": "Taxes, Freight & Installation Extra",
+      "details": {
+        "Profile Size": "3050mm x 65mm x 45mm",
+        "Uses": "Providing a clean border for the deck."
+      }
+    },
+    {
+      "name": "Starter Clip",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782301328/Starter_Clip.avif",
+      "price": "₹ 15",
+      "unit": "PER PC",
+      "note": "Taxes, Freight & Installation Extra",
+      "details": {
+        "Specification": "Stainless Steel SS 304",
+        "Uses": "Securing the first decking board to the frame."
+      }
+    },
+    {
+      "name": "Deck Clip",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782301332/Deck_Clip.avif",
+      "price": "₹ 10",
+      "unit": "PER PC",
+      "note": "Taxes, Freight & Installation Extra",
+      "details": {
+        "Specification": "ABS Plastic",
+        "Uses": "Locking adjoining decking boards securely."
+      }
+    }
+  ],
   "installationSteps": [
     {
       "title": "Structural Framework Preparation",

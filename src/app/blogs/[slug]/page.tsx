@@ -126,7 +126,7 @@ export default async function SingleBlogPage({
     notFound();
   }
 
-  const { title, content, imageUrl, imageAlt, date, authorId } = post;
+  const { title, content, excerpt, imageUrl, imageAlt, date, authorId } = post;
 
   // Extract author name
   let authorName = "Goals Floors Team";
@@ -154,8 +154,39 @@ export default async function SingleBlogPage({
     year: "numeric",
   });
 
+  let isoDate = new Date().toISOString();
+  try {
+    if (date) isoDate = new Date(date).toISOString();
+  } catch (e) {}
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "image": imageUrl ? [imageUrl] : undefined,
+    "datePublished": isoDate,
+    "dateModified": isoDate,
+    "author": {
+      "@type": "Person",
+      "name": authorName
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Goals Floors",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://goalsfloors.com/images/goals%20floors%20logo.png"
+      }
+    },
+    "description": excerpt
+  };
+
   return (
     <main className="min-h-screen bg-white dark:bg-slate-950 pb-24 selection:bg-amber-100 dark:selection:bg-amber-900/40">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       {/* Return to Blogs */}
       <div className="fixed top-24 left-4 z-50 hidden xl:block">
         <Link

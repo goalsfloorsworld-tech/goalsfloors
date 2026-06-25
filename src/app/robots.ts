@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/tmp/', '/private/'],
+      disallow: ['/api/', '/tmp/', '/private/', '/(admin)/'],
     },
     sitemap: 'https://goalsfloors.com/sitemap.xml',
   };

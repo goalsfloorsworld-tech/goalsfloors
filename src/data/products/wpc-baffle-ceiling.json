@@ -249,6 +249,206 @@
       "availability": "in_stock",
       "condition": "new",
       "brand": "Goals Floors"
+    },
+    {
+      "name": "Goals Ceil Natural Tube+Track",
+      "price": "₹1100",
+      "mrp": "₹1690",
+      "discount": "35% off",
+      "unit": "per PC",
+      "gmc_title": "Goals Ceil Natural Tube+Track uPVC Baffle Ceiling (BT 75X50#)",
+      "gmc_description": "Upgrade your ceiling with the Goals Ceil Natural Tube+Track uPVC baffle. Part of the premium Goals Ceil series. Dimensions: 2950mm x 50mm x 75mm. Comes with a 25-year warranty. Perfect for interior ceilings and walls.",
+      "details": {
+        "Material": "uPVC",
+        "Length": "2950mm",
+        "Width": "50mm",
+        "Height": "75mm",
+        "Warranty": "25 Years",
+        "Application": "Interior Ceilings & Walls"
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782211509/Goals_Ceil_Natural_Tube_Track.png",
+          "alt": "Natural Tube+Track uPVC Baffle Ceiling",
+          "name": "Natural Tube+Track"
+        }
+      ],
+      "priceValue": 1100,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
+    },
+    {
+      "name": "Goals Ceil Grey Tube+Track",
+      "price": "₹1100",
+      "mrp": "₹1690",
+      "discount": "35% off",
+      "unit": "per PC",
+      "gmc_title": "Goals Ceil Grey Tube+Track uPVC Baffle Ceiling (BT 75X50#)",
+      "gmc_description": "Upgrade your ceiling with the Goals Ceil Grey Tube+Track uPVC baffle. Part of the premium Goals Ceil series. Dimensions: 2950mm x 50mm x 75mm. Comes with a 25-year warranty. Perfect for interior ceilings and walls.",
+      "details": {
+        "Material": "uPVC",
+        "Length": "2950mm",
+        "Width": "50mm",
+        "Height": "75mm",
+        "Warranty": "25 Years",
+        "Application": "Interior Ceilings & Walls"
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782211513/Goals_Ceil_Grey_Tube_Track.png",
+          "alt": "Grey Tube+Track uPVC Baffle Ceiling",
+          "name": "Grey Tube+Track"
+        }
+      ],
+      "priceValue": 1100,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
+    },
+    {
+      "name": "Goals Ceil Hazelnut Tube+Track",
+      "price": "₹1100",
+      "mrp": "₹1690",
+      "discount": "35% off",
+      "unit": "per PC",
+      "gmc_title": "Goals Ceil Hazelnut Tube+Track uPVC Baffle Ceiling (BT 75X50#)",
+      "gmc_description": "Upgrade your ceiling with the Goals Ceil Hazelnut Tube+Track uPVC baffle. Part of the premium Goals Ceil series. Dimensions: 2950mm x 50mm x 75mm. Comes with a 25-year warranty. Perfect for interior ceilings and walls.",
+      "details": {
+        "Material": "uPVC",
+        "Length": "2950mm",
+        "Width": "50mm",
+        "Height": "75mm",
+        "Warranty": "25 Years",
+        "Application": "Interior Ceilings & Walls"
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782211516/Goals_Ceil_Hazelnut_Tube_Track.png",
+          "alt": "Hazelnut Tube+Track uPVC Baffle Ceiling",
+          "name": "Hazelnut Tube+Track"
+        }
+      ],
+      "priceValue": 1100,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
+    },
+    {
+      "name": "Goals Ceil Walnut & Wenge Tube+Track",
+      "price": "₹1100",
+      "mrp": "₹1690",
+      "discount": "35% off",
+      "unit": "per PC",
+      "gmc_title": "Goals Ceil Walnut & Wenge Tube+Track uPVC Baffle Ceiling (BT 75X50#)",
+      "gmc_description": "Upgrade your ceiling with the Goals Ceil Walnut & Wenge Tube+Track uPVC baffle. Part of the premium Goals Ceil series. Dimensions: 2950mm x 50mm x 75mm. Comes with a 25-year warranty. Perfect for interior ceilings and walls.",
+      "details": {
+        "Material": "uPVC",
+        "Length": "2950mm",
+        "Width": "50mm",
+        "Height": "75mm",
+        "Warranty": "25 Years",
+        "Application": "Interior Ceilings & Walls"
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782211515/Goals_Ceil_Walnut_Tube_Track.png",
+          "alt": "Walnut Tube+Track uPVC Baffle Ceiling",
+          "name": "Walnut Tube+Track"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782211517/Goals_Ceil_Wenge_Tube_Track.png",
+          "alt": "Wenge Tube+Track uPVC Baffle Ceiling",
+          "name": "Wenge Tube+Track"
+        }
+      ],
+      "priceValue": 1100,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
+    }
+  ],
+  "accessoriesTitle": "ACCESSORIES",
+  "accessoriesDescription": "Complete your Goals Ceil installation with our premium quality tracks and end caps designed specifically for our uPVC Baffle Ceiling systems.",
+  "accessories": [
+    {
+      "name": "Goals Ceil Track",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782211505/Goals_Ceil_Track.png",
+      "price": "₹ 300",
+      "unit": "PER PC",
+      "note": "Taxes, Freight & Installation Extra",
+      "details": {
+        "Material": "uPVC",
+        "Length": "2950mm",
+        "Uses": "Installing baffle tubes on interior ceilings & walls."
+      }
+    },
+    {
+      "name": "Goals Ceil End Cap Colored",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782211504/Goals_Ceil_End_Cap_Colored.png",
+      "price": "₹ 20",
+      "unit": "PER PC",
+      "note": "Taxes, Freight & Installation Extra",
+      "details": {
+        "Material": "Plastic",
+        "Height": "75mm",
+        "Width": "50mm",
+        "Uses": "For closing the ends of baffle tubes."
+      }
+    },
+    {
+      "name": "Goals Ceil End Cap Black",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782211504/Goals_Ceil_End_Cap_Black.png",
+      "price": "₹ 10",
+      "unit": "PER PC",
+      "note": "Taxes, Freight & Installation Extra",
+      "details": {
+        "Material": "Plastic",
+        "Height": "75mm",
+        "Width": "50mm",
+        "Uses": "For closing the ends of baffle tubes."
+      }
+    },
+    {
+      "name": "Metal Keel",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478716/goals_enterprises_baffle_clips.png",
+      "price": "₹ 400",
+      "unit": "PER PC",
+      "note": "Taxes, Freight & Installation Extra",
+      "details": {
+        "Material": "Steel",
+        "Length": "3000mm",
+        "Gap Options": "40mm / 80mm",
+        "Uses": "For fixing baffle tubes."
+      }
+    },
+    {
+      "name": "Suspension Rod",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478717/goals_enterprises.png",
+      "price": "₹ 300",
+      "unit": "PER PC",
+      "note": "Taxes, Freight & Installation Extra",
+      "details": {
+        "Material": "Steel",
+        "Length": "3000mm",
+        "Diameter": "10mm",
+        "Uses": "For suspending metal keels."
+      }
+    },
+    {
+      "name": "Baffle Clip",
+      "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1772478719/goals_enterprises_baffle_ceiling_clips.png",
+      "price": "₹ 15",
+      "unit": "PER PC",
+      "note": "Taxes, Freight & Installation Extra",
+      "details": {
+        "Material": "Steel",
+        "Uses": "For installing baffles tubes at variable distance and on walls."
+      }
     }
   ],
   "installationSteps": [

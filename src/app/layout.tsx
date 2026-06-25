@@ -66,12 +66,36 @@ export const metadata: Metadata = {
   },
 };
 
-const organizationSchema = {
+const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "LocalBusiness",
   "name": "Goals Floors",
   "url": "https://goalsfloors.com",
   "logo": "https://goalsfloors.com/images/goals%20floors%20logo.png",
+  "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1775448942/goals-floors-og.jpg",
+  "description": "Goals Floors is India's fastest growing brand for Wall Panels, WPC, and Flooring in Delhi NCR, providing premium architectural products.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Gurugram",
+    "addressLocality": "Gurugram",
+    "addressRegion": "Haryana",
+    "postalCode": "122001",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "28.4595",
+    "longitude": "77.0266"
+  },
+  "priceRange": "₹₹₹",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    }
+  ],
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+91-7217644573",
@@ -94,7 +118,7 @@ export default async function RootLayout({
         {/* Deployment: 2026-04-26 | All 6 critical production fixes applied | Build: fixes-v2.1 */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
       </head>
       {/* suppressHydrationWarning is essential for dark mode hydration */}

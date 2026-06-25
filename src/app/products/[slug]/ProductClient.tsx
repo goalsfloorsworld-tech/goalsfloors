@@ -503,7 +503,6 @@ const VariantCard = memo(({
             {images[activeIndex]?.name && (
               <tr className="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-2 border-dotted group/spec w-full">
                 <th className="font-normal text-gray-500 flex items-center gap-1.5">
-                  <div className="w-1.5 h-1.5 rounded-full bg-amber-500"></div>
                   Design Code
                 </th>
                 <td className="font-bold text-amber-600 dark:text-amber-500 text-right">{images[activeIndex].name}</td>
@@ -821,10 +820,12 @@ export default function ProductClient({ product }: { product: Product }) {
 
             <div className="flex flex-wrap justify-center gap-8">
               {product.accessories.map((accessory, idx) => (
-                <div key={idx} className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] min-w-[280px] max-w-[380px] bg-gray-100/60 dark:bg-slate-900/50 border border-transparent shadow-sm flex flex-col overflow-hidden">
+                <div key={idx} className={`group w-full sm:w-[calc(50%-1rem)] min-w-[260px] max-w-[320px] bg-white dark:bg-slate-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden ${
+                  product.accessories && product.accessories.length === 6 ? "lg:w-[calc(33.333%-1.5rem)]" : "lg:w-[calc(25%-1.5rem)]"
+                }`}>
                   {/* Image */}
                   <div 
-                    className="relative aspect-[4/3] bg-white dark:bg-slate-800 flex items-center justify-center border-b-2 border-gray-100 dark:border-gray-800 cursor-zoom-in group/img overflow-hidden"
+                    className="relative aspect-[4/3] bg-gray-50 dark:bg-white flex items-center justify-center cursor-zoom-in group/img overflow-hidden"
                     onClick={() => {
                       if (accessory.image) {
                         openFullscreenViewer(
@@ -846,47 +847,56 @@ export default function ProductClient({ product }: { product: Product }) {
                         src={accessory.image}
                         alt={accessory.name}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover/img:scale-105"
+                        className="object-contain mix-blend-multiply dark:mix-blend-normal transition-transform duration-500 group-hover/img:scale-105"
                       />
                     ) : (
                       <div className="text-gray-300">No Image</div>
                     )}
                   </div>
                   
-                  {/* Title Bar */}
-                  <div className="bg-[#cdcdcd] dark:bg-gray-700 px-6 py-2.5">
-                    <h3 className="text-[15px] font-bold text-gray-900 dark:text-white">{accessory.name}</h3>
-                  </div>
+                  {/* Content */}
+                  <div className="px-6 pt-6 pb-6 flex flex-col flex-1">
+                    {/* Title */}
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-5 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                      {accessory.name}
+                    </h3>
 
-                  {/* Details */}
-                  <div className="px-6 pt-5 pb-6 flex flex-col flex-1">
+                    {/* Details */}
                     <div className="flex-1">
                       {accessory.details && Object.entries(accessory.details).length > 0 && (
-                        <table className="w-full text-left block mb-2">
-                          <tbody className="block w-full">
-                            {Object.entries(accessory.details).map(([key, value]) => (
-                              <tr key={key} className="block mb-4">
-                                <th className="block text-[13px] font-bold text-gray-900 dark:text-white">{key}</th>
-                                <td className="block text-[13px] text-gray-600 dark:text-gray-400 mt-0.5">{value}</td>
-                              </tr>
-                            ))}
-                            <tr className="sr-only">
-                              <th>Price</th>
-                              <td>{accessory.price} {accessory.unit}</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                        <div className="space-y-3 mb-6">
+                          {Object.entries(accessory.details).map(([key, value]) => {
+                            const isLongText = String(value).length > 25 || key.toLowerCase() === 'application' || key.toLowerCase() === 'uses';
+                            if (isLongText) {
+                              return (
+                                <div key={key} className="bg-gray-50 dark:bg-slate-800/60 rounded-xl p-3.5 border border-gray-100 dark:border-gray-700/50">
+                                  <div className="text-[11px] uppercase tracking-wider font-bold text-gray-500 mb-1.5">{key}</div>
+                                  <div className="text-[13px] text-gray-700 dark:text-gray-300 leading-relaxed">{value}</div>
+                                </div>
+                              );
+                            }
+                            return (
+                              <div key={key} className="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-2.5">
+                                <span className="text-[13px] font-medium text-gray-500">{key}</span>
+                                <span className="text-[13px] font-semibold text-gray-900 dark:text-white text-right max-w-[60%] whitespace-nowrap">{value}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
                       )}
                     </div>
 
-                    <div className="mt-4 pt-0 border-t border-transparent">
-                      <div className="text-[13px] font-bold text-gray-900 dark:text-white mb-0.5">Price</div>
-                      <div className="flex items-baseline gap-1 mb-2">
-                        <span className="text-2xl font-normal text-[#40c0c0] dark:text-[#40c0c0]">{accessory.price}</span>
-                        {accessory.unit && <span className="text-[11px] font-bold text-[#40c0c0] dark:text-[#40c0c0] uppercase tracking-wider">{accessory.unit}</span>}
+                    {/* Price Section */}
+                    <div className="mt-auto pt-4 border-t border-gray-100 dark:border-gray-800 flex items-end justify-between">
+                      <div>
+                        <div className="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">Price</div>
+                        <div className="flex items-baseline gap-1.5">
+                          <span className="text-2xl font-bold text-teal-600 dark:text-teal-400">{accessory.price}</span>
+                          {accessory.unit && <span className="text-[11px] font-bold text-teal-600/70 dark:text-teal-400/70 uppercase">{accessory.unit}</span>}
+                        </div>
                       </div>
                       {accessory.note && (
-                        <div className="text-[11px] text-gray-500 dark:text-gray-400 mt-2">
+                        <div className="text-[10px] text-gray-400 dark:text-gray-500 max-w-[110px] text-right leading-tight">
                           {accessory.note}
                         </div>
                       )}
