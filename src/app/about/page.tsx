@@ -24,5 +24,26 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  return <AboutClient />;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shakti FTN",
+    "jobTitle": "Founder",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Goals Floors"
+    },
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775755978/Shakti_FTN.jpg",
+    "url": "https://goalsfloors.com/about"
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <AboutClient />
+    </>
+  );
 }
