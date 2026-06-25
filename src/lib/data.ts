@@ -12,7 +12,8 @@ export function getAllProducts() {
     .map((fileName) => {
       const filePath = path.join(productsDir, fileName);
       const fileContents = fs.readFileSync(filePath, "utf8");
-      return JSON.parse(fileContents);
+      const data = JSON.parse(fileContents);
+      return { ...data, slug: data.slug || data.id || fileName.replace(".json", "") };
     });
 }
 
@@ -34,7 +35,8 @@ export function getAllProjects() {
     .map((fileName) => {
       const filePath = path.join(projectsDir, fileName);
       const fileContents = fs.readFileSync(filePath, "utf8");
-      return JSON.parse(fileContents);
+      const data = JSON.parse(fileContents);
+      return { ...data, slug: data.slug || data.id || fileName.replace(".json", "") };
     });
 }
 
