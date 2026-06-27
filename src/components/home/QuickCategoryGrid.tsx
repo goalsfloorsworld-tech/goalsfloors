@@ -90,20 +90,24 @@ export default function QuickCategoryGrid() {
     <>
       {/* The main Grid Section */}
       <section ref={gridRef} className="pt-10 pb-10 sm:pt-12 sm:pb-10 bg-white dark:bg-slate-900 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white mb-6 tracking-tight text-center sm:text-left">
+        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+          <h2 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white mb-6 tracking-tight text-center sm:text-left px-2 sm:px-0">
             Shop by Category
           </h2>
 
-          <div className="flex flex-wrap justify-center gap-y-6 sm:gap-x-8 sm:gap-y-10">
-            {categories.map((category) => (
+          <div className="grid grid-cols-3 sm:flex sm:flex-wrap sm:justify-center gap-x-2 gap-y-6 sm:gap-x-8 sm:gap-y-10">
+            {categories.map((category, index) => (
               <Link
                 key={category.id}
                 href={category.href || "#"}
-                className="flex flex-col items-center group cursor-pointer w-1/3 sm:w-[100px] md:w-[120px]"
+                className={`flex flex-col items-center group cursor-pointer w-full sm:w-[100px] md:w-[120px] ${
+                  index === categories.length - 1 && categories.length % 3 === 1 
+                    ? "col-start-2 sm:col-auto" 
+                    : ""
+                }`}
               >
                 <div
-                  className={`w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px] rounded-[20px] sm:rounded-[24px] ${category.bgColor} dark:bg-slate-800 flex items-center justify-center relative overflow-hidden transition-transform duration-300 group-hover:scale-105 border-0 shadow-sm`}
+                  className={`w-[95%] aspect-square max-w-[110px] sm:max-w-none sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px] rounded-[24px] ${category.bgColor} dark:bg-slate-800 flex items-center justify-center relative overflow-hidden transition-transform duration-300 group-hover:scale-105 border-0 shadow-sm`}
                 >
                   <Image
                     src={category.image}

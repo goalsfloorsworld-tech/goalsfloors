@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 
 async function runSearchBot() {
-  const url = 'http://localhost:3000/products/upfit-panels';
+  const url = 'http://localhost:3000/products';
   console.log(`🤖 Googlebot initialized. Crawling: ${url}\n`);
 
   try {
@@ -11,6 +11,14 @@ async function runSearchBot() {
     }
     const html = await response.text();
     const $ = cheerio.load(html);
+
+    const metaTitle = $('title').text() || $('meta[property="og:title"]').attr('content') || 'No Title Found';
+    const metaDesc = $('meta[name="description"]').attr('content') || $('meta[property="og:description"]').attr('content') || 'No Description Found';
+
+    console.log(`\n[META TITLE] ${metaTitle}`);
+    console.log(`[META DESC]  ${metaDesc}`);
+    console.log('-'.repeat(60) + '\n');
+
     const targetTags = 'h1, h2, h3, h4, p, th, td, li';
 
     $(targetTags).each((_, element) => {

@@ -30,7 +30,62 @@ const categoryConfig: { [key: string]: { label: string; icon: React.ComponentTyp
   "wall-panels": { label: "Wall Panels", icon: Layers },
   "outdoors": { label: "Exterior & Outdoor", icon: CloudSun },
   "premium-flooring": { label: "Flooring", icon: Maximize },
-  "ceilings": { label: "Architectural Ceilings", icon: Layout }
+  "ceilings": { label: "Ceilings & Partitions", icon: Layout }
+};
+
+const SEO_HUB_CONTENT: Record<string, { title: string; description: string }> = {
+  "wall-panels": {
+    title: "Waterproof WPC Wall Panels for Modern Interiors",
+    description: "Upgrade homes and commercial spaces with waterproof WPC wall panels designed for modern interiors. These termite-resistant decorative panels create premium TV units, bedroom feature walls, office cabins, and reception areas with minimal maintenance and a natural wood finish."
+  },
+  "wpc-exterior-louvers": {
+    title: "WPC Exterior Louvers for Modern Facades",
+    description: "Enhance building exteriors with UV-resistant WPC exterior louvers that combine the appearance of natural wood with long-lasting durability. Ideal for facades, balconies, boundary walls, and commercial elevations requiring weather resistance and low maintenance."
+  },
+  "spc-flooring": {
+    title: "100% Waterproof SPC Vinyl Flooring",
+    description: "Install rigid core SPC vinyl flooring that offers waterproof performance, scratch resistance, and long-term durability. Suitable for homes, offices, retail spaces, kitchens, and other high-traffic areas where moisture protection and easy maintenance are essential."
+  },
+  "wpc-baffle-ceiling": {
+    title: "WPC Linear Baffle Ceiling Systems",
+    description: "Create premium architectural ceilings with WPC linear baffle systems that improve visual appeal while concealing ducts and services. Suitable for offices, restaurants, showrooms, cafes, and commercial interiors requiring a clean contemporary ceiling design."
+  },
+  "upfit-panels": {
+    title: "Waterproof Exterior Upfit Wall Panels",
+    description: "Modernize exterior walls and architectural elevations using waterproof Upfit panels engineered for outdoor durability. Suitable for balconies, porch ceilings, facades, and commercial buildings requiring a sleek appearance with minimal maintenance."
+  },
+  "artificial-grass": {
+    title: "Artificial Grass for Balcony, Garden & Landscaping",
+    description: "Enjoy a green outdoor space throughout the year with premium artificial grass for balconies, terrace gardens, landscaping, play areas, and commercial projects. Designed for realistic appearance, fast drainage, and low-maintenance performance."
+  },
+  "laminate-flooring": {
+    title: "AC4 Wooden Laminate Flooring",
+    description: "Transform interiors with AC4 wooden laminate flooring that delivers the appearance of natural wood along with excellent scratch resistance and everyday durability. Suitable for living rooms, bedrooms, offices, retail spaces, and modern residential interiors."
+  },
+  "wpc-timber-tubes": {
+    title: "WPC Timber Tubes for Partitions & Ceilings",
+    description: "Design elegant room dividers, decorative partitions, ceiling features, and architectural elements using waterproof WPC timber tubes. Their wood-inspired finish and durable construction make them suitable for both residential and commercial interiors."
+  },
+  "tokyo-charcoal-moulding": {
+    title: "Decorative Charcoal Wall Mouldings",
+    description: "Create premium wall designs with decorative charcoal mouldings that add depth, framing, and elegant detailing to modern interiors. Ideal for TV units, living rooms, bedrooms, office spaces, and feature walls with minimal maintenance."
+  },
+  "wpc-decking": {
+    title: "Anti-Slip WPC Outdoor Decking",
+    description: "Build attractive outdoor spaces with anti-slip WPC decking designed for balconies, terraces, poolside areas, gardens, and commercial landscapes. Composite construction offers weather resistance, durability, and the appearance of natural wood without frequent maintenance."
+  },
+  "herringbone-laminate-flooring": {
+    title: "Herringbone Wooden Flooring",
+    description: "Achieve a timeless interior with herringbone wooden flooring featuring the classic zigzag pattern. Suitable for luxury homes, boutique stores, offices, and premium commercial spaces seeking elegant flooring with long-lasting durability."
+  },
+  "hybrid-laminate-flooring": {
+    title: "100% Waterproof Hybrid Flooring",
+    description: "Hybrid flooring combines waterproof performance with the authentic look of wooden floors, making it suitable for busy households and commercial spaces. Designed for durability, comfort underfoot, and reliable performance in moisture-prone environments."
+  },
+  "cobra-pu-stone": {
+    title: "Lightweight PU Stone Wall Panels",
+    description: "Create natural stone feature walls without heavy masonry using lightweight PU stone panels. Suitable for living rooms, cafes, restaurants, hotels, TV backdrops, and commercial interiors where quick installation and premium aesthetics are important."
+  }
 };
 
 function highlightMatch(text: string, query: string) {
@@ -219,10 +274,10 @@ export default function ProductsClient({ products }: { products: Product[] }) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-3xl sm:text-4xl md:text-6xl font-black text-white tracking-tight uppercase leading-[0.95]"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight uppercase leading-[1.1] md:leading-[0.95]"
             >
-              Browse Our <br className="md:hidden" />
-              <span className="text-amber-500 italic font-light drop-shadow-[0_0_15px_rgba(251,191,36,0.2)]">Full</span> Collection.
+              Browse Flooring, Wall Panels & <br className="hidden md:block" />
+              <span className="text-amber-500 italic font-light drop-shadow-[0_0_15px_rgba(251,191,36,0.2)]">Interior Products</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
@@ -272,10 +327,12 @@ export default function ProductsClient({ products }: { products: Product[] }) {
                         className="flex items-center gap-6 p-6 hover:bg-stone-50 dark:hover:bg-slate-800 border-b border-stone-100 dark:border-slate-800 last:border-0 transition-colors group/res"
                       >
                         <div className="relative w-20 h-20 shrink-0 bg-stone-100 rounded-xl overflow-hidden border border-stone-200 dark:border-slate-700 shadow-sm">
-                          <Image src={p.images?.[0]?.url || '/placeholder.jpg'} alt={p.title} fill className="object-cover transition-transform group-hover/res:scale-110" />
+                          <Image src={p.images?.[0]?.url || '/placeholder.jpg'} alt={SEO_HUB_CONTENT[p.slug]?.title || p.title} fill className="object-cover transition-transform group-hover/res:scale-110" />
                         </div>
                         <div className="text-left flex-grow">
-                          <p className="text-base font-bold text-stone-900 dark:text-white uppercase tracking-wider mb-2">{p.title}</p>
+                          <p className="text-base font-bold text-stone-900 dark:text-white uppercase tracking-wider mb-2">
+                            {SEO_HUB_CONTENT[p.slug]?.title || p.title}
+                          </p>
                           <p className="text-[13px] text-stone-500 dark:text-slate-400 line-clamp-2 leading-relaxed font-medium">
                             {highlightMatch(p.matchText, searchQuery)}
                           </p>
@@ -445,22 +502,30 @@ export default function ProductsClient({ products }: { products: Product[] }) {
       </AnimatePresence>
 
       {/* Products Display Grid - Responsive for all screens */}
-      <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-2 lg:px-8 py-1">
-        <motion.div
-          layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-10"
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredProducts.map((product: Product, i: number) => (
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-2 lg:px-8 py-1 pb-24">
+        {categoryOrder.map((cat) => {
+          const catProducts = filteredProducts.filter((p: Product) => p.category === cat);
+          if (catProducts.length === 0) return null;
 
+          return (
+            <section key={cat} className="mb-20 last:mb-0">
+              <h2 className="text-2xl sm:text-3xl font-black text-stone-900 dark:text-white mb-8 tracking-tight uppercase">
+                {categoryConfig[cat]?.label || cat}
+              </h2>
               <motion.div
-                key={product.slug}
                 layout
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-10"
               >
+                <AnimatePresence mode="popLayout">
+                  {catProducts.map((product: Product, i: number) => (
+                    <motion.article
+                      key={product.slug}
+                      layout
+                      initial={{ opacity: 0, scale: 0.98 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.98 }}
+                      transition={{ duration: 0.4, delay: i * 0.05 }}
+                    >
                 <Link
                   href={`/products/${product.slug}`}
                   className="group block relative h-full bg-white dark:bg-slate-900 border border-stone-200 dark:border-slate-800 shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-[0_50px_100px_rgba(0,0,0,0.12)] transition-all duration-700 overflow-hidden"
@@ -489,15 +554,15 @@ export default function ProductsClient({ products }: { products: Product[] }) {
                     </div>
                   </div>
 
-                  <div className="p-8 pb-10 flex flex-col h-fit">
-                    <h3 className="text-xl font-bold text-stone-900 dark:text-white mb-4 group-hover:text-amber-600 transition-colors tracking-tight leading-tight">
-                      {product.title}
-                    </h3>
-                    <p className="text-stone-500 dark:text-slate-400 text-[13px] leading-relaxed mb-10 line-clamp-2">
-                      {product.shortDescription}
-                    </p>
+                    <div className="p-8 pb-10 flex flex-col h-fit">
+                      <h3 className="text-xl font-bold text-stone-900 dark:text-white mb-4 group-hover:text-amber-600 transition-colors tracking-tight leading-tight">
+                        {SEO_HUB_CONTENT[product.slug]?.title || product.title}
+                      </h3>
+                      <p className="text-stone-500 dark:text-slate-400 text-[13px] leading-relaxed mb-10 line-clamp-2">
+                        {SEO_HUB_CONTENT[product.slug]?.description || product.shortDescription}
+                      </p>
 
-                    <div className="flex items-center justify-between pt-6 border-t border-stone-100 dark:border-slate-800">
+                      <div className="flex items-center justify-between pt-6 border-t border-stone-100 dark:border-slate-800">
                       <span className="text-[10px] font-bold text-stone-400 dark:text-slate-500 uppercase tracking-[0.2em]">Explore Catalog</span>
                       <div className="w-10 h-10 rounded-full bg-stone-50 dark:bg-slate-800/50 flex items-center justify-center group-hover:bg-amber-600 group-hover:text-white transition-all transform group-hover:translate-x-1 shadow-sm">
                         <ArrowRight className="w-4 h-4" />
@@ -505,10 +570,13 @@ export default function ProductsClient({ products }: { products: Product[] }) {
                     </div>
                   </div>
                 </Link>
+                    </motion.article>
+                  ))}
+                </AnimatePresence>
               </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+            </section>
+          );
+        })}
 
         {filteredProducts.length === 0 && (
           <div className="text-center py-40 bg-white dark:bg-slate-900 border-2 border-dashed border-stone-200 dark:border-slate-800 rounded-[2.5rem]">
@@ -522,7 +590,7 @@ export default function ProductsClient({ products }: { products: Product[] }) {
             </button>
           </div>
         )}
-      </section>
+      </div>
     </div>
   );
 }

@@ -321,7 +321,12 @@ const VariantCard = memo(({
     const scrollLeft = e.currentTarget.scrollLeft;
     const width = e.currentTarget.clientWidth;
     const newIndex = Math.round(scrollLeft / width);
-    if (newIndex !== activeIndex) setActiveIndex(newIndex);
+    if (newIndex !== activeIndex) {
+      setActiveIndex(newIndex);
+      if (typeof navigator !== "undefined" && navigator.vibrate) {
+        navigator.vibrate(15);
+      }
+    }
   };
 
   // Auto-slide logic

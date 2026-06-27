@@ -39,26 +39,26 @@ export default function Footer() {
         <div className="grid grid-cols-2 lg:grid-cols-12 gap-x-4 gap-y-12 lg:gap-8 items-start">
 
           {/* ── Col 2 – Contact (mobile only) ── */}
-          <div className="col-span-2 lg:hidden flex flex-col items-center text-center order-2">
-            <ul className="space-y-4 lg:space-y-4 text-[13px] w-full max-w-xs mx-auto lg:mx-0">
-              <li className="flex items-center justify-center lg:justify-start lg:items-start gap-4 text-gray-400 text-left">
-                <span className="leading-tight text-center lg:text-left">
+          <div className="col-span-2 lg:hidden flex flex-col items-center text-center order-2 w-full mt-4 md:mt-8">
+            <ul className="flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-4 md:gap-8 space-y-4 md:space-y-0 text-[13px] w-full max-w-xs md:max-w-full mx-auto lg:mx-0">
+              <li className="flex items-center justify-center lg:justify-start lg:items-start gap-3 text-gray-400 text-left md:max-w-64">
+                <span className="leading-tight text-center md:text-left">
                   H-36/27A, H-Block, Sikanderpur, DLF Phase-1, Gurugram – 122002
                 </span>
               </li>
-              <li className="flex items-center justify-center lg:justify-start gap-4 text-left">
+              <li className="flex items-center justify-center lg:justify-start gap-3 text-left">
                 <div className="bg-white/5 p-2 rounded-lg shrink-0">
                   <Phone className="w-4 h-4 text-amber-500" />
                 </div>
-                <a href="tel:+917217644573" className="text-gray-300 hover:text-amber-400 transition-colors font-medium">
+                <a href="tel:+917217644573" className="text-gray-300 hover:text-amber-400 transition-colors font-medium whitespace-nowrap">
                   +91 72176 44573
                 </a>
               </li>
-              <li className="flex items-center justify-center lg:justify-start gap-4 text-left">
+              <li className="flex items-center justify-center lg:justify-start gap-3 text-left">
                 <div className="bg-white/5 p-2 rounded-lg shrink-0">
                   <Mail className="w-4 h-4 text-amber-500 text-left" />
                 </div>
-                <a href="mailto:support@goalsfloors.com" className="text-gray-300 hover:text-amber-400 transition-colors font-medium">
+                <a href="mailto:support@goalsfloors.com" className="text-gray-300 hover:text-amber-400 transition-colors font-medium whitespace-nowrap">
                   support@goalsfloors.com
                 </a>
               </li>
@@ -78,7 +78,7 @@ export default function Footer() {
               />
             </Link>
 
-            <p className="text-gray-400 text-[13px] leading-relaxed max-w-xs mx-auto lg:mx-0">
+            <p className="text-gray-400 text-[13px] leading-relaxed max-w-xs md:max-w-2xl mx-auto lg:max-w-xs lg:mx-0">
               Elevating spaces with premium architectural surfaces — your trusted partner for luxury flooring &amp; panels in Delhi NCR.
             </p>
 
@@ -108,7 +108,7 @@ export default function Footer() {
             </ul>
 
             {/* Products + Links Block */}
-            <div className="grid grid-cols-2 gap-x-6 gap-y-8 w-full max-w-xs mx-auto lg:hidden">
+            <div className="grid grid-cols-2 gap-x-6 md:gap-x-24 gap-y-8 w-full max-w-xs md:max-w-xl mx-auto lg:hidden">
               <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
                 <h3 className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-500 mb-6">
                   <Link href="/products" className="hover:text-white transition-colors">Products</Link>
@@ -149,7 +149,7 @@ export default function Footer() {
             </div>
 
             {/* Social Icons - Below contact info */}
-            <div className="flex items-center justify-center lg:justify-start gap-3 pt-2">
+            <div className="flex items-center justify-center lg:justify-start gap-3 md:gap-8 lg:gap-3 pt-2">
               <a
                 href="https://www.instagram.com/goalsfloors"
                 target="_blank"

@@ -72,7 +72,7 @@ export default function Home() {
               <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed text-justify">We don&apos;t just supply surfaces; we deliver the speed, scale, and innovation that your luxury projects deserve.</p>
 
               {/* Mobile Image - Shown only on small screens */}
-              <div className="relative h-[400px] w-full mb-10 lg:hidden group/img">
+              <div className="relative h-[400px] sm:h-[500px] md:h-[650px] w-full mb-10 lg:hidden group/img">
                 {/* Intensified Background Glow for Mobile */}
                 <div className="absolute -inset-6 bg-amber-500/30 blur-[60px] rounded-full opacity-60 animate-pulse" />
 

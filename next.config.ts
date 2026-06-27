@@ -53,6 +53,30 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/why-goals-floors',
+        destination: '/about',
+        permanent: true, // 301 redirect for SEO
+      },
+      {
+        source: '/contact-us',
+        destination: '/contact',
+        permanent: true, // 301 redirect for SEO
+      },
+      {
+        source: '/products-showcase',
+        destination: '/products',
+        permanent: true, // 301 redirect for SEO
+      },
+      {
+        source: '/laminate-flooring',
+        destination: '/products/laminate-flooring',
+        permanent: true, // 301 redirect for SEO
+      },
+    ];
+  },
 };
 
 export default nextConfig;

@@ -65,7 +65,7 @@ export default function AboutClient() {
             <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="flex flex-col items-center lg:items-start text-center lg:text-left">
               <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-sm bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-500 text-[11px] font-bold uppercase tracking-widest mb-6 border border-amber-200 dark:border-amber-800/50 shadow-sm">
                 <MapPin className="w-3.5 h-3.5" />
-                HQ: Sikanderpur, Gurugram • Delhi NCR
+                HQ: Sikanderpur, Gurugram • Est. 2021
               </motion.div>
 
               <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 dark:text-white leading-[1.05] mb-6 tracking-tight">
@@ -171,7 +171,7 @@ export default function AboutClient() {
               </motion.h2>
               <motion.div variants={fadeUp} className="prose prose-lg dark:prose-invert text-gray-600 dark:text-gray-400 leading-relaxed max-w-none text-justify">
                 <p>
-                  Backed by the strong business legacy of <strong>Goals Enterprises</strong> (founded by Mr. Umesh Kumar), Goals Floors was launched by <strong className="text-gray-900 dark:text-white">Shakti FTN</strong> with a clear vision: to fix a broken industry. We saw the struggles professionals faced—overpriced materials, delayed deliveries, poor installation, and zero warranties.
+                  Backed by the strong business legacy of <strong>Goals Enterprises</strong> (founded by Mr. Umesh Kumar), Goals Floors was established in <strong>2021</strong> by <strong className="text-gray-900 dark:text-white">Shakti FTN</strong> with a clear vision: to fix a broken industry. While our brand is young, our expert team of designers, architects, and craftsmen brings nearly <strong>two decades of experience</strong> to the table. We saw the struggles professionals faced—overpriced materials, delayed deliveries, poor installation, and zero warranties.
                 </p>
                 <p>
                   We stepped in to change the game. Today, we provide international-grade wall panels and premium flooring at honest prices. By eliminating supply chain inefficiencies from our <strong>Sikanderpur, Gurugram headquarters</strong>, we ensure your material reaches any site in Gurgaon & Delhi NCR within 2 hours, backed by flawless installation support.

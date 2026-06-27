@@ -4,18 +4,21 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Bot, User, RefreshCw, Send, CheckCircle2, ChevronDown, ChevronRight, MessageSquare, ExternalLink, Sparkles, X, ArrowLeft } from "lucide-react";
 import knowledgeBase from "../../goalsfloors-ai/KNOWLEDGE_BASE.json";
 import VisualQuizFunnel from "./VisualQuizFunnel";
 import LeadGenBox from "./LeadGenBox";
 import LeadCaptureForm from "./LeadCaptureForm";
 import { processSSEStream } from "../lib/chatUtils";
+import { FAQ_DATABASE, ROUTE_TO_TOPIC_MAP, FAQItem } from "../lib/faqDatabase";
 
 // Types
 interface Message {
   role: "user" | "assistant" | "system";
   content: string;
   leadGenResult?: { productName: string; price: number; reason: string };
+  relatedQuestions?: string[];
 }
 
 const tooltipHooks = [
@@ -25,18 +28,167 @@ const tooltipHooks = [
   "Need design ideas for your space? 🏢"
 ];
 
+const getRandomQuestions = (pool: string[], count: number, exclude: string[]) => {
+  const available = pool.filter(id => !exclude.includes(id));
+  return available.sort(() => 0.5 - Math.random()).slice(0, count);
+};
+
 export default function GoalsAIWidget() {
+  const pathname = usePathname() || "";
   const [isOpen, setIsOpen] = useState(false);
   const [currentHookIndex, setCurrentHookIndex] = useState(0);
   const [showTooltip, setShowTooltip] = useState(false);
   const [isQuizMode, setIsQuizMode] = useState(false);
   const [isOfferFormOpen, setIsOfferFormOpen] = useState(false);
+  const [suggestedQIds, setSuggestedQIds] = useState<string[]>([]);
+  const [askedQuestionIds, setAskedQuestionIds] = useState<string[]>([]);
+  const [hasInteractedOnPage, setHasInteractedOnPage] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { role: "assistant", content: "Hello! I am your Goals Floors Virtual Consultant. How can I help you with our premium architectural collections today?\n\n[ACTION:TRIGGER_QUIZ]" }
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Dynamic Hooks based on Route
+  const getContextualHooks = () => {
+    if (pathname.includes("/products/wall-panels") || pathname.includes("/products/upfit") || pathname.includes("/products/tokyo") || pathname.includes("/products/cobra")) {
+      return [
+        "Confused about panel types? 🏢",
+        "Ask me about Fluted Panel prices! 💰",
+        "Need help matching wall colors? 🎨",
+        "Confused? Try our 1-Min Quiz! 🎯"
+      ];
+    }
+    if (pathname.includes("/products/wpc-decking") || pathname.includes("exterior") || pathname.includes("louvers")) {
+      return [
+        "Looking for weather-proof exteriors? ☀️",
+        "Ask about WPC Decking durability! 🌧️",
+        "Need a free site measurement? 📏",
+        "Unlock 30% VIP Discount! 🎁"
+      ];
+    }
+    if (pathname.includes("/products/spc-flooring") || pathname.includes("laminate") || pathname.includes("herringbone") || pathname.includes("hybrid")) {
+      return [
+        "Looking for 100% waterproof flooring? 💧",
+        "Ask me about SPC vs Laminate! 🤔",
+        "Need help calculating sq.ft.? 📏",
+        "Confused? Try our 1-Min Quiz! 🎯"
+      ];
+    }
+    if (pathname.includes("/catalogs")) {
+      return [
+        "Need help finding a specific catalog? 📚",
+        "Looking for a specific color? 🎨",
+        "Want me to recommend a product? 🤖"
+      ];
+    }
+    if (pathname.includes("/contact") || pathname.includes("/about")) {
+      return [
+        "Have a question? Ask me! 💬",
+        "Need an immediate response? ⚡",
+        "Want to request a site visit? 📍"
+      ];
+    }
+    if (pathname.includes("/products/artificial-grass")) {
+      return [
+        "Looking for maintenance-free lawns? 🌱",
+        "Ask me about grass density! 📏",
+        "Need help with balcony ideas? 🏢"
+      ];
+    }
+    return tooltipHooks; // Default Fallback
+  };
+
+  const currentHooksList = getContextualHooks();
+
+  // Reset hook index and initialize smart FAQs when pathname changes
+  useEffect(() => {
+    setCurrentHookIndex(0);
+    setHasInteractedOnPage(false); // Reset interaction state for new page
+  }, [pathname]);
+
+  useEffect(() => {
+    if (hasInteractedOnPage) return; // Don't show new main chips if already interacted on this page
+
+    // Initialize FAQs for current page
+    let matchedKey = Object.keys(ROUTE_TO_TOPIC_MAP).find(key => pathname.includes(key) && key !== "/");
+    if (!matchedKey && pathname === "/") matchedKey = "/";
+    
+    if (matchedKey) {
+      // Pick 3 random questions from the pool for this page
+      setSuggestedQIds(getRandomQuestions(ROUTE_TO_TOPIC_MAP[matchedKey], 3, askedQuestionIds));
+    } else {
+      setSuggestedQIds([]);
+    }
+  }, [pathname, askedQuestionIds, hasInteractedOnPage]);
+
+  const handleSuggestedQuestionClick = (faqId: string) => {
+    if (isLoading) return;
+    const faq = FAQ_DATABASE[faqId];
+    if (!faq) return;
+
+    // Capture unclicked suggestions so they aren't lost
+    const unclickedMainQs = suggestedQIds.filter(id => id !== faqId);
+
+    setHasInteractedOnPage(true);
+    setSuggestedQIds([]); // Hide suggestions immediately
+    setAskedQuestionIds(prev => [...prev, faqId]); // Track asked question
+    setIsLoading(true);
+
+    // Add user message & empty assistant placeholder
+    setMessages((prev) => [
+      ...prev,
+      { role: "user", content: faq.question },
+      { role: "assistant", content: "" }
+    ]);
+
+    // Simulate AI thinking (2 seconds)
+    setTimeout(() => {
+      setIsLoading(false);
+      
+      const words = faq.answer.split(' ');
+      let currentText = "";
+      let wordIndex = 0;
+      
+      // Simulate ChatGPT typing effect
+      const typeInterval = setInterval(() => {
+        if (wordIndex < words.length) {
+          currentText += (wordIndex === 0 ? '' : ' ') + words[wordIndex];
+          setMessages((prev) => {
+            const updated = [...prev];
+            updated[updated.length - 1] = { ...updated[updated.length - 1], content: currentText };
+            return updated;
+          });
+          wordIndex++;
+        } else {
+          clearInterval(typeInterval);
+          
+          let matchedKey = Object.keys(ROUTE_TO_TOPIC_MAP).find(key => pathname.includes(key) && key !== "/");
+          if (!matchedKey && pathname === "/") matchedKey = "/";
+          const pool = matchedKey ? ROUTE_TO_TOPIC_MAP[matchedKey] : [];
+
+          // Exclude questions already asked, the current faqId, and unclickedMainQs
+          const excludeForRandom = [...askedQuestionIds, faqId, ...unclickedMainQs];
+          
+          // Get up to 3 random new related questions from the pool
+          const randomRelated = getRandomQuestions(pool, 3, excludeForRandom);
+
+          // Combine unclicked main questions + new random related questions
+          let nextRelatedQs = [...unclickedMainQs, ...randomRelated];
+          
+          // Show related questions INSIDE the chat bubble when typing finishes
+          if (nextRelatedQs.length > 0) {
+            setMessages((prev) => {
+              const updated = [...prev];
+              updated[updated.length - 1] = { ...updated[updated.length - 1], relatedQuestions: nextRelatedQs };
+              return updated;
+            });
+          }
+        }
+      }, 35); // 35ms per word for a fast typing effect
+    }, 2000);
+  };
 
   // Auto-scroll to bottom when new messages arrive
   const scrollToBottom = () => {
@@ -67,7 +219,7 @@ export default function GoalsAIWidget() {
 
     // Total cycle: 7 seconds (5 sec hidden + 2 sec visible)
     const interval = setInterval(() => {
-      setCurrentHookIndex((prev) => (prev + 1) % tooltipHooks.length);
+      setCurrentHookIndex((prev) => (prev + 1) % currentHooksList.length);
       setShowTooltip(true);
 
       // Stay on screen for 3 seconds, then fade out
@@ -80,7 +232,7 @@ export default function GoalsAIWidget() {
       clearInterval(interval);
       clearTimeout(initialTimeout);
     };
-  }, [isOpen]);
+  }, [isOpen, currentHooksList.length]);
 
   // Lock body scroll when widget is open
   useEffect(() => {
@@ -396,6 +548,33 @@ export default function GoalsAIWidget() {
                                 <motion.span animate={{ opacity: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 1.5, delay: 0.4 }} className="w-1.5 h-1.5 bg-amber-500 rounded-full" />
                               </span>
                             )}
+
+                            {/* Related Questions inside Bubble */}
+                            {(() => {
+                              const visibleRelatedQs = msg.relatedQuestions?.filter(qId => !askedQuestionIds.includes(qId)) || [];
+                              
+                              if (visibleRelatedQs.length === 0) return null;
+                              
+                              return (
+                                <div className="mt-3 pt-3 border-t border-white/10 flex flex-col gap-2">
+                                  <span className="text-[10px] text-slate-400 font-medium uppercase tracking-wider">Related Questions</span>
+                                  {visibleRelatedQs.map((qId) => {
+                                    const relatedFaq = FAQ_DATABASE[qId];
+                                    if (!relatedFaq) return null;
+                                    return (
+                                      <button
+                                        key={qId}
+                                        onClick={() => handleSuggestedQuestionClick(qId)}
+                                        className="text-left text-xs text-amber-400 hover:text-amber-300 transition-colors py-1 flex items-start gap-1.5"
+                                      >
+                                        <Sparkles className="w-3 h-3 shrink-0 mt-0.5" />
+                                        <span className="leading-tight">{relatedFaq.question}</span>
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              );
+                            })()}
                           </div>
 
                           {/* Lead Gen Box Integration */}
@@ -411,6 +590,33 @@ export default function GoalsAIWidget() {
 
                     <div ref={messagesEndRef} />
                   </div>
+
+                  {/* Suggested Smart FAQs */}
+                  <AnimatePresence>
+                    {suggestedQIds.length > 0 && !isLoading && (
+                      <motion.div 
+                        initial={{ opacity: 0, y: 10, height: 0 }} 
+                        animate={{ opacity: 1, y: 0, height: 'auto' }} 
+                        exit={{ opacity: 0, y: 10, height: 0 }}
+                        className="shrink-0 px-3 pb-3 pt-2 bg-transparent overflow-x-auto whitespace-nowrap scrollbar-hide flex gap-2"
+                      >
+                        {suggestedQIds.map(id => {
+                          const faq = FAQ_DATABASE[id];
+                          if (!faq) return null;
+                          return (
+                            <button
+                              key={id}
+                              onClick={() => handleSuggestedQuestionClick(id)}
+                              className="text-[13px] text-amber-500 border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 px-3 py-1.5 rounded-full transition-colors font-medium shrink-0 flex items-center gap-1.5"
+                            >
+                              <Sparkles className="w-3 h-3" />
+                              {faq.question}
+                            </button>
+                          );
+                        })}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
                   {/* Input Area */}
                   <div className="shrink-0 p-3 md:p-4 bg-slate-900 border-t border-white/10">
@@ -452,7 +658,7 @@ export default function GoalsAIWidget() {
               className={`absolute right-16 bottom-2 bg-slate-800 text-slate-200 text-xs font-medium py-2 px-3 rounded-xl border border-amber-500/30 shadow-2xl whitespace-nowrap transition-all duration-500 ${showTooltip ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4 pointer-events-none"
                 }`}
             >
-              {tooltipHooks[currentHookIndex]}
+              {currentHooksList[currentHookIndex]}
               {/* Inner Triangle (Background) */}
               <div className="absolute top-1/2 -right-1.5 -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-l-[6px] border-l-slate-800 border-b-[6px] border-b-transparent z-10"></div>
               {/* Outer Triangle (Border) */}

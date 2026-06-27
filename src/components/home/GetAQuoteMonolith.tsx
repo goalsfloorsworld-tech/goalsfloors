@@ -96,7 +96,7 @@ export default function GetAQuoteMonolith() {
             {/* Right: Premium Normal Button */}
             <div
               style={{ transform: "translateZ(60px)" }}
-              className="relative flex flex-col items-center justify-center min-h-0 py-8 md:py-0 md:min-h-[400px] overflow-hidden"
+              className="relative flex flex-col items-center justify-center min-h-0 py-8 md:py-12 lg:py-0 lg:min-h-[400px] overflow-hidden"
             >
               {/* Technical Grid Background */}
               <div className="absolute inset-4 border border-amber-500/10 pointer-events-none opacity-40 dark:opacity-20"

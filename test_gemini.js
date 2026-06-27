@@ -1,7 +1,7 @@
 // Run this with Node.js (v18+)
 // Command: node test_gemini.js
 
-const apiKey = "YOUR_API_KEY_HERE"; // Apni API key yahan dalein
+const apiKey = "AIzaSyA9IHwQI--rtysxaB8l-sVMuBsN9F71nTY"; // Apni API key yahan dalein
 
 const flashModels = [
   "gemini-1.5-flash",
