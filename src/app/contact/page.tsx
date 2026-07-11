@@ -111,6 +111,7 @@ function ContactPageContent() {
     company: "",
     address: "",
     interest: "",
+    otherInterest: "",
     message: ""
   });
 
@@ -181,12 +182,22 @@ function ContactPageContent() {
     }
 
     try {
+      let finalInterest = formData.interest;
+      if (formData.interest === "other") {
+        if (!formData.otherInterest.trim()) {
+          setError("Please specify your primary interest.");
+          setIsSubmitting(false);
+          return;
+        }
+        finalInterest = formData.otherInterest;
+      }
+
       const response = await fetch("/api/send", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ...formData, source: "Contact_Page" }),
+        body: JSON.stringify({ ...formData, interest: finalInterest, source: "Contact_Page" }),
       });
 
       const result = await response.json();
@@ -205,8 +216,9 @@ function ContactPageContent() {
     }
   };
 
-  const getInputClass = (value: string) => {
-    const baseClass = "w-full pl-11 pr-4 py-3 border text-sm transition-all rounded-sm outline-none focus:ring-1 focus:ring-amber-500 dark:text-white";
+  const getInputClass = (value: string, hasIcon: boolean = true) => {
+    const paddingLeft = hasIcon ? "pl-11" : "pl-4";
+    const baseClass = `w-full ${paddingLeft} pr-4 py-3 border text-sm transition-all rounded-sm outline-none focus:ring-1 focus:ring-amber-500 dark:text-white`;
     if (value && value.trim() !== "") {
       return `${baseClass} bg-amber-50/70 dark:bg-amber-900/20 border-amber-200 dark:border-amber-700 focus:border-amber-500`;
     }
@@ -383,7 +395,7 @@ function ContactPageContent() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label className="text-xs font-bold text-gray-900 dark:text-gray-300 uppercase tracking-widest">Email Address</label>
+                      <label className="text-xs font-bold text-gray-900 dark:text-gray-300 uppercase tracking-widest">Email Address <span className="text-gray-400 font-normal normal-case">(optional)</span></label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                           <Mail className="h-4 w-4 text-gray-400 dark:text-gray-500" />
@@ -392,7 +404,7 @@ function ContactPageContent() {
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <label className="text-xs font-bold text-gray-900 dark:text-gray-300 uppercase tracking-widest">Company / Firm</label>
+                      <label className="text-xs font-bold text-gray-900 dark:text-gray-300 uppercase tracking-widest">Company / Firm <span className="text-gray-400 font-normal normal-case">(optional)</span></label>
                       <div className="relative">
                         <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                           <Building2 className="h-4 w-4 text-gray-400 dark:text-gray-500" />
@@ -421,10 +433,18 @@ function ContactPageContent() {
                         <option value="flooring">Premium Flooring</option>
                         <option value="ceilings">Baffle Ceilings</option>
                         <option value="multiple">Multiple Products / Complete Project</option>
+                        <option value="other">Other (Please Specify)</option>
                       </select>
                       <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                     </div>
                   </div>
+
+                  {formData.interest === "other" && (
+                    <div className="space-y-2 animate-in fade-in slide-in-from-top-2 duration-300">
+                      <label className="text-xs font-bold text-gray-900 dark:text-gray-300 uppercase tracking-widest">Please Specify <span className="text-red-500">*</span></label>
+                      <input name="otherInterest" value={formData.otherInterest} onChange={handleInputChange} type="text" required className={getInputClass(formData.otherInterest, false)} placeholder="E.g., Customized Wallpapers, Glass Partitions..." />
+                    </div>
+                  )}
 
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-gray-900 dark:text-gray-300 uppercase tracking-widest">Project Details</label>
@@ -482,7 +502,7 @@ function ContactPageContent() {
                     </div>
 
                     <button
-                      onClick={() => { setIsSubmitted(false); setFormData({ name: "", phone: "", email: "", company: "", address: "", interest: "", message: "" }); }}
+                      onClick={() => { setIsSubmitted(false); setFormData({ name: "", phone: "", email: "", company: "", address: "", interest: "", otherInterest: "", message: "" }); }}
                       className="w-full border border-gray-200 dark:border-gray-700 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:border-gray-300 dark:hover:border-gray-500 font-bold text-[10px] uppercase tracking-[0.2em] py-4 transition-all"
                     >
                       ← Return to Form

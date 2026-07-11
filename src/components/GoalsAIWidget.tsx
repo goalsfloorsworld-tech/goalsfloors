@@ -304,6 +304,41 @@ export default function GoalsAIWidget() {
         }
       );
 
+      // Generate related questions based on user input
+      const userText = userMessage.toLowerCase();
+      let matchedRoute = null;
+
+      if (userText.includes("herringbone")) matchedRoute = "/products/herringbone-laminate-flooring";
+      else if (userText.includes("hybrid") || userText.includes("ocean")) matchedRoute = "/products/hybrid-laminate-flooring";
+      else if (userText.includes("laminate") || userText.includes("wooden floor")) matchedRoute = "/products/laminate-flooring";
+      else if (userText.includes("spc") || userText.includes("waterproof floor")) matchedRoute = "/products/spc-flooring";
+      else if (userText.includes("stone") || userText.includes("cobra") || userText.includes("rock")) matchedRoute = "/products/cobra-pu-stone";
+      else if (userText.includes("baffle") || userText.includes("ceiling")) matchedRoute = "/products/wpc-baffle-ceiling";
+      else if (userText.includes("timber") || userText.includes("tube") || userText.includes("partition") || userText.includes("rafter") || userText.includes("pillar")) matchedRoute = "/products/wpc-timber-tubes";
+      else if (userText.includes("deck") || userText.includes("outdoor floor")) matchedRoute = "/products/wpc-decking";
+      else if (userText.includes("grass") || userText.includes("turf") || userText.includes("lawn")) matchedRoute = "/products/artificial-grass";
+      else if (userText.includes("louver") || userText.includes("exterior panel") || userText.includes("elevation")) matchedRoute = "/products/wpc-exterior-louvers";
+      else if (userText.includes("panel") || userText.includes("charcoal") || userText.includes("fluted") || userText.includes("pvc") || userText.includes("upfit") || userText.includes("moulding") || userText.includes("wall")) matchedRoute = "/products/wall-panels"; 
+
+      let pool: string[] = [];
+      if (matchedRoute && ROUTE_TO_TOPIC_MAP[matchedRoute]) {
+        pool = ROUTE_TO_TOPIC_MAP[matchedRoute];
+      } else {
+        // Flatten all keys for random selection if no keywords match
+        pool = Object.values(ROUTE_TO_TOPIC_MAP).flat();
+      }
+
+      const randomRelated = getRandomQuestions(pool, 3, askedQuestionIds);
+      
+      if (randomRelated.length > 0) {
+        setMessages((prev) => {
+          const updated = [...prev];
+          updated[updated.length - 1] = { ...updated[updated.length - 1], relatedQuestions: randomRelated };
+          return updated;
+        });
+      }
+
+
     } catch (error) {
       console.error("[GoalsAI] Chat Error:", error);
       setMessages((prev) => {
@@ -403,7 +438,7 @@ export default function GoalsAIWidget() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 200, mass: 0.5 }}
-            className="absolute bottom-14 md:bottom-16 right-[-8px] md:right-0 w-[calc(100vw-16px)] md:w-[480px] h-[calc(100vh-150px)] md:h-[780px] max-h-[calc(100vh-150px)] md:max-h-[80vh] z-20 flex flex-col"
+            className="absolute bottom-14 md:bottom-2 right-[-8px] md:right-0 w-[calc(100vw-16px)] md:w-[480px] h-[calc(100vh-150px)] md:h-[calc(100vh-64px)] max-h-[calc(100vh-150px)] md:max-h-[calc(100vh-64px)] z-20 flex flex-col"
           >
             <div
               className="absolute inset-0 bg-slate-950/95 backdrop-blur-3xl border border-white/10 rounded-[2rem] shadow-[0_30px_100px_rgba(0,0,0,0.7)]"
@@ -565,7 +600,7 @@ export default function GoalsAIWidget() {
                                       <button
                                         key={qId}
                                         onClick={() => handleSuggestedQuestionClick(qId)}
-                                        className="text-left text-xs text-amber-400 hover:text-amber-300 transition-colors py-1 flex items-start gap-1.5"
+                                        className="text-left text-xs text-amber-400 hover:text-amber-300 transition-colors py-1 flex items-start gap-1.5 cursor-pointer hover:underline"
                                       >
                                         <Sparkles className="w-3 h-3 shrink-0 mt-0.5" />
                                         <span className="leading-tight">{relatedFaq.question}</span>
@@ -607,7 +642,7 @@ export default function GoalsAIWidget() {
                             <button
                               key={id}
                               onClick={() => handleSuggestedQuestionClick(id)}
-                              className="text-[13px] text-amber-500 border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 px-3 py-1.5 rounded-full transition-colors font-medium shrink-0 flex items-center gap-1.5"
+                              className="text-[13px] text-amber-500 border border-amber-500/30 bg-amber-500/10 hover:bg-amber-500/20 px-3 py-1.5 rounded-full transition-colors font-medium shrink-0 flex items-center gap-1.5 cursor-pointer"
                             >
                               <Sparkles className="w-3 h-3" />
                               {faq.question}

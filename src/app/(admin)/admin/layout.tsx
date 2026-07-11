@@ -4,6 +4,8 @@ import { createClient } from '@supabase/supabase-js';
 import AdminSidebar from '@/components/admin/AdminSidebar';
 import MobileTopBar from '@/components/admin/MobileTopBar';
 
+export const dynamic = 'force-dynamic';
+
 export default async function AdminLayout({
   children,
 }: {

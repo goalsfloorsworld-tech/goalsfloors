@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, Upload, X, CheckCircle2 } from "lucide-react";
+import { ArrowRight, ArrowLeft, Upload, X, CheckCircle2, Lock } from "lucide-react";
+import { useAuth, SignInButton } from "@clerk/nextjs";
 
 // Architectural Floating Input Component
 const FloatingInput = ({ label, name, type = "text", value, onChange, placeholder }: any) => {
@@ -33,9 +34,11 @@ const FloatingInput = ({ label, name, type = "text", value, onChange, placeholde
 };
 
 export default function DealerWizard() {
+  const { isSignedIn, isLoaded } = useAuth();
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
   const [error, setError] = useState<string | null>(null);
   
   const [formData, setFormData] = useState({
@@ -51,6 +54,22 @@ export default function DealerWizard() {
     message: "",
     businessCardBase64: ""
   });
+
+  useEffect(() => {
+    if (formData.name || formData.company || formData.phone) {
+      localStorage.setItem('pending_dealer_application', JSON.stringify({
+        owner_name: formData.name,
+        business_name: formData.company,
+        phone: formData.phone,
+        whatsapp: formData.phone,
+        city: formData.city,
+        area: formData.state,
+        pincode: '',
+        email: formData.email,
+        source: 'dealer_form'
+      }))
+    }
+  }, [formData]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -123,6 +142,7 @@ export default function DealerWizard() {
         const result = await response.json();
         if (result.success) {
             setIsSubmitted(true);
+            setShowLoginPrompt(true);
         } else {
             throw new Error(result.error || "Submission failed.");
         }
@@ -132,6 +152,38 @@ export default function DealerWizard() {
         setIsSubmitting(false);
     }
   };
+
+  if (isSubmitted && showLoginPrompt) {
+    return (
+      <div className="py-14 px-6 text-center text-slate-900 dark:text-white transition-colors duration-500">
+        <motion.div 
+          initial={{ scale: 0.95, opacity: 0 }} 
+          animate={{ scale: 1, opacity: 1 }} 
+          className="max-w-md mx-auto flex flex-col items-center"
+        >
+          <div className="w-16 h-16 mb-6 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center">
+            <CheckCircle2 className="w-8 h-8 text-amber-600" />
+          </div>
+          <h2 className="text-3xl font-bold mb-3">Application Received!</h2>
+          <p className="text-slate-600 dark:text-slate-400 text-base leading-relaxed mb-8">
+            Your application has been received successfully. You can now track your application status in your dealer dashboard.
+          </p>
+          <button 
+            onClick={() => window.location.href = '/dashboard'}
+            className="w-full py-4 bg-slate-900 dark:bg-amber-500 text-white font-bold uppercase tracking-widest text-xs rounded-xl hover:bg-amber-500 transition-all mb-4"
+          >
+            Go to Dashboard
+          </button>
+          <button 
+            onClick={() => window.location.href = '/products'}
+            className="text-xs text-slate-400 hover:text-slate-600 underline underline-offset-4"
+          >
+            Return to catalog
+          </button>
+        </motion.div>
+      </div>
+    )
+  }
 
   if (isSubmitted) {
     return (
@@ -222,6 +274,25 @@ export default function DealerWizard() {
                 <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
 
                 <div className="relative z-10">
+                    {!isLoaded ? (
+                        <div className="flex justify-center py-20"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-500"></div></div>
+                    ) : !isSignedIn ? (
+                        <div className="text-center py-16 px-4">
+                            <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
+                                <Lock className="w-8 h-8 text-amber-600" />
+                            </div>
+                            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">Authentication Required</h3>
+                            <p className="text-slate-600 dark:text-slate-400 text-sm max-w-sm mx-auto mb-8">
+                                Please sign in or create an account to start your dealer application. This ensures we can properly track your application and link it to your dashboard.
+                            </p>
+                            <SignInButton mode="modal" forceRedirectUrl="/dealer">
+                                <button className="px-8 py-4 bg-amber-500 text-white font-bold uppercase tracking-widest text-xs rounded-xl hover:bg-amber-600 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                                    Sign In to Continue
+                                </button>
+                            </SignInButton>
+                        </div>
+                    ) : (
+                    <>
                     {error && (
                         <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="mb-8 bg-red-500/10 text-red-500 p-4 rounded-xl text-sm font-bold flex items-center gap-3 border border-red-500/20">
                             <X className="w-5 h-5 shrink-0" />
@@ -348,6 +419,8 @@ export default function DealerWizard() {
                         </div>
                         
                     </form>
+                    </>
+                    )}
                 </div>
             </div>
         </div>

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
   LayoutDashboard, FileText, BarChart3, Globe, Rocket, 
-  ShoppingBag, Database, UserPlus, Loader2, PackagePlus, Image as ImageIcon
+  ShoppingBag, Database, UserPlus, Loader2, PackagePlus, Image as ImageIcon, Store
 } from 'lucide-react';
 import { getCurrentUserProfile } from '@/actions/admin-core';
 import RoleBadge from '@/components/shared/RoleBadge';
@@ -31,6 +31,13 @@ const NAV_ITEMS = [
     icon: BarChart3, 
     color: 'hover:bg-indigo-50 dark:hover:bg-indigo-900/20 text-slate-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300',
     iconColor: 'text-indigo-500'
+  },
+  { 
+    href: '/admin/dealers', 
+    label: 'Dealers', 
+    icon: Store, 
+    color: 'hover:bg-teal-50 dark:hover:bg-teal-900/20 text-slate-700 dark:text-slate-300 hover:text-teal-700 dark:hover:text-teal-300',
+    iconColor: 'text-teal-500'
   },
   { 
     href: '/admin/gsc', 

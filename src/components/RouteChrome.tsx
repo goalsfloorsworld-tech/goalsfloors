@@ -16,7 +16,7 @@ export default function RouteChrome({
   children: ReactNode;
 }) {
   const pathname = usePathname() || '';
-  const isExcludedPath = pathname.startsWith('/admin');
+  const isExcludedPath = pathname.startsWith('/admin') || pathname.startsWith('/dashboard');
 
   if (isExcludedPath) {
     return <div className="relative min-h-screen">{children}</div>;

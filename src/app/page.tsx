@@ -1,15 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import Counter from "@/components/Counter";
-import Testimonials from "@/components/Testimonials";
-import BrandMarquee from "@/components/BrandMarquee";
-import CategoryFlipCards from "@/components/home/CategoryFlipCards";
-import GetAQuoteMonolith from "@/components/home/GetAQuoteMonolith";
-import { Truck, Trophy, CheckCircle2, ShieldCheck, Users } from "lucide-react";
+import { Truck, Trophy, CheckCircle2, ShieldCheck, Users, Settings, Lock, PenTool, Leaf } from "lucide-react";
 import HeroSection from "@/components/home/HeroSection";
-import AdvantageImage from "@/components/home/AdvantageImage";
-import CompareWidget from "@/components/CompareWidget";
-import QuickCategoryGrid from "@/components/home/QuickCategoryGrid";
+
+const Testimonials = dynamic(() => import("@/components/Testimonials"));
+const BrandMarquee = dynamic(() => import("@/components/BrandMarquee"));
+const CategoryFlipCards = dynamic(() => import("@/components/home/CategoryFlipCards"));
+const GetAQuoteMonolith = dynamic(() => import("@/components/home/GetAQuoteMonolith"));
+const AdvantageImage = dynamic(() => import("@/components/home/AdvantageImage"));
+const CompareWidget = dynamic(() => import("@/components/CompareWidget"));
+const QuickCategoryGrid = dynamic(() => import("@/components/home/QuickCategoryGrid"));
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden max-w-full min-w-0">
@@ -17,25 +19,42 @@ export default function Home() {
       <HeroSection />
 
       {/* ================= STATS BAR ================= */}
-      <div className="bg-white dark:bg-slate-900 py-8 border-b border-gray-100 dark:border-gray-800 relative z-20 -mt-8 sm:-mt-12 lg:-mt-14 mx-4 sm:mx-8 lg:mx-auto max-w-6xl shadow-[0_30px_70px_rgba(0,0,0,0.15)] dark:shadow-none transition-colors duration-300 rounded-sm">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 px-4 md:px-6">
+      <div className="w-full bg-[#f6f2ea] dark:bg-[#0F172A] relative z-20 transition-colors duration-300">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-[#15171e] dark:bg-slate-900 -mt-8 sm:-mt-12 lg:-mt-[116px] w-full lg:max-w-[900px] shadow-2xl transition-colors duration-300 rounded-xl border border-white/5 dark:border-gray-800 p-3 sm:p-6 lg:p-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4">
           {[
-            { label: "Premium Products", value: "2500+" },
-            { label: "Happy Clients", value: "20K+" },
-            { label: "Dealers", value: "400+" },
-            { label: "Warranty Backed", value: "90%" },
+            { label: "PREMIUM PRODUCTS", value: "2500+", icon: Settings },
+            { label: "HAPPY CLIENTS", value: "20K+", icon: Lock },
+            { label: "DEALERS", value: "400+", icon: PenTool },
+            { label: "WARRANTY BACKED", value: "90%", icon: Leaf },
           ].map((stat, i) => (
-            <div key={i} className="text-center overflow-hidden px-1">
-              <Counter
-                value={stat.value}
-                className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white"
-              />
-              <div className="text-[9px] sm:text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider md:tracking-widest mt-2 whitespace-nowrap">
-                {stat.label}
+            <div 
+              key={i} 
+              className={`flex items-center gap-3 sm:gap-4 overflow-hidden ${
+                i === 0 ? 'border-b border-r lg:border-b-0 border-[#2a2d36] pb-4 pr-2 sm:pb-6 sm:pr-3 lg:pb-0 lg:pr-3 xl:pr-6' :
+                i === 1 ? 'border-b lg:border-b-0 lg:border-r border-[#2a2d36] pb-4 pl-2 sm:pb-6 sm:pl-4 lg:pb-0 lg:px-3 xl:px-6' :
+                i === 2 ? 'border-r border-[#2a2d36] pt-4 pr-2 sm:pt-6 sm:pr-3 lg:pt-0 lg:px-3 xl:px-6' :
+                'pt-4 pl-2 sm:pt-6 sm:pl-4 lg:pt-0 lg:pl-3 xl:pl-6'
+              }`}
+            >
+              <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-600/40 bg-white/5 flex items-center justify-center text-gray-400">
+                <stat.icon className="w-5 h-5 sm:w-5 sm:h-5" strokeWidth={1.5} />
+              </div>
+              <div className="flex flex-col text-left overflow-hidden">
+                <Counter
+                  value={stat.value}
+                  className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight"
+                />
+                <div className="text-[9px] sm:text-[10px] text-gray-400 font-semibold tracking-[0.1em] mt-0.5 whitespace-nowrap">
+                  {stat.label}
+                </div>
               </div>
             </div>
           ))}
         </div>
+      </div>
+      </div>
       </div>
 
       {/* ================= QUICK APP CATEGORIES ================= */}

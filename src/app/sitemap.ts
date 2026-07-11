@@ -13,10 +13,6 @@ function processImageUrls(baseUrl: string, urls: Array<string | null | undefined
   const unique = uniqueStrings(urls);
   return unique.map(url => {
     if (url.startsWith('/')) return `${baseUrl}${url}`;
-    if (url.startsWith('http') && !url.includes(baseUrl)) {
-      // Force Googlebot to index the image via our domain instead of dropping it as cross-domain
-      return `${baseUrl}/_next/image?url=${encodeURIComponent(url)}&amp;w=3840&amp;q=75`;
-    }
     return url;
   });
 }

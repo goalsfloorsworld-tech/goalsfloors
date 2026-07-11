@@ -23,8 +23,9 @@ export async function getOnboardingStatus() {
 
     if (error) {
       if (error.code === 'PGRST116') {
-        // Profile doesn't exist yet (webhook might be slow)
-        return { needsOnboarding: null, retry: true };
+        // Profile doesn't exist yet. In development without webhooks, this would cause an infinite loop.
+        // We return true here. If they submit the modal, completeOnboarding will safely upsert the profile.
+        return { needsOnboarding: true };
       }
       throw error;
     }

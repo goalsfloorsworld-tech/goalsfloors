@@ -108,7 +108,8 @@ export default function ProductsClient({ products }: { products: Product[] }) {
   const searchRef = useRef<HTMLDivElement>(null);
 
   const categoryParam = searchParams.get("category") || "All";
-  const [searchQuery, setSearchQuery] = useState("");
+  const initialSearch = searchParams.get("search") || "";
+  const [searchQuery, setSearchQuery] = useState(initialSearch);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
 
   // Group products by category in a specific order: wall-panels -> outdoors -> premium-flooring -> ceilings
@@ -171,13 +172,14 @@ export default function ProductsClient({ products }: { products: Product[] }) {
     return { ...product, matchText };
   }) : [] as (Product & { matchText: string })[];
 
-  const filteredProducts = categoryParam === "All"
-    ? (sortedProducts || [])
-    : (sortedProducts || []).filter((p: Product) => {
-      // Dual-category support for Upfit Panels (Primary: outdoors, Secondary: wall-panels)
-      if (categoryParam === "wall-panels" && p.slug === "upfit-panels") return true;
-      return p?.category === categoryParam;
-    });
+  const filteredProducts = (sortedProducts || []).filter((p: Product) => {
+    // Dual-category support for Upfit Panels (Primary: outdoors, Secondary: wall-panels)
+    const matchesCategory = categoryParam === "All" || p?.category === categoryParam || (categoryParam === "wall-panels" && p.slug === "upfit-panels");
+    const matchesSearch = searchQuery.length === 0 || 
+      p.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.shortDescription?.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
 
 
@@ -190,6 +192,12 @@ export default function ProductsClient({ products }: { products: Product[] }) {
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
+
+  useEffect(() => {
+    if (initialSearch) {
+      setIsSearchFocused(false);
+    }
+  }, [initialSearch]);
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const isResultsVisible = isSearchFocused && searchQuery.length > 0;

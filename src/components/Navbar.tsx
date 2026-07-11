@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ChevronDown, Menu, X, ArrowRight, Sun, Moon, Settings } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowRight, Sun, Moon, Settings, LayoutDashboard } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { SignInButton, UserButton, useUser } from '@clerk/nextjs';
 import { checkIsAdmin, getUserRole } from '@/actions/user';
@@ -278,6 +278,13 @@ export default function Navbar() {
                               label="Admin Panel"
                               labelIcon={<Settings className="w-4 h-4 ml-1" />}
                               href="/admin"
+                            />
+                          )}
+                          {(userRole === 'dealer' || isAdmin) && (
+                            <UserButton.Link
+                              label="Dealer Dashboard"
+                              labelIcon={<LayoutDashboard className="w-4 h-4 ml-1" />}
+                              href="/dashboard"
                             />
                           )}
                           <UserButton.Action 

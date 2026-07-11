@@ -1,12 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useUser } from '@clerk/nextjs';
 import { completeOnboarding } from '@/app/actions/onboarding';
-import { Loader2, Phone, User, Briefcase, Share2 } from 'lucide-react';
+import { createDealerProfile, checkSlugAvailability } from '@/app/actions/dealer';
+import { Loader2, Phone, User, Briefcase, Share2, CheckCircle2, XCircle } from 'lucide-react';
 
 export default function OnboardingModal() {
+  const { user } = useUser();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isPendingDealer, setIsPendingDealer] = useState(false);
+  const [slugPreview, setSlugPreview] = useState('');
+  const [slugAvailable, setSlugAvailable] = useState<boolean | null>(null);
+  const [checkingSlug, setCheckingSlug] = useState(false);
+  const [slugFormatError, setSlugFormatError] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
     full_name: '',
@@ -14,6 +22,66 @@ export default function OnboardingModal() {
     role: '',
     referral_source: '',
   });
+
+  useEffect(() => {
+    const pending = localStorage.getItem('pending_dealer_application');
+    if (pending) {
+      try {
+        const data = JSON.parse(pending);
+        setFormData(prev => ({
+          ...prev,
+          full_name: data.owner_name || prev.full_name,
+          phone_number: data.phone || prev.phone_number,
+          role: 'dealer'
+        }));
+        setIsPendingDealer(true);
+      } catch (e) {
+        console.error('Error parsing pending dealer application', e);
+      }
+    }
+  }, []);
+
+  // Format slug as user types
+  useEffect(() => {
+    if (formData.role === 'dealer' || isPendingDealer) {
+      const hasInvalidChars = /[^a-zA-Z0-9\s\-_]/.test(formData.full_name);
+      if (hasInvalidChars) {
+        setSlugFormatError('Only letters, numbers, hyphens (-), and underscores (_) are allowed.');
+      } else {
+        setSlugFormatError(null);
+      }
+
+      let slug = formData.full_name
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '') // Only alphanumeric, space, hyphens
+        .trim()
+        .replace(/\s+/g, '-'); // Convert spaces to hyphens
+        
+      setSlugPreview(slug);
+      setSlugAvailable(null);
+    }
+  }, [formData.full_name, formData.role, isPendingDealer]);
+
+  // Debounced API call to check slug availability
+  useEffect(() => {
+    if (!slugPreview || (formData.role !== 'dealer' && !isPendingDealer)) {
+      setSlugAvailable(null);
+      return;
+    }
+
+    setCheckingSlug(true);
+    const timeoutId = setTimeout(async () => {
+      const res = await checkSlugAvailability(slugPreview);
+      if (res.available !== undefined) {
+        setSlugAvailable(res.available);
+      } else {
+        setSlugAvailable(null);
+      }
+      setCheckingSlug(false);
+    }, 2000);
+
+    return () => clearTimeout(timeoutId);
+  }, [slugPreview, formData.role, isPendingDealer]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,9 +102,43 @@ export default function OnboardingModal() {
       return;
     }
 
+    if ((formData.role === 'dealer' || isPendingDealer) && slugAvailable === false) {
+      setError('This URL is already taken by another dealer. Please choose a different name.');
+      setLoading(false);
+      return;
+    }
+
     try {
       const result = await completeOnboarding(formData);
       if (result.success) {
+        if (formData.role === 'dealer') {
+          try {
+            const pending = localStorage.getItem('pending_dealer_application');
+            const pendingData = pending ? JSON.parse(pending) : null;
+            
+            const businessName = pendingData?.business_name || formData.full_name;
+            const finalSlug = slugPreview;
+            
+            await createDealerProfile({
+              slug: finalSlug,
+              business_name: businessName,
+              phone: formData.phone_number,
+              whatsapp_number: pendingData?.whatsapp || null,
+              city: pendingData?.city || null,
+              area: pendingData?.area || null,
+              pincode: pendingData?.pincode || null,
+              is_approved: false,
+              profile_complete: false,
+            });
+            
+            localStorage.removeItem('pending_dealer_application');
+          } catch (err) {
+            console.error('Error creating dealer profile during onboarding:', err);
+          }
+        }
+        if (user) {
+          localStorage.setItem(`onboarding_completed_${user.id}`, 'true');
+        }
         // Force reload to update server-side state and clear modal
         window.location.reload();
       } else {
@@ -76,6 +178,24 @@ export default function OnboardingModal() {
                   onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
                 />
               </div>
+              
+              {/* Slug Preview UI */}
+              {(formData.role === 'dealer' || isPendingDealer) && formData.full_name.trim().length > 0 && (
+                <div className="mt-2 text-[11px] font-medium p-2 rounded-lg bg-gray-50/50 dark:bg-slate-900/50 border border-gray-100 dark:border-slate-800">
+                  <div className="flex items-center justify-between">
+                    <span className="text-slate-500">Your URL: <span className="text-slate-900 dark:text-white font-bold">/dealers/{slugPreview}</span></span>
+                    {checkingSlug && <Loader2 className="w-3.5 h-3.5 text-amber-500 animate-spin" />}
+                    {!checkingSlug && slugAvailable === true && <CheckCircle2 className="w-4 h-4 text-green-500" />}
+                    {!checkingSlug && slugAvailable === false && <XCircle className="w-4 h-4 text-red-500" />}
+                  </div>
+                  {!checkingSlug && slugAvailable === false && (
+                    <p className="text-red-500 mt-1.5 font-semibold">This URL is already taken by another dealer. Please choose a different name.</p>
+                  )}
+                  {slugFormatError && (
+                    <p className="text-amber-500 mt-1.5 font-semibold">{slugFormatError}</p>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Phone Number */}
@@ -103,22 +223,38 @@ export default function OnboardingModal() {
               <label className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 ml-1 flex items-center gap-2">
                 <Briefcase className="w-3 h-3" /> Select Your Role
               </label>
-              <div className="grid grid-cols-3 gap-2">
-                {['Client', 'Dealer', 'Contractor'].map((role) => (
+              
+              {isPendingDealer ? (
+                <div className="space-y-2">
                   <button
-                    key={role}
                     type="button"
-                    onClick={() => setFormData({ ...formData, role: role.toLowerCase() })}
-                    className={`py-2 text-[10px] font-bold uppercase tracking-tight rounded-lg border transition-all ${
-                      formData.role === role.toLowerCase()
-                        ? 'bg-amber-600 border-amber-600 text-white shadow-md shadow-amber-600/30'
-                        : 'bg-white dark:bg-slate-900 border-gray-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-amber-500/50'
-                    }`}
+                    disabled
+                    className="w-full py-2 text-[10px] font-bold uppercase tracking-tight rounded-lg border bg-amber-600 border-amber-600 text-white shadow-md shadow-amber-600/30 opacity-100 cursor-not-allowed"
                   >
-                    {role}
+                    Dealer
                   </button>
-                ))}
-              </div>
+                  <p className="text-[10px] text-amber-600 dark:text-amber-500 font-semibold text-center mt-1">
+                    Your dealer application has been loaded. You have been registered as a dealer.
+                  </p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-3 gap-2">
+                  {['Client', 'Dealer', 'Contractor'].map((role) => (
+                    <button
+                      key={role}
+                      type="button"
+                      onClick={() => setFormData({ ...formData, role: role.toLowerCase() })}
+                      className={`py-2 text-[10px] font-bold uppercase tracking-tight rounded-lg border transition-all ${
+                        formData.role === role.toLowerCase()
+                          ? 'bg-amber-600 border-amber-600 text-white shadow-md shadow-amber-600/30'
+                          : 'bg-white dark:bg-slate-900 border-gray-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:border-amber-500/50'
+                      }`}
+                    >
+                      {role}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Referral Source - Updated to Button Grid */}

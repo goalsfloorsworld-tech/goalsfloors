@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 
 async function runSearchBot() {
-  const url = 'http://localhost:3000/products';
+  const url = 'http://localhost:3000/dealers/nexusbranding-gurgaon';
   console.log(`🤖 Googlebot initialized. Crawling: ${url}\n`);
 
   try {

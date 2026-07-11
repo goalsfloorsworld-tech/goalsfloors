@@ -312,6 +312,7 @@ const VariantCard = memo(({
   const [isPaused, setIsPaused] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const pointerDownPos = useRef<{ x: number; y: number } | null>(null);
+  const isAutoScrolling = useRef(false);
   const isInView = useInView(scrollRef, { once: false, amount: 0.1 });
 
   const images = variant.images || [];
@@ -323,7 +324,7 @@ const VariantCard = memo(({
     const newIndex = Math.round(scrollLeft / width);
     if (newIndex !== activeIndex) {
       setActiveIndex(newIndex);
-      if (typeof navigator !== "undefined" && navigator.vibrate) {
+      if (!isAutoScrolling.current && typeof navigator !== "undefined" && navigator.vibrate) {
         navigator.vibrate(15);
       }
     }
@@ -335,12 +336,16 @@ const VariantCard = memo(({
 
     const interval = setInterval(() => {
       if (scrollRef.current) {
+        isAutoScrolling.current = true;
         const nextIndex = (activeIndex + 1) % images.length;
         const width = scrollRef.current.clientWidth;
         scrollRef.current.scrollTo({
           left: nextIndex * width,
           behavior: "smooth"
         });
+        setTimeout(() => {
+          isAutoScrolling.current = false;
+        }, 800);
       }
     }, 4000);
 

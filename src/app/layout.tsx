@@ -4,18 +4,10 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import RouteChrome from "@/components/RouteChrome";
 import OnboardingCheck from "@/components/auth/OnboardingCheck";
+import CursorFireflies from "@/components/CursorFireflies";
 
-import { Inter, Roboto } from "next/font/google";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
-
-const inter = Inter({ subsets: ["latin"], display: "swap" });
-const roboto = Roboto({ 
-  weight: ["400", "500", "700", "900"], 
-  subsets: ["latin"], 
-  display: "swap", 
-  variable: "--font-roboto" 
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://goalsfloors.com"),
@@ -114,6 +106,10 @@ export default async function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning className="overflow-x-hidden scrollbar-hide">
         <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
+        <style dangerouslySetInnerHTML={{__html: `:root { --font-roboto: 'Roboto', sans-serif; } body { font-family: 'Inter', sans-serif; }`}} />
         <meta name="deployment" content="v2.3-production-fixes-2026-04-26" />
         {/* Deployment: 2026-04-26 | All 6 critical production fixes applied | Build: fixes-v2.1 */}
         <script
@@ -122,7 +118,7 @@ export default async function RootLayout({
         />
       </head>
       {/* suppressHydrationWarning is essential for dark mode hydration */}
-      <body suppressHydrationWarning className={`${inter.className} ${roboto.variable} antialiased bg-white dark:bg-slate-950 overflow-x-hidden scrollbar-hide`}>
+      <body suppressHydrationWarning className="antialiased bg-white dark:bg-slate-950 overflow-x-hidden scrollbar-hide">
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
@@ -151,6 +147,7 @@ export default async function RootLayout({
           defaultTheme="light"
           enableSystem={false}
         >
+          <CursorFireflies />
           <OnboardingCheck />
           <RouteChrome>{children}</RouteChrome>
         </ThemeProvider>

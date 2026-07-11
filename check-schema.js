@@ -4,7 +4,7 @@
  * Default: http://localhost:3000/products/wall-panels
  */
 
-const url = process.argv[2] || 'http://localhost:3000/products/wall-panels';
+const url = process.argv[2] || 'http://localhost:3000/dealers/nexusbranding-gurgaon';
 
 async function checkSchema(pageUrl) {
   console.log('\n' + '═'.repeat(60));
