@@ -280,6 +280,7 @@ export default function Navbar() {
                               href="/admin"
                             />
                           )}
+                          {/* 
                           {(userRole === 'dealer' || isAdmin) && (
                             <UserButton.Link
                               label="Dealer Dashboard"
@@ -287,6 +288,7 @@ export default function Navbar() {
                               href="/dashboard"
                             />
                           )}
+                          */}
                           <UserButton.Action 
                             label={theme === 'dark' ? "Light Mode" : "Dark Mode"}
                             labelIcon={theme === 'dark' ? <Sun className="w-4 h-4 ml-1" /> : <Moon className="w-4 h-4 ml-1" />}
