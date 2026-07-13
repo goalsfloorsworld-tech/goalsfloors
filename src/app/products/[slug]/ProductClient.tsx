@@ -199,9 +199,8 @@ const BeforeAfterDemo = ({
   return (
     <div
       ref={frameRef}
-      className={`relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-slate-900 shadow-sm select-none touch-none ${
-        isPopup ? "w-fit mx-auto max-w-full" : "w-full aspect-[16/10]"
-      }`}
+      className={`relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-slate-900 shadow-sm select-none touch-none ${isPopup ? "w-fit mx-auto max-w-full" : "w-full aspect-[16/10]"
+        }`}
       onPointerMove={(e) => {
         if (e.buttons !== 1) return;
         updateSplitFromClientX(e.clientX);
@@ -367,7 +366,7 @@ const VariantCard = memo(({
       )}
 
       {/* Image Carousel Area */}
-      <div className="relative aspect-square bg-gray-100 dark:bg-slate-800 overflow-hidden">
+      <div className={`relative ${variant.name.toLowerCase().includes("pu stone") ? "aspect-[3/4]" : "aspect-square"} bg-gray-100 dark:bg-slate-800 overflow-hidden`}>
         {images.length > 0 ? (
           <div
             ref={scrollRef}
@@ -463,7 +462,7 @@ const VariantCard = memo(({
 
         {/* Indicators */}
         {images.length > 1 && (
-          <div 
+          <div
             className="absolute bottom-1 inset-x-0 mx-auto w-fit max-w-full flex justify-center gap-1.5 z-20 p-2 touch-none"
             onTouchMove={(e) => {
               const touch = e.touches[0];
@@ -472,7 +471,7 @@ const VariantCard = memo(({
               const percent = Math.max(0, Math.min(1, x / rect.width));
               const targetIndex = Math.floor(percent * images.length);
               const safeIndex = Math.min(images.length - 1, Math.max(0, targetIndex));
-              
+
               if (safeIndex !== activeIndex && scrollRef.current) {
                 scrollRef.current.scrollTo({
                   left: safeIndex * scrollRef.current.clientWidth,
@@ -496,9 +495,8 @@ const VariantCard = memo(({
                     setActiveIndex(i);
                   }
                 }}
-                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  i === activeIndex ? "bg-amber-600 w-4" : "bg-white/50 w-1.5 hover:bg-white/80"
-                }`}
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${i === activeIndex ? "bg-amber-600 w-4" : "bg-white/50 w-1.5 hover:bg-white/80"
+                  }`}
               />
             ))}
           </div>
@@ -830,11 +828,10 @@ export default function ProductClient({ product }: { product: Product }) {
 
             <div className="flex flex-wrap justify-center gap-8">
               {product.accessories.map((accessory, idx) => (
-                <div key={idx} className={`group w-full sm:w-[calc(50%-1rem)] min-w-[260px] max-w-[320px] bg-white dark:bg-slate-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden ${
-                  product.accessories && product.accessories.length === 6 ? "lg:w-[calc(33.333%-1.5rem)]" : "lg:w-[calc(25%-1.5rem)]"
-                }`}>
+                <div key={idx} className={`group w-full sm:w-[calc(50%-1rem)] min-w-[260px] max-w-[320px] bg-white dark:bg-slate-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col overflow-hidden ${product.accessories && product.accessories.length === 6 ? "lg:w-[calc(33.333%-1.5rem)]" : "lg:w-[calc(25%-1.5rem)]"
+                  }`}>
                   {/* Image */}
-                  <div 
+                  <div
                     className="relative aspect-[4/3] bg-gray-50 dark:bg-white flex items-center justify-center cursor-zoom-in group/img overflow-hidden"
                     onClick={() => {
                       if (accessory.image) {
@@ -863,7 +860,7 @@ export default function ProductClient({ product }: { product: Product }) {
                       <div className="text-gray-300">No Image</div>
                     )}
                   </div>
-                  
+
                   {/* Content */}
                   <div className="px-6 pt-6 pb-6 flex flex-col flex-1">
                     {/* Title */}
@@ -965,14 +962,13 @@ export default function ProductClient({ product }: { product: Product }) {
               {product.installedImages.map((img, i) => (
                 <div
                   key={`first-${i}`}
-                  className={`${i >= 6 ? "hidden" : "block"} relative group ${img.beforeAfter ? "cursor-pointer" : ""} rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300 ${
-                    i === 0 ? "lg:col-start-1 lg:row-start-1 h-[150px] md:h-[200px] lg:h-auto" :
-                    i === 1 ? "lg:col-start-1 lg:row-start-2 h-[150px] md:h-[200px] lg:h-auto" :
-                    i === 2 ? "lg:col-start-2 lg:row-start-1 lg:row-span-2 h-full" :
-                    i === 3 ? "lg:col-start-3 lg:row-start-1 h-[150px] md:h-[200px] lg:h-auto" :
-                    i === 4 ? "lg:col-start-3 lg:row-start-2 h-[150px] md:h-[200px] lg:h-auto" :
-                    i === 5 ? "lg:col-start-4 lg:row-start-1 lg:row-span-2 h-full" : ""
-                  }`}
+                  className={`${i >= 6 ? "hidden" : "block"} relative group ${img.beforeAfter ? "cursor-pointer" : ""} rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300 ${i === 0 ? "lg:col-start-1 lg:row-start-1 h-[150px] md:h-[200px] lg:h-auto" :
+                      i === 1 ? "lg:col-start-1 lg:row-start-2 h-[150px] md:h-[200px] lg:h-auto" :
+                        i === 2 ? "lg:col-start-2 lg:row-start-1 lg:row-span-2 h-full" :
+                          i === 3 ? "lg:col-start-3 lg:row-start-1 h-[150px] md:h-[200px] lg:h-auto" :
+                            i === 4 ? "lg:col-start-3 lg:row-start-2 h-[150px] md:h-[200px] lg:h-auto" :
+                              i === 5 ? "lg:col-start-4 lg:row-start-1 lg:row-span-2 h-full" : ""
+                    }`}
                   onClick={() => {
                     if (img.beforeAfter) {
                       setComparePopupItem(img.beforeAfter);
@@ -1044,11 +1040,10 @@ export default function ProductClient({ product }: { product: Product }) {
                       );
                     }}
                   >
-                    <div className={`relative w-full ${
-                      img.aspect === "portrait" ? "aspect-[3/4.5]" :
-                      img.aspect === "landscape" ? "aspect-[4/3]" :
-                      "aspect-square"
-                    }`}>
+                    <div className={`relative w-full ${img.aspect === "portrait" ? "aspect-[3/4.5]" :
+                        img.aspect === "landscape" ? "aspect-[4/3]" :
+                          "aspect-square"
+                      }`}>
                       <Image
                         src={img.url}
                         alt={img.alt}
@@ -1115,8 +1110,8 @@ export default function ProductClient({ product }: { product: Product }) {
                 <div
                   key={i}
                   className={`absolute rounded-xl overflow-hidden shadow-2xl bg-gray-50 dark:bg-slate-900 border-2 border-white dark:border-slate-800 group/story transform-gpu will-change-transform ${i === 0
-                      ? 'top-0 left-0 w-[65%] aspect-[4/5] z-0 hover:z-20'
-                      : 'bottom-0 right-0 w-[65%] aspect-[4/5] z-10 translate-x-2 translate-y-2 hover:scale-[1.02]'
+                    ? 'top-0 left-0 w-[65%] aspect-[4/5] z-0 hover:z-20'
+                    : 'bottom-0 right-0 w-[65%] aspect-[4/5] z-10 translate-x-2 translate-y-2 hover:scale-[1.02]'
                     }`}
                 >
                   {/* 2-Layer Technique: Layer 2 (Main Image) */}
@@ -1227,8 +1222,8 @@ export default function ProductClient({ product }: { product: Product }) {
                         {/* Step Number Circle */}
                         <div
                           className={`absolute left-0 top-0 w-10 h-10 rounded-full text-white text-sm font-semibold flex items-center justify-center shadow-lg z-30 transition-all duration-500 transform-gpu ${isActive
-                              ? 'bg-amber-600 dark:bg-amber-500 animate-bounce-pop shadow-amber-500/50'
-                              : 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 scale-90'
+                            ? 'bg-amber-600 dark:bg-amber-500 animate-bounce-pop shadow-amber-500/50'
+                            : 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 scale-90'
                             }`}
                         >
                           {/* Pulsing Ripple Wave */}
@@ -1683,7 +1678,7 @@ export default function ProductClient({ product }: { product: Product }) {
       {/* ================= 12. BEFORE / AFTER POPUP ================= */}
       <AnimatePresence>
         {comparePopupItem && (
-          <div 
+          <div
             className="fixed inset-0 z-[120] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 transition-all duration-300"
             onClick={() => setComparePopupItem(null)}
           >
@@ -1702,7 +1697,7 @@ export default function ProductClient({ product }: { product: Product }) {
               >
                 <X className="w-5 h-5 md:w-6 md:h-6" />
               </button>
-              
+
               <div className="rounded-xl overflow-hidden border border-white/10">
                 <BeforeAfterDemo item={comparePopupItem} isPopup={true} />
               </div>
