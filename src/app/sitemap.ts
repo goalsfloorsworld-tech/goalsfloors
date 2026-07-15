@@ -107,16 +107,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // Fetch latest installed images to update lastModified date
+
+    // Fetch installed images: dates for lastModified AND image_url for sitemap images
     const { data: installedImagesData } = await supabase
       .from('page_installed_images')
-      .select('page_slug, created_at');
+      .select('page_slug, created_at, image_url');
 
     const latestImageDates: Record<string, string> = {};
+    const supabaseImagesBySlug: Record<string, string[]> = {};
+
     if (installedImagesData) {
       installedImagesData.forEach((img: any) => {
+        // Track latest date per slug
         if (!latestImageDates[img.page_slug] || new Date(img.created_at) > new Date(latestImageDates[img.page_slug])) {
           latestImageDates[img.page_slug] = img.created_at;
+        }
+        // Collect image URLs per slug
+        if (img.image_url) {
+          if (!supabaseImagesBySlug[img.page_slug]) {
+            supabaseImagesBySlug[img.page_slug] = [];
+          }
+          supabaseImagesBySlug[img.page_slug].push(img.image_url);
         }
       });
     }
@@ -129,7 +140,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         const fileContent = fs.readFileSync(filePath, 'utf-8');
         const product = JSON.parse(fileContent);
         const slug = product.slug || name.replace('.json', '');
-        const images = processImageUrls(baseUrl, collectProductImages(product));
+
+        // Merge JSON images + Supabase installed images
+        const jsonImageUrls = collectProductImages(product);
+        const supabaseImageUrls = supabaseImagesBySlug[slug] || [];
+        const images = processImageUrls(baseUrl, [...jsonImageUrls, ...supabaseImageUrls]);
         
         const stats = fs.statSync(filePath);
         let lastMod = stats.mtime.toISOString();
@@ -150,6 +165,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   } catch (error) {
     console.error('Error reading product files for sitemap:', error);
   }
+
 
   // 3. Dynamic Blog Pages from WordPress
   interface WPPost {

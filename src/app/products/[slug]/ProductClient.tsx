@@ -222,6 +222,7 @@ const BeforeAfterDemo = ({
           src={item.before.url}
           alt={item.before.alt}
           fill
+          unoptimized
           sizes="(max-width: 1024px) 100vw, 960px"
           className="object-cover"
           draggable={false}
@@ -244,6 +245,7 @@ const BeforeAfterDemo = ({
             src={item.after.url}
             alt={item.after.alt}
             fill
+            unoptimized
             sizes="(max-width: 1024px) 100vw, 960px"
             className="object-cover"
             draggable={false}
@@ -414,6 +416,7 @@ const VariantCard = memo(({
                   src={img.url}
                   alt={img.alt || `${variant.name} detail ${i + 1}`}
                   fill
+                  unoptimized
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   className="object-cover transition-transform duration-500 sm:group-hover:scale-105"
                 />
@@ -740,6 +743,7 @@ export default function ProductClient({ product }: { product: Product }) {
                   src={product.images[0].url}
                   alt={product.images[0].alt}
                   fill
+                  unoptimized
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover relative z-10 transition-transform duration-700 hover:scale-105"
                   priority
@@ -764,6 +768,7 @@ export default function ProductClient({ product }: { product: Product }) {
                   src={product.images[0].url}
                   alt={product.images[0].alt}
                   fill
+                  unoptimized
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover relative z-10 transition-transform duration-700 hover:scale-105"
                   priority
@@ -854,6 +859,7 @@ export default function ProductClient({ product }: { product: Product }) {
                         src={accessory.image}
                         alt={accessory.name}
                         fill
+                        unoptimized
                         className="object-contain mix-blend-multiply dark:mix-blend-normal transition-transform duration-500 group-hover/img:scale-105"
                       />
                     ) : (
@@ -959,10 +965,10 @@ export default function ProductClient({ product }: { product: Product }) {
             </div>
 
             <div className="grid grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 md:gap-4 lg:h-[500px]">
-              {product.installedImages.map((img, i) => (
+              {product.installedImages.slice(0, 6).map((img, i) => (
                 <div
                   key={`first-${i}`}
-                  className={`${i >= 6 ? "hidden" : "block"} relative group ${img.beforeAfter ? "cursor-pointer" : ""} rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300 ${i === 0 ? "lg:col-start-1 lg:row-start-1 h-[150px] md:h-[200px] lg:h-auto" :
+                  className={`block relative group ${img.beforeAfter ? "cursor-pointer" : ""} rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300 ${i === 0 ? "lg:col-start-1 lg:row-start-1 h-[150px] md:h-[200px] lg:h-auto" :
                       i === 1 ? "lg:col-start-1 lg:row-start-2 h-[150px] md:h-[200px] lg:h-auto" :
                         i === 2 ? "lg:col-start-2 lg:row-start-1 lg:row-span-2 h-full" :
                           i === 3 ? "lg:col-start-3 lg:row-start-1 h-[150px] md:h-[200px] lg:h-auto" :
@@ -993,6 +999,7 @@ export default function ProductClient({ product }: { product: Product }) {
                       src={img.url}
                       alt={img.alt}
                       fill
+                      unoptimized
                       sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                       className="object-cover transform-gpu transition-transform duration-300 group-hover:scale-[1.03]"
                     />
@@ -1017,10 +1024,10 @@ export default function ProductClient({ product }: { product: Product }) {
                  Hiding is handled via CSS classes on the wrapper elements ── */}
             {product.installedImages.length > 6 && (
               <div className="columns-2 md:columns-3 lg:columns-4 gap-2 md:gap-4 space-y-2 md:space-y-4 mt-2 md:mt-4 transition-all duration-700">
-                {product.installedImages.map((img, i) => (
+                {product.installedImages.slice(6).map((img, i) => (
                   <div
                     key={`rest-${i}`}
-                    className={`${i < 6 || (!isGalleryExpanded && i >= 6) ? "hidden" : "block"} break-inside-avoid relative group ${img.beforeAfter ? "cursor-pointer" : ""} rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300`}
+                    className={`${!isGalleryExpanded ? "hidden" : "block"} break-inside-avoid relative group ${img.beforeAfter ? "cursor-pointer" : ""} rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300`}
                     onClick={() => {
                       if (img.beforeAfter) {
                         setComparePopupItem(img.beforeAfter);
@@ -1048,6 +1055,7 @@ export default function ProductClient({ product }: { product: Product }) {
                         src={img.url}
                         alt={img.alt}
                         fill
+                        unoptimized
                         sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                         className="object-cover transform-gpu transition-transform duration-300 group-hover:scale-[1.03]"
                       />
@@ -1119,6 +1127,7 @@ export default function ProductClient({ product }: { product: Product }) {
                     src={img.url}
                     alt={img.alt}
                     fill
+                    unoptimized
                     className="object-cover relative z-10 transition-transform duration-700 hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
@@ -1397,6 +1406,7 @@ export default function ProductClient({ product }: { product: Product }) {
                         src={link.image}
                         alt={link.label}
                         fill
+                        unoptimized
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                         sizes="(max-width: 768px) 50vw, 25vw"
                       />
@@ -1523,6 +1533,7 @@ export default function ProductClient({ product }: { product: Product }) {
                         src={selectedVariant.images[activeDrawerImageIndex].url}
                         alt={selectedVariant.images[activeDrawerImageIndex].alt || selectedVariant.name}
                         fill
+                        unoptimized
                         sizes="100vw"
                         className="object-cover"
                       />

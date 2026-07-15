@@ -11,10 +11,10 @@ export const metadata: Metadata = {
     url: "https://goalsfloors.com/about",
     images: [
       {
-        url: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775749425/Goals_Floors_Wpc_Exterior_Louvers.png",
+        url: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775755978/Shakti_FTN.jpg",
         width: 1200,
         height: 630,
-        alt: "Goals Floors Premium Wall Panels and Flooring in Delhi NCR",
+        alt: "Shakti FTN, Founder of Goals Floors",
       },
     ],
   },

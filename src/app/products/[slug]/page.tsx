@@ -145,6 +145,15 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     ? product.installedImages.map((img: any) => getAbsoluteUrl(img.url)).filter(Boolean)
     : [];
 
+  // JSON-sourced product hero images (product.images[]) — always present from JSON
+  const allProductHeroImageUrls = Array.isArray(product.images)
+    ? product.images.map((img: any) => getAbsoluteUrl(img.url)).filter(Boolean)
+    : [];
+
+  // Merged image list for schema: JSON hero images + Supabase installed images (deduped)
+  const allMergedImageUrls = Array.from(new Set([...allProductHeroImageUrls, ...allInstalledImageUrls]));
+
+
   // Helper: parse specs from variant.details into additionalProperty array
   const buildAdditionalProperty = (details: Record<string, string>) =>
     Object.entries(details || {}).map(([name, value]) => ({
@@ -197,7 +206,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           '@type': 'Product',
           name: card.name || product.title,
           description: cardDescription,
-          image: allInstalledImageUrls.length > 0 ? allInstalledImageUrls : undefined,
+          // No-image card: show hero images only (installed gallery goes on parent ProductGroup, not here)
+          image: allProductHeroImageUrls.length > 0 ? allProductHeroImageUrls : undefined,
           sku: card.name || slug,
           mpn: card.name || slug,
           brand: { '@type': 'Brand', name: card.brand || 'Goals Floors' },
@@ -233,8 +243,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
             const variantSku = img.name?.trim() || card.name;
 
-            // Include both the design-code image AND installed-images for rich context
-            const variantImages = [variantImg, ...allInstalledImageUrls].filter(Boolean);
+            // Individual swatch/variant: ONLY its own design-code image.
+            // Installed gallery images are added once at the ProductGroup level below — not duplicated here.
+            const variantImages = [variantImg].filter(Boolean);
 
             return {
               '@type': 'Product',
@@ -264,9 +275,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             '@type': 'ProductGroup',
             name: card.gmc_title?.trim() || card.name || product.title,
             description: cardDescription,
+            // Installed gallery images belong in the page-level ImageGallery schema, NOT duplicated per ProductGroup
+            image: allProductHeroImageUrls.length > 0 ? allProductHeroImageUrls : undefined,
             productGroupID: `${slug}-${(card.name || '').replace(/\s+/g, '-').toLowerCase()}`,
             brand: { '@type': 'Brand', name: card.brand || 'Goals Floors' },
-            variesBy: 'https://schema.org/color',
             ...(additionalProperty.length > 0 ? { additionalProperty } : {}),
             hasVariant,
           });
@@ -326,6 +338,24 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
       ))}
+      
+      {/* Single page-level gallery schema for all installed images (prevents duplication across ProductGroups) */}
+      {allInstalledImageUrls.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'ImageGallery',
+              name: `${product.title} Installed Gallery`,
+              description: `Gallery of installed ${product.title} in real homes and offices.`,
+              url: canonical,
+              image: allInstalledImageUrls,
+            })
+          }}
+        />
+      )}
+      
       <ProductClient product={product} />
     </>
   );

@@ -162,6 +162,7 @@ export default function AboutClient() {
                 alt="Shakti FTN, Founder of Goals Floors"
                 fill
                 unoptimized
+                priority
                 className="object-cover object-top hover:scale-105 transition-transform duration-1000"
               />
             </motion.div>
