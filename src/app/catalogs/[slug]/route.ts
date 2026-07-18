@@ -4,7 +4,7 @@ import path from 'path';
 
 export async function GET(request: Request, { params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const actualSlug = slug.replace('.pdf', '');
+  const cleanSlug = slug.replace('.pdf', '');
 
   const catalogsPath = path.join(process.cwd(), 'src', 'data', 'catalogs.json');
   let catalogs = [];
@@ -14,7 +14,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
     console.error("Error reading catalogs.json", error);
   }
 
-  const catalog = catalogs.find((c: any) => c.slug === actualSlug);
+  const catalog = catalogs.find((c: any) => c.slug === cleanSlug);
 
   if (!catalog) {
     return new NextResponse("Catalog not found", { status: 404 });
@@ -22,26 +22,6 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
 
   const metaTitle = catalog.metaTitle || `${catalog.name} | Goals Floors`;
   const metaDesc = catalog.metaDescription || `View or download the official catalog for ${catalog.name} by Goals Floors. High-quality premium architectural surfaces in Gurgaon & Delhi NCR.`;
-
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": metaTitle,
-    "description": metaDesc,
-    "image": catalog.image || "https://goalsfloors.com/icon.png",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Goals Floors",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://goalsfloors.com/icon.png"
-      }
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": `https://goalsfloors.com/catalogs/${actualSlug}.pdf`
-    }
-  };
 
   const html = `
     <!DOCTYPE html>
@@ -52,29 +32,37 @@ export async function GET(request: Request, { params }: { params: Promise<{ slug
         <title>${metaTitle}</title>
         <meta name="description" content="${metaDesc}">
         ${catalog.seoKeywords ? `<meta name="keywords" content="${catalog.seoKeywords}">` : ''}
+        <link rel="icon" href="/icon.png">
         <meta name="robots" content="index, follow">
-        <script type="application/ld+json">
-          ${JSON.stringify(schema)}
-        </script>
         <style>
           body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #323639; }
-          iframe { width: 100%; height: 100%; border: none; }
         </style>
       </head>
       <body>
         <h1 style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">${metaTitle}</h1>
-        <iframe src="${catalog.url}" title="${catalog.name}"></iframe>
+        <iframe src="${catalog.url}" style="width: 100vw; height: 100vh; border: none; margin: 0; padding: 0; overflow: hidden;" title="${catalog.name}"></iframe>
         <script>
-          window.onload = function() {
+          setTimeout(function() {
+            var url = "${catalog.url}";
+            var downloadUrl = url;
+            
+            // Format URL for forced download based on the source
+            if (url.includes('/api/pdf')) {
+              downloadUrl = url + "&action=download";
+            } else if (url.includes('cloudinary.com')) {
+              downloadUrl = url.replace('/upload/', '/upload/fl_attachment/');
+            }
+            
+            // Create an invisible link and click it
             var a = document.createElement('a');
-            // Add Cloudinary attachment flag to force download for cross-origin URLs
-            var downloadUrl = "${catalog.url}".replace('/upload/', '/upload/fl_attachment/');
             a.href = downloadUrl;
-            a.download = "${actualSlug}.pdf";
+            a.style.display = 'none';
+            // Use the matched slug for a clean fallback filename
+            a.download = "${cleanSlug}.pdf"; 
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-          };
+          }, 1000);
         </script>
       </body>
     </html>

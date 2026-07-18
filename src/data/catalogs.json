@@ -7,5 +7,14 @@
     "metaTitle": "Upfit Panels Catalog | Premium Exterior Ceilings in Gurgaon",
     "metaDescription": "Download the official Goals Floors Upfit Panels catalog. Explore dimensions, pricing, and premium exterior waterproof ceiling designs in Gurgaon & Delhi NCR.",
     "seoKeywords": "Upfit panels, exterior ceiling panels, balcony ceiling, waterproof ceiling Gurgaon"
+  },
+  {
+    "slug": "baffle-ceiling",
+    "name": "Baffle Ceiling Catalog",
+    "url": "/api/pdf?file=Goals Floors™ Baffle Ceiling.pdf",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782211513/Goals_Ceil_Grey_Tube_Track.png",
+    "metaTitle": "Baffle Ceiling Catalog | Modern Acoustic Ceilings in Gurgaon",
+    "metaDescription": "Download the official Goals Floors Baffle Ceiling catalog. Discover modern acoustic solutions and architectural ceilings for commercial spaces.",
+    "seoKeywords": "Baffle ceiling, acoustic ceilings, commercial ceiling solutions Gurgaon"
   }
 ]

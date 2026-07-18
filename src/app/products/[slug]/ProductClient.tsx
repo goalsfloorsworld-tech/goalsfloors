@@ -648,11 +648,42 @@ export default function ProductClient({ product }: { product: Product }) {
   const [activeStep, setActiveStep] = useState(0);
   const [isGalleryExpanded, setIsGalleryExpanded] = useState(false);
 
+  useEffect(() => {
+    const handlePopState = (e: PopStateEvent) => {
+      if (fullscreenViewer) {
+        setFullscreenViewer(null);
+      }
+      if (comparePopupItem) {
+        setComparePopupItem(null);
+      }
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, [fullscreenViewer, comparePopupItem]);
+
   const openFullscreenViewer = (imageUrl: string, images: ImageItem[], context: ViewerContext) => {
     setFullscreenViewer({ imageUrl, images, context });
+    window.history.pushState({ lightbox: true }, "");
   };
 
-  const closeFullscreenViewer = () => setFullscreenViewer(null);
+  const closeFullscreenViewer = () => {
+    setFullscreenViewer(null);
+    if (window.history.state?.lightbox) {
+      window.history.back();
+    }
+  };
+
+  const openComparePopup = (item: BeforeAfterItem) => {
+    setComparePopupItem(item);
+    window.history.pushState({ lightbox: true }, "");
+  };
+
+  const closeComparePopup = () => {
+    setComparePopupItem(null);
+    if (window.history.state?.lightbox) {
+      window.history.back();
+    }
+  };
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -1030,12 +1061,12 @@ export default function ProductClient({ product }: { product: Product }) {
                     className={`${!isGalleryExpanded ? "hidden" : "block"} break-inside-avoid relative group ${img.beforeAfter ? "cursor-pointer" : ""} rounded-lg overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-lg transition-shadow duration-300`}
                     onClick={() => {
                       if (img.beforeAfter) {
-                        setComparePopupItem(img.beforeAfter);
+                        openComparePopup(img.beforeAfter);
                         return;
                       }
                       openFullscreenViewer(
                         img.url,
-                        installedImages.slice(6).map((image) => ({ url: image.url, alt: image.alt })),
+                        product.installedImages!.slice(6).map((image: any) => ({ url: image.url, alt: image.alt })),
                         {
                           title: product.title,
                           category: product.category,
@@ -1691,7 +1722,7 @@ export default function ProductClient({ product }: { product: Product }) {
         {comparePopupItem && (
           <div
             className="fixed inset-0 z-[120] bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 transition-all duration-300"
-            onClick={() => setComparePopupItem(null)}
+            onClick={() => closeComparePopup()}
           >
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -1703,7 +1734,7 @@ export default function ProductClient({ product }: { product: Product }) {
               {/* Close Button */}
               <button
                 className="absolute -top-14 right-0 md:-right-14 text-white/50 hover:text-white bg-white/10 hover:bg-white/20 p-2 md:p-3 rounded-full transition-all z-[130]"
-                onClick={() => setComparePopupItem(null)}
+                onClick={() => closeComparePopup()}
                 aria-label="Close compare view"
               >
                 <X className="w-5 h-5 md:w-6 md:h-6" />

@@ -112,6 +112,41 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       }));
       product.installedImages = [...(product.installedImages || []), ...dynamicImages];
     }
+
+    const { data: dbAbImages, error: abError } = await supabase
+      .from('page_ab_images')
+      .select('before_url, before_alt, after_url, after_alt, primary_thumbnail')
+      .eq('page_slug', slug);
+
+    const localAbImages = product.beforeAfter || [];
+    let dynamicAbImages: any[] = [];
+    
+    if (!abError && dbAbImages) {
+      dynamicAbImages = dbAbImages.map(row => ({
+        before: { url: row.before_url, alt: row.before_alt },
+        after: { url: row.after_url, alt: row.after_alt },
+        primaryThumbnail: row.primary_thumbnail || 'after'
+      }));
+    }
+
+    const allAbImages = [...localAbImages, ...dynamicAbImages];
+    
+    // Top Section Cap
+    product.beforeAfter = allAbImages.slice(0, 2);
+    
+    // Gallery Overflow
+    const overflowAbImages = allAbImages.slice(2).map(item => {
+      const isBeforePrimary = item.primaryThumbnail === 'before';
+      return {
+        url: isBeforePrimary ? item.before.url : item.after.url,
+        alt: isBeforePrimary ? item.before.alt : item.after.alt,
+        aspect: 'landscape',
+        beforeAfter: item
+      };
+    });
+
+    // Unshift overflow into installedImages
+    product.installedImages = [...overflowAbImages, ...(product.installedImages || [])];
   } catch (err) {
     console.error("Failed to fetch dynamic products:", err);
   }
@@ -141,9 +176,24 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     return url.startsWith("http") ? url : `${baseUrl}${url.startsWith("/") ? "" : "/"}${url}`;
   };
   
-  const allInstalledImageUrls = Array.isArray(product.installedImages) 
-    ? product.installedImages.map((img: any) => getAbsoluteUrl(img.url)).filter(Boolean)
-    : [];
+  const allInstalledImageUrls = Array.from(new Set([
+    ...(Array.isArray(product.installedImages) 
+      ? product.installedImages.flatMap((img: any) => {
+          const urls = [getAbsoluteUrl(img.url)];
+          if (img.beforeAfter) {
+            urls.push(getAbsoluteUrl(img.beforeAfter.before.url));
+            urls.push(getAbsoluteUrl(img.beforeAfter.after.url));
+          }
+          return urls;
+        })
+      : []),
+    ...(Array.isArray(product.beforeAfter)
+      ? product.beforeAfter.flatMap((pair: any) => [
+          getAbsoluteUrl(pair.before.url),
+          getAbsoluteUrl(pair.after.url)
+        ])
+      : [])
+  ])).filter(Boolean);
 
   // JSON-sourced product hero images (product.images[]) — always present from JSON
   const allProductHeroImageUrls = Array.isArray(product.images)

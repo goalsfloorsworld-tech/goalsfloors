@@ -203,22 +203,26 @@ const Hexagon = ({ imgUrl, xOffset, yOffset, sizeClass, innerSizeClass, zIndex, 
       });
     };
 
+    let hexRaf: number | null = null;
     const handleMouseMove = (e: MouseEvent) => {
-      const rect = element.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
+      if (hexRaf) cancelAnimationFrame(hexRaf);
+      hexRaf = requestAnimationFrame(() => {
+        const rect = element.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
 
-      const rotateX = ((y - centerY) / centerY) * -15;
-      const rotateY = ((x - centerX) / centerX) * 15;
-      
-      gsap.to(element, {
-        rotateX,
-        rotateY,
-        duration: 0.1,
-        ease: 'power2.out',
-        transformPerspective: 1000
+        const rotateX = ((y - centerY) / centerY) * -15;
+        const rotateY = ((x - centerX) / centerX) * 15;
+        
+        gsap.to(element, {
+          rotateX,
+          rotateY,
+          duration: 0.1,
+          ease: 'power2.out',
+          transformPerspective: 1000
+        });
       });
     };
 
@@ -332,69 +336,99 @@ const GlobalSpotlight = ({ gridRef }: { gridRef: any }) => {
       opacity: 0;
       transform: translate(-50%, -50%);
       mix-blend-mode: screen;
+      will-change: transform, opacity;
     `;
     document.body.appendChild(spotlight);
     spotlightRef.current = spotlight;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!spotlightRef.current || !gridRef.current) return;
+    let cachedCards: any[] = [];
+    let cacheTimeout: any;
 
-      const rect = gridRef.current.getBoundingClientRect();
-      const mouseInside = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+    const updateCache = () => {
+      if (!gridRef.current) return;
       const cards = gridRef.current.querySelectorAll('.magic-hexagon-border');
+      cachedCards = Array.from(cards).map((card: any) => {
+        const rect = card.getBoundingClientRect();
+        return {
+          el: card,
+          left: rect.left,
+          top: rect.top,
+          width: rect.width,
+          height: rect.height,
+          centerX: rect.left + rect.width / 2,
+          centerY: rect.top + rect.height / 2
+        };
+      });
+    };
 
-      if (!mouseInside) {
-        gsap.to(spotlightRef.current, { opacity: 0, duration: 0.3, ease: 'power2.out' });
-        cards.forEach((card: any) => card.style.setProperty('--glow-intensity', '0'));
-        return;
-      }
+    // Cache after entrance animations complete, and update on resize
+    cacheTimeout = setTimeout(updateCache, 2000);
+    window.addEventListener('resize', updateCache, { passive: true });
+    window.addEventListener('scroll', updateCache, { passive: true });
 
-      const proximity = spotlightRadius * 0.5;
-      const fadeDistance = spotlightRadius * 0.75;
-      let minDistance = Infinity;
+    let rafId: number | null = null;
 
-      cards.forEach((card: any) => {
-        const cardRect = card.getBoundingClientRect();
-        const centerX = cardRect.left + cardRect.width / 2;
-        const centerY = cardRect.top + cardRect.height / 2;
-        const distance = Math.hypot(e.clientX - centerX, e.clientY - centerY) - Math.max(cardRect.width, cardRect.height) / 2;
-        const effectiveDistance = Math.max(0, distance);
-        minDistance = Math.min(minDistance, effectiveDistance);
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!spotlightRef.current || !gridRef.current || cachedCards.length === 0) return;
 
-        let glowIntensity = 0;
-        if (effectiveDistance <= proximity) {
-          glowIntensity = 1;
-        } else if (effectiveDistance <= fadeDistance) {
-          glowIntensity = (fadeDistance - effectiveDistance) / (fadeDistance - proximity);
+      if (rafId) cancelAnimationFrame(rafId);
+      
+      rafId = requestAnimationFrame(() => {
+        const rect = gridRef.current.getBoundingClientRect();
+        const mouseInside = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+
+        if (!mouseInside) {
+          gsap.to(spotlightRef.current, { opacity: 0, duration: 0.3, ease: 'power2.out' });
+          cachedCards.forEach(card => card.el.style.setProperty('--glow-intensity', '0'));
+          return;
         }
 
-        const relativeX = ((e.clientX - cardRect.left) / cardRect.width) * 100;
-        const relativeY = ((e.clientY - cardRect.top) / cardRect.height) * 100;
-        
-        card.style.setProperty('--glow-x', `${relativeX}%`);
-        card.style.setProperty('--glow-y', `${relativeY}%`);
-        card.style.setProperty('--glow-intensity', glowIntensity.toString());
-      });
+        const proximity = spotlightRadius * 0.5;
+        const fadeDistance = spotlightRadius * 0.75;
+        let minDistance = Infinity;
 
-      gsap.to(spotlightRef.current, { left: e.clientX, top: e.clientY, duration: 0.1, ease: 'power2.out' });
-      
-      const targetOpacity = minDistance <= proximity ? 0.8 : minDistance <= fadeDistance ? ((fadeDistance - minDistance) / (fadeDistance - proximity)) * 0.8 : 0;
-      gsap.to(spotlightRef.current, { opacity: targetOpacity, duration: targetOpacity > 0 ? 0.2 : 0.5, ease: 'power2.out' });
+        cachedCards.forEach(card => {
+          const distance = Math.hypot(e.clientX - card.centerX, e.clientY - card.centerY) - Math.max(card.width, card.height) / 2;
+          const effectiveDistance = Math.max(0, distance);
+          minDistance = Math.min(minDistance, effectiveDistance);
+
+          let glowIntensity = 0;
+          if (effectiveDistance <= proximity) {
+            glowIntensity = 1;
+          } else if (effectiveDistance <= fadeDistance) {
+            glowIntensity = (fadeDistance - effectiveDistance) / (fadeDistance - proximity);
+          }
+
+          const relativeX = ((e.clientX - card.left) / card.width) * 100;
+          const relativeY = ((e.clientY - card.top) / card.height) * 100;
+          
+          card.el.style.setProperty('--glow-x', `${relativeX}%`);
+          card.el.style.setProperty('--glow-y', `${relativeY}%`);
+          card.el.style.setProperty('--glow-intensity', glowIntensity.toString());
+        });
+
+        gsap.to(spotlightRef.current, { left: e.clientX, top: e.clientY, duration: 0.1, ease: 'power2.out' });
+        
+        const targetOpacity = minDistance <= proximity ? 0.8 : minDistance <= fadeDistance ? ((fadeDistance - minDistance) / (fadeDistance - proximity)) * 0.8 : 0;
+        gsap.to(spotlightRef.current, { opacity: targetOpacity, duration: targetOpacity > 0 ? 0.2 : 0.5, ease: 'power2.out' });
+      });
     };
 
     const handleMouseLeave = () => {
-      gridRef.current?.querySelectorAll('.magic-hexagon-border').forEach((card: any) => {
-        card.style.setProperty('--glow-intensity', '0');
-      });
+      cachedCards.forEach(card => card.el.style.setProperty('--glow-intensity', '0'));
       if (spotlightRef.current) gsap.to(spotlightRef.current, { opacity: 0, duration: 0.3, ease: 'power2.out' });
     };
 
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('mousemove', handleMouseMove, { passive: true });
+    document.addEventListener('mouseleave', handleMouseLeave, { passive: true });
 
     return () => {
+      clearTimeout(cacheTimeout);
+      window.removeEventListener('resize', updateCache);
+      window.removeEventListener('scroll', updateCache);
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      if (rafId) cancelAnimationFrame(rafId);
       spotlightRef.current?.parentNode?.removeChild(spotlightRef.current);
     };
   }, [gridRef]);

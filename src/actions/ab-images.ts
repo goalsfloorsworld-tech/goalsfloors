@@ -20,32 +20,36 @@ async function getRequesterRole(): Promise<string | null> {
   return data?.role ?? null;
 }
 
-export async function addInstalledImage(payload: {
+export async function addAbImage(payload: {
   page_slug: string;
-  image_url: string;
-  alt_text: string;
-  aspect_ratio: string;
+  before_url: string;
+  before_alt: string;
+  after_url: string;
+  after_alt: string;
+  primary_thumbnail: string;
 }) {
   const role = await getRequesterRole();
   
   if (role !== 'admin' && role !== 'administrator') {
-    return { success: false, error: 'Unauthorized: Only Administrators can modify installed images.' };
+    return { success: false, error: 'Unauthorized: Only Administrators can modify A/B images.' };
   }
 
   const supabase = getSupabase();
   const { error } = await supabase
-    .from('page_installed_images')
+    .from('page_ab_images')
     .insert([
       {
         page_slug: payload.page_slug,
-        image_url: payload.image_url,
-        alt_text: payload.alt_text,
-        aspect_ratio: payload.aspect_ratio,
+        before_url: payload.before_url,
+        before_alt: payload.before_alt,
+        after_url: payload.after_url,
+        after_alt: payload.after_alt,
+        primary_thumbnail: payload.primary_thumbnail,
       }
     ]);
 
   if (error) {
-    console.error("Error adding installed image:", error);
+    console.error("Error adding A/B image:", error);
     return { success: false, error: error.message };
   }
 
@@ -54,7 +58,7 @@ export async function addInstalledImage(payload: {
   return { success: true };
 }
 
-export async function getInstalledImages() {
+export async function getAbImages() {
   const role = await getRequesterRole();
   if (role !== 'admin' && role !== 'administrator' && role !== 'team') {
     return { success: false, error: 'Unauthorized', data: [] };
@@ -62,19 +66,19 @@ export async function getInstalledImages() {
 
   const supabase = getSupabase();
   const { data, error } = await supabase
-    .from('page_installed_images')
+    .from('page_ab_images')
     .select('*')
     .order('created_at', { ascending: false });
 
   if (error) {
-    console.error("Error fetching installed images:", error);
+    console.error("Error fetching A/B images:", error);
     return { success: false, error: error.message, data: [] };
   }
 
   return { success: true, data: data || [] };
 }
 
-export async function deleteInstalledImage(id: string, page_slug: string) {
+export async function deleteAbImage(id: string, page_slug: string) {
   const role = await getRequesterRole();
   if (role !== 'admin' && role !== 'administrator') {
     return { success: false, error: 'Unauthorized' };
@@ -82,10 +86,10 @@ export async function deleteInstalledImage(id: string, page_slug: string) {
 
   const supabase = getSupabase();
   
-  // First fetch the record to get the image URL
+  // Fetch both URLs to delete them from Cloudinary
   const { data: record, error: fetchError } = await supabase
-    .from('page_installed_images')
-    .select('image_url')
+    .from('page_ab_images')
+    .select('before_url, after_url')
     .eq('id', id)
     .single();
 
@@ -94,17 +98,18 @@ export async function deleteInstalledImage(id: string, page_slug: string) {
     return { success: false, error: fetchError.message };
   }
   
-  if (record && record.image_url) {
-    await deleteImageFromCloudinary(record.image_url);
+  if (record) {
+    if (record.before_url) await deleteImageFromCloudinary(record.before_url);
+    if (record.after_url) await deleteImageFromCloudinary(record.after_url);
   }
 
   const { error } = await supabase
-    .from('page_installed_images')
+    .from('page_ab_images')
     .delete()
     .eq('id', id);
 
   if (error) {
-    console.error("Error deleting installed image:", error);
+    console.error("Error deleting A/B image:", error);
     return { success: false, error: error.message };
   }
 
