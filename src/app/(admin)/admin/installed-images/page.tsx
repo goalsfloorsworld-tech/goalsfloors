@@ -441,7 +441,7 @@ export default function InstalledImagesAdmin() {
   const uniqueSlugs = Array.from(new Set(images.map(img => img.page_slug)));
 
   return (
-    <div className="max-w-5xl mx-auto p-6 space-y-6">
+    <div className="max-w-5xl mx-auto p-4 sm:p-6 space-y-4 sm:space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Installed Images</h1>
         <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
@@ -469,8 +469,8 @@ export default function InstalledImagesAdmin() {
       </div>
 
       {activeTab === 'add' && (
-        <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 p-6 max-w-3xl">
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 p-4 sm:p-6 max-w-3xl">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
             
             <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg w-fit">
               <button
@@ -572,7 +572,7 @@ export default function InstalledImagesAdmin() {
                 )}
               </>
             ) : (
-              <div className="space-y-6 p-4 border rounded-lg border-amber-200 dark:border-amber-900/50 bg-amber-50/50 dark:bg-amber-900/10">
+              <div className="space-y-4 sm:space-y-6 p-3 sm:p-4 border rounded-lg border-amber-200 dark:border-amber-900/50 bg-amber-50/50 dark:bg-amber-900/10">
                 
                 {ratioMismatchWarning && (
                   <div className="flex items-center gap-2 p-3 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-md text-sm font-medium border border-red-200 dark:border-red-800/50">
@@ -581,7 +581,7 @@ export default function InstalledImagesAdmin() {
                   </div>
                 )}
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   {/* Before Image */}
                   <div className="space-y-4">
                     <h3 className="font-semibold text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">Before Image</h3>
@@ -754,8 +754,8 @@ export default function InstalledImagesAdmin() {
       )}
 
       {activeTab === 'manage' && (
-        <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 p-6">
-          <div className="flex flex-col sm:flex-row gap-4 mb-6 pb-6 border-b border-gray-100 dark:border-gray-800">
+        <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800 p-4 sm:p-6">
+          <div className="flex flex-col sm:flex-row gap-4 mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-gray-100 dark:border-gray-800">
             <div className="flex-1">
               <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Filter by Type</label>
               <select 
