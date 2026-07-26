@@ -115,7 +115,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
     const { data: dbAbImages, error: abError } = await supabase
       .from('page_ab_images')
-      .select('before_url, before_alt, after_url, after_alt, primary_thumbnail')
+      .select('before_url, before_alt, after_url, after_alt, primary_thumbnail, placement')
       .eq('page_slug', slug);
 
     const localAbImages = product.beforeAfter || [];
@@ -125,17 +125,29 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       dynamicAbImages = dbAbImages.map(row => ({
         before: { url: row.before_url, alt: row.before_alt },
         after: { url: row.after_url, alt: row.after_alt },
-        primaryThumbnail: row.primary_thumbnail || 'after'
+        primaryThumbnail: row.primary_thumbnail || 'after',
+        placement: row.placement || 'gallery'
       }));
     }
 
-    const allAbImages = [...localAbImages, ...dynamicAbImages];
+    // Separate Top Section (max 2) vs Gallery Overflow
+    // Supabase Top Section images take precedence
+    const dbTopSection = dynamicAbImages.filter(img => img.placement === 'top_section');
+    const localTopSection = localAbImages; // JSON are top_section candidates
     
-    // Top Section Cap
-    product.beforeAfter = allAbImages.slice(0, 2);
+    const combinedTopCandidates = [...dbTopSection, ...localTopSection];
     
-    // Gallery Overflow
-    const overflowAbImages = allAbImages.slice(2).map(item => {
+    // Top Section Cap (strict 2)
+    product.beforeAfter = combinedTopCandidates.slice(0, 2);
+    
+    // Anything that didn't make the cut goes to gallery
+    const overflowTopCandidates = combinedTopCandidates.slice(2);
+    const dbGalleryImages = dynamicAbImages.filter(img => img.placement !== 'top_section');
+    
+    const allGalleryAbImages = [...overflowTopCandidates, ...dbGalleryImages];
+
+    // Map them for the Installed Images gallery format
+    const overflowAbGalleryMapped = allGalleryAbImages.map(item => {
       const isBeforePrimary = item.primaryThumbnail === 'before';
       return {
         url: isBeforePrimary ? item.before.url : item.after.url,
@@ -146,7 +158,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     });
 
     // Unshift overflow into installedImages
-    product.installedImages = [...overflowAbImages, ...(product.installedImages || [])];
+    product.installedImages = [...overflowAbGalleryMapped, ...(product.installedImages || [])];
   } catch (err) {
     console.error("Failed to fetch dynamic products:", err);
   }

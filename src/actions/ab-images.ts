@@ -27,6 +27,8 @@ export async function addAbImage(payload: {
   after_url: string;
   after_alt: string;
   primary_thumbnail: string;
+  placement: string;
+  demote_id?: string;
 }) {
   const role = await getRequesterRole();
   
@@ -35,6 +37,19 @@ export async function addAbImage(payload: {
   }
 
   const supabase = getSupabase();
+
+  if (payload.demote_id) {
+    const { error: demoteError } = await supabase
+      .from('page_ab_images')
+      .update({ placement: 'gallery' })
+      .eq('id', payload.demote_id);
+      
+    if (demoteError) {
+      console.error("Error demoting A/B image:", demoteError);
+      return { success: false, error: demoteError.message };
+    }
+  }
+
   const { error } = await supabase
     .from('page_ab_images')
     .insert([
@@ -45,6 +60,7 @@ export async function addAbImage(payload: {
         after_url: payload.after_url,
         after_alt: payload.after_alt,
         primary_thumbnail: payload.primary_thumbnail,
+        placement: payload.placement || 'gallery',
       }
     ]);
 

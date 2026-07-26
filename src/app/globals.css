@@ -22,6 +22,21 @@ body.fullscreen-viewer-open .goals-ai-widget-container {
   display: none !important;
 }
 
+/* Category Capsule Visibility Logic (Mobile Only) */
+.whatsapp-float-container,
+.goals-ai-widget-container {
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (max-width: 768px) {
+  body.category-capsule-visible .whatsapp-float-container {
+    transform: translate(calc(-100vw + 96px), -8px); /* Slide to left edge and slightly up */
+  }
+  body.category-capsule-visible .goals-ai-widget-container {
+    transform: translateY(-86px); /* Slide up higher above capsule */
+  }
+}
+
 /* Mobile Image Lightbox */
 .mobile-lightbox-overlay {
   display: none;

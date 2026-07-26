@@ -175,10 +175,11 @@ const Hexagon = ({ imgUrl, xOffset, yOffset, sizeClass, innerSizeClass, zIndex, 
     if (!element) return;
 
     // Entrance animation
-    const initialDelay = waveDirection === 'ttb' ? yOffset * 0.003 : (414 - xOffset) * 0.001;
+    const isMobile = waveDirection === 'ttb';
+    const initialDelay = isMobile ? (yOffset / 78) * 0.3 : (414 - xOffset) * 0.001;
     gsap.fromTo(element,
-      { scale: 0, opacity: 0, y: 80 },
-      { scale: 1, opacity: 1, y: 0, duration: 1, ease: "elastic.out(1, 0.75)", delay: initialDelay }
+      { scale: 0, opacity: 0, y: isMobile ? -60 : 80 },
+      { scale: 1, opacity: 1, y: 0, duration: isMobile ? 0.8 : 1, ease: "elastic.out(1, 0.75)", delay: initialDelay }
     );
 
     const handleMouseEnter = () => {
@@ -518,6 +519,7 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 0.6 }}
           className="flex lg:hidden flex-col w-full text-center mt-2 mb-0 order-1 z-20"
         >
           <h2 className="text-[#E17100] text-[11px] sm:text-sm font-bold tracking-[0.2em] uppercase mb-2">
@@ -537,7 +539,7 @@ export default function HeroSection() {
             hidden: { opacity: 0 },
             visible: {
               opacity: 1,
-              transition: { staggerChildren: 0.15 }
+              transition: { staggerChildren: 0.15, delayChildren: 1.4 }
             }
           }}
           className="flex-1 max-w-[550px] w-full z-20 mt-2 lg:mt-0 order-3 lg:order-1 mb-8 lg:mb-0"

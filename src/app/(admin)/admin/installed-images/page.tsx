@@ -36,12 +36,19 @@ type UnifiedImage = {
   after_url?: string;
   after_alt?: string;
   primary_thumbnail?: string;
+  placement?: string;
 };
 
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
 export default function InstalledImagesAdmin() {
   const [activeTab, setActiveTab] = useState<'add' | 'manage'>('add');
+  
+  // Placement State
+  const [placement, setPlacement] = useState<'gallery' | 'top_section'>('gallery');
+  const [demoteId, setDemoteId] = useState<string>('');
+  const [existingTopImages, setExistingTopImages] = useState<any[]>([]);
+  const [loadingExisting, setLoadingExisting] = useState(false);
   
   // Add Form State
   const [imageType, setImageType] = useState<'standard' | 'ab'>('standard');
@@ -91,6 +98,25 @@ export default function InstalledImagesAdmin() {
     setVisibleCount(20);
   }, [filterType, filterSlug, activeTab]);
 
+  useEffect(() => {
+    if (imageType === 'ab' && placement === 'top_section' && pageSlug) {
+      setLoadingExisting(true);
+      getAbImages().then(res => {
+        if (res.success && res.data) {
+          const topImages = res.data.filter((img: any) => img.page_slug === pageSlug && img.placement === 'top_section');
+          setExistingTopImages(topImages);
+          if (topImages.length > 0 && !demoteId) {
+             setDemoteId(topImages[0].id);
+          }
+        }
+        setLoadingExisting(false);
+      });
+    } else {
+      setExistingTopImages([]);
+      setDemoteId('');
+    }
+  }, [imageType, placement, pageSlug]);
+
   const fetchImages = async () => {
     setLoadingImages(true);
     const [stdRes, abRes] = await Promise.all([
@@ -126,6 +152,7 @@ export default function InstalledImagesAdmin() {
           after_url: img.after_url,
           after_alt: img.after_alt,
           primary_thumbnail: img.primary_thumbnail,
+          placement: img.placement,
         });
       });
     }
@@ -386,6 +413,8 @@ export default function InstalledImagesAdmin() {
         after_url: finalAfterUrl,
         after_alt: afterAlt,
         primary_thumbnail: primaryThumbnail,
+        placement: placement,
+        demote_id: placement === 'top_section' && existingTopImages.length >= 2 ? demoteId : undefined,
       });
 
       if (res.success) {
@@ -578,6 +607,70 @@ export default function InstalledImagesAdmin() {
                   <div className="flex items-center gap-2 p-3 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-md text-sm font-medium border border-red-200 dark:border-red-800/50">
                     <AlertTriangle size={18} />
                     Warning: Make sure both images have the exact same ratio/shape/size, otherwise the Before/After slider will distort.
+                  </div>
+                )}
+                
+                <div className="pt-2 pb-4 border-b border-amber-200/50 dark:border-amber-800/50">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">Where should this image go?</label>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <label className="flex items-center gap-2 cursor-pointer text-sm text-gray-800 dark:text-gray-200">
+                      <input 
+                        type="radio" 
+                        name="placement" 
+                        value="gallery" 
+                        checked={placement === 'gallery'} 
+                        onChange={() => setPlacement('gallery')}
+                        className="accent-amber-600"
+                      />
+                      Add to Gallery (Bottom)
+                    </label>
+                    <label className="flex items-center gap-2 cursor-pointer text-sm text-gray-800 dark:text-gray-200">
+                      <input 
+                        type="radio" 
+                        name="placement" 
+                        value="top_section" 
+                        checked={placement === 'top_section'} 
+                        onChange={() => setPlacement('top_section')}
+                        className="accent-amber-600"
+                      />
+                      Set in Top A/B Section (Max 2)
+                    </label>
+                  </div>
+                </div>
+
+                {placement === 'top_section' && loadingExisting && (
+                  <div className="text-sm text-gray-500 flex items-center gap-2"><Loader2 className="animate-spin" size={14}/> Checking top section capacity...</div>
+                )}
+
+                {placement === 'top_section' && !loadingExisting && existingTopImages.length >= 2 && (
+                  <div className="p-4 bg-orange-50 dark:bg-orange-900/20 border border-orange-200 dark:border-orange-800/50 rounded-lg">
+                    <h4 className="text-sm font-bold text-orange-800 dark:text-orange-300 flex items-center gap-2 mb-2">
+                      <AlertTriangle size={16}/> Top Section is Full (2/2)
+                    </h4>
+                    <p className="text-sm text-orange-700 dark:text-orange-400 mb-3">
+                      To add this new image to the Top Section, you must choose one of the existing images to move to the Gallery.
+                    </p>
+                    <div className="space-y-3">
+                      {existingTopImages.map((img: any) => (
+                        <label key={img.id} className="flex gap-3 items-start p-3 bg-white dark:bg-slate-800 rounded border border-orange-100 dark:border-orange-900/50 cursor-pointer hover:border-orange-300 transition-colors">
+                          <input 
+                            type="radio" 
+                            name="demoteId"
+                            value={img.id}
+                            checked={demoteId === img.id}
+                            onChange={() => setDemoteId(img.id)}
+                            className="mt-1 accent-orange-600"
+                          />
+                          <div className="flex gap-2 h-16">
+                            <img src={img.before_url} alt="Before" className="h-full w-auto object-cover rounded" />
+                            <img src={img.after_url} alt="After" className="h-full w-auto object-cover rounded" />
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            Move this pair to gallery
+                          </div>
+                        </label>
+                      ))}
+                    </div>
                   </div>
                 )}
 
@@ -818,8 +911,15 @@ export default function InstalledImagesAdmin() {
                         <SplitSquareHorizontal size={12} />
                         A/B PAIR
                       </div>
-                      <div className="absolute top-2 right-2 bg-black/80 text-white text-[9px] font-bold px-1.5 py-0.5 rounded backdrop-blur border border-white/10">
-                        P: {img.primary_thumbnail?.toUpperCase()}
+                      <div className="absolute top-2 right-2 flex flex-col gap-1 items-end">
+                        <div className="bg-black/80 text-white text-[9px] font-bold px-1.5 py-0.5 rounded backdrop-blur border border-white/10">
+                          P: {img.primary_thumbnail?.toUpperCase()}
+                        </div>
+                        {(img.placement || 'gallery') && (
+                          <div className={`text-[9px] font-bold px-1.5 py-0.5 rounded backdrop-blur border border-white/10 ${img.placement === 'top_section' ? 'bg-amber-600/90 text-white' : 'bg-slate-600/90 text-white'}`}>
+                            {img.placement === 'top_section' ? 'TOP SECTION' : 'GALLERY'}
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}

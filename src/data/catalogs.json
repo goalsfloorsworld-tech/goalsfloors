@@ -3,18 +3,297 @@
     "slug": "upfit-panels",
     "name": "Upfit Panels Catalog",
     "url": "https://res.cloudinary.com/def2qsxjg/image/upload/v1781782510/Goals_Floors_Upfit_Panels_Catalogue.pdf",
-    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1781695284/Upfit_Panels_Premium_Quality.jpg",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1781695284/Upfit_Panels_Premium_Quality.jpg",
     "metaTitle": "Upfit Panels Catalog | Premium Exterior Ceilings in Gurgaon",
     "metaDescription": "Download the official Goals Floors Upfit Panels catalog. Explore dimensions, pricing, and premium exterior waterproof ceiling designs in Gurgaon & Delhi NCR.",
     "seoKeywords": "Upfit panels, exterior ceiling panels, balcony ceiling, waterproof ceiling Gurgaon"
   },
   {
+    "slug": "primo-series",
+    "name": "Primo Series Catalog",
+    "url": "/api/pdf?file=Goals Floors PRIMO SERIES.pdf",
+    "metaTitle": "Primo Series Wall Panels Catalog | Premium Interior Cladding | Goals Floors™",
+    "metaDescription": "Download the Goals Floors™ Primo Series catalog. Explore our exclusive range of premium interior wall panels designed for modern, luxurious architectural spaces.",
+    "seoKeywords": "Primo series, premium interior cladding, luxury wall panels, modern interior surfaces",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785046867/Goals_Floors_PRIMO_SERIES.jpg"
+  },
+  {
     "slug": "baffle-ceiling",
     "name": "Baffle Ceiling Catalog",
     "url": "/api/pdf?file=Goals Floors™ Baffle Ceiling.pdf",
-    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1782211513/Goals_Ceil_Grey_Tube_Track.png",
-    "metaTitle": "Baffle Ceiling Catalog | Modern Acoustic Ceilings in Gurgaon",
-    "metaDescription": "Download the official Goals Floors Baffle Ceiling catalog. Discover modern acoustic solutions and architectural ceilings for commercial spaces.",
-    "seoKeywords": "Baffle ceiling, acoustic ceilings, commercial ceiling solutions Gurgaon"
+    "metaTitle": "Baffle Ceiling Systems Catalog | Acoustic & Linear Ceilings | Goals Floors™",
+    "metaDescription": "Explore our Baffle Ceiling catalog by Goals Floors™. Discover high-performance linear and acoustic ceiling systems perfect for commercial and modern residential designs.",
+    "seoKeywords": "Baffle ceiling, acoustic ceilings, linear ceiling systems, commercial ceiling design",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785044629/Goals_Floors_Baffle_Ceiling.png"
+  },
+  {
+    "slug": "elite-panel",
+    "name": "Elite Panel Catalog",
+    "url": "/api/pdf?file=Goals Floors™ Elite Panel.pdf",
+    "metaTitle": "Elite Panel Catalog | Luxury Fluted & Flat Panels | Goals Floors™",
+    "metaDescription": "Download the Elite Panel catalog. Browse Goals Floors™ premium collection of luxury wall panels, featuring durable finishes and sophisticated textures for interiors.",
+    "seoKeywords": "Elite panel, luxury fluted panels, interior wall cladding, decorative interior panels",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785044633/Goals_Floors_Elite_Panel.jpg"
+  },
+  {
+    "slug": "exterior-louvers",
+    "name": "Exterior Louvers Catalog",
+    "url": "/api/pdf?file=Goals Floors™ Exterior Louvers.pdf",
+    "metaTitle": "Exterior Louvers & Facades Catalog | Weatherproof Cladding | Goals Floors™",
+    "metaDescription": "View the Goals Floors™ Exterior Louvers catalog. Discover highly durable, UV-resistant, and weatherproof louver systems designed to elevate modern building facades.",
+    "seoKeywords": "Exterior louvers, weatherproof cladding, building facades, UV resistant louvers",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785044647/Goals_Floors_Exterior_Louvers.jpg"
+  },
+  {
+    "slug": "flute-panel",
+    "name": "Flute Panel Catalog",
+    "url": "/api/pdf?file=Goals Floors™ Flute Panel.pdf",
+    "metaTitle": "Flute Panel Catalog | Designer Fluted Wall Cladding | Goals Floors™",
+    "metaDescription": "Download our Flute Panel catalog. Goals Floors™ offers trend-setting fluted wall cladding solutions to add 3D texture, depth, and elegance to any interior space.",
+    "seoKeywords": "Flute panel, designer fluted cladding, 3D texture wall panels, interior elegance",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785044596/Goals_Floors_Flute_Panel.jpg"
+  },
+  {
+    "slug": "spc-flooring",
+    "name": "SPC Flooring Catalog",
+    "url": "/api/pdf?file=Goals Floors™ Spc Flooring .pdf",
+    "metaTitle": "SPC Flooring Catalog | 100% Waterproof Rigid Core Floors | Goals Floors™",
+    "metaDescription": "Browse the Goals Floors™ SPC Flooring catalog. Discover our 100% waterproof, highly durable, and scratch-resistant Stone Plastic Composite flooring options.",
+    "seoKeywords": "SPC flooring, waterproof flooring, rigid core floors, scratch resistant composite flooring",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785044610/Goals_Floors_Spc_Flooring.jpg"
+  },
+  {
+    "slug": "timber-tubes",
+    "name": "Timber Tubes Catalog",
+    "url": "/api/pdf?file=Goals Floors™ Timber Tubes.pdf",
+    "metaTitle": "Timber Tubes Catalog | Architectural Partition Systems | Goals Floors™",
+    "metaDescription": "Explore the Timber Tubes catalog by Goals Floors™. Innovative hollow timber tube profiles designed for stunning ceilings, room dividers, and modern architectural partitions.",
+    "seoKeywords": "Timber tubes, architectural partitions, hollow timber ceiling, modern room dividers",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785044610/Goals_Floors_Timber_Tubes.jpg"
+  },
+  {
+    "slug": "tokyo-moulding",
+    "name": "Tokyo Moulding Catalog",
+    "url": "/api/pdf?file=Goals Floors™ Tokyo Moulding.pdf",
+    "metaTitle": "Tokyo Moulding Catalog | Decorative Architectural Profiles | Goals Floors™",
+    "metaDescription": "Download the Tokyo Moulding catalog. Discover Goals Floors™ collection of precision-crafted decorative mouldings for seamless and elegant interior transitions.",
+    "seoKeywords": "Tokyo moulding, decorative profiles, architectural mouldings, seamless interior transitions",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785044636/Goals_Floors_Tokyo_Moulding.jpg"
+  },
+  {
+    "slug": "versaflute",
+    "name": "Versaflute Catalog",
+    "url": "/api/pdf?file=Goals Floors™ VERSAFLUTE.pdf",
+    "metaTitle": "VERSAFLUTE Catalog | Versatile Fluted Cladding Solutions | Goals Floors™",
+    "metaDescription": "View the VERSAFLUTE catalog by Goals Floors™. Highly adaptable, flexible, and premium fluted panel systems designed for creative architectural installations.",
+    "seoKeywords": "VERSAFLUTE, versatile fluted cladding, flexible fluted panels, creative architectural installations",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785044650/Goals_Floors_VERSAFLUTE.jpg"
+  },
+  {
+    "slug": "versapanel",
+    "name": "Versapanel Catalog",
+    "url": "/api/pdf?file=Goals Floors™ VERSAPANEL.pdf",
+    "metaTitle": "VERSAPANEL Catalog | Heavy-Duty Interior Wall Panels | Goals Floors™",
+    "metaDescription": "Download the VERSAPANEL catalog. Goals Floors™ provides durable, easy-to-install, and stylish interior paneling solutions for high-traffic and commercial spaces.",
+    "seoKeywords": "VERSAPANEL, heavy duty interior panels, commercial wall paneling, durable stylish cladding",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785044675/Goals_Floors_VERSAPANEL.jpg"
+  },
+  {
+    "slug": "versasheet",
+    "name": "Versasheet Catalog",
+    "url": "/api/pdf?file=Goals Floors™ VERSASHEET.pdf",
+    "metaTitle": "VERSASHEET Catalog | UV PVC Marble Alternative Sheets | Goals Floors™",
+    "metaDescription": "Explore the VERSASHEET catalog. Discover Goals Floors™ premium stone and marble alternative UV PVC cladding sheets for a luxurious, cost-effective interior finish.",
+    "seoKeywords": "VERSASHEET, UV PVC sheets, marble alternative cladding, luxurious interior finish",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785044662/Goals_Floors_VERSASHEET.jpg"
+  },
+  {
+    "slug": "wpc-decking",
+    "name": "WPC Decking Catalog",
+    "url": "/api/pdf?file=Goals Floors™ Wpc Decking.pdf",
+    "metaTitle": "WPC & Co-Extrusion Decking Catalog | Premium Outdoor Floors | Goals Floors™",
+    "metaDescription": "Download the WPC Decking catalog. Explore our advanced Co-Extrusion (CEO) decking and Wood Plastic Composite solutions for durable, weather-resistant outdoor living spaces.",
+    "seoKeywords": "WPC decking, co-extrusion outdoor floors, weather resistant composite, durable outdoor living",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785046857/Goals_Floors_Wpc_Decking_1.jpg"
+  },
+  {
+    "slug": "rustic-royal-oak",
+    "name": "Rustic Royal Oak 12MM",
+    "url": "/api/pdf?file=Goals Floors Rustic Royal Oak 12MM Laminate Flooring.pdf",
+    "metaTitle": "Rustic Royal Oak 12MM Laminate Flooring Catalog | Goals Floors™",
+    "metaDescription": "Download the Rustic Royal Oak 12MM Laminate Flooring catalog. Explore premium AC5-rated laminate designs with authentic wood textures for high-end interiors.",
+    "seoKeywords": "Rustic royal oak, 12mm laminate flooring, premium AC5 laminate, authentic wood texture",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785038414/Goals_Floors_Rustic_Royal_Oak_12MM_Laminate_Flooring.jpg"
+  },
+  {
+    "slug": "radiant-lamiwood",
+    "name": "Radiant Lamiwood AC5",
+    "url": "/api/pdf?file=Goals Floors Radiant_Lamiwood AC5 12mm Made in Germany.pdf",
+    "metaTitle": "Radiant Lamiwood AC5 12mm Catalog | German Laminate | Goals Floors™",
+    "metaDescription": "Explore the Radiant Lamiwood catalog. High-performance, German-made AC5 12mm laminate flooring offering unmatched durability and elegant aesthetics.",
+    "seoKeywords": "Radiant lamiwood, AC5 12mm laminate, German made flooring, durable laminate aesthetics",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785038351/Goals_Floors_Radiant_Lamiwood_AC5_12mm_Made_in_Germany.png"
+  },
+  {
+    "slug": "majesty-grande",
+    "name": "Majesty Grande & Oak Artisan",
+    "url": "/api/pdf?file=Goals Floors Majesty Grande & Oak Artisan Catalogue.pdf",
+    "metaTitle": "Majesty Grande & Oak Artisan Catalog | Luxury Floors | Goals Floors™",
+    "metaDescription": "Download the Majesty Grande & Oak Artisan catalog by Goals Floors™. Discover luxurious, handcrafted-style laminate flooring for sophisticated spaces.",
+    "seoKeywords": "Majesty grande, oak artisan flooring, luxury laminate, handcrafted style floors",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785038227/Goals_Floors_Majesty_Grande_Oak_Artisan_Catalogue.png"
+  },
+  {
+    "slug": "majestic-lamiwood",
+    "name": "Majestic Lamiwood AC4",
+    "url": "/api/pdf?file=Goals Floors Majestic_Lamiwood AC4 8mm Made in Germany.pdf",
+    "metaTitle": "Majestic Lamiwood AC4 8mm Catalog | German Flooring | Goals Floors™",
+    "metaDescription": "View the Majestic Lamiwood catalog. Premium German-made AC4 8mm laminate flooring perfect for stylish, modern residential and light commercial use.",
+    "seoKeywords": "Majestic lamiwood, AC4 8mm laminate, German flooring, stylish residential laminate",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785038231/Goals_Floors_Majestic_Lamiwood_AC4_8mm_Made_in_Germany.png"
+  },
+  {
+    "slug": "herringbone-12mm",
+    "name": "Herringbone 12mm AC5",
+    "url": "/api/pdf?file=Goals Floors Herringbone 12mm - AC5 Laminated Flooring.pdf",
+    "metaTitle": "Herringbone 12mm AC5 Laminate Catalog | Premium Floors | Goals Floors™",
+    "metaDescription": "Download the Herringbone 12mm AC5 Laminate catalog. Elevate your interiors with classic herringbone patterns combined with ultra-durable AC5 performance.",
+    "seoKeywords": "Herringbone 12mm, AC5 laminated flooring, classic herringbone patterns, durable interior floors",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785052449/15._Herringbone_12mm_-_AC5_Laminated_Flooring.pdf.jpg"
+  },
+  {
+    "slug": "heritage-laminate",
+    "name": "Heritage 12mm Laminate",
+    "url": "/api/pdf?file=Goals Floors Heritage 12mm Laminate Flooring Catalogue.pdf",
+    "metaTitle": "Heritage 12mm Laminate Flooring Catalog | Goals Floors™",
+    "metaDescription": "Explore the Heritage 12mm Laminate Flooring catalog. Timeless wood-look designs engineered for superior strength and lasting beauty in any room.",
+    "seoKeywords": "Heritage 12mm laminate, timeless wood look floors, superior strength flooring, lasting beauty",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785038249/Goals_Floors_Heritage_12mm_Laminate_Flooring_Catalogue.png"
+  },
+  {
+    "slug": "herringbone-marvel",
+    "name": "Herringbone Marvel Collection",
+    "url": "/api/pdf?file=Goals Floors HERRINGBONE 8mm Marvel COLLECTION.pdf.pdf",
+    "metaTitle": "Herringbone 8mm Marvel Collection Catalog | Goals Floors™",
+    "metaDescription": "Discover the Herringbone 8mm Marvel Collection. Striking zigzag flooring patterns in a practical 8mm thickness, bringing architectural elegance to your home.",
+    "seoKeywords": "Herringbone 8mm marvel, zigzag flooring patterns, architectural elegance floors, 8mm laminate",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785037907/Goals_Floors_HERRINGBONE_8mm_Marvel_COLLECTION.png"
+  },
+  {
+    "slug": "foundation-laminate",
+    "name": "Foundation AC4 8mm",
+    "url": "/api/pdf?file=Goals Floors Foundation AC4 8mm Laminated Flooring.pdf",
+    "metaTitle": "Foundation AC4 8mm Laminate Catalog | Reliable Floors | Goals Floors™",
+    "metaDescription": "Download the Foundation AC4 8mm Laminate catalog. Build your space on a solid foundation of reliable, stylish, and cost-effective laminated flooring.",
+    "seoKeywords": "Foundation AC4 8mm, reliable laminated floors, stylish flooring, cost effective laminate",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785044675/Goals_Floors_Foundation_AC4_8mm_Laminated_Flooring.png"
+  },
+  {
+    "slug": "velora-planks",
+    "name": "Velora 8 Planks",
+    "url": "/api/pdf?file=Goals Floors Velora 8 PLanks Catalogue.pdf",
+    "metaTitle": "Velora 8 Planks Catalog | Premium Laminate Planks | Goals Floors™",
+    "metaDescription": "View the Velora 8 Planks catalog. Discover beautifully crafted 8mm laminate planks designed to bring natural warmth and modern style to your interiors.",
+    "seoKeywords": "Velora 8 planks, premium laminate planks, natural warmth flooring, modern interior styles",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785038268/Goals_Floors_Velora_8_PLanks_Catalogue.png"
+  },
+  {
+    "slug": "leopoldo-catalogue",
+    "name": "Leopoldo 8",
+    "url": "/api/pdf?file=Goals Floors leopoldo 8 catalogue.pdf",
+    "metaTitle": "Leopoldo 8 Catalog | Designer Laminate Floors | Goals Floors™",
+    "metaDescription": "Download the Leopoldo 8 catalog by Goals Floors™. Explore distinctive textures and rich color palettes in our premium 8mm designer laminate collection.",
+    "seoKeywords": "Leopoldo 8, designer laminate floors, distinctive floor textures, rich laminate colors",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785038161/Goals_Floors_leopoldo_8_catalogue.jpg"
+  },
+  {
+    "slug": "mosaique-catalogue",
+    "name": "Mosaique 8",
+    "url": "/api/pdf?file=Goals Floors mosaique 8 catalogue.pdf",
+    "metaTitle": "Mosaique 8 Catalog | Artistic Laminate Flooring | Goals Floors™",
+    "metaDescription": "Explore the Mosaique 8 catalog. Introduce artistic flair and exceptional durability to your floors with our unique 8mm Mosaique laminate series.",
+    "seoKeywords": "Mosaique 8, artistic laminate flooring, unique floor designs, durable 8mm laminate",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785038234/Goals_Floors_mosaique_8_catalogue.png"
+  },
+  {
+    "slug": "opulent-refined",
+    "name": "Opulent and Refined",
+    "url": "/api/pdf?file=Goals Floors Opulent and refined Catalogue.pdf",
+    "metaTitle": "Opulent & Refined Catalog | Ultra Luxury Flooring | Goals Floors™",
+    "metaDescription": "Download the Opulent & Refined catalog. Step into luxury with Goals Floors™ exclusive collection of high-end, exquisitely crafted flooring solutions.",
+    "seoKeywords": "Opulent refined, ultra luxury flooring, high end floors, exquisitely crafted laminate",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785038229/Goals_Floors_Opulent_and_refined_Catalogue.png"
+  },
+  {
+    "slug": "panorama-collection",
+    "name": "Panorama Collection",
+    "url": "/api/pdf?file=Goals Floors Panorama Collection.pdf",
+    "metaTitle": "Panorama Collection Catalog | Wide Plank Flooring | Goals Floors™",
+    "metaDescription": "Discover the Panorama Collection catalog. Expansive, wide-plank designs that visually open up your spaces while providing robust everyday performance.",
+    "seoKeywords": "Panorama collection, wide plank flooring, expansive floor designs, robust performance laminate",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785038296/Goals_Floors_Panorama_Collection.png"
+  },
+  {
+    "slug": "reserve-collection",
+    "name": "Reserve Collection",
+    "url": "/api/pdf?file=Goals Floors RESERVE.pdf",
+    "metaTitle": "Reserve Collection Catalog | Exclusive Laminate | Goals Floors™",
+    "metaDescription": "View the Goals Floors™ Reserve catalog. Our most exclusive, small-batch curated flooring collection for discerning homeowners and designers.",
+    "seoKeywords": "Reserve collection, exclusive laminate, curated flooring, designer laminate series",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785038311/Goals_Floors_RESERVE.png"
+  },
+  {
+    "slug": "herringbone-pietra",
+    "name": "Herringbone 3.0 Pietra",
+    "url": "/api/pdf?file=Goals Floors Herringbone 3.0 Pietra Collection.pdf",
+    "metaTitle": "Herringbone 3.0 Pietra Catalog | Stone Finish Floors | Goals Floors™",
+    "metaDescription": "Download the Herringbone 3.0 Pietra Collection. The perfect fusion of classic herringbone layouts with striking, modern stone-finish aesthetics.",
+    "seoKeywords": "Herringbone 3.0 pietra, stone finish floors, modern herringbone layout, striking floor aesthetics",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785046866/Goals_Floors_Herringbone_3.0_Pietra_Collection.jpg"
+  },
+  {
+    "slug": "immenso-livanti",
+    "name": "Immenso and Livanti",
+    "url": "/api/pdf?file=Goals Floors Immenso and Livanti Catalogue.pdf",
+    "metaTitle": "Immenso & Livanti Catalog | Grand Flooring Designs | Goals Floors™",
+    "metaDescription": "Explore the Immenso and Livanti catalog. Grand, oversized planks featuring hyper-realistic natural wood details for a truly majestic interior space.",
+    "seoKeywords": "Immenso livanti, grand flooring designs, oversized laminate planks, hyper realistic wood floors",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785038258/Goals_Floors_Immenso_and_Livanti_Catalogue.jpg"
+  },
+  {
+    "slug": "basic-collection",
+    "name": "Basic Collection",
+    "url": "/api/pdf?file=Goals Floors Basic Collection.pdf",
+    "metaTitle": "Basic Collection Catalog | Essential Laminate Floors | Goals Floors™",
+    "metaDescription": "Download the Basic Collection catalog. High-quality, essential laminate flooring offering great value, easy installation, and clean, timeless looks.",
+    "seoKeywords": "Basic collection, essential laminate floors, high quality value flooring, easy installation laminate",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785038420/Goals_Floors_Basic_Collection.jpg"
+  },
+  {
+    "slug": "chevron-collection",
+    "name": "Chevron Collection",
+    "url": "/api/pdf?file=Goals Floors Chevron collection.pdf",
+    "metaTitle": "Chevron Collection Catalog | V-Pattern Luxury Floors | Goals Floors™",
+    "metaDescription": "Discover the Chevron Collection. Add instant architectural prestige to your home with precise, continuous V-pattern luxury laminate flooring.",
+    "seoKeywords": "Chevron collection, v pattern luxury floors, architectural prestige flooring, continuous chevron layout",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785038390/Goals_Floors_Chevron_collection.png"
+  },
+  {
+    "slug": "elevate-ac5",
+    "name": "Elevate AC5 8mm",
+    "url": "/api/pdf?file=Goals Floors Elevate AC5 8mm.pdf",
+    "metaTitle": "Elevate AC5 8mm Catalog | High Traffic Laminate | Goals Floors™",
+    "metaDescription": "View the Elevate AC5 8mm catalog by Goals Floors™. Commercial-grade AC5 durability packed into a sleek 8mm profile for high-traffic environments.",
+    "seoKeywords": "Elevate AC5 8mm, high traffic laminate, commercial grade durability, sleek profile floors",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785038407/Goals_Floors_Elevate_AC5_8mm.jpg"
+  },
+  {
+    "slug": "fortezza-catalogue",
+    "name": "Fortezza 8",
+    "url": "/api/pdf?file=Goals Floors Fortezza 8 Catalogue .pdf",
+    "metaTitle": "Fortezza 8 Catalog | Fortified Laminate Planks | Goals Floors™",
+    "metaDescription": "Download the Fortezza 8 catalog. Built for resilience, this collection offers fortified 8mm laminate planks that resist wear while looking spectacular.",
+    "seoKeywords": "Fortezza 8, fortified laminate planks, resilient flooring, wear resistant laminate",
+    "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1785038211/Goals_Floors_Fortezza_8_Catalogue.png"
   }
 ]

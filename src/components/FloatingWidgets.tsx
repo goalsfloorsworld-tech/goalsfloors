@@ -13,7 +13,7 @@ export default function FloatingWidgets() {
     // Delay loading heavy widgets until after main content has hydrated
     const timer = setTimeout(() => {
       setShowWidgets(true);
-    }, 2500);
+    }, 3500);
     return () => clearTimeout(timer);
   }, []);
 

@@ -58,6 +58,15 @@ export default function QuickCategoryGrid() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isSticky) {
+      document.body.classList.add("category-capsule-visible");
+    } else {
+      document.body.classList.remove("category-capsule-visible");
+    }
+    return () => document.body.classList.remove("category-capsule-visible");
+  }, [isSticky]);
+
   return (
     <>
       {/* The main Grid Section */}
@@ -98,37 +107,41 @@ export default function QuickCategoryGrid() {
         </div>
       </section>
 
-      {/* Sticky Mini Category Bar (Appears under Navbar) */}
+      {/* Sticky Mini Category Capsule (Appears at the bottom like Instagram) */}
       <div
-        className={`fixed top-[56px] left-0 w-full z-40 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-gray-800 transition-all duration-300 ${
-          isSticky ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
+        className={`fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 w-[95%] sm:w-auto max-w-[780px] z-50 bg-black/40 dark:bg-black/40 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.12)] border border-gray-600/30 dark:border-white/10 rounded-full transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] overflow-hidden ${
+          isSticky ? "translate-y-0 opacity-100 scale-100" : "translate-y-16 opacity-0 scale-90 pointer-events-none"
         }`}
       >
-        <div className="w-full relative">
-          <div 
-            ref={marqueeRef}
-            className="flex w-full overflow-x-auto hide-scrollbar items-center justify-start xl:justify-center py-3"
-            style={{ WebkitOverflowScrolling: 'touch' }}
-          >
-            <div className="flex gap-6 sm:gap-8 items-center flex-shrink-0 px-4 sm:px-6 xl:px-0">
-              {categories.map((category, index) => (
-                <Link
-                  key={category.id}
-                  href={category.href || "#"}
-                  className="flex flex-col items-center flex-shrink-0 gap-1.5 group cursor-pointer"
+        <div 
+          ref={marqueeRef}
+          className="flex w-full overflow-x-auto hide-scrollbar items-center justify-start py-2.5"
+          style={{ 
+            WebkitOverflowScrolling: 'touch',
+            maskImage: 'linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 24px, black calc(100% - 24px), transparent)'
+          }}
+        >
+          <div className="flex gap-4 sm:gap-6 items-center flex-shrink-0 px-6 sm:px-8">
+            {categories.map((category, index) => (
+              <Link
+                key={category.id}
+                href={category.href || "#"}
+                className="flex flex-col items-center flex-shrink-0 gap-1.5 group cursor-pointer"
+              >
+                <div 
+                  className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full dark:bg-slate-800 flex items-center justify-center overflow-hidden relative border-2 border-gray-400 dark:border-gray-500 [--glow-color:theme(colors.gray.500)] dark:[--glow-color:theme(colors.gray.400)] transition-all duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] ${
+                    isSticky ? "scale-100" : "scale-[1.8]"
+                  } group-hover:scale-110`}
+                  style={{ transitionDelay: `${index * 30}ms`, boxShadow: '0 0 15px var(--glow-color)' }}
                 >
-                  <div 
-                    className="w-11 h-11 sm:w-12 sm:h-12 rounded-full dark:bg-slate-800 flex items-center justify-center transition-transform group-hover:scale-110 overflow-hidden relative border-2 border-gray-400 dark:border-gray-500 [--glow-color:theme(colors.gray.500)] dark:[--glow-color:theme(colors.gray.400)]"
-                    style={{ boxShadow: '0 0 15px var(--glow-color)' }}
-                  >
-                    <Image src={category.variantImage || category.image} alt={category.name} fill sizes="48px" className="object-cover" />
-                  </div>
-                  <span className="text-[10px] sm:text-xs font-semibold text-gray-700 dark:text-gray-300 whitespace-nowrap">
-                    {category.name}
-                  </span>
-                </Link>
-              ))}
-            </div>
+                  <Image src={category.variantImage || category.image} alt={category.name} fill sizes="48px" className="object-cover" />
+                </div>
+                <span className={`text-[9px] sm:text-[10px] font-semibold text-white/90 whitespace-nowrap transition-all duration-700 delay-300 ${isSticky ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+                  {category.name}
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </div>
