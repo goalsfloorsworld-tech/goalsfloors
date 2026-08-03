@@ -47,14 +47,22 @@ function toNumber(value: string | number | null | undefined): number {
   return 0;
 }
 
-export function getGoogleAuth(): OAuth2Client {
-  const clientId = requireEnv('GOOGLE_CLIENT_ID');
-  const clientSecret = requireEnv('GOOGLE_CLIENT_SECRET');
-  const refreshToken = requireEnv('GOOGLE_REFRESH_TOKEN');
+export function getGoogleAuth() {
+  const clientEmail = requireEnv("GOOGLE_CLIENT_EMAIL");
+  const privateKey = requireEnv("GOOGLE_PRIVATE_KEY").replace(/\\n/g, '\n');
 
-  const client = new google.auth.OAuth2(clientId, clientSecret);
-  client.setCredentials({ refresh_token: refreshToken });
-  return client;
+  const auth = new google.auth.GoogleAuth({
+    credentials: {
+      client_email: clientEmail,
+      private_key: privateKey,
+    },
+    scopes: [
+      "https://www.googleapis.com/auth/analytics.readonly",
+      "https://www.googleapis.com/auth/webmasters.readonly"
+    ],
+  });
+
+  return auth;
 }
 
 export async function getCoreMetrics(startDate: string, endDate: string): Promise<CoreMetrics> {

@@ -51,6 +51,9 @@ export async function addDynamicProduct(slug: string, jsonPayload: any) {
       );
     }
 
+    const { logAdminActivity } = await import("./logger");
+    await logAdminActivity("ADD_PRODUCT", { slug, productName: jsonPayload.name });
+
     return { success: true as const, data };
   } catch (error: any) {
     return { success: false as const, error: error.message };
@@ -109,6 +112,9 @@ export async function updateDynamicProduct(id: string, slug: string, jsonPayload
       );
     }
 
+    const { logAdminActivity } = await import("./logger");
+    await logAdminActivity("EDIT_PRODUCT", { id, slug, productName: jsonPayload.name });
+
     return { success: true as const, data };
   } catch (error: any) {
     return { success: false as const, error: error.message };
@@ -128,6 +134,10 @@ export async function deleteDynamicProduct(id: string) {
       .eq("id", id);
 
     if (error) throw error;
+    
+    const { logAdminActivity } = await import("./logger");
+    await logAdminActivity("DELETE_PRODUCT", { id });
+
     return { success: true as const };
   } catch (error: any) {
     return { success: false as const, error: error.message };

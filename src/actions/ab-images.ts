@@ -4,6 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { deleteImageFromCloudinary } from "./cloudinary";
+import { logAdminActivity } from "./logger";
 
 function getSupabase() {
   return createClient(
@@ -69,6 +70,8 @@ export async function addAbImage(payload: {
     return { success: false, error: error.message };
   }
 
+  await logAdminActivity("ADD_IMAGE", { page_slug: payload.page_slug, type: "A/B pair" });
+
   revalidatePath(`/products/${payload.page_slug}`);
   revalidatePath('/sitemap.xml');
   return { success: true };
@@ -119,15 +122,17 @@ export async function deleteAbImage(id: string, page_slug: string) {
     if (record.after_url) await deleteImageFromCloudinary(record.after_url);
   }
 
-  const { error } = await supabase
+  const { error: deleteError } = await supabase
     .from('page_ab_images')
     .delete()
     .eq('id', id);
 
-  if (error) {
-    console.error("Error deleting A/B image:", error);
-    return { success: false, error: error.message };
+  if (deleteError) {
+    console.error("Error deleting A/B image:", deleteError);
+    return { success: false, error: deleteError.message };
   }
+
+  await logAdminActivity("DELETE_IMAGE", { id, page_slug });
 
   revalidatePath(`/products/${page_slug}`);
   revalidatePath('/sitemap.xml');

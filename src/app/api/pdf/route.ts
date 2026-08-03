@@ -2,16 +2,18 @@ import { NextResponse } from "next/server";
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
-const s3Client = new S3Client({
-  endpoint: "https://s3.ca-east-006.backblazeb2.com",
-  region: "ca-east-006",
-  credentials: {
-    accessKeyId: process.env.B2_KEY_ID as string,
-    secretAccessKey: process.env.B2_APP_KEY as string,
-  },
-});
+export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
+  const s3Client = new S3Client({
+    endpoint: "https://s3.ca-east-006.backblazeb2.com",
+    region: "ca-east-006",
+    credentials: {
+      accessKeyId: process.env.B2_KEY_ID as string,
+      secretAccessKey: process.env.B2_APP_KEY as string,
+    },
+  });
+
   const { searchParams } = new URL(request.url);
   const file = searchParams.get("file");
   const action = searchParams.get("action");
@@ -38,11 +40,21 @@ export async function GET(request: Request) {
     // Generate a presigned URL valid for 3600 seconds (1 hour)
     const url = await getSignedUrl(s3Client, command, { expiresIn: 3600 });
 
+    if (action === "download") {
+      const response = await fetch(url);
+      return new NextResponse(response.body, {
+        headers: {
+          "Content-Disposition": `attachment; filename*=UTF-8''${encodeURIComponent(file)}`,
+          "Content-Type": "application/pdf",
+        },
+      });
+    }
+
     return NextResponse.redirect(url);
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error generating presigned URL:", error);
     return NextResponse.json(
-      { error: "Failed to generate presigned URL" },
+      { error: "Failed to generate presigned URL", details: error?.message || String(error) },
       { status: 500 }
     );
   }

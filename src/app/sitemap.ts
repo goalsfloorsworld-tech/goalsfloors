@@ -266,20 +266,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 6. Dynamic Catalog Pages (PDFs)
   let catalogRoutes: MetadataRoute.Sitemap = [];
   try {
-    const catalogsPath = path.join(process.cwd(), 'src', 'data', 'catalogs.json');
-    if (fs.existsSync(catalogsPath)) {
-      const catalogs = JSON.parse(fs.readFileSync(catalogsPath, 'utf8'));
-      const stats = fs.statSync(catalogsPath);
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+    const supabaseClient = createClient(supabaseUrl, supabaseKey);
+
+    const { data: catalogs } = await supabaseClient
+      .from('page_catalogs')
+      .select('slug, image, created_at');
+
+    if (catalogs) {
       catalogRoutes = catalogs.map((catalog: any) => ({
         url: `${baseUrl}/catalogs/${catalog.slug}.pdf`,
-        lastModified: stats.mtime.toISOString(),
+        lastModified: new Date(catalog.created_at).toISOString(),
         changeFrequency: 'monthly' as const,
         priority: 0.8,
         images: catalog.image ? processImageUrls(baseUrl, [catalog.image]) : undefined,
       }));
     }
   } catch (error) {
-    console.error('Error reading catalogs for sitemap:', error);
+    console.error('Error fetching catalogs for sitemap:', error);
   }
 
   return [...staticRoutes, ...productRoutes, ...blogRoutes, ...multiverseRoutes, ...compareRoutes, ...catalogRoutes];

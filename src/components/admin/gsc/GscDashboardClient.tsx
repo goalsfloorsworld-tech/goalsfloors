@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Search, Globe, Rocket, Loader2, ArrowRight, RefreshCw, Activity, CheckCircle2, XCircle, Image as ImageIcon } from "lucide-react";
 import { submitUrlForIndexing, inspectUrlAction } from "@/actions/seo";
+import { getCurrentUserProfile } from "@/actions/admin-core";
 import type { QueryRow } from "@/lib/seo";
 import ImageSeoTab from "./ImageSeoTab";
 
@@ -22,6 +23,15 @@ type Props = {
 export default function GscDashboardClient({ topQueries, strikingDistanceQueries, imageQueries, initialNewUrls, initialIndexedUrls, sitemapHealth = [] }: Props) {
   const [activeTab, setActiveTab] = useState<"keywords" | "sitemap" | "health" | "image-seo">("keywords");
   const [isPendingTab, setIsPendingTab] = useState<string | null>(null);
+  const [role, setRole] = useState<string | null>(null);
+
+  React.useEffect(() => {
+    getCurrentUserProfile().then(res => {
+      if (res.success && res.profile) {
+        setRole(res.profile.role);
+      }
+    });
+  }, []);
 
   // Row limiting state for mobile
   const [showAllTopQueries, setShowAllTopQueries] = useState(false);
@@ -43,6 +53,10 @@ export default function GscDashboardClient({ topQueries, strikingDistanceQueries
   const allUrlStrings = [...newUrls, ...indexedUrls.map(i => i.url)];
 
   const handleIndexUrl = async (url: string) => {
+    if (role === 'team') {
+      toast.error("You have read-only access. You cannot edit, upload, or delete content.", { duration: 4000 });
+      return;
+    }
     setIndexingStates(prev => ({ ...prev, [url]: true }));
     try {
       const result = await submitUrlForIndexing(url);
@@ -62,6 +76,10 @@ export default function GscDashboardClient({ topQueries, strikingDistanceQueries
 
   const handleAutoIndexAll = async () => {
     if (newUrls.length === 0) return;
+    if (role === 'team') {
+      toast.error("You have read-only access. You cannot edit, upload, or delete content.", { duration: 4000 });
+      return;
+    }
     setIsAutoIndexing(true);
     let successCount = 0;
 

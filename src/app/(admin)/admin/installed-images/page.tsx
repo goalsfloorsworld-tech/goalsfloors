@@ -4,8 +4,10 @@ import { useState, useEffect } from 'react';
 import { addInstalledImage, getInstalledImages, deleteInstalledImage } from '@/actions/installed-images';
 import { addAbImage, getAbImages, deleteAbImage } from '@/actions/ab-images';
 import { uploadImageToCloudinary, checkCloudinaryFileExists } from '@/actions/cloudinary';
-import toast from 'react-hot-toast';
-import { Trash2, Loader2, SplitSquareHorizontal, UploadCloud, AlertTriangle } from 'lucide-react';
+import toast, { Toaster } from 'react-hot-toast';
+import { Trash2, Loader2, SplitSquareHorizontal, UploadCloud, AlertTriangle, RefreshCw } from 'lucide-react';
+import { getCurrentUserProfile } from '@/actions/admin-core';
+import { adminCache } from '@/lib/admin-cache';
 
 const VALID_SLUGS = [
   { label: 'Artificial Grass', value: 'artificial-grass' },
@@ -43,6 +45,7 @@ const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
 
 export default function InstalledImagesAdmin() {
   const [activeTab, setActiveTab] = useState<'add' | 'manage'>('add');
+  const [role, setRole] = useState<string | null>(null);
   
   // Placement State
   const [placement, setPlacement] = useState<'gallery' | 'top_section'>('gallery');
@@ -99,6 +102,14 @@ export default function InstalledImagesAdmin() {
   }, [filterType, filterSlug, activeTab]);
 
   useEffect(() => {
+    getCurrentUserProfile().then(res => {
+      if (res.success && res.profile) {
+        setRole(res.profile.role);
+      }
+    });
+  }, []);
+
+  useEffect(() => {
     if (imageType === 'ab' && placement === 'top_section' && pageSlug) {
       setLoadingExisting(true);
       getAbImages().then(res => {
@@ -117,7 +128,11 @@ export default function InstalledImagesAdmin() {
     }
   }, [imageType, placement, pageSlug]);
 
-  const fetchImages = async () => {
+  const fetchImages = async (forceRefresh = false) => {
+    if (!forceRefresh && adminCache.installedImages) {
+      setImages(adminCache.installedImages);
+      return;
+    }
     setLoadingImages(true);
     const [stdRes, abRes] = await Promise.all([
       getInstalledImages(),
@@ -159,7 +174,14 @@ export default function InstalledImagesAdmin() {
 
     unified.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
     setImages(unified);
+    adminCache.installedImages = unified;
     setLoadingImages(false);
+  };
+
+  const handleRefresh = async () => {
+    setLoadingImages(true);
+    await fetchImages(true);
+    toast.success("Images refreshed");
   };
 
   useEffect(() => {
@@ -327,13 +349,15 @@ export default function InstalledImagesAdmin() {
       });
 
       if (res.success) {
-        toast.success('Installed image added successfully!');
+        toast.success('Image added successfully!');
         setStandardFile(null);
         setStandardUrlInput('');
         setStandardPreviewUrl('');
         setAltText('');
-        const fileInput = document.getElementById('standard-file') as HTMLInputElement;
-        if (fileInput) fileInput.value = '';
+        setAspectRatio('');
+        const input = document.getElementById('standard-file') as HTMLInputElement;
+        if (input) input.value = '';
+        fetchImages(true);
       } else {
         toast.error(res.error || 'Failed to add image.');
       }
@@ -433,6 +457,7 @@ export default function InstalledImagesAdmin() {
         if (bInput) bInput.value = '';
         const aInput = document.getElementById('after-file') as HTMLInputElement;
         if (aInput) aInput.value = '';
+        fetchImages(true);
       } else {
         toast.error(res.error || 'Failed to add A/B image.');
       }
@@ -454,7 +479,9 @@ export default function InstalledImagesAdmin() {
 
     if (res.success) {
       toast.success('Image deleted successfully!');
-      setImages(images.filter(img => img.id !== id));
+      const newImages = images.filter(img => img.id !== id);
+      setImages(newImages);
+      adminCache.installedImages = newImages;
     } else {
       toast.error(res.error || 'Failed to delete image');
     }
@@ -471,8 +498,14 @@ export default function InstalledImagesAdmin() {
 
   return (
     <div className="max-w-5xl mx-auto p-4 sm:p-6 space-y-4 sm:space-y-6">
+      <Toaster position="top-right" />
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Installed Images</h1>
+        <div className="flex items-center gap-3">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Installed Images</h1>
+          <button onClick={handleRefresh} className="p-2 ml-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-lg transition-colors shadow-sm" title="Refresh Data">
+            <RefreshCw size={20} />
+          </button>
+        </div>
         <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
           <button
             onClick={() => setActiveTab('add')}
@@ -832,6 +865,13 @@ export default function InstalledImagesAdmin() {
             )}
 
             <button 
+              onClick={(e) => {
+                if (role === 'team') {
+                  e.preventDefault();
+                  toast.error("You have read-only access. You cannot edit, upload, or delete content.", { duration: 4000 });
+                  return;
+                }
+              }}
               type="submit" 
               disabled={loading || ratioMismatchWarning}
               className="w-full flex items-center justify-center gap-2 bg-gray-900 dark:bg-amber-600 text-white py-3 rounded-md font-semibold hover:bg-gray-800 dark:hover:bg-amber-500 transition-colors disabled:opacity-50"
@@ -932,7 +972,14 @@ export default function InstalledImagesAdmin() {
                       {img.type === 'standard' ? (img.alt_text || 'No alt text') : `B: ${img.before_alt} | A: ${img.after_alt}`}
                     </p>
                     <button
-                      onClick={() => handleDelete(img.id, img.page_slug, img.type)}
+                      onClick={(e) => {
+                        if (role === 'team') {
+                          e.preventDefault();
+                          toast.error("You have read-only access. You cannot edit, upload, or delete content.", { duration: 4000 });
+                          return;
+                        }
+                        handleDelete(img.id, img.page_slug, img.type);
+                      }}
                       disabled={deletingId === img.id}
                       className="flex items-center justify-center gap-2 w-full py-1.5 text-xs font-semibold text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20 rounded border border-red-200 dark:border-red-900/50 transition-colors disabled:opacity-50 mt-auto"
                     >

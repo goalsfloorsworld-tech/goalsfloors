@@ -1,9 +1,12 @@
 'use server';
 
+const adminCacheInvalidate = () => {};
+
 import { createClient } from "@supabase/supabase-js";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { deleteImageFromCloudinary } from "./cloudinary";
+import { logAdminActivity } from "./logger";
 
 function getSupabase() {
   return createClient(
@@ -48,6 +51,9 @@ export async function addInstalledImage(payload: {
     console.error("Error adding installed image:", error);
     return { success: false, error: error.message };
   }
+
+  await logAdminActivity("ADD_IMAGE", { page_slug: payload.page_slug, image_url: payload.image_url });
+  adminCacheInvalidate();
 
   revalidatePath(`/products/${payload.page_slug}`);
   revalidatePath('/sitemap.xml');
@@ -107,6 +113,9 @@ export async function deleteInstalledImage(id: string, page_slug: string) {
     console.error("Error deleting installed image:", error);
     return { success: false, error: error.message };
   }
+
+  await logAdminActivity("DELETE_IMAGE", { id, page_slug });
+  adminCacheInvalidate();
 
   revalidatePath(`/products/${page_slug}`);
   revalidatePath('/sitemap.xml');

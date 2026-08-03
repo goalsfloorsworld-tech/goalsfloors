@@ -5,10 +5,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
   LayoutDashboard, FileText, BarChart3, Globe, Rocket, 
-  ShoppingBag, Database, UserPlus, Loader2, PackagePlus, Image as ImageIcon, Store
+  ShoppingBag, Database, UserPlus, Loader2, PackagePlus, Image as ImageIcon, Store, Activity
 } from 'lucide-react';
 import { getCurrentUserProfile } from '@/actions/admin-core';
 import RoleBadge from '@/components/shared/RoleBadge';
+
+import { trackAdminSession } from '@/actions/logger';
 
 const NAV_ITEMS = [
   { 
@@ -57,6 +59,14 @@ const NAV_ITEMS = [
 
 const ADMIN_TOOLS = [
   { 
+    href: '/admin/activity', 
+    label: 'Activity Logs', 
+    icon: Activity, 
+    color: 'hover:bg-indigo-50 dark:hover:bg-indigo-900/20 text-slate-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300',
+    iconColor: 'text-indigo-500',
+    superAdminOnly: true // Custom flag
+  },
+  { 
     href: '/admin/database', 
     label: 'Database', 
     icon: Database, 
@@ -83,6 +93,20 @@ const ADMIN_TOOLS = [
     icon: ImageIcon,
     color: 'hover:bg-pink-50 dark:hover:bg-pink-900/20 text-slate-700 dark:text-slate-300 hover:text-pink-700 dark:hover:text-pink-300',
     iconColor: 'text-pink-500'
+  },
+  {
+    href: '/admin/catalogs',
+    label: 'Catalogs',
+    icon: FileText,
+    color: 'hover:bg-yellow-50 dark:hover:bg-yellow-900/20 text-slate-700 dark:text-slate-300 hover:text-yellow-700 dark:hover:text-yellow-300',
+    iconColor: 'text-yellow-500'
+  },
+  {
+    href: '/admin/storage',
+    label: 'Storage Analytics',
+    icon: Database,
+    color: 'hover:bg-cyan-50 dark:hover:bg-cyan-900/20 text-slate-700 dark:text-slate-300 hover:text-cyan-700 dark:hover:text-cyan-300',
+    iconColor: 'text-cyan-500'
   }
 ];
 
@@ -95,8 +119,17 @@ export default function AdminSidebar() {
     async function loadProfile() {
       const res = await getCurrentUserProfile();
       if (res.success) setProfile(res.profile);
+      
+      // Ping session to track online status and clear old logs silently
+      trackAdminSession();
     }
     loadProfile();
+    
+    // Auto-ping every 10 minutes while on an admin page
+    const interval = setInterval(() => {
+      trackAdminSession();
+    }, 10 * 60 * 1000);
+    return () => clearInterval(interval);
   }, []);
 
   // Reset loading state when pathname changes
@@ -158,9 +191,10 @@ export default function AdminSidebar() {
           <p className="px-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Admin Tools</p>
         </div>
         
-        {ADMIN_TOOLS.map((item) => (
-          <SidebarLink key={item.href} item={item} />
-        ))}
+        {ADMIN_TOOLS.map((item) => {
+          if (item.superAdminOnly && role !== 'administrator') return null;
+          return <SidebarLink key={item.href} item={item} />;
+        })}
       </nav>
 
       <div className="p-4 border-t border-gray-200 dark:border-gray-800">

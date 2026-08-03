@@ -8,13 +8,22 @@ const requireEnv = (name: string) => {
 };
 
 export function getSeoAuth() {
-  const clientId = requireEnv("GOOGLE_CLIENT_ID");
-  const clientSecret = requireEnv("GOOGLE_CLIENT_SECRET");
-  const refreshToken = requireEnv("GOOGLE_REFRESH_TOKEN");
+  const clientEmail = requireEnv("GOOGLE_CLIENT_EMAIL");
+  const privateKey = requireEnv("GOOGLE_PRIVATE_KEY").replace(/\\n/g, '\n');
 
-  const client = new google.auth.OAuth2(clientId, clientSecret);
-  client.setCredentials({ refresh_token: refreshToken });
-  return client;
+  const auth = new google.auth.GoogleAuth({
+    credentials: {
+      client_email: clientEmail,
+      private_key: privateKey,
+    },
+    scopes: [
+      "https://www.googleapis.com/auth/webmasters.readonly",
+      "https://www.googleapis.com/auth/indexing",
+      "https://www.googleapis.com/auth/content"
+    ],
+  });
+
+  return auth;
 }
 
 export type QueryRow = {

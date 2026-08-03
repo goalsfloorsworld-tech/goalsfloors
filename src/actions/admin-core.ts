@@ -63,6 +63,10 @@ export async function updateRoleToTeam(targetUserId: string) {
       .eq("id", targetUserId);
 
     if (error) throw error;
+    
+    const { logAdminActivity } = await import("./logger");
+    await logAdminActivity("UPDATE_ROLE", { targetUserId, newRole: "team" });
+
     return { success: true };
   } catch (e: any) {
     return { success: false, error: e.message };
@@ -86,6 +90,10 @@ export async function updateRoleToAdmin(targetUserId: string) {
       .eq("id", targetUserId);
 
     if (error) throw error;
+
+    const { logAdminActivity } = await import("./logger");
+    await logAdminActivity("UPDATE_ROLE", { targetUserId, newRole: "admin" });
+
     return { success: true };
   } catch (e: any) {
     return { success: false, error: e.message };
@@ -109,6 +117,10 @@ export async function demoteToUser(targetUserId: string) {
       .eq("id", targetUserId);
 
     if (error) throw error;
+
+    const { logAdminActivity } = await import("./logger");
+    await logAdminActivity("UPDATE_ROLE", { targetUserId, newRole: "user" });
+
     return { success: true };
   } catch (e: any) {
     return { success: false, error: e.message };
@@ -125,7 +137,7 @@ export async function getAllTeamMembers() {
     const { data, error } = await supabase
       .from("profiles")
       .select("id, email, full_name, role, image_url, created_at")
-      .in("role", ["administrator", "admin", "team"])
+      .in("role", ["administrator", "admin", "team", "accountant"])
       .order("role", { ascending: true });
 
     if (error) throw error;

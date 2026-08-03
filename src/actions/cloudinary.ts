@@ -9,8 +9,15 @@ cloudinary.config({
   api_secret: process.env.ADMIN_CLOUDINARY_API_SECRET,
 });
 
+import { getCurrentUserProfile } from '@/actions/admin-core';
+
 export async function uploadImageToCloudinary(formData: FormData, folderName: string): Promise<{ success: boolean; secure_url?: string; error?: string }> {
   try {
+    const userRes = await getCurrentUserProfile();
+    if (!userRes.success || (userRes.profile?.role !== "admin" && userRes.profile?.role !== "administrator")) {
+      return { success: false, error: 'Unauthorized: Read-only access' };
+    }
+
     const file = formData.get('file') as File | null;
     if (!file) {
       return { success: false, error: 'No file provided' };
@@ -59,6 +66,12 @@ export async function uploadImageToCloudinary(formData: FormData, folderName: st
 }
 
 export async function deleteImageFromCloudinary(imageUrl: string): Promise<boolean> {
+  const userRes = await getCurrentUserProfile();
+  if (!userRes.success || (userRes.profile?.role !== "admin" && userRes.profile?.role !== "administrator")) {
+    console.error("Cloudinary Delete Error: Unauthorized");
+    return false;
+  }
+
   if (!imageUrl || !imageUrl.includes('res.cloudinary.com') || !imageUrl.includes('goalsfloors/uploads/')) {
     return true; // Not a managed cloudinary image or empty, nothing to delete
   }

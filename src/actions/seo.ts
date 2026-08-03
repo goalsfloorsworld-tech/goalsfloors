@@ -7,6 +7,8 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
+import { logAdminActivity } from "./logger";
+
 export async function submitUrlForIndexing(url: string) {
   try {
     await requestUrlIndexing(url);
@@ -17,6 +19,9 @@ export async function submitUrlForIndexing(url: string) {
       { onConflict: 'url' }
     );
     
+    // Log Activity
+    await logAdminActivity("INDEX_URLS", { url });
+
     return { success: true };
   } catch (error: any) {
     return { success: false, error: error.message || "Failed to submit URL for indexing" };
