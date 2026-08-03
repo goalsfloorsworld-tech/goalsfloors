@@ -20,14 +20,16 @@ export default clerkMiddleware(async (auth, request) => {
   const role = claims?.publicMetadata?.role || claims?.metadata?.role || claims?.role;
 
   const cookieDomain = process.env.NODE_ENV === 'production' ? '.goalsfloors.com' : undefined;
+  const authorizedRoles = ['accountant', 'admin', 'administrator', 'superadmin', 'team'];
 
-  if (role === 'accountant') {
-    response.cookies.set('gf_session_role', 'accountant', {
+  if (role && authorizedRoles.includes(role)) {
+    response.cookies.set('gf_session_role', role, {
       domain: cookieDomain,
       path: '/',
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax'
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24 * 7 // 7 days
     });
   } else {
     if (request.cookies.has('gf_session_role')) {

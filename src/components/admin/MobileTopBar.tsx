@@ -3,77 +3,77 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { 
-  Menu, X, LayoutDashboard, FileText, BarChart3, 
-  Globe, Rocket, ShoppingBag, Database, UserPlus, Loader2, PackagePlus, Image as ImageIcon, Store, Activity
+import {
+  Menu, X, LayoutDashboard, FileText, BarChart3,
+  Globe, Rocket, ShoppingBag, Database, UserPlus, Loader2, PackagePlus, Image as ImageIcon, Store, Activity, Shield
 } from 'lucide-react';
 import { getCurrentUserProfile } from '@/actions/admin-core';
 
 const NAV_ITEMS = [
-  { 
-    href: '/admin', 
-    label: 'Dashboard', 
-    icon: LayoutDashboard, 
+  {
+    href: '/admin',
+    label: 'Dashboard',
+    icon: LayoutDashboard,
     color: 'hover:bg-blue-50 dark:hover:bg-blue-900/20 text-slate-700 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-300',
     iconColor: 'text-blue-500'
   },
-  { 
-    href: '/admin/blogs', 
-    label: 'Blogs', 
-    icon: FileText, 
+  {
+    href: '/admin/blogs',
+    label: 'Blogs',
+    icon: FileText,
     color: 'hover:bg-amber-50 dark:hover:bg-amber-900/20 text-slate-700 dark:text-slate-300 hover:text-amber-700 dark:hover:text-amber-300',
     iconColor: 'text-amber-500'
   },
-  { 
-    href: '/admin/analytics', 
-    label: 'Analytics', 
-    icon: BarChart3, 
+  {
+    href: '/admin/analytics',
+    label: 'Analytics',
+    icon: BarChart3,
     color: 'hover:bg-indigo-50 dark:hover:bg-indigo-900/20 text-slate-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300',
     iconColor: 'text-indigo-500'
   },
-  { 
-    href: '/admin/dealers', 
-    label: 'Dealers', 
-    icon: Store, 
+  {
+    href: '/admin/dealers',
+    label: 'Dealers',
+    icon: Store,
     color: 'hover:bg-teal-50 dark:hover:bg-teal-900/20 text-slate-700 dark:text-slate-300 hover:text-teal-700 dark:hover:text-teal-300',
     iconColor: 'text-teal-500'
   },
-  { 
-    href: '/admin/gsc', 
-    label: 'SEO Command', 
-    icon: Rocket, 
+  {
+    href: '/admin/gsc',
+    label: 'SEO Command',
+    icon: Rocket,
     color: 'hover:bg-sky-50 dark:hover:bg-sky-900/20 text-slate-700 dark:text-slate-300 hover:text-sky-700 dark:hover:text-sky-300',
     iconColor: 'text-sky-500'
   },
-  { 
-    href: '/admin/gmc', 
-    label: 'Merchant Center', 
-    icon: ShoppingBag, 
+  {
+    href: '/admin/gmc',
+    label: 'Merchant Center',
+    icon: ShoppingBag,
     color: 'hover:bg-rose-50 dark:hover:bg-rose-900/20 text-slate-700 dark:text-slate-300 hover:text-rose-700 dark:hover:text-rose-300',
     iconColor: 'text-rose-500'
   },
 ];
 
 const ADMIN_TOOLS = [
-  { 
-    href: '/admin/activity', 
-    label: 'Activity Logs', 
-    icon: Activity, 
+  {
+    href: '/admin/activity',
+    label: 'Activity Logs',
+    icon: Activity,
     color: 'hover:bg-indigo-50 dark:hover:bg-indigo-900/20 text-slate-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300',
     iconColor: 'text-indigo-500',
     superAdminOnly: true
   },
-  { 
-    href: '/admin/database', 
-    label: 'Database', 
-    icon: Database, 
+  {
+    href: '/admin/database',
+    label: 'Database',
+    icon: Database,
     color: 'hover:bg-purple-50 dark:hover:bg-purple-900/20 text-slate-700 dark:text-slate-300 hover:text-purple-700 dark:hover:text-purple-300',
     iconColor: 'text-purple-500'
   },
-  { 
-    href: '/admin/team', 
-    label: 'Team', 
-    icon: UserPlus, 
+  {
+    href: '/admin/team',
+    label: 'Team',
+    icon: UserPlus,
     color: 'hover:bg-emerald-50 dark:hover:bg-emerald-900/20 text-slate-700 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-300',
     iconColor: 'text-emerald-500'
   },
@@ -104,6 +104,14 @@ const ADMIN_TOOLS = [
     icon: Database,
     color: 'hover:bg-cyan-50 dark:hover:bg-cyan-900/20 text-slate-700 dark:text-slate-300 hover:text-cyan-700 dark:hover:text-cyan-300',
     iconColor: 'text-cyan-500'
+  },
+  {
+    href: '/admin/security',
+    label: 'Security',
+    icon: Shield,
+    color: 'hover:bg-rose-50 dark:hover:bg-rose-900/20 text-slate-700 dark:text-slate-300 hover:text-rose-700 dark:hover:text-rose-300',
+    iconColor: 'text-rose-500',
+    superAdminOnly: true
   }
 ];
 
@@ -166,8 +174,8 @@ export default function MobileTopBar() {
     const isLoading = loadingPath === item.href;
 
     return (
-      <Link 
-        href={item.href} 
+      <Link
+        href={item.href}
         onClick={() => {
           if (pathname !== item.href) setLoadingPath(item.href);
           // Don't close immediately if we want to see the spinner
@@ -194,8 +202,8 @@ export default function MobileTopBar() {
         <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-emerald-500">
           Admin Panel
         </h2>
-        <button 
-          onClick={() => setIsOpen(!isOpen)} 
+        <button
+          onClick={() => setIsOpen(!isOpen)}
           className="p-2 bg-gray-100 dark:bg-slate-900 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-slate-600 dark:text-slate-400"
           aria-label="Toggle menu"
         >
@@ -206,7 +214,7 @@ export default function MobileTopBar() {
       {/* Drawer Overlay & Menu */}
       {isOpen && (
         <div className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm" onClick={() => setIsOpen(false)}>
-          <div 
+          <div
             className="fixed right-0 top-[73px] bottom-0 w-64 bg-white dark:bg-slate-950 border-l border-gray-200 dark:border-gray-800 p-4 shadow-2xl flex flex-col overflow-y-auto overscroll-contain"
             onClick={(e) => e.stopPropagation()}
           >
@@ -222,11 +230,11 @@ export default function MobileTopBar() {
               {NAV_ITEMS.map((item) => (
                 <MobileLink key={item.href} item={item} />
               ))}
-              
+
               <div className="pt-4 pb-2">
                 <p className="px-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Admin Tools</p>
               </div>
-              
+
               {ADMIN_TOOLS.map((item) => {
                 if (item.superAdminOnly && profile?.role !== 'administrator') return null;
                 return <MobileLink key={item.href} item={item} />;

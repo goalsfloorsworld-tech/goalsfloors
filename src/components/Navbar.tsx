@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ChevronDown, Menu, X, ArrowRight, Sun, Moon, Settings, LayoutDashboard } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowRight, Sun, Moon, Settings, LayoutDashboard, Calculator } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { SignInButton, UserButton, useUser } from '@clerk/nextjs';
 import { checkIsAdmin, getUserRole } from '@/actions/user';
@@ -20,6 +20,8 @@ export default function Navbar() {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const scrollYRef = useRef(0);
+  
+  const hasAccountantAccess = ['accountant', 'admin', 'administrator'].includes(user?.publicMetadata?.role as string);
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -278,6 +280,13 @@ export default function Navbar() {
                               label="Admin Panel"
                               labelIcon={<Settings className="w-4 h-4 ml-1" />}
                               href="/admin"
+                            />
+                          )}
+                          {hasAccountantAccess && (
+                            <UserButton.Action
+                              label="Accountant Panel"
+                              labelIcon={<Calculator className="w-4 h-4 ml-1" />}
+                              onClick={() => window.open('https://acc.goalsfloors.com', '_blank')}
                             />
                           )}
                           {/* 

@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from "react";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { 
-  LayoutDashboard, FileText, BarChart3, Globe, Rocket, 
-  ShoppingBag, Database, UserPlus, Loader2, PackagePlus, Image as ImageIcon, Store, Activity
+import {
+  LayoutDashboard, FileText, BarChart3, Globe, Rocket,
+  ShoppingBag, Database, UserPlus, Loader2, PackagePlus, Image as ImageIcon, Store, Activity, Shield
 } from 'lucide-react';
 import { getCurrentUserProfile } from '@/actions/admin-core';
 import RoleBadge from '@/components/shared/RoleBadge';
@@ -13,70 +13,70 @@ import RoleBadge from '@/components/shared/RoleBadge';
 import { trackAdminSession } from '@/actions/logger';
 
 const NAV_ITEMS = [
-  { 
-    href: '/admin', 
-    label: 'Dashboard', 
-    icon: LayoutDashboard, 
+  {
+    href: '/admin',
+    label: 'Dashboard',
+    icon: LayoutDashboard,
     color: 'hover:bg-blue-50 dark:hover:bg-blue-900/20 text-slate-700 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-300',
     iconColor: 'text-blue-500'
   },
-  { 
-    href: '/admin/blogs', 
-    label: 'Blogs', 
-    icon: FileText, 
+  {
+    href: '/admin/blogs',
+    label: 'Blogs',
+    icon: FileText,
     color: 'hover:bg-amber-50 dark:hover:bg-amber-900/20 text-slate-700 dark:text-slate-300 hover:text-amber-700 dark:hover:text-amber-300',
     iconColor: 'text-amber-500'
   },
-  { 
-    href: '/admin/analytics', 
-    label: 'Analytics', 
-    icon: BarChart3, 
+  {
+    href: '/admin/analytics',
+    label: 'Analytics',
+    icon: BarChart3,
     color: 'hover:bg-indigo-50 dark:hover:bg-indigo-900/20 text-slate-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300',
     iconColor: 'text-indigo-500'
   },
-  { 
-    href: '/admin/dealers', 
-    label: 'Dealers', 
-    icon: Store, 
+  {
+    href: '/admin/dealers',
+    label: 'Dealers',
+    icon: Store,
     color: 'hover:bg-teal-50 dark:hover:bg-teal-900/20 text-slate-700 dark:text-slate-300 hover:text-teal-700 dark:hover:text-teal-300',
     iconColor: 'text-teal-500'
   },
-  { 
-    href: '/admin/gsc', 
-    label: 'SEO Command', 
-    icon: Rocket, 
+  {
+    href: '/admin/gsc',
+    label: 'SEO Command',
+    icon: Rocket,
     color: 'hover:bg-sky-50 dark:hover:bg-sky-900/20 text-slate-700 dark:text-slate-300 hover:text-sky-700 dark:hover:text-sky-300',
     iconColor: 'text-sky-500'
   },
-  { 
-    href: '/admin/gmc', 
-    label: 'Merchant Center', 
-    icon: ShoppingBag, 
+  {
+    href: '/admin/gmc',
+    label: 'Merchant Center',
+    icon: ShoppingBag,
     color: 'hover:bg-rose-50 dark:hover:bg-rose-900/20 text-slate-700 dark:text-slate-300 hover:text-rose-700 dark:hover:text-rose-300',
     iconColor: 'text-rose-500'
   },
 ];
 
 const ADMIN_TOOLS = [
-  { 
-    href: '/admin/activity', 
-    label: 'Activity Logs', 
-    icon: Activity, 
+  {
+    href: '/admin/activity',
+    label: 'Activity Logs',
+    icon: Activity,
     color: 'hover:bg-indigo-50 dark:hover:bg-indigo-900/20 text-slate-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300',
     iconColor: 'text-indigo-500',
     superAdminOnly: true // Custom flag
   },
-  { 
-    href: '/admin/database', 
-    label: 'Database', 
-    icon: Database, 
+  {
+    href: '/admin/database',
+    label: 'Database',
+    icon: Database,
     color: 'hover:bg-purple-50 dark:hover:bg-purple-900/20 text-slate-700 dark:text-slate-300 hover:text-purple-700 dark:hover:text-purple-300',
     iconColor: 'text-purple-500'
   },
-  { 
-    href: '/admin/team', 
-    label: 'Team', 
-    icon: UserPlus, 
+  {
+    href: '/admin/team',
+    label: 'Team',
+    icon: UserPlus,
     color: 'hover:bg-emerald-50 dark:hover:bg-emerald-900/20 text-slate-700 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-300',
     iconColor: 'text-emerald-500'
   },
@@ -107,6 +107,14 @@ const ADMIN_TOOLS = [
     icon: Database,
     color: 'hover:bg-cyan-50 dark:hover:bg-cyan-900/20 text-slate-700 dark:text-slate-300 hover:text-cyan-700 dark:hover:text-cyan-300',
     iconColor: 'text-cyan-500'
+  },
+  {
+    href: '/admin/security',
+    label: 'Security',
+    icon: Shield,
+    color: 'hover:bg-rose-50 dark:hover:bg-rose-900/20 text-slate-700 dark:text-slate-300 hover:text-rose-700 dark:hover:text-rose-300',
+    iconColor: 'text-rose-500',
+    superAdminOnly: true
   }
 ];
 
@@ -119,12 +127,12 @@ export default function AdminSidebar() {
     async function loadProfile() {
       const res = await getCurrentUserProfile();
       if (res.success) setProfile(res.profile);
-      
+
       // Ping session to track online status and clear old logs silently
       trackAdminSession();
     }
     loadProfile();
-    
+
     // Auto-ping every 10 minutes while on an admin page
     const interval = setInterval(() => {
       trackAdminSession();
@@ -146,8 +154,8 @@ export default function AdminSidebar() {
     const isLoading = loadingPath === item.href;
 
     return (
-      <Link 
-        href={item.href} 
+      <Link
+        href={item.href}
         onClick={() => {
           if (pathname !== item.href) setLoadingPath(item.href);
         }}
@@ -172,7 +180,7 @@ export default function AdminSidebar() {
           Admin Panel
         </h2>
       </div>
-      
+
       {/* View Site Link */}
       <div className="px-4 pt-4">
         <Link href="/" target="_blank" className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-slate-900 dark:hover:bg-slate-800 transition-colors text-slate-700 dark:text-slate-300 font-medium text-sm border border-gray-200 dark:border-gray-700 shadow-sm">
@@ -190,7 +198,7 @@ export default function AdminSidebar() {
         <div className="pt-4 pb-2">
           <p className="px-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Admin Tools</p>
         </div>
-        
+
         {ADMIN_TOOLS.map((item) => {
           if (item.superAdminOnly && role !== 'administrator') return null;
           return <SidebarLink key={item.href} item={item} />;
