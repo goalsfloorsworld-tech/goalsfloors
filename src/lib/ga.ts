@@ -49,20 +49,58 @@ function toNumber(value: string | number | null | undefined): number {
 
 export function getGoogleAuth() {
   const clientEmail = requireEnv("GOOGLE_CLIENT_EMAIL");
-  const privateKey = requireEnv("GOOGLE_PRIVATE_KEY").replace(/\\n/g, '\n');
+  let rawKey = requireEnv("GOOGLE_PRIVATE_KEY").trim();
 
-  const auth = new google.auth.GoogleAuth({
-    credentials: {
-      client_email: clientEmail,
-      private_key: privateKey,
-    },
-    scopes: [
-      "https://www.googleapis.com/auth/analytics.readonly",
-      "https://www.googleapis.com/auth/webmasters.readonly"
-    ],
-  });
+  // Strip wrapping quotes if present
+  if ((rawKey.startsWith('"') && rawKey.endsWith('"')) || (rawKey.startsWith("'") && rawKey.endsWith("'"))) {
+    rawKey = rawKey.slice(1, -1).trim();
+  }
 
-  return auth;
+  // Convert literal \n or \\n strings into real newlines
+  let privateKey = rawKey.replace(/\\n/g, '\n');
+
+  // Check PEM header/footer
+  const hasBegin = privateKey.includes('-----BEGIN PRIVATE KEY-----');
+  const hasEnd = privateKey.includes('-----END PRIVATE KEY-----');
+
+  if (!hasBegin || !hasEnd) {
+    throw new Error(
+      'GOOGLE_PRIVATE_KEY format is invalid in .env.local. Make sure it includes "-----BEGIN PRIVATE KEY-----" and "-----END PRIVATE KEY-----", and is wrapped in double quotes in .env.local.'
+    );
+  }
+
+  const body = privateKey
+    .replace('-----BEGIN PRIVATE KEY-----', '')
+    .replace('-----END PRIVATE KEY-----', '')
+    .trim();
+
+  if (!body) {
+    throw new Error(
+      'GOOGLE_PRIVATE_KEY is missing the private key payload between BEGIN and END markers. Please check .env.local.'
+    );
+  }
+
+  try {
+    const auth = new google.auth.GoogleAuth({
+      credentials: {
+        client_email: clientEmail,
+        private_key: privateKey,
+      },
+      scopes: [
+        "https://www.googleapis.com/auth/analytics.readonly",
+        "https://www.googleapis.com/auth/webmasters.readonly"
+      ],
+    });
+
+    return auth;
+  } catch (err: any) {
+    if (err.message && err.message.includes('DECODER routines')) {
+      throw new Error(
+        'Invalid GOOGLE_PRIVATE_KEY in .env.local. OpenSSL could not decode the private key string. Please verify you copied the exact private_key from your Google Service Account JSON file.'
+      );
+    }
+    throw err;
+  }
 }
 
 export async function getCoreMetrics(startDate: string, endDate: string): Promise<CoreMetrics> {

@@ -827,5 +827,17 @@
       "image": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1775466342/screenshot-2024-10-27-180236-1-AQEyyylJkGUBqyED.webp"
     }
   ],
-  "architectHeading": "Why Gurgaon Architects Choose Our Wall Panels"
+  "architectHeading": "Why Gurgaon Architects Choose Our Wall Panels",
+
+  "heroImages": [
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1776832072/Goals_Floors_Wall_Panels.png",
+      "alt": "goalsfloors welcome panel"
+    },
+    {
+      "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/v1776832086/Twelve_Inch_Pvc_Panel.jpg",
+      "alt": "PVC panel 12inch installed images"
+    }
+  ]
+  
 }

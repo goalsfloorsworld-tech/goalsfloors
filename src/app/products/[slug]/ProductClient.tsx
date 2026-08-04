@@ -92,6 +92,7 @@ export interface Product {
   maintenance: string;
   faqs: FAQ[];
   images: { url: string; alt: string }[];
+  heroImages?: { url: string; alt: string }[];
   installedImages?: {
     url: string;
     alt: string;
@@ -568,6 +569,122 @@ const VariantCard = memo(({
 
 VariantCard.displayName = "VariantCard";
 
+const optimizeCloudinaryUrl = (url: string) => {
+  if (!url.includes('cloudinary.com/')) return url;
+  if (url.includes('q_auto') || url.includes('f_auto')) return url;
+  return url.replace('/upload/', '/upload/q_auto,f_auto/');
+};
+
+const HeroCarousel = memo(({ images }: { images: { url: string; alt: string }[] }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const scrollLeft = e.currentTarget.scrollLeft;
+    const width = e.currentTarget.clientWidth;
+    const newIndex = Math.round(scrollLeft / width);
+    if (newIndex !== activeIndex) {
+      setActiveIndex(newIndex);
+    }
+  };
+
+  useEffect(() => {
+    if (images.length <= 1 || isPaused) return;
+    const interval = setInterval(() => {
+      if (scrollRef.current) {
+        const nextIndex = (activeIndex + 1) % images.length;
+        const width = scrollRef.current.clientWidth;
+        scrollRef.current.scrollTo({
+          left: nextIndex * width,
+          behavior: "smooth"
+        });
+      }
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [activeIndex, images.length, isPaused]);
+
+  if (!images || images.length === 0) return null;
+
+  return (
+    <div 
+      className="relative w-full h-full group/hero"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <div 
+        ref={scrollRef}
+        onScroll={handleScroll}
+        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full h-full"
+      >
+        {images.map((img, i) => (
+          <div key={i} className="min-w-full h-full snap-center relative">
+            <Image
+              src={optimizeCloudinaryUrl(img.url)}
+              alt={img.alt || `Hero image ${i + 1}`}
+              fill
+              unoptimized
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover relative z-10 transition-transform duration-700 hover:scale-105"
+              priority={i === 0}
+            />
+          </div>
+        ))}
+      </div>
+      
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              if (scrollRef.current) {
+                const newIndex = activeIndex === 0 ? images.length - 1 : activeIndex - 1;
+                scrollRef.current.scrollTo({ left: newIndex * scrollRef.current.clientWidth, behavior: "smooth" });
+              }
+            }}
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-20 p-2 bg-black/40 hover:bg-black/70 backdrop-blur-md rounded-full text-white opacity-0 group-hover/hero:opacity-100 transition-opacity"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              if (scrollRef.current) {
+                const newIndex = activeIndex === images.length - 1 ? 0 : activeIndex + 1;
+                scrollRef.current.scrollTo({ left: newIndex * scrollRef.current.clientWidth, behavior: "smooth" });
+              }
+            }}
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-20 p-2 bg-black/40 hover:bg-black/70 backdrop-blur-md rounded-full text-white opacity-0 group-hover/hero:opacity-100 transition-opacity"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+          
+          <div className="absolute bottom-3 inset-x-0 flex justify-center gap-2 z-20">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                aria-label={`Go to slide ${i + 1}`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (scrollRef.current) {
+                    scrollRef.current.scrollTo({ left: i * scrollRef.current.clientWidth, behavior: "smooth" });
+                    setActiveIndex(i);
+                  }
+                }}
+                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                  i === activeIndex ? "bg-amber-600 w-6" : "bg-white/60 w-2 hover:bg-white/90"
+                }`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+});
+
+HeroCarousel.displayName = "HeroCarousel";
+
 export default function ProductClient({ product }: { product: Product }) {
   const [selectedVariant, setSelectedVariant] = useState<Variant | null>(null);
   const [activeDrawerImageIndex, setActiveDrawerImageIndex] = useState(0);
@@ -768,17 +885,8 @@ export default function ProductClient({ product }: { product: Product }) {
               </h1>
 
               {/* Mobile Image: Shown only on mobile between heading and description */}
-              <div className="lg:hidden relative aspect-[4/3] w-full mb-6 rounded-sm overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm bg-gray-50 dark:bg-slate-900 group/hero">
-                {/* 2-Layer Technique: Layer 2 (Main Image) */}
-                <Image
-                  src={product.images[0].url}
-                  alt={product.images[0].alt}
-                  fill
-                  unoptimized
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover relative z-10 transition-transform duration-700 hover:scale-105"
-                  priority
-                />
+              <div className="lg:hidden relative aspect-[4/3] w-full mb-6 rounded-sm overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm bg-gray-50 dark:bg-slate-900">
+                <HeroCarousel images={product.heroImages && product.heroImages.length > 0 ? product.heroImages : product.images} />
               </div>
 
               <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
@@ -793,17 +901,8 @@ export default function ProductClient({ product }: { product: Product }) {
             </div>
 
             <div className="w-full lg:w-1/2 hidden lg:block">
-              <div className="relative aspect-[4/3] w-full max-w-[600px] mx-auto bg-gray-50 dark:bg-slate-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm group/hero">
-                {/* 2-Layer Technique: Layer 2 (Main Image) */}
-                <Image
-                  src={product.images[0].url}
-                  alt={product.images[0].alt}
-                  fill
-                  unoptimized
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover relative z-10 transition-transform duration-700 hover:scale-105"
-                  priority
-                />
+              <div className="relative aspect-[4/3] w-full max-w-[600px] mx-auto bg-gray-50 dark:bg-slate-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 shadow-sm">
+                <HeroCarousel images={product.heroImages && product.heroImages.length > 0 ? product.heroImages : product.images} />
               </div>
             </div>
           </div>
