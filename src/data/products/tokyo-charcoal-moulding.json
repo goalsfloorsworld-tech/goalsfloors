@@ -134,9 +134,9 @@
   "variants": [
     {
       "name": "T-M 22mm",
-      "price": "₹90",
-      "mrp": "₹140",
-      "discount": "35% off",
+      "price": "₹119",
+      "mrp": "₹189",
+      "discount": "37% off",
       "unit": "per pc",
       "gmc_title": "T-M 22mm Premium Decorative Charcoal Moulding",
       "gmc_description": "Enhance your wall finishes with the T-M 22mm decorative moulding. Featuring a 2440mm length, 22mm width, and 12mm thickness, this lightweight, waterproof trim delivers clean architectural transitions and refined detailing for premium residential spaces in Gurgaon.",
@@ -153,7 +153,7 @@
           "name": "T-M 22mm"
         }
       ],
-      "priceValue": 90,
+      "priceValue": 119,
       "currency": "INR",
       "availability": "in_stock",
       "condition": "new",
@@ -161,8 +161,8 @@
     },
     {
       "name": "T-M 30mm",
-      "price": "₹160",
-      "mrp": "₹245",
+      "price": "₹209",
+      "mrp": "₹319",
       "discount": "34% off",
       "unit": "per pc",
       "gmc_title": "T-M 30mm Premium Wall Trim Moulding for Interiors",
@@ -180,7 +180,7 @@
           "name": "T-M 30mm"
         }
       ],
-      "priceValue": 160,
+      "priceValue": 209,
       "currency": "INR",
       "availability": "in_stock",
       "condition": "new",
@@ -188,9 +188,9 @@
     },
     {
       "name": "T-M 38mm",
-      "price": "₹260",
-      "mrp": "₹399",
-      "discount": "34% off",
+      "price": "₹339",
+      "mrp": "₹519",
+      "discount": "35% off",
       "unit": "per pc",
       "gmc_title": "T-M 38mm Luxury Decorative Moulding for Wall Panels",
       "gmc_description": "Create bold interior accents with the T-M 38mm moulding. Crafted with a 2440mm length, 38mm profile, and 20mm thickness, this durable, ready-to-paint trim adds architectural depth and a premium finish to feature walls and luxury living rooms.",
@@ -207,7 +207,7 @@
           "name": "T-M 38mm"
         }
       ],
-      "priceValue": 260,
+      "priceValue": 339,
       "currency": "INR",
       "availability": "in_stock",
       "condition": "new",
@@ -215,9 +215,9 @@
     },
     {
       "name": "T-M 45mm",
-      "price": "₹360",
-      "mrp": "₹550",
-      "discount": "34% off",
+      "price": "₹469",
+      "mrp": "₹719",
+      "discount": "35% off",
       "unit": "per pc",
       "gmc_title": "T-M 45mm Premium Architectural Wall Moulding Trim",
       "gmc_description": "The T-M 45mm decorative moulding elevates interior aesthetics with its substantial 45mm width and 23mm thickness (2440mm length). It delivers a luxurious, paintable architectural appearance for premium commercial interiors and hotel corridors.",
@@ -234,7 +234,7 @@
           "name": "T-M 45mm"
         }
       ],
-      "priceValue": 360,
+      "priceValue": 469,
       "currency": "INR",
       "availability": "in_stock",
       "condition": "new",
@@ -242,9 +242,9 @@
     },
     {
       "name": "Taj 22mm",
-      "price": "₹90",
-      "mrp": "₹140",
-      "discount": "35% off",
+      "price": "₹119",
+      "mrp": "₹189",
+      "discount": "37% off",
       "unit": "per pc",
       "gmc_title": "Taj 22mm Premium Decorative Trim for Interior Styling",
       "gmc_description": "Add elegant finishing touches with the Taj 22mm decorative trim. With a 2440mm length, 22mm width, and 12mm thickness, it provides a clean, sophisticated look while enhancing wall designs with long-lasting, termite-proof durability.",
@@ -261,7 +261,7 @@
           "name": "Taj 22mm"
         }
       ],
-      "priceValue": 90,
+      "priceValue": 119,
       "currency": "INR",
       "availability": "in_stock",
       "condition": "new",
@@ -269,8 +269,8 @@
     },
     {
       "name": "Taj 30mm",
-      "price": "₹160",
-      "mrp": "₹245",
+      "price": "₹209",
+      "mrp": "₹319",
       "discount": "34% off",
       "unit": "per pc",
       "gmc_title": "Taj 30mm Luxury Interior Moulding for Wall Decor",
@@ -288,7 +288,7 @@
           "name": "Taj 30mm"
         }
       ],
-      "priceValue": 160,
+      "priceValue": 209,
       "currency": "INR",
       "availability": "in_stock",
       "condition": "new",
@@ -296,8 +296,8 @@
     },
     {
       "name": "T-M 65mm",
-      "price": "₹479",
-      "mrp": "₹725",
+      "price": "₹629",
+      "mrp": "₹949",
       "discount": "34% off",
       "unit": "per pc",
       "gmc_title": "T-M 65mm Premium Wide Moulding for Luxury Interiors",
@@ -315,7 +315,7 @@
           "name": "T-M 65mm"
         }
       ],
-      "priceValue": 479,
+      "priceValue": 629,
       "currency": "INR",
       "availability": "in_stock",
       "condition": "new",
@@ -323,8 +323,8 @@
     },
     {
       "name": "Skirting 150mm",
-      "price": "₹999",
-      "mrp": "₹1515",
+      "price": "₹1299",
+      "mrp": "₹1969",
       "discount": "34% off",
       "unit": "per pc",
       "gmc_title": "Skirting 150mm Premium Wall Skirting for Interior Decor",
@@ -342,7 +342,7 @@
           "name": "Skirting 150mm"
         }
       ],
-      "priceValue": 999,
+      "priceValue": 1299,
       "currency": "INR",
       "availability": "in_stock",
       "condition": "new",
