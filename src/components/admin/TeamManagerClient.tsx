@@ -12,7 +12,6 @@ import {
   getAllTeamMembers, 
   updateRoleToAdmin 
 } from "@/actions/admin-core";
-import { assignAccountantRole } from "@/actions/team";
 import toast from "react-hot-toast";
 import RoleBadge from "@/components/shared/RoleBadge";
 import { adminCache } from "@/lib/admin-cache";
@@ -42,11 +41,6 @@ export default function TeamManagerClient({ currentUserRole }: Props) {
   const [isTeamModalOpen, setIsTeamModalOpen] = useState(false);
   const [teamMembers, setTeamMembers] = useState<FoundUser[]>([]);
   const [isLoadingTeam, setIsLoadingTeam] = useState(false);
-  
-  // Accountant Modal state
-  const [isAccountantModalOpen, setIsAccountantModalOpen] = useState(false);
-  const [accountantPin, setAccountantPin] = useState("");
-  const [isAssigningAccountant, setIsAssigningAccountant] = useState(false);
 
   const handleSearch = () => {
     if (!email.trim()) { toast.error("Enter an email to search"); return; }
@@ -134,47 +128,6 @@ export default function TeamManagerClient({ currentUserRole }: Props) {
     }
   };
 
-  const handleAssignAccountant = async () => {
-    if (!selectedUser) return;
-    if (!accountantPin.trim() || accountantPin.length < 4) {
-      toast.error("Please enter a valid PIN (min 4 characters).");
-      return;
-    }
-
-    setIsAssigningAccountant(true);
-    try {
-      const res = await assignAccountantRole(selectedUser.id, selectedUser.email, accountantPin.trim());
-      if (res.success) {
-        toast.success("Accountant role assigned successfully! 🎉");
-        setIsAccountantModalOpen(false);
-        setAccountantPin("");
-        
-        if (isTeamModalOpen) {
-          const tRes = await getAllTeamMembers();
-          if (tRes.success) {
-            setTeamMembers(tRes.users as FoundUser[]);
-            adminCache.teamMembers = tRes.users as FoundUser[];
-          }
-        } else {
-          adminCache.teamMembers = null;
-        }
-        adminCache.activityTeam = null;
-        adminCache.activityLogs = null;
-        
-        if (hasSearched) {
-          const sRes = await searchUserByEmail(email.trim());
-          if (sRes.success) setResults(sRes.users as FoundUser[]);
-        }
-        setSelectedUser({ ...selectedUser, role: "accountant" });
-      } else {
-        toast.error(res.error || "Failed to assign accountant.");
-      }
-    } catch (e: any) {
-      toast.error(e.message || "An error occurred.");
-    } finally {
-      setIsAssigningAccountant(false);
-    }
-  };
 
   const UserAvatar = ({ user, size = "w-10 h-10" }: { user: FoundUser, size?: string }) => (
     <div className={`relative flex-shrink-0 ${size}`}>
@@ -353,23 +306,6 @@ export default function TeamManagerClient({ currentUserRole }: Props) {
                       Add to Team
                     </button>
                   )}
-                  {selectedUser.role !== "accountant" ? (
-                    <button
-                      onClick={() => setIsAccountantModalOpen(true)}
-                      disabled={updatingId === selectedUser.id}
-                      className="flex-1 px-4 py-3 bg-amber-600 hover:bg-amber-700 text-white rounded-xl font-black text-xs uppercase tracking-widest transition-all shadow-lg shadow-amber-600/25 flex items-center justify-center gap-2"
-                    >
-                      <Shield size={14} /> Make Accountant
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => setIsAccountantModalOpen(true)}
-                      disabled={updatingId === selectedUser.id}
-                      className="flex-1 px-4 py-3 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-amber-600 dark:text-amber-500 rounded-xl font-black text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2"
-                    >
-                      <Key size={14} /> Change PIN
-                    </button>
-                  )}
                   {selectedUser.role !== "user" && (
                     <button
                       onClick={() => handleRoleUpdate(selectedUser.id, "user")}
@@ -393,54 +329,7 @@ export default function TeamManagerClient({ currentUserRole }: Props) {
             </div>
           </div>
           
-          {/* ─── Accountant PIN Modal ─── */}
-          {isAccountantModalOpen && (
-            <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-md animate-in fade-in duration-200">
-              <div className="bg-slate-950 w-full max-w-sm rounded-3xl shadow-2xl border border-slate-800 overflow-hidden scale-in duration-300">
-                <div className="p-6">
-                  <div className="flex justify-between items-start mb-6">
-                    <div>
-                      <h3 className="text-lg font-black text-white flex items-center gap-2">
-                        <Shield className="text-amber-500" size={20} /> Accountant Access
-                      </h3>
-                      <p className="text-xs text-slate-400 mt-1">Set Portal Access Password for Accountant</p>
-                    </div>
-                    <button onClick={() => setIsAccountantModalOpen(false)} className="p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-full transition-colors">
-                      <X size={18} />
-                    </button>
-                  </div>
-                  <div className="space-y-4">
-                    <p className="text-sm text-slate-300 font-medium">User: <span className="text-white font-bold">{selectedUser.email}</span></p>
-                    <div>
-                      <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2 block">Set PIN / Password</label>
-                      <input 
-                        type="password"
-                        value={accountantPin}
-                        onChange={(e) => setAccountantPin(e.target.value)}
-                        placeholder="e.g. GF-FIN#2026"
-                        className="w-full px-4 py-3 bg-slate-900 border border-slate-800 text-white rounded-xl focus:ring-2 focus:ring-amber-500 outline-none transition-all placeholder:text-slate-600"
-                      />
-                    </div>
-                  </div>
-                  <div className="mt-8 flex gap-3">
-                    <button 
-                      onClick={() => setIsAccountantModalOpen(false)}
-                      className="flex-1 px-4 py-3 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-bold text-xs uppercase transition-colors"
-                    >
-                      Cancel
-                    </button>
-                    <button 
-                      onClick={handleAssignAccountant}
-                      disabled={isAssigningAccountant}
-                      className="flex-[2] px-4 py-3 bg-amber-600 hover:bg-amber-700 text-white rounded-xl font-bold text-xs uppercase shadow-lg shadow-amber-600/20 transition-all flex items-center justify-center gap-2"
-                    >
-                      {isAssigningAccountant ? <Loader2 size={16} className="animate-spin" /> : "Confirm & Make Accountant"}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+
         </div>
       )}
 
@@ -502,23 +391,6 @@ export default function TeamManagerClient({ currentUserRole }: Props) {
                                 title="Demote to Team"
                               >
                                 {updatingId === user.id ? <Loader2 size={16} className="animate-spin" /> : <Users size={16} />}
-                              </button>
-                            )}
-                            {user.role !== "accountant" ? (
-                              <button
-                                onClick={() => { setSelectedUser(user); setIsAccountantModalOpen(true); }}
-                                className="p-2 bg-amber-50 hover:bg-amber-100 text-amber-600 rounded-xl transition-colors"
-                                title="Promote to Accountant"
-                              >
-                                <Shield size={16} />
-                              </button>
-                            ) : (
-                              <button
-                                onClick={() => { setSelectedUser(user); setIsAccountantModalOpen(true); }}
-                                className="p-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-amber-600 dark:text-amber-500 rounded-xl transition-colors"
-                                title="Change PIN"
-                              >
-                                <Key size={16} />
                               </button>
                             )}
                             <button

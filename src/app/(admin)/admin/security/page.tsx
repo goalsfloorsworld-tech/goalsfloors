@@ -1,6 +1,6 @@
 import { auth } from "@clerk/nextjs/server";
 import { ShieldAlert } from "lucide-react";
-import SecurityClient from "@/components/admin/SecurityClient";
+import ERPUserProvisioning from "@/components/admin/ERPUserProvisioning";
 import { getCurrentUserProfile } from "@/actions/admin-core";
 
 export const metadata = {
@@ -33,7 +33,7 @@ export default async function AdminSecurityPage() {
   }
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out pb-20 max-w-2xl mx-auto mt-8">
+    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out pb-20 max-w-6xl mx-auto mt-8">
       <div className="text-center flex flex-col items-center">
         <h2 className="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-3 tracking-tight">
           <div className="p-2 bg-emerald-500 rounded-xl shadow-lg shadow-emerald-500/25">
@@ -43,8 +43,9 @@ export default async function AdminSecurityPage() {
         </h2>
         <p className="text-slate-500 mt-1 text-sm">Manage Master PINs, keys, and advanced security configurations.</p>
       </div>
-
-      <SecurityClient adminEmail={adminEmail} />
+      
+      {/* Centralized ERP Provisioning */}
+      <ERPUserProvisioning />
     </div>
   );
 }

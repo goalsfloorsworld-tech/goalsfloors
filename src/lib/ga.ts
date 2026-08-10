@@ -56,29 +56,26 @@ export function getGoogleAuth() {
     rawKey = rawKey.slice(1, -1).trim();
   }
 
-  // Convert literal \n or \\n strings into real newlines
-  let privateKey = rawKey.replace(/\\n/g, '\n');
-
-  // Check PEM header/footer
-  const hasBegin = privateKey.includes('-----BEGIN PRIVATE KEY-----');
-  const hasEnd = privateKey.includes('-----END PRIVATE KEY-----');
-
-  if (!hasBegin || !hasEnd) {
-    throw new Error(
-      'GOOGLE_PRIVATE_KEY format is invalid in .env.local. Make sure it includes "-----BEGIN PRIVATE KEY-----" and "-----END PRIVATE KEY-----", and is wrapped in double quotes in .env.local.'
-    );
-  }
-
-  const body = privateKey
-    .replace('-----BEGIN PRIVATE KEY-----', '')
-    .replace('-----END PRIVATE KEY-----', '')
-    .trim();
+  // Extract the raw base64 payload by removing the header, footer, and any whitespace/newlines
+  let body = rawKey
+    .replace(/-----BEGIN PRIVATE KEY-----/g, '')
+    .replace(/-----END PRIVATE KEY-----/g, '')
+    .replace(/\\n/g, '') // Remove literal \n strings
+    .replace(/\s+/g, ''); // Remove all actual whitespace, tabs, and newlines
 
   if (!body) {
     throw new Error(
       'GOOGLE_PRIVATE_KEY is missing the private key payload between BEGIN and END markers. Please check .env.local.'
     );
   }
+
+  // Reconstruct a perfect PEM format with 64-character lines
+  const pemLines = body.match(/.{1,64}/g) || [];
+  const privateKey = [
+    '-----BEGIN PRIVATE KEY-----',
+    ...pemLines,
+    '-----END PRIVATE KEY-----',
+  ].join('\n');
 
   try {
     const auth = new google.auth.GoogleAuth({
