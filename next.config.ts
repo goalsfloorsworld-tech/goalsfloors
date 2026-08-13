@@ -7,11 +7,7 @@ const nextConfig: NextConfig = {
       bodySizeLimit: '25mb',
     },
   },
-  serverExternalPackages: [
-    'googleapis',
-    '@googleapis/analyticsdata',
-    'google-auth-library',
-  ],
+  // Removed serverExternalPackages to fix Hostinger 500 errors with Turbopack hashed module names
   output: 'standalone',
   images: {
     remotePatterns: [
