@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard, FileText, BarChart3, Globe, Rocket,
-  ShoppingBag, Database, UserPlus, Loader2, PackagePlus, Image as ImageIcon, Store, Activity, Shield
+  ShoppingBag, Database, UserPlus, Loader2, PackagePlus, Image as ImageIcon, Store, Activity, Shield, Server
 } from 'lucide-react';
 import { getCurrentUserProfile } from '@/actions/admin-core';
 import RoleBadge from '@/components/shared/RoleBadge';
@@ -114,6 +114,14 @@ const ADMIN_TOOLS = [
     icon: Shield,
     color: 'hover:bg-rose-50 dark:hover:bg-rose-900/20 text-slate-700 dark:text-slate-300 hover:text-rose-700 dark:hover:text-rose-300',
     iconColor: 'text-rose-500',
+    superAdminOnly: true
+  },
+  {
+    href: '/admin/mcp-server',
+    label: 'MCP Server',
+    icon: Server,
+    color: 'hover:bg-blue-50 dark:hover:bg-blue-900/20 text-slate-700 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-300',
+    iconColor: 'text-blue-500',
     superAdminOnly: true
   }
 ];
