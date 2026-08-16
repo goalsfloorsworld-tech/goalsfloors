@@ -24,6 +24,7 @@ export default async function GscDashboardPage() {
     allUrls: [] as string[] 
   };
   let sitemapHealth: any[] = [];
+  let errorMsg: string | null = null;
 
   try {
     const [top, striking, img, sitemap, health] = await Promise.all([
@@ -38,9 +39,9 @@ export default async function GscDashboardPage() {
     imageQueries = img;
     sitemapData = sitemap;
     sitemapHealth = health;
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error fetching GSC data:", error);
-    // Silent fail for UI gracefully handled inside client component (empty arrays)
+    errorMsg = error?.message || "Failed to authenticate or fetch Google Search Console data.";
   }
 
   return (
@@ -53,6 +54,13 @@ export default async function GscDashboardPage() {
           Monitor your search performance and push URLs directly to Google Index.
         </p>
       </div>
+
+      {errorMsg && (
+        <div className="p-4 rounded-xl bg-rose-50 dark:bg-rose-500/10 border border-rose-200 dark:border-rose-500/20 text-rose-700 dark:text-rose-400 text-sm mb-4">
+          <p className="font-bold mb-1">Google Search Console Connection Error:</p>
+          <p className="font-mono text-xs">{errorMsg}</p>
+        </div>
+      )}
 
       <GscDashboardClient 
         topQueries={topQueries} 

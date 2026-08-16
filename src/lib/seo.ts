@@ -9,21 +9,56 @@ const requireEnv = (name: string) => {
 
 export function getSeoAuth() {
   const clientEmail = requireEnv("GOOGLE_CLIENT_EMAIL");
-  const privateKey = requireEnv("GOOGLE_PRIVATE_KEY").replace(/\\n/g, '\n');
+  let rawKey = requireEnv("GOOGLE_PRIVATE_KEY").trim();
 
-  const auth = new google.auth.GoogleAuth({
-    credentials: {
-      client_email: clientEmail,
-      private_key: privateKey,
-    },
-    scopes: [
-      "https://www.googleapis.com/auth/webmasters.readonly",
-      "https://www.googleapis.com/auth/indexing",
-      "https://www.googleapis.com/auth/content"
-    ],
-  });
+  // Strip wrapping quotes if present (common issue in Hostinger/cPanel env vars)
+  if ((rawKey.startsWith('"') && rawKey.endsWith('"')) || (rawKey.startsWith("'") && rawKey.endsWith("'"))) {
+    rawKey = rawKey.slice(1, -1).trim();
+  }
 
-  return auth;
+  // Extract the raw base64 payload by removing header, footer, literal \n, and whitespace
+  let body = rawKey
+    .replace(/-----BEGIN PRIVATE KEY-----/g, '')
+    .replace(/-----END PRIVATE KEY-----/g, '')
+    .replace(/\\n/g, '') // Remove literal \n strings
+    .replace(/\s+/g, ''); // Remove all actual whitespace, tabs, and newlines
+
+  if (!body) {
+    throw new Error(
+      'GOOGLE_PRIVATE_KEY is missing the private key payload between BEGIN and END markers. Please check environment variables.'
+    );
+  }
+
+  // Reconstruct a perfect PEM format with 64-character lines
+  const pemLines = body.match(/.{1,64}/g) || [];
+  const privateKey = [
+    '-----BEGIN PRIVATE KEY-----',
+    ...pemLines,
+    '-----END PRIVATE KEY-----',
+  ].join('\n');
+
+  try {
+    const auth = new google.auth.GoogleAuth({
+      credentials: {
+        client_email: clientEmail,
+        private_key: privateKey,
+      },
+      scopes: [
+        "https://www.googleapis.com/auth/webmasters.readonly",
+        "https://www.googleapis.com/auth/indexing",
+        "https://www.googleapis.com/auth/content"
+      ],
+    });
+
+    return auth;
+  } catch (err: any) {
+    if (err.message && err.message.includes('DECODER routines')) {
+      throw new Error(
+        'Invalid GOOGLE_PRIVATE_KEY format. OpenSSL could not decode the private key string. Please verify you copied the exact private_key from your Google Service Account JSON file.'
+      );
+    }
+    throw err;
+  }
 }
 
 export type QueryRow = {
