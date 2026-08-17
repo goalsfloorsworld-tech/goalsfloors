@@ -48,24 +48,60 @@ function toNumber(value: string | number | null | undefined): number {
 }
 
 export function getGoogleAuth() {
+  // Option 1: Base64 Encoded Service Account JSON (Recommended for Hostinger/Vercel)
+  const b64Creds = process.env.GOOGLE_SERVICE_ACCOUNT_BASE64;
+  if (b64Creds) {
+    try {
+      const decoded = Buffer.from(b64Creds.trim(), 'base64').toString('utf8');
+      const credentials = JSON.parse(decoded);
+      return new google.auth.GoogleAuth({
+        credentials,
+        scopes: [
+          "https://www.googleapis.com/auth/analytics.readonly",
+          "https://www.googleapis.com/auth/webmasters.readonly"
+        ],
+      });
+    } catch (e: any) {
+      console.error('[GA Auth] Failed to parse GOOGLE_SERVICE_ACCOUNT_BASE64:', e.message);
+    }
+  }
+
+  // Option 2: Standard GOOGLE_CLIENT_EMAIL and GOOGLE_PRIVATE_KEY
   const clientEmail = requireEnv("GOOGLE_CLIENT_EMAIL");
   let rawKey = requireEnv("GOOGLE_PRIVATE_KEY").trim();
+
+  // If rawKey is entire JSON file or base64 JSON
+  if (rawKey.startsWith('{') && rawKey.endsWith('}')) {
+    try {
+      const credentials = JSON.parse(rawKey);
+      return new google.auth.GoogleAuth({
+        credentials,
+        scopes: [
+          "https://www.googleapis.com/auth/analytics.readonly",
+          "https://www.googleapis.com/auth/webmasters.readonly"
+        ],
+      });
+    } catch {}
+  }
 
   // Strip wrapping quotes if present
   if ((rawKey.startsWith('"') && rawKey.endsWith('"')) || (rawKey.startsWith("'") && rawKey.endsWith("'"))) {
     rawKey = rawKey.slice(1, -1).trim();
   }
 
-  // Extract the raw base64 payload by removing the header, footer, and any whitespace/newlines
+  // Extract the raw base64 payload by removing header, footer, literal \n, \r, and whitespace
   let body = rawKey
     .replace(/-----BEGIN PRIVATE KEY-----/g, '')
     .replace(/-----END PRIVATE KEY-----/g, '')
-    .replace(/\\n/g, '') // Remove literal \n strings
-    .replace(/\s+/g, ''); // Remove all actual whitespace, tabs, and newlines
+    .replace(/\\r/g, '')
+    .replace(/\\n/g, '')
+    .replace(/\r/g, '')
+    .replace(/\n/g, '')
+    .replace(/\s+/g, '');
 
   if (!body) {
     throw new Error(
-      'GOOGLE_PRIVATE_KEY is missing the private key payload between BEGIN and END markers. Please check .env.local.'
+      'GOOGLE_PRIVATE_KEY is missing the private key payload between BEGIN and END markers. Please check environment variables.'
     );
   }
 
@@ -93,7 +129,7 @@ export function getGoogleAuth() {
   } catch (err: any) {
     if (err.message && err.message.includes('DECODER routines')) {
       throw new Error(
-        'Invalid GOOGLE_PRIVATE_KEY in .env.local. OpenSSL could not decode the private key string. Please verify you copied the exact private_key from your Google Service Account JSON file.'
+        'Invalid GOOGLE_PRIVATE_KEY in environment variables (OpenSSL key decode failed).'
       );
     }
     throw err;
