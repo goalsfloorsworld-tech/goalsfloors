@@ -10,13 +10,16 @@ import { checkIsAdmin, getUserRole } from '../actions/user';
 import RoleBadge from './shared/RoleBadge';
 
 export default function Navbar() {
-  const [isAdmin, setIsAdmin] = useState(false);
-  const [userRole, setUserRole] = useState<string | null>(null);
+  const { isLoaded, isSignedIn, user } = useUser();
+  const clerkRole = (user?.publicMetadata?.role as string)?.toLowerCase();
+  const isClerkAdmin = Boolean(clerkRole && ['admin', 'administrator', 'team', 'superadmin', 'accountant'].includes(clerkRole));
+
+  const [isAdmin, setIsAdmin] = useState(isClerkAdmin);
+  const [userRole, setUserRole] = useState<string | null>(clerkRole || null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [isDesktopProductsOpen, setIsDesktopProductsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
-  const { isLoaded, isSignedIn, user } = useUser();
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const scrollYRef = useRef(0);
@@ -56,17 +59,27 @@ export default function Navbar() {
 
   useEffect(() => {
     if (user?.id) {
+      const currentClerkRole = (user?.publicMetadata?.role as string)?.toLowerCase();
+      if (currentClerkRole && ['admin', 'administrator', 'team', 'superadmin', 'accountant'].includes(currentClerkRole)) {
+        setIsAdmin(true);
+        setUserRole(currentClerkRole);
+      }
+
       const verifyRole = async () => {
-        const [isAdminUser, role] = await Promise.all([
-          checkIsAdmin(),
-          getUserRole()
-        ]);
-        setIsAdmin(isAdminUser);
-        setUserRole(role);
+        try {
+          const [isAdminUser, role] = await Promise.all([
+            checkIsAdmin(),
+            getUserRole()
+          ]);
+          if (isAdminUser) setIsAdmin(true);
+          if (role) setUserRole(role);
+        } catch (err) {
+          console.error("Error verifying admin role:", err);
+        }
       };
       verifyRole();
     }
-  }, [user?.id]);
+  }, [user?.id, user?.publicMetadata]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -205,6 +218,7 @@ export default function Navbar() {
                     <div>
                       <h3 className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Exterior & Outdoor</h3>
                       <ul className="space-y-3">
+                        <li><Link href="/products/designer-grass" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Designer Grass</Link></li>
                         <li><Link href="/products/wpc-exterior-louvers" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Exterior Louvers</Link></li>
                         <li><Link href="/products/artificial-grass" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Artificial Grass</Link></li>
                         <li><Link href="/products/wpc-decking" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>WPC Decking</Link></li>
@@ -264,6 +278,7 @@ export default function Navbar() {
                   {isSignedIn ? (
                     <div id="user-button-wrap" className="relative flex items-center justify-center">
                       <UserButton 
+                        key={`user-btn-${isAdmin ? 'admin' : 'user'}-${userRole || 'norole'}`}
                         appearance={{ 
                           elements: { 
                             userButtonPopoverActionButton__manageAccount: 'hidden',
@@ -363,6 +378,7 @@ export default function Navbar() {
                   <div className="space-y-3">
                     <h4 className="text-[10px] font-bold text-amber-600 uppercase tracking-widest">Exterior & Outdoor</h4>
                     <div className="flex flex-col gap-2">
+                      <Link href="/products/designer-grass" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Designer Grass</Link>
                       <Link href="/products/wpc-exterior-louvers" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Exterior Louvers</Link>
                       <Link href="/products/artificial-grass" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Artificial Grass</Link>
                       <Link href="/products/wpc-decking" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">WPC Decking</Link>
@@ -397,6 +413,12 @@ export default function Navbar() {
           <Link href="/about" onClick={toggleMenu} className="text-lg font-medium text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">About Us</Link>
           <Link href="/dealer" onClick={toggleMenu} className="text-lg font-normal text-amber-600 border-b border-gray-100 dark:border-gray-800 pb-3">Become a Dealer</Link>
           <Link href="/contact" onClick={toggleMenu} className="text-lg font-normal text-amber-600 border-b border-gray-100 dark:border-gray-800 pb-3">Contact Us</Link>
+          {isAdmin && (
+            <Link href="/admin" onClick={toggleMenu} className="text-lg font-bold text-amber-600 border-b border-gray-100 dark:border-gray-800 pb-3 flex items-center justify-between">
+              Admin Panel
+              <Settings className="w-5 h-5 text-amber-600" />
+            </Link>
+          )}
         </nav>
       </div>
     </>
