@@ -67,6 +67,20 @@ export default function Navbar() {
 
       const verifyRole = async () => {
         try {
+          // 1. Try standard GET API Route (Works across all reverse-proxies, CDN, and Hostinger)
+          const res = await fetch('/api/user/role', { cache: 'no-store' });
+          if (res.ok) {
+            const data = await res.json();
+            if (data.isAdmin) setIsAdmin(true);
+            if (data.role) setUserRole(data.role);
+            return;
+          }
+        } catch (apiErr) {
+          console.warn("API role fetch fallback:", apiErr);
+        }
+
+        try {
+          // 2. Fallback to Server Actions
           const [isAdminUser, role] = await Promise.all([
             checkIsAdmin(),
             getUserRole()

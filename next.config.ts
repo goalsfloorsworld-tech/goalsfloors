@@ -5,6 +5,13 @@ const nextConfig: NextConfig = {
   experimental: {
     serverActions: {
       bodySizeLimit: '25mb',
+      allowedOrigins: [
+        'goalsfloors.com',
+        'www.goalsfloors.com',
+        '*.goalsfloors.com',
+        'localhost:3000',
+        '*.hostingersite.com',
+      ],
     },
   },
   // Removed serverExternalPackages to fix Hostinger 500 errors with Turbopack hashed module names
