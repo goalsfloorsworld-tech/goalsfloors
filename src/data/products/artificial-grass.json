@@ -174,6 +174,10 @@
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774598879/artificial-grass-20mm-YleqzvDVz3h0ko8W.avif",
           "alt": "25mm Premium Artificial Grass Project Gurugram NCR",
           "name": "Premium Grass 25mm"
+        },{
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1787308037/25mm_Artificial_Grass.png",
+          "alt": "25mm Artificial Grass side width",
+          "name": "Premium Grass 25mm"
         }
       ],
       "priceValue": 45,
@@ -202,6 +206,11 @@
         {
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774599014/artificial-grass-35mm-mjEq0v83xbsM83y0.avif",
           "alt": "35mm Premium Artificial Grass Project Delhi NCR",
+          "name": "Premium Grass 35mm"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1787308036/35mm_Artificial_Grass.png",
+          "alt": "35mm Premium Artificial Grass side width",
           "name": "Premium Grass 35mm"
         }
       ],
@@ -232,6 +241,11 @@
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774599058/artificial-grass-40mm-Y4Lx3VoqgwFznpRp.avif",
           "alt": "40mm Premium Artificial Grass Project NCR",
           "name": "Premium Grass 40mm"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1787308037/40mm_Artificial_Grass.png",
+          "alt": "40mm Premium Artificial Grass side width",
+          "name": "Premium Grass 40mm"
         }
       ],
       "priceValue": 75,
@@ -261,9 +275,150 @@
           "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1774599198/artificial-grass-50mm-YNqPZy94g2CM46zK.avif",
           "alt": "50mm Premium Artificial Grass Project Delhi",
           "name": "Premium Grass 50mm"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1787308036/50mm_Artificial_Grass_Goals_FLoors.png",
+          "alt": "50mm Premium Artificial Grass side width",
+          "name": "Premium Grass 50mm"
         }
       ],
       "priceValue": 110,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
+    },
+    {
+      "name": "Leaf Green Designer Artificial Grass",
+      "price": "₹95/sq.ft",
+      "mrp": "₹190/sq.ft",
+      "discount": "50% OFF",
+      "unit": "retail price",
+      "gmc_title": "Leaf Green Designer Artificial Grass for Modern Spaces",
+      "gmc_description": "A clean designer turf option for balconies, terraces, and decorative installations. This variant is priced for easy project planning and delivers a realistic green finish with a durable backing for regular use.",
+      "details": {
+        "Pile Height": "35mm",
+        "Stitches": "16/10 Cm",
+        "Density": "16900/M2",
+        "Dtex": "10500",
+        "Backing": "Double Backing",
+        "Area/Roll": "539 sq.ft"
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1787310307/Green_Leaf_Upper_Shot.jpg",
+          "alt": "Leaf Green Designer Artificial Grass Upper Shot",
+          "name": "Leaf Green Designer Artificial Grass"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1787308038/Leaf_Green_Designer_Artificial_Grass_Goals_Floors.png",
+          "alt": "Leaf Green Designer Artificial Grass",
+          "name": "Leaf Green Designer Artificial Grass"
+        }
+      ],
+      "priceValue": 95,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
+    },
+    {
+      "name": "Wave Pattern Designer Artificial Grass",
+      "price": "₹95/sq.ft",
+      "mrp": "₹190/sq.ft",
+      "discount": "50% OFF",
+      "unit": "retail price",
+      "gmc_title": "Wave Pattern Designer Artificial Grass for Balconies and Decor",
+      "gmc_description": "A stylish wave-pattern turf variant for premium decor and lightweight landscaping use. It offers a natural look, simple maintenance, and a strong double backing for everyday application.",
+      "details": {
+        "Pile Height": "35mm",
+        "Stitches": "16/10 Cm",
+        "Density": "16900/M2",
+        "Dtex": "10500",
+        "Backing": "Double Backing",
+        "Area/Roll": "539 sq.ft"
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1787310353/wave_patter_upper_shot.jpg",
+          "alt": "Wave Pattern Designer Artificial Grass Upper Shot",
+          "name": "Wave Pattern Designer Artificial Grass"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1787308038/wave_Pattern_Designer_Artificial_Grass.png",
+          "alt": "Wave Pattern Designer Artificial Grass",
+          "name": "Wave Pattern Designer Artificial Grass"
+        }
+      ],
+      "priceValue": 95,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
+    },
+    {
+      "name": "Hexa Green Designer Artificial Grass",
+      "price": "₹95/sq.ft",
+      "mrp": "₹190/sq.ft",
+      "discount": "50% OFF",
+      "unit": "retail price",
+      "gmc_title": "Hexa Green Designer Artificial Grass for Premium Installations",
+      "gmc_description": "A premium designer turf option with a clean, modern look for indoor and outdoor decorative projects. It is suitable for quick installation and regular use with low maintenance requirements.",
+      "details": {
+        "Pile Height": "35mm",
+        "Stitches": "16/10 Cm",
+        "Density": "16900/M2",
+        "Dtex": "10500",
+        "Backing": "Double Backing",
+        "Area/Roll": "539 sq.ft"
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1787310302/hexa_green_upper_shot.jpg",
+          "alt": "Hexa Green Designer Artificial Grass Upper Shot",
+          "name": "Hexa Green Designer Artificial Grass"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1787308037/Hexa_Green_Designer_Artificial_Grass.png",
+          "alt": "Hexa Green Designer Artificial Grass",
+          "name": "Hexa Green Designer Artificial Grass"
+        }
+      ],
+      "priceValue": 95,
+      "currency": "INR",
+      "availability": "in_stock",
+      "condition": "new",
+      "brand": "Goals Floors"
+    },
+    {
+      "name": "Zentra Designer Artificial Grass",
+      "price": "₹95/sq.ft",
+      "mrp": "₹190/sq.ft",
+      "discount": "50% OFF",
+      "unit": "retail price",
+      "gmc_title": "Zentra Designer Artificial Grass for Decorative Landscaping",
+      "gmc_description": "A flexible designer grass variant for modern decorative landscaping, terrace styling, and balcony upgrades. Built with a standard double backing and easy-care surface for practical everyday use.",
+      "details": {
+        "Pile Height": "35mm",
+        "Stitches": "16/10 Cm",
+        "Density": "16900/M2",
+        "Dtex": "10500",
+        "Backing": "Double Backing",
+        "Area/Roll": "539 sq.ft"
+      },
+      "images": [
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1787310377/zentra_design_upper_shot.jpg",
+          "alt": "Zentra Designer Artificial Grass Upper Shot",
+          "name": "Zentra Designer Artificial Grass"
+        },
+        {
+          "url": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1787308037/goals_floors_Zentra_Designer_artificial_grass.png",
+          "alt": "Zentra Designer Artificial Grass",
+          "name": "Zentra Designer Artificial Grass"
+        }
+      ],
+      "priceValue": 95,
       "currency": "INR",
       "availability": "in_stock",
       "condition": "new",
