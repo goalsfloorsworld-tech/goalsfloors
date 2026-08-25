@@ -4,7 +4,6 @@ import { useUser } from '@clerk/nextjs';
 import { useState, useEffect } from 'react';
 import { getOnboardingStatus } from '@/app/actions/onboarding';
 import OnboardingModal from './OnboardingModal';
-import { Loader2 } from 'lucide-react';
 
 export default function OnboardingCheck() {
   const { isLoaded, isSignedIn, user } = useUser();
@@ -15,15 +14,6 @@ export default function OnboardingCheck() {
     async function checkStatus() {
       if (!isSignedIn || !user) return;
 
-      // Check cache first to avoid slow network request on every page load
-      const cacheKey = `onboarding_completed_${user.id}`;
-      const isCached = localStorage.getItem(cacheKey);
-
-      if (isCached === 'true') {
-        setNeedsOnboarding(false);
-        return;
-      }
-
       const result = await getOnboardingStatus();
       
       if ('error' in result) {
@@ -33,9 +23,6 @@ export default function OnboardingCheck() {
 
       if (result.needsOnboarding !== undefined) {
         setNeedsOnboarding(result.needsOnboarding);
-        if (result.needsOnboarding === false) {
-          localStorage.setItem(cacheKey, 'true');
-        }
       }
     }
 

@@ -92,8 +92,9 @@ export async function completeOnboarding(data: {
 
     revalidatePath('/');
     return { success: true };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Exception during onboarding:', error);
-    return { error: `Server error: ${error.message || 'Unknown error'}` };
+    const message = error instanceof Error ? error.message : 'Unknown error';
+    return { error: `Server error: ${message}` };
   }
 }
