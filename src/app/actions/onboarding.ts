@@ -1,11 +1,12 @@
 'use server';
 
 import { auth } from '@clerk/nextjs/server';
+import { clerkClient } from '@clerk/nextjs/server';
 import { createClient } from '@supabase/supabase-js';
 import { revalidatePath } from 'next/cache';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co';
+const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY || 'placeholder';
 
 // Admin client to bypass RLS for onboarding updates
 const supabaseAdmin = createClient(supabaseUrl, supabaseServiceRoleKey);
@@ -15,7 +16,7 @@ export async function getOnboardingStatus() {
   if (!userId) return { error: 'Not authenticated' };
 
   try {
-    const { data, error } = await supabaseAdmin
+    let { data, error } = await supabaseAdmin
       .from('profiles')
       .select('onboarding_completed')
       .eq('id', userId)
@@ -23,13 +24,32 @@ export async function getOnboardingStatus() {
 
     if (error) {
       if (error.code === 'PGRST116') {
-        // Profile doesn't exist yet. In development without webhooks, this would cause an infinite loop.
-        // We return true here. If they submit the modal, completeOnboarding will safely upsert the profile.
-        return { needsOnboarding: true };
+        // Webhooks can arrive after the first authenticated request. Sync the user here so
+        // the onboarding check works even when webhook delivery is delayed or unavailable.
+        const user = await (await clerkClient()).users.getUser(userId);
+        const email = user.emailAddresses.find((address) => address.id === user.primaryEmailAddressId)?.emailAddress || null;
+        const syncResult = await supabaseAdmin
+          .from('profiles')
+          .upsert({
+            id: user.id,
+            email,
+            first_name: user.firstName,
+            last_name: user.lastName,
+            image_url: user.imageUrl,
+            auth_provider: user.externalAccounts.some((account) => account.provider === 'google') ? 'Google' : 'Email',
+            role: 'user',
+            onboarding_completed: false,
+          }, { onConflict: 'id' })
+          .select('onboarding_completed')
+          .single();
+
+        data = syncResult.data;
+        error = syncResult.error;
       }
-      throw error;
+      if (error) throw error;
     }
 
+    if (!data) throw new Error('Profile data was not returned');
     return { needsOnboarding: !data.onboarding_completed };
   } catch (error) {
     console.error('Error fetching onboarding status:', error);

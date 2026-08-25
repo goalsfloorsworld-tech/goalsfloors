@@ -79,7 +79,6 @@ export async function POST(req: Request) {
           last_name,
           image_url,
           auth_provider,          // Track Google vs Email signup
-          role: 'user',           // Default value constraint
         }, { onConflict: 'id' });
 
       if (error) throw error;

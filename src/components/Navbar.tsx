@@ -21,6 +21,8 @@ export default function Navbar() {
   const [isDesktopProductsOpen, setIsDesktopProductsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const pathname = usePathname();
+  const resolvedUserRole = clerkRole || userRole;
+  const hasAdminAccess = isAdmin || Boolean(resolvedUserRole && ['admin', 'administrator', 'team', 'superadmin', 'accountant'].includes(resolvedUserRole));
   const [mounted, setMounted] = useState(false);
   const scrollYRef = useRef(0);
   
@@ -59,12 +61,6 @@ export default function Navbar() {
 
   useEffect(() => {
     if (user?.id) {
-      const currentClerkRole = (user?.publicMetadata?.role as string)?.toLowerCase();
-      if (currentClerkRole && ['admin', 'administrator', 'team', 'superadmin', 'accountant'].includes(currentClerkRole)) {
-        setIsAdmin(true);
-        setUserRole(currentClerkRole);
-      }
-
       const verifyRole = async () => {
         try {
           // 1. Try standard GET API Route (Works across all reverse-proxies, CDN, and Hostinger)
@@ -302,7 +298,7 @@ export default function Navbar() {
                         }}
                       >
                         <UserButton.MenuItems>
-                          {isAdmin && (
+                          {hasAdminAccess && (
                             <UserButton.Link
                               label="Admin Panel"
                               labelIcon={<Settings className="w-4 h-4 ml-1" />}
@@ -326,9 +322,9 @@ export default function Navbar() {
                         </UserButton.MenuItems>
                       </UserButton>
                       {/* Universal Round Image Badge for Staff */}
-                      {userRole && ["administrator", "admin", "team"].includes(userRole) && (
+                      {resolvedUserRole && ["administrator", "admin", "team", "superadmin", "accountant"].includes(resolvedUserRole) && (
                         <div className="absolute bottom-[-15px] right-[-10px] pointer-events-none z-10">
-                          <RoleBadge role={userRole} size="lg" showText={false} className="border-2 border-white dark:border-slate-950 rounded-full" />
+                          <RoleBadge role={resolvedUserRole} size="lg" showText={false} className="border-2 border-white dark:border-slate-950 rounded-full" />
                         </div>
                       )}
                     </div>
@@ -427,7 +423,7 @@ export default function Navbar() {
           <Link href="/about" onClick={toggleMenu} className="text-lg font-medium text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">About Us</Link>
           <Link href="/dealer" onClick={toggleMenu} className="text-lg font-normal text-amber-600 border-b border-gray-100 dark:border-gray-800 pb-3">Become a Dealer</Link>
           <Link href="/contact" onClick={toggleMenu} className="text-lg font-normal text-amber-600 border-b border-gray-100 dark:border-gray-800 pb-3">Contact Us</Link>
-          {isAdmin && (
+          {hasAdminAccess && (
             <Link href="/admin" onClick={toggleMenu} className="text-lg font-bold text-amber-600 border-b border-gray-100 dark:border-gray-800 pb-3 flex items-center justify-between">
               Admin Panel
               <Settings className="w-5 h-5 text-amber-600" />

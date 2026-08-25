@@ -33,7 +33,7 @@ export default async function AdminLayout({
     .single();
 
   // Redirect non-staff instantly to the public homepage
-  const isStaff = profile?.role === 'admin' || profile?.role === 'team' || profile?.role === 'administrator';
+  const isStaff = ['admin', 'administrator', 'team', 'superadmin', 'accountant'].includes(profile?.role);
   if (error || !profile || !isStaff) {
     redirect('/');
   }
