@@ -287,6 +287,17 @@ export default function Navbar() {
 
                   {isSignedIn ? (
                     <div id="user-button-wrap" className="relative flex items-center justify-center">
+                      {hasAdminAccess && (
+                        <Link
+                          href="/admin"
+                          title="Admin Panel"
+                          aria-label="Admin Panel"
+                          className="hidden sm:flex items-center gap-1 text-xs font-semibold text-amber-600 hover:text-amber-700 dark:hover:text-amber-400 transition-colors"
+                        >
+                          <Settings className="w-4 h-4" />
+                          Admin Panel
+                        </Link>
+                      )}
                       <UserButton 
                         key={`user-btn-${isAdmin ? 'admin' : 'user'}-${userRole || 'norole'}`}
                         appearance={{ 
