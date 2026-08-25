@@ -53,7 +53,14 @@ export async function POST(req: Request) {
   const eventType = evt.type;
 
   if (eventType === 'user.created' || eventType === 'user.updated') {
-    const { id, email_addresses, first_name, last_name, image_url, external_accounts } = evt.data as any;
+    const { id, email_addresses, first_name, last_name, image_url, external_accounts } = evt.data as unknown as {
+      id: string;
+      email_addresses?: Array<{ email_address: string }>;
+      first_name?: string | null;
+      last_name?: string | null;
+      image_url?: string | null;
+      external_accounts?: Array<{ provider: string }>;
+    };
     
     // Determine the Auth Provider
     let auth_provider = 'Email';
@@ -69,17 +76,20 @@ export async function POST(req: Request) {
       : null;
 
     try {
-      // Upsert the data into the Supabase profiles table
-      const { error } = await supabase
-        .from('profiles')
-        .upsert({
-          id,                     // Matches Clerk User ID
-          email,
-          first_name,
-          last_name,
-          image_url,
-          auth_provider,          // Track Google vs Email signup
-        }, { onConflict: 'id' });
+      const profileData = {
+        id,                     // Matches Clerk User ID
+        email,
+        first_name,
+        last_name,
+        image_url,
+        auth_provider,          // Track Google vs Email signup
+      };
+
+      // New profiles need a role accepted by the database constraint. Updates must
+      // preserve any role assigned later by an administrator.
+      const { error } = eventType === 'user.created'
+        ? await supabase.from('profiles').upsert({ ...profileData, role: 'client' }, { onConflict: 'id' })
+        : await supabase.from('profiles').update(profileData).eq('id', id);
 
       if (error) throw error;
       

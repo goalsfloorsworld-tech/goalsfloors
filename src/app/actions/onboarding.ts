@@ -37,7 +37,7 @@ export async function getOnboardingStatus() {
             last_name: user.lastName,
             image_url: user.imageUrl,
             auth_provider: user.externalAccounts.some((account) => account.provider === 'google') ? 'Google' : 'Email',
-            role: 'user',
+            role: 'client',
             onboarding_completed: false,
           }, { onConflict: 'id' })
           .select('onboarding_completed')
