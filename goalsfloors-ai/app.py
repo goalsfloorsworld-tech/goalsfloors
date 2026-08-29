@@ -146,7 +146,7 @@ _raw_keys = [
     (os.environ.get("GROQ_API_KEY3") or "").strip(),
 ]
 GROQ_API_KEYS = [k for k in _raw_keys if k]  # Remove empty keys
-GROQ_MODEL = "llama-3.1-8b-instant"
+GROQ_MODEL = os.environ.get("GROQ_MODEL", "qwen/qwen3.8-27b")
 if GROQ_API_KEYS:
     logger.info(f"Groq key pool loaded: {len(GROQ_API_KEYS)} key(s) available.")
 else:
