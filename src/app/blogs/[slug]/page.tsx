@@ -4,8 +4,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Clock, Calendar, User, Share2 } from "lucide-react";
 import { clerkClient } from "@clerk/nextjs/server";
-
 import { createClient } from "@supabase/supabase-js";
+import {
+  toDomainImageUrl,
+  transformContentImages,
+  cleanHtmlEntities,
+  SITE_ORIGIN,
+} from "@/lib/blog-seo-utils";
 
 const API_BASE_URL = "https://lime-hummingbird-549929.hostingersite.com/wp-json/wp/v2";
 
@@ -35,10 +40,10 @@ async function getUniversalPostData(slug: string): Promise<NormalizedPost | null
   if (supabaseBlog && !error) {
     return {
       title: supabaseBlog.title,
-      content: supabaseBlog.content,
-      excerpt: supabaseBlog.description,
+      content: transformContentImages(supabaseBlog.content),
+      excerpt: cleanHtmlEntities(supabaseBlog.description),
       imageUrl: supabaseBlog.featured_image || null,
-      imageAlt: supabaseBlog.featured_image_alt || supabaseBlog.title,
+      imageAlt: cleanHtmlEntities(supabaseBlog.featured_image_alt || supabaseBlog.title),
       date: supabaseBlog.created_at || new Date().toISOString(),
       authorId: supabaseBlog.author_id,
     };
@@ -55,10 +60,10 @@ async function getUniversalPostData(slug: string): Promise<NormalizedPost | null
       const featuredMedia = post._embedded?.["wp:featuredmedia"]?.[0];
       return {
         title: post.title.rendered,
-        content: post.content.rendered,
-        excerpt: post.excerpt.rendered.replace(/<[^>]*>?/gm, ''),
-        imageUrl: featuredMedia?.source_url || null,
-        imageAlt: featuredMedia?.alt_text || post.title.rendered,
+        content: transformContentImages(post.content.rendered),
+        excerpt: cleanHtmlEntities(post.excerpt.rendered),
+        imageUrl: featuredMedia?.source_url ? toDomainImageUrl(featuredMedia.source_url) : null,
+        imageAlt: cleanHtmlEntities(featuredMedia?.alt_text || post.title.rendered),
         date: post.date,
       };
     }
@@ -76,7 +81,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const resolvedParams = await params;
   const post = await getUniversalPostData(resolvedParams.slug);
-  const canonical = `/blogs/${resolvedParams.slug}`;
+  const canonical = `${SITE_ORIGIN}/blogs/${resolvedParams.slug}`;
 
   if (!post) {
     return {
@@ -88,16 +93,19 @@ export async function generateMetadata({
     };
   }
 
+  const cleanTitle = cleanHtmlEntities(post.title);
+  const cleanExcerpt = cleanHtmlEntities(post.excerpt);
+
   return {
-    title: `${post.title} | Goals Floors Insights`,
-    description: post.excerpt,
+    title: `${cleanTitle} | Goals Floors Insights`,
+    description: cleanExcerpt,
     alternates: {
       canonical,
     },
     openGraph: {
       url: canonical,
-      title: `${post.title} | Goals Floors Insights`,
-      description: post.excerpt,
+      title: `${cleanTitle} | Goals Floors Insights`,
+      description: cleanExcerpt,
       images: post.imageUrl ? [
         {
           url: post.imageUrl,
@@ -107,8 +115,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${post.title} | Goals Floors Insights`,
-      description: post.excerpt,
+      title: `${cleanTitle} | Goals Floors Insights`,
+      description: cleanExcerpt,
       images: post.imageUrl ? [post.imageUrl] : undefined,
     },
   };
@@ -127,6 +135,9 @@ export default async function SingleBlogPage({
   }
 
   const { title, content, excerpt, imageUrl, imageAlt, date, authorId } = post;
+  const cleanTitle = cleanHtmlEntities(title);
+  const cleanExcerpt = cleanHtmlEntities(excerpt);
+  const canonicalUrl = `${SITE_ORIGIN}/blogs/${resolvedParams.slug}`;
 
   // Extract author name
   let authorName = "Goals Floors Team";
@@ -162,7 +173,11 @@ export default async function SingleBlogPage({
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": title,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": canonicalUrl
+    },
+    "headline": cleanTitle,
     "image": imageUrl ? [imageUrl] : undefined,
     "datePublished": isoDate,
     "dateModified": isoDate,
@@ -178,7 +193,7 @@ export default async function SingleBlogPage({
         "url": "https://goalsfloors.com/images/goals%20floors%20logo.png"
       }
     },
-    "description": excerpt
+    "description": cleanExcerpt
   };
 
   return (

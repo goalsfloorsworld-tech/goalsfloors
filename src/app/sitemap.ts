@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
 import { createClient } from '@supabase/supabase-js';
+import { toDomainImageUrl } from '@/lib/blog-seo-utils';
 
 const API_BASE_URL = "https://lime-hummingbird-549929.hostingersite.com/wp-json/wp/v2";
 
@@ -182,16 +183,45 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const res = await fetch(`${API_BASE_URL}/posts?per_page=100&_embed=true`, { next: { revalidate: 3600 } });
     if (res.ok) {
       const posts = await res.json();
-      blogRoutes = posts.map((post: WPPost) => ({
-        url: `${baseUrl}/blogs/${post.slug}`,
-        lastModified: new Date(post.modified).toISOString(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.7,
-        images: post._embedded?.['wp:featuredmedia']?.[0]?.source_url ? processImageUrls(baseUrl, [post._embedded['wp:featuredmedia'][0].source_url as string]) : undefined,
-      }));
+      blogRoutes = posts.map((post: WPPost) => {
+        const rawImageUrl = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+        const domainImageUrl = rawImageUrl ? toDomainImageUrl(rawImageUrl) : undefined;
+        return {
+          url: `${baseUrl}/blogs/${post.slug}`,
+          lastModified: new Date(post.modified).toISOString(),
+          changeFrequency: 'monthly' as const,
+          priority: 0.7,
+          images: domainImageUrl ? processImageUrls(baseUrl, [domainImageUrl]) : undefined,
+        };
+      });
     }
   } catch (error) {
     console.error('Error fetching WordPress blogs for sitemap:', error);
+  }
+
+  // 3b. Dynamic Blog Pages from Supabase
+  let supabaseBlogRoutes: MetadataRoute.Sitemap = [];
+  try {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+    const supabaseSitemap = createClient(supabaseUrl, supabaseKey);
+
+    const { data: supabaseBlogs } = await supabaseSitemap
+      .from('blogs')
+      .select('slug, created_at, featured_image')
+      .eq('is_published', true);
+
+    if (supabaseBlogs) {
+      supabaseBlogRoutes = supabaseBlogs.map((b: any) => ({
+        url: `${baseUrl}/blogs/${b.slug}`,
+        lastModified: new Date(b.created_at || Date.now()).toISOString(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+        images: b.featured_image ? processImageUrls(baseUrl, [b.featured_image]) : undefined,
+      }));
+    }
+  } catch (error) {
+    console.error('Error fetching Supabase blogs for sitemap:', error);
   }
 
   // 4. Multiverse Dynamic Pages
@@ -287,6 +317,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error fetching catalogs for sitemap:', error);
   }
 
-  return [...staticRoutes, ...productRoutes, ...blogRoutes, ...multiverseRoutes, ...compareRoutes, ...catalogRoutes];
+  return [...staticRoutes, ...productRoutes, ...blogRoutes, ...supabaseBlogRoutes, ...multiverseRoutes, ...compareRoutes, ...catalogRoutes];
 }
 

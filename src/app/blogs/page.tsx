@@ -5,6 +5,7 @@ import SearchBar from "@/components/search-bar";
 import BlogCard, { BlogPost } from "@/components/blog-card";
 import WriteBlogCard from "@/components/WriteBlogCard";
 import { createClient } from "@supabase/supabase-js";
+import { toDomainImageUrl } from "@/lib/blog-seo-utils";
 
 export async function generateMetadata({
   searchParams,
@@ -88,7 +89,15 @@ async function getPosts(page: number, query: string) {
       }
     }
 
-    const posts = [...supabasePosts, ...wpPosts];
+    const mappedWpPosts = wpPosts.map((post: any) => {
+      const media = post._embedded?.["wp:featuredmedia"]?.[0];
+      if (media?.source_url) {
+        media.source_url = toDomainImageUrl(media.source_url);
+      }
+      return post;
+    });
+
+    const posts = [...supabasePosts, ...mappedWpPosts];
 
     return { posts, totalPages, error: false };
   } catch (error) {
