@@ -153,6 +153,31 @@ body.fullscreen-viewer-open .goals-ai-widget-container {
     scrollbar-width: none; /* Firefox */
   }
 
+  /* Wall Panel Side Rail Scrollbar (Visible luxury amber bar) */
+  .custom-amber-scrollbar {
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(245, 158, 11, 0.5) rgba(255, 255, 255, 0.05) !important;
+    overscroll-behavior: contain;
+  }
+  .custom-amber-scrollbar::-webkit-scrollbar {
+    display: block !important;
+    width: 5px !important;
+    height: 5px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-radius: 9999px !important;
+  }
+  .custom-amber-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-radius: 9999px !important;
+  }
+  .custom-amber-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(245, 158, 11, 0.5) !important;
+    border-radius: 9999px !important;
+  }
+  .custom-amber-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(245, 158, 11, 0.85) !important;
+  }
+
   /* ── Compare Page — Clash Animation ─────────────────── */
   @keyframes slideInFromLeft {
     0%   { opacity: 0; transform: translateX(-80px); }

@@ -45,3 +45,8 @@ next-env.d.ts
 
 # Google Credentials
 gsc-goals*.json
+
+# Scratch files
+scratch/
+__pycache__/
+*.pyc

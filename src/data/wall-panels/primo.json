@@ -1,0 +1,526 @@
+{
+  "slug": "primo",
+  "name": "Primo Plain Panels",
+  "title": "Primo 12-Inch Seamless PVC Wall Panels",
+  "subtitle": "24 Architectural Finishes with Zero-Gap Anti-Seelan Protection",
+  "tagline": "India's premier 12-inch wide seamless wall panels. 100% waterproof and termite-proof across 24 designer wood & marble textures.",
+  "badge": "100% Damp-Proof Seelan Immunity",
+  "startingPrice": "₹499",
+  "pricePerSqFt": "₹52 – ₹65 / sq.ft.",
+  "aestheticTone": "dark",
+  "themeColor": "#c89454",
+  "glowColor": "rgba(200, 148, 84, 0.35)",
+  "accentGradient": "from-amber-700/30 via-orange-950/40 to-stone-950",
+  "description": "Engineered specifically for Indian homes and NCR dampness issues. Primo 12-Inch Plain Panels feature a wide 300mm surface that dramatically minimizes seams, creating unbroken floor-to-ceiling visual luxury without peeling paint or moisture damage.",
+  "heroImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776780203/Primo_GF-301_Pvc_Panel_Goals_Floors.png",
+  "roomImage": "/images/wall-panels/primo-plain-room.jpg",
+  "textureImage": "/images/wall-panels/primo-plain-texture.jpg",
+  "dimensions": {
+    "height": "9.5 Feet (2950mm)",
+    "width": "12 Inches (300mm)",
+    "thickness": "5mm Seamless Profile",
+    "fluteSpacing": "Seamless Monolithic Sheet"
+  },
+  "features": [
+    {
+      "title": "100% Damp-Proof (Seelan-Free)",
+      "description": "Zero water absorption. Closed-cell polymer stops peeling paint and seelan permanently.",
+      "stat": "0.0% Water Absorption"
+    },
+    {
+      "title": "Extra-Wide 12-Inch Coverage",
+      "description": "300mm breadth cuts visible joints by half compared to standard 6-inch panels.",
+      "stat": "12-Inch Seamless Width"
+    },
+    {
+      "title": "Pre-Finished Diamond Shield",
+      "description": "Zero painting, polishing or chemical maintenance needed. Wipe clean in seconds.",
+      "stat": "Class 1 Scratch Armor"
+    },
+    {
+      "title": "24 Curated Architectural Finishes",
+      "description": "From warm Burmese teaks to grey marbles and fabric textures, pre-matched for luxury interiors.",
+      "stat": "24 Exclusive Shades"
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer-uv",
+      "name": "Diamond Shield UV Topcoat",
+      "badge": "Protective Outer",
+      "thickness": "0.3mm",
+      "description": "Micro-embossed thermal coating protecting against UV fading, oil stains, fingerprints, and household abrasion.",
+      "accentColor": "#f59e0b"
+    },
+    {
+      "id": "layer-foil",
+      "name": "High-Definition Architectural Foil",
+      "badge": "Visual & Tactile",
+      "thickness": "0.5mm",
+      "description": "Fine wood grain and marble patterns with tactile surface embossing.",
+      "accentColor": "#d97706"
+    },
+    {
+      "id": "layer-core",
+      "name": "Closed-Cell Polymer PVC Core",
+      "badge": "Structural Core",
+      "thickness": "4.0mm",
+      "description": "Reinforced hollow-core extrusion providing high structural rigidity while remaining lightweight.",
+      "accentColor": "#b45309"
+    },
+    {
+      "id": "layer-interlock",
+      "name": "Concealed Tongue-and-Groove Interlock",
+      "badge": "Mounting Matrix",
+      "thickness": "0.2mm",
+      "description": "Zero-gap interlocking joint system that hides all fasteners for seamless full-height walls.",
+      "accentColor": "#92400e"
+    }
+  ],
+  "specs": [
+    {
+      "label": "Material Composition",
+      "value": "Closed-Cell Polymer PVC Core",
+      "detail": "100% damp-proof and termite-proof"
+    },
+    {
+      "label": "Standard Plank Size",
+      "value": "9.5 ft × 12 in (2950 × 300 mm)",
+      "detail": "Full floor-to-ceiling single drop"
+    },
+    {
+      "label": "Thickness",
+      "value": "5 mm Heavy Profile",
+      "detail": "Rigid hollow-cell insulation"
+    },
+    {
+      "label": "Available Shades",
+      "value": "24 Exclusive Plain Finishes (GF-301 to GF-324)",
+      "detail": "Wood, marble, and fabric textures"
+    },
+    {
+      "label": "Installation Method",
+      "value": "Concealed Tongue & Groove + Brad Nails",
+      "detail": "Direct onto plaster or framework"
+    },
+    {
+      "label": "Warranty",
+      "value": "10-Year Residential & Commercial",
+      "detail": "Guaranteed against moisture & termites"
+    }
+  ],
+  "colorways": [
+    {
+      "id": "gf-301",
+      "name": "GF-301 Classic Teak",
+      "finish": "Warm Golden Wood",
+      "colorHex": "#c59a68",
+      "heroImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776780203/Primo_GF-301_Pvc_Panel_Goals_Floors.png",
+      "roomImage": "/images/wall-panels/primo-plain-room.jpg",
+      "textureImage": "/images/wall-panels/primo-plain-texture.jpg",
+      "tagline": "Natural wood warmth for statement bedroom and living room walls"
+    },
+    {
+      "id": "gf-303",
+      "name": "GF-303 Slate Grey",
+      "finish": "Modern Matte Grey",
+      "colorHex": "#54565a",
+      "heroImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776780202/GF-303_Grey_Color_Pvc_Panel.png",
+      "roomImage": "/images/wall-panels/primo-plain-room.jpg",
+      "textureImage": "/images/wall-panels/primo-plain-texture.jpg",
+      "tagline": "Contemporary charcoal tone for executive cabins and media walls"
+    },
+    {
+      "id": "gf-313",
+      "name": "GF-313 Pearl White",
+      "finish": "Clean Nordic White",
+      "colorHex": "#eae6e1",
+      "heroImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779864/GF-313_White_Color_Pvc_Panel.png",
+      "roomImage": "/images/wall-panels/primo-plain-room.jpg",
+      "textureImage": "/images/wall-panels/primo-plain-texture.jpg",
+      "tagline": "Light-reflecting minimalism that brightens any room"
+    }
+  ],
+  "catalogVariants": [
+    {
+      "id": "gf-301",
+      "code": "GF-301",
+      "name": "Primo Plain GF-301",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776780203/Primo_GF-301_Pvc_Panel_Goals_Floors.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776780203/Primo_GF-301_Pvc_Panel_Goals_Floors.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-301 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-302",
+      "code": "GF-302",
+      "name": "Primo Plain GF-302",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776780203/GF-302_Premium_Pvc_Panel_Primo_Series.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776780203/GF-302_Premium_Pvc_Panel_Primo_Series.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-302 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-303",
+      "code": "GF-303",
+      "name": "Primo Plain GF-303",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776780202/GF-303_Grey_Color_Pvc_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776780202/GF-303_Grey_Color_Pvc_Panel.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-303 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-304",
+      "code": "GF-304",
+      "name": "Primo Plain GF-304",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776780202/GF-304_New_Launch_Wall_Panel_Design.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776780202/GF-304_New_Launch_Wall_Panel_Design.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-304 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-305",
+      "code": "GF-305",
+      "name": "Primo Plain GF-305",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776780202/GF-305_Latest_Pvc_Panel_Design.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776780202/GF-305_Latest_Pvc_Panel_Design.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-305 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-306",
+      "code": "GF-306",
+      "name": "Primo Plain GF-306",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779877/GF-306_Premium_Pvc_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779877/GF-306_Premium_Pvc_Panel.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-306 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-307",
+      "code": "GF-307",
+      "name": "Primo Plain GF-307",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779870/GF-307_Premium_Pvc_Panel_twelve_Inch.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779870/GF-307_Premium_Pvc_Panel_twelve_Inch.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-307 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-308",
+      "code": "GF-308",
+      "name": "Primo Plain GF-308",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779869/GF-308_Premium_Pvc_Panel_Dark_Brown.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779869/GF-308_Premium_Pvc_Panel_Dark_Brown.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-308 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-309",
+      "code": "GF-309",
+      "name": "Primo Plain GF-309",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779868/GF-309_Goals_Floors_Premium_Pvc_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779868/GF-309_Goals_Floors_Premium_Pvc_Panel.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-309 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-310",
+      "code": "GF-310",
+      "name": "Primo Plain GF-310",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779867/GF-310_Goals_Floors_Premium_Pvc_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779867/GF-310_Goals_Floors_Premium_Pvc_Panel.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-310 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-311",
+      "code": "GF-311",
+      "name": "Primo Plain GF-311",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779867/GF-311_Premium_Pvc_Panel_in_Gurgaon.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779867/GF-311_Premium_Pvc_Panel_in_Gurgaon.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-311 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-312",
+      "code": "GF-312",
+      "name": "Primo Plain GF-312",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779866/GF-312_Pvc_Panel_Wooden_Color.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779866/GF-312_Pvc_Panel_Wooden_Color.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-312 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-313",
+      "code": "GF-313",
+      "name": "Primo Plain GF-313",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779864/GF-313_White_Color_Pvc_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779864/GF-313_White_Color_Pvc_Panel.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-313 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-314",
+      "code": "GF-314",
+      "name": "Primo Plain GF-314",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779864/GF-314_Cream_Color_Pvc_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779864/GF-314_Cream_Color_Pvc_Panel.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-314 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-315",
+      "code": "GF-315",
+      "name": "Primo Plain GF-315",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779863/GF-315_Grey_Color_Pvc_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779863/GF-315_Grey_Color_Pvc_Panel.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-315 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-316",
+      "code": "GF-316",
+      "name": "Primo Plain GF-316",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779862/GF-316_Plain_Color_Pvc_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779862/GF-316_Plain_Color_Pvc_Panel.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-316 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-317",
+      "code": "GF-317",
+      "name": "Primo Plain GF-317",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779861/GF-317_Texture_Pvc_Panel_Cream_Color.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779861/GF-317_Texture_Pvc_Panel_Cream_Color.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-317 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-318",
+      "code": "GF-318",
+      "name": "Primo Plain GF-318",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779861/GF-318_Texture_Pvc_Panel_Greu_Color.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779861/GF-318_Texture_Pvc_Panel_Greu_Color.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-318 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-319",
+      "code": "GF-319",
+      "name": "Primo Plain GF-319",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779859/GF-319_Dark_Grey_Color_Pvc_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779859/GF-319_Dark_Grey_Color_Pvc_Panel.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-319 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-320",
+      "code": "GF-320",
+      "name": "Primo Plain GF-320",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779857/GF-320_12_inch_Premium_Pvc_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779857/GF-320_12_inch_Premium_Pvc_Panel.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-320 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-321",
+      "code": "GF-321",
+      "name": "Primo Plain GF-321",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779857/GF-321_12_inch_Pvc_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779857/GF-321_12_inch_Pvc_Panel.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-321 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-322",
+      "code": "GF-322",
+      "name": "Primo Plain GF-322",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779856/GF-322_12_inch_Premium_Pvc_Panel_Grey_Colour.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779856/GF-322_12_inch_Premium_Pvc_Panel_Grey_Colour.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-322 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-323",
+      "code": "GF-323",
+      "name": "Primo Plain GF-323",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779856/GF-323_12_inch_Premium_Pvc_Panel_Latest_Color.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779856/GF-323_12_inch_Premium_Pvc_Panel_Latest_Color.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-323 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    },
+    {
+      "id": "gf-324",
+      "code": "GF-324",
+      "name": "Primo Plain GF-324",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Plain Cladding",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776779855/GF-324_Stone_Look_PVC_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776779855/GF-324_Stone_Look_PVC_Panel.png",
+      "colorHex": "#d0c0ad",
+      "description": "GF-324 Seamless 12-inch wide PVC wall panel. Closed-cell polymer prevents dampness (seelan) and peeling wall paint."
+    }
+  ],
+  "roomLightingModes": [
+    {
+      "id": "warm-cove",
+      "name": "Warm White Cove (3000K)",
+      "tempKelvin": "3000K",
+      "ambientColor": "#ff9a3c",
+      "glowFilter": "drop-shadow(0 0 45px rgba(255, 154, 60, 0.45))",
+      "description": "Enhances warm wood grains, creating an intimate penthouse lounge atmosphere."
+    },
+    {
+      "id": "neutral-gallery",
+      "name": "Neutral Daylight (4500K)",
+      "tempKelvin": "4500K",
+      "ambientColor": "#fff1db",
+      "glowFilter": "drop-shadow(0 0 35px rgba(255, 241, 219, 0.35))",
+      "description": "Balanced architectural gallery lighting showing pure true-to-life timber and marble hues."
+    },
+    {
+      "id": "cinema-mood",
+      "name": "Cinematic Mood Dim (2200K)",
+      "tempKelvin": "2200K",
+      "ambientColor": "#e65100",
+      "glowFilter": "drop-shadow(0 0 55px rgba(230, 81, 0, 0.4))",
+      "description": "Deep evening backlight designed for OLED television viewings and media room immersion."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "Can Primo Plain Panels be installed directly over damp (seelan) walls in Gurgaon & Delhi NCR?",
+      "answer": "Yes. Primo PVC panels feature a 100% closed-cell polymer core with 0.0% water absorption (ASTM D570 tested). They act as a permanent waterproof vapor barrier against rising dampness (seelan), efflorescence (shora), and peeling wall paint common in Gurgaon groundwater zones, keeping your room interior dry, mold-free, and pristine."
+    },
+    {
+      "question": "What is the price of Primo 12-inch plain wall panels per sq.ft and per panel in Gurgaon?",
+      "answer": "Primo plain wall panels are priced at a wholesale rate of ₹499 per panel (MRP ₹999, 50% discount). Since each 9.5 ft × 12 in panel covers 9.5 sq.ft, the effective material rate is approximately ₹52.5 to ₹65 per sq.ft, making it 40% more cost-effective than timber cladding or wallpaper plus waterproofing treatments."
+    },
+    {
+      "question": "How are Primo Plain Panels joined together without visible gaps?",
+      "answer": "Every Primo plank features an engineered concealed tongue-and-groove interlocking system. Planks slide into one another flush, hiding all mounting screws or brad nails beneath the joint. This creates an unbroken, smooth monolithic surface without ugly H-trim plastic joining strips."
+    },
+    {
+      "question": "Why choose 12-inch wide panels instead of traditional 6-inch or 8-inch panels?",
+      "answer": "Standard PVC panels in India are only 6 to 8 inches wide, creating numerous visible vertical lines. Primo's 12-inch (300mm) breadth cuts joint lines by 50%, delivering a premium, seamless architectural aesthetic that mimics imported Italian laminate sheets and continuous marble slabs."
+    },
+    {
+      "question": "Are Primo PVC wall panels 100% termite and borer proof?",
+      "answer": "Yes, completely. Unlike MDF, HDHMR, or plywood paneling that contain organic cellulose fibers which attract subterranean termites and wood borers, Primo panels are extruded from 100% virgin polymer with zero wood flour. Termites cannot feed on or penetrate the material."
+    },
+    {
+      "question": "Do I need to scrape or plaster the wall before installing Primo Plain Panels?",
+      "answer": "No extensive wall preparation or POP putty is required. Primo panels can be installed directly over rough brickwork, uneven plaster, or damp peeling paint using adhesive or lightweight battens, saving you up to ₹25/sq.ft in civil preparation costs and eliminating construction dust."
+    },
+    {
+      "question": "Can Primo Plain Panels be installed in kitchens, bathrooms, and dining areas?",
+      "answer": "Yes. Primo panels are resistant to grease splatters, turmeric stains, steam, and high humidity. The Diamond Shield UV topcoat allows you to easily wipe away oil, coffee, or food splashes using a standard damp microfiber cloth and mild household detergent."
+    },
+    {
+      "question": "How many pieces are in one carton box, and what area does it cover?",
+      "answer": "Primo Plain Panels are packed in heavy-duty export cartons containing 10 pieces per box. One box covers 95 square feet (8.83 sq. meters), weighing approximately 28 kg for safe transport and scratch-free delivery across Gurgaon and Delhi NCR."
+    },
+    {
+      "question": "What is the lifespan of Primo PVC panels in extreme North Indian weather?",
+      "answer": "Primo panels have an expected residential and commercial lifespan of 15 to 20+ years. They are dimensionally stable, meaning they will not expand, crack, or warp during Gurgaon's scorching 45°C summers or shrink during cold, humid winters."
+    },
+    {
+      "question": "Where is ready stock available, and what is the delivery timeline in Gurgaon?",
+      "answer": "Goals Floors maintains a central wholesale distribution warehouse in Gurugram with ready container stock across all 24 plain finishes (GF-301 to GF-324). Express same-day or next-day delivery is available for Golf Course Road, DLF Phases 1-5, Sohna Road, Cyber City, and South Delhi."
+    }
+  ]
+}

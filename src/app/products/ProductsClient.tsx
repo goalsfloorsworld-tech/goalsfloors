@@ -58,6 +58,10 @@ const SEO_HUB_CONTENT: Record<string, { title: string; description: string }> = 
     title: "Artificial Grass for Balcony, Garden & Landscaping",
     description: "Enjoy a green outdoor space throughout the year with premium artificial grass for balconies, terrace gardens, landscaping, play areas, and commercial projects. Designed for realistic appearance, fast drainage, and low-maintenance performance."
   },
+  "designer-grass": {
+    title: "Designer Artificial Grass for Luxury Balconies & Interiors",
+    description: "Transform indoor and outdoor spaces with high-density, realistic designer artificial grass designed for balcony makeovers, terrace gardens, vertical accent decor, and commercial landscapes."
+  },
   "laminate-flooring": {
     title: "AC4 Wooden Laminate Flooring",
     description: "Transform interiors with AC4 wooden laminate flooring that delivers the appearance of natural wood along with excellent scratch resistance and everyday durability. Suitable for living rooms, bedrooms, offices, retail spaces, and modern residential interiors."
