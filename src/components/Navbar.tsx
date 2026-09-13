@@ -207,15 +207,59 @@ export default function Navbar() {
                   Products <ChevronDown className={`w-4 h-4 transition-transform ${isDesktopProductsOpen ? 'rotate-180' : ''}`} />
                 </Link>
                 <div
-                  className={`absolute top-full left-1/2 -translate-x-1/2 w-[1100px] bg-white dark:bg-slate-900 shadow-2xl border-t border-amber-600 transition-all duration-300 transform z-50 rounded-b-sm ${isDesktopProductsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-4'
+                  className={`absolute top-full left-1/2 -translate-x-1/2 w-[1240px] max-w-[95vw] bg-white dark:bg-slate-900 shadow-2xl border-t border-amber-600 transition-all duration-300 transform z-50 rounded-b-sm ${isDesktopProductsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible translate-y-4'
                     }`}
                 >
-                  <div className="p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative overflow-hidden">
+                  <div className="p-7 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 relative overflow-hidden">
                     <div className="absolute -bottom-10 -right-10 text-9xl font-normal text-gray-100/50 dark:text-gray-800/20 select-none pointer-events-none">G</div>
 
-                    {/* Column 1: WALL PANELS (Indoor) */}
+                    {/* Column 1: NEW */}
                     <div>
-                      <h3 className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Wall Panels (Indoor)</h3>
+                      <div className="h-7 flex items-center mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">
+                        <div className="w-[140px] flex justify-center">
+                          <span className="relative inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 text-neutral-950 shadow-[0_0_12px_rgba(245,158,11,0.6)] border border-yellow-200/90 animate-pulse">
+                            <span className="w-1.5 h-1.5 rounded-full bg-neutral-950 animate-ping" />
+                            NEW
+                          </span>
+                        </div>
+                      </div>
+                      <ul className="space-y-3">
+                        <li>
+                          <Link
+                            href="/wall-panels/primo"
+                            onClick={() => setIsDesktopProductsOpen(false)}
+                            className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"
+                          >
+                            <div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>
+                            <span>Primo Plain (12&quot;)</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/wall-panels/primo-fluted"
+                            onClick={() => setIsDesktopProductsOpen(false)}
+                            className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"
+                          >
+                            <div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>
+                            <span>Primo Fluted (3D)</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href="/wall-panels/elite"
+                            onClick={() => setIsDesktopProductsOpen(false)}
+                            className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"
+                          >
+                            <div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>
+                            <span>Elite Acoustic</span>
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+
+                    {/* Column 2: WALL PANELS (Indoor) */}
+                    <div>
+                      <h3 className="h-7 flex items-center text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Wall Panels (Indoor)</h3>
                       <ul className="space-y-3">
                         <li><Link href="/products/wall-panels" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Wall Panels</Link></li>
                         <li><Link href="/products/upfit-panels" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Upfit Panels</Link></li>
@@ -224,9 +268,9 @@ export default function Navbar() {
                       </ul>
                     </div>
 
-                    {/* Column 2: EXTERIOR & OUTDOOR */}
+                    {/* Column 3: EXTERIOR & OUTDOOR */}
                     <div>
-                      <h3 className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Exterior & Outdoor</h3>
+                      <h3 className="h-7 flex items-center text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Exterior & Outdoor</h3>
                       <ul className="space-y-3">
                         <li><Link href="/products/designer-grass" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Designer Grass</Link></li>
                         <li><Link href="/products/wpc-exterior-louvers" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Exterior Louvers</Link></li>
@@ -235,9 +279,9 @@ export default function Navbar() {
                       </ul>
                     </div>
 
-                    {/* Column 3: PREMIUM FLOORING */}
+                    {/* Column 4: PREMIUM FLOORING */}
                     <div>
-                      <h3 className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Premium Flooring</h3>
+                      <h3 className="h-7 flex items-center text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Premium Flooring</h3>
                       <ul className="space-y-3">
                         <li><Link href="/products/spc-flooring" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>SPC Flooring</Link></li>
                         <li><Link href="/products/laminate-flooring" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Laminate Flooring</Link></li>
@@ -246,9 +290,9 @@ export default function Navbar() {
                       </ul>
                     </div>
 
-                    {/* Column 4: ARCHITECTURAL CEILINGS */}
+                    {/* Column 5: ARCHITECTURAL CEILINGS */}
                     <div>
-                      <h3 className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Architectural Ceilings</h3>
+                      <h3 className="h-7 flex items-center text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Architectural Ceilings</h3>
                       <ul className="space-y-3">
                         <li><Link href="/products/wpc-baffle-ceiling" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Baffle Ceiling</Link></li>
                         <li><Link href="/products/wpc-timber-tubes" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>WPC Timber Tubes</Link></li>
@@ -376,6 +420,22 @@ export default function Navbar() {
             <div className={`overflow-hidden transition-all duration-300 ${isProductsOpen ? 'max-h-[2000px] mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
               <div className="flex flex-col gap-6 pl-4 border-l border-amber-100 dark:border-gray-800">
                 <div className="space-y-4">
+                  {/* Mobile Section 1: NEW */}
+                  <div className="space-y-3 pb-2 border-b border-gray-100 dark:border-gray-800">
+                    <div className="flex items-center">
+                      <span className="relative inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[9px] font-black uppercase tracking-wider bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 text-neutral-950 shadow-[0_0_12px_rgba(245,158,11,0.6)] border border-yellow-200/90 animate-pulse">
+                        <span className="w-1 h-1 rounded-full bg-neutral-950 animate-ping" />
+                        NEW
+                      </span>
+                    </div>
+                    <div className="flex flex-col gap-2 pl-1">
+                      <Link href="/wall-panels/primo" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Primo Plain (12&quot;)</Link>
+                      <Link href="/wall-panels/primo-fluted" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Primo Fluted (3D)</Link>
+                      <Link href="/wall-panels/elite" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Elite Acoustic</Link>
+                    </div>
+                  </div>
+
+                  {/* Mobile Section 2: Wall Panels (Indoor) */}
                   <div className="space-y-3">
                     <h4 className="text-[10px] font-bold text-amber-600 uppercase tracking-widest">Wall Panels (Indoor)</h4>
                     <div className="flex flex-col gap-2">

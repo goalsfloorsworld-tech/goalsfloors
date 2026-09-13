@@ -595,8 +595,8 @@ export default function HeroSection() {
                 <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full border border-gray-300 dark:border-slate-700 flex items-center justify-center mb-2 sm:mb-3 text-gray-700 dark:text-gray-300 bg-white/40 dark:bg-slate-800/40 shadow-sm transition-transform hover:scale-105">
                   <feat.icon className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={1.5} />
                 </div>
-                <div className="text-[10px] sm:text-[13px] font-bold text-gray-900 dark:text-gray-100 leading-tight mb-0.5">{feat.title}</div>
-                <div className="text-[7px] sm:text-[9px] text-gray-500 dark:text-gray-400 font-bold leading-tight uppercase max-w-[80px] mx-auto">{feat.subtitle}</div>
+                <div className="text-[12px] sm:text-[13px] font-bold text-gray-900 dark:text-gray-100 leading-tight mb-0.5">{feat.title}</div>
+                <div className="text-[7.5px] sm:text-[9px] text-gray-500 dark:text-gray-400 font-bold leading-tight uppercase max-w-[80px] mx-auto">{feat.subtitle}</div>
               </div>
             ))}
           </motion.div>
@@ -608,17 +608,17 @@ export default function HeroSection() {
           >
             <Link 
               href="/contact" 
-              className="flex-1 flex items-center justify-center gap-1 sm:gap-2 bg-[#E17100] hover:bg-[#b85a1f] text-white px-3 py-3 sm:px-6 sm:py-4 rounded-md font-semibold text-[10px] sm:text-sm transition-colors shadow-lg shadow-[#E17100]/20 text-center"
+              className="flex-1 flex items-center justify-center gap-1 sm:gap-2 bg-[#E17100] hover:bg-[#b85a1f] text-white px-2.5 py-3 sm:px-6 sm:py-4 rounded-md font-semibold text-[11.5px] sm:text-sm tracking-tight sm:tracking-normal transition-colors shadow-lg shadow-[#E17100]/20 text-center whitespace-nowrap"
             >
               BOOK CONSULTATION
-              <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
+              <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 shrink-0" />
             </Link>
             <Link 
               href="/products" 
-              className="flex-1 flex items-center justify-center gap-1 sm:gap-2 border border-gray-400 dark:border-slate-600 hover:border-gray-600 dark:hover:border-slate-400 text-gray-900 dark:text-white bg-white/30 dark:bg-slate-800/30 hover:bg-white/60 dark:hover:bg-slate-800/60 px-3 py-3 sm:px-6 sm:py-4 rounded-md font-semibold text-[10px] sm:text-sm transition-colors backdrop-blur-sm text-center"
+              className="flex-1 flex items-center justify-center gap-1 sm:gap-2 border border-gray-400 dark:border-slate-600 hover:border-gray-600 dark:hover:border-slate-400 text-gray-900 dark:text-white bg-white/30 dark:bg-slate-800/30 hover:bg-white/60 dark:hover:bg-slate-800/60 px-2.5 py-3 sm:px-6 sm:py-4 rounded-md font-semibold text-[11.5px] sm:text-sm tracking-tight sm:tracking-normal transition-colors backdrop-blur-sm text-center whitespace-nowrap"
             >
               EXPLORE PRODUCTS
-              <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
+              <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 shrink-0" />
             </Link>
           </motion.div>
         </motion.div>

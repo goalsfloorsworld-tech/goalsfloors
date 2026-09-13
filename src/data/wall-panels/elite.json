@@ -1,0 +1,489 @@
+{
+  "slug": "elite",
+  "name": "Elite Collection",
+  "title": "Elite 12-Inch Seamless PVC & Fluted Architectural Wall Panels",
+  "subtitle": "21 Luxury Marble, Tactile Fabric & Deep Fluted Finishes with 100% Anti-Seelan Protection",
+  "tagline": "India's premier designer wall cladding. Featuring India's first tactile fabric finish, Italian marble aesthetics, and architectural fluted louvers for modern homes in Gurgaon & Delhi NCR.",
+  "badge": "India's 1st Fabric & Marble PVC Matrix",
+  "startingPrice": "₹549",
+  "pricePerSqFt": "₹58 – ₹110 / sq.ft.",
+  "aestheticTone": "cinematic",
+  "themeColor": "#d4af37",
+  "glowColor": "rgba(212, 175, 55, 0.35)",
+  "accentGradient": "from-amber-600/30 via-stone-900/50 to-black",
+  "description": "Engineered for luxury residences, corporate offices, and moisture-prone homes across Gurgaon and Delhi NCR. The Elite Collection pairs extra-wide 12-inch (300mm) seamless PVC cladding with deep architectural fluted panels. Offering India's first authentic tactile fabric texture alongside Italian marble and rich woodgrains, Elite delivers zero-maintenance elegance with certified 100% waterproof and termite-proof durability.",
+  "heroImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776777064/GF-401_Premium_Pvc_Panel_In_Gurgaon.png",
+  "roomImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832080/Fabric_Texture_Wall_Panels.jpg",
+  "textureImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832086/Twelve_Inch_Pvc_Panel.jpg",
+  "dimensions": {
+    "height": "9.5 Feet (2950mm)",
+    "width": "12 Inches (300mm)",
+    "thickness": "5mm Seamless / 9mm Heavy Flute",
+    "fluteSpacing": "Seamless 12\" Breadth & 17mm Acoustic Pitch"
+  },
+  "features": [
+    {
+      "title": "100% Seelan & Moisture Immunity",
+      "description": "Closed-cell virgin polymer core prevents water absorption, ending paint peeling and dampness permanently.",
+      "stat": "0.0% Water Absorption"
+    },
+    {
+      "title": "India's 1st Tactile Fabric Weave",
+      "description": "Pioneering micro-textured fabric film that delivers the tactile luxury of linen without staining or dust entrapment.",
+      "stat": "Tactile Linen Weave"
+    },
+    {
+      "title": "Extra-Wide 12-Inch Monolithic Breadth",
+      "description": "Substantial 300mm width cuts visible joints in half compared to standard 6-inch cladding for an expansive look.",
+      "stat": "300mm Seamless Span"
+    },
+    {
+      "title": "21 Curated Designer Finishes",
+      "description": "Complete palette spanning Statuario marbles, warm sandstones, luxury florals, and acoustic fluted hardwoods.",
+      "stat": "21 Designer Shades"
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer-diamond-shield",
+      "name": "Diamond Scratch Armor UV Shield",
+      "badge": "Surface Protection",
+      "thickness": "0.35mm",
+      "description": "High-durability thermal UV shield protecting against surface abrasions, direct sunlight fading, and household stains.",
+      "accentColor": "#f59e0b"
+    },
+    {
+      "id": "layer-architectural-foil",
+      "name": "High-Definition Architectural Foil",
+      "badge": "Tactile & Visual",
+      "thickness": "0.55mm",
+      "description": "Ultra-realistic European hot-stamped decorative foil featuring synchronized marble veining, fabric weaves, and wood pores.",
+      "accentColor": "#d97706"
+    },
+    {
+      "id": "layer-reinforcement",
+      "name": "Rigid Closed-Cell Polymer Extrusion Core",
+      "badge": "Structural Matrix",
+      "thickness": "4.1mm",
+      "description": "Reinforced hollow-cell polymer matrix engineered for high impact resistance while maintaining lightweight thermal insulation.",
+      "accentColor": "#b45309"
+    },
+    {
+      "id": "layer-backing",
+      "name": "Moisture-Lock Vapor Barrier Backing",
+      "badge": "Anti-Seelan Base",
+      "thickness": "Integrated",
+      "description": "Hydrophobic composite reverse seal that prevents moisture capillary action from damp masonry walls.",
+      "accentColor": "#78350f"
+    }
+  ],
+  "specs": [
+    {
+      "label": "Wholesale Price Gurgaon",
+      "value": "₹549 – ₹599 per panel",
+      "detail": "Direct factory pricing for residential & commercial builders"
+    },
+    {
+      "label": "Coverage per Panel",
+      "value": "9.52 sq.ft. (2950 × 300 mm)",
+      "detail": "Fast-track installation with 50% fewer joints"
+    },
+    {
+      "label": "Material Composition",
+      "value": "100% Virgin PVC & WPC Polymer Matrix",
+      "detail": "Zero organic wood fibers, zero rot, 100% termite proof"
+    },
+    {
+      "label": "Fire Retardant Rating",
+      "value": "Class B1 Self-Extinguishing",
+      "detail": "Meets commercial interior safety and toxicity standards"
+    },
+    {
+      "label": "Formaldehyde & VOCs",
+      "value": "Grade E0 Certified (Zero Formaldehyde)",
+      "detail": "Odor-free, non-toxic, safe for infants and elderly bedrooms"
+    },
+    {
+      "label": "Interlocking System",
+      "value": "Precision Tongue-and-Groove Interlock",
+      "detail": "Concealed fastener installation with flawless alignment"
+    }
+  ],
+  "colorways": [
+    {
+      "id": "statuario-marble",
+      "name": "Statuario & Gold Onyx Marble",
+      "finish": "High-Gloss Italian Marble Finish",
+      "colorHex": "#dcd3c8",
+      "heroImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776777064/GF-401_Premium_Pvc_Panel_In_Gurgaon.png",
+      "roomImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832086/Twelve_Inch_Pvc_Panel.jpg",
+      "textureImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832079/Premium_Wall_Panels.jpg",
+      "tagline": "Seamless Italian marble grandeur with zero maintenance and lifetime seelan immunity."
+    },
+    {
+      "id": "fabric-weave",
+      "name": "Artisan Tactile Fabric Weave",
+      "finish": "India's First Micro-Linen Texture",
+      "colorHex": "#cfc6b8",
+      "heroImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776777057/GF-411_Fabric_Texture_Pvc_Panel.png",
+      "roomImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832080/Fabric_Texture_Wall_Panels.jpg",
+      "textureImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832077/Pvc_Panel_Installed_in_Bedroom.jpg",
+      "tagline": "India's pioneering tactile fabric wall cladding. The softness of linen with 100% waterproof polymer armor."
+    },
+    {
+      "id": "gold-filigree",
+      "name": "Champagne Gold Floral Filigree",
+      "finish": "Metallic Warm Luster Relief",
+      "colorHex": "#d8c49d",
+      "heroImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776777061/GF-404_Gold_Flower_Design_Pvc_Panel.png",
+      "roomImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832072/Wall_Panels_For_Tv_Cabinet.jpg",
+      "textureImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832071/Latest_Wall_Panels_For_Bedroom.jpg",
+      "tagline": "Regal warm metallic accents designed for luxury living room backdrops and master suite headboards."
+    },
+    {
+      "id": "burmese-teak-fluted",
+      "name": "Burmese Teak Acoustic Flute",
+      "finish": "Deep 17mm Shadow Louvers",
+      "colorHex": "#9e6f42",
+      "heroImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_716.png",
+      "roomImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1776832082/Premium_Fluted_Panel.jpg",
+      "textureImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/v1772477068/Imageclad_Wpc_Fluted_Panel.png",
+      "tagline": "Precision-fluted monolithic presence with acoustic groove channels and lifetime moisture immunity."
+    }
+  ],
+  "catalogVariants": [
+    {
+      "id": "gf-401",
+      "code": "GF-401",
+      "name": "Elite PVC GF-401 Marble Royale",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Luxury Marble",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776777064/GF-401_Premium_Pvc_Panel_In_Gurgaon.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776777064/GF-401_Premium_Pvc_Panel_In_Gurgaon.png",
+      "colorHex": "#dcd3c8",
+      "description": "GF-401 Luxury Marble Royale 12-inch wide seamless PVC panel. 100% damp-proof (anti-seelan) and termite-proof."
+    },
+    {
+      "id": "gf-402",
+      "code": "GF-402",
+      "name": "Elite PVC GF-402 Ivory Classic",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Seamless Ivory Finish",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776777063/Premium_Pvc_Panel_In_gurgaon.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776777063/Premium_Pvc_Panel_In_gurgaon.png",
+      "colorHex": "#e6ddd4",
+      "description": "GF-402 Ivory Classic 12-inch wide seamless PVC panel. Sealed polymer core provides total immunity against peeling wall moisture."
+    },
+    {
+      "id": "gf-403",
+      "code": "GF-403",
+      "name": "Elite PVC GF-403 Silver Metallic",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Brushed Silver Luster",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776777062/GF-403_Silver_Color_Pvc_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776777062/GF-403_Silver_Color_Pvc_Panel.png",
+      "colorHex": "#c4c7cc",
+      "description": "GF-403 Silver Metallic shimmer panel. Reflective architectural sheen ideal for modern executive bedrooms and lobbies."
+    },
+    {
+      "id": "gf-404",
+      "code": "GF-404",
+      "name": "Elite PVC GF-404 Gold Botanical Filigree",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Designer Gold Floral",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776777061/GF-404_Gold_Flower_Design_Pvc_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776777061/GF-404_Gold_Flower_Design_Pvc_Panel.png",
+      "colorHex": "#d8c49d",
+      "description": "GF-404 Gold Botanical Filigree panel. Intricate warm gold floral relief on a cream marble background."
+    },
+    {
+      "id": "gf-405",
+      "code": "GF-405",
+      "name": "Elite PVC GF-405 Statuario Marble",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Italian Statuario Look",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776777061/GF-305_Marble_Look_Premium_Pvc_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776777061/GF-305_Marble_Look_Premium_Pvc_Panel.png",
+      "colorHex": "#ece9e2",
+      "description": "GF-405 Statuario Marble aesthetic. High-definition grey Italian marble veins across an unbroken 300mm breadth."
+    },
+    {
+      "id": "gf-406",
+      "code": "GF-406",
+      "name": "Elite PVC GF-406 Natural Travertine",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Warm Travertine",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776777059/GF-406_Premium_pvc_panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776777059/GF-406_Premium_pvc_panel.png",
+      "colorHex": "#d2c5b4",
+      "description": "GF-406 Natural Travertine stone look. Earthy porous limestone texture rendered in 100% waterproof PVC."
+    },
+    {
+      "id": "gf-407",
+      "code": "GF-407",
+      "name": "Elite PVC GF-407 Golden Onyx",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Golden Onyx Vein",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776777059/GF_-_407_12_inch_Premium_pvc_panel_goals_floors.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776777059/GF_-_407_12_inch_Premium_pvc_panel_goals_floors.png",
+      "colorHex": "#cfba9b",
+      "description": "GF-407 Golden Onyx translucent stone style. Rich amber veining creates an opulent luxury hotel atmosphere."
+    },
+    {
+      "id": "gf-408",
+      "code": "GF-408",
+      "name": "Elite PVC GF-408 Modern Geometric Geo",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Contemporary Geo",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776777058/GF-408_Pvc_Panel_Supplier_in_Gurgaon.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776777058/GF-408_Pvc_Panel_Supplier_in_Gurgaon.png",
+      "colorHex": "#ded9d0",
+      "description": "GF-408 Modern Geometric texture. Subtle linear intersecting motifs that accentuate ambient vertical lighting."
+    },
+    {
+      "id": "gf-409",
+      "code": "GF-409",
+      "name": "Elite PVC GF-409 Venetian Plaster Look",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Venetian Stucco",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776777058/GF-409_Pvc_Panel_Latest_Texture_Design.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776777058/GF-409_Pvc_Panel_Latest_Texture_Design.png",
+      "colorHex": "#d6ccc0",
+      "description": "GF-409 Hand-troweled Venetian plaster texture. Warm minimalist stone look without the cost or cracking of wet plaster."
+    },
+    {
+      "id": "gf-410",
+      "code": "GF-410",
+      "name": "Elite PVC GF-410 Warm Sandstone Cream",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Warm Sandstone",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776777058/GF-410_Cream_Color_Pvc_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776777058/GF-410_Cream_Color_Pvc_Panel.png",
+      "colorHex": "#e2d7c5",
+      "description": "GF-410 Warm Sandstone Cream. Soft beige undertones designed for brightening windowless corridors and cozy master bedrooms."
+    },
+    {
+      "id": "gf-411",
+      "code": "GF-411",
+      "name": "Elite PVC GF-411 Tactile Fabric Texture",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "India's 1st Fabric Tactile Weave",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776777057/GF-411_Fabric_Texture_Pvc_Panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776777057/GF-411_Fabric_Texture_Pvc_Panel.png",
+      "colorHex": "#cfc6b8",
+      "description": "GF-411 India's first authentic fabric texture PVC panel. Micro-textured linen weave look combined with 100% waterproof zero-maintenance durability."
+    },
+    {
+      "id": "gf-412",
+      "code": "GF-412",
+      "name": "Elite PVC GF-412 Brushed Slate Charcoal",
+      "type": "plain",
+      "thickness": "5mm Seamless Profile",
+      "dimensions": "2950 × 300 mm",
+      "badge": "12-Inch Brushed Slate",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/v1776777056/GF_-_412_12_inch_pvc_panel.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/v1776777056/GF_-_412_12_inch_pvc_panel.png",
+      "colorHex": "#7e8389",
+      "description": "GF-412 Brushed Slate Charcoal. Deep industrial stone slate finish engineered for luxury TV feature walls and bar backdrops."
+    },
+    {
+      "id": "fp-714",
+      "code": "FP-714",
+      "name": "Elite Fluted FP-714 Scandinavian Birch",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "Architectural Fluted Slat",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_714.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_714.png",
+      "colorHex": "#c8a57a",
+      "description": "FP-714 Scandinavian Birch architectural fluted panel with deep acoustic groove channels and 100% moisture immunity."
+    },
+    {
+      "id": "fp-715",
+      "code": "FP-715",
+      "name": "Elite Fluted FP-715 Smoked Honey Oak",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "Architectural Fluted Slat",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_715.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_715.png",
+      "colorHex": "#b88c5a",
+      "description": "FP-715 Smoked Honey Oak fluted panel. Warm caramel grain tones that add acoustic depth and luxury warmth to living spaces."
+    },
+    {
+      "id": "fp-716",
+      "code": "FP-716",
+      "name": "Elite Fluted FP-716 Royal Burmese Teak",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "Architectural Fluted Slat",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_716.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_716.png",
+      "colorHex": "#9e6f42",
+      "description": "FP-716 Royal Burmese Teak fluted panel. Deep resonant wood relief engineered with heavy A+ composite core."
+    },
+    {
+      "id": "fp-717",
+      "code": "FP-717",
+      "name": "Elite Fluted FP-717 Antique Walnut",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "Architectural Fluted Slat",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_717.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_717.png",
+      "colorHex": "#7e5334",
+      "description": "FP-717 Antique Walnut fluted panel. Deep chocolate tone with synchronized grain grooves for cinematic TV media walls."
+    },
+    {
+      "id": "fp-718",
+      "code": "FP-718",
+      "name": "Elite Fluted FP-718 Bleached Nordic Ash",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "Architectural Fluted Slat",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_718.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_718.png",
+      "colorHex": "#d6c8b4",
+      "description": "FP-718 Bleached Nordic Ash fluted panel. Clean Japandi minimal aesthetic with subtle light grain."
+    },
+    {
+      "id": "fp-719",
+      "code": "FP-719",
+      "name": "Elite Fluted FP-719 Espresso Roast",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "Architectural Fluted Slat",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_719.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_719.png",
+      "colorHex": "#5c3d28",
+      "description": "FP-719 Espresso Roast fluted panel. Intense dark wood louvers providing maximum contrast under warm accent lighting."
+    },
+    {
+      "id": "fp-720",
+      "code": "FP-720",
+      "name": "Elite Fluted FP-720 Golden Cedar",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "Architectural Fluted Slat",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_720.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_720.png",
+      "colorHex": "#c49352",
+      "description": "FP-720 Golden Cedar fluted panel. Radiant golden grain offering dramatic vertical shadow lines."
+    },
+    {
+      "id": "fp-721",
+      "code": "FP-721",
+      "name": "Elite Fluted FP-721 Raw Highland Pine",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "Architectural Fluted Slat",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_721.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_721.png",
+      "colorHex": "#bca07e",
+      "description": "FP-721 Raw Highland Pine fluted panel. Organic timber texture with micro-embossed grain ridges."
+    },
+    {
+      "id": "fp-722",
+      "code": "FP-722",
+      "name": "Elite Fluted FP-722 Smoked Charcoal Ash",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "Architectural Fluted Slat",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_722.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_722.png",
+      "colorHex": "#46484d",
+      "description": "FP-722 Smoked Charcoal Ash fluted panel. High-end modern grey-black architectural louvers for luxury minimalist interiors."
+    }
+  ],
+  "roomLightingModes": [
+    {
+      "id": "warm-cove",
+      "name": "Warm Accent Cove (2700K)",
+      "tempKelvin": "2700K",
+      "ambientColor": "#f59e0b",
+      "glowFilter": "drop-shadow(0 0 50px rgba(245, 158, 11, 0.45))",
+      "description": "Accentuates the natural veining of Statuario marble and the golden highlights of floral filigree."
+    },
+    {
+      "id": "studio-neutral",
+      "name": "Executive Studio Daylight (4500K)",
+      "tempKelvin": "4500K",
+      "ambientColor": "#e0f2fe",
+      "glowFilter": "drop-shadow(0 0 40px rgba(224, 242, 254, 0.4))",
+      "description": "Pristine, non-reflective balanced illumination ideal for executive office suites and luxury boardrooms."
+    },
+    {
+      "id": "lounge-mood",
+      "name": "Stealth Noir Cinema Mood (2200K)",
+      "tempKelvin": "2200K",
+      "ambientColor": "#7c2d12",
+      "glowFilter": "drop-shadow(0 0 55px rgba(124, 45, 18, 0.45))",
+      "description": "Ultra-low warm backlighting that maximizes depth and contrast along fluted shadow channels."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the price of Elite PVC and Fluted wall panels in Gurgaon?",
+      "answer": "In Gurgaon and Delhi NCR, Elite 12-inch PVC panels are priced starting at ₹549 per panel (approx. ₹58/sq.ft wholesale), while Elite Fluted panels are priced at ₹599 per panel (approx. ₹65 to ₹95/sq.ft). As a direct wholesale supplier, Goals Floors provides factory-direct rates with bulk project discounts for Gurgaon residential apartments, villas, and commercial spaces."
+    },
+    {
+      "question": "What makes the Elite Fabric Texture panel (GF-411) unique in India?",
+      "answer": "The GF-411 is India's first authentic tactile fabric texture wall panel. Unlike standard wallpaper that stains, rips, or peels due to monsoon humidity, the GF-411 features a micro-embossed linen weave texture backed by a 100% waterproof closed-cell polymer core. It delivers the soft tactile luxury of fabric with wipe-clean polymer durability."
+    },
+    {
+      "question": "Are Elite wall panels completely waterproof and immune to dampness (seelan)?",
+      "answer": "Yes, 100%. Elite wall panels are manufactured from high-density virgin polymer PVC and WPC composite with zero organic wood fillers. They have a certified 0.0% water absorption rate (ASTM-D570), making them immune to swelling, warping, fungus, and peeling paint caused by severe wall dampness (seelan) in Gurgaon basements and ground floors."
+    },
+    {
+      "question": "What are the exact dimensions and wall coverage of Elite panels?",
+      "answer": "Each Elite panel measures 9.5 feet in length by 12 inches in width (2950 mm × 300 mm). A single panel covers approximately 9.52 sq.ft. The 300mm extra-wide format significantly reduces visible joints compared to standard 6-inch panels, creating a modern unbroken architectural surface from floor to ceiling."
+    },
+    {
+      "question": "Can Elite wall panels be installed over damaged seepage walls or uneven plaster?",
+      "answer": "Yes. If the wall has severe paint peeling, crumbling plaster, or dampness, our professional installation team in Gurgaon mounts a lightweight aluminum or moisture-treated plywood sub-grid before fixing the panels. This isolates the decorative panels from damp masonry, ensuring a perfectly plumb, permanent finish."
+    },
+    {
+      "question": "What is the difference between Elite 12-Inch PVC and Elite Fluted panels?",
+      "answer": "Elite 12-Inch PVC panels (GF-401 to GF-412) feature a smooth, seamless monolithic profile with luxury marble, fabric, and stone textures. Elite Fluted panels (FP-714 to FP-722) feature deep vertical architectural ridges (flutes) that create dramatic shadow play and help diffuse ambient acoustic echoes in media rooms and TV unit backdrops."
+    },
+    {
+      "question": "How do you clean and maintain Elite wall panels?",
+      "answer": "Elite panels require virtually zero maintenance. Thanks to the Diamond Scratch Armor UV protective topcoat, dust, oil, and fingerprints do not penetrate the surface. Routine cleaning requires only a quick wipe with a damp microfiber cloth. No repainting, varnishing, or chemical cleaners are ever required."
+    },
+    {
+      "question": "Where can I see physical samples of Elite wall panels in Gurgaon?",
+      "answer": "You can experience all 21 Elite finishes in person at the Goals Floors flagship experience center in Gurugram, Haryana. We also offer on-site catalog inspection with physical sample planks delivered directly to your home, architect's office, or construction site in Gurgaon, Delhi NCR, Faridabad, and Noida."
+    }
+  ]
+}

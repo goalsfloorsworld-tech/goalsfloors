@@ -1,0 +1,383 @@
+{
+  "slug": "primo-fluted",
+  "name": "Primo Fluted Panels",
+  "title": "Primo 17mm Architectural Fluted WPC Wall Panels",
+  "subtitle": "13 Classic Wood Finishes with Deep Fluting & Acoustic Grooves",
+  "tagline": "Precision-fluted monolithic presence with acoustic groove channels and lifetime moisture immunity in 13 natural wood finishes.",
+  "badge": "17mm Fluted Slat Architecture",
+  "startingPrice": "₹599",
+  "pricePerSqFt": "₹95 – ₹130 / sq.ft.",
+  "aestheticTone": "dark",
+  "themeColor": "#b48c65",
+  "glowColor": "rgba(180, 140, 101, 0.35)",
+  "accentGradient": "from-amber-800/30 via-stone-900/50 to-black",
+  "description": "Experience true architectural shadow play. Primo Fluted Panels feature deep 17mm vertical flutes with precision acoustic groove channels, delivering the rich texture of solid wood louvers with 100% waterproof composite durability.",
+  "heroImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_701.png",
+  "roomImage": "/images/wall-panels/primo-fluted-room.jpg",
+  "textureImage": "/images/wall-panels/primo-fluted-texture.jpg",
+  "dimensions": {
+    "height": "9.5 Feet (2950mm)",
+    "width": "12 Inches (300mm)",
+    "thickness": "9mm Heavy Base (17mm Flute Depth)",
+    "fluteSpacing": "24mm Pitch Fluting"
+  },
+  "features": [
+    {
+      "title": "17mm Fluted Slat Architecture",
+      "description": "Dramatic vertical relief creates striking architectural shadows under cove lighting.",
+      "stat": "17mm Flute Depth"
+    },
+    {
+      "title": "100% Damp & Termite Proof",
+      "description": "Heavy WPC polymer matrix will not rot, swell, or warp in monsoon humidity.",
+      "stat": "0.0% Moisture Uptake"
+    },
+    {
+      "title": "Acoustic Reflection Diffusion",
+      "description": "Concave-convex flutes scatter sound waves, dampening ambient room flutter and echo.",
+      "stat": "-28% Ambient Echo"
+    },
+    {
+      "title": "13 Natural Wood Grain Shades",
+      "description": "From smoked walnut to Scandinavian natural oak and antique teak (FP-701 to FP-713).",
+      "stat": "13 Classic Finishes"
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer-shield",
+      "name": "PUR Diamond Scratch Shield",
+      "badge": "Protective Outer",
+      "thickness": "0.4mm",
+      "description": "High-durability thermal shield protecting the fluted ridges against wear, scratches, and UV fading.",
+      "accentColor": "#f59e0b"
+    },
+    {
+      "id": "layer-grain",
+      "name": "Synchronized Wood Grain Foil",
+      "badge": "Tactile Timber",
+      "thickness": "0.6mm",
+      "description": "Ultra-realistic natural wood pore foil with authentic tactile grain embossed along each flute.",
+      "accentColor": "#d97706"
+    },
+    {
+      "id": "layer-wpc",
+      "name": "Heavy Structural WPC Core",
+      "badge": "Solid Substrate",
+      "thickness": "8.0mm",
+      "description": "High-density Wood Plastic Composite core engineered for maximum structural rigidity and fire retardance.",
+      "accentColor": "#b45309"
+    },
+    {
+      "id": "layer-groove",
+      "name": "Precision Interlocking Flute Tongue",
+      "badge": "Mounting Matrix",
+      "thickness": "1.0mm",
+      "description": "Concealed interlocking edge that creates uninterrupted vertical flute rhythm across any wall width.",
+      "accentColor": "#92400e"
+    }
+  ],
+  "specs": [
+    {
+      "label": "Material Composition",
+      "value": "High-Density WPC (Wood-Polymer Composite)",
+      "detail": "Class-A termite and rot immune"
+    },
+    {
+      "label": "Standard Plank Size",
+      "value": "9.5 ft × 12 in (2950 × 300 mm)",
+      "detail": "Full floor-to-ceiling single drop"
+    },
+    {
+      "label": "Flute Depth",
+      "value": "17 mm Deep Profile (9mm base)",
+      "detail": "High architectural shadow relief"
+    },
+    {
+      "label": "Available Shades",
+      "value": "13 Fluted Finishes (FP-701 to FP-713)",
+      "detail": "Classic Wood & Teak Series"
+    },
+    {
+      "label": "Fire Resistance",
+      "value": "Class B1 Flame Retardant",
+      "detail": "Self-extinguishing polymer matrix"
+    },
+    {
+      "label": "Warranty",
+      "value": "10-Year Residential & Commercial",
+      "detail": "Guaranteed against moisture & termites"
+    }
+  ],
+  "colorways": [
+    {
+      "id": "fp-701",
+      "name": "FP-701 Natural Timber",
+      "finish": "Classic Golden Oak Flutes",
+      "colorHex": "#b48c65",
+      "heroImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_701.png",
+      "roomImage": "/images/wall-panels/primo-fluted-room.jpg",
+      "textureImage": "/images/wall-panels/primo-fluted-texture.jpg",
+      "tagline": "Natural blonde oak flutes with black shadow grooves"
+    },
+    {
+      "id": "fp-705",
+      "name": "FP-705 Smoked Walnut",
+      "finish": "Deep Architectural Walnut",
+      "colorHex": "#5c3d28",
+      "heroImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_705.png",
+      "roomImage": "/images/wall-panels/primo-fluted-room.jpg",
+      "textureImage": "/images/wall-panels/primo-fluted-texture.jpg",
+      "tagline": "Rich dark walnut flutes for luxury penthouse feature walls"
+    },
+    {
+      "id": "fp-708",
+      "name": "FP-708 Antique Teak",
+      "finish": "Warm Amber Teak",
+      "colorHex": "#82512a",
+      "heroImage": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_708.png",
+      "roomImage": "/images/wall-panels/primo-fluted-room.jpg",
+      "textureImage": "/images/wall-panels/primo-fluted-texture.jpg",
+      "tagline": "Warm amber teak flutes with authentic wood pore relief"
+    }
+  ],
+  "catalogVariants": [
+    {
+      "id": "fp-701",
+      "code": "FP-701",
+      "name": "Primo Fluted FP-701",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "17mm Fluted Slat Architecture",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_701.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_701.png",
+      "colorHex": "#b48c65",
+      "description": "FP-701 Architectural Fluted WPC Panel with 17mm flute depth and acoustic groove channels. 100% waterproof and termite-proof."
+    },
+    {
+      "id": "fp-702",
+      "code": "FP-702",
+      "name": "Primo Fluted FP-702",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "17mm Fluted Slat Architecture",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_702.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_702.png",
+      "colorHex": "#b48c65",
+      "description": "FP-702 Architectural Fluted WPC Panel with 17mm flute depth and acoustic groove channels. 100% waterproof and termite-proof."
+    },
+    {
+      "id": "fp-703",
+      "code": "FP-703",
+      "name": "Primo Fluted FP-703",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "17mm Fluted Slat Architecture",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_703.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_703.png",
+      "colorHex": "#b48c65",
+      "description": "FP-703 Architectural Fluted WPC Panel with 17mm flute depth and acoustic groove channels. 100% waterproof and termite-proof."
+    },
+    {
+      "id": "fp-704",
+      "code": "FP-704",
+      "name": "Primo Fluted FP-704",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "17mm Fluted Slat Architecture",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_704.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_704.png",
+      "colorHex": "#b48c65",
+      "description": "FP-704 Architectural Fluted WPC Panel with 17mm flute depth and acoustic groove channels. 100% waterproof and termite-proof."
+    },
+    {
+      "id": "fp-705",
+      "code": "FP-705",
+      "name": "Primo Fluted FP-705",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "17mm Fluted Slat Architecture",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_705.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_705.png",
+      "colorHex": "#b48c65",
+      "description": "FP-705 Architectural Fluted WPC Panel with 17mm flute depth and acoustic groove channels. 100% waterproof and termite-proof."
+    },
+    {
+      "id": "fp-706",
+      "code": "FP-706",
+      "name": "Primo Fluted FP-706",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "17mm Fluted Slat Architecture",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_706.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_706.png",
+      "colorHex": "#b48c65",
+      "description": "FP-706 Architectural Fluted WPC Panel with 17mm flute depth and acoustic groove channels. 100% waterproof and termite-proof."
+    },
+    {
+      "id": "fp-707",
+      "code": "FP-707",
+      "name": "Primo Fluted FP-707",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "17mm Fluted Slat Architecture",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_707.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_707.png",
+      "colorHex": "#b48c65",
+      "description": "FP-707 Architectural Fluted WPC Panel with 17mm flute depth and acoustic groove channels. 100% waterproof and termite-proof."
+    },
+    {
+      "id": "fp-708",
+      "code": "FP-708",
+      "name": "Primo Fluted FP-708",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "17mm Fluted Slat Architecture",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_708.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_708.png",
+      "colorHex": "#b48c65",
+      "description": "FP-708 Architectural Fluted WPC Panel with 17mm flute depth and acoustic groove channels. 100% waterproof and termite-proof."
+    },
+    {
+      "id": "fp-709",
+      "code": "FP-709",
+      "name": "Primo Fluted FP-709",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "17mm Fluted Slat Architecture",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_709.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_709.png",
+      "colorHex": "#b48c65",
+      "description": "FP-709 Architectural Fluted WPC Panel with 17mm flute depth and acoustic groove channels. 100% waterproof and termite-proof."
+    },
+    {
+      "id": "fp-710",
+      "code": "FP-710",
+      "name": "Primo Fluted FP-710",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "17mm Fluted Slat Architecture",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_710.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_710.png",
+      "colorHex": "#b48c65",
+      "description": "FP-710 Architectural Fluted WPC Panel with 17mm flute depth and acoustic groove channels. 100% waterproof and termite-proof."
+    },
+    {
+      "id": "fp-711",
+      "code": "FP-711",
+      "name": "Primo Fluted FP-711",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "17mm Fluted Slat Architecture",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_711.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_711.png",
+      "colorHex": "#b48c65",
+      "description": "FP-711 Architectural Fluted WPC Panel with 17mm flute depth and acoustic groove channels. 100% waterproof and termite-proof."
+    },
+    {
+      "id": "fp-712",
+      "code": "FP-712",
+      "name": "Primo Fluted FP-712",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "17mm Fluted Slat Architecture",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_712.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_712.png",
+      "colorHex": "#b48c65",
+      "description": "FP-712 Architectural Fluted WPC Panel with 17mm flute depth and acoustic groove channels. 100% waterproof and termite-proof."
+    },
+    {
+      "id": "fp-713",
+      "code": "FP-713",
+      "name": "Primo Fluted FP-713",
+      "type": "fluted",
+      "thickness": "9mm Heavy Flute",
+      "dimensions": "2950 × 300 mm",
+      "badge": "17mm Fluted Slat Architecture",
+      "textureUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:good,w_800/f_auto,q_auto/Fluted_Panel_FP_-_713.png",
+      "thumbnailUrl": "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto:eco,w_120,h_160,c_fill/f_auto,q_auto/Fluted_Panel_FP_-_713.png",
+      "colorHex": "#b48c65",
+      "description": "FP-713 Architectural Fluted WPC Panel with 17mm flute depth and acoustic groove channels. 100% waterproof and termite-proof."
+    }
+  ],
+  "roomLightingModes": [
+    {
+      "id": "warm-cove",
+      "name": "Warm White Cove (3000K)",
+      "tempKelvin": "3000K",
+      "ambientColor": "#ff9a3c",
+      "glowFilter": "drop-shadow(0 0 45px rgba(255, 154, 60, 0.45))",
+      "description": "Casts deep vertical shadow blades between the fluted ridges, creating a boutique penthouse mood."
+    },
+    {
+      "id": "neutral-gallery",
+      "name": "Neutral Daylight (4500K)",
+      "tempKelvin": "4500K",
+      "ambientColor": "#fff1db",
+      "glowFilter": "drop-shadow(0 0 35px rgba(255, 241, 219, 0.35))",
+      "description": "Balanced daylight highlighting the crisp bevel cuts and natural wood pore grain."
+    },
+    {
+      "id": "cinema-mood",
+      "name": "Cinematic Mood Dim (2200K)",
+      "tempKelvin": "2200K",
+      "ambientColor": "#e65100",
+      "glowFilter": "drop-shadow(0 0 55px rgba(230, 81, 0, 0.4))",
+      "description": "Deep evening backlight designed for OLED television viewings and media room immersion."
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is the difference between Primo Fluted and ordinary flat PVC wall panels?",
+      "answer": "While flat panels create a smooth surface, Primo Fluted panels feature 3D vertical ribs with a dramatic 17mm flute depth and 24mm pitch. This creates high-contrast architectural shadow lines under linear cove lighting, adding physical depth, texture, and acoustic sound diffusion to modern interiors."
+    },
+    {
+      "question": "What is the wholesale price of fluted wall panels in Gurgaon per panel and per sq.ft?",
+      "answer": "Primo Fluted panels are priced at ₹599 per panel wholesale (MRP ₹1,290, 57% off). Each 9.5 ft × 6.3 in panel covers 5.2 sq.ft, resulting in an effective rate of ₹115 to ₹130 per sq.ft. Professional installation across Gurugram typically costs an additional ₹20 to ₹35 per sq.ft."
+    },
+    {
+      "question": "Are Primo Fluted panels recommended for living room TV accent walls and media consoles?",
+      "answer": "Yes, fluted louvers are currently the #1 architectural trend for living room TV backdrops in Gurgaon. The deep vertical grooves allow for concealed routing of television cables and power wires, and provide dedicated channels for embedding continuous LED neon flex strip lighting for a floating glow effect."
+    },
+    {
+      "question": "How do I clean and dust fluted wall panels with deep vertical grooves?",
+      "answer": "Cleaning fluted panels is effortless. Because of the anti-static Diamond Shield finish, dust does not easily stick to the surface. Simply run a feather duster or soft vacuum brush attachment down the vertical grooves once a month, or wipe with a damp microfiber cloth for deeper cleaning."
+    },
+    {
+      "question": "Do Primo Fluted panels reduce room echo and television sound reverberation?",
+      "answer": "Yes. The alternating concave-convex flute geometry scatters high-frequency sound reflections, reducing ambient flutter echo and room reverberation by approximately 28%. This noticeably enhances speech clarity for home theatres, video calls, and living room acoustics."
+    },
+    {
+      "question": "Can Primo Fluted panels withstand Delhi NCR monsoon humidity and wall dampness?",
+      "answer": "Absolutely. Engineered with a heavy composite matrix with 0.0% moisture uptake, Primo Fluted panels will never swell, soften, or rot even when mounted against exterior damp walls or during high-humidity monsoons in Delhi NCR."
+    },
+    {
+      "question": "How many fluted finishes are available in the Primo collection?",
+      "answer": "Primo Fluted comes in 13 exclusive catalog finishes (FP-701 to FP-713), covering warm Scandinavian oaks, rich smoked walnuts, modern charcoal grey wood tones, and natural teak textures with tactile wood-pore embossing."
+    },
+    {
+      "question": "Can Primo Fluted louvers be combined with Primo Plain panels in the same room?",
+      "answer": "Yes. Many Gurgaon architects pair 12-inch Primo Plain panels on surrounding walls with 17mm Primo Fluted panels on the central bed backdrop or TV console wall. Both share compatible interlocking heights (9.5 ft floor-to-ceiling) for cohesive luxury styling."
+    },
+    {
+      "question": "What tools and fasteners are needed for fluted panel installation in Gurgaon?",
+      "answer": "Installation uses concealed stainless steel starter clips and brad nails driven through the interlocking flange, or high-tack hybrid polymer adhesive applied to the reverse. Planks interlock seamlessly without visible screw heads or nails on the decorative flute face."
+    },
+    {
+      "question": "Can I inspect physical samples of Primo Fluted panels in Gurgaon before placing an order?",
+      "answer": "Yes! You can visit the Goals Floors warehouse in Gurugram or request our architectural swatch sample kit delivered directly to your doorstep in Gurgaon, Noida, or South Delhi within 24 hours to feel the texture, weight, and finish under your home's lighting."
+    }
+  ]
+}
