@@ -34,7 +34,7 @@ export function cleanHtmlEntities(text?: string | null): string {
   if (!text) return "";
 
   return text
-    .replace(/<[^>]*>?/gm, "") // Strip HTML tags
+    .replace(/<[^>]*>?/gm, "") // Strip   HTML tags
     .replace(/\[&hellip;\]/g, "...")
     .replace(/&hellip;/g, "...")
     .replace(/&amp;/g, "&")
