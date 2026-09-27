@@ -228,7 +228,7 @@ export default function Navbar() {
                     <div>
                       <h3 className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-4 border-b border-gray-100 dark:border-gray-800 pb-2">Exterior & Outdoor</h3>
                       <ul className="space-y-3">
-                        <li><Link href="/products/designer-grass" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Designer Grass</Link></li>
+                        <li><Link href="/products/artificial-grass" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Artificial Grass</Link></li>
                         <li><Link href="/products/wpc-exterior-louvers" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>Exterior Louvers</Link></li>
                         <li><Link href="/products/wpc-decking" onClick={() => setIsDesktopProductsOpen(false)} className="group/item text-gray-900 dark:text-gray-300 hover:text-amber-700 dark:hover:text-amber-500 text-sm transition-colors flex items-center gap-2 font-medium"><div className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/item:opacity-100 transition-opacity"></div>WPC Decking</Link></li>
                       </ul>
@@ -387,7 +387,7 @@ export default function Navbar() {
                   <div className="space-y-3">
                     <h4 className="text-[10px] font-bold text-amber-600 uppercase tracking-widest">Exterior & Outdoor</h4>
                     <div className="flex flex-col gap-2">
-                      <Link href="/products/designer-grass" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Designer Grass</Link>
+                      <Link href="/products/artificial-grass" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Artificial Grass</Link>
                       <Link href="/products/wpc-exterior-louvers" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">Exterior Louvers</Link>
                       <Link href="/products/wpc-decking" onClick={toggleMenu} className="text-base font-medium text-txt-main hover:text-amber-600 transition-colors">WPC Decking</Link>
                     </div>
