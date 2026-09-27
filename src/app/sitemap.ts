@@ -4,7 +4,7 @@ import path from 'path';
 import { createClient } from '@supabase/supabase-js';
 import { toDomainImageUrl } from '@/lib/blog-seo-utils';
 
-const API_BASE_URL = "https://lime-hummingbird-549929.hostingersite.com/wp-json/wp/v2";
+const API_BASE_URL = "https://blog.goalsfloors.com/wp-json/wp/v2";
 
 function uniqueStrings(values: Array<string | null | undefined>) {
   return Array.from(new Set(values.filter((value): value is string => Boolean(value && value.trim()))));

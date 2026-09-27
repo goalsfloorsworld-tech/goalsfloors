@@ -1,4 +1,4 @@
-export const WP_ORIGIN = "https://lime-hummingbird-549929.hostingersite.com";
+export const WP_ORIGIN = "https://blog.goalsfloors.com";
 export const SITE_ORIGIN = "https://goalsfloors.com";
 
 /**
@@ -9,7 +9,7 @@ export const SITE_ORIGIN = "https://goalsfloors.com";
 export function toDomainImageUrl(url?: string | null): string {
   if (!url) return "";
   return url.replace(
-    /https?:\/\/lime-hummingbird-549929\.hostingersite\.com\/wp-content\/uploads\//g,
+    /https?:\/\/blog\.goalsfloors\.com\/wp-content\/uploads\//g,
     `${SITE_ORIGIN}/wp-content/uploads/`
   );
 }
@@ -21,7 +21,7 @@ export function toDomainImageUrl(url?: string | null): string {
 export function transformContentImages(html?: string | null): string {
   if (!html) return "";
   return html.replace(
-    /https?:\/\/lime-hummingbird-549929\.hostingersite\.com\/wp-content\/uploads\//g,
+    /https?:\/\/blog\.goalsfloors\.com\/wp-content\/uploads\//g,
     `${SITE_ORIGIN}/wp-content/uploads/`
   );
 }

@@ -35,7 +35,7 @@ export async function generateMetadata({
   };
 }
 
-const API_BASE_URL = "https://lime-hummingbird-549929.hostingersite.com/wp-json/wp/v2";
+const API_BASE_URL = "https://blog.goalsfloors.com/wp-json/wp/v2";
 
 async function getPosts(page: number, query: string) {
   const url = new URL(`${API_BASE_URL}/posts`);

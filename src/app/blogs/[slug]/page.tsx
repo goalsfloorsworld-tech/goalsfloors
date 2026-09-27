@@ -12,7 +12,7 @@ import {
   SITE_ORIGIN,
 } from "@/lib/blog-seo-utils";
 
-const API_BASE_URL = "https://lime-hummingbird-549929.hostingersite.com/wp-json/wp/v2";
+const API_BASE_URL = "https://blog.goalsfloors.com/wp-json/wp/v2";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
