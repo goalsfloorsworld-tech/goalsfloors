@@ -18,6 +18,7 @@ import { RefreshCw } from "lucide-react";
 const VALID_SLUGS = [
   { label: 'Artificial Grass', value: 'artificial-grass' },
   { label: 'Cobra PU Stone', value: 'cobra-pu-stone' },
+  { label: 'Designer Grass', value: 'designer-grass' },
   { label: 'Herringbone Laminate Flooring', value: 'herringbone-laminate-flooring' },
   { label: 'Hybrid Laminate Flooring', value: 'hybrid-laminate-flooring' },
   { label: 'Laminate Flooring', value: 'laminate-flooring' },

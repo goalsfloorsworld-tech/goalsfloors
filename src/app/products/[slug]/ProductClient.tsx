@@ -317,7 +317,7 @@ const VariantCard = memo(({
   const isAutoScrolling = useRef(false);
   const isInView = useInView(scrollRef, { once: false, amount: 0.1 });
 
-  const images = variant.images || [];
+  const images = (variant.images || []).filter(img => Boolean(img?.url && img.url.trim() !== ''));
   const isImageFullscreen = images.some(img => img.url === globalFullscreenImage);
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
@@ -576,6 +576,7 @@ const optimizeCloudinaryUrl = (url: string) => {
 };
 
 const HeroCarousel = memo(({ images }: { images: { url: string; alt: string }[] }) => {
+  const validImages = (images || []).filter(img => Boolean(img?.url && img.url.trim() !== ''));
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -590,10 +591,10 @@ const HeroCarousel = memo(({ images }: { images: { url: string; alt: string }[] 
   };
 
   useEffect(() => {
-    if (images.length <= 1 || isPaused) return;
+    if (validImages.length <= 1 || isPaused) return;
     const interval = setInterval(() => {
       if (scrollRef.current) {
-        const nextIndex = (activeIndex + 1) % images.length;
+        const nextIndex = (activeIndex + 1) % validImages.length;
         const width = scrollRef.current.clientWidth;
         scrollRef.current.scrollTo({
           left: nextIndex * width,
@@ -602,9 +603,9 @@ const HeroCarousel = memo(({ images }: { images: { url: string; alt: string }[] 
       }
     }, 4000);
     return () => clearInterval(interval);
-  }, [activeIndex, images.length, isPaused]);
+  }, [activeIndex, validImages.length, isPaused]);
 
-  if (!images || images.length === 0) return null;
+  if (!validImages || validImages.length === 0) return null;
 
   return (
     <div 
@@ -617,7 +618,7 @@ const HeroCarousel = memo(({ images }: { images: { url: string; alt: string }[] 
         onScroll={handleScroll}
         className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide w-full h-full"
       >
-        {images.map((img, i) => (
+        {validImages.map((img, i) => (
           <div key={i} className="min-w-full h-full snap-center relative">
             <Image
               src={optimizeCloudinaryUrl(img.url)}
@@ -632,13 +633,13 @@ const HeroCarousel = memo(({ images }: { images: { url: string; alt: string }[] 
         ))}
       </div>
       
-      {images.length > 1 && (
+      {validImages.length > 1 && (
         <>
           <button
             onClick={(e) => {
               e.stopPropagation();
               if (scrollRef.current) {
-                const newIndex = activeIndex === 0 ? images.length - 1 : activeIndex - 1;
+                const newIndex = activeIndex === 0 ? validImages.length - 1 : activeIndex - 1;
                 scrollRef.current.scrollTo({ left: newIndex * scrollRef.current.clientWidth, behavior: "smooth" });
               }
             }}
@@ -650,7 +651,7 @@ const HeroCarousel = memo(({ images }: { images: { url: string; alt: string }[] 
             onClick={(e) => {
               e.stopPropagation();
               if (scrollRef.current) {
-                const newIndex = activeIndex === images.length - 1 ? 0 : activeIndex + 1;
+                const newIndex = activeIndex === validImages.length - 1 ? 0 : activeIndex + 1;
                 scrollRef.current.scrollTo({ left: newIndex * scrollRef.current.clientWidth, behavior: "smooth" });
               }
             }}
@@ -660,7 +661,7 @@ const HeroCarousel = memo(({ images }: { images: { url: string; alt: string }[] 
           </button>
           
           <div className="absolute bottom-3 inset-x-0 flex justify-center gap-2 z-20">
-            {images.map((_, i) => (
+            {validImages.map((_, i) => (
               <button
                 key={i}
                 aria-label={`Go to slide ${i + 1}`}
@@ -1338,70 +1339,76 @@ export default function ProductClient({ product }: { product: Product }) {
                 </div>
               </div>
 
-              <div className="relative pb-0 mb-12">
-                {/* The Continuous Background Track */}
-                <div className="absolute left-[19px] top-5 bottom-8 w-0.5 bg-gray-100 dark:bg-gray-800 z-0" />
+              {product.installationSteps && product.installationSteps.length > 0 ? (
+                <div className="relative pb-0 mb-12">
+                  {/* The Continuous Background Track */}
+                  <div className="absolute left-[19px] top-5 bottom-8 w-0.5 bg-gray-100 dark:bg-gray-800 z-0" />
 
-                {/* The Smooth Continuous Progress Line (GPU Accelerated) */}
-                <motion.div
-                  className="absolute left-[19px] top-5 bottom-8 w-0.5 bg-gradient-to-b from-amber-400 via-orange-500 to-amber-600 z-10 shadow-[0_0_12px_rgba(245,158,11,0.6)] origin-top"
-                  style={{ scaleY: maxProgressMotion }}
-                />
+                  {/* The Smooth Continuous Progress Line (GPU Accelerated) */}
+                  <motion.div
+                    className="absolute left-[19px] top-5 bottom-8 w-0.5 bg-gradient-to-b from-amber-400 via-orange-500 to-amber-600 z-10 shadow-[0_0_12px_rgba(245,158,11,0.6)] origin-top"
+                    style={{ scaleY: maxProgressMotion }}
+                  />
 
-                {/* Steps List */}
-                <div className="space-y-12 relative z-20 pb-4">
-                  {product.installationSteps.map((step, i) => {
-                    const N = product.installationSteps.length;
-                    const stepThreshold = i / (N - 1);
-                    const isActive = i <= activeStep;
+                  {/* Steps List */}
+                  <div className="space-y-12 relative z-20 pb-4">
+                    {product.installationSteps.map((step, i) => {
+                      const N = product.installationSteps.length;
+                      const stepThreshold = i / (N - 1 || 1);
+                      const isActive = i <= activeStep;
 
-                    return (
-                      <div key={i} className="relative pl-14 z-20">
+                      return (
+                        <div key={i} className="relative pl-14 z-20">
 
-                        {/* Step Number Circle */}
-                        <div
-                          className={`absolute left-0 top-0 w-10 h-10 rounded-full text-white text-sm font-semibold flex items-center justify-center shadow-lg z-30 transition-all duration-500 transform-gpu ${isActive
-                            ? 'bg-amber-600 dark:bg-amber-500 animate-bounce-pop shadow-amber-500/50'
-                            : 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 scale-90'
-                            }`}
-                        >
-                          {/* Pulsing Ripple Wave */}
-                          {isActive && (
-                            <span className="absolute inset-0 rounded-full bg-amber-600/40 animate-ripple -z-10" />
-                          )}
-                          {i + 1}
+                          {/* Step Number Circle */}
+                          <div
+                            className={`absolute left-0 top-0 w-10 h-10 rounded-full text-white text-sm font-semibold flex items-center justify-center shadow-lg z-30 transition-all duration-500 transform-gpu ${isActive
+                              ? 'bg-amber-600 dark:bg-amber-500 animate-bounce-pop shadow-amber-500/50'
+                              : 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500 scale-90'
+                              }`}
+                          >
+                            {/* Pulsing Ripple Wave */}
+                            {isActive && (
+                              <span className="absolute inset-0 rounded-full bg-amber-600/40 animate-ripple -z-10" />
+                            )}
+                            {i + 1}
+                          </div>
+
+                          {/* Content REVEAL animation - REMOVED BLUR FOR LAG-FREE PERFORMANCE */}
+                          <div className={`space-y-4 transition-all duration-700 ease-out transform-gpu ${isActive ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
+                            <h3 className={`text-lg font-bold uppercase tracking-tight transition-colors duration-500 ${isActive ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-gray-600'}`}>{step.title}</h3>
+
+                            {step.description && (
+                              <p className="text-sm font-semibold text-amber-600 dark:text-amber-500 italic">{step.description}</p>
+                            )}
+
+                            <ul className="space-y-4">
+                              {(step.points || []).map((point, pi) => (
+                                <li key={pi} className="flex items-start gap-3">
+                                  <div className={`w-1.5 h-1.5 rounded-full mt-2.5 shrink-0 transition-all duration-500 ${isActive ? 'bg-amber-500' : 'bg-gray-300 dark:bg-gray-700'}`} />
+                                  <span className={`text-base font-medium leading-relaxed transition-colors duration-500 ${isActive ? 'text-gray-700 dark:text-gray-300' : 'text-gray-400 dark:text-gray-600'}`}>{point}</span>
+                                </li>
+                              ))}
+                            </ul>
+
+                            {step.tip && (
+                              <div className={`mt-5 p-5 bg-amber-50/40 dark:bg-amber-900/10 border-l-4 rounded-r-xl transition-all duration-1000 ${isActive ? 'border-amber-500 translate-y-0 opacity-100' : 'border-gray-200 dark:border-gray-800 translate-y-4 opacity-0'}`}>
+                                <p className="text-sm text-gray-800 dark:text-gray-200 font-medium leading-relaxed">
+                                  <span className="mr-3 text-xl inline-block">👉</span> {step.tip}
+                                </p>
+                              </div>
+                            )}
+                          </div>
                         </div>
-
-                        {/* Content REVEAL animation - REMOVED BLUR FOR LAG-FREE PERFORMANCE */}
-                        <div className={`space-y-4 transition-all duration-700 ease-out transform-gpu ${isActive ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-                          <h3 className={`text-lg font-bold uppercase tracking-tight transition-colors duration-500 ${isActive ? 'text-gray-900 dark:text-white' : 'text-gray-400 dark:text-gray-600'}`}>{step.title}</h3>
-
-                          {step.description && (
-                            <p className="text-sm font-semibold text-amber-600 dark:text-amber-500 italic">{step.description}</p>
-                          )}
-
-                          <ul className="space-y-4">
-                            {step.points.map((point, pi) => (
-                              <li key={pi} className="flex items-start gap-3">
-                                <div className={`w-1.5 h-1.5 rounded-full mt-2.5 shrink-0 transition-all duration-500 ${isActive ? 'bg-amber-500' : 'bg-gray-300 dark:bg-gray-700'}`} />
-                                <span className={`text-base font-medium leading-relaxed transition-colors duration-500 ${isActive ? 'text-gray-700 dark:text-gray-300' : 'text-gray-400 dark:text-gray-600'}`}>{point}</span>
-                              </li>
-                            ))}
-                          </ul>
-
-                          {step.tip && (
-                            <div className={`mt-5 p-5 bg-amber-50/40 dark:bg-amber-900/10 border-l-4 rounded-r-xl transition-all duration-1000 ${isActive ? 'border-amber-500 translate-y-0 opacity-100' : 'border-gray-200 dark:border-gray-800 translate-y-4 opacity-0'}`}>
-                              <p className="text-sm text-gray-800 dark:text-gray-200 font-medium leading-relaxed">
-                                <span className="mr-3 text-xl inline-block">👉</span> {step.tip}
-                              </p>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>  {/* Explicitly close the track wrapper here to prevent the line from bleeding down */}
+              ) : product.installation ? (
+                <div className="bg-gray-50 dark:bg-slate-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line mb-12">
+                  {product.installation}
+                </div>
+              ) : null}  {/* Explicitly close the track wrapper here to prevent the line from bleeding down */}
 
               {/* After Installation - Separate Entrance - NOW OUTSIDE RELATIVE WRAPPER */}
               {product.afterInstallation && (
