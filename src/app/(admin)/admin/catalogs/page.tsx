@@ -631,7 +631,7 @@ export default function CatalogsManager() {
 
               <div className="p-4 flex items-center justify-between border-t border-slate-100 dark:border-slate-800">
                 <a 
-                  href={`/catalogs/${catalog.slug}.pdf`}
+                  href={`/catalogs/${(catalog.slug || "").replace(/\.pdf$/i, "")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm font-bold text-blue-600 dark:text-blue-400 hover:text-blue-800 transition-colors"

@@ -305,13 +305,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .select('slug, image, created_at');
 
     if (catalogs) {
-      catalogRoutes = catalogs.map((catalog: any) => ({
-        url: `${baseUrl}/catalogs/${catalog.slug}.pdf`,
-        lastModified: new Date(catalog.created_at).toISOString(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.8,
-        images: catalog.image ? processImageUrls(baseUrl, [catalog.image]) : undefined,
-      }));
+      catalogRoutes = catalogs.map((catalog: any) => {
+        const cleanSlug = (catalog.slug || "").replace(/\.pdf$/i, "");
+        return {
+          url: `${baseUrl}/catalogs/${cleanSlug}`,
+          lastModified: new Date(catalog.created_at).toISOString(),
+          changeFrequency: 'weekly' as const,
+          priority: 0.8,
+          images: catalog.image ? processImageUrls(baseUrl, [catalog.image]) : undefined,
+        };
+      });
     }
   } catch (error) {
     console.error('Error fetching catalogs for sitemap:', error);

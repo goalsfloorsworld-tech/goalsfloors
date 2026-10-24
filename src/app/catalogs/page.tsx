@@ -1,14 +1,20 @@
 import React from "react";
 import { FileText } from "lucide-react";
 import CatalogsClient from "./CatalogsClient";
+import { getPublicCatalogs } from "@/actions/public-catalogs";
 
 export const metadata = {
   title: "All Product Catalogs & Brochures | Download PDFs | Goals Floors",
   description: "The official repository for all Goals Floors product catalogs. Download high-quality PDF brochures for Upfit Panels, WPC Decking, Artificial Grass, Louvers, and more premium architectural surfaces in Gurgaon & Delhi NCR.",
-  keywords: ["Product Catalogs", "Goals Floors Brochures", "Download PDF Catalogs", "Wall Panels Catalog", "Flooring Catalog Delhi NCR"]
+  keywords: ["Product Catalogs", "Goals Floors Brochures", "Download PDF Catalogs", "Wall Panels Catalog", "Flooring Catalog Delhi NCR"],
+  alternates: {
+    canonical: "https://goalsfloors.com/catalogs",
+  },
 };
 
-export default function CatalogsPage() {
+export default async function CatalogsPage() {
+  const initialCatalogs = await getPublicCatalogs();
+
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pt-10 pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,7 +31,7 @@ export default function CatalogsPage() {
           </p>
         </div>
 
-        <CatalogsClient />
+        <CatalogsClient initialCatalogs={initialCatalogs} />
 
       </div>
     </div>
