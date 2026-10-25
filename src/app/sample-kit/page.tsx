@@ -168,7 +168,7 @@ export default function SampleKitPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             <div className="lg:col-span-7">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white tracking-tight leading-[1.1] mb-5">
-                The Official <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600">GOALS™</span> Wall Panel &amp; Flooring Sample Kit
+                The Official <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600">GOALS™ </span> Wall Panel &amp; Flooring Sample Kit
               </h1>
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed mb-8 max-w-3xl">
                 Experience the authentic tactile quality before specifying your project. The physical <strong>GOALS™</strong> folder by Goals Floors contains real production cuts of our fluted wall panel louvers, acoustic wooden slats, accessories, and technical certificates.

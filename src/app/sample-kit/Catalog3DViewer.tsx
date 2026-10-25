@@ -72,7 +72,7 @@ export default function Catalog3DViewer() {
     targetBackAngleRef.current = 1.309;
     setIsOpen(true);
     if (controlsRef.current) {
-      controlsRef.current.target.set(0, 0.25, -0.03);
+      controlsRef.current.target.set(0, 0.30, 0);
     }
   }, []);
 
@@ -150,14 +150,14 @@ export default function Catalog3DViewer() {
     const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
 
     if (preset === "front") {
-      camera.position.set(0, 0.32, isMobile ? 1.45 : 1.15);
-      controls.target.set(0, 0.25, -0.03);
+      camera.position.set(0, 0.30, isMobile ? 1.40 : 1.15);
+      controls.target.set(0, 0.30, 0);
     } else if (preset === "back") {
-      camera.position.set(0, 0.32, isMobile ? -1.55 : -1.25);
-      controls.target.set(0, 0.25, -0.03);
+      camera.position.set(0, 0.30, isMobile ? -1.45 : -1.25);
+      controls.target.set(0, 0.30, 0);
     } else {
-      camera.position.set(isMobile ? 0.6 : 0.85, isMobile ? 0.65 : 0.75, isMobile ? 1.4 : 1.05);
-      controls.target.set(0, 0.25, -0.03);
+      camera.position.set(isMobile ? 0.65 : 0.85, isMobile ? 0.32 : 0.60, isMobile ? 1.35 : 1.05);
+      controls.target.set(0, 0.30, 0);
     }
     controls.update();
   };
@@ -191,6 +191,32 @@ export default function Catalog3DViewer() {
     const onFullscreenChange = () => {
       const isNowFullscreen = !!document.fullscreenElement;
       setIsFullscreen(isNowFullscreen);
+
+      // After fullscreen transition completes, recenter camera to catalog midpoint (y=0.30)
+      // so equal breathing room appears above and below the catalog
+      setTimeout(() => {
+        if (!cameraRef.current || !controlsRef.current || !rendererRef.current || !mountRef.current) return;
+        const w = mountRef.current.clientWidth;
+        const h = mountRef.current.clientHeight;
+        const isMobile = w < 640 || w / h < 0.8;
+
+        // Snap camera eye-level to y=0.30 — the exact vertical midpoint of the catalog (0→0.60m)
+        if (isMobile) {
+          if (isNowFullscreen) {
+            cameraRef.current.position.set(0.3, 0.30, 1.35);
+          } else {
+            cameraRef.current.position.set(0.35, 0.30, 1.40);
+          }
+        } else {
+          cameraRef.current.position.set(0.85, 0.60, 1.05);
+        }
+        cameraRef.current.fov = isMobile ? 45 : 40;
+        cameraRef.current.aspect = w / h;
+        cameraRef.current.updateProjectionMatrix();
+        rendererRef.current.setSize(w, h);
+        controlsRef.current.target.set(0, 0.30, 0);
+        controlsRef.current.update();
+      }, 150); // 150ms: enough time for browser to finish fullscreen transition
     };
 
     document.addEventListener("fullscreenchange", onFullscreenChange);
@@ -215,17 +241,29 @@ export default function Catalog3DViewer() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isFullscreen]);
 
-  // Handle Resize on Fullscreen and Window Changes
+  // Handle Resize on Fullscreen and Window Changes for Symmetrical Centering
   useEffect(() => {
     const handleResize = () => {
-      if (!mountRef.current || !rendererRef.current || !cameraRef.current) return;
+      if (!mountRef.current || !rendererRef.current || !cameraRef.current || !controlsRef.current) return;
       const w = mountRef.current.clientWidth;
       const h = mountRef.current.clientHeight;
       const isMobile = w < 640 || w / h < 0.8;
       cameraRef.current.aspect = w / h;
-      cameraRef.current.fov = isMobile ? 46 : 40;
+      cameraRef.current.fov = isMobile ? (isFullscreen ? 45 : 46) : 40;
       cameraRef.current.updateProjectionMatrix();
       rendererRef.current.setSize(w, h);
+
+      // Symmetrically center catalog vertically in viewport (y = 0.30 is catalog midpoint)
+      controlsRef.current.target.set(0, 0.30, 0);
+      if (isMobile) {
+        if (isFullscreen) {
+          // Eye-level at y=0.30 centers the catalog symmetrically with equal top and bottom breathing room
+          cameraRef.current.position.set(0.25, 0.30, 1.40);
+        } else {
+          cameraRef.current.position.set(0.35, 0.32, 1.42);
+        }
+      }
+      controlsRef.current.update();
     };
 
     const timer = setTimeout(handleResize, 100);
@@ -245,15 +283,16 @@ export default function Catalog3DViewer() {
     sceneRef.current = scene;
     scene.background = new THREE.Color(0x0a0f1d); // Luxury architectural slate-950
 
-    // 2. Camera setup
+    // 2. Camera setup - Centered for Vertical Symmetry
     const width = container.clientWidth;
     const height = container.clientHeight;
     const isMobile = width < 640 || width / height < 0.8;
     const camera = new THREE.PerspectiveCamera(isMobile ? 46 : 40, width / height, 0.05, 50);
     if (isMobile) {
-      camera.position.set(0.4, 0.48, 1.45);
+      // Level at y = 0.30 (catalog midpoint) so top & bottom spacing are identical
+      camera.position.set(0.35, 0.30, 1.40);
     } else {
-      camera.position.set(0.85, 0.75, 1.05);
+      camera.position.set(0.85, 0.65, 1.05);
     }
     cameraRef.current = camera;
 
@@ -268,13 +307,13 @@ export default function Catalog3DViewer() {
     rendererRef.current = renderer;
     container.appendChild(renderer.domElement);
 
-    // 4. OrbitControls
+    // 4. OrbitControls - Centered on Catalog Midpoint
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.maxDistance = 4.2;
     controls.minDistance = 0.35;
-    controls.target.set(0, 0.25, -0.03);
+    controls.target.set(0, 0.30, 0);
     controlsRef.current = controls;
 
     // 5. ARCHITECTURAL WARM STUDIO LIGHTING & BALANCED SHADOWS
@@ -551,7 +590,7 @@ export default function Catalog3DViewer() {
   return (
     <div 
       ref={containerRef}
-      className={`relative w-full bg-slate-950 overflow-hidden select-none transition-all duration-300 ${
+      className={`relative flex flex-col w-full bg-slate-950 overflow-hidden select-none transition-all duration-300 ${
         isFullscreen 
           ? "!fixed !inset-0 !z-[999999] !w-screen !h-screen rounded-none border-none shadow-none" 
           : "h-[650px] sm:h-[750px] lg:h-[820px] rounded-3xl border border-slate-800 shadow-2xl"
@@ -576,8 +615,8 @@ export default function Catalog3DViewer() {
         </div>
       </div>
 
-      {/* Main WebGL Canvas Mount */}
-      <div ref={mountRef} className="w-full h-full relative cursor-grab active:cursor-grabbing flex-grow" />
+      {/* Main WebGL Canvas Mount - flex-1 min-h-0 forces it to fill ALL remaining height */}
+      <div ref={mountRef} className="w-full flex-1 min-h-0 relative cursor-grab active:cursor-grabbing" />
 
       {/* Loading Overlay */}
       {isLoading && (
@@ -596,7 +635,7 @@ export default function Catalog3DViewer() {
       )}
 
       {/* Floating Bottom Capsule Toolbar (Mobile & Desktop) */}
-      <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 sm:gap-2.5 p-1.5 sm:p-2 rounded-full bg-slate-900/95 border border-slate-700/80 shadow-2xl shadow-black/80 backdrop-blur-md max-w-[95%]">
+      <div className={`absolute left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 sm:gap-2.5 p-1.5 sm:p-2 rounded-full bg-slate-900/95 border border-slate-700/80 shadow-2xl shadow-black/80 backdrop-blur-md max-w-[95%] ${isFullscreen ? "bottom-10 sm:bottom-12" : "bottom-4 sm:bottom-6"}`}>
         
         {/* Open / Close Buttons */}
         <div className="flex items-center bg-slate-950/80 rounded-full p-0.5 border border-slate-800">
