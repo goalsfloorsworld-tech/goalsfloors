@@ -13,17 +13,16 @@ export const dynamic = 'force-dynamic';
 export default async function DealersDirectoryPage({
   searchParams,
 }: {
-  searchParams: { city?: string; product?: string };
+  searchParams: Promise<{ city?: string; product?: string }>;
 }) {
+  const { city = '', product = '' } = await searchParams;
+
   const { data: dealers } = await supabaseClient
     .from('dealers')
     .select('id, slug, business_name, tagline, city, area, products, profile_complete')
     .eq('is_approved', true)
     .eq('profile_complete', true)
     .order('created_at', { ascending: false });
-
-  const city = searchParams?.city || '';
-  const product = searchParams?.product || '';
 
   let filtered = dealers || [];
 

@@ -3,7 +3,7 @@ import { WP_ORIGIN } from "@/lib/blog-seo-utils";
 export const dynamic = "force-dynamic";
 
 async function handleProxy(
-  context: { params: Promise<{ path: string[] }> | { path: string[] } },
+  context: { params: Promise<{ path: string[] }> },
   isHead = false
 ) {
   const resolvedParams = await context.params;
@@ -65,14 +65,14 @@ async function handleProxy(
 
 export async function GET(
   _request: Request,
-  context: { params: Promise<{ path: string[] }> | { path: string[] } }
+  context: { params: Promise<{ path: string[] }> }
 ) {
   return handleProxy(context, false);
 }
 
 export async function HEAD(
   _request: Request,
-  context: { params: Promise<{ path: string[] }> | { path: string[] } }
+  context: { params: Promise<{ path: string[] }> }
 ) {
   return handleProxy(context, true);
 }
