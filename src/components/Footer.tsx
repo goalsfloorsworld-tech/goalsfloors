@@ -35,7 +35,7 @@ export default function Footer() {
       <div className="h-px w-full bg-gradient-to-r from-transparent via-amber-500 to-transparent opacity-60" />
 
       {/* ─── Main Body ─── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-8 lg:pt-12 lg:pb-10">
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto pt-10 pb-8 lg:pt-12 lg:pb-10">
         <div className="grid grid-cols-2 lg:grid-cols-12 gap-x-4 gap-y-12 lg:gap-8 items-start">
 
           {/* ── Col 2 – Contact (mobile only) ── */}
@@ -242,7 +242,7 @@ export default function Footer() {
 
       {/* ─── Bottom Bar ─── */}
       <div className="border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 lg:py-4 flex flex-col gap-4">
+        <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto py-3 lg:py-4 flex flex-col gap-4">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <p className="text-gray-600 text-xs text-center">
               © {new Date().getFullYear()}  Goals Floors. All rights reserved. &nbsp;·&nbsp; Gurugram, Haryana, India

@@ -79,6 +79,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/terms',
     '/compare',
     '/catalogs',
+    '/sample-kit',
   ].map((route) => {
     let images: string[] | undefined = undefined;
     

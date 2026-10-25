@@ -175,7 +175,7 @@ export default function Navbar() {
   return (
     <>
       <header className="fixed w-full top-0 z-50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-sm border-b border-gray-100 dark:border-gray-800 transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
           <div className="flex justify-between items-center h-14">
 
             {/* 1. Logo Section */}
@@ -262,6 +262,9 @@ export default function Navbar() {
                 </div>
               </div>
 
+              <Link href="/sample-kit" className="text-txt-main hover:text-amber-700 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1 whitespace-nowrap">
+                Sample Kit
+              </Link>
               <Link href="/compare" className="text-txt-main hover:text-amber-700 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">AI Compare</Link>
               <Link href="/blogs" className="text-txt-main hover:text-amber-700 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">Blogs</Link>
               <Link href="/about" className="text-txt-main hover:text-amber-700 dark:hover:text-amber-500 font-medium text-base transition-colors h-full flex items-center border-b-2 border-transparent hover:border-amber-600 px-1">About</Link>
@@ -416,6 +419,13 @@ export default function Navbar() {
             </div>
           </div>
 
+          <Link href="/sample-kit" onClick={toggleMenu} className="text-lg font-medium text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3 flex items-center justify-between">
+            Sample Kit
+            <span className="text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 px-2 py-0.5 rounded-full font-bold">2D Studio</span>
+          </Link>
+          <Link href="/catalogs" onClick={toggleMenu} className="text-lg font-medium text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">
+            Digital Catalogs
+          </Link>
           <Link href="/compare" onClick={toggleMenu} className="text-lg font-medium text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">AI Compare</Link>
           <Link href="/blogs" onClick={toggleMenu} className="text-lg font-medium text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">Blogs</Link>
           <Link href="/about" onClick={toggleMenu} className="text-lg font-medium text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">About Us</Link>

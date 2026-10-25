@@ -4,9 +4,22 @@ import CatalogsClient from "./CatalogsClient";
 import { getPublicCatalogs } from "@/actions/public-catalogs";
 
 export const metadata = {
-  title: "All Product Catalogs & Brochures | Download PDFs | Goals Floors",
-  description: "The official repository for all Goals Floors product catalogs. Download high-quality PDF brochures for Upfit Panels, WPC Decking, Artificial Grass, Louvers, and more premium architectural surfaces in Gurgaon & Delhi NCR.",
-  keywords: ["Product Catalogs", "Goals Floors Brochures", "Download PDF Catalogs", "Wall Panels Catalog", "Flooring Catalog Delhi NCR"],
+  title: "Official GOALS™ Catalogs & PDF Brochures | Goals Floors",
+  description: "Download the official GOALS™ product catalogs and PDF brochures. High-resolution specifications for GOALS Panels, GOALS SPC Flooring, GOALS PU Stone, GOALS Tokyo Moldings, and architectural surfaces in Gurgaon & Delhi NCR.",
+  keywords: [
+    "GOALS",
+    "GOALS Catalog",
+    "GOALS Panels",
+    "GOALS Flooring",
+    "GOALS PU Stone",
+    "GOALS Tokyo Molding",
+    "GOALS Molding",
+    "GOALS Artificial Grass",
+    "GOALS Brochures",
+    "Goals Floors Catalogs",
+    "Download PDF Catalogs",
+    "Wall Panels Catalog Delhi NCR"
+  ],
   alternates: {
     canonical: "https://goalsfloors.com/catalogs",
   },
@@ -17,7 +30,7 @@ export default async function CatalogsPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 pt-10 pb-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1800px] px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
         
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-500 font-bold text-sm mb-6">
