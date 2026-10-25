@@ -421,7 +421,7 @@ export default function Navbar() {
 
           <Link href="/sample-kit" onClick={toggleMenu} className="text-lg font-medium text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3 flex items-center justify-between">
             Sample Kit
-            <span className="text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 px-2 py-0.5 rounded-full font-bold">2D Studio</span>
+            <span className="text-xs bg-amber-500/10 text-amber-500 border border-amber-500/20 px-2 py-0.5 rounded-full font-bold">3D Studio</span>
           </Link>
           <Link href="/catalogs" onClick={toggleMenu} className="text-lg font-medium text-txt-main border-b border-gray-100 dark:border-gray-800 pb-3">
             Digital Catalogs
