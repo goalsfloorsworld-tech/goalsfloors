@@ -81,7 +81,7 @@ export default function Testimonials() {
       <div className="absolute top-0 right-0 w-96 max-w-full h-96 bg-amber-100/30 dark:bg-amber-900/10 blur-3xl opacity-50 rounded-full" />
       <div className="absolute bottom-0 left-0 w-96 max-w-full h-96 bg-amber-100/30 dark:bg-amber-900/10 blur-3xl opacity-50 rounded-full" />
 
-      <div className="max-w-5xl mx-auto px-4 relative z-10">
+      <div className="w-full max-w-6xl xl:max-w-7xl 2xl:max-w-[1500px] px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-sm font-bold tracking-[0.2em] text-amber-600 uppercase mb-3">Client Stories</h2>
           <h3 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white">Trust in <span className="text-amber-600">Quality</span></h3>

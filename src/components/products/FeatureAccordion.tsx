@@ -69,7 +69,7 @@ export default function FeatureAccordion({ features, productTitle, heading, subh
 
   return (
     <section className="pt-10 pb-10 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
         <div className="mb-12 text-center">
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
@@ -155,12 +155,12 @@ export default function FeatureAccordion({ features, productTitle, heading, subh
                       initial={false}
                       animate={{ opacity: isActive ? 1 : 0, x: isActive ? 0 : -20 }}
                       transition={{ delay: isActive ? 0.2 : 0 }}
-                      className={`max-w-md pr-12 ${isActive ? 'relative z-10' : 'absolute pointer-events-none z-0'}`}
+                      className={`w-full max-w-2xl lg:max-w-3xl xl:max-w-4xl pr-6 lg:pr-10 ${isActive ? 'relative z-10' : 'absolute pointer-events-none z-0'}`}
                     >
-                      <h3 className="text-2xl lg:text-3xl font-semibold text-white tracking-tight mb-4 leading-tight">
+                      <h3 className="text-2xl lg:text-3xl xl:text-4xl font-semibold text-white tracking-tight mb-4 leading-tight">
                         {feature.title}
                       </h3>
-                      <p className="text-gray-400 text-lg leading-relaxed font-medium">
+                      <p className="text-gray-400 text-lg lg:text-xl leading-relaxed font-medium">
                         {feature.description}
                       </p>
                     </motion.div>

@@ -20,8 +20,8 @@ export default function Home() {
 
       {/* ================= STATS BAR ================= */}
       <div className="w-full bg-[#f6f2ea] dark:bg-[#0F172A] relative z-20 transition-colors duration-300">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[#15171e] dark:bg-slate-900 -mt-8 sm:-mt-12 lg:-mt-[116px] w-full lg:max-w-[900px] shadow-2xl transition-colors duration-300 rounded-xl border border-white/5 dark:border-gray-800 p-3 sm:p-6 lg:p-8">
+        <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
+          <div className="bg-[#15171e] dark:bg-slate-900 -mt-8 sm:-mt-12 lg:-mt-[116px] w-full lg:max-w-[1000px] xl:max-w-[1150px] shadow-2xl transition-colors duration-300 rounded-xl border border-white/5 dark:border-gray-800 p-3 sm:p-6 lg:p-8">
           <div className="grid grid-cols-2 lg:grid-cols-4">
           {[
             { label: "PREMIUM PRODUCTS", value: "2500+", icon: Settings },
@@ -62,7 +62,7 @@ export default function Home() {
 
       {/* ================= CATEGORIES SECTION ================= */}
       <section id="categories" className="py-10 pt-33 lg:pt-36 bg-gray-50 dark:bg-slate-950 transition-colors duration-300 -mt-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
           <div className="text-center mb-10 lg:mb-16">
             <h2 className="text-[clamp(2.5rem,5vw,4rem)] font-black text-gray-900 dark:text-white mb-4 tracking-tighter uppercase leading-[0.9]">
               Explore Our <br />
@@ -84,7 +84,7 @@ export default function Home() {
 
       {/* ================= WHY CHOOSE US ================= */}
       <section className="pt-2 sm:pt-8 pb-14 bg-white dark:bg-slate-900 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch min-w-0 max-w-full">
             <div className="min-w-0">
               <h2 className="text-[28px] sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6 tracking-tighter sm:whitespace-nowrap break-words">The Goals Floors Advantage</h2>

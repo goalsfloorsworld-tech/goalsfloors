@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import Link from "next/link";
+import { ChevronDown, ExternalLink } from "lucide-react";
 
 interface FaqItem {
   question: string;
-  answer: string;
+  answer: React.ReactNode;
 }
 
 const FAQS: FaqItem[] = [
@@ -26,8 +27,17 @@ const FAQS: FaqItem[] = [
   },
   {
     question: "How does the 100% Credit Guarantee work?",
-    answer:
-      "When you pay ₹499 for the physical GOALS folder, the entire ₹499 is automatically deducted from your invoice as soon as you order material for your project. This guarantees the sample kit is effectively 100% FREE for all customers.",
+    answer: (
+      <span>
+        When you pay ₹499 for the physical GOALS folder, the entire ₹499 is automatically deducted from your invoice as soon as you order material for your project. This guarantees the sample kit is effectively 100% FREE for all customers.{" "}
+        <Link
+          href="/terms#sample-kit-policy"
+          className="text-amber-600 dark:text-amber-400 font-bold underline hover:text-amber-500 inline-flex items-center gap-0.5 ml-1"
+        >
+          *T&amp;C Apply <ExternalLink size={12} />
+        </Link>
+      </span>
+    ),
   },
   {
     question: "How fast is delivery in Gurgaon & Delhi NCR?",
@@ -57,8 +67,8 @@ export default function SampleKitFaq() {
             key={index}
             className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
               isOpen
-                ? "bg-slate-900/95 border-amber-500/40 shadow-lg shadow-amber-500/5"
-                : "bg-slate-900/70 border-slate-800 hover:border-slate-700 hover:bg-slate-900/90"
+                ? "bg-white dark:bg-slate-900/95 border-amber-500/40 shadow-lg shadow-amber-500/5"
+                : "bg-white/80 dark:bg-slate-900/70 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-white dark:hover:bg-slate-900/90 shadow-xs dark:shadow-none"
             }`}
           >
             <button
@@ -67,15 +77,15 @@ export default function SampleKitFaq() {
               className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 cursor-pointer focus:outline-hidden"
               aria-expanded={isOpen}
             >
-              <span className="text-sm sm:text-base font-bold text-white flex items-center gap-3">
-                <span className="w-6 h-6 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20 text-xs flex items-center justify-center font-bold shrink-0">
+              <span className="text-sm sm:text-base font-bold text-slate-900 dark:text-white flex items-center gap-3">
+                <span className="w-6 h-6 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 text-xs flex items-center justify-center font-bold shrink-0">
                   {index + 1}
                 </span>
                 {item.question}
               </span>
               <div
-                className={`p-1.5 rounded-lg bg-slate-800 text-slate-400 transition-transform duration-300 shrink-0 ${
-                  isOpen ? "rotate-180 bg-amber-500/20 text-amber-400" : ""
+                className={`p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 transition-transform duration-300 shrink-0 ${
+                  isOpen ? "rotate-180 bg-amber-500/20 text-amber-600 dark:text-amber-400" : ""
                 }`}
               >
                 <ChevronDown size={16} />
@@ -83,7 +93,7 @@ export default function SampleKitFaq() {
             </button>
 
             {isOpen && (
-              <div className="px-4 pb-5 sm:px-5 sm:pb-5 pt-1 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 animate-in fade-in duration-200">
+              <div className="px-4 pb-5 sm:px-5 sm:pb-5 pt-1 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-slate-100 dark:border-slate-800/80 animate-in fade-in duration-200">
                 <p>{item.answer}</p>
               </div>
             )}

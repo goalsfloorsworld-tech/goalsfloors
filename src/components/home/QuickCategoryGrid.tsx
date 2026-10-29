@@ -71,7 +71,7 @@ export default function QuickCategoryGrid() {
     <>
       {/* The main Grid Section */}
       <section ref={gridRef} className="pt-10 pb-10 sm:pt-12 sm:pb-10 bg-white dark:bg-slate-900 relative z-10">
-        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
           <h2 className="text-xl sm:text-2xl font-black text-gray-900 dark:text-white mb-6 tracking-tight text-center sm:text-left px-2 sm:px-0">
             Shop by Category
           </h2>

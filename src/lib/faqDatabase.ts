@@ -48,7 +48,7 @@ export const FAQ_DATABASE: Record<string, FAQItem> = {
   "home_9": {
     id: "home_9",
     question: "Do you offer products for outdoor areas?",
-    answer: "Yes. Goals Floors offers outdoor solutions such as [WPC Decking](/products/wpc-decking), [Exterior Louvers](/products/wpc-exterior-louvers), and [Artificial Grass](/products/artificial-grass). These products are designed to enhance outdoor spaces while providing durability and a modern appearance."
+    answer: "Yes. Goals Floors offers outdoor solutions such as [Goals WPC Decking](/products/wpc-decking), [Goals Exterior Louvers](/products/wpc-exterior-louvers), and [Goals Artificial Grass](/products/artificial-grass). These products are designed to enhance outdoor spaces while providing durability and a modern appearance."
   },
   "home_10": {
     id: "home_10",
@@ -496,19 +496,19 @@ export const FAQ_DATABASE: Record<string, FAQItem> = {
   "spc_1": {
     id: "spc_1",
     question: "Which flooring is waterproof?",
-    answer: "Our [SPC (Stone Polymer Composite) Flooring](/products/spc-flooring) is 100% waterproof. It features a heavy-duty stone core that makes it perfect for kitchens, bathrooms, and commercial spaces with heavy foot traffic."
+    answer: "Our [Goals SPC Flooring](/products/spc-flooring) is 100% waterproof. It features a heavy-duty stone core that makes it perfect for kitchens, bathrooms, and commercial spaces with heavy foot traffic."
   },
   "spc_2": {
     id: "spc_2",
     question: "Which flooring looks most like real wood?",
-    answer: "[Laminate Flooring](/products/laminate-flooring) and our [Premium Herringbone](/products/herringbone-laminate-flooring) series offer the most natural wooden appearance at an affordable price, complete with realistic textures and wood grain finishes."
+    answer: "[Goals Laminate Flooring](/products/laminate-flooring) and our [Goals Herringbone Flooring](/products/herringbone-laminate-flooring) series offer the most natural wooden appearance at an affordable price, complete with realistic textures and wood grain finishes."
   },
 
   // OUTDOORS
   "outdoors_1": {
     id: "outdoors_1",
     question: "Is WPC decking waterproof?",
-    answer: "Yes, [WPC Decking](/products/wpc-decking) is 100% waterproof, UV-protected, and fade-resistant. It's an all-weather proof solution designed specifically for exterior applications and heavy foot traffic."
+    answer: "Yes, [Goals WPC Decking](/products/wpc-decking) is 100% waterproof, UV-protected, and fade-resistant. It's an all-weather proof solution designed specifically for exterior applications and heavy foot traffic."
   },
   "outdoors_2": {
     id: "outdoors_2",

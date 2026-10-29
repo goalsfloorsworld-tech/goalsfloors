@@ -132,7 +132,7 @@ export default function CompareWidget({ currentProductSlug }: CompareWidgetProps
   };
 
   return (
-    <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-slate-200 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl p-6 md:p-8 max-w-4xl mx-auto my-0 relative overflow-hidden">
+    <div className="bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-slate-200 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl p-6 md:p-8 max-w-5xl xl:max-w-6xl mx-auto my-0 relative overflow-hidden">
       {/* Decorative Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-amber-500/10 blur-[100px] pointer-events-none rounded-full" />
 

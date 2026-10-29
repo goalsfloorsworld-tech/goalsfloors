@@ -513,7 +513,7 @@ export default function HeroSection() {
       <MobileHoneycomb images={desktopHeroImages} />
 
       {/* Content Layer */}
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[355px] sm:pt-[330px] md:pt-[500px] lg:pt-4 pb-4 md:pb-24 lg:pb-[176px] flex flex-col lg:flex-row items-center gap-2 lg:gap-4 h-full">
+      <div className="relative z-20 w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto pt-[355px] sm:pt-[330px] md:pt-[500px] lg:pt-4 pb-4 md:pb-24 lg:pb-[176px] flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8 h-full">
         
         {/* MOBILE HEADING (Hidden on Desktop) */}
         <motion.div

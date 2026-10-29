@@ -40,7 +40,7 @@ const itemVariants = {
 export default function QuickFeaturesBar({ features }: QuickFeaturesBarProps) {
   return (
     <div className="bg-gray-50 dark:bg-slate-900 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2 lg:pt-6 lg:pb-4">
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto pt-4 pb-2 lg:pt-6 lg:pb-4">
         <h2 className="sr-only">Product Features</h2>
         {/* Mobile: Swipeable Carousel | Desktop: 6-Col Grid */}
         <motion.div 

@@ -41,7 +41,7 @@ export default function BrandMarquee() {
         }
       `}} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-1">
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto mb-1">
         <div className="text-center">
           <h2 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white tracking-tight uppercase transition-colors duration-300">
             Trusted By Leading Corporate & Govt Sector

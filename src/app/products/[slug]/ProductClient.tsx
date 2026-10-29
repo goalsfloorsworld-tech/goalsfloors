@@ -79,6 +79,7 @@ export interface Product {
   title: string;
   metatitle?: string;
   shortTitle?: string;
+  pricingHeading?: string;
   slug: string;
   category: string;
   priceRange: string;
@@ -844,7 +845,7 @@ export default function ProductClient({ product }: { product: Product }) {
     <div className="min-h-screen bg-white dark:bg-slate-950 font-sans antialiased transition-colors duration-300 overflow-x-hidden max-w-full min-w-0">
       {/* ================= 1. CLEAN HERO OVERVIEW ================= */}
       <div className="border-b border-gray-200 dark:border-gray-800 pt-5 pb-8 lg:pt-5 lg:pb-5 text-left">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center">
 
             <div className="w-full lg:w-1/2">
@@ -915,13 +916,13 @@ export default function ProductClient({ product }: { product: Product }) {
       {/* ================= 4.5. PRODUCT VARIATIONS & PRICING ================= */}
       {product.variants && product.variants.length > 0 && (
         <div className="bg-gray-50 dark:bg-slate-900 pt-0 pb-12 lg:pt-4 lg:pb-10 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
             <div className="text-center mb-16">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-600 mb-4 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 inline-block rounded-sm">
                 Available Selection
               </p>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-900 dark:text-white">
-                {product.shortTitle || product.title} Sizes & Project Pricing
+                {product.pricingHeading || `${product.shortTitle || product.title} Sizes & Project Pricing`}
               </h2>
             </div>
 
@@ -948,7 +949,7 @@ export default function ProductClient({ product }: { product: Product }) {
       {/* ================= 4.6. ACCESSORIES ================= */}
       {product.accessories && product.accessories.length > 0 && (
         <div className="bg-white dark:bg-slate-950 pt-12 pb-16 lg:pt-16 lg:pb-20 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-3xl font-normal text-gray-900 dark:text-white uppercase tracking-wider mb-4">
                 {product.accessoriesTitle || 'ACCESSORIES'}
@@ -1063,7 +1064,7 @@ export default function ProductClient({ product }: { product: Product }) {
       {/* ================= 8.5. INSTALLED IMAGES (MASONRY) ================= */}
       {product.installedImages && product.installedImages.length > 0 && (
         <div className="bg-white dark:bg-slate-950 py-10 transition-colors duration-300">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
             {compareItems.length > 0 && (
               <div className="mb-8 md:mb-10">
                 <div className="text-center mb-4 md:mb-5">
@@ -1224,7 +1225,7 @@ export default function ProductClient({ product }: { product: Product }) {
 
       {/* ================= 4. MATERIAL PHILOSOPHY (STORY) ================= */}
       <div className="bg-white dark:bg-slate-950 py-16 lg:py-24 transition-colors duration-300 overflow-hidden relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
 
             {/* Left Column: The Narrative */}
@@ -1279,7 +1280,7 @@ export default function ProductClient({ product }: { product: Product }) {
       {/* ================= 6. APPLICATIONS & FINISHES ================= */}
       <div className="bg-white dark:bg-slate-950 py-8 lg:py-12 transition-colors duration-300 overflow-x-hidden">
         <AnimationStyles />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
 
             {/* Left Column: Applications & Sticky B2B Card */}
@@ -1438,7 +1439,7 @@ export default function ProductClient({ product }: { product: Product }) {
 
       {/* ================= 7. INSTALLATION & CARE ================= */}
       <div className="bg-gray-900 dark:bg-black py-10 lg:py-16 text-white transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
 
             <div className="border-l-4 border-amber-600 pl-8">
@@ -1467,7 +1468,8 @@ export default function ProductClient({ product }: { product: Product }) {
 
       {/* ================= 8. ARCHITECTURAL FAQS ================= */}
       <div className="bg-gray-50 dark:bg-slate-900 py-10 lg:py-16 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
+          <div className="max-w-4xl xl:max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-semibold text-gray-900 dark:text-white mb-2">Frequently Asked Questions About {product.shortTitle || product.title}</h2>
             <p className="text-gray-600 dark:text-gray-400 text-lg">Detailed answers for project-level planning.</p>
@@ -1509,10 +1511,12 @@ export default function ProductClient({ product }: { product: Product }) {
         </div>
       </div>
 
+      </div>
+
       {/* ================= 8.5. RELATED PRODUCTS ================= */}
       {product.relatedLinks && product.relatedLinks.length > 0 && (
         <div className="bg-gray-50 dark:bg-slate-900 py-12 lg:py-16 border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
             <div className="text-center mb-10">
               <span className="inline-block text-[10px] font-semibold uppercase tracking-[0.3em] text-amber-600 mb-3 px-3 py-1 bg-amber-50 dark:bg-amber-900/20 rounded-sm">
                 Explore More
@@ -1565,14 +1569,14 @@ export default function ProductClient({ product }: { product: Product }) {
 
       {/* ================= 8.75. AI COMPARE WIDGET ================= */}
       <div className="bg-white dark:bg-slate-950 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto py-10">
           <CompareWidget currentProductSlug={product.slug} />
         </div>
       </div>
 
       {/* ================= 9. B2B CONVERSION BAR ================= */}
       <div className="bg-white dark:bg-slate-950 py-4 shadow-md border-t border-gray-200 dark:border-gray-800 relative z-20 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="text-center sm:text-left">
             <h4 className="text-base font-semibold text-gray-900 dark:text-white">{product.shortTitle || product.title}</h4>
             <div className="flex items-center justify-center sm:justify-start gap-2 mt-1 hidden md:flex">

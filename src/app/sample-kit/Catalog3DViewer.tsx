@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { useTheme } from "next-themes";
 import { 
   RotateCw, Maximize2, Minimize2, Sparkles, 
   Layers, MessageCircle, Box, BookOpen, Book, Sun
@@ -37,6 +38,7 @@ interface PanelData {
 export default function Catalog3DViewer() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mountRef = useRef<HTMLDivElement>(null);
+  const { resolvedTheme } = useTheme();
   
   // Three.js References
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -248,6 +250,7 @@ export default function Catalog3DViewer() {
       const w = mountRef.current.clientWidth;
       const h = mountRef.current.clientHeight;
       const isMobile = w < 640 || w / h < 0.8;
+
       cameraRef.current.aspect = w / h;
       cameraRef.current.fov = isMobile ? (isFullscreen ? 45 : 46) : 40;
       cameraRef.current.updateProjectionMatrix();
@@ -274,6 +277,13 @@ export default function Catalog3DViewer() {
     };
   }, [isFullscreen]);
 
+  // Sync 3D scene background dynamically whenever theme changes
+  useEffect(() => {
+    if (!sceneRef.current) return;
+    const isDark = resolvedTheme === "dark";
+    sceneRef.current.background = new THREE.Color(isDark ? 0x0a0f1d : 0xf1f5f9);
+  }, [resolvedTheme]);
+
   useEffect(() => {
     const container = mountRef.current;
     if (!container) return;
@@ -281,7 +291,10 @@ export default function Catalog3DViewer() {
     // 1. Scene setup
     const scene = new THREE.Scene();
     sceneRef.current = scene;
-    scene.background = new THREE.Color(0x0a0f1d); // Luxury architectural slate-950
+    const isInitialDark = typeof document !== "undefined"
+      ? (document.documentElement.classList.contains("dark") || resolvedTheme === "dark")
+      : false;
+    scene.background = new THREE.Color(isInitialDark ? 0x0a0f1d : 0xf1f5f9);
 
     // 2. Camera setup - Centered for Vertical Symmetry
     const width = container.clientWidth;
@@ -318,7 +331,7 @@ export default function Catalog3DViewer() {
 
     // 5. ARCHITECTURAL WARM STUDIO LIGHTING & BALANCED SHADOWS
     // A. Warm ambient light to keep natural, true-to-life catalog colors without desaturation
-    const ambientLight = new THREE.AmbientLight(0xfffbf5, 0.65);
+    const ambientLight = new THREE.AmbientLight(0xfffbf5, 0.70);
     scene.add(ambientLight);
 
     // B. Strong One-Sided Master Key Light (from top-right-front at 45°)
@@ -585,30 +598,30 @@ export default function Catalog3DViewer() {
         container.removeChild(domElement);
       }
     };
-  }, [togglePanelDetachment, autoRotate]);
+  }, [togglePanelDetachment, autoRotate, resolvedTheme]);
 
   return (
     <div 
       ref={containerRef}
-      className={`relative flex flex-col w-full bg-slate-950 overflow-hidden select-none transition-all duration-300 ${
+      className={`relative flex flex-col w-full bg-slate-100 dark:bg-slate-950 overflow-hidden select-none transition-all duration-300 ${
         isFullscreen 
           ? "!fixed !inset-0 !z-[999999] !w-screen !h-screen rounded-none border-none shadow-none" 
-          : "h-[650px] sm:h-[750px] lg:h-[820px] rounded-3xl border border-slate-800 shadow-2xl"
+          : "h-[650px] sm:h-[750px] lg:h-[820px] rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl dark:shadow-2xl"
       }`}
     >
       
       {/* 3D Top Status Bar - Minimal & Clean */}
-      <div className="absolute top-0 inset-x-0 z-20 flex items-center justify-between p-3.5 sm:p-4 bg-gradient-to-b from-slate-950/90 via-slate-950/50 to-transparent pointer-events-none">
+      <div className="absolute top-0 inset-x-0 z-20 flex items-center justify-between p-3.5 sm:p-4 bg-gradient-to-b from-white/90 via-white/50 to-transparent dark:from-slate-950/90 dark:via-slate-950/50 dark:to-transparent pointer-events-none transition-colors duration-300">
         <div className="flex items-center gap-2 pointer-events-auto">
-          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-500 shrink-0">
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-500 shrink-0">
             <Box size={15} />
           </div>
           <div className="min-w-0">
-            <h4 className="text-xs sm:text-sm font-black text-white tracking-wide flex items-center gap-2 truncate">
+            <h4 className="text-xs sm:text-sm font-black text-slate-900 dark:text-white tracking-wide flex items-center gap-2 truncate">
               GOALS™ ARCHITECTURAL SPECIFIER FOLDER
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
             </h4>
-            <p className="text-[10px] text-slate-400 truncate">
+            <p className="text-[10px] text-slate-500 dark:text-slate-400 truncate">
               Interactive 360° Studio • Authentic Physical Catalog by Goals Floors
             </p>
           </div>
@@ -620,31 +633,31 @@ export default function Catalog3DViewer() {
 
       {/* Loading Overlay */}
       {isLoading && (
-        <div className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-slate-950/90 backdrop-blur-md">
+        <div className="absolute inset-0 z-30 flex flex-col items-center justify-center bg-white/90 dark:bg-slate-950/90 backdrop-blur-md">
           <div className="w-12 h-12 border-3 border-amber-500 border-t-transparent rounded-full animate-spin mb-4" />
-          <h4 className="text-base font-bold text-white mb-1">Loading 3D Wall Panel Catalog...</h4>
-          <p className="text-xs text-slate-400">Loading hinges, realistic directional shadows &amp; 10 detachable panel cuts ({loadProgress}%)</p>
+          <h4 className="text-base font-bold text-slate-900 dark:text-white mb-1">Loading 3D Wall Panel Catalog...</h4>
+          <p className="text-xs text-slate-500 dark:text-slate-400">Loading hinges, realistic directional shadows &amp; 10 detachable panel cuts ({loadProgress}%)</p>
         </div>
       )}
 
       {/* Hover Tooltip Overlay */}
       {hoveredPanel && !selectedPanel && (
-        <div className="absolute bottom-20 sm:bottom-24 left-1/2 -translate-x-1/2 z-20 pointer-events-none px-4 py-2 rounded-xl bg-slate-900/90 border border-amber-500/40 text-xs font-bold text-amber-400 shadow-xl backdrop-blur-sm animate-in fade-in duration-150 whitespace-nowrap">
+        <div className="absolute bottom-20 sm:bottom-24 left-1/2 -translate-x-1/2 z-20 pointer-events-none px-4 py-2 rounded-xl bg-white/95 dark:bg-slate-900/90 border border-amber-500/40 text-xs font-bold text-amber-600 dark:text-amber-400 shadow-xl backdrop-blur-sm animate-in fade-in duration-150 whitespace-nowrap">
           ✨ {hoveredPanel.replace("Panel_", "Panel ")} • Click to slide out &amp; inspect
         </div>
       )}
 
       {/* Floating Bottom Capsule Toolbar (Mobile & Desktop) */}
-      <div className={`absolute left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 sm:gap-2.5 p-1.5 sm:p-2 rounded-full bg-slate-900/95 border border-slate-700/80 shadow-2xl shadow-black/80 backdrop-blur-md max-w-[95%] ${isFullscreen ? "bottom-10 sm:bottom-12" : "bottom-4 sm:bottom-6"}`}>
+      <div className={`absolute left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 sm:gap-2.5 p-1.5 sm:p-2 rounded-full bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-700/80 shadow-2xl shadow-slate-900/15 dark:shadow-black/80 backdrop-blur-md max-w-[95%] transition-colors duration-300 ${isFullscreen ? "bottom-10 sm:bottom-12" : "bottom-4 sm:bottom-6"}`}>
         
         {/* Open / Close Buttons */}
-        <div className="flex items-center bg-slate-950/80 rounded-full p-0.5 border border-slate-800">
+        <div className="flex items-center bg-slate-100 dark:bg-slate-950/80 rounded-full p-0.5 border border-slate-200 dark:border-slate-800">
           <button
             onClick={handleOpenCatalog}
             className={`px-3 sm:px-4 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
               isOpen 
                 ? "bg-amber-500 text-white shadow-md shadow-amber-500/30" 
-                : "text-slate-300 hover:text-white hover:bg-slate-800/60"
+                : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/80 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60"
             }`}
             title="Open catalog folder"
           >
@@ -656,7 +669,7 @@ export default function Catalog3DViewer() {
             className={`px-3 sm:px-4 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1.5 cursor-pointer ${
               !isOpen 
                 ? "bg-amber-500 text-white shadow-md shadow-amber-500/30" 
-                : "text-slate-300 hover:text-white hover:bg-slate-800/60"
+                : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/80 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60"
             }`}
             title="Close catalog folder"
           >
@@ -665,7 +678,7 @@ export default function Catalog3DViewer() {
           </button>
         </div>
 
-        <div className="w-px h-5 bg-slate-700/60 my-auto" />
+        <div className="w-px h-5 bg-slate-200 dark:bg-slate-700/60 my-auto" />
 
         {/* 360 Auto-Rotate Toggle */}
         <button
@@ -673,7 +686,7 @@ export default function Catalog3DViewer() {
           className={`p-2 rounded-full text-xs font-semibold transition border cursor-pointer ${
             autoRotate 
               ? "bg-amber-500 text-white border-amber-500 shadow-md shadow-amber-500/30" 
-              : "bg-slate-950/80 text-slate-300 hover:text-white border-slate-800"
+              : "bg-slate-100 dark:bg-slate-950/80 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border-slate-200 dark:border-slate-800"
           }`}
           title={autoRotate ? "Pause 360° Rotate" : "360° Auto-Rotate"}
           aria-label="Toggle 360 rotation"
@@ -682,31 +695,31 @@ export default function Catalog3DViewer() {
         </button>
 
         {/* Camera Angle Presets (Hidden on small mobile screens to keep capsule sleek) */}
-        <div className="hidden sm:flex items-center bg-slate-950/80 rounded-full p-0.5 border border-slate-800 text-[11px] font-bold">
+        <div className="hidden sm:flex items-center bg-slate-100 dark:bg-slate-950/80 rounded-full p-0.5 border border-slate-200 dark:border-slate-800 text-[11px] font-bold">
           <button
             onClick={() => setCameraPreset("front")}
-            className="px-2.5 py-1 rounded-full text-slate-300 hover:text-white hover:bg-slate-800 transition cursor-pointer"
+            className="px-2.5 py-1 rounded-full text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition cursor-pointer"
             title="Front Cover View"
           >
             Front
           </button>
           <button
             onClick={() => setCameraPreset("back")}
-            className="px-2.5 py-1 rounded-full text-slate-300 hover:text-white hover:bg-slate-800 transition cursor-pointer"
+            className="px-2.5 py-1 rounded-full text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition cursor-pointer"
             title="Back Cover View"
           >
             Back
           </button>
           <button
             onClick={() => setCameraPreset("iso")}
-            className="px-2.5 py-1 rounded-full text-slate-300 hover:text-white hover:bg-slate-800 transition cursor-pointer"
+            className="px-2.5 py-1 rounded-full text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-800 transition cursor-pointer"
             title="3D Perspective View"
           >
             3D Iso
           </button>
         </div>
 
-        <div className="w-px h-5 bg-slate-700/60 my-auto" />
+        <div className="w-px h-5 bg-slate-200 dark:bg-slate-700/60 my-auto" />
 
         {/* Fullscreen Toggle */}
         <button
@@ -714,7 +727,7 @@ export default function Catalog3DViewer() {
           className={`px-2.5 sm:px-3.5 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1.5 border shadow-md cursor-pointer ${
             isFullscreen 
               ? "bg-amber-500 text-white border-amber-400 shadow-amber-500/30" 
-              : "bg-slate-950/80 text-slate-200 hover:text-white border-slate-800"
+              : "bg-slate-100 dark:bg-slate-950/80 text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-white border-slate-200 dark:border-slate-800"
           }`}
           title={isFullscreen ? "Exit Fullscreen" : "Enter Fullscreen"}
         >
@@ -726,66 +739,64 @@ export default function Catalog3DViewer() {
 
       {/* Selected Panel Inspector Card (Bottom Drawer) */}
       {selectedPanel && (
-        <div className="absolute bottom-20 sm:bottom-24 inset-x-4 sm:inset-x-auto sm:right-6 sm:w-96 z-30 p-5 rounded-2xl bg-slate-900/95 border border-slate-700 shadow-2xl backdrop-blur-md animate-in slide-in-from-bottom-4 duration-300">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-3">
+        <div className="absolute bottom-20 sm:bottom-24 inset-x-4 sm:inset-x-auto sm:right-6 sm:w-96 z-30 p-5 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200 dark:border-slate-700 shadow-2xl backdrop-blur-md animate-in slide-in-from-bottom-4 duration-300">
+          <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800 mb-3">
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-amber-500">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-amber-600 dark:text-amber-500">
                 {FRONT_PANELS.includes(selectedPanel) ? "Front Specimen" : "Back Specimen"}
               </span>
-              <h4 className="text-base font-black text-white">
+              <h4 className="text-base font-black text-slate-900 dark:text-white">
                 {selectedPanel.replace("Panel_", "Wall Panel ")}
               </h4>
             </div>
             <button
               onClick={() => togglePanelDetachment(selectedPanel)}
-              className="text-xs px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 transition"
+              className="text-xs px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition font-medium cursor-pointer"
             >
               {panelsRef.current.get(selectedPanel)?.isDetached ? "Put Back" : "Pull Out"}
             </button>
           </div>
 
-          <p className="text-xs text-slate-300 mb-3">
-            Status: <span className="text-emerald-400 font-bold">{panelsRef.current.get(selectedPanel)?.isDetached ? "Detached / Pulled Out" : "Fitted in Catalog Slot"}</span>
+          <p className="text-xs text-slate-600 dark:text-slate-300 mb-3">
+            Status: <span className="text-emerald-600 dark:text-emerald-400 font-bold">{panelsRef.current.get(selectedPanel)?.isDetached ? "Detached / Pulled Out" : "Fitted in Catalog Slot"}</span>
           </p>
 
           {/* Live Texture Finishes */}
           <div className="mb-4">
-            <span className="text-[11px] font-bold text-slate-400 block mb-2">Test Alternate Wood Finish on 3D Model:</span>
+            <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 block mb-2">Test Alternate Wood Finish on 3D Model:</span>
             <div className="grid grid-cols-3 gap-1.5">
               {FINISH_PRESETS.map((fin) => (
                 <button
                   key={fin.id}
                   onClick={() => handleApplyFinish(fin)}
-                  className="p-1.5 rounded-lg bg-slate-950 border border-slate-800 hover:border-amber-500/60 text-left transition flex items-center gap-1.5"
+                  className="p-1.5 rounded-lg bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 hover:border-amber-500/60 text-left transition flex items-center gap-1.5 cursor-pointer"
                 >
-                  <span className="w-3.5 h-3.5 rounded-full flex-shrink-0" style={{ backgroundColor: fin.color }} />
-                  <span className="text-[10px] text-slate-300 font-medium truncate">{fin.name.split(" ")[0]}</span>
+                  <span className="w-3.5 h-3.5 rounded-full shrink-0" style={{ backgroundColor: fin.color }} />
+                  <span className="text-[10px] text-slate-700 dark:text-slate-300 font-medium truncate">{fin.name.split(" ")[0]}</span>
                 </button>
               ))}
             </div>
           </div>
 
           {/* Quick Order Button */}
-          <div className="flex items-center gap-2 pt-2 border-t border-slate-800">
+          <div className="flex items-center gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
             <a
               href={`https://wa.me/917217644573?text=${encodeURIComponent(`Hi Goals Floors, I am exploring your 3D Wall Panel Catalog and want to order the physical sample piece for ${selectedPanel.replace("Panel_", "Wall Panel ")}.`)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-grow py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-sm"
+              className="grow py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition shadow-xs cursor-pointer"
             >
               <MessageCircle size={14} /> Request Sample on WhatsApp
             </a>
             <button
               onClick={() => setSelectedPanel(null)}
-              className="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold"
+              className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold cursor-pointer transition"
             >
               Close
             </button>
           </div>
         </div>
       )}
-
-
 
     </div>
   );

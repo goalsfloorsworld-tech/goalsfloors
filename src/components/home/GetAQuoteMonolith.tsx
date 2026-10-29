@@ -40,7 +40,7 @@ export default function GetAQuoteMonolith() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative py-8 md:py-12 px-4 overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500 flex items-center justify-center min-h-[400px] md:min-h-[600px] w-full max-w-full box-border"
+      className="relative py-8 md:py-12 px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500 flex items-center justify-center min-h-[400px] md:min-h-[600px] w-full max-w-full box-border"
     >
       {/* Background Decor Elements (Floating 3D-like shapes) */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -55,7 +55,7 @@ export default function GetAQuoteMonolith() {
           rotateY,
           transformStyle: "preserve-3d",
         }}
-        className="relative w-full max-w-4xl z-10 min-w-0"
+        className="relative w-full max-w-5xl xl:max-w-6xl 2xl:max-w-7xl z-10 min-w-0"
       >
         <div
           style={{ transform: "translateZ(80px)" }}
