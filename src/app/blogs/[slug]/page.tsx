@@ -25,6 +25,9 @@ type NormalizedPost = {
   imageUrl: string | null;
   imageAlt: string;
   date: string;
+  modified: string;
+  seoTitle?: string;
+  seoDescription?: string;
   authorId?: string;
 };
 
@@ -45,6 +48,7 @@ async function getUniversalPostData(slug: string): Promise<NormalizedPost | null
       imageUrl: supabaseBlog.featured_image || null,
       imageAlt: cleanHtmlEntities(supabaseBlog.featured_image_alt || supabaseBlog.title),
       date: supabaseBlog.created_at || new Date().toISOString(),
+      modified: supabaseBlog.updated_at || supabaseBlog.created_at || new Date().toISOString(),
       authorId: supabaseBlog.author_id,
     };
   }
@@ -65,6 +69,9 @@ async function getUniversalPostData(slug: string): Promise<NormalizedPost | null
         imageUrl: featuredMedia?.source_url ? toDomainImageUrl(featuredMedia.source_url) : null,
         imageAlt: cleanHtmlEntities(featuredMedia?.alt_text || post.title.rendered),
         date: post.date,
+        modified: post.modified || post.date,
+        seoTitle: post.meta?.rank_math_title,
+        seoDescription: post.meta?.rank_math_description,
       };
     }
   } catch (err) {
@@ -95,17 +102,22 @@ export async function generateMetadata({
 
   const cleanTitle = cleanHtmlEntities(post.title);
   const cleanExcerpt = cleanHtmlEntities(post.excerpt);
+  const seoTitle = cleanHtmlEntities(post.seoTitle) || `${cleanTitle} | Goals Floors Insights`;
+  const seoDescription = cleanHtmlEntities(post.seoDescription) || cleanExcerpt;
 
   return {
-    title: `${cleanTitle} | Goals Floors Insights`,
-    description: cleanExcerpt,
+    title: seoTitle,
+    description: seoDescription,
     alternates: {
       canonical,
     },
     openGraph: {
+      type: "article",
       url: canonical,
-      title: `${cleanTitle} | Goals Floors Insights`,
-      description: cleanExcerpt,
+      title: seoTitle,
+      description: seoDescription,
+      publishedTime: post.date,
+      modifiedTime: post.modified,
       images: post.imageUrl ? [
         {
           url: post.imageUrl,
@@ -115,8 +127,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${cleanTitle} | Goals Floors Insights`,
-      description: cleanExcerpt,
+      title: seoTitle,
+      description: seoDescription,
       images: post.imageUrl ? [post.imageUrl] : undefined,
     },
   };
@@ -134,7 +146,7 @@ export default async function SingleBlogPage({
     notFound();
   }
 
-  const { title, content, excerpt, imageUrl, imageAlt, date, authorId } = post;
+  const { title, content, excerpt, imageUrl, imageAlt, date, modified, authorId } = post;
   const cleanTitle = cleanHtmlEntities(title);
   const cleanExcerpt = cleanHtmlEntities(excerpt);
   const canonicalUrl = `${SITE_ORIGIN}/blogs/${resolvedParams.slug}`;
@@ -170,6 +182,11 @@ export default async function SingleBlogPage({
     if (date) isoDate = new Date(date).toISOString();
   } catch (e) {}
 
+  const modifiedDate = new Date(modified);
+  const isoModifiedDate = Number.isNaN(modifiedDate.getTime())
+    ? isoDate
+    : modifiedDate.toISOString();
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -180,7 +197,7 @@ export default async function SingleBlogPage({
     "headline": cleanTitle,
     "image": imageUrl ? [imageUrl] : undefined,
     "datePublished": isoDate,
-    "dateModified": isoDate,
+    "dateModified": isoModifiedDate,
     "author": {
       "@type": "Person",
       "name": authorName
@@ -196,11 +213,40 @@ export default async function SingleBlogPage({
     "description": cleanExcerpt
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": `${SITE_ORIGIN}/`,
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blogs",
+        "item": `${SITE_ORIGIN}/blogs`,
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": cleanTitle,
+        "item": canonicalUrl,
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-white dark:bg-slate-950 pb-24 selection:bg-amber-100 dark:selection:bg-amber-900/40">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       {/* Return to Blogs */}
       <div className="fixed top-24 left-4 z-50 hidden xl:block">

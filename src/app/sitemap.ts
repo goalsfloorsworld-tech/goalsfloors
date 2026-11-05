@@ -181,21 +181,39 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
   let blogRoutes: MetadataRoute.Sitemap = [];
   try {
-    const res = await fetch(`${API_BASE_URL}/posts?per_page=100&_embed=true`, { next: { revalidate: 3600 } });
-    if (res.ok) {
-      const posts = await res.json();
-      blogRoutes = posts.map((post: WPPost) => {
-        const rawImageUrl = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
-        const domainImageUrl = rawImageUrl ? toDomainImageUrl(rawImageUrl) : undefined;
-        return {
-          url: `${baseUrl}/blogs/${post.slug}`,
-          lastModified: new Date(post.modified).toISOString(),
-          changeFrequency: 'monthly' as const,
-          priority: 0.7,
-          images: domainImageUrl ? processImageUrls(baseUrl, [domainImageUrl]) : undefined,
-        };
-      });
+    const posts: WPPost[] = [];
+    let page = 1;
+    let totalPages = 1;
+
+    while (page <= totalPages) {
+      const res = await fetch(
+        `${API_BASE_URL}/posts?per_page=100&page=${page}&_embed=true`,
+        { next: { revalidate: 3600 } }
+      );
+      if (!res.ok) {
+        throw new Error(`Failed to fetch WordPress sitemap posts: ${res.status} ${res.statusText}`);
+      }
+
+      const pagePosts: WPPost[] = await res.json();
+      posts.push(...pagePosts);
+      const responseTotalPages = Number.parseInt(res.headers.get('x-wp-totalpages') || '', 10);
+      totalPages = Number.isFinite(responseTotalPages) && responseTotalPages > 0
+        ? responseTotalPages
+        : page;
+      page += 1;
     }
+
+    blogRoutes = posts.map((post) => {
+      const rawImageUrl = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
+      const domainImageUrl = rawImageUrl ? toDomainImageUrl(rawImageUrl) : undefined;
+      return {
+        url: `${baseUrl}/blogs/${post.slug}`,
+        lastModified: new Date(post.modified).toISOString(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+        images: domainImageUrl ? processImageUrls(baseUrl, [domainImageUrl]) : undefined,
+      };
+    });
   } catch (error) {
     console.error('Error fetching WordPress blogs for sitemap:', error);
   }
@@ -323,4 +341,3 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [...staticRoutes, ...productRoutes, ...blogRoutes, ...supabaseBlogRoutes, ...multiverseRoutes, ...compareRoutes, ...catalogRoutes];
 }
-

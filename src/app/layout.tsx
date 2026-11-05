@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Goals Floors: Premium Architectural Products",
     description: "India's fastest growing brand for Wall Panels, WPC, and Flooring in Delhi NCR.",
-    images: ["https://res.cloudinary.com/dcezlxt8r/image/upload/v1775448942/goals-floors-og.jpg"],
+    images: ["https://goalsfloors.com/images/goals-floors-twitter-card.png"],
   },
   icons: {
     icon: [

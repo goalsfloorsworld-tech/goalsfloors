@@ -97,7 +97,9 @@ async function getPosts(page: number, query: string) {
       return post;
     });
 
-    const posts = [...supabasePosts, ...mappedWpPosts];
+    const posts = [...supabasePosts, ...mappedWpPosts].sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
 
     return { posts, totalPages, error: false };
   } catch (error) {

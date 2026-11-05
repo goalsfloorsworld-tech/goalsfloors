@@ -1,83 +1,71 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { DealerInquiryEmail } from '@/emails/DealerInquiryEmail'; // Path must be correct
+import { DealerInquiryEmail } from '@/emails/DealerInquiryEmail';
 
 export async function POST(req: Request) {
-  const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     const body = await req.json();
     const {
-      name, email, phone, company, city, state, zip,
-      dob, businessType, turnover, gstNumber, message, businessCardBase64
+      name,
+      email,
+      phone,
+      company,
+      city,
+      state,
+      zip,
+      dob,
+      businessType,
+      turnover,
+      gstNumber,
+      message,
+      businessCardBase64
     } = body;
 
-    // --- Validation (Crucial for multiple fields) ---
-    if (!name || !email || !company || !city || !state || !businessType || !turnover || !businessCardBase64) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    // --- Basic Validation ---
+    if (!name || !email || !phone || !company || !city || !state) {
+      return NextResponse.json(
+        { error: 'Please provide your Name, Company, Email, Phone, City, and State.' },
+        { status: 400 }
+      );
     }
 
-    // Provide defaults for optional fields if they are falsy
     const finalMessage = message || "No additional message provided.";
     const finalZip = zip || "000000";
     const finalDob = dob || "N/A";
+    const finalGst = gstNumber || "N/A";
+    const finalBusinessType = businessType || "Retailer";
+    const finalTurnover = turnover || "Upto 10L";
 
-    // Validate file size/type (Max 15MB) - important for production
-    // ... (Add file validation logic based on your Base64 and MIME type expectations)
+    // --- Process File Attachment for Resend (Decode Base64 if present) ---
+    const attachments: Array<{
+      content: string;
+      filename: string;
+      contentType: string;
+    }> = [];
 
-    // --- Process File Attachment for Resend (Decode Base64) ---
-    // Extract base64 content and metadata
-    const matches = businessCardBase64.match(/^data:(.+);base64,(.+)$/);
-    if (!matches || matches.length !== 3) {
-      return NextResponse.json({ error: 'Invalid file format.' }, { status: 400 });
+    if (businessCardBase64 && typeof businessCardBase64 === 'string') {
+      const matches = businessCardBase64.match(/^data:(.+);base64,(.+)$/);
+      if (matches && matches.length === 3) {
+        const contentType = matches[1];
+        const base64Content = matches[2];
+        const safeName = name.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+        const ext = contentType.includes('png') ? 'png' : contentType.includes('pdf') ? 'pdf' : 'jpg';
+        attachments.push({
+          content: base64Content,
+          filename: `visiting_card_${safeName}.${ext}`,
+          contentType: contentType,
+        });
+      }
     }
 
-    const contentType = matches[1];
-    const base64Content = matches[2];
-    // Use a clean filename or based on applicant name
-    const filename = `business_card_${name.replace(/\s+/g, '_').toLowerCase()}.jpg`;
-
-    // --- Process Email Template ---
-    // eslint-disable-next-line react-hooks/error-boundaries
-    const emailReact = (
-      <DealerInquiryEmail
-        name={name}
-        email={email}
-        phone={phone}
-        interest="Dealer Application"
-        company={company}
-        city={city}
-        state={state}
-        zip={finalZip}
-        dob={finalDob}
-        businessType={businessType}
-        turnover={turnover}
-        gstNumber={gstNumber || "N/A"}
-        message={finalMessage}
-      />
-    );
-
-    // --- Send Email ---
-    const { data, error } = await resend.emails.send({
-      from: 'Goals Floors Dealers <onboarding@resend.dev>',
-      to: ['goalsfloors.world@gmail.com'],
-      subject: `New Dealer Application: ${name} - ${company}`,
-      react: emailReact,
-      attachments: [{
-        content: base64Content,
-        filename: filename,
-        contentType: contentType,
-      }],
-    });
-
-    if (error) {
-      console.error("Resend Error:", error);
-      return NextResponse.json({ error: error.message }, { status: 400 });
-    }
-
-    // --- Send Data to Google Sheets ---
+    // --- 1. Send Data to Google Sheets ---
+    let sheetSuccess = false;
     if (process.env.GOOGLE_DEALER_SCRIPT_URL) {
       try {
-        await fetch(process.env.GOOGLE_DEALER_SCRIPT_URL, {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 9000);
+
+        const sheetRes = await fetch(process.env.GOOGLE_DEALER_SCRIPT_URL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -87,22 +75,82 @@ export async function POST(req: Request) {
             email,
             phone,
             company,
-            gstNumber,
+            gstNumber: finalGst,
             city,
             state,
-            businessType,
-            turnover,
-            message: finalMessage
+            businessType: finalBusinessType,
+            turnover: finalTurnover,
+            message: finalMessage,
+            hasVisitingCard: attachments.length > 0 ? "Yes" : "No",
+            timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
           }),
+          signal: controller.signal
         });
+
+        clearTimeout(timeoutId);
+        if (sheetRes.ok) {
+          sheetSuccess = true;
+        } else {
+          console.warn(`Google Sheet responded with status ${sheetRes.status}`);
+        }
       } catch (sheetError) {
-        console.error('Google Sheets Dealer Error:', sheetError);
+        console.error('Google Sheets Dealer Sync Error:', sheetError);
       }
     }
 
-    return NextResponse.json({ success: true, data });
+    // --- 2. Send Email via Resend ---
+    let emailSuccess = false;
+    if (process.env.RESEND_API_KEY) {
+      try {
+        const resend = new Resend(process.env.RESEND_API_KEY);
+        const emailReact = (
+          <DealerInquiryEmail
+            name={name}
+            email={email}
+            phone={phone}
+            interest="Dealer Application"
+            company={company}
+            city={city}
+            state={state}
+            zip={finalZip}
+            dob={finalDob}
+            businessType={finalBusinessType}
+            turnover={finalTurnover}
+            gstNumber={finalGst}
+            message={finalMessage}
+          />
+        );
+
+        const emailPayload: any = {
+          from: 'Goals Floors Dealers <onboarding@resend.dev>',
+          to: ['goalsfloors.world@gmail.com'],
+          subject: `New Dealer Application: ${name} - ${company}`,
+          react: emailReact,
+        };
+
+        if (attachments.length > 0) {
+          emailPayload.attachments = attachments;
+        }
+
+        const resendResult = await resend.emails.send(emailPayload);
+        if (resendResult.error) {
+          console.error("Resend Error:", resendResult.error);
+        } else {
+          emailSuccess = true;
+        }
+      } catch (resendError) {
+        console.error("Resend Exception:", resendError);
+      }
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: 'Dealer application received successfully.',
+      sheetSynced: sheetSuccess,
+      emailSent: emailSuccess
+    });
   } catch (error) {
-    console.error("Internal Server Error:", error);
+    console.error("Dealer Inquiry API Route Error:", error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
