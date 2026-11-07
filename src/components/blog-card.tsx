@@ -36,12 +36,12 @@ export default function BlogCard({ post, index }: { post: BlogPost; index: numbe
   const wordCount = post.content.rendered.replace(/<[^>]*>?/gm, '').split(/\s+/).length;
   const readTime = Math.max(1, Math.ceil(wordCount / 200));
 
-  // Date formatting
+  // Date formatting (in Indian Standard Time)
   const formattedDate = new Intl.DateTimeFormat("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
-    timeZone: "UTC",
+    timeZone: "Asia/Kolkata",
   }).format(new Date(post.date));
 
   return (

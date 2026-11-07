@@ -83,10 +83,10 @@ const desktopHeroImages = [
     alt: "Modern vertical WPC timber tube partition in Gurugram interior"
   },
   {
-      src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Luxury_Master_Bathroom_in_Delhi_Villa_with_Waterproof_Cobra_Gold_SPC_Flooring.jpg",
-      alt: "Luxury Master Bathroom in Delhi Villa with Waterproof Cobra Gold SPC Flooring",
-      
-    },
+    src: "https://res.cloudinary.com/dcezlxt8r/image/upload/f_auto,q_auto/Luxury_Master_Bathroom_in_Delhi_Villa_with_Waterproof_Cobra_Gold_SPC_Flooring.jpg",
+    alt: "Luxury Master Bathroom in Delhi Villa with Waterproof Cobra Gold SPC Flooring",
+
+  },
 ];
 
 const Hexagon = ({ imgUrl, xOffset, yOffset, sizeClass, innerSizeClass, zIndex, baseLeft = 'calc(50% - 90px)', baseTop = 'calc(50% - 78px)', clipPath = 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)', waveDirection = 'rtl' }: any) => {
@@ -216,7 +216,7 @@ const Hexagon = ({ imgUrl, xOffset, yOffset, sizeClass, innerSizeClass, zIndex, 
 
         const rotateX = ((y - centerY) / centerY) * -15;
         const rotateY = ((x - centerX) / centerX) * 15;
-        
+
         gsap.to(element, {
           rotateX,
           rotateY,
@@ -270,19 +270,19 @@ const Hexagon = ({ imgUrl, xOffset, yOffset, sizeClass, innerSizeClass, zIndex, 
   }, [animateParticles, clearAllParticles]);
 
   return (
-    <div 
+    <div
       className={`absolute ${sizeClass} flex items-center justify-center ${zIndex} magic-hexagon-container`}
-      style={{ 
-        left: baseLeft, 
+      style={{
+        left: baseLeft,
         top: baseTop,
         transform: `translate(${xOffset}px, ${yOffset}px)`,
         filter: 'drop-shadow(0px 8px 16px rgba(0,0,0,0.12))',
       }}
     >
-      <div 
+      <div
         ref={cardRef}
-        className="absolute inset-0 flex items-center justify-center magic-hexagon-border group" 
-        style={{ 
+        className="absolute inset-0 flex items-center justify-center magic-hexagon-border group"
+        style={{
           clipPath: clipPath,
           cursor: 'pointer',
           '--glow-intensity': '0',
@@ -293,18 +293,18 @@ const Hexagon = ({ imgUrl, xOffset, yOffset, sizeClass, innerSizeClass, zIndex, 
           transform: 'scale(0) translateY(80px)'
         } as any}
       >
-        <div 
-          className={`relative ${innerSizeClass} overflow-hidden bg-gray-100 dark:bg-slate-900 pointer-events-none`} 
+        <div
+          className={`relative ${innerSizeClass} overflow-hidden bg-gray-100 dark:bg-slate-900 pointer-events-none`}
           style={{ clipPath: clipPath }}
         >
           <div className="absolute inset-0">
-            <Image 
-              src={imgUrl} 
-              fill 
-              className="object-cover transition-transform duration-500 group-hover:scale-110" 
-              alt="Interior Design" 
-              sizes="(max-width: 768px) 50vw, 30vw" 
-              priority 
+            <Image
+              src={imgUrl}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-110"
+              alt="Interior Design"
+              sizes="(max-width: 768px) 50vw, 30vw"
+              priority
             />
           </div>
         </div>
@@ -315,10 +315,10 @@ const Hexagon = ({ imgUrl, xOffset, yOffset, sizeClass, innerSizeClass, zIndex, 
 
 const GlobalSpotlight = ({ gridRef }: { gridRef: any }) => {
   const spotlightRef = useRef<HTMLDivElement>(null);
-  
+
   useEffect(() => {
     if (!gridRef.current) return;
-    
+
     const spotlightRadius = 350;
     const spotlight = document.createElement('div');
     spotlight.style.cssText = `
@@ -373,7 +373,7 @@ const GlobalSpotlight = ({ gridRef }: { gridRef: any }) => {
       if (!spotlightRef.current || !gridRef.current || cachedCards.length === 0) return;
 
       if (rafId) cancelAnimationFrame(rafId);
-      
+
       rafId = requestAnimationFrame(() => {
         const rect = gridRef.current.getBoundingClientRect();
         const mouseInside = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
@@ -402,14 +402,14 @@ const GlobalSpotlight = ({ gridRef }: { gridRef: any }) => {
 
           const relativeX = ((e.clientX - card.left) / card.width) * 100;
           const relativeY = ((e.clientY - card.top) / card.height) * 100;
-          
+
           card.el.style.setProperty('--glow-x', `${relativeX}%`);
           card.el.style.setProperty('--glow-y', `${relativeY}%`);
           card.el.style.setProperty('--glow-intensity', glowIntensity.toString());
         });
 
         gsap.to(spotlightRef.current, { left: e.clientX, top: e.clientY, duration: 0.1, ease: 'power2.out' });
-        
+
         const targetOpacity = minDistance <= proximity ? 0.8 : minDistance <= fadeDistance ? ((fadeDistance - minDistance) / (fadeDistance - proximity)) * 0.8 : 0;
         gsap.to(spotlightRef.current, { opacity: targetOpacity, duration: targetOpacity > 0 ? 0.2 : 0.5, ease: 'power2.out' });
       });
@@ -481,14 +481,14 @@ const MobileHoneycomb = ({ images }: { images: any[] }) => {
         { xOffset: 180, yOffset: 390, zIndex: "z-0" },
         { xOffset: 270, yOffset: 390, zIndex: "z-0" },
       ].map((pos: any, i) => (
-        <Hexagon 
+        <Hexagon
           key={`mob-${i}`}
-          imgUrl={pos.overrideImg || images[i % images.length].src} 
-          xOffset={pos.xOffset} 
+          imgUrl={pos.overrideImg || images[i % images.length].src}
+          xOffset={pos.xOffset}
           yOffset={pos.yOffset}
           zIndex={pos.zIndex}
-          sizeClass="w-[90px] h-[104px]" 
-          innerSizeClass="w-[84px] h-[98px]" 
+          sizeClass="w-[90px] h-[104px]"
+          innerSizeClass="w-[84px] h-[98px]"
           baseLeft="calc(50% - 45px)"
           baseTop="0px"
           clipPath="polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)"
@@ -501,11 +501,11 @@ const MobileHoneycomb = ({ images }: { images: any[] }) => {
 
 export default function HeroSection() {
   const gridRef = useRef<HTMLDivElement>(null);
-  
+
   return (
     <section suppressHydrationWarning className="relative flex items-center overflow-hidden w-full max-w-full box-border bg-[#f6f2ea] dark:bg-[#0F172A] transition-colors duration-300">
       <GlobalSpotlight gridRef={gridRef} />
-      
+
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] lg:w-[600px] lg:h-[600px] bg-amber-500/5 dark:bg-amber-500/10 blur-[100px] rounded-full -z-10" />
 
@@ -514,7 +514,7 @@ export default function HeroSection() {
 
       {/* Content Layer */}
       <div className="relative z-20 w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto pt-[355px] sm:pt-[330px] md:pt-[500px] lg:pt-4 pb-4 md:pb-24 lg:pb-[176px] flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8 h-full">
-        
+
         {/* MOBILE HEADING (Hidden on Desktop) */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -545,7 +545,7 @@ export default function HeroSection() {
           className="flex-1 max-w-[550px] w-full z-20 mt-2 lg:mt-0 order-3 lg:order-1 mb-8 lg:mb-0"
         >
           {/* Top Pill (Hidden on Mobile) */}
-          <motion.div 
+          <motion.div
             variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
             className="hidden lg:inline-flex items-center bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-[#E17100]/30 shadow-sm rounded-full px-4 py-2 mb-6 max-w-full overflow-hidden transition-colors mx-auto lg:mx-0 w-auto justify-start"
           >
@@ -556,7 +556,7 @@ export default function HeroSection() {
           </motion.div>
 
           {/* Desktop Subheading */}
-          <motion.h2 
+          <motion.h2
             variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
             className="hidden lg:block text-[#E17100] text-sm font-bold tracking-[0.2em] uppercase mb-4 text-left"
           >
@@ -564,7 +564,7 @@ export default function HeroSection() {
           </motion.h2>
 
           {/* Desktop Main Heading */}
-          <motion.h1 
+          <motion.h1
             variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
             className="hidden lg:block text-[80px] font-serif font-medium leading-[1.05] mb-6 text-gray-900 dark:text-white tracking-tight transition-colors text-left"
           >
@@ -573,7 +573,7 @@ export default function HeroSection() {
           </motion.h1>
 
           {/* Paragraph */}
-          <motion.p 
+          <motion.p
             variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
             className="text-gray-600 dark:text-gray-300 text-xs sm:text-lg max-w-[400px] mb-8 leading-relaxed font-medium transition-colors text-center lg:text-left mx-auto lg:mx-0"
           >
@@ -581,7 +581,7 @@ export default function HeroSection() {
           </motion.p>
 
           {/* Feature Badges Row */}
-          <motion.div 
+          <motion.div
             variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
             className="flex items-start justify-between mb-8 divide-x divide-gray-300/80 dark:divide-slate-700/80 w-full max-w-[480px] mx-auto lg:mx-0"
           >
@@ -602,19 +602,19 @@ export default function HeroSection() {
           </motion.div>
 
           {/* Buttons */}
-          <motion.div 
+          <motion.div
             variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0 } }}
             className="flex flex-row gap-2 sm:gap-4 w-full max-w-[480px] mx-auto lg:mx-0 pb-4"
           >
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="flex-1 flex items-center justify-center gap-1 sm:gap-2 bg-[#E17100] hover:bg-[#b85a1f] text-white px-3 py-3 sm:px-6 sm:py-4 rounded-md font-semibold text-[10px] sm:text-sm transition-colors shadow-lg shadow-[#E17100]/20 text-center"
             >
               BOOK CONSULTATION
               <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
             </Link>
-            <Link 
-              href="/products" 
+            <Link
+              href="/products"
               className="flex-1 flex items-center justify-center gap-1 sm:gap-2 border border-gray-400 dark:border-slate-600 hover:border-gray-600 dark:hover:border-slate-400 text-gray-900 dark:text-white bg-white/30 dark:bg-slate-800/30 hover:bg-white/60 dark:hover:bg-slate-800/60 px-3 py-3 sm:px-6 sm:py-4 rounded-md font-semibold text-[10px] sm:text-sm transition-colors backdrop-blur-sm text-center"
             >
               EXPLORE PRODUCTS
@@ -624,55 +624,55 @@ export default function HeroSection() {
         </motion.div>
 
         {/* RIGHT SIDE: HONEYCOMB CLUSTER */}
-        <div 
-          className="hidden lg:flex flex-1 w-full items-center justify-center lg:justify-end relative mt-0 lg:mt-0 min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] z-10 order-2 lg:order-2"
+        <div
+          className="hidden lg:flex flex-1 w-full items-center justify-center lg:justify-end relative mt-0 lg:mt-0 min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] z-20 order-2 lg:order-2"
           ref={gridRef}
         >
-           <div className="absolute lg:relative w-[460px] h-[480px] scale-[0.45] sm:scale-[0.6] md:scale-[0.75] lg:scale-[0.9] xl:scale-[1.1] origin-center lg:origin-right xl:origin-center translate-x-6 sm:translate-x-10 lg:translate-x-16 xl:translate-x-24">
-             {[
-               // Center
-               { xOffset: 0, yOffset: 0, zIndex: "z-40" },
-               // Inner Ring
-               { xOffset: 0, yOffset: -160, zIndex: "z-30" },
-               { xOffset: 138, yOffset: -80, zIndex: "z-20" },
-               { xOffset: 138, yOffset: 80, zIndex: "z-20" },
-               { xOffset: 0, yOffset: 160, zIndex: "z-30" },
-               { xOffset: -138, yOffset: 80, zIndex: "z-20" },
-               { xOffset: -138, yOffset: -80, zIndex: "z-20" },
-               // Outer Ring
-               { xOffset: 0, yOffset: -320, zIndex: "z-10" },
-               { xOffset: 138, yOffset: -240, zIndex: "z-10" },
-               { xOffset: 276, yOffset: -160, zIndex: "z-10" },
-               { xOffset: 276, yOffset: 0, zIndex: "z-10" },
-               { xOffset: 276, yOffset: 160, zIndex: "z-10" },
-               { xOffset: 138, yOffset: 240, zIndex: "z-10" },
-               { xOffset: 0, yOffset: 320, zIndex: "z-10" },
-               { xOffset: -138, yOffset: 240, zIndex: "z-10" },
-               { xOffset: -276, yOffset: 160, zIndex: "z-10" },
-               { xOffset: -276, yOffset: 0, zIndex: "z-10" },
-               { xOffset: -276, yOffset: -160, zIndex: "z-10" },
-               { xOffset: -138, yOffset: -240, zIndex: "z-10" },
-               // Half Outer Ring 2 (Layer 3 - Right Side Only)
-               { xOffset: 0, yOffset: -480, zIndex: "z-0" },
-               { xOffset: 138, yOffset: -400, zIndex: "z-0" },
-               { xOffset: 276, yOffset: -320, zIndex: "z-0" },
-               { xOffset: 414, yOffset: -240, zIndex: "z-0" },
-               { xOffset: 414, yOffset: -80, zIndex: "z-0" },
-               { xOffset: 414, yOffset: 80, zIndex: "z-0" },
-               { xOffset: 414, yOffset: 240, zIndex: "z-0" },
-               { xOffset: 276, yOffset: 320, zIndex: "z-0" }
-             ].map((pos, i) => (
-               <Hexagon 
-                 key={i}
-                 imgUrl={desktopHeroImages[i % desktopHeroImages.length].src} 
-                 xOffset={pos.xOffset} 
-                 yOffset={pos.yOffset}
-                 zIndex={pos.zIndex}
-                 sizeClass="w-[180px] h-[156px]" 
-                 innerSizeClass="w-[172px] h-[148px]" 
-               />
-             ))}
-           </div>
+          <div className="absolute lg:relative w-[460px] h-[480px] scale-[0.45] sm:scale-[0.6] md:scale-[0.75] lg:scale-[0.88] xl:scale-[1.0] 2xl:scale-[1.1] origin-center lg:origin-right xl:origin-right 2xl:origin-center translate-x-6 sm:translate-x-10 lg:translate-x-16 xl:translate-x-20 2xl:translate-x-24 -translate-y-6 lg:-translate-y-12 xl:-translate-y-16">
+            {[
+              // Center
+              { xOffset: 0, yOffset: 0, zIndex: "z-40" },
+              // Inner Ring
+              { xOffset: 0, yOffset: -160, zIndex: "z-30" },
+              { xOffset: 138, yOffset: -80, zIndex: "z-20" },
+              { xOffset: 138, yOffset: 80, zIndex: "z-20" },
+              { xOffset: 0, yOffset: 160, zIndex: "z-30" },
+              { xOffset: -138, yOffset: 80, zIndex: "z-20" },
+              { xOffset: -138, yOffset: -80, zIndex: "z-20" },
+              // Outer Ring
+              { xOffset: 0, yOffset: -320, zIndex: "z-10" },
+              { xOffset: 138, yOffset: -240, zIndex: "z-10" },
+              { xOffset: 276, yOffset: -160, zIndex: "z-10" },
+              { xOffset: 276, yOffset: 0, zIndex: "z-10" },
+              { xOffset: 276, yOffset: 160, zIndex: "z-10" },
+              { xOffset: 138, yOffset: 240, zIndex: "z-10" },
+              { xOffset: 0, yOffset: 320, zIndex: "z-10" },
+              { xOffset: -138, yOffset: 240, zIndex: "z-10" },
+              { xOffset: -276, yOffset: 160, zIndex: "z-10" },
+              { xOffset: -276, yOffset: 0, zIndex: "z-10" },
+              { xOffset: -276, yOffset: -160, zIndex: "z-10" },
+              { xOffset: -138, yOffset: -240, zIndex: "z-10" },
+              // Half Outer Ring 2 (Layer 3 - Right Side Only)
+              { xOffset: 0, yOffset: -480, zIndex: "z-0" },
+              { xOffset: 138, yOffset: -400, zIndex: "z-0" },
+              { xOffset: 276, yOffset: -320, zIndex: "z-0" },
+              { xOffset: 414, yOffset: -240, zIndex: "z-0" },
+              { xOffset: 414, yOffset: -80, zIndex: "z-0" },
+              { xOffset: 414, yOffset: 80, zIndex: "z-0" },
+              { xOffset: 414, yOffset: 240, zIndex: "z-0" },
+              { xOffset: 276, yOffset: 320, zIndex: "z-0" }
+            ].map((pos, i) => (
+              <Hexagon
+                key={i}
+                imgUrl={desktopHeroImages[i % desktopHeroImages.length].src}
+                xOffset={pos.xOffset}
+                yOffset={pos.yOffset}
+                zIndex={pos.zIndex}
+                sizeClass="w-[180px] h-[156px]"
+                innerSizeClass="w-[172px] h-[148px]"
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

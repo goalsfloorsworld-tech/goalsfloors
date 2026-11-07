@@ -21,40 +21,39 @@ export default function Home() {
       {/* ================= STATS BAR ================= */}
       <div className="w-full bg-[#f6f2ea] dark:bg-[#0F172A] relative z-20 transition-colors duration-300">
         <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
-          <div className="bg-[#15171e] dark:bg-slate-900 -mt-8 sm:-mt-12 lg:-mt-[116px] w-full lg:max-w-[1000px] xl:max-w-[1150px] shadow-2xl transition-colors duration-300 rounded-xl border border-white/5 dark:border-gray-800 p-3 sm:p-6 lg:p-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4">
-          {[
-            { label: "PREMIUM PRODUCTS", value: "2500+", icon: Settings },
-            { label: "HAPPY CLIENTS", value: "20K+", icon: Lock },
-            { label: "DEALERS", value: "400+", icon: PenTool },
-            { label: "WARRANTY BACKED", value: "90%", icon: Leaf },
-          ].map((stat, i) => (
-            <div 
-              key={i} 
-              className={`flex items-center gap-3 sm:gap-4 overflow-hidden ${
-                i === 0 ? 'border-b border-r lg:border-b-0 border-[#2a2d36] pb-4 pr-2 sm:pb-6 sm:pr-3 lg:pb-0 lg:pr-3 xl:pr-6' :
-                i === 1 ? 'border-b lg:border-b-0 lg:border-r border-[#2a2d36] pb-4 pl-2 sm:pb-6 sm:pl-4 lg:pb-0 lg:px-3 xl:px-6' :
-                i === 2 ? 'border-r border-[#2a2d36] pt-4 pr-2 sm:pt-6 sm:pr-3 lg:pt-0 lg:px-3 xl:px-6' :
-                'pt-4 pl-2 sm:pt-6 sm:pl-4 lg:pt-0 lg:pl-3 xl:pl-6'
-              }`}
-            >
-              <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-600/40 bg-white/5 flex items-center justify-center text-gray-400">
-                <stat.icon className="w-5 h-5 sm:w-5 sm:h-5" strokeWidth={1.5} />
-              </div>
-              <div className="flex flex-col text-left overflow-hidden">
-                <Counter
-                  value={stat.value}
-                  className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight"
-                />
-                <div className="text-[9px] sm:text-[10px] text-gray-400 font-semibold tracking-[0.1em] mt-0.5 whitespace-nowrap">
-                  {stat.label}
+          <div className="bg-[#15171e] dark:bg-slate-900 -mt-8 sm:-mt-12 lg:-mt-[84px] xl:-mt-[92px] w-full lg:max-w-[1000px] xl:max-w-[1150px] shadow-2xl transition-colors duration-300 rounded-xl border border-white/5 dark:border-gray-800 p-3 sm:p-6 lg:p-8">
+            <div className="grid grid-cols-2 lg:grid-cols-4">
+              {[
+                { label: "PREMIUM PRODUCTS", value: "2500+", icon: Settings },
+                { label: "HAPPY CLIENTS", value: "20K+", icon: Lock },
+                { label: "DEALERS", value: "400+", icon: PenTool },
+                { label: "WARRANTY BACKED", value: "90%", icon: Leaf },
+              ].map((stat, i) => (
+                <div
+                  key={i}
+                  className={`flex items-center gap-3 sm:gap-4 overflow-hidden ${i === 0 ? 'border-b border-r lg:border-b-0 border-[#2a2d36] pb-4 pr-2 sm:pb-6 sm:pr-3 lg:pb-0 lg:pr-3 xl:pr-6' :
+                      i === 1 ? 'border-b lg:border-b-0 lg:border-r border-[#2a2d36] pb-4 pl-2 sm:pb-6 sm:pl-4 lg:pb-0 lg:px-3 xl:px-6' :
+                        i === 2 ? 'border-r border-[#2a2d36] pt-4 pr-2 sm:pt-6 sm:pr-3 lg:pt-0 lg:px-3 xl:px-6' :
+                          'pt-4 pl-2 sm:pt-6 sm:pl-4 lg:pt-0 lg:pl-3 xl:pl-6'
+                    }`}
+                >
+                  <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-600/40 bg-white/5 flex items-center justify-center text-gray-400">
+                    <stat.icon className="w-5 h-5 sm:w-5 sm:h-5" strokeWidth={1.5} />
+                  </div>
+                  <div className="flex flex-col text-left overflow-hidden">
+                    <Counter
+                      value={stat.value}
+                      className="text-xl sm:text-2xl lg:text-3xl font-bold text-white tracking-tight"
+                    />
+                    <div className="text-[9px] sm:text-[10px] text-gray-400 font-semibold tracking-[0.1em] mt-0.5 whitespace-nowrap">
+                      {stat.label}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
-      </div>
-      </div>
       </div>
 
       {/* ================= QUICK APP CATEGORIES ================= */}

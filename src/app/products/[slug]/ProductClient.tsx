@@ -23,6 +23,8 @@ import FeatureAccordion from "@/components/products/FeatureAccordion";
 import QuickFeaturesBar from "@/components/products/QuickFeaturesBar";
 import CompareWidget from "@/components/CompareWidget";
 import PdfDownloadButton from "@/components/products/PdfDownloadButton";
+import PromoSlot from "@/components/promo/PromoSlot";
+import type { PromoSectionItem } from "@/lib/promo";
 
 export interface FAQ {
   question: string;
@@ -686,7 +688,13 @@ const HeroCarousel = memo(({ images }: { images: { url: string; alt: string }[] 
 
 HeroCarousel.displayName = "HeroCarousel";
 
-export default function ProductClient({ product }: { product: Product }) {
+export default function ProductClient({
+  product,
+  promos,
+}: {
+  product: Product;
+  promos?: PromoSectionItem[];
+}) {
   const [selectedVariant, setSelectedVariant] = useState<Variant | null>(null);
   const [activeDrawerImageIndex, setActiveDrawerImageIndex] = useState(0);
 
@@ -1052,6 +1060,9 @@ export default function ProductClient({ product }: { product: Product }) {
           </div>
         </div>
       )}
+
+      {/* ================= PROMOTIONAL BANNER SLOT (Below Accessories) ================= */}
+      <PromoSlot promos={promos} />
 
       {/* ================= 3. CORE SPECIFICATIONS / FEATURES ================= */}
       <FeatureAccordion

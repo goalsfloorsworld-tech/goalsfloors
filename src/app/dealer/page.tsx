@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import DealerHero from "@/components/dealer/DealerHero";
 import DealerWizard from "@/components/dealer/DealerWizard";
+import DealerSampleKitCard from "@/components/dealer/DealerSampleKitCard";
 import { TrustBar, WhyPartnerGrid, FAQAccordion } from "@/components/dealer/DealerSections";
 
 export const metadata: Metadata = {
@@ -52,6 +53,9 @@ export default function DealerPage() {
 
       {/* 3. Why Partner With Us & Rules Section */}
       <WhyPartnerGrid />
+
+      {/* 3.5 Showroom Specifier Sample Kit */}
+      <DealerSampleKitCard />
 
       {/* 4. The Form Wizard */}
       <section id="apply" className="relative border-t border-slate-200 dark:border-white/10">

@@ -170,11 +170,12 @@ export default async function SingleBlogPage({
   const wordCount = content.replace(/<[^>]*>?/gm, '').split(/\s+/).length;
   const readTime = Math.max(1, Math.ceil(wordCount / 200));
 
-  // Date formatting
+  // Date formatting (in Indian Standard Time)
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
     year: "numeric",
+    timeZone: "Asia/Kolkata",
   });
 
   let isoDate = new Date().toISOString();

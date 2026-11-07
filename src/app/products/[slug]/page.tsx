@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProductBySlug } from "@/lib/data";
+import { getPromosForPage, type PromoSectionItem } from "@/lib/promo";
 import ProductClient, { Product } from "./ProductClient";
 import { createClient } from "@supabase/supabase-js";
 
@@ -83,26 +84,32 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     notFound();
   }
 
+  let promos: PromoSectionItem[] = [];
+
   try {
     const supabase = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.SUPABASE_SERVICE_ROLE_KEY!
     );
     
-    const { data: dbProducts, error } = await supabase
-      .from('page_products')
-      .select('product_data')
-      .eq('page_slug', slug);
+    const [
+      { data: dbProducts, error },
+      { data: dbImages, error: imgError },
+      { data: dbAbImages, error: abError },
+      fetchedPromos
+    ] = await Promise.all([
+      supabase.from('page_products').select('product_data').eq('page_slug', slug),
+      supabase.from('page_installed_images').select('image_url, alt_text, aspect_ratio').eq('page_slug', slug),
+      supabase.from('page_ab_images').select('before_url, before_alt, after_url, after_alt, primary_thumbnail, placement').eq('page_slug', slug),
+      getPromosForPage(slug)
+    ]);
+
+    promos = fetchedPromos;
 
     if (!error && dbProducts) {
       const dynamicProducts = dbProducts.map(row => row.product_data);
       product.variants = [...(product.variants || []), ...dynamicProducts];
     }
-
-    const { data: dbImages, error: imgError } = await supabase
-      .from('page_installed_images')
-      .select('image_url, alt_text, aspect_ratio')
-      .eq('page_slug', slug);
 
     if (!imgError && dbImages) {
       const dynamicImages = dbImages.map(row => ({
@@ -112,11 +119,6 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       }));
       product.installedImages = [...(product.installedImages || []), ...dynamicImages];
     }
-
-    const { data: dbAbImages, error: abError } = await supabase
-      .from('page_ab_images')
-      .select('before_url, before_alt, after_url, after_alt, primary_thumbnail, placement')
-      .eq('page_slug', slug);
 
     const localAbImages = product.beforeAfter || [];
     let dynamicAbImages: any[] = [];
@@ -418,7 +420,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         />
       )}
       
-      <ProductClient product={product} />
+      <ProductClient product={product} promos={promos} />
     </>
   );
 }

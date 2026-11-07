@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Mail, Instagram, ArrowUp } from "lucide-react";
+import FooterSampleKitCard from "@/components/FooterSampleKitCard";
 
 // Premium WhatsApp Branded SVG
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -22,6 +23,7 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "AI Compare", href: "/compare" },
   { name: "Catalogs", href: "/catalogs" },
+  { name: "Sample Kit", href: "/sample-kit" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
   { name: "Become a Dealer", href: "/dealer" },
@@ -219,8 +221,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* ── Col 4 – CTA Card (Full width on mobile) ── */}
-          <div className="col-span-2 lg:col-span-4 flex flex-col items-center lg:items-end mt-4 lg:mt-0 order-4">
+          {/* ── Col 4 – CTA Card & Sample Kit Card (Full width on mobile) ── */}
+          <div className="col-span-2 lg:col-span-4 flex flex-col items-center lg:items-end mt-4 lg:mt-0 order-4 gap-4 w-full">
             <div className="border border-white/10 rounded-2xl p-6 bg-white/[0.03] backdrop-blur-sm w-full lg:max-w-none text-center lg:text-left relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-24 h-24 bg-amber-600/5 blur-3xl rounded-full -mr-12 -mt-12 group-hover:bg-amber-600/10 transition-colors" />
               <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-2 font-bold">Free Estimate</p>
@@ -235,6 +237,9 @@ export default function Footer() {
                 <ArrowUp className="w-3.5 h-3.5 rotate-45" />
               </Link>
             </div>
+
+            {/* Small Clean Sample Kit Card */}
+            <FooterSampleKitCard />
           </div>
 
         </div>

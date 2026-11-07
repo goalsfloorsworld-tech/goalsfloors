@@ -15,12 +15,18 @@ export type ActionType =
   | 'INDEX_URLS'
   | 'ADD_IMAGE'
   | 'DELETE_IMAGE'
+  | 'UPLOAD_PROMO_IMAGE'
   | 'ADD_PRODUCT'
   | 'EDIT_PRODUCT'
   | 'DELETE_PRODUCT'
-  | 'UPDATE_ROLE';
+  | 'UPDATE_ROLE'
+  | 'SAVE_PROMO_SECTION'
+  | 'SET_PROMO_STATUS'
+  | 'ASSIGN_PROMO'
+  | 'UNASSIGN_PROMO'
+  | 'DELETE_PROMO_SECTION';
 
-export async function logAdminActivity(actionType: ActionType, details: Record<string, any> = {}) {
+export async function logAdminActivity(actionType: ActionType, details: Record<string, unknown> = {}) {
   try {
     const { userId } = await auth();
     if (!userId) return; // Only log authenticated actions
