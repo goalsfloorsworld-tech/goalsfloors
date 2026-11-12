@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard, FileText, BarChart3, Globe, Rocket,
-  ShoppingBag, Database, UserPlus, Loader2, PackagePlus, Image as ImageIcon, Store, Activity, Shield, Server, BadgePercent, Flame
+  ShoppingBag, Database, UserPlus, Loader2, PackagePlus, Image as ImageIcon, Store, Activity, Shield, Server, BadgePercent, Flame, Bot
 } from 'lucide-react';
 import { getCurrentUserProfile } from '@/actions/admin/core';
 import RoleBadge from '@/components/shared/RoleBadge';
@@ -137,6 +137,13 @@ const ADMIN_TOOLS = [
     color: 'hover:bg-blue-50 dark:hover:bg-blue-900/20 text-slate-700 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-300',
     iconColor: 'text-blue-500',
     superAdminOnly: true
+  },
+  {
+    href: '/admin/goals-bot',
+    label: 'Goals Bot',
+    icon: Bot,
+    color: 'hover:bg-emerald-50 dark:hover:bg-emerald-900/20 text-slate-700 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-300',
+    iconColor: 'text-emerald-500'
   }
 ];
 

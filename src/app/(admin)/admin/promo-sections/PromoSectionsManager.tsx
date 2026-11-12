@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
+import Link from "next/link";
 import {
   BadgePercent, Plus, Trash2, Edit3, RefreshCw, AlertCircle,
   Eye, Check, Smartphone, Monitor, Calendar, AlertTriangle,
   Archive, Globe, ArrowRight, X, Lock, Signal, Wifi, Battery,
-  Sparkles, Copy, CheckCheck
+  Sparkles, Copy, CheckCheck, Columns, Flame
 } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
 import {
@@ -423,16 +424,34 @@ export default function PromoSectionsManager() {
     <div className="w-full">
       <Toaster position="top-right" />
 
-      {/* Top Header / Scope Indicator */}
-      <div className="flex items-center justify-between mb-6 pb-3 border-b border-gray-200 dark:border-slate-800">
+      {/* Top Header / Scope Navigation Tabs */}
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-3 border-b border-gray-200 dark:border-slate-800">
         <div className="flex items-center gap-2">
-          <span className="px-2.5 py-1 rounded text-[10px] font-bold tracking-wider uppercase bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
-            Product Pages Promos
+          <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-500 text-white shadow-xs">
+            <BadgePercent className="w-3.5 h-3.5" />
+            <span>Product Promo Banners</span>
           </span>
-          <span className="text-xs text-gray-500">
-            Promotional banners, discount notices, and countdown timers on /products/[slug]
-          </span>
+
+          <Link
+            href="/admin/promo-sections/blog-ads"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition"
+          >
+            <Columns className="w-3.5 h-3.5 text-gray-400" />
+            <span>Blog Desktop Side Ads</span>
+          </Link>
+
+          <Link
+            href="/admin/trending"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition"
+          >
+            <Flame className="w-3.5 h-3.5 text-gray-400" />
+            <span>Trending Now Section</span>
+          </Link>
         </div>
+
+        <span className="text-xs text-gray-400 hidden sm:inline">
+          Promotional banners on /products/[slug]
+        </span>
       </div>
 
       {/* ──────────────── TAB 1: MANAGE LIST ──────────────── */}

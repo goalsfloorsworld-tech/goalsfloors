@@ -11,6 +11,8 @@ import {
   cleanHtmlEntities,
   SITE_ORIGIN,
 } from '@/lib/blog/seo-utils';
+import BlogSideAds from "@/components/blog/BlogSideAds";
+import { getBlogSideAdsConfig } from "@/actions/admin/blog-ads";
 
 const API_BASE_URL = "https://blog.goalsfloors.com/wp-json/wp/v2";
 
@@ -146,6 +148,8 @@ export default async function SingleBlogPage({
     notFound();
   }
 
+  const sideAdsConfig = await getBlogSideAdsConfig();
+
   const { title, content, excerpt, imageUrl, imageAlt, date, modified, authorId } = post;
   const cleanTitle = cleanHtmlEntities(title);
   const cleanExcerpt = cleanHtmlEntities(excerpt);
@@ -249,16 +253,7 @@ export default async function SingleBlogPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      {/* Return to Blogs */}
-      <div className="fixed top-24 left-4 z-50 hidden xl:block">
-        <Link
-          href="/blogs"
-          className="flex items-center gap-2 p-3 bg-white/90 dark:bg-slate-900/90 hover:bg-white dark:hover:bg-slate-800 backdrop-blur-md rounded-full text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-800 shadow-xl shadow-gray-900/5 hover:text-amber-600 dark:hover:text-amber-500 transition-all group"
-        >
-          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-          <span className="sr-only">Back to Insights</span>
-        </Link>
-      </div>
+
 
       {/* Hero Header */}
       <header className="relative w-full pt-10 pb-12 md:pt-5 md:pb-20 overflow-hidden border-b border-gray-100 dark:border-gray-800">
@@ -327,31 +322,35 @@ export default async function SingleBlogPage({
         </div>
       </div>
 
-      {/* Article Content */}
-      <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 md:mt-20">
-        <div
-          className="wp-content prose prose-lg md:prose-xl prose-stone dark:prose-invert max-w-none
-                     prose-headings:font-bold prose-headings:tracking-tight prose-a:text-amber-600 hover:prose-a:text-amber-700
-                     prose-h2:text-black dark:prose-h2:text-white prose-h2:text-xl md:prose-h2:text-2xl prose-h2:font-bold prose-h2:tracking-tight
-                     [&_h2_strong]:text-inherit
-                     prose-blockquote:border-l-4 prose-blockquote:border-amber-500 prose-blockquote:bg-gray-50 dark:prose-blockquote:bg-slate-900 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-2xl prose-blockquote:font-medium prose-blockquote:italic
-                     prose-strong:text-black dark:prose-strong:text-amber-100"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+      {/* Article Content with Desktop Side Skyscraper Ads */}
+      <div className="mt-12 md:mt-20">
+        <BlogSideAds config={sideAdsConfig}>
+          <article className="max-w-3xl mx-auto">
+            <div
+              className="wp-content prose prose-lg md:prose-xl prose-stone dark:prose-invert max-w-none
+                         prose-headings:font-bold prose-headings:tracking-tight prose-a:text-amber-600 hover:prose-a:text-amber-700
+                         prose-h2:text-black dark:prose-h2:text-white prose-h2:text-xl md:prose-h2:text-2xl prose-h2:font-bold prose-h2:tracking-tight
+                         [&_h2_strong]:text-inherit
+                         prose-blockquote:border-l-4 prose-blockquote:border-amber-500 prose-blockquote:bg-gray-50 dark:prose-blockquote:bg-slate-900 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-2xl prose-blockquote:font-medium prose-blockquote:italic
+                         prose-strong:text-black dark:prose-strong:text-amber-100"
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
 
-        {/* Footer Actions */}
-        <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-gray-500">
-              <User className="w-6 h-6" />
+            {/* Footer Actions */}
+            <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800 flex justify-between items-center">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-gray-500">
+                  <User className="w-6 h-6" />
+                </div>
+                <div>
+                  <p className="text-sm font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">Written By</p>
+                  <p className="font-semibold text-gray-900 dark:text-white">{authorName}</p>
+                </div>
+              </div>
             </div>
-            <div>
-              <p className="text-sm font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400">Written By</p>
-              <p className="font-semibold text-gray-900 dark:text-white">{authorName}</p>
-            </div>
-          </div>
-        </div>
-      </article>
+          </article>
+        </BlogSideAds>
+      </div>
     </main>
   );
 }
