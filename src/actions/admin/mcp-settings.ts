@@ -1,7 +1,7 @@
 "use server";
 
 import { createClient } from "@supabase/supabase-js";
-import { getCurrentUserProfile } from "@/actions/admin-core";
+import { getCurrentUserProfile } from '@/actions/admin/core';
 import crypto from "crypto";
 
 const financeSupabaseUrl = process.env.NEXT_PUBLIC_FINANCE_SUPABASE_URL || "";

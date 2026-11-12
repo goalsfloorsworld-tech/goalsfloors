@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { approveBlog, rejectBlog } from "@/actions/admin-blog";
+import { approveBlog, rejectBlog } from '@/actions/admin/blog';
 import { Check, X, ArrowLeft, Loader2, Calendar, FileText } from "lucide-react";
 
 type Blog = {

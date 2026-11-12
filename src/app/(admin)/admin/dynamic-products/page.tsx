@@ -2,17 +2,17 @@
 
 import React, { useState, useEffect } from "react";
 import { Plus, Package, Trash2, Edit, AlertCircle, Image as ImageIcon, X } from "lucide-react";
-import { getCurrentUserProfile } from "@/actions/admin-core";
+import { getCurrentUserProfile } from '@/actions/admin/core';
 import {
   addDynamicProduct,
   getDynamicProducts,
   updateDynamicProduct,
   deleteDynamicProduct
-} from "@/actions/dynamic-products";
-import { uploadDynamicProductImages, deleteCloudinaryImages } from "@/actions/cloudinary-actions";
+} from '@/actions/admin/dynamic-products';
+import { uploadDynamicProductImages, deleteCloudinaryImages } from '@/actions/admin/cloudinary-actions';
 import toast, { Toaster } from "react-hot-toast";
 import { optimizeCloudinaryUrl } from "@/lib/utils";
-import { adminCache, clearAdminCache } from "@/lib/admin-cache";
+import { adminCache, clearAdminCache } from '@/lib/admin/cache';
 import { RefreshCw } from "lucide-react";
 
 const VALID_SLUGS = [

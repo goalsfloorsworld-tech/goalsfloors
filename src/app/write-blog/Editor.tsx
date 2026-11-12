@@ -8,7 +8,7 @@ import Placeholder from "@tiptap/extension-placeholder";
 import TiptapImage from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
 import { Bold, Italic, Strikethrough, Heading1, Heading2, Heading3, Quote, Plus, Image as ImageIcon, Code, MoreHorizontal, Loader2, Trash2, Replace, Link as LinkIcon, Type } from "lucide-react";
-import { uploadEditorImage } from "@/actions/blog";
+import { uploadEditorImage } from '@/actions/blog';
 
 interface EditorProps {
   value: string;

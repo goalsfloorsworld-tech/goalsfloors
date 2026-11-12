@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { CatalogData } from '@/actions/admin-catalogs';
+import { CatalogData } from '@/actions/admin/catalogs';
 
 interface PublicStore {
   catalogs: CatalogData[] | null;

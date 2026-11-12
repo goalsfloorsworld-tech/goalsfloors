@@ -15,9 +15,9 @@ import {
   Clock,
   Sparkles,
 } from "lucide-react";
-import { publishToGmc, getPublisherStats } from "@/actions/gmc-publisher";
-import { optimizeProductText } from "@/actions/gmc-ai";
-import type { PublisherStats } from "@/actions/gmc-publisher";
+import { publishToGmc, getPublisherStats } from '@/actions/admin/gmc-publisher';
+import { optimizeProductText } from '@/actions/admin/gmc-ai';
+import type { PublisherStats } from '@/actions/admin/gmc-publisher';
 import toast from "react-hot-toast";
 
 const emptyForm = {

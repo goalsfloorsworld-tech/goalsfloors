@@ -1,5 +1,5 @@
 import { google } from "googleapis";
-import { getSeoAuth } from "@/lib/seo";
+import { getSeoAuth } from '@/lib/seo';
 
 
 export type GmcProduct = {

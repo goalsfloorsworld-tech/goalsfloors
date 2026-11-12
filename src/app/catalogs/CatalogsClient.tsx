@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Download, ChevronRight, FileText, Loader2 } from "lucide-react";
-import { getPublicCatalogs } from "@/actions/public-catalogs";
-import { usePublicStore } from "@/lib/public-store";
-import { getCatalogDownloadUrl } from "@/lib/catalog-helpers";
+import { getPublicCatalogs } from '@/actions/catalogs';
+import { usePublicStore } from '@/lib/catalogs/store';
+import { getCatalogDownloadUrl } from '@/lib/catalogs/helpers';
 
 interface CatalogsClientProps {
   initialCatalogs?: any[];

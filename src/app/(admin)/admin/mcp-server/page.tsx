@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { getMcpToken, generateNewMcpToken } from "@/actions/mcp-settings";
+import { getMcpToken, generateNewMcpToken } from '@/actions/admin/mcp-settings';
 import { Server, Key, Copy, CheckCircle2, AlertCircle, Loader2, ShieldCheck, RefreshCw, BookOpen, Terminal, Code2, Bot, Sparkles, BrainCircuit, Globe, FileText, Database, Lock, Eye, Network, ChevronRight, LineChart, Search, ShoppingBag } from "lucide-react";
 
 const aiCapsules = [

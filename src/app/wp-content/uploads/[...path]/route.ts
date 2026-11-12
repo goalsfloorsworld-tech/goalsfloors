@@ -1,4 +1,4 @@
-import { WP_ORIGIN } from "@/lib/blog-seo-utils";
+import { WP_ORIGIN } from '@/lib/blog/seo-utils';
 
 export const dynamic = "force-dynamic";
 

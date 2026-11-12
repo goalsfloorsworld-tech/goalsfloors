@@ -7,7 +7,7 @@ import { createClient } from "@supabase/supabase-js";
 import { ChevronRight, FileText, MessageCircle } from "lucide-react";
 import CatalogViewerClient from "./CatalogViewerClient";
 import CatalogDownloadButton from "./CatalogDownloadButton";
-import { getCatalogDownloadUrl } from "@/lib/catalog-helpers";
+import { getCatalogDownloadUrl } from '@/lib/catalogs/helpers';
 
 interface PageProps {
   params: Promise<{ slug: string }>;

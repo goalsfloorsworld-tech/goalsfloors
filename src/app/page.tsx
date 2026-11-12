@@ -12,6 +12,7 @@ const GetAQuoteMonolith = dynamic(() => import("@/components/home/GetAQuoteMonol
 const AdvantageImage = dynamic(() => import("@/components/home/AdvantageImage"));
 const CompareWidget = dynamic(() => import("@/components/CompareWidget"));
 const QuickCategoryGrid = dynamic(() => import("@/components/home/QuickCategoryGrid"));
+const TrendingNowSection = dynamic(() => import("@/components/home/TrendingNowSection"));
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen overflow-x-hidden max-w-full min-w-0">
@@ -55,6 +56,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* ================= TRENDING NOW SECTION ================= */}
+      <TrendingNowSection />
 
       {/* ================= QUICK APP CATEGORIES ================= */}
       <QuickCategoryGrid />

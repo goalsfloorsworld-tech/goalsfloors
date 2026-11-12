@@ -1,7 +1,7 @@
 "use server";
 
 import { v2 as cloudinary } from "cloudinary";
-import { getCurrentUserProfile } from "@/actions/admin-core";
+import { getCurrentUserProfile } from '@/actions/admin/core';
 import { logAdminActivity } from "./logger";
 
 export async function uploadDynamicProductImages(

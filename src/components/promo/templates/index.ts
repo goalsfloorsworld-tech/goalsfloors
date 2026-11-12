@@ -2,6 +2,7 @@ import React from "react";
 import CountdownBanner from "./CountdownBanner";
 import FestiveOfferBanner from "./FestiveOfferBanner";
 import B2BProjectLeadBanner from "./B2BProjectLeadBanner";
+import CustomCodeBanner from "./CustomCodeBanner";
 
 /**
  * Validate promo links to prevent security issues (e.g. javascript: or data: URIs).
@@ -493,6 +494,26 @@ export const PROMO_TEMPLATES: Record<string, PromoTemplateEntry> = {
       button_text: "Request Callback",
       whatsapp_number: "917217644573",
       bg_theme: "midnight_navy",
+    },
+  },
+
+  CustomCodeBanner: {
+    id: "CustomCodeBanner",
+    label: "Custom Code / HTML",
+    description: "Full design freedom: write or paste custom HTML with Tailwind CSS. Single self-contained code box.",
+    component: CustomCodeBanner as unknown as React.ComponentType<PromoTemplateProps>,
+    fields: [
+      {
+        name: "custom_html",
+        label: "Custom Banner Code (HTML & Tailwind CSS)",
+        type: "textarea",
+        required: true,
+        placeholder: "Paste your custom code here...",
+        helpText: "Paste self-contained HTML markup using Tailwind CSS. If custom CSS is required, include it inside <style>...</style> within this box. JavaScript is strictly prohibited.",
+      },
+    ],
+    defaults: {
+      custom_html: "",
     },
   },
 };

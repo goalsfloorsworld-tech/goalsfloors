@@ -1,6 +1,6 @@
 import { Toaster } from "react-hot-toast";
 import TeamManagerClient from "@/components/admin/TeamManagerClient";
-import { getCurrentUserProfile } from "@/actions/admin-core";
+import { getCurrentUserProfile } from '@/actions/admin/core';
 
 export const metadata = {
   title: "Team Manager | Goals Floors Admin",

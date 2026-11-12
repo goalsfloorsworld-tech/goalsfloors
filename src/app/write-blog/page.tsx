@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { UploadCloud, Loader2, X, Plus, Type, Replace, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { submitBlogForReview } from "@/actions/blog";
+import { submitBlogForReview } from '@/actions/blog';
 
 // Dynamically import the editor to prevent SSR issues with TipTap
 const TipTapEditor = dynamic(() => import("./Editor"), { ssr: false });

@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
 import { createClient } from '@supabase/supabase-js';
-import { toDomainImageUrl } from '@/lib/blog-seo-utils';
+import { toDomainImageUrl } from '@/lib/blog/seo-utils';
 
 const API_BASE_URL = "https://blog.goalsfloors.com/wp-json/wp/v2";
 

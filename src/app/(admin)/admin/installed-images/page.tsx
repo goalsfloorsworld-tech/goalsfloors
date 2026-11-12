@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { addInstalledImage, getInstalledImages, deleteInstalledImage } from '@/actions/installed-images';
-import { addAbImage, getAbImages, deleteAbImage } from '@/actions/ab-images';
-import { uploadImageToCloudinary, checkCloudinaryFileExists } from '@/actions/cloudinary';
+import { addInstalledImage, getInstalledImages, deleteInstalledImage } from '@/actions/admin/installed-images';
+import { addAbImage, getAbImages, deleteAbImage } from '@/actions/admin/ab-images';
+import { uploadImageToCloudinary, checkCloudinaryFileExists } from '@/actions/admin/cloudinary';
 import toast, { Toaster } from 'react-hot-toast';
 import { Trash2, Loader2, SplitSquareHorizontal, UploadCloud, AlertTriangle, RefreshCw } from 'lucide-react';
-import { getCurrentUserProfile } from '@/actions/admin-core';
-import { adminCache } from '@/lib/admin-cache';
+import { getCurrentUserProfile } from '@/actions/admin/core';
+import { adminCache } from '@/lib/admin/cache';
 
 const VALID_SLUGS = [
   { label: 'Artificial Grass', value: 'artificial-grass' },

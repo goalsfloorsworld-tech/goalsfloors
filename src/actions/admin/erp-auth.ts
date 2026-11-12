@@ -2,7 +2,7 @@
 
 import { createClient } from '@supabase/supabase-js';
 import { auth } from '@clerk/nextjs/server';
-import { getCurrentUserProfile } from './admin-core';
+import { getCurrentUserProfile } from './core';
 
 // Initialize Supabase Admin Client using the Service Role Key
 const getAdminSupabase = () => {

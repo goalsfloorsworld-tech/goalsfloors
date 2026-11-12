@@ -9,7 +9,7 @@ cloudinary.config({
   api_secret: process.env.ADMIN_CLOUDINARY_API_SECRET,
 });
 
-import { getCurrentUserProfile } from '@/actions/admin-core';
+import { getCurrentUserProfile } from '@/actions/admin/core';
 
 export async function uploadImageToCloudinary(formData: FormData, folderName: string): Promise<{ success: boolean; secure_url?: string; error?: string }> {
   try {

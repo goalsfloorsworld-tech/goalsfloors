@@ -1,7 +1,7 @@
 "use server";
 
 import { createClient } from "@supabase/supabase-js";
-import { CatalogData } from "./admin-catalogs";
+import { CatalogData } from '@/actions/admin/catalogs';
 
 export async function getPublicCatalogs(): Promise<CatalogData[]> {
   try {

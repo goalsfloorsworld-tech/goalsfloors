@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { X, Server, Database, Cloud, Activity, HardDrive, FileImage, FileText, Zap } from "lucide-react";
-import { StorageStats } from "@/actions/admin-storage";
+import { StorageStats } from '@/actions/admin/storage';
 import {
   PieChart,
   Pie,

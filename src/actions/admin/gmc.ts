@@ -1,6 +1,6 @@
 "use server";
 
-import { listGmcProducts, insertGmcProduct, type GmcProduct } from "@/lib/gmc";
+import { listGmcProducts, insertGmcProduct, type GmcProduct } from '@/lib/gmc';
 
 export async function fetchGmcProducts(): Promise<{ success: boolean; products?: GmcProduct[]; error?: string }> {
   try {

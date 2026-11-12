@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { Image as ImageIcon, Search, HardDrive, AlertTriangle, Loader2, ArrowRight, CheckCircle2, X } from "lucide-react";
-import type { QueryRow } from "@/lib/seo";
-import { getMissingAltImages, getMediaAuditStats } from "@/actions/image-seo";
+import type { QueryRow } from '@/lib/seo';
+import { getMissingAltImages, getMediaAuditStats } from '@/actions/admin/image-seo';
 
 type Props = {
   imageQueries: QueryRow[];

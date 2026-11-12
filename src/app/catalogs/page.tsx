@@ -1,7 +1,7 @@
 import React from "react";
 import { FileText } from "lucide-react";
 import CatalogsClient from "./CatalogsClient";
-import { getPublicCatalogs } from "@/actions/public-catalogs";
+import { getPublicCatalogs } from '@/actions/catalogs';
 
 export const metadata = {
   title: "Official GOALS™ Catalogs & PDF Brochures | Goals Floors",

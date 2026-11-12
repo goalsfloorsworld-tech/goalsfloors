@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import { Search, Globe, Rocket, Loader2, ArrowRight, RefreshCw, Activity, CheckCircle2, XCircle, Image as ImageIcon } from "lucide-react";
-import { submitUrlForIndexing, inspectUrlAction } from "@/actions/seo";
-import { getCurrentUserProfile } from "@/actions/admin-core";
-import type { QueryRow } from "@/lib/seo";
+import { submitUrlForIndexing, inspectUrlAction } from '@/actions/admin/seo';
+import { getCurrentUserProfile } from '@/actions/admin/core';
+import type { QueryRow } from '@/lib/seo';
 import ImageSeoTab from "./ImageSeoTab";
 
 // Using a basic toast fallback if sonner/react-hot-toast is not installed globally.

@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { getPendingBlogs } from "@/actions/admin-blog";
+import { getPendingBlogs } from '@/actions/admin/blog';
 import BlogReviewClient from "@/components/admin/blog/BlogReviewClient";
 
 export const metadata: Metadata = {

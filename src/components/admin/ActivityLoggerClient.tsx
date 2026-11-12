@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { getActivityLogs } from "@/actions/admin-activity";
+import { getActivityLogs } from '@/actions/admin/activity';
 import { Loader2, Activity, Clock, Shield, Search, Image as ImageIcon, Box, RefreshCw, UserCircle } from "lucide-react";
 import { formatDistanceToNow, isAfter, subMinutes } from "date-fns";
-import { adminCache } from "@/lib/admin-cache";
+import { adminCache } from '@/lib/admin/cache';
 
 type LogDetails = any; // JSONB
 

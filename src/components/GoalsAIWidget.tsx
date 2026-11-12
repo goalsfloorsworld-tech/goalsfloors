@@ -10,8 +10,8 @@ import knowledgeBase from "../../goalsfloors-ai/KNOWLEDGE_BASE.json";
 import VisualQuizFunnel from "./VisualQuizFunnel";
 import LeadGenBox from "./LeadGenBox";
 import LeadCaptureForm from "./LeadCaptureForm";
-import { processSSEStream } from "../lib/chatUtils";
-import { FAQ_DATABASE, ROUTE_TO_TOPIC_MAP, FAQItem } from "../lib/faqDatabase";
+import { processSSEStream } from '@/lib/chat/chatUtils';
+import { FAQ_DATABASE, ROUTE_TO_TOPIC_MAP, FAQItem } from '@/lib/chat/faqDatabase';
 
 // Types
 interface Message {

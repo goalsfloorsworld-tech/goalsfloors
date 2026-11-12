@@ -22,7 +22,7 @@ import {
   getAdminPublishedProducts, 
   deleteGmcProduct, 
   updateGmcProduct 
-} from "@/actions/gmc-manage";
+} from '@/actions/admin/gmc-manage';
 import toast from "react-hot-toast";
 
 export default function GmcManageTab() {

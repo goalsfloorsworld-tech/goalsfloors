@@ -5,7 +5,7 @@ import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { logAdminActivity } from "./logger";
 import { PROMO_TEMPLATES, isValidPromoLink } from "@/components/promo/templates";
-import { VALID_PRODUCT_SLUGS } from "@/lib/promo-constants";
+import { VALID_PRODUCT_SLUGS } from '@/lib/promo/constants';
 
 export interface AdminPromoAssignment {
   id: string;
@@ -186,6 +186,7 @@ export async function getAdminPromos(): Promise<
     const { data: sections, error: secError } = await supabase
       .from("promo_sections")
       .select("*")
+      .neq("template_id", "trending_collection")
       .order("created_at", { ascending: false });
 
     if (secError) throw secError;

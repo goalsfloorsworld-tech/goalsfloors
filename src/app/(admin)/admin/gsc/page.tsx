@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import { getTopQueries, getStrikingDistanceQueries, getSitemapHealth, getTopImageQueries, type QueryRow } from "@/lib/seo";
-import { getSitemapData } from "@/actions/seo";
+import { getTopQueries, getStrikingDistanceQueries, getSitemapHealth, getTopImageQueries, type QueryRow } from '@/lib/seo';
+import { getSitemapData } from '@/actions/admin/seo';
 import GscDashboardClient from "@/components/admin/gsc/GscDashboardClient";
 
 export const metadata: Metadata = {

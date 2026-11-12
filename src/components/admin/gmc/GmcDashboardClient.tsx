@@ -12,8 +12,8 @@ import {
   Rocket,
   LayoutList,
 } from "lucide-react";
-import { fetchGmcProducts } from "@/actions/gmc";
-import type { GmcProduct } from "@/lib/gmc";
+import { fetchGmcProducts } from '@/actions/admin/gmc';
+import type { GmcProduct } from '@/lib/gmc';
 import toast from "react-hot-toast";
 
 const GmcPublisherTab = lazy(() => import("./GmcPublisherTab"));

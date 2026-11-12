@@ -5,7 +5,7 @@ import {
   getDailyGraphData,
   getSearchConsoleData,
   getTopPages,
-} from '@/lib/ga';
+} from '@/lib/analytics/ga';
 
 type TopPageRow = {
   page_path: string;

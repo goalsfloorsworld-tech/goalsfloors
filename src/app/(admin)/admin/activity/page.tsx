@@ -1,5 +1,5 @@
 import ActivityLoggerClient from "@/components/admin/ActivityLoggerClient";
-import { getCurrentUserProfile } from "@/actions/admin-core";
+import { getCurrentUserProfile } from '@/actions/admin/core';
 import { redirect } from "next/navigation";
 
 export const metadata = {

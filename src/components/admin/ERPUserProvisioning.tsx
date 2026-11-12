@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useTransition } from 'react';
 import { ShieldAlert, Plus, Trash2, UserCog, Mail, KeyRound, Loader2, AlertCircle, CheckCircle2, KeySquare, Users, X, Check } from 'lucide-react';
-import { createErpUser, listErpUsers, deleteErpUser, forceResetErpUserPassword, verifyMainSiteEmail } from '../../actions/erp-auth';
+import { createErpUser, listErpUsers, deleteErpUser, forceResetErpUserPassword, verifyMainSiteEmail } from '@/actions/admin/erp-auth';
 
 interface ErpUser {
   id: string;

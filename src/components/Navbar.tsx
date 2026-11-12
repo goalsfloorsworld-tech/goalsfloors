@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { ChevronDown, Menu, X, ArrowRight, Sun, Moon, Settings, LayoutDashboard, Calculator } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { SignInButton, UserButton, useUser } from '@clerk/nextjs';
-import { checkIsAdmin, getUserRole } from '../actions/user';
+import { checkIsAdmin, getUserRole } from '@/actions/user';
 import RoleBadge from './shared/RoleBadge';
 
 export default function Navbar() {

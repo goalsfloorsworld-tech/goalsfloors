@@ -5,12 +5,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard, FileText, BarChart3, Globe, Rocket,
-  ShoppingBag, Database, UserPlus, Loader2, PackagePlus, Image as ImageIcon, Store, Activity, Shield, Server, BadgePercent
+  ShoppingBag, Database, UserPlus, Loader2, PackagePlus, Image as ImageIcon, Store, Activity, Shield, Server, BadgePercent, Flame
 } from 'lucide-react';
-import { getCurrentUserProfile } from '@/actions/admin-core';
+import { getCurrentUserProfile } from '@/actions/admin/core';
 import RoleBadge from '@/components/shared/RoleBadge';
 
-import { trackAdminSession } from '@/actions/logger';
+import { trackAdminSession } from '@/actions/admin/logger';
 
 const NAV_ITEMS = [
   {
@@ -19,6 +19,13 @@ const NAV_ITEMS = [
     icon: LayoutDashboard,
     color: 'hover:bg-blue-50 dark:hover:bg-blue-900/20 text-slate-700 dark:text-slate-300 hover:text-blue-700 dark:hover:text-blue-300',
     iconColor: 'text-blue-500'
+  },
+  {
+    href: '/admin/trending',
+    label: 'Trending Section',
+    icon: Flame,
+    color: 'hover:bg-amber-50 dark:hover:bg-amber-900/20 text-slate-700 dark:text-slate-300 hover:text-[#E17100] dark:hover:text-amber-400',
+    iconColor: 'text-[#E17100]'
   },
   {
     href: '/admin/promo-sections',

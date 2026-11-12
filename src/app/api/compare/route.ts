@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { generateComparisonLogic } from "@/lib/compare-logic";
+import { generateComparisonLogic } from '@/lib/compare/logic';
 
 export async function POST(req: Request) {
   try {

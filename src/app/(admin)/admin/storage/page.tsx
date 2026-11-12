@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { HardDrive, Cloud, Database, RefreshCw, AlertCircle, File, ChevronDown, Activity } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
-import { getStorageAnalytics, StorageStats, StorageFile } from "@/actions/admin-storage";
+import { getStorageAnalytics, StorageStats, StorageFile } from '@/actions/admin/storage';
 import StorageDetailsModal from "@/components/admin/storage/StorageDetailsModal";
 
 export default function StorageAnalyticsDashboard() {

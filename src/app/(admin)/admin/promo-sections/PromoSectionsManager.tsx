@@ -4,22 +4,76 @@ import React, { useState, useEffect, useMemo } from "react";
 import {
   BadgePercent, Plus, Trash2, Edit3, RefreshCw, AlertCircle,
   Eye, Check, Smartphone, Monitor, Calendar, AlertTriangle,
-  Archive, Globe, ArrowRight, X, Lock, Signal, Wifi, Battery
+  Archive, Globe, ArrowRight, X, Lock, Signal, Wifi, Battery,
+  Sparkles, Copy, CheckCheck
 } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
 import {
   getAdminPromos, savePromoSection, setPromoStatus, deletePromoSection,
   AdminPromoSection, ConflictingSectionInfo
-} from "@/actions/admin-promos";
-import { VALID_PRODUCT_SLUGS, AVAILABLE_PAGE_LINKS } from "@/lib/promo-constants";
+} from '@/actions/admin/promos';
+import { VALID_PRODUCT_SLUGS, AVAILABLE_PAGE_LINKS } from '@/lib/promo/constants';
 import { PROMO_TEMPLATES, TemplateFieldDefinition } from "@/components/promo/templates";
-import { formatUtcToIst, istInputToUtcIso, utcIsoToIstInput, getNowIstInput } from "@/lib/promo-date";
+import { formatUtcToIst, istInputToUtcIso, utcIsoToIstInput, getNowIstInput } from '@/lib/promo/date';
 import PromoImageField from "@/components/promo/PromoImageField";
+
+const AI_PROMPT_BLUEPRINT = `You are an expert Frontend UI Designer creating a promotional banner for "Goals Floors" (a premium interior design, luxury wooden flooring, SPC herringbone, and architectural wall panel company in Gurgaon & Delhi NCR).
+
+Generate a self-contained, responsive promotional banner HTML snippet.
+
+=== CRITICAL RULES & CONSTRAINTS ===
+1. STRICTLY NO JAVASCRIPT:
+   - JavaScript is NOT supported and is strictly prohibited.
+   - Do NOT write any <script> tags.
+   - Do NOT write any inline JavaScript event handlers (no onclick, no onload, no onerror, no onmouseover, etc.).
+   - Do NOT use href="javascript:...".
+   - The platform runs automated security verification; ANY JavaScript will cause immediate submission rejection.
+
+2. SINGLE CODE BLOCK (HTML + TAILWIND CSS):
+   - All styling must be written using Tailwind CSS 3.4+ utility classes directly in the HTML.
+   - If custom CSS (like keyframe animations or custom styling) is strictly necessary, include it inside a <style>...</style> block within this SAME single HTML snippet.
+   - Do NOT output separate CSS files. Everything must live in one unified HTML block.
+
+3. MANDATORY 100% RESPONSIVENESS:
+   - The banner MUST be mobile-first and fully responsive across 360px mobile phones, 768px tablets, and 1440px desktop screens.
+   - Use Tailwind responsive classes (e.g. flex flex-col md:flex-row, text-xl sm:text-2xl md:text-3xl, p-4 sm:p-6 md:p-8).
+   - Ensure touch targets are at least 44px tall on mobile. Must NEVER cause horizontal overflow on small screens.
+
+4. COUNTDOWN TIMER RULE:
+   - Only include a countdown timer if explicitly requested in the user requirements below!
+   - If the user did NOT specifically ask for a timer, do NOT include any timer.
+   - If a countdown timer IS requested, use these dynamic tokens inside your timer number boxes:
+     • {{DAYS}}    -> Live days remaining
+     • {{HOURS}}   -> Live hours remaining
+     • {{MINUTES}} -> Live minutes remaining
+     • {{SECONDS}} -> Live seconds remaining
+     (The website's React engine updates these tokens live every second).
+
+5. DYNAMIC SYSTEM TOKENS AVAILABLE:
+   - Dates (IST): {{START_DATE}}, {{END_DATE}}
+   - System Links:
+     • {{WHATSAPP_LINK}}   -> https://wa.me/917217644573 (Instant WhatsApp chat)
+     • {{SAMPLE_KIT_LINK}} -> /sample-kit (Order Free Sample Kit)
+     • {{CONTACT_LINK}}    -> /contact (Book Site Visit / Consultation)
+     • {{PRODUCTS_LINK}}   -> /products (Catalogue)
+     • {{COUPON_CODE}}     -> Dynamic coupon code if configured
+
+========================================================================
+=== WRITE YOUR BANNER REQUIREMENTS BELOW THIS LINE ====================
+========================================================================
+
+[IMPORTANT INSTRUCTION FOR AI]:
+Check if the user has written their banner requirements below this line.
+- If the user DID write requirements below, generate the complete responsive HTML snippet as requested.
+- If the user did NOT write any requirements below this line, STOP and do NOT generate any code yet! Ask the user first:
+  "Please tell me what kind of banner you want to create (e.g. occasion/festival, colors, discount offers, headline text, buttons)? Once you share your requirements, I will generate the complete responsive code for you."
+`;
 
 export default function PromoSectionsManager() {
   const [promos, setPromos] = useState<AdminPromoSection[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"manage" | "editor">("manage");
+  const [copiedPrompt, setCopiedPrompt] = useState(false);
 
   // Form State
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -80,6 +134,18 @@ export default function PromoSectionsManager() {
     setPriority(0);
     setSelectedSlugs([]);
     setLastKnownUpdatedAt(null);
+  };
+
+  const handleCopyAiPrompt = () => {
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      navigator.clipboard.writeText(AI_PROMPT_BLUEPRINT);
+      setCopiedPrompt(true);
+      toast.success("Prompt copied! Paste it in ChatGPT/Claude and write your requirement below the line.", {
+        duration: 5000,
+        icon: "📋",
+      });
+      setTimeout(() => setCopiedPrompt(false), 3000);
+    }
   };
 
   // Switch template and initialize default field values
@@ -189,6 +255,51 @@ export default function PromoSectionsManager() {
       if (missingCards.length > 0) {
         toast.error(`All 4 showcase cards (Offices, Restaurants, Hotels, Retail) are required for the B2B Banner! Card ${missingCards.join(", ")} is incomplete.`);
         return;
+      }
+    }
+
+    // Compulsory check & strict validation for Custom Code Banner
+    if (selectedTemplate === "CustomCodeBanner") {
+      const html = String(propsState.custom_html || "").trim();
+      if (!html) {
+        toast.error("Custom HTML markup is required for the Custom Code Banner.");
+        return;
+      }
+
+      // Security Check 1: Script tags strictly forbidden
+      if (/<script\b/i.test(html)) {
+        toast.error("Security Alert: JavaScript is strictly prohibited! Please remove all <script> tags.", { duration: 6000 });
+        return;
+      }
+
+      // Security Check 2: Inline event handlers (onclick=, onload=, onerror=, etc.)
+      if (/\bon\w+\s*=/i.test(html)) {
+        const match = html.match(/\bon\w+\s*=/i);
+        toast.error(`Security Alert: Inline JavaScript handlers (${match?.[0] || 'on*'}) are not allowed! Use pure HTML and Tailwind CSS.`, { duration: 6000 });
+        return;
+      }
+
+      // Security Check 3: javascript: protocol in links
+      if (/href\s*=\s*["']?\s*javascript:/i.test(html)) {
+        toast.error("Security Alert: 'javascript:' links are not allowed. Please use standard links or {{WHATSAPP_LINK}}.", { duration: 6000 });
+        return;
+      }
+
+      // Structural Balance Check: div and style tags
+      if (typeof window !== "undefined") {
+        const openDivs = (html.match(/<div\b/gi) || []).length;
+        const closeDivs = (html.match(/<\/div>/gi) || []).length;
+        if (openDivs !== closeDivs) {
+          toast.error(`HTML Balance Warning: Detected ${openDivs} opening <div> tags but ${closeDivs} closing </div> tags. Please balance your tags before saving.`, { duration: 6000 });
+          return;
+        }
+
+        const openStyles = (html.match(/<style\b/gi) || []).length;
+        const closeStyles = (html.match(/<\/style>/gi) || []).length;
+        if (openStyles !== closeStyles) {
+          toast.error("CSS Balance Warning: Unclosed <style> tag detected. Please balance your tags before saving.", { duration: 6000 });
+          return;
+        }
       }
     }
 
@@ -311,6 +422,18 @@ export default function PromoSectionsManager() {
   return (
     <div className="w-full">
       <Toaster position="top-right" />
+
+      {/* Top Header / Scope Indicator */}
+      <div className="flex items-center justify-between mb-6 pb-3 border-b border-gray-200 dark:border-slate-800">
+        <div className="flex items-center gap-2">
+          <span className="px-2.5 py-1 rounded text-[10px] font-bold tracking-wider uppercase bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+            Product Pages Promos
+          </span>
+          <span className="text-xs text-gray-500">
+            Promotional banners, discount notices, and countdown timers on /products/[slug]
+          </span>
+        </div>
+      </div>
 
       {/* ──────────────── TAB 1: MANAGE LIST ──────────────── */}
       {activeTab === "manage" && (
@@ -602,7 +725,7 @@ export default function PromoSectionsManager() {
                 <label className="block text-xs font-bold uppercase tracking-wider text-gray-700 dark:text-gray-300 mb-2">
                   Select Template <span className="text-rose-500">*</span>
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {uniqueTemplates.map((tpl) => (
                     <button
                       key={tpl.id}
@@ -793,6 +916,65 @@ export default function PromoSectionsManager() {
                     }
 
                     if (field.type === "textarea") {
+                      const isCustomHtml = field.name === "custom_html";
+
+                      if (isCustomHtml) {
+                        return (
+                          <div className="space-y-3">
+                            {/* AI Prompt Blueprint Banner */}
+                            <div className="flex items-center justify-between p-3 rounded-xl border border-amber-200/90 dark:border-amber-900/50 bg-amber-50/40 dark:bg-slate-900/60 shadow-xs">
+                              <div className="flex items-center gap-2">
+                                <div className="w-7 h-7 rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold">
+                                  <Sparkles className="w-4 h-4" />
+                                </div>
+                                <div>
+                                  <h4 className="text-xs font-bold text-gray-900 dark:text-white">
+                                    AI Prompt Blueprint
+                                  </h4>
+                                  <p className="text-[10px] text-gray-500 dark:text-gray-400">
+                                    Copy prompt, paste into AI &amp; write your requirements below the line
+                                  </p>
+                                </div>
+                              </div>
+
+                              <button
+                                type="button"
+                                onClick={handleCopyAiPrompt}
+                                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-xs transition-all active:scale-95 ${
+                                  copiedPrompt
+                                    ? "bg-emerald-600 text-white"
+                                    : "bg-[#E17100] hover:bg-[#c96200] text-white"
+                                }`}
+                              >
+                                {copiedPrompt ? (
+                                  <>
+                                    <CheckCheck className="w-3.5 h-3.5" />
+                                    <span>Copied!</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <Copy className="w-3.5 h-3.5" />
+                                    <span>Copy AI Prompt</span>
+                                  </>
+                                )}
+                              </button>
+                            </div>
+
+                            {/* Clean Full-Height Code Editor */}
+                            <textarea
+                              rows={16}
+                              value={String(propsState[field.name] || "")}
+                              onChange={(e) =>
+                                setPropsState({ ...propsState, [field.name]: e.target.value })
+                              }
+                              placeholder="Paste your custom code here..."
+                              className="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-3.5 py-2.5 font-mono text-xs leading-relaxed text-gray-900 focus:border-amber-500 focus:bg-white dark:focus:bg-slate-800 focus:outline-hidden dark:border-slate-800 dark:bg-slate-800/60 dark:text-white"
+                            />
+                          </div>
+                        );
+                      }
+
+                      // Default textarea for other templates
                       return (
                         <textarea
                           rows={2}
@@ -1112,7 +1294,7 @@ export default function PromoSectionsManager() {
           </div>
 
           {/* ──────────────── RIGHT COLUMN: STICKY PHONE PREVIEW (TOP 20px, BOTTOM 20px) ──────────────── */}
-          <div className="lg:col-span-5 w-full self-stretch h-full min-h-full relative">
+          <div id="phone-preview-column" className="lg:col-span-5 w-full self-stretch h-full min-h-full relative">
             <div className="sticky top-5 h-[calc(100vh-40px)] flex flex-col items-center justify-between z-20">
               {/* Top Bar: Title + Switcher (Compact shrink-0) */}
               <div className="w-[300px] mb-2 flex items-center justify-between shrink-0">

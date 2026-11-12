@@ -11,13 +11,13 @@ import {
   getSearchConsoleData,
   getTrafficSources,
   getTopPages,
-} from '@/lib/ga';
+} from '@/lib/analytics/ga';
 import {
   getDeviceData,
   getGeoData,
   getUserTypeData,
   getEventData,
-} from '@/lib/ga-advanced';
+} from '@/lib/analytics/ga-advanced';
 import AudienceView from '@/components/admin/analytics/AudienceView';
 import BehaviorView from '@/components/admin/analytics/BehaviorView';
 

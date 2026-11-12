@@ -1,7 +1,7 @@
 "use client";
 
 import { MousePointerClick } from 'lucide-react';
-import type { EventRow } from '@/lib/ga-advanced';
+import type { EventRow } from '@/lib/analytics/ga-advanced';
 
 type Props = {
   eventData: EventRow[];

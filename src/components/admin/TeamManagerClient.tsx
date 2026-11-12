@@ -11,10 +11,10 @@ import {
   demoteToUser, 
   getAllTeamMembers, 
   updateRoleToAdmin 
-} from "@/actions/admin-core";
+} from '@/actions/admin/core';
 import toast from "react-hot-toast";
 import RoleBadge from "@/components/shared/RoleBadge";
-import { adminCache } from "@/lib/admin-cache";
+import { adminCache } from '@/lib/admin/cache';
 import { RefreshCw } from "lucide-react";
 type FoundUser = {
   id: string;

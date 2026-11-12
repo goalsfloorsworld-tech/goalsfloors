@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { ShieldAlert } from "lucide-react";
 import ERPUserProvisioning from "@/components/admin/ERPUserProvisioning";
-import { getCurrentUserProfile } from "@/actions/admin-core";
+import { getCurrentUserProfile } from '@/actions/admin/core';
 
 export const metadata = {
   title: "Security & Access | Admin Panel",

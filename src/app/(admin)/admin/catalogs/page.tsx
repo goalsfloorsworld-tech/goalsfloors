@@ -6,10 +6,10 @@ import {
   UploadCloud, AlertCircle, LayoutGrid, Edit, X
 } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
-import { getAdminCatalogs, addAdminCatalog, deleteAdminCatalog, updateAdminCatalog, getB2PresignedUploadUrl, CatalogData } from "@/actions/admin-catalogs";
-import { getCurrentUserProfile } from "@/actions/admin-core";
-import { uploadDynamicProductImages, checkCloudinaryDuplicate } from "@/actions/cloudinary-actions";
-import { adminCache } from "@/lib/admin-cache";
+import { getAdminCatalogs, addAdminCatalog, deleteAdminCatalog, updateAdminCatalog, getB2PresignedUploadUrl, CatalogData } from '@/actions/admin/catalogs';
+import { getCurrentUserProfile } from '@/actions/admin/core';
+import { uploadDynamicProductImages, checkCloudinaryDuplicate } from '@/actions/admin/cloudinary-actions';
+import { adminCache } from '@/lib/admin/cache';
 import Image from "next/image";
 
 export default function CatalogsManager() {

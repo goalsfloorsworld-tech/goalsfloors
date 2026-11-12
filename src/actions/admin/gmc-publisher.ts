@@ -1,7 +1,7 @@
 "use server";
 
 import { google } from "googleapis";
-import { getSeoAuth } from "@/lib/seo";
+import { getSeoAuth } from '@/lib/seo';
 
 const CUSTOM_LABEL = "admin-panel";
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getProductBySlug } from "@/lib/data";
-import { getPromosForPage, type PromoSectionItem } from "@/lib/promo";
+import { getPromosForPage, type PromoSectionItem } from '@/lib/promo';
 import ProductClient, { Product } from "./ProductClient";
 import { createClient } from "@supabase/supabase-js";
 

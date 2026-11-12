@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { PromoSectionItem } from "@/lib/promo";
+import { PromoSectionItem } from '@/lib/promo';
 import { PROMO_TEMPLATES } from "./templates";
 
 interface PromoSlotProps {

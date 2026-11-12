@@ -10,7 +10,7 @@ import {
   transformContentImages,
   cleanHtmlEntities,
   SITE_ORIGIN,
-} from "@/lib/blog-seo-utils";
+} from '@/lib/blog/seo-utils';
 
 const API_BASE_URL = "https://blog.goalsfloors.com/wp-json/wp/v2";
 

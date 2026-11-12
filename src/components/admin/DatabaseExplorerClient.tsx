@@ -2,7 +2,7 @@
 
 import React, { useState, useTransition } from "react";
 import { Database, Loader2, Table, RefreshCw, ChevronDown } from "lucide-react";
-import { fetchTableData } from "@/actions/admin-core";
+import { fetchTableData } from '@/actions/admin/core';
 import toast from "react-hot-toast";
 
 const TABLES = [

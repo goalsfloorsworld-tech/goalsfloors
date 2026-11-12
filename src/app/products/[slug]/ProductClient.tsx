@@ -24,7 +24,7 @@ import QuickFeaturesBar from "@/components/products/QuickFeaturesBar";
 import CompareWidget from "@/components/CompareWidget";
 import PdfDownloadButton from "@/components/products/PdfDownloadButton";
 import PromoSlot from "@/components/promo/PromoSlot";
-import type { PromoSectionItem } from "@/lib/promo";
+import type { PromoSectionItem } from '@/lib/promo';
 
 export interface FAQ {
   question: string;

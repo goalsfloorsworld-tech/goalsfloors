@@ -20,7 +20,7 @@ import {
   uploadPromoImages,
   getPromoImageLibrary,
   PromoGalleryImage,
-} from "@/actions/promo-images";
+} from '@/actions/admin/promo-images';
 
 interface PromoImageFieldProps {
   label: string;

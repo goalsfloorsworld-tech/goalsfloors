@@ -14,7 +14,7 @@ import {
   MapPin,
   Hourglass,
 } from "lucide-react";
-import { getTrendingComparisons } from "@/actions/compare";
+import { getTrendingComparisons } from '@/actions/compare';
 
 /* ─── Data ─────────────────────────────────────────────────────────── */
 

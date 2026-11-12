@@ -1,7 +1,7 @@
 "use client";
 
 import { Smartphone, Monitor, Tablet, Globe2, UserPlus, Users } from 'lucide-react';
-import type { DeviceRow, GeoRow, UserTypeRow } from '@/lib/ga-advanced';
+import type { DeviceRow, GeoRow, UserTypeRow } from '@/lib/analytics/ga-advanced';
 
 type Props = {
   deviceData: DeviceRow[];

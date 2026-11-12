@@ -5,7 +5,7 @@ import SearchBar from "@/components/search-bar";
 import BlogCard, { BlogPost } from "@/components/blog-card";
 import WriteBlogCard from "@/components/WriteBlogCard";
 import { createClient } from "@supabase/supabase-js";
-import { toDomainImageUrl } from "@/lib/blog-seo-utils";
+import { toDomainImageUrl } from '@/lib/blog/seo-utils';
 
 export async function generateMetadata({
   searchParams,
