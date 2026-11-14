@@ -20,7 +20,7 @@ export default function Home() {
       <HeroSection />
 
       {/* ================= STATS BAR ================= */}
-      <div className="w-full bg-[#f6f2ea] dark:bg-[#0F172A] relative z-20 transition-colors duration-300">
+      <div className="w-full bg-[#f6f2ea] dark:bg-[#0F172A] relative z-20 transition-colors duration-300 pb-[5px]">
         <div className="w-full px-4 sm:px-8 md:px-12 lg:px-14 xl:px-16 2xl:px-20 mx-auto">
           <div className="bg-[#15171e] dark:bg-slate-900 -mt-8 sm:-mt-12 lg:-mt-[84px] xl:-mt-[92px] w-full lg:max-w-[1000px] xl:max-w-[1150px] shadow-2xl transition-colors duration-300 rounded-xl border border-white/5 dark:border-gray-800 p-3 sm:p-6 lg:p-8">
             <div className="grid grid-cols-2 lg:grid-cols-4">
